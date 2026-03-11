@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crepe de la Crepe</title>
-  <meta name="description" content="Ferske crepes, søte favoritter og enkel info om meny, lokasjon og åpningstider for Crepe de la Crepe." />
+  <meta name="description" content="Ferske crêpes, søte favoritter og enkel info om meny, lokasjon og åpningstider for Crepe de la Crepe." />
   <style>
     :root {
       --bg: #080808;
-      --bg-soft: #121212;
+      --bg-soft: #111111;
       --card: #151515;
       --card-soft: #1b1b1b;
       --text: #f5f5f5;
-      --muted: #b8b8b8;
+      --muted: #b9b9b9;
       --line: rgba(255,255,255,0.08);
       --accent: #f4c542;
-      --accent-2: #ff8a3d;
-      --max: 1180px;
+      --accent-2: #ff9a4d;
+      --max: 1240px;
       --radius: 26px;
       --shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
@@ -33,8 +33,8 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(244,197,66,0.08), transparent 22%),
-        radial-gradient(circle at left center, rgba(255,138,61,0.06), transparent 18%),
+        radial-gradient(circle at top right, rgba(244,197,66,0.07), transparent 22%),
+        radial-gradient(circle at left center, rgba(255,154,77,0.05), transparent 18%),
         var(--bg);
       color: var(--text);
       line-height: 1.55;
@@ -74,11 +74,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 22px;
+      padding: 14px 24px;
       border-radius: 999px;
       font-weight: 700;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      min-height: 52px;
     }
 
     .btn-primary {
@@ -93,31 +94,32 @@
     }
 
     .btn-secondary {
-      border-color: var(--line);
-      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(15,15,15,0.34);
       color: var(--text);
+      backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.22);
     }
 
     .nav-wrap {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(8,8,8,0.78);
+      background: rgba(8,8,8,0.74);
       border-bottom: 1px solid var(--line);
     }
 
     nav {
-      min-height: 82px;
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
     .brand {
@@ -128,9 +130,9 @@
     }
 
     .brand-logo-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
       overflow: hidden;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
@@ -161,7 +163,7 @@
     }
 
     .brand-subtitle {
-      margin-top: 4px;
+      margin-top: 5px;
       font-size: 12px;
       color: var(--muted);
       font-weight: 700;
@@ -182,36 +184,38 @@
     }
 
     .hero {
-      padding: 34px 0 74px;
+      padding: 18px 0 70px;
+    }
+
+    .hero-stage {
       position: relative;
-    }
-
-    .hero-shell {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .hero-panel,
-    .hero-image-wrap {
-      border: 1px solid var(--line);
-      border-radius: 32px;
+      min-height: 78vh;
+      border-radius: 34px;
       overflow: hidden;
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      background: #111;
+      display: flex;
+      align-items: flex-end;
     }
 
-    .hero-panel {
-      position: relative;
-      padding: 42px;
+    .hero-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(circle at top left, rgba(244,197,66,0.10), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
-        var(--card);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 660px;
+        linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.46) 32%, rgba(0,0,0,0.18) 62%, rgba(0,0,0,0.28) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.60), rgba(0,0,0,0.08)),
+        url('hero-crepes.jpg') center center / cover;
+      transform: scale(1.02);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 48px;
+      max-width: 760px;
     }
 
     .hero-kicker {
@@ -220,107 +224,48 @@
       width: fit-content;
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(244,197,66,0.20);
-      background: rgba(244,197,66,0.08);
+      border: 1px solid rgba(244,197,66,0.24);
+      background: rgba(244,197,66,0.10);
       color: #f7d26a;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
     }
 
-    .hero-panel h1 {
+    .hero h1 {
       margin: 0 0 16px;
-      font-size: clamp(52px, 7vw, 92px);
+      font-size: clamp(54px, 7vw, 104px);
       line-height: 0.92;
-      letter-spacing: -2.5px;
+      letter-spacing: -2.8px;
       max-width: 8ch;
     }
 
-    .hero-panel p {
+    .hero p {
       margin: 0;
-      color: #d8d8d8;
-      font-size: 18px;
-      max-width: 560px;
+      font-size: 19px;
+      color: rgba(255,255,255,0.88);
+      max-width: 620px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 28px;
-    }
-
-    .hero-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
       margin-top: 30px;
     }
 
-    .hero-point {
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: #d6d6d6;
+    .hero-note {
+      margin-top: 24px;
+      color: rgba(255,255,255,0.78);
       font-size: 14px;
+      letter-spacing: 0.02em;
     }
 
-    .hero-image-wrap {
-      position: relative;
-      min-height: 660px;
-      background: #111;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0.06)),
-        url('hero-crepes.jpg') center center / cover;
-      transform: scale(1.03);
-    }
-
-    .hero-image-badge {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      z-index: 2;
-      padding: 14px 16px;
-      border-radius: 20px;
-      background: rgba(12,12,12,0.74);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-      text-align: right;
-    }
-
-    .hero-image-badge span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-
-    .hero-image-badge strong {
-      font-size: 30px;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .hero-image-label {
-      position: absolute;
-      left: 22px;
-      bottom: 22px;
-      z-index: 2;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(12,12,12,0.62);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(6px);
-      color: #f1f1f1;
-      font-weight: 700;
+    section {
+      padding: 28px 0 72px;
     }
 
     .section-head {
@@ -335,10 +280,6 @@
       margin: 0 0 8px;
       font-size: clamp(28px, 4vw, 44px);
       letter-spacing: -1px;
-    }
-
-    section {
-      padding: 28px 0 72px;
     }
 
     .card {
@@ -571,26 +512,20 @@
     }
 
     @media (max-width: 980px) {
-      .hero-shell,
       .menu-grid,
       .info-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-panel,
-      .hero-image-wrap {
-        min-height: auto;
+      .hero-stage {
+        min-height: 72vh;
       }
 
-      .hero-panel {
-        padding: 30px 24px;
+      .hero-content {
+        padding: 34px 24px;
       }
 
-      .hero-image-wrap {
-        min-height: 440px;
-      }
-
-      .hero-panel h1 {
+      .hero h1 {
         max-width: none;
       }
 
@@ -609,15 +544,20 @@
       }
 
       .hero {
-        padding-top: 20px;
+        padding-top: 16px;
       }
 
-      .hero-panel h1 {
-        font-size: clamp(42px, 12vw, 64px);
+      .hero-stage {
+        min-height: 68vh;
+        border-radius: 26px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 12vw, 68px);
         letter-spacing: -2px;
       }
 
-      .hero-panel p {
+      .hero p {
         font-size: 16px;
       }
 
@@ -638,12 +578,16 @@
       }
 
       .brand-logo-wrap {
-        width: 56px;
-        height: 56px;
+        width: 58px;
+        height: 58px;
       }
 
       .brand-title {
         font-size: 17px;
+      }
+
+      .brand-subtitle {
+        font-size: 11px;
       }
     }
   </style>
@@ -675,8 +619,8 @@
   <main id="top">
     <section class="hero">
       <div class="container">
-        <div class="hero-shell">
-          <div class="hero-panel">
+        <div class="hero-stage">
+          <div class="hero-content">
             <div class="hero-kicker">Crêpes laget ferskt</div>
 
             <h1>Love at first bite.</h1>
@@ -691,22 +635,9 @@
               <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
             </div>
 
-            <div class="hero-points">
-              <div class="hero-point">Laget ferskt</div>
-              <div class="hero-point">Premium råvarer</div>
-              <div class="hero-point">Storo Storsenter</div>
+            <div class="hero-note">
+              Ferskt laget. Varmt servert. Enkelt å elske.
             </div>
-          </div>
-
-          <div class="hero-image-wrap">
-            <div class="hero-image"></div>
-
-            <div class="hero-image-badge">
-              <span>Fra</span>
-              <strong>99 kr</strong>
-            </div>
-
-            <div class="hero-image-label">Håndlaget. Søtt. Enkelt.</div>
           </div>
         </div>
       </div>
@@ -722,7 +653,7 @@
           </div>
           <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">
             Etablert i 2021, kjent for vår franskinspirerte røre og lidenskap for kvalitet.
-            Hos Crêpe de la Crêpe gjør vi hver eneste crêpe til en unik opplevelse - laget ferskt,
+            Hos Crêpe de la Crepe gjør vi hver eneste crêpe til en unik opplevelse – laget ferskt,
             servert med kjærlighet og alltid med fokus på smak og detaljer.
           </p>
         </div>
@@ -765,7 +696,7 @@
           <button class="menu-item menu-button" data-crepe="biscoff-finest" type="button">
             <div>
               <h4>Biscoff Finest</h4>
-              <p>Biscoff-krem med knasende kjeks - karamell i hver bit.</p>
+              <p>Biscoff-krem med knasende kjeks – karamell i hver bit.</p>
             </div>
             <div class="price">129 kr</div>
           </button>
@@ -773,7 +704,7 @@
           <button class="menu-item menu-button" data-crepe="strawberry-madness" type="button">
             <div>
               <h4>Strawberry Madness</h4>
-              <p>Ferske jordbær og Nutella - søtt, friskt og alltid en vinner.</p>
+              <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
             </div>
             <div class="price">139 kr</div>
           </button>
