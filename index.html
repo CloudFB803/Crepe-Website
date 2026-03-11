@@ -160,7 +160,38 @@
     }
 
     .hero {
-      padding: 64px 0 36px;
+      padding: 28px 0 36px;
+      position: relative;
+    }
+
+    .hero-main-card {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .vine {
+      position: absolute;
+      color: rgba(244,197,66,0.24);
+      font-size: 72px;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .vine-left {
+      top: 18px;
+      left: 22px;
+    }
+
+    .vine-right {
+      top: 18px;
+      right: 22px;
+      transform: scaleX(-1);
+    }
+
+    .vine-soft {
+      font-size: 54px;
+      color: rgba(244,197,66,0.16);
     }
 
     .hero-grid {
@@ -316,6 +347,14 @@
       background: linear-gradient(180deg, rgba(244,197,66,0.10), rgba(255,255,255,0.02));
     }
 
+    .menu-item h4 {
+      color: #f5f5f5;
+    }
+
+    .menu-item p {
+      color: #d8d8d8;
+    }
+
     .price {
       flex-shrink: 0;
       font-size: 24px;
@@ -430,6 +469,14 @@
         grid-template-columns: 1fr !important;
       }
 
+      .hero-main-card {
+        min-height: 70vh !important;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr !important;
+      }
+
       .hero-grid,
       .cards-3,
       .menu-grid,
@@ -488,8 +535,8 @@
         </a>
 
         <div class="nav-links">
+          <a href="#om-oss">Om oss</a>
           <a href="#menu">Meny</a>
-          <a href="#galleri">Bilder</a>
           <a href="#lokasjon">Lokasjon</a>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -500,14 +547,15 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid" style="grid-template-columns: 1fr;">
-        <div class="hero-card" style="min-height: 640px; background:
-        linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.18)),
-        url('hero-crepes.jpg') center/cover;">
+        <div class="hero-card hero-main-card" style="min-height: 82vh; background:
+        linear-gradient(to top, rgba(0,0,0,0.42), rgba(0,0,0,0.08)),
+        url('hero-crepes.jpg') center center/cover;">
+          <div class="vine vine-left">❦</div>
+          <div class="vine vine-right">❦</div>
           <div class="hero-card-bottom" style="max-width: 760px; align-items:flex-end;">
             <div>
-              <h1 style="font-size: clamp(52px, 8vw, 108px); line-height: 0.92; margin: 0 0 14px; letter-spacing: -2px;">Love at first bite.</h1>
-              <p style="margin: 0 0 24px; color: rgba(255,255,255,0.9); font-size: 22px; max-width: 620px;">Ferske crêpes, tydelig meny og alt folk trenger for å finne dere raskt.</p>
-              <div class="hero-actions">
+              <h1 style="font-size: clamp(54px, 8vw, 108px); line-height: 0.92; margin: 0 0 16px; letter-spacing: -2px;">Love at first bite.</h1>
+              <div class="hero-actions" style="margin-bottom: 0;">
                 <a class="btn btn-primary" href="#menu">Se meny</a>
                 <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
               </div>
@@ -519,13 +567,14 @@
 
     <section class="fade-in" id="om-oss">
       <div class="container">
-        <div class="card" style="padding: 30px 32px;">
+        <div class="card" style="padding: 30px 32px; position: relative; overflow: hidden;">
+          <div class="vine vine-soft" style="top: 16px; right: 20px;">❦</div>
           <div class="section-head" style="margin-bottom: 8px;">
             <div>
               <h3>Om oss</h3>
             </div>
           </div>
-          <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">Crepe de la Crepe serverer søte crêpes med fokus på smak, enkelhet og et uttrykk som faktisk frister. Hos oss skal det være lett å velge, lett å finne frem og lett å få lyst på mer.</p>
+          <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">Etablert i 2021, kjent for vår franskinspirerte røre og lidenskap for kvalitet. Hos Crêpe de la Crêpe gjør vi hver eneste crêpe til en unik opplevelse – laget ferskt, servert med kjærlighet og alltid med fokus på smak og detaljer.</p>
         </div>
       </div>
     </section>
@@ -599,46 +648,47 @@
     
 
     <section id="lokasjon" class="fade-in">
-      <div class="container info-grid" style="grid-template-columns: 1.05fr 0.95fr; align-items: stretch;">
-        <div class="card" style="display:grid; gap:18px;">
-          <div class="section-head" style="margin-bottom:0;">
-            <div>
-              <h3>Lokasjon &amp; tider</h3>
+      <div class="container" style="display:grid; gap:18px;">
+        <div class="info-grid" style="grid-template-columns: 1.05fr 0.95fr; align-items: stretch; gap:18px;">
+          <div class="card" style="display:grid; gap:18px;">
+            <div class="section-head" style="margin-bottom:0;">
+              <div>
+                <h3>Lokasjon &amp; tider</h3>
+              </div>
+            </div>
+
+            <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.02); box-shadow:none;">
+              <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
+                <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
+                <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
+                <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
+                <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
+                <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
+                <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
+                <div class="row" style="grid-column: 1 / -1;"><strong>Søndag</strong><span>Stengt</span></div>
+              </div>
+            </div>
+
+            <div class="contact-box" id="kontakt" style="grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="contact-chip">📍 Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+              <div class="contact-chip">📞 48 40 87 49</div>
+              <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
+              <a class="contact-chip" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">🎵 TikTok: @crepe_delacrepe</a>
             </div>
           </div>
 
-          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.02); box-shadow:none;">
-            <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
-              <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
-              <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
-              <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
-              <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
-              <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
-              <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
-              <div class="row" style="grid-column: 1 / -1;"><strong>Søndag</strong><span>Stengt</span></div>
-            </div>
-          </div>
-
-          <div class="contact-box" id="kontakt" style="grid-template-columns: 1fr 1fr; gap: 14px;">
-            <div class="contact-chip">📍 Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
-            <div class="contact-chip">📞 48 40 87 49</div>
-            <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
-            <a class="contact-chip" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">🎵 TikTok: @crepe_delacrepe</a>
+          <div class="gallery-card" style="min-height: 340px; background-image:url('strawberry-madness.jpg'); background-position:center;">
+            <span>Håndlaget. Søtt. Enkelt.</span>
           </div>
         </div>
 
-        <div style="display:grid; gap:18px;">
-          <div class="gallery-card" style="min-height: 340px; background-image:url('hero-crepes.jpg'); background-position:center;">
-            <span>Favoritter på menyen</span>
-          </div>
-          <div class="map-box">
-            <iframe
-              title="Kart"
-              src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
+        <div class="map-box">
+          <iframe
+            title="Kart"
+            src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </section>
