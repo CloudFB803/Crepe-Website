@@ -286,6 +286,9 @@
     }
 
     .menu-item {
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -306,6 +309,11 @@
       color: var(--muted);
       font-size: 15px;
       max-width: 550px;
+    }
+
+    .menu-button.active {
+      border-color: rgba(244,197,66,0.42);
+      background: linear-gradient(180deg, rgba(244,197,66,0.10), rgba(255,255,255,0.02));
     }
 
     .price {
@@ -418,6 +426,10 @@
     }
 
     @media (max-width: 980px) {
+      .contact-box {
+        grid-template-columns: 1fr !important;
+      }
+
       .hero-grid,
       .cards-3,
       .menu-grid,
@@ -487,33 +499,33 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Love at first bite.</h1>
-          <p>Crêpes laget for å se bra ut, smake bedre og få folk til å komme tilbake.</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#menu">Se meny</a>
-            <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
-          </div>
-
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="promo">
-            Mest populære
-            <strong>139 kr</strong>
-          </div>
-
-          <div class="hero-card-bottom">
+      <div class="container hero-grid" style="grid-template-columns: 1fr;">
+        <div class="hero-card" style="min-height: 640px; background:
+        linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.18)),
+        url('hero-crepes.jpg') center/cover;">
+          <div class="hero-card-bottom" style="max-width: 760px; align-items:flex-end;">
             <div>
-              <h2>Strawberry Madness</h2>
-              <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
-            </div>
+              <h1 style="font-size: clamp(52px, 8vw, 108px); line-height: 0.92; margin: 0 0 14px; letter-spacing: -2px;">Love at first bite.</h1>
+              <p style="margin: 0 0 24px; color: rgba(255,255,255,0.9); font-size: 22px; max-width: 620px;">Ferske crêpes, tydelig meny og alt folk trenger for å finne dere raskt.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#menu">Se meny</a>
+                <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="fade-in" id="om-oss">
+      <div class="container">
+        <div class="card" style="padding: 30px 32px;">
+          <div class="section-head" style="margin-bottom: 8px;">
+            <div>
+              <h3>Om oss</h3>
+            </div>
+          </div>
+          <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">Crepe de la Crepe serverer søte crêpes med fokus på smak, enkelhet og et uttrykk som faktisk frister. Hos oss skal det være lett å velge, lett å finne frem og lett å få lyst på mer.</p>
         </div>
       </div>
     </section>
@@ -527,108 +539,106 @@
         </div>
 
         <div class="menu-grid">
-          <div class="menu-item">
+          <button class="menu-item menu-button active" data-crepe="sweet-cinnamon" type="button">
             <div>
               <h4>Sweet Cinnamon</h4>
               <p>Sukker, kanel og smør.</p>
             </div>
             <div class="price">99 kr</div>
-          </div>
+          </button>
 
-          <div class="menu-item">
+          <button class="menu-item menu-button" data-crepe="strawberry-madness" type="button">
             <div>
               <h4>Strawberry Madness</h4>
               <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
             </div>
             <div class="price">139 kr</div>
-          </div>
+          </button>
 
-          <div class="menu-item">
+          <button class="menu-item menu-button" data-crepe="nutella" type="button">
             <div>
               <h4>Nutella</h4>
               <p>Klassisk crêpe fylt med smeltet Nutella.</p>
             </div>
             <div class="price">109 kr</div>
-          </div>
+          </button>
 
-          <div class="menu-item">
+          <button class="menu-item menu-button" data-crepe="bueno-fusion" type="button">
             <div>
               <h4>Bueno Fusion</h4>
               <p>Kinder Bueno, sveitsisk hvit sjokolade, Nutella og Bueno-biter.</p>
             </div>
             <div class="price">149 kr</div>
-          </div>
+          </button>
 
-          <div class="menu-item">
+          <button class="menu-item menu-button" data-crepe="going-bananas" type="button">
             <div>
               <h4>Going Bananas</h4>
               <p>Myk banan og Nutella i perfekt harmoni.</p>
             </div>
             <div class="price">119 kr</div>
-          </div>
+          </button>
 
-          <div class="menu-item">
+          <button class="menu-item menu-button" data-crepe="biscoff-finest" type="button">
             <div>
               <h4>Biscoff Finest</h4>
               <p>Biscoff-krem med knasende kjeks – karamell i hver bit.</p>
             </div>
             <div class="price">129 kr</div>
+          </button>
+        </div>
+
+        <div class="card" style="margin-top: 18px; padding: 18px; overflow: hidden;">
+          <div id="crepe-preview" class="gallery-card" style="min-height: 520px; background-image:url('sweet-cinnamon.jpg'); background-position:center; border-radius: 20px;">
+            <span id="crepe-preview-title">Sweet Cinnamon</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="galleri" class="fade-in">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Bilder</h3>
-          </div>
-        </div>
-
-        <div class="gallery" style="grid-template-columns: 1fr;">
-          <div class="gallery-card" style="min-height: 560px; background-image:url('strawberry-madness.jpg'); background-position:center;">
-            <span>Strawberry Madness</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <section id="lokasjon" class="fade-in">
-      <div class="container info-grid">
-        <div class="card">
-          <div class="section-head" style="margin-bottom:12px;">
+      <div class="container info-grid" style="grid-template-columns: 1.05fr 0.95fr; align-items: stretch;">
+        <div class="card" style="display:grid; gap:18px;">
+          <div class="section-head" style="margin-bottom:0;">
             <div>
               <h3>Lokasjon &amp; tider</h3>
             </div>
           </div>
 
-          <div class="hours">
-            <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
-            <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
-            <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
-            <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
-            <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
-            <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
-            <div class="row"><strong>Søndag</strong><span>Stengt</span></div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.02); box-shadow:none;">
+            <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
+              <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
+              <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
+              <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
+              <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
+              <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
+              <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
+              <div class="row" style="grid-column: 1 / -1;"><strong>Søndag</strong><span>Stengt</span></div>
+            </div>
           </div>
 
-          <div class="contact-box" id="kontakt">
+          <div class="contact-box" id="kontakt" style="grid-template-columns: 1fr 1fr; gap: 14px;">
             <div class="contact-chip">📍 Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
             <div class="contact-chip">📞 48 40 87 49</div>
             <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
             <a class="contact-chip" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">🎵 TikTok: @crepe_delacrepe</a>
           </div>
         </div>
-        </div>
 
-        <div class="map-box">
-          <iframe
-            title="Kart"
-            src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <div style="display:grid; gap:18px;">
+          <div class="gallery-card" style="min-height: 340px; background-image:url('hero-crepes.jpg'); background-position:center;">
+            <span>Favoritter på menyen</span>
+          </div>
+          <div class="map-box">
+            <iframe
+              title="Kart"
+              src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -651,6 +661,50 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    const crepeData = {
+      'sweet-cinnamon': {
+        title: 'Sweet Cinnamon',
+        image: 'sweet-cinnamon.jpg'
+      },
+      'strawberry-madness': {
+        title: 'Strawberry Madness',
+        image: 'strawberry-madness.jpg'
+      },
+      'nutella': {
+        title: 'Nutella',
+        image: 'nutella-crepe.jpg'
+      },
+      'bueno-fusion': {
+        title: 'Bueno Fusion',
+        image: 'bueno-fusion.jpg'
+      },
+      'going-bananas': {
+        title: 'Going Bananas',
+        image: 'going-bananas.jpg'
+      },
+      'biscoff-finest': {
+        title: 'Biscoff Finest',
+        image: 'biscoff-finest.jpg'
+      }
+    };
+
+    const preview = document.getElementById('crepe-preview');
+    const previewTitle = document.getElementById('crepe-preview-title');
+    const buttons = document.querySelectorAll('.menu-button');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.crepe;
+        const item = crepeData[key];
+        if (!item) return;
+
+        buttons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+        preview.style.backgroundImage = `url('${item.image}')`;
+        previewTitle.textContent = item.title;
+      });
+    });
   </script>
 </body>
 </html>
