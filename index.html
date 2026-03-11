@@ -7,16 +7,17 @@
   <meta name="description" content="Ferske crepes, søte favoritter og enkel info om meny, lokasjon og åpningstider for Crepe de la Crepe." />
   <style>
     :root {
-      --bg: #0b0b0b;
-      --bg-soft: #151515;
-      --card: #1b1b1b;
+      --bg: #080808;
+      --bg-soft: #121212;
+      --card: #151515;
+      --card-soft: #1b1b1b;
       --text: #f5f5f5;
       --muted: #b8b8b8;
       --line: rgba(255,255,255,0.08);
       --accent: #f4c542;
       --accent-2: #ff8a3d;
       --max: 1180px;
-      --radius: 24px;
+      --radius: 26px;
       --shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
 
@@ -28,23 +29,12 @@
       scroll-behavior: smooth;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(244,197,66,0.12), transparent 24%),
-        radial-gradient(circle at left center, rgba(255,138,61,0.08), transparent 18%),
+        radial-gradient(circle at top right, rgba(244,197,66,0.08), transparent 22%),
+        radial-gradient(circle at left center, rgba(255,138,61,0.06), transparent 18%),
         var(--bg);
       color: var(--text);
       line-height: 1.55;
@@ -60,21 +50,24 @@
       display: block;
     }
 
+    button {
+      font: inherit;
+    }
+
     .container {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      font-size: 14px;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .btn {
@@ -115,42 +108,71 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(11,11,11,0.72);
+      background: rgba(8,8,8,0.78);
       border-bottom: 1px solid var(--line);
     }
 
     nav {
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      min-height: 76px;
+      gap: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 19px;
       font-weight: 800;
+      line-height: 1.05;
       letter-spacing: 0.2px;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #111;
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      font-weight: 900;
+    .brand-subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 24px;
       color: var(--muted);
       font-size: 15px;
     }
@@ -160,99 +182,145 @@
     }
 
     .hero {
-      padding: 28px 0 36px;
+      padding: 34px 0 74px;
       position: relative;
     }
 
-    .hero-main-card {
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .vine {
-      position: absolute;
-      color: rgba(244,197,66,0.24);
-      font-size: 72px;
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .vine-left {
-      top: 18px;
-      left: 22px;
-    }
-
-    .vine-right {
-      top: 18px;
-      right: 22px;
-      transform: scaleX(-1);
-    }
-
-    .vine-soft {
-      font-size: 54px;
-      color: rgba(244,197,66,0.16);
-    }
-
-    .hero-grid {
+    .hero-shell {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 22px;
       align-items: stretch;
     }
 
-    .hero-copy,
-    .hero-card {
-      position: relative;
+    .hero-panel,
+    .hero-image-wrap {
+      border: 1px solid var(--line);
+      border-radius: 32px;
       overflow: hidden;
-      min-height: 420px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 42px;
+      background:
+        radial-gradient(circle at top left, rgba(244,197,66,0.10), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+        var(--card);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2)),
-        url('strawberry-madness.jpg') center/cover;
+      justify-content: center;
+      min-height: 660px;
     }
 
-    .promo {
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(244,197,66,0.20);
+      background: rgba(244,197,66,0.08);
+      color: #f7d26a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-panel h1 {
+      margin: 0 0 16px;
+      font-size: clamp(52px, 7vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -2.5px;
+      max-width: 8ch;
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: #d8d8d8;
+      font-size: 18px;
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-point {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      color: #d6d6d6;
+      font-size: 14px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 660px;
+      background: #111;
+    }
+
+    .hero-image {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0.06)),
+        url('hero-crepes.jpg') center center / cover;
+      transform: scale(1.03);
+    }
+
+    .hero-image-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      z-index: 2;
       padding: 14px 16px;
       border-radius: 20px;
-      background: rgba(12,12,12,0.78);
+      background: rgba(12,12,12,0.74);
       border: 1px solid rgba(255,255,255,0.12);
-      text-align: right;
       backdrop-filter: blur(8px);
+      text-align: right;
     }
 
-    .promo strong {
+    .hero-image-badge span {
       display: block;
-      font-size: 32px;
-      line-height: 1;
-      color: var(--accent);
-      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 4px;
     }
 
-    .hero-card-bottom {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .hero-card-bottom h2 {
-      margin: 0 0 6px;
+    .hero-image-badge strong {
       font-size: 30px;
+      color: var(--accent);
+      line-height: 1;
     }
 
-    .hero-card-bottom p {
-      margin: 0;
-      color: rgba(255,255,255,0.84);
-    }
-
-    section {
-      padding: 28px 0 72px;
+    .hero-image-label {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      z-index: 2;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(12,12,12,0.62);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(6px);
+      color: #f1f1f1;
+      font-weight: 700;
     }
 
     .section-head {
@@ -269,45 +337,16 @@
       letter-spacing: -1px;
     }
 
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 680px;
-    }
-
-    .cards-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    section {
+      padding: 28px 0 72px;
     }
 
     .card {
-      background: var(--card);
+      background: var(--card-soft);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
-    }
-
-    .card h4 {
-      margin: 14px 0 8px;
-      font-size: 22px;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .icon {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: rgba(244,197,66,0.12);
-      border: 1px solid rgba(244,197,66,0.18);
-      font-size: 24px;
     }
 
     .menu-grid {
@@ -329,7 +368,6 @@
       gap: 16px;
       align-items: start;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-      font: inherit;
       color: inherit;
     }
 
@@ -365,14 +403,15 @@
       color: var(--accent);
     }
 
-    .gallery {
+    .info-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr 0.85fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 18px;
+      align-items: stretch;
     }
 
     .gallery-card {
-      min-height: 260px;
+      min-height: 340px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--line);
@@ -398,32 +437,6 @@
       font-size: 18px;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 18px;
-    }
-
-    .map-box {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      min-height: 100%;
-    }
-
-    .map-box iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      border: 0;
-    }
-
-    .hours {
-      display: grid;
-      gap: 14px;
-    }
-
     .row {
       display: flex;
       justify-content: space-between;
@@ -440,7 +453,8 @@
     .contact-box {
       margin-top: 18px;
       display: grid;
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     .contact-chip {
@@ -452,6 +466,21 @@
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--line);
       color: var(--muted);
+    }
+
+    .map-box {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      min-height: 100%;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
     }
 
     .crepe-modal {
@@ -542,29 +571,31 @@
     }
 
     @media (max-width: 980px) {
-      .contact-box {
-        grid-template-columns: 1fr !important;
-      }
-
-      .hero-main-card {
-        min-height: 70vh !important;
-      }
-
-      .contact-box {
-        grid-template-columns: 1fr !important;
-      }
-
-      .hero-grid,
-      .cards-3,
+      .hero-shell,
       .menu-grid,
-      .gallery,
       .info-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-copy,
-      .hero-card {
-        padding: 24px;
+      .hero-panel,
+      .hero-image-wrap {
+        min-height: auto;
+      }
+
+      .hero-panel {
+        padding: 30px 24px;
+      }
+
+      .hero-image-wrap {
+        min-height: 440px;
+      }
+
+      .hero-panel h1 {
+        max-width: none;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
       }
 
       .nav-links {
@@ -578,15 +609,16 @@
       }
 
       .hero {
-        padding-top: 26px;
+        padding-top: 20px;
       }
 
-      .hero-copy h1 {
-        letter-spacing: -1px;
+      .hero-panel h1 {
+        font-size: clamp(42px, 12vw, 64px);
+        letter-spacing: -2px;
       }
 
-      .section-head {
-        align-items: start;
+      .hero-panel p {
+        font-size: 16px;
       }
 
       .menu-item {
@@ -604,6 +636,15 @@
       .crepe-modal-title {
         font-size: 20px;
       }
+
+      .brand-logo-wrap {
+        width: 56px;
+        height: 56px;
+      }
+
+      .brand-title {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
@@ -612,10 +653,12 @@
     <div class="container">
       <nav>
         <a href="#top" class="brand">
-          <div class="brand-mark">C</div>
-          <div>
-            <div>Crepe de la Crepe</div>
-            <div style="font-size:12px; color: var(--muted); font-weight:600; margin-top:2px;">Love at first bite</div>
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Crepe de la Crepe</div>
+            <div class="brand-subtitle">Love at first bite</div>
           </div>
         </a>
 
@@ -631,20 +674,39 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid" style="grid-template-columns: 1fr;">
-        <div class="hero-card hero-main-card" style="min-height: 82vh; background:
-        linear-gradient(to top, rgba(0,0,0,0.42), rgba(0,0,0,0.08)),
-        url('hero-crepes.jpg') center center/cover;">
-          <div class="vine vine-left">❦</div>
-          <div class="vine vine-right">❦</div>
-          <div class="hero-card-bottom" style="max-width: 760px; align-items:flex-end;">
-            <div>
-              <h1 style="font-size: clamp(54px, 8vw, 108px); line-height: 0.92; margin: 0 0 16px; letter-spacing: -2px;">Love at first bite.</h1>
-              <div class="hero-actions" style="margin-bottom: 0;">
-                <a class="btn btn-primary" href="#menu">Se meny</a>
-                <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
-              </div>
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-panel">
+            <div class="hero-kicker">Crêpes laget ferskt</div>
+
+            <h1>Love at first bite.</h1>
+
+            <p>
+              Franskinspirerte crêpes laget med fokus på smak, kvalitet og detaljer.
+              Søte favoritter, ferske råvarer og en opplevelse som faktisk føles verdt turen.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#menu">Se meny</a>
+              <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
             </div>
+
+            <div class="hero-points">
+              <div class="hero-point">Laget ferskt</div>
+              <div class="hero-point">Premium råvarer</div>
+              <div class="hero-point">Storo Storsenter</div>
+            </div>
+          </div>
+
+          <div class="hero-image-wrap">
+            <div class="hero-image"></div>
+
+            <div class="hero-image-badge">
+              <span>Fra</span>
+              <strong>99 kr</strong>
+            </div>
+
+            <div class="hero-image-label">Håndlaget. Søtt. Enkelt.</div>
           </div>
         </div>
       </div>
@@ -653,13 +715,16 @@
     <section class="fade-in" id="om-oss">
       <div class="container">
         <div class="card" style="padding: 30px 32px; position: relative; overflow: hidden;">
-          <div class="vine vine-soft" style="top: 16px; right: 20px;">❦</div>
           <div class="section-head" style="margin-bottom: 8px;">
             <div>
               <h3>Om oss</h3>
             </div>
           </div>
-          <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">Etablert i 2021, kjent for vår franskinspirerte røre og lidenskap for kvalitet. Hos Crêpe de la Crêpe gjør vi hver eneste crêpe til en unik opplevelse – laget ferskt, servert med kjærlighet og alltid med fokus på smak og detaljer.</p>
+          <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">
+            Etablert i 2021, kjent for vår franskinspirerte røre og lidenskap for kvalitet.
+            Hos Crêpe de la Crêpe gjør vi hver eneste crêpe til en unik opplevelse - laget ferskt,
+            servert med kjærlighet og alltid med fokus på smak og detaljer.
+          </p>
         </div>
       </div>
     </section>
@@ -700,7 +765,7 @@
           <button class="menu-item menu-button" data-crepe="biscoff-finest" type="button">
             <div>
               <h4>Biscoff Finest</h4>
-              <p>Biscoff-krem med knasende kjeks – karamell i hver bit.</p>
+              <p>Biscoff-krem med knasende kjeks - karamell i hver bit.</p>
             </div>
             <div class="price">129 kr</div>
           </button>
@@ -708,7 +773,7 @@
           <button class="menu-item menu-button" data-crepe="strawberry-madness" type="button">
             <div>
               <h4>Strawberry Madness</h4>
-              <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
+              <p>Ferske jordbær og Nutella - søtt, friskt og alltid en vinner.</p>
             </div>
             <div class="price">139 kr</div>
           </button>
@@ -726,7 +791,7 @@
 
     <section id="lokasjon" class="fade-in">
       <div class="container" style="display:grid; gap:18px;">
-        <div class="info-grid" style="grid-template-columns: 1.05fr 0.95fr; align-items: stretch; gap:18px;">
+        <div class="info-grid">
           <div class="card" style="display:grid; gap:18px;">
             <div class="section-head" style="margin-bottom:0;">
               <div>
@@ -736,17 +801,17 @@
 
             <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.02); box-shadow:none;">
               <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
-                <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
-                <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
-                <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
-                <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
-                <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
-                <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
+                <div class="row"><strong>Mandag</strong><span>10:00 - 21:00</span></div>
+                <div class="row"><strong>Tirsdag</strong><span>10:00 - 21:00</span></div>
+                <div class="row"><strong>Onsdag</strong><span>10:00 - 21:00</span></div>
+                <div class="row"><strong>Torsdag</strong><span>10:00 - 21:00</span></div>
+                <div class="row"><strong>Fredag</strong><span>10:00 - 21:00</span></div>
+                <div class="row"><strong>Lørdag</strong><span>10:00 - 20:00</span></div>
                 <div class="row" style="grid-column: 1 / -1;"><strong>Søndag</strong><span>Stengt</span></div>
               </div>
             </div>
 
-            <div class="contact-box" id="kontakt" style="grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="contact-box" id="kontakt">
               <div class="contact-chip">📍 Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
               <div class="contact-chip">📞 48 40 87 49</div>
               <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
@@ -754,7 +819,7 @@
             </div>
           </div>
 
-          <div class="gallery-card" style="min-height: 340px; background-image:url('strawberry-madness.jpg'); background-position:center;">
+          <div class="gallery-card" style="background-image:url('strawberry-madness.jpg'); background-position:center;">
             <span>Håndlaget. Søtt. Enkelt.</span>
           </div>
         </div>
@@ -782,7 +847,7 @@
   <footer>
     <div class="container footer-inner">
       <div>© 2026 Crepe de la Crepe</div>
-      <div>Storo Storsenter • Oslo</div>
+      <div>Storo Storsenter - Oslo</div>
     </div>
   </footer>
 
@@ -802,17 +867,9 @@
         title: 'Sweet Cinnamon',
         image: 'sweet-cinnamon.jpg'
       },
-      'strawberry-madness': {
-        title: 'Strawberry Madness',
-        image: 'strawberry-madness.jpg'
-      },
       'nutella': {
         title: 'Nutella',
         image: 'nutella-crepe.jpg'
-      },
-      'bueno-fusion': {
-        title: 'Bueno Fusion',
-        image: 'bueno-fusion.jpg'
       },
       'going-bananas': {
         title: 'Going Bananas',
@@ -821,6 +878,14 @@
       'biscoff-finest': {
         title: 'Biscoff Finest',
         image: 'biscoff-finest.jpg'
+      },
+      'strawberry-madness': {
+        title: 'Strawberry Madness',
+        image: 'strawberry-madness.jpg'
+      },
+      'bueno-fusion': {
+        title: 'Bueno Fusion',
+        image: 'bueno-fusion.jpg'
       }
     };
 
