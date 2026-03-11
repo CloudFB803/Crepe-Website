@@ -10,21 +10,22 @@
   />
   <style>
     :root {
-      --bg: #211916;
-      --bg-soft: #2a201c;
-      --surface: #322722;
-      --surface-2: #3a2d27;
-      --card: #43332c;
-      --card-soft: #4b3931;
-      --text: #f5ece3;
-      --muted: #d2bba8;
-      --line: rgba(255, 244, 232, 0.08);
-      --accent: #d0a06d;
-      --accent-2: #9f6a49;
-      --accent-3: #f0dfcf;
+      --bg: #f1e8de;
+      --bg-soft: #eadfd2;
+      --surface: #f8f2eb;
+      --surface-2: #f4ebe2;
+      --card: #fffaf5;
+      --card-soft: #f8efe6;
+      --text: #2b1d17;
+      --muted: #6b5649;
+      --line: rgba(60, 35, 20, 0.10);
+      --accent: #c79563;
+      --accent-2: #8f5d42;
+      --accent-3: #f0dcc8;
       --max: 1240px;
       --radius: 26px;
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      --shadow: 0 18px 50px rgba(56, 33, 20, 0.10);
+      --shadow-soft: 0 10px 30px rgba(56, 33, 20, 0.07);
     }
 
     * {
@@ -39,9 +40,9 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(208, 160, 109, 0.10), transparent 22%),
-        radial-gradient(circle at left center, rgba(159, 106, 73, 0.08), transparent 18%),
-        linear-gradient(180deg, #1f1815 0%, #251c18 100%);
+        radial-gradient(circle at top right, rgba(199, 149, 99, 0.10), transparent 24%),
+        radial-gradient(circle at left center, rgba(143, 93, 66, 0.06), transparent 20%),
+        linear-gradient(180deg, #f4ece3 0%, #efe5d9 100%);
       color: var(--text);
       line-height: 1.55;
     }
@@ -90,8 +91,8 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff8f2;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+      color: #fffaf5;
+      box-shadow: 0 14px 30px rgba(143, 93, 66, 0.18);
     }
 
     .btn-primary:hover {
@@ -100,16 +101,16 @@
     }
 
     .btn-secondary {
-      border-color: rgba(255,255,255,0.12);
-      background: rgba(255, 248, 242, 0.05);
+      border-color: rgba(60, 35, 20, 0.12);
+      background: rgba(255, 250, 245, 0.56);
       color: var(--text);
       backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.22);
-      background: rgba(255, 248, 242, 0.08);
+      border-color: rgba(60, 35, 20, 0.18);
+      background: rgba(255, 250, 245, 0.84);
     }
 
     .nav-wrap {
@@ -117,7 +118,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(24, 18, 15, 0.72);
+      background: rgba(241, 232, 222, 0.72);
       border-bottom: 1px solid var(--line);
     }
 
@@ -147,15 +148,14 @@
       height: 74px;
       border-radius: 22px;
       overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(240,220,200,0.58));
+      border: 1px solid rgba(60, 35, 20, 0.10);
       display: grid;
       place-items: center;
       flex-shrink: 0;
       box-shadow:
-        0 12px 28px rgba(0,0,0,0.24),
-        inset 0 1px 0 rgba(255,255,255,0.06);
+        0 12px 28px rgba(56, 33, 20, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.72);
     }
 
     .brand-logo {
@@ -163,7 +163,7 @@
       height: 100%;
       object-fit: contain;
       padding: 7px;
-      filter: contrast(1.04) saturate(1.04);
+      filter: contrast(1.05) saturate(1.04);
     }
 
     .brand-text {
@@ -178,13 +178,13 @@
       font-weight: 900;
       line-height: 0.98;
       letter-spacing: -0.04em;
-      color: #fff4ea;
+      color: #2b1a14;
     }
 
     .brand-subtitle {
       margin-top: 6px;
       font-size: 11px;
-      color: #ccb19a;
+      color: #866b5d;
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -195,7 +195,7 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      color: #ceb4a1;
+      color: #705b4e;
       font-size: 15px;
       font-weight: 700;
     }
@@ -229,12 +229,12 @@
 
     .hero-stage {
       position: relative;
-      min-height: 78vh;
+      min-height: 76vh;
       border-radius: 34px;
       overflow: hidden;
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      background: #2b211d;
+      background: #ddc3ad;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -245,8 +245,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(18,12,10,0.52) 0%, rgba(18,12,10,0.28) 38%, rgba(18,12,10,0.20) 62%, rgba(18,12,10,0.32) 100%),
-        linear-gradient(to top, rgba(18,12,10,0.48), rgba(18,12,10,0.10)),
+        linear-gradient(90deg, rgba(28,16,12,0.42) 0%, rgba(28,16,12,0.24) 36%, rgba(28,16,12,0.16) 62%, rgba(28,16,12,0.26) 100%),
+        linear-gradient(to top, rgba(28,16,12,0.30), rgba(28,16,12,0.06)),
         url('hero-crepes.jpg') center center / cover;
       transform: scale(1.02);
     }
@@ -265,8 +265,8 @@
       font-size: clamp(54px, 7vw, 104px);
       line-height: 0.92;
       letter-spacing: -3px;
-      color: #fff7ef;
-      text-shadow: 0 8px 30px rgba(0,0,0,0.22);
+      color: #fff8f1;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.18);
     }
 
     .hero-actions {
@@ -279,7 +279,7 @@
 
     .hero-note {
       margin-top: 24px;
-      color: rgba(255, 244, 232, 0.86);
+      color: rgba(255, 247, 238, 0.92);
       font-size: 14px;
       letter-spacing: 0.03em;
       font-weight: 600;
@@ -301,15 +301,133 @@
       margin: 0 0 8px;
       font-size: clamp(28px, 4vw, 44px);
       letter-spacing: -1px;
-      color: #fff0e4;
+      color: #2d1c15;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(75,57,49,0.94), rgba(61,46,40,0.96));
+      background: linear-gradient(180deg, rgba(255,250,245,0.88), rgba(248,239,230,0.92));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
+    }
+
+    .story-section {
+      padding-top: 10px;
+    }
+
+    .story-shell {
+      background:
+        radial-gradient(circle at top right, rgba(199,149,99,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,250,245,0.82), rgba(245,234,222,0.92));
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-kicker {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(199,149,99,0.10);
+      border: 1px solid rgba(199,149,99,0.18);
+      color: #8f5d42;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .story-intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 24px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .story-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(248,239,230,0.88));
+      border: 1px solid rgba(60, 35, 20, 0.08);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .story-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(199,149,99,0.16), rgba(143,93,66,0.14));
+      color: #8f5d42;
+      font-weight: 800;
+      border: 1px solid rgba(199,149,99,0.18);
+    }
+
+    .story-card h4 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: #2d1c15;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .story-toggle {
+      margin-top: auto;
+      width: fit-content;
+      border: 0;
+      background: none;
+      color: #8f5d42;
+      font-weight: 800;
+      padding: 0;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+
+    .story-toggle:hover {
+      opacity: 0.8;
+    }
+
+    .story-expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, margin-top 0.35s ease, opacity 0.35s ease;
+      opacity: 0;
+      margin-top: 0;
+      border-top: 1px solid transparent;
+    }
+
+    .story-card.open .story-expand {
+      max-height: 260px;
+      opacity: 1;
+      margin-top: 6px;
+      padding-top: 14px;
+      border-top-color: rgba(60, 35, 20, 0.08);
+    }
+
+    .story-expand p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #5d493d;
     }
 
     .menu-grid {
@@ -322,7 +440,7 @@
       width: 100%;
       text-align: left;
       cursor: pointer;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(248,239,230,0.92));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px;
@@ -332,31 +450,31 @@
       align-items: start;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
       color: inherit;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.05);
     }
 
     .menu-item:hover {
       transform: translateY(-3px);
-      border-color: rgba(208, 160, 109, 0.36);
-      background: linear-gradient(180deg, rgba(208,160,109,0.08), rgba(255,255,255,0.03));
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+      border-color: rgba(199, 149, 99, 0.34);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,234,220,0.95));
+      box-shadow: 0 16px 34px rgba(56, 33, 20, 0.09);
     }
 
     .menu-item:focus {
       outline: none;
-      border-color: rgba(208, 160, 109, 0.44);
-      background: linear-gradient(180deg, rgba(208,160,109,0.08), rgba(255,255,255,0.03));
+      border-color: rgba(199, 149, 99, 0.44);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,234,220,0.95));
     }
 
     .menu-item h4 {
       margin: 0 0 6px;
       font-size: 20px;
-      color: #fff2e7;
+      color: #2d1c15;
     }
 
     .menu-item p {
       margin: 0;
-      color: #ceb8a7;
+      color: #6b5649;
       font-size: 15px;
       max-width: 550px;
     }
@@ -365,7 +483,7 @@
       flex-shrink: 0;
       font-size: 24px;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent-2);
     }
 
     .info-grid {
@@ -382,8 +500,8 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background:
-        radial-gradient(circle at top right, rgba(208, 160, 109, 0.12), transparent 32%),
-        linear-gradient(180deg, #4a382f 0%, #3a2c26 100%);
+        radial-gradient(circle at top right, rgba(199, 149, 99, 0.12), transparent 32%),
+        linear-gradient(180deg, #f7efe7 0%, #efe1d4 100%);
       padding: 30px;
       display: flex;
       flex-direction: column;
@@ -396,9 +514,9 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(208, 160, 109, 0.12);
-      border: 1px solid rgba(208, 160, 109, 0.18);
-      color: #f0d1af;
+      background: rgba(199, 149, 99, 0.10);
+      border: 1px solid rgba(199, 149, 99, 0.18);
+      color: #8f5d42;
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -411,26 +529,26 @@
       line-height: 1.02;
       letter-spacing: -1.3px;
       max-width: 11ch;
-      color: #fff4ea;
+      color: #2a1a14;
     }
 
     .editorial-card p {
       margin: 0;
-      color: #e0c8b7;
+      color: #645044;
       font-size: 16px;
       max-width: 50ch;
     }
 
     .editorial-quote {
       padding-top: 6px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: #f1dece;
+      border-top: 1px solid rgba(60,35,20,0.08);
+      color: #4f3d33;
       font-size: 18px;
       line-height: 1.7;
     }
 
     .editorial-signoff {
-      color: #cfae90;
+      color: #8a6b58;
       font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -463,15 +581,15 @@
       align-items: center;
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.58);
       border: 1px solid var(--line);
-      color: #e0c8b7;
+      color: #5e493d;
       min-height: 58px;
     }
 
     .contact-chip:hover {
-      border-color: rgba(208, 160, 109, 0.30);
-      background: rgba(255,255,255,0.06);
+      border-color: rgba(199, 149, 99, 0.30);
+      background: rgba(255,255,255,0.84);
     }
 
     .map-box {
@@ -487,13 +605,13 @@
       height: 100%;
       min-height: 420px;
       border: 0;
-      filter: saturate(0.8) contrast(0.95) brightness(0.9);
+      filter: saturate(0.92) contrast(0.96) brightness(0.98);
     }
 
     .crepe-modal {
       position: fixed;
       inset: 0;
-      background: rgba(12, 9, 8, 0.84);
+      background: rgba(31, 20, 15, 0.78);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -514,9 +632,9 @@
       width: min(920px, 100%);
       border-radius: 24px;
       overflow: hidden;
-      background: #2d221d;
-      border: 1px solid var(--line);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+      background: #fff8ef;
+      border: 1px solid rgba(60, 35, 20, 0.10);
+      box-shadow: 0 25px 70px rgba(31,20,15,0.28);
     }
 
     .crepe-modal-content img {
@@ -553,21 +671,21 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(10,10,10,0.72);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(34, 20, 14, 0.66);
       color: white;
       font-size: 22px;
       cursor: pointer;
     }
 
     .crepe-modal-close:hover {
-      background: rgba(25,25,25,0.92);
+      background: rgba(34, 20, 14, 0.88);
     }
 
     footer {
       padding: 24px 0 42px;
       border-top: 1px solid var(--line);
-      color: #bfa694;
+      color: #7a6558;
     }
 
     .footer-inner {
@@ -598,6 +716,7 @@
         gap: 18px;
       }
 
+      .story-grid,
       .menu-grid,
       .info-grid {
         grid-template-columns: 1fr;
@@ -664,6 +783,10 @@
         font-size: 10px;
         letter-spacing: 0.14em;
       }
+
+      .story-shell {
+        padding: 22px;
+      }
     }
   </style>
 </head>
@@ -726,6 +849,71 @@
             Hos Crêpe de la Crepe gjør vi hver eneste crêpe til en varm liten pause i dagen —
             laget ferskt, servert varmt og inspirert av smaken av Frankrike.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in story-section" id="historie">
+      <div class="container">
+        <div class="story-shell">
+          <div class="story-kicker">Smaken av Frankrike</div>
+
+          <div class="section-head" style="margin-bottom: 10px;">
+            <div>
+              <h3>Tre små historier bak crêpen</h3>
+            </div>
+          </div>
+
+          <p class="story-intro">
+            Denne delen bygger merkevaren uten å bli tung. Folk får litt mer dybde, men fortsatt på en varm og lett måte.
+          </p>
+
+          <div class="story-grid">
+            <article class="story-card">
+              <div class="story-number">01</div>
+              <h4>Hvor crêpen begynte</h4>
+              <p>
+                En enkel idé, født i Frankrike, som ble til noe folk har hatt lyst på i generasjoner.
+              </p>
+              <button class="story-toggle" type="button">Les mer</button>
+              <div class="story-expand">
+                <p>
+                  Crêpen forbindes ofte med de franske regionene der enkel mat, gode råvarer og varme øyeblikk fikk leve lenge.
+                  Den startet ikke som luksus, men som noe ærlig og nært — og kanskje er det akkurat derfor den fortsatt føles spesiell.
+                </p>
+              </div>
+            </article>
+
+            <article class="story-card">
+              <div class="story-number">02</div>
+              <h4>Hva som gjør den spesiell</h4>
+              <p>
+                Ikke tykk, ikke tung, ikke overkomplisert. Bare balanse, varme og tekstur gjort riktig.
+              </p>
+              <button class="story-toggle" type="button">Les mer</button>
+              <div class="story-expand">
+                <p>
+                  En god crêpe handler om kontraster: den tynne, myke røren, den lune fylden, duften når den serveres varm,
+                  og følelsen av at noe enkelt plutselig smaker mye mer enn det burde. Det er nettopp der magien ligger.
+                </p>
+              </div>
+            </article>
+
+            <article class="story-card">
+              <div class="story-number">03</div>
+              <h4>En liten bit av Paris</h4>
+              <p>
+                Ikke som turistklisjé, men som stemning: roligere tempo, varme kvelder og noe godt i hånden.
+              </p>
+              <button class="story-toggle" type="button">Les mer</button>
+              <div class="story-expand">
+                <p>
+                  Crêpe bærer med seg en følelse av franske gater, myke lys og små pauser som ikke trenger å være store for å bli husket.
+                  Hos oss handler det om den samme følelsen — noe varmt, vakkert og enkelt å lengte tilbake til.
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -800,7 +988,7 @@
               </div>
             </div>
 
-            <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03); box-shadow:none;">
+            <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.36); box-shadow:none;">
               <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
                 <div class="row"><strong>Mandag</strong><span>10:00 - 21:00</span></div>
                 <div class="row"><strong>Tirsdag</strong><span>10:00 - 21:00</span></div>
@@ -940,6 +1128,26 @@
       if (e.key === 'Escape') {
         crepeModal.classList.remove('open');
       }
+    });
+
+    const storyCards = document.querySelectorAll('.story-card');
+
+    storyCards.forEach((card) => {
+      const btn = card.querySelector('.story-toggle');
+
+      btn.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+
+        storyCards.forEach((otherCard) => {
+          otherCard.classList.remove('open');
+          otherCard.querySelector('.story-toggle').textContent = 'Les mer';
+        });
+
+        if (!isOpen) {
+          card.classList.add('open');
+          btn.textContent = 'Vis mindre';
+        }
+      });
     });
   </script>
 </body>
