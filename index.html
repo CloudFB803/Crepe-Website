@@ -179,47 +179,8 @@
       flex-direction: column;
       justify-content: flex-end;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.28)),
-        url('IMG_0585.jpeg') center/cover;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(40px, 7vw, 78px);
-      line-height: 0.96;
-      margin: 18px 0 16px;
-      letter-spacing: -2px;
-    }
-
-    .hero-copy p {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 640px;
-      margin: 0 0 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
-    .hero-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background:
         linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2)),
-        url('https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80') center/cover;
+        url('strawberry-madness.jpg') center/cover;
     }
 
     .promo {
@@ -508,7 +469,10 @@
       <nav>
         <a href="#top" class="brand">
           <div class="brand-mark">C</div>
-          <div>Crepe de la Crepe</div>
+          <div>
+            <div>Crepe de la Crepe</div>
+            <div style="font-size:12px; color: var(--muted); font-weight:600; margin-top:2px;">Love at first bite</div>
+          </div>
         </a>
 
         <div class="nav-links">
@@ -525,9 +489,8 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="pill">Ferske crepes • Søtt • Enkelt • Mobilvennlig side</div>
-          <h1>Nutella crepe som faktisk stopper folk i feeden.</h1>
-          
+          <h1>Love at first bite.</h1>
+          <p>Crêpes laget for å se bra ut, smake bedre og få folk til å komme tilbake.</p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#menu">Se meny</a>
@@ -540,49 +503,17 @@
         <div class="hero-card">
           <div class="promo">
             Mest populære
-            <strong>109 kr</strong>
+            <strong>139 kr</strong>
           </div>
 
           <div class="hero-card-bottom">
             <div>
-              <h2>Nutella Crepe</h2>
-              <p>Klassisk crêpe fylt med smeltet Nutella.</p>
+              <h2>Strawberry Madness</h2>
+              <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
+            </div>
             </div>
           </div>
         </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="fade-in">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Hvorfor denne siden fungerer</h3>
-            <p>
-              Den er bygget for å være enkel å lese, rask å laste og tydelig på hva folk skal gjøre videre.
-            </p>
-          </div>
-        </div>
-
-        <div class="cards-3">
-          <div class="card">
-            <div class="icon">⚡</div>
-            <h4>Rask førsteinntrykk</h4>
-            <p>Folk skjønner på få sekunder hva dere selger, hva som er kampanjen og hvor de skal trykke.</p>
-          </div>
-
-          <div class="card">
-            <div class="icon">📱</div>
-            <h4>Mobil først</h4>
-            <p>De fleste som ser dere kommer sannsynligvis via mobil. Derfor er layouten laget for små skjermer først.</p>
-          </div>
-
-          <div class="card">
-            <div class="icon">🎯</div>
-            <h4>Klar call to action</h4>
-            <p>Ingen rot. Meny, lokasjon og kontakt er lett å finne uten at brukeren må tenke.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -592,9 +523,6 @@
         <div class="section-head">
           <div>
             <h3>Meny</h3>
-            <p>
-              Dette er menyen dere faktisk tilbyr nå. Hold den ren og tydelig.
-            </p>
           </div>
         </div>
 
@@ -654,16 +582,13 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h3>Menybilde</h3>
-            <p>
-              Ett tydelig bilde av menyen er nok. Flere bilder her hadde bare gjort siden mer rotete.
-            </p>
+            <h3>Bilder</h3>
           </div>
         </div>
 
         <div class="gallery" style="grid-template-columns: 1fr;">
-          <div class="gallery-card" style="min-height: 620px; background-image:url('crepe.jpg'); background-position:center top;">
-            <span>Crêpe-menyen</span>
+          <div class="gallery-card" style="min-height: 560px; background-image:url('strawberry-madness.jpg'); background-position:center;">
+            <span>Strawberry Madness</span>
           </div>
         </div>
       </div>
@@ -675,7 +600,6 @@
           <div class="section-head" style="margin-bottom:12px;">
             <div>
               <h3>Lokasjon &amp; tider</h3>
-              <p>Storo Storsenter er hovedlokasjonen. Fredrikstad skal ikke lenger frontes her.</p>
             </div>
           </div>
 
@@ -695,9 +619,7 @@
             <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
             <a class="contact-chip" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">🎵 TikTok: @crepe_delacrepe</a>
           </div>
-            <div class="contact-chip">📞 +47 99 99 99 99</div>
-            <div class="contact-chip">📸 Instagram / TikTok: @crepedelacrepe</div>
-          </div>
+        </div>
         </div>
 
         <div class="map-box">
