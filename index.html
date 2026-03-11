@@ -10,19 +10,21 @@
   />
   <style>
     :root {
-      --bg: #f6eee3;
-      --bg-soft: #efe2d2;
-      --card: #fffaf4;
-      --card-soft: #fff8ef;
-      --text: #241a14;
-      --muted: #6d5a4e;
-      --line: rgba(65, 40, 22, 0.10);
-      --accent: #c98a43;
-      --accent-2: #8b4b2c;
-      --accent-3: #f1d5ad;
+      --bg: #211916;
+      --bg-soft: #2a201c;
+      --surface: #322722;
+      --surface-2: #3a2d27;
+      --card: #43332c;
+      --card-soft: #4b3931;
+      --text: #f5ece3;
+      --muted: #d2bba8;
+      --line: rgba(255, 244, 232, 0.08);
+      --accent: #d0a06d;
+      --accent-2: #9f6a49;
+      --accent-3: #f0dfcf;
       --max: 1240px;
       --radius: 26px;
-      --shadow: 0 18px 50px rgba(70, 38, 18, 0.10);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
     }
 
     * {
@@ -37,9 +39,9 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(201, 138, 67, 0.12), transparent 26%),
-        radial-gradient(circle at left center, rgba(139, 75, 44, 0.08), transparent 22%),
-        linear-gradient(180deg, #f8f1e8 0%, #f4eadf 100%);
+        radial-gradient(circle at top right, rgba(208, 160, 109, 0.10), transparent 22%),
+        radial-gradient(circle at left center, rgba(159, 106, 73, 0.08), transparent 18%),
+        linear-gradient(180deg, #1f1815 0%, #251c18 100%);
       color: var(--text);
       line-height: 1.55;
     }
@@ -88,8 +90,8 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf4;
-      box-shadow: 0 14px 30px rgba(139, 75, 44, 0.18);
+      color: #fff8f2;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
     }
 
     .btn-primary:hover {
@@ -98,16 +100,16 @@
     }
 
     .btn-secondary {
-      border-color: rgba(65, 40, 22, 0.12);
-      background: rgba(255, 250, 244, 0.72);
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255, 248, 242, 0.05);
       color: var(--text);
       backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(65, 40, 22, 0.20);
-      background: rgba(255, 250, 244, 0.95);
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255, 248, 242, 0.08);
     }
 
     .nav-wrap {
@@ -115,7 +117,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(246, 238, 227, 0.82);
+      background: rgba(24, 18, 15, 0.72);
       border-bottom: 1px solid var(--line);
     }
 
@@ -146,14 +148,14 @@
       border-radius: 22px;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(241,213,173,0.55));
-      border: 1px solid rgba(65, 40, 22, 0.10);
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.10);
       display: grid;
       place-items: center;
       flex-shrink: 0;
       box-shadow:
-        0 12px 28px rgba(70, 38, 18, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.8);
+        0 12px 28px rgba(0,0,0,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     .brand-logo {
@@ -176,13 +178,13 @@
       font-weight: 900;
       line-height: 0.98;
       letter-spacing: -0.04em;
-      color: #231712;
+      color: #fff4ea;
     }
 
     .brand-subtitle {
       margin-top: 6px;
       font-size: 11px;
-      color: #866b5b;
+      color: #ccb19a;
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -193,7 +195,7 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      color: #725d4f;
+      color: #ceb4a1;
       font-size: 15px;
       font-weight: 700;
     }
@@ -232,7 +234,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      background: #e8d4bc;
+      background: #2b211d;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -243,8 +245,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(46,24,15,0.50) 0%, rgba(46,24,15,0.26) 38%, rgba(46,24,15,0.18) 62%, rgba(46,24,15,0.28) 100%),
-        linear-gradient(to top, rgba(46,24,15,0.34), rgba(46,24,15,0.06)),
+        linear-gradient(90deg, rgba(18,12,10,0.52) 0%, rgba(18,12,10,0.28) 38%, rgba(18,12,10,0.20) 62%, rgba(18,12,10,0.32) 100%),
+        linear-gradient(to top, rgba(18,12,10,0.48), rgba(18,12,10,0.10)),
         url('hero-crepes.jpg') center center / cover;
       transform: scale(1.02);
     }
@@ -258,37 +260,13 @@
       text-align: center;
     }
 
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 245, 230, 0.35);
-      background: rgba(255, 248, 239, 0.18);
-      color: #fff4df;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      backdrop-filter: blur(8px);
-    }
-
     .hero h1 {
-      margin: 0 0 16px;
+      margin: 0;
       font-size: clamp(54px, 7vw, 104px);
       line-height: 0.92;
       letter-spacing: -3px;
-      color: #fff8f1;
-      text-shadow: 0 8px 30px rgba(0,0,0,0.18);
-    }
-
-    .hero p {
-      margin: 0 auto;
-      font-size: 19px;
-      color: rgba(255, 247, 238, 0.94);
-      max-width: 700px;
+      color: #fff7ef;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.22);
     }
 
     .hero-actions {
@@ -301,7 +279,7 @@
 
     .hero-note {
       margin-top: 24px;
-      color: rgba(255, 245, 235, 0.88);
+      color: rgba(255, 244, 232, 0.86);
       font-size: 14px;
       letter-spacing: 0.03em;
       font-weight: 600;
@@ -323,11 +301,11 @@
       margin: 0 0 8px;
       font-size: clamp(28px, 4vw, 44px);
       letter-spacing: -1px;
-      color: #2d1c15;
+      color: #fff0e4;
     }
 
     .card {
-      background: var(--card-soft);
+      background: linear-gradient(180deg, rgba(75,57,49,0.94), rgba(61,46,40,0.96));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
@@ -344,7 +322,7 @@
       width: 100%;
       text-align: left;
       cursor: pointer;
-      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,248,239,0.92));
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px;
@@ -354,31 +332,31 @@
       align-items: start;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
       color: inherit;
-      box-shadow: 0 10px 24px rgba(70, 38, 18, 0.04);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
     }
 
     .menu-item:hover {
       transform: translateY(-3px);
-      border-color: rgba(201, 138, 67, 0.34);
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,236,219,0.95));
-      box-shadow: 0 16px 34px rgba(70, 38, 18, 0.08);
+      border-color: rgba(208, 160, 109, 0.36);
+      background: linear-gradient(180deg, rgba(208,160,109,0.08), rgba(255,255,255,0.03));
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
     }
 
     .menu-item:focus {
       outline: none;
-      border-color: rgba(201, 138, 67, 0.44);
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,236,219,0.95));
+      border-color: rgba(208, 160, 109, 0.44);
+      background: linear-gradient(180deg, rgba(208,160,109,0.08), rgba(255,255,255,0.03));
     }
 
     .menu-item h4 {
       margin: 0 0 6px;
       font-size: 20px;
-      color: #2a1c15;
+      color: #fff2e7;
     }
 
     .menu-item p {
       margin: 0;
-      color: #6e5b50;
+      color: #ceb8a7;
       font-size: 15px;
       max-width: 550px;
     }
@@ -387,7 +365,7 @@
       flex-shrink: 0;
       font-size: 24px;
       font-weight: 800;
-      color: var(--accent-2);
+      color: var(--accent);
     }
 
     .info-grid {
@@ -404,8 +382,8 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background:
-        radial-gradient(circle at top right, rgba(201, 138, 67, 0.16), transparent 30%),
-        linear-gradient(180deg, #fff9f2 0%, #f7ebde 100%);
+        radial-gradient(circle at top right, rgba(208, 160, 109, 0.12), transparent 32%),
+        linear-gradient(180deg, #4a382f 0%, #3a2c26 100%);
       padding: 30px;
       display: flex;
       flex-direction: column;
@@ -418,9 +396,9 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(201, 138, 67, 0.12);
-      border: 1px solid rgba(201, 138, 67, 0.18);
-      color: #8b4b2c;
+      background: rgba(208, 160, 109, 0.12);
+      border: 1px solid rgba(208, 160, 109, 0.18);
+      color: #f0d1af;
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -430,41 +408,33 @@
     .editorial-card h4 {
       margin: 0;
       font-size: clamp(28px, 4vw, 42px);
-      line-height: 0.98;
+      line-height: 1.02;
       letter-spacing: -1.3px;
-      max-width: 10ch;
-      color: #261913;
+      max-width: 11ch;
+      color: #fff4ea;
     }
 
     .editorial-card p {
       margin: 0;
-      color: #6b574b;
+      color: #e0c8b7;
       font-size: 16px;
-      max-width: 48ch;
+      max-width: 50ch;
     }
 
-    .editorial-points {
-      display: grid;
-      gap: 12px;
+    .editorial-quote {
+      padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #f1dece;
+      font-size: 18px;
+      line-height: 1.7;
     }
 
-    .editorial-point {
-      display: grid;
-      gap: 4px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.64);
-      border: 1px solid rgba(65, 40, 22, 0.08);
-    }
-
-    .editorial-point strong {
-      color: #241813;
-      font-size: 15px;
-    }
-
-    .editorial-point span {
-      color: #6f5b4f;
-      font-size: 14px;
+    .editorial-signoff {
+      color: #cfae90;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .row {
@@ -493,15 +463,15 @@
       align-items: center;
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.04);
       border: 1px solid var(--line);
-      color: #6d5a4e;
+      color: #e0c8b7;
       min-height: 58px;
     }
 
     .contact-chip:hover {
-      border-color: rgba(201, 138, 67, 0.28);
-      background: rgba(255,255,255,0.95);
+      border-color: rgba(208, 160, 109, 0.30);
+      background: rgba(255,255,255,0.06);
     }
 
     .map-box {
@@ -517,12 +487,13 @@
       height: 100%;
       min-height: 420px;
       border: 0;
+      filter: saturate(0.8) contrast(0.95) brightness(0.9);
     }
 
     .crepe-modal {
       position: fixed;
       inset: 0;
-      background: rgba(36, 22, 16, 0.76);
+      background: rgba(12, 9, 8, 0.84);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -543,9 +514,9 @@
       width: min(920px, 100%);
       border-radius: 24px;
       overflow: hidden;
-      background: #fff8ef;
-      border: 1px solid rgba(65,40,22,0.1);
-      box-shadow: 0 25px 70px rgba(36, 22, 16, 0.28);
+      background: #2d221d;
+      border: 1px solid var(--line);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
     }
 
     .crepe-modal-content img {
@@ -582,21 +553,21 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(34, 20, 14, 0.66);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(10,10,10,0.72);
       color: white;
       font-size: 22px;
       cursor: pointer;
     }
 
     .crepe-modal-close:hover {
-      background: rgba(34, 20, 14, 0.88);
+      background: rgba(25,25,25,0.92);
     }
 
     footer {
       padding: 24px 0 42px;
       border-top: 1px solid var(--line);
-      color: #7a6558;
+      color: #bfa694;
     }
 
     .footer-inner {
@@ -664,10 +635,6 @@
         letter-spacing: -2px;
       }
 
-      .hero p {
-        font-size: 16px;
-      }
-
       .menu-item {
         flex-direction: column;
       }
@@ -731,14 +698,7 @@
       <div class="container">
         <div class="hero-stage">
           <div class="hero-content">
-            <div class="hero-kicker">Crêpes laget ferskt</div>
-
             <h1>Love at first bite.</h1>
-
-            <p>
-              Franskinspirerte crêpes laget med fokus på smak, kvalitet og detaljer.
-              Søte favoritter, ferske råvarer og en opplevelse som faktisk føles verdt turen.
-            </p>
 
             <div class="hero-actions">
               <a class="btn btn-primary" href="#menu">Se meny</a>
@@ -763,8 +723,8 @@
           </div>
           <p style="margin:0; color: var(--muted); font-size: 18px; max-width: 900px;">
             Etablert i 2021, kjent for vår franskinspirerte røre og lidenskap for kvalitet.
-            Hos Crêpe de la Crepe gjør vi hver eneste crêpe til en unik opplevelse – laget ferskt,
-            servert varmt og alltid med fokus på smak, detaljer og råvarer som faktisk gjør en forskjell.
+            Hos Crêpe de la Crepe gjør vi hver eneste crêpe til en varm liten pause i dagen —
+            laget ferskt, servert varmt og inspirert av smaken av Frankrike.
           </p>
         </div>
       </div>
@@ -840,7 +800,7 @@
               </div>
             </div>
 
-            <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.40); box-shadow:none;">
+            <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03); box-shadow:none;">
               <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px 20px;">
                 <div class="row"><strong>Mandag</strong><span>10:00 - 21:00</span></div>
                 <div class="row"><strong>Tirsdag</strong><span>10:00 - 21:00</span></div>
@@ -863,29 +823,22 @@
 
           <div class="editorial-card">
             <div>
-              <div class="editorial-tag">Hvorfor folk kommer tilbake</div>
-              <h4>Mer enn bare en søt crêpe.</h4>
+              <div class="editorial-tag">Smaken av Frankrike</div>
+              <h4>Som en liten kveld i Paris.</h4>
             </div>
 
             <p>
-              I stedet for enda et tilfeldig produktbilde har denne delen nå en merkevare-card.
-              Det ser mer gjennomført ut, bygger tillit og gjør siden mindre billig.
+              Crêpe handler ikke bare om noe søtt. Det handler om varme, ro og den enkle luksusen
+              i noe som er laget akkurat der og da. Tynne lag, myk fylde, sødme, duft og et lite
+              øyeblikk som føles større enn det egentlig er.
             </p>
 
-            <div class="editorial-points">
-              <div class="editorial-point">
-                <strong>Laget ferskt</strong>
-                <span>Ikke masseprodusert. Hver crêpe lages ved bestilling.</span>
-              </div>
-              <div class="editorial-point">
-                <strong>Franskinspirert uttrykk</strong>
-                <span>Varmt, delikat og enkelt uten å se kjedelig ut.</span>
-              </div>
-              <div class="editorial-point">
-                <strong>Favoritter som faktisk selger</strong>
-                <span>Nutella, jordbær, banan, Bueno og Biscoff gjort riktig.</span>
-              </div>
+            <div class="editorial-quote">
+              I Paris bæres crêpen gjerne i hånden gjennom små gater og sene kvelder.
+              Hos oss får du den samme følelsen på vår måte — varm, myk og laget for å nytes sakte.
             </div>
+
+            <div class="editorial-signoff">Crepe de la Crepe</div>
           </div>
         </div>
 
