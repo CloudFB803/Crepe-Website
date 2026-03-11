@@ -28,6 +28,17 @@
       scroll-behavior: smooth;
     }
 
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -161,11 +172,15 @@
 
     .hero-copy,
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 4px);
-      padding: 34px;
-      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.28)),
+        url('IMG_0585.jpeg') center/cover;
     }
 
     .hero-copy h1 {
@@ -512,40 +527,34 @@
         <div class="hero-copy">
           <div class="pill">Ferske crepes • Søtt • Enkelt • Mobilvennlig side</div>
           <h1>Nutella crepe som faktisk stopper folk i feeden.</h1>
-          <p>
-            En enkel, ren og rask nettside for Crepe de la Crepe. Fokus på kampanje,
-            fristende visning av produkt og tydelig vei til meny, lokasjon og kontakt.
-          </p>
+          
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#menu">Se meny</a>
             <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
           </div>
 
-          <div class="hero-points">
-            <div class="pill">Perfekt for TikTok-trafikk</div>
-            <div class="pill">Smooth scroll</div>
-            <div class="pill">Lett å oppdatere</div>
           </div>
         </div>
 
         <div class="hero-card">
           <div class="promo">
-            Kampanje nå
-            <strong>69 kr</strong>
+            Mest populære
+            <strong>109 kr</strong>
           </div>
 
           <div class="hero-card-bottom">
             <div>
               <h2>Nutella Crepe</h2>
-              <p>Varm, fersk og laget på stedet.</p>
+              <p>Klassisk crêpe fylt med smeltet Nutella.</p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="fade-in">
       <div class="container">
         <div class="section-head">
           <div>
@@ -578,13 +587,13 @@
       </div>
     </section>
 
-    <section id="menu">
+    <section id="menu" class="fade-in">
       <div class="container">
         <div class="section-head">
           <div>
             <h3>Meny</h3>
             <p>
-              Eksempelmeny. Bytt ut navn, beskrivelser og priser med deres faktiske produkter.
+              Dette er menyen dere faktisk tilbyr nå. Hold den ren og tydelig.
             </p>
           </div>
         </div>
@@ -592,86 +601,100 @@
         <div class="menu-grid">
           <div class="menu-item">
             <div>
-              <h4>Nutella Crepe</h4>
-              <p>Klassikeren. Enkel, søt og lett å selge i innhold og på stedet.</p>
+              <h4>Sweet Cinnamon</h4>
+              <p>Sukker, kanel og smør.</p>
             </div>
-            <div class="price">69 kr</div>
+            <div class="price">99 kr</div>
           </div>
 
           <div class="menu-item">
             <div>
-              <h4>Jordbær &amp; Nutella</h4>
-              <p>Nutella toppet med friske jordbær for en mer premium variant.</p>
+              <h4>Strawberry Madness</h4>
+              <p>Ferske jordbær og Nutella – søtt, friskt og alltid en vinner.</p>
             </div>
-            <div class="price">89 kr</div>
+            <div class="price">139 kr</div>
           </div>
 
           <div class="menu-item">
             <div>
-              <h4>Kinder Crepe</h4>
-              <p>Søt variant med crunch og mer visuell wow-effekt.</p>
+              <h4>Nutella</h4>
+              <p>Klassisk crêpe fylt med smeltet Nutella.</p>
             </div>
-            <div class="price">95 kr</div>
+            <div class="price">109 kr</div>
           </div>
 
           <div class="menu-item">
             <div>
-              <h4>Oreo Crepe</h4>
-              <p>En tung dessertvariant som fungerer bra på video og i bilder.</p>
+              <h4>Bueno Fusion</h4>
+              <p>Kinder Bueno, sveitsisk hvit sjokolade, Nutella og Bueno-biter.</p>
             </div>
-            <div class="price">95 kr</div>
+            <div class="price">149 kr</div>
+          </div>
+
+          <div class="menu-item">
+            <div>
+              <h4>Going Bananas</h4>
+              <p>Myk banan og Nutella i perfekt harmoni.</p>
+            </div>
+            <div class="price">119 kr</div>
+          </div>
+
+          <div class="menu-item">
+            <div>
+              <h4>Biscoff Finest</h4>
+              <p>Biscoff-krem med knasende kjeks – karamell i hver bit.</p>
+            </div>
+            <div class="price">129 kr</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="galleri">
+    <section id="galleri" class="fade-in">
       <div class="container">
         <div class="section-head">
           <div>
-            <h3>Bilder</h3>
+            <h3>Menybilde</h3>
             <p>
-              Bruk ekte bilder av deres egne crepes så fort som mulig. Stock-bilder er kun midlertidig fyll.
+              Ett tydelig bilde av menyen er nok. Flere bilder her hadde bare gjort siden mer rotete.
             </p>
           </div>
         </div>
 
-        <div class="gallery">
-          <div class="gallery-card" style="background-image:url('https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80');">
-            <span>Fresh off the pan</span>
-          </div>
-          <div class="gallery-card" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80');">
-            <span>Sweet details</span>
-          </div>
-          <div class="gallery-card" style="background-image:url('https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80');">
-            <span>Hero content</span>
+        <div class="gallery" style="grid-template-columns: 1fr;">
+          <div class="gallery-card" style="min-height: 620px; background-image:url('IMG_0585.jpeg'); background-position:center top;">
+            <span>Crêpe-menyen</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="lokasjon">
+    <section id="lokasjon" class="fade-in">
       <div class="container info-grid">
         <div class="card">
           <div class="section-head" style="margin-bottom:12px;">
             <div>
               <h3>Lokasjon &amp; tider</h3>
-              <p>Bytt ut tekst under med korrekt adresse, åpningstider og kontaktinfo.</p>
+              <p>Storo Storsenter er hovedlokasjonen. Fredrikstad skal ikke lenger frontes her.</p>
             </div>
           </div>
 
           <div class="hours">
-            <div class="row"><strong>Mandag</strong><span>12:00 – 19:00</span></div>
-            <div class="row"><strong>Tirsdag</strong><span>12:00 – 19:00</span></div>
-            <div class="row"><strong>Onsdag</strong><span>12:00 – 19:00</span></div>
-            <div class="row"><strong>Torsdag</strong><span>12:00 – 20:00</span></div>
-            <div class="row"><strong>Fredag</strong><span>12:00 – 21:00</span></div>
-            <div class="row"><strong>Lørdag</strong><span>12:00 – 21:00</span></div>
-            <div class="row"><strong>Søndag</strong><span>Stengt / festivaler</span></div>
+            <div class="row"><strong>Mandag</strong><span>10:00 – 21:00</span></div>
+            <div class="row"><strong>Tirsdag</strong><span>10:00 – 21:00</span></div>
+            <div class="row"><strong>Onsdag</strong><span>10:00 – 21:00</span></div>
+            <div class="row"><strong>Torsdag</strong><span>10:00 – 21:00</span></div>
+            <div class="row"><strong>Fredag</strong><span>10:00 – 21:00</span></div>
+            <div class="row"><strong>Lørdag</strong><span>10:00 – 20:00</span></div>
+            <div class="row"><strong>Søndag</strong><span>Stengt</span></div>
           </div>
 
           <div class="contact-box" id="kontakt">
-            <div class="contact-chip">📍 Mathallen, Fredrikstad</div>
+            <div class="contact-chip">📍 Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+            <div class="contact-chip">📞 48 40 87 49</div>
+            <a class="contact-chip" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">📸 Instagram: @crepe_delacrepe</a>
+            <a class="contact-chip" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">🎵 TikTok: @crepe_delacrepe</a>
+          </div>
             <div class="contact-chip">📞 +47 99 99 99 99</div>
             <div class="contact-chip">📸 Instagram / TikTok: @crepedelacrepe</div>
           </div>
@@ -680,7 +703,7 @@
         <div class="map-box">
           <iframe
             title="Kart"
-            src="https://www.google.com/maps?q=Mathallen%20Fredrikstad&z=14&output=embed"
+            src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
@@ -689,11 +712,23 @@
     </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container footer-inner">
       <div>© 2026 Crepe de la Crepe</div>
-      <div>Laget for rask, enkel og tydelig presentasjon.</div>
+      <div>Storo Storsenter • Oslo</div>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
