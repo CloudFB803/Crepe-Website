@@ -15,20 +15,19 @@
 
   <style>
     :root {
-      --bg: #ece1d6;
-      --bg-soft: #e2d5c8;
-      --surface: #f7efe7;
-      --surface-2: #efe2d5;
-      --card: rgba(255, 249, 243, 0.82);
-      --card-strong: rgba(255, 251, 246, 0.94);
+      --bg: #f0e2d3;
+      --bg-soft: #e6d5c4;
+      --surface: #fbf2e9;
+      --surface-2: #f3e4d5;
+      --card: rgba(255, 248, 241, 0.84);
+      --card-strong: rgba(255, 251, 246, 0.95);
       --text: #2c1b15;
       --muted: #70594d;
       --muted-soft: #8a7263;
       --line: rgba(66, 39, 23, 0.10);
-      --accent: #ca9961;
-      --accent-2: #8f5d42;
-      --accent-3: #f2dfca;
-      --accent-glow: rgba(202, 153, 97, 0.22);
+      --accent: #cc9a63;
+      --accent-2: #925f43;
+      --accent-3: #f4dfc7;
       --max: 1240px;
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.12);
@@ -47,10 +46,10 @@
       margin: 0;
       font-family: "Manrope", Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(245, 214, 162, 0.16), transparent 24%),
-        radial-gradient(circle at 12% 16%, rgba(202, 153, 97, 0.10), transparent 20%),
-        radial-gradient(circle at bottom left, rgba(142, 93, 66, 0.08), transparent 22%),
-        linear-gradient(180deg, #efe4d8 0%, #e3d6c9 100%);
+        radial-gradient(circle at top right, rgba(248, 211, 152, 0.16), transparent 24%),
+        radial-gradient(circle at 12% 16%, rgba(204, 154, 99, 0.10), transparent 20%),
+        radial-gradient(circle at bottom left, rgba(146, 95, 67, 0.08), transparent 22%),
+        linear-gradient(180deg, #f2e5d7 0%, #e5d7c7 100%);
       color: var(--text);
       line-height: 1.55;
     }
@@ -136,7 +135,7 @@
 
     .nav-wrap.scrolled {
       backdrop-filter: blur(14px);
-      background: rgba(239, 228, 216, 0.46);
+      background: rgba(243, 229, 215, 0.48);
       border-bottom-color: rgba(66, 39, 23, 0.08);
       box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
     }
@@ -363,23 +362,27 @@
 
     .intro-card {
       background:
-        radial-gradient(circle at top right, rgba(202,153,97,0.14), transparent 24%),
-        linear-gradient(180deg, rgba(250,244,238,0.88), rgba(240,229,217,0.95));
-      backdrop-filter: blur(10px);
+        radial-gradient(circle at top right, rgba(204,154,99,0.16), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.30), transparent 26%),
+        linear-gradient(180deg, rgba(251,244,238,0.91), rgba(242,230,217,0.97));
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(66, 39, 23, 0.08);
       border-radius: 34px;
-      box-shadow: 0 24px 70px rgba(56, 33, 20, 0.12);
-      padding: 30px;
+      box-shadow:
+        0 24px 70px rgba(56, 33, 20, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.48);
+      padding: 34px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 30px;
       align-items: stretch;
     }
 
     .intro-left {
       display: grid;
-      gap: 20px;
+      gap: 24px;
       align-content: start;
+      padding-right: 6px;
     }
 
     .eyebrow {
@@ -387,8 +390,8 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(202,153,97,0.10);
-      border: 1px solid rgba(202,153,97,0.18);
+      background: rgba(204,154,99,0.10);
+      border: 1px solid rgba(204,154,99,0.18);
       color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
@@ -398,45 +401,37 @@
 
     .intro-copy {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
     .intro-copy p {
       margin: 0;
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.75;
-      max-width: 62ch;
+      line-height: 1.88;
+      max-width: 66ch;
     }
 
     .intro-copy .lead {
-      color: #4f3b31;
+      color: #4a352b;
       font-size: 17px;
-    }
-
-    .intro-copy .paris-line {
-      color: #3a281f;
-      font-weight: 700;
-    }
-
-    .intro-copy .local-line {
-      color: var(--muted-soft);
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-weight: 800;
+      line-height: 1.95;
+      font-weight: 500;
     }
 
     .achievement-block {
+      margin-top: 2px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(66, 39, 23, 0.08);
       display: grid;
       gap: 14px;
     }
 
     .achievement-title {
-      color: #5e4a3f;
-      font-size: 14px;
+      color: #5f493d;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
     }
 
@@ -449,9 +444,12 @@
     .achievement-chip {
       padding: 12px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.58);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.78), rgba(247,238,229,0.92));
       border: 1px solid rgba(66, 39, 23, 0.08);
-      box-shadow: var(--shadow-soft);
+      box-shadow:
+        0 10px 24px rgba(56, 33, 20, 0.06),
+        inset 0 1px 0 rgba(255,255,255,0.54);
       color: #4f3d33;
       font-weight: 700;
       font-size: 14px;
@@ -459,11 +457,13 @@
 
     .featured-card {
       position: relative;
-      border-radius: 28px;
+      border-radius: 30px;
       overflow: hidden;
       border: 1px solid rgba(66, 39, 23, 0.08);
       background: #f7ede3;
-      box-shadow: var(--shadow-soft);
+      box-shadow:
+        0 16px 40px rgba(56, 33, 20, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.28);
       min-height: 100%;
       display: flex;
       flex-direction: column;
@@ -478,15 +478,18 @@
     .featured-media img {
       width: 100%;
       height: 100%;
-      min-height: 380px;
+      min-height: 420px;
       object-fit: cover;
+      transform: scale(1.01);
     }
 
     .featured-media::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(26,14,10,0.50), rgba(26,14,10,0.06));
+      background:
+        linear-gradient(to top, rgba(26,14,10,0.54), rgba(26,14,10,0.06)),
+        radial-gradient(circle at top right, rgba(255,255,255,0.10), transparent 22%);
       pointer-events: none;
     }
 
@@ -523,8 +526,8 @@
 
     .featured-copy {
       position: absolute;
-      left: 20px;
-      bottom: 20px;
+      left: 22px;
+      bottom: 22px;
       z-index: 2;
       color: white;
     }
@@ -532,7 +535,7 @@
     .featured-copy h3 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: 40px;
+      font-size: 42px;
       line-height: 0.95;
       letter-spacing: -0.03em;
       text-shadow: 0 6px 22px rgba(0,0,0,0.24);
@@ -654,8 +657,8 @@
       justify-content: center;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(202,153,97,0.12);
-      border: 1px solid rgba(202,153,97,0.18);
+      background: rgba(204,154,99,0.12);
+      border: 1px solid rgba(204,154,99,0.18);
       color: var(--accent-2);
       font-size: 11px;
       font-weight: 800;
@@ -919,13 +922,6 @@
       color: #866b5d;
     }
 
-    .footer-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
-      max-width: 28ch;
-    }
-
     .footer-block h4 {
       margin: 0 0 14px;
       font-size: 16px;
@@ -1051,6 +1047,16 @@
         padding: 22px;
       }
 
+      .intro-left {
+        gap: 20px;
+        padding-right: 0;
+      }
+
+      .intro-copy .lead {
+        font-size: 16px;
+        line-height: 1.82;
+      }
+
       .featured-media img {
         min-height: 320px;
       }
@@ -1163,15 +1169,7 @@
 
             <div class="intro-copy">
               <p class="lead">
-                Etablert i 2021. Vi serverer søte og savoury crêpes med fokus på kvalitet og gode råvarer.
-              </p>
-
-              <p class="paris-line">
-                Vi dro til Paris for å lære oppskriften. I dag serveres den hos oss i Oslo.
-              </p>
-
-              <p class="local-line">
-                Lokale varer der det passer.
+                Etablert i 2021 serverer vi søte og savoury crêpes med fokus på kvalitet, gode og lokale råvarer, og en oppskrift vi dro til Paris for å lære. I dag serveres den hos oss i Oslo, og når vi er på utvalgte arrangementer rundt i landet tar vi med oss den samme smaken og kvaliteten videre. Hos oss handler det om varme smaker, gode råvarer og crêpes laget med den samme omtanken hver eneste gang.
               </p>
             </div>
 
@@ -1420,7 +1418,7 @@
                 <div class="brand-subtitle">Love at first bite</div>
               </div>
             </a>
-
+          </div>
 
           <div class="footer-block">
             <h4>Snarveier</h4>
