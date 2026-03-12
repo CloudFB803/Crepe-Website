@@ -15,25 +15,24 @@
 
   <style>
     :root {
-      --bg: #e7dbcf;
-      --bg-soft: #ddd0c2;
-      --surface: #f4ebe2;
-      --surface-2: #ecdfd2;
-      --card: rgba(255, 248, 241, 0.72);
-      --card-strong: rgba(255, 250, 245, 0.88);
-      --text: #2d1c15;
-      --muted: #6b5649;
-      --muted-soft: #836e62;
+      --bg: #ece1d6;
+      --bg-soft: #e2d5c8;
+      --surface: #f7efe7;
+      --surface-2: #efe2d5;
+      --card: rgba(255, 249, 243, 0.82);
+      --card-strong: rgba(255, 251, 246, 0.94);
+      --text: #2c1b15;
+      --muted: #70594d;
+      --muted-soft: #8a7263;
       --line: rgba(66, 39, 23, 0.10);
-      --accent: #c79962;
+      --accent: #ca9961;
       --accent-2: #8f5d42;
-      --accent-3: #f2dfc7;
-      --accent-soft: rgba(199, 153, 98, 0.10);
-      --glow: rgba(230, 192, 132, 0.20);
+      --accent-3: #f2dfca;
+      --accent-glow: rgba(202, 153, 97, 0.22);
       --max: 1240px;
-      --radius: 28px;
-      --shadow: 0 18px 50px rgba(56, 33, 20, 0.12);
-      --shadow-soft: 0 10px 28px rgba(56, 33, 20, 0.08);
+      --radius: 30px;
+      --shadow: 0 20px 54px rgba(56, 33, 20, 0.12);
+      --shadow-soft: 0 12px 30px rgba(56, 33, 20, 0.08);
     }
 
     * {
@@ -48,10 +47,10 @@
       margin: 0;
       font-family: "Manrope", Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, var(--glow), transparent 24%),
-        radial-gradient(circle at 12% 16%, rgba(199, 153, 98, 0.10), transparent 18%),
-        radial-gradient(circle at bottom left, rgba(143, 93, 66, 0.08), transparent 22%),
-        linear-gradient(180deg, #eadfd3 0%, #ddd0c2 100%);
+        radial-gradient(circle at top right, rgba(245, 214, 162, 0.16), transparent 24%),
+        radial-gradient(circle at 12% 16%, rgba(202, 153, 97, 0.10), transparent 20%),
+        radial-gradient(circle at bottom left, rgba(142, 93, 66, 0.08), transparent 22%),
+        linear-gradient(180deg, #efe4d8 0%, #e3d6c9 100%);
       color: var(--text);
       line-height: 1.55;
     }
@@ -93,7 +92,7 @@
       padding: 14px 24px;
       border-radius: 999px;
       font-weight: 800;
-      transition: 0.2s ease;
+      transition: 0.22s ease;
       border: 1px solid transparent;
       min-height: 52px;
       gap: 10px;
@@ -102,34 +101,43 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #fffaf5;
-      box-shadow: 0 14px 30px rgba(143, 93, 66, 0.18);
+      box-shadow: 0 16px 34px rgba(143, 93, 66, 0.20);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(143, 93, 66, 0.25);
       filter: brightness(1.03);
     }
 
     .btn-secondary {
-      border-color: rgba(60, 35, 20, 0.12);
-      background: rgba(255, 250, 245, 0.52);
-      color: var(--text);
-      backdrop-filter: blur(8px);
+      border-color: rgba(255, 250, 245, 0.28);
+      background: rgba(255, 250, 245, 0.14);
+      color: #fff8f1;
+      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(60, 35, 20, 0.18);
-      background: rgba(255, 250, 245, 0.76);
+      background: rgba(255, 250, 245, 0.22);
+      border-color: rgba(255, 250, 245, 0.42);
     }
 
     .nav-wrap {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
+      left: 0;
+      width: 100%;
+      z-index: 120;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+    }
+
+    .nav-wrap.scrolled {
       backdrop-filter: blur(14px);
-      background: rgba(234, 223, 211, 0.76);
-      border-bottom: 1px solid var(--line);
+      background: rgba(239, 228, 216, 0.46);
+      border-bottom-color: rgba(66, 39, 23, 0.08);
       box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
     }
 
@@ -159,14 +167,14 @@
       height: 74px;
       border-radius: 22px;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(240,220,200,0.58));
-      border: 1px solid rgba(60, 35, 20, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(240,220,200,0.56));
+      border: 1px solid rgba(255,255,255,0.18);
       display: grid;
       place-items: center;
       flex-shrink: 0;
       box-shadow:
-        0 12px 28px rgba(56, 33, 20, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.72);
+        0 10px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.62);
     }
 
     .brand-logo {
@@ -188,18 +196,28 @@
       font-family: "Cormorant Garamond", serif;
       font-size: 38px;
       font-weight: 700;
-      line-height: 0.95;
+      line-height: 0.94;
       letter-spacing: -0.04em;
+      color: #fff7ef;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    }
+
+    .nav-wrap.scrolled .brand-title {
       color: #2b1a14;
+      text-shadow: none;
     }
 
     .brand-subtitle {
       margin-top: 5px;
       font-size: 11px;
-      color: #866b5d;
+      color: rgba(255,247,239,0.86);
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .nav-wrap.scrolled .brand-subtitle {
+      color: #866b5d;
     }
 
     .nav-links {
@@ -207,9 +225,13 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      color: #705b4e;
+      color: rgba(255,247,239,0.90);
       font-size: 15px;
       font-weight: 700;
+    }
+
+    .nav-wrap.scrolled .nav-links {
+      color: #705b4e;
     }
 
     .nav-links a {
@@ -227,25 +249,23 @@
       transition: width 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
     .nav-links a:hover::after {
       width: 100%;
     }
 
     .hero {
-      padding: 20px 0 28px;
+      min-height: 100vh;
+      padding: 0;
+      position: relative;
+      display: flex;
+      align-items: stretch;
     }
 
     .hero-stage {
       position: relative;
-      min-height: 76vh;
-      border-radius: 34px;
+      min-height: 100vh;
+      width: 100%;
       overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
       background: #ceb29a;
       display: flex;
       align-items: center;
@@ -258,8 +278,8 @@
       inset: 0;
       background:
         radial-gradient(circle at 50% 18%, rgba(255, 216, 156, 0.12), transparent 24%),
-        linear-gradient(90deg, rgba(25,14,10,0.46) 0%, rgba(25,14,10,0.25) 36%, rgba(25,14,10,0.17) 62%, rgba(25,14,10,0.30) 100%),
-        linear-gradient(to top, rgba(25,14,10,0.30), rgba(25,14,10,0.06)),
+        linear-gradient(90deg, rgba(25,14,10,0.54) 0%, rgba(25,14,10,0.28) 36%, rgba(25,14,10,0.18) 62%, rgba(25,14,10,0.34) 100%),
+        linear-gradient(to top, rgba(25,14,10,0.36), rgba(25,14,10,0.08)),
         url('hero-crepes.jpg') center center / cover;
       transform: scale(1.02);
     }
@@ -268,7 +288,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      padding: 56px 48px;
+      padding: 140px 24px 190px;
       max-width: 980px;
       text-align: center;
     }
@@ -276,12 +296,11 @@
     .hero h1 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(64px, 8vw, 118px);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
+      font-size: clamp(64px, 8vw, 122px);
+      line-height: 0.90;
+      letter-spacing: -0.05em;
       color: #fff8f1;
-      text-shadow: 0 8px 30px rgba(0,0,0,0.18);
+      text-shadow: 0 8px 30px rgba(0,0,0,0.22);
     }
 
     .hero-actions {
@@ -289,19 +308,24 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 14px;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
     .hero-note {
       margin-top: 22px;
-      color: rgba(255, 247, 238, 0.94);
+      color: rgba(255, 247, 238, 0.92);
       font-size: 14px;
       letter-spacing: 0.03em;
       font-weight: 600;
     }
 
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
     section {
-      padding: 28px 0 72px;
+      padding: 0 0 76px;
     }
 
     .section-head {
@@ -309,52 +333,53 @@
       justify-content: space-between;
       align-items: end;
       gap: 20px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .section-head h2,
     .section-head h3 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 4vw, 52px);
+      font-size: clamp(34px, 4vw, 54px);
       font-weight: 700;
       letter-spacing: -0.03em;
       color: #2d1c15;
-      line-height: 0.95;
-    }
-
-    .section-copy {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 780px;
+      line-height: 0.94;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(247,239,230,0.88), rgba(239,228,215,0.92));
+      background: linear-gradient(180deg, rgba(247,239,231,0.90), rgba(239,227,214,0.94));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 26px;
+      padding: 28px;
       box-shadow: var(--shadow);
     }
 
-    .achievements {
-      padding-top: 0;
+    .intro-wrap {
+      margin-top: -112px;
+      position: relative;
+      z-index: 5;
     }
 
-    .achievements-card {
-      padding: 26px 28px;
+    .intro-card {
       background:
-        radial-gradient(circle at top right, rgba(199,153,98,0.12), transparent 24%),
-        linear-gradient(180deg, rgba(248,241,233,0.88), rgba(237,226,213,0.94));
+        radial-gradient(circle at top right, rgba(202,153,97,0.14), transparent 24%),
+        linear-gradient(180deg, rgba(250,244,238,0.88), rgba(240,229,217,0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      border-radius: 34px;
+      box-shadow: 0 24px 70px rgba(56, 33, 20, 0.12);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
     }
 
-    .achievements-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      align-items: center;
-      margin-bottom: 18px;
+    .intro-left {
+      display: grid;
+      gap: 20px;
+      align-content: start;
     }
 
     .eyebrow {
@@ -362,8 +387,8 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(199,153,98,0.18);
+      background: rgba(202,153,97,0.10);
+      border: 1px solid rgba(202,153,97,0.18);
       color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
@@ -371,10 +396,48 @@
       text-transform: uppercase;
     }
 
-    .achievements-title {
+    .intro-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .intro-copy p {
+      margin: 0;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 62ch;
+    }
+
+    .intro-copy .lead {
+      color: #4f3b31;
+      font-size: 17px;
+    }
+
+    .intro-copy .paris-line {
+      color: #3a281f;
       font-weight: 700;
+    }
+
+    .intro-copy .local-line {
+      color: var(--muted-soft);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .achievement-block {
+      display: grid;
+      gap: 14px;
+    }
+
+    .achievement-title {
+      color: #5e4a3f;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .achievement-chips {
@@ -394,9 +457,94 @@
       font-size: 14px;
     }
 
+    .featured-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      background: #f7ede3;
+      box-shadow: var(--shadow-soft);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured-media {
+      position: relative;
+      min-height: 100%;
+      flex: 1;
+    }
+
+    .featured-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+    }
+
+    .featured-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,14,10,0.50), rgba(26,14,10,0.06));
+      pointer-events: none;
+    }
+
+    .featured-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.84);
+      color: #4c392f;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+    .featured-price {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fffaf5;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 12px 26px rgba(143, 93, 66, 0.24);
+    }
+
+    .featured-copy {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      z-index: 2;
+      color: white;
+    }
+
+    .featured-copy h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 40px;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-shadow: 0 6px 22px rgba(0,0,0,0.24);
+    }
+
+    .menu-section {
+      padding-top: 6px;
+    }
+
     .menu-wrap {
       display: grid;
-      gap: 26px;
+      gap: 28px;
     }
 
     .menu-group {
@@ -405,12 +553,13 @@
     }
 
     .menu-group-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(28px, 3vw, 40px);
-      font-weight: 700;
-      color: #2d1c15;
       margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(30px, 3vw, 42px);
+      font-weight: 700;
       letter-spacing: -0.03em;
+      color: #2d1c15;
+      line-height: 0.95;
     }
 
     .menu-grid {
@@ -425,7 +574,7 @@
       cursor: pointer;
       background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(239,228,215,0.92));
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 28px;
       padding: 22px;
       display: flex;
       justify-content: space-between;
@@ -505,8 +654,8 @@
       justify-content: center;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(199,153,98,0.12);
-      border: 1px solid rgba(199,153,98,0.18);
+      background: rgba(202,153,97,0.12);
+      border: 1px solid rgba(202,153,97,0.18);
       color: var(--accent-2);
       font-size: 11px;
       font-weight: 800;
@@ -610,6 +759,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    .location-actions .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.44);
+      border-color: rgba(60, 35, 20, 0.12);
+    }
+
+    .location-actions .btn-secondary:hover {
+      background: rgba(255,255,255,0.68);
+      border-color: rgba(60, 35, 20, 0.18);
     }
 
     .map-box {
@@ -750,6 +910,15 @@
       justify-self: start;
     }
 
+    footer .brand-title {
+      color: #2b1a14;
+      text-shadow: none;
+    }
+
+    footer .brand-subtitle {
+      color: #866b5d;
+    }
+
     .footer-note {
       color: var(--muted);
       font-size: 14px;
@@ -789,6 +958,17 @@
       margin-top: 14px;
     }
 
+    .footer-actions .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.44);
+      border-color: rgba(60, 35, 20, 0.12);
+    }
+
+    .footer-actions .btn-secondary:hover {
+      background: rgba(255,255,255,0.68);
+      border-color: rgba(60, 35, 20, 0.18);
+    }
+
     .footer-mini {
       margin-top: 24px;
       padding-top: 18px;
@@ -804,6 +984,10 @@
     @media (max-width: 1080px) {
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-card {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -829,18 +1013,7 @@
       }
 
       .menu-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stage {
-        min-height: 72vh;
-      }
-
-      .hero-content {
-        padding: 36px 24px;
-      }
-
+      .info-grid,
       .contact-box,
       .footer-grid {
         grid-template-columns: 1fr;
@@ -849,6 +1022,10 @@
       .hours-grid {
         grid-template-columns: 1fr;
       }
+
+      .hero-content {
+        padding: 136px 24px 180px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -856,17 +1033,30 @@
         width: min(var(--max), calc(100% - 20px));
       }
 
-      .hero {
-        padding-top: 16px;
-      }
-
-      .hero-stage {
-        min-height: 68vh;
-        border-radius: 26px;
-      }
-
       .hero h1 {
-        font-size: clamp(48px, 13vw, 74px);
+        font-size: clamp(50px, 13vw, 76px);
+      }
+
+      .hero-content {
+        padding: 128px 20px 165px;
+      }
+
+      .intro-wrap {
+        margin-top: -88px;
+      }
+
+      .intro-card,
+      .footer-shell,
+      .card {
+        padding: 22px;
+      }
+
+      .featured-media img {
+        min-height: 320px;
+      }
+
+      .featured-copy h3 {
+        font-size: 34px;
       }
 
       .menu-item {
@@ -903,12 +1093,6 @@
         font-size: 10px;
         letter-spacing: 0.14em;
       }
-
-      .footer-shell,
-      .card,
-      .achievements-card {
-        padding: 22px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -920,14 +1104,15 @@
       .btn,
       .menu-item,
       .contact-chip,
-      .crepe-modal {
+      .crepe-modal,
+      .nav-wrap {
         transition: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="nav-wrap">
+  <div class="nav-wrap" id="navWrap">
     <div class="container">
       <nav>
         <div class="nav-spacer"></div>
@@ -954,60 +1139,70 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container">
-        <div class="hero-stage">
-          <div class="hero-content">
-            <h1>Love at first bite.</h1>
+      <div class="hero-stage">
+        <div class="hero-content">
+          <h1>Love at first bite.</h1>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#menu">Se menyen</a>
-              <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">Se menyen</a>
+            <a class="btn btn-secondary" href="#lokasjon">Finn oss</a>
+          </div>
+
+          <div class="hero-note">
+            Ferskt laget. Varmt servert. Enkelt å elske.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-wrap fade-in" id="om-oss">
+      <div class="container">
+        <div class="intro-card">
+          <div class="intro-left">
+            <div class="eyebrow">Om oss</div>
+
+            <div class="intro-copy">
+              <p class="lead">
+                Etablert i 2021. Vi serverer søte og savoury crêpes med fokus på kvalitet og gode råvarer.
+              </p>
+
+              <p class="paris-line">
+                Vi dro til Paris for å lære oppskriften. I dag serveres den hos oss i Oslo.
+              </p>
+
+              <p class="local-line">
+                Lokale varer der det passer.
+              </p>
             </div>
 
-            <div class="hero-note">
-              Ferskt laget. Varmt servert. Enkelt å elske.
+            <div class="achievement-block">
+              <div class="achievement-title">Utvalgte arrangementer</div>
+
+              <div class="achievement-chips">
+                <div class="achievement-chip">Jul i Vinterland</div>
+                <div class="achievement-chip">Gladmat</div>
+                <div class="achievement-chip">Slottsfjell</div>
+                <div class="achievement-chip">Stavernfestivalen</div>
+                <div class="achievement-chip">Idyll</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="featured-card">
+            <div class="featured-media">
+              <div class="featured-label">Månedens crêpe</div>
+              <div class="featured-price">69 kr</div>
+              <img src="nutella-crepe.jpg" alt="Nutella crêpe">
+              <div class="featured-copy">
+                <h3>Nutella</h3>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="fade-in achievements" id="hvorfor-oss">
-      <div class="container">
-        <div class="card achievements-card">
-          <div class="achievements-top">
-            <div class="eyebrow">Hvorfor oss</div>
-            <div class="achievements-title">Et lite utvalg av stedene vi har fått servere</div>
-          </div>
-
-          <div class="achievement-chips">
-            <div class="achievement-chip">Jul i Vinterland</div>
-            <div class="achievement-chip">Gladmat</div>
-            <div class="achievement-chip">Slottsfjell</div>
-            <div class="achievement-chip">Stavernfestivalen</div>
-            <div class="achievement-chip">Idyll</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="fade-in" id="om-oss">
-      <div class="container">
-        <div class="card" style="position: relative; overflow: hidden;">
-          <div class="section-head" style="margin-bottom: 10px;">
-            <div>
-              <h2>Om oss</h2>
-            </div>
-          </div>
-
-          <p class="section-copy" style="margin-top: 0; max-width: 860px;">
-            Etablert i 2021. Crepe de la Crepe serverer søte og savoury crêpes med fokus på kvalitet og gode råvarer.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="menu" class="fade-in">
+    <section id="menu" class="fade-in menu-section">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1297,6 +1492,19 @@
 
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
+    const navWrap = document.getElementById('navWrap');
+
+    function updateNavState() {
+      if (window.scrollY > 24) {
+        navWrap.classList.add('scrolled');
+      } else {
+        navWrap.classList.remove('scrolled');
+      }
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState);
+
     const crepeData = {
       'sweet-cinnamon': {
         title: 'Sweet Cinnamon',
@@ -1337,7 +1545,6 @@
     const crepeModalImage = document.getElementById('crepeModalImage');
     const crepeModalTitle = document.getElementById('crepeModalTitle');
     const closeCrepeModal = document.getElementById('closeCrepeModal');
-    const crepeModalLoading = document.getElementById('crepeModalLoading');
 
     let currentImageLoader = null;
 
