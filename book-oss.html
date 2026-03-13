@@ -155,8 +155,45 @@
       gap: 20px;
     }
 
-    .nav-spacer {
-      min-height: 1px;
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,247,239,0.92);
+    }
+
+    .nav-group.left {
+      justify-self: start;
+    }
+
+    .nav-group.right {
+      justify-self: end;
+    }
+
+    .nav-wrap.scrolled .nav-group {
+      color: #705b4e;
+    }
+
+    .nav-group a {
+      position: relative;
+    }
+
+    .nav-group a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-group a:hover::after,
+    .nav-group a.active::after {
+      width: 100%;
     }
 
     .brand {
@@ -222,40 +259,6 @@
 
     .nav-wrap.scrolled .brand-subtitle {
       color: #866b5d;
-    }
-
-    .nav-links {
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      color: rgba(255,247,239,0.92);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .nav-wrap.scrolled .nav-links {
-      color: #705b4e;
-    }
-
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
     }
 
     .hero {
@@ -699,7 +702,7 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.8fr 1fr 0.85fr;
+      grid-template-columns: 1fr 0.8fr 1fr 0.85fr;
       gap: 28px;
     }
 
@@ -720,36 +723,6 @@
 
     .footer .brand-subtitle {
       color: #866b5d;
-    }
-
-    .footer-copy {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.85;
-      max-width: 34ch;
-    }
-
-    .footer-points {
-      display: grid;
-      gap: 10px;
-      margin-top: 2px;
-    }
-
-    .footer-point {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #3b291f;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .footer-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      flex-shrink: 0;
     }
 
     .footer-block h4 {
@@ -778,10 +751,20 @@
     }
 
     .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+      max-width: 360px;
+    }
+
+    .footer-actions-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .footer-actions-bottom {
+      display: grid;
     }
 
     .footer-mini {
@@ -814,13 +797,11 @@
         padding: 14px 0;
       }
 
-      .nav-spacer {
-        display: none;
-      }
-
-      .nav-links {
+      .nav-group.left,
+      .nav-group.right {
         justify-self: center;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 18px;
       }
 
@@ -873,6 +854,10 @@
       .booking-lead h2 {
         font-size: clamp(42px, 13vw, 62px);
       }
+
+      .footer-actions-top {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -894,7 +879,11 @@
   <div class="nav-wrap" id="navWrap">
     <div class="container">
       <nav>
-        <div class="nav-spacer"></div>
+        <div class="nav-group left">
+          <a href="./index.html#om-oss">Om oss</a>
+          <a href="./index.html#menu">Meny</a>
+          <a href="./book-oss.html" class="active">Book oss</a>
+        </div>
 
         <a href="./index.html" class="brand">
           <div class="brand-logo-wrap">
@@ -906,10 +895,7 @@
           </div>
         </a>
 
-        <div class="nav-links">
-          <a href="./index.html#om-oss">Om oss</a>
-          <a href="./index.html#menu">Meny</a>
-          <a href="./book-oss.html" class="active">Book oss</a>
+        <div class="nav-group right">
           <a href="./index.html#lokasjon">Lokasjon</a>
           <a href="#booking-form">Kontakt</a>
         </div>
@@ -923,7 +909,7 @@
         <div class="eyebrow">Booking</div>
         <h1>Book oss</h1>
         <p>
-          Crepe de la Crepe leverer fersklagede crêpes til festivaler, firmaarrangementer og private arrangementer — med kvalitet i uttrykk, flyt i serveringen og en opplevelse som huskes.
+          Crepe de la Crepe leverer fersklagde crêpes til festivaler, firmaarrangementer og private arrangementer — profesjonelt, effektivt og tilpasset anledningen.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#booking-categories">Book oss</a>
@@ -962,7 +948,7 @@
               </div>
               <div>
                 <h3>Firmaarrangementer</h3>
-                <p>For samlinger, lanseringer og events med et mer gjennomført og profesjonelt uttrykk.</p>
+                <p>For samlinger, lanseringer og events med et profesjonelt opplegg og tydelig servering.</p>
               </div>
               <div class="category-tag">Profesjonell servering</div>
             </button>
@@ -1145,25 +1131,6 @@
                 <div class="brand-subtitle">Love at first bite</div>
               </div>
             </a>
-
-            <div class="footer-copy">
-              Fersklagede crêpes til festivaler, firmaarrangementer og private feiringer — servert med et uttrykk som løfter helheten.
-            </div>
-
-            <div class="footer-points">
-              <div class="footer-point">
-                <div class="footer-dot"></div>
-                <span>Ferskt laget på stedet</span>
-              </div>
-              <div class="footer-point">
-                <div class="footer-dot"></div>
-                <span>Passer små og store arrangementer</span>
-              </div>
-              <div class="footer-point">
-                <div class="footer-dot"></div>
-                <span>Enkel booking og tydelig dialog</span>
-              </div>
-            </div>
           </div>
 
           <div class="footer-block">
@@ -1186,8 +1153,20 @@
             </div>
 
             <div class="footer-actions">
-              <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-              <a class="btn btn-secondary" href="#booking-form">Book oss</a>
+              <div class="footer-actions-top">
+                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
+                <a class="btn btn-secondary" href="#booking-form">Book oss</a>
+              </div>
+              <div class="footer-actions-bottom">
+                <a
+                  class="btn btn-secondary"
+                  href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Åpne i kart
+                </a>
+              </div>
             </div>
           </div>
 
