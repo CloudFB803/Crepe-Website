@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Takk for bookingforespørselen | Crepe de la Crepe</title>
+  <title>Book oss | Crepe de la Crepe</title>
   <meta
     name="description"
-    content="Takk for bookingforespørselen. Vi tar kontakt så snart som mulig."
+    content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,94 +16,84 @@
   <style>
     :root {
       --bg: #ece0d3;
-      --surface: rgba(255, 249, 243, 0.94);
+      --surface: rgba(255, 249, 243, 0.92);
+      --surface-strong: rgba(255, 252, 248, 0.97);
       --text: #241711;
-      --muted: #6a5649;
+      --muted: #695548;
+      --muted-soft: #8a7261;
       --line: rgba(66, 39, 23, 0.10);
       --accent: #c88d54;
       --accent-2: #7d5139;
-      --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
-      --radius: 30px;
       --max: 1240px;
+      --radius: 30px;
+      --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
+      --shadow-soft: 0 14px 34px rgba(56, 33, 20, 0.08);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: "Manrope", Arial, Helvetica, sans-serif;
       color: var(--text);
+      line-height: 1.55;
       background:
         radial-gradient(circle at top right, rgba(200, 141, 84, 0.10), transparent 20%),
         radial-gradient(circle at 10% 14%, rgba(125, 81, 57, 0.08), transparent 18%),
         linear-gradient(180deg, #efe4d8 0%, #e5d7ca 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
     }
 
-    .shell {
-      width: min(760px, 100%);
-      background: linear-gradient(180deg, rgba(252,246,240,0.96), rgba(244,233,223,0.98));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 42px;
-      text-align: center;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    h1 {
-      margin: 18px 0 16px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    p {
+    .container {
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      max-width: 580px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.85;
     }
 
-    .actions {
-      margin-top: 32px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
+      min-height: 52px;
       padding: 14px 24px;
       border-radius: 999px;
       border: 1px solid transparent;
       font-weight: 800;
-      text-decoration: none;
-      transition: 0.2s ease;
+      transition: 0.22s ease;
+      gap: 10px;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -118,39 +108,1200 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.62);
+      background: rgba(255,255,255,0.56);
       border-color: rgba(60, 35, 20, 0.12);
       color: var(--text);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.76);
     }
 
-    @media (max-width: 640px) {
-      .shell {
-        padding: 28px 22px;
+    .nav-wrap {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 120;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+    }
+
+    .nav-wrap.scrolled {
+      backdrop-filter: blur(14px);
+      background: rgba(239, 228, 216, 0.68);
+      border-bottom-color: rgba(66, 39, 23, 0.08);
+      box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
+    }
+
+    nav {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-spacer {
+      min-height: 1px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: center;
+      min-width: 0;
+    }
+
+    .brand-logo-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(240,220,200,0.60));
+      border: 1px solid rgba(255,255,255,0.20);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.62);
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      color: #fff7ef;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    }
+
+    .brand-subtitle {
+      margin-top: 5px;
+      font-size: 11px;
+      color: rgba(255,247,239,0.86);
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav-wrap.scrolled .brand-title {
+      color: #2b1a14;
+      text-shadow: none;
+    }
+
+    .nav-wrap.scrolled .brand-subtitle {
+      color: #866b5d;
+    }
+
+    .nav-links {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: rgba(255,247,239,0.92);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .nav-wrap.scrolled .nav-links {
+      color: #705b4e;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(20,13,10,0.72) 0%, rgba(20,13,10,0.52) 42%, rgba(20,13,10,0.36) 100%),
+        linear-gradient(to top, rgba(20,13,10,0.38), rgba(20,13,10,0.08)),
+        url('hero-crepes.jpg') center center / cover;
+      transform: scale(1.03);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 860px;
+      padding: 146px 0 104px;
+      color: #fff8f1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,248,241,0.92);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(58px, 8vw, 100px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: rgba(255,248,241,0.88);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+      line-height: 1.85;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(252,246,240,0.94), rgba(244,233,223,0.96));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-shell {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .intro-copy {
+      display: grid;
+      gap: 20px;
+      align-content: start;
+      padding: 38px 40px;
+    }
+
+    .intro-copy h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .intro-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 60ch;
+    }
+
+    .intro-bullets {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .intro-bullet {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.46);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      color: #322119;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .intro-bullet-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      flex-shrink: 0;
+    }
+
+    .intro-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      padding: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(200,141,84,0.14), transparent 28%),
+        linear-gradient(180deg, rgba(255,252,248,0.96), rgba(243,232,221,0.98));
+    }
+
+    .intro-side-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro-side h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+    }
+
+    .intro-side p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .format-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .format-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(66, 39, 23, 0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .format-item strong {
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+
+    .format-item span {
+      color: var(--muted-soft);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .intro-side .btn {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 12px;
+      transition: 0.22s ease;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(200,141,84,0.30);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
+    }
+
+    .category-card.active {
+      border-color: rgba(200,141,84,0.46);
+      box-shadow: 0 18px 38px rgba(125,81,57,0.12);
+    }
+
+    .category-card h3 {
+      margin: 0;
+      font-size: 21px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .category-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .category-chip {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reference-shell {
+      display: grid;
+      gap: 20px;
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .reference-card {
+      min-height: 132px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
+      border: 1px solid rgba(66, 39, 23, 0.10);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      align-content: space-between;
+      transition: 0.22s ease;
+    }
+
+    .reference-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,141,84,0.28);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
+    }
+
+    .reference-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .reference-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      color: var(--muted-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reference-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.16);
+      color: var(--accent-2);
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .reference-card h3 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      max-width: 11ch;
+    }
+
+    .reference-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .gallery-placeholder {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 16px;
+    }
+
+    .gallery-box {
+      min-height: 220px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.60), rgba(241,231,221,0.94));
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+      display: grid;
+      align-content: end;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .gallery-box.large {
+      min-height: 300px;
+    }
+
+    .form-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .selected-type {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #3c2a20;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(66, 39, 23, 0.12);
+      background: rgba(255,255,255,0.76);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: var(--text);
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(200,141,84,0.46);
+      background: rgba(255,255,255,0.94);
+      box-shadow: 0 0 0 4px rgba(200,141,84,0.10);
+    }
+
+    .field textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .footer {
+      padding: 30px 0 42px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-shell {
+      background: linear-gradient(180deg, rgba(247,239,230,0.84), rgba(236,224,212,0.92));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .footer-brand .brand {
+      justify-self: start;
+    }
+
+    .footer .brand-title {
+      color: #2b1a14;
+      text-shadow: none;
+    }
+
+    .footer .brand-subtitle {
+      color: #866b5d;
+    }
+
+    .footer-block h4 {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: #2d1c15;
+    }
+
+    .footer-links,
+    .footer-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-list a,
+    .footer-list div {
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-list a:hover {
+      color: var(--text);
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .footer-mini {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: #826c5f;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .intro-shell,
+      .gallery-placeholder,
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
-      p {
-        font-size: 16px;
+      .reference-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 980px) {
+      nav {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 14px 0;
+      }
+
+      .nav-spacer {
+        display: none;
+      }
+
+      .nav-links {
+        justify-self: center;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .form-grid,
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .hero-content {
+        padding: 132px 0 90px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 13vw, 72px);
+      }
+
+      .reference-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .footer-shell,
+      .intro-copy,
+      .intro-side {
+        padding: 22px;
+      }
+
+      .brand-logo-wrap {
+        width: 58px;
+        height: 58px;
+      }
+
+      .brand-title {
+        font-size: 30px;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade-in,
+      .btn,
+      .category-card,
+      .nav-wrap,
+      .reference-card {
+        transition: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="eyebrow">Booking mottatt</div>
-    <h1>Takk for bookingforespørselen</h1>
-    <p>
-      Vi har mottatt forespørselen din og tar kontakt så snart som mulig for å se nærmere på arrangementet og mulighetene videre.
-    </p>
+  <div class="nav-wrap" id="navWrap">
+    <div class="container">
+      <nav>
+        <div class="nav-spacer"></div>
 
-    <div class="actions">
-      <a class="btn btn-primary" href="index.html">Tilbake til forsiden</a>
-      <a class="btn btn-secondary" href="book-oss.html">Send en ny forespørsel</a>
+        <a href="https://crepedelacrepe.com/" class="brand">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Crepe de la Crepe</div>
+            <div class="brand-subtitle">Love at first bite</div>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
+          <a href="https://crepedelacrepe.com/#menu">Meny</a>
+          <a href="https://crepedelacrepe.com/book-oss.html" class="active">Book oss</a>
+          <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
+          <a href="#booking-form">Kontakt</a>
+        </div>
+      </nav>
     </div>
   </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Booking</div>
+        <h1>Book Crêpe de la Crepe</h1>
+        <p>
+          Vi tilbyr fersklagede crêpes til festivaler, firmaarrangementer og private arrangementer. Et konsept som kombinerer kvalitet, effektiv servering og en opplevelse folk husker.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking-categories">Book oss</a>
+          <a class="btn btn-secondary" href="#booking-form">Send bookingforespørsel</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="fade-in">
+      <div class="container">
+        <div class="intro-shell">
+          <div class="card intro-copy">
+            <h2>En servering folk husker</h2>
+            <p>
+              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi fokuserer på kvalitet, flyt i serveringen og et uttrykk som løfter helheten.
+            </p>
+
+            <div class="intro-bullets">
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Ferske crêpes laget på stedet</span>
+              </div>
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Passer festivaler, firmaevents og private feiringer</span>
+              </div>
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Et konsept som ser bra ut og fungerer i praksis</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card intro-side">
+            <div class="intro-side-label">Book oss til</div>
+            <h3>Tre tydelige formater</h3>
+            <p>
+              Vi holder det enkelt og bygger booking rundt de typene oppdrag vi faktisk gjør mest av.
+            </p>
+
+            <div class="format-list">
+              <div class="format-item">
+                <strong>Festivaler</strong>
+                <span>Høy trafikk</span>
+              </div>
+              <div class="format-item">
+                <strong>Firmaarrangementer</strong>
+                <span>Events & samlinger</span>
+              </div>
+              <div class="format-item">
+                <strong>Private arrangementer</strong>
+                <span>Bryllup, bursdag, jubileum</span>
+              </div>
+            </div>
+
+            <a class="btn btn-primary" href="#booking-form">Start bookingforespørsel</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking-categories" class="fade-in">
+      <div class="container">
+        <div class="section-head">
+          <h2>Book oss til</h2>
+          <p>
+            Velg kategorien som passer best for arrangementet ditt. Dette oppdaterer skjemaet lenger ned på siden.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <button class="category-card booking-option" type="button" data-type="Festivaler">
+            <div class="category-chip">Bookingtype</div>
+            <h3>Festivaler</h3>
+            <p>For publikumsarrangementer med høy trafikk, tydelig stemning og behov for effektiv servering.</p>
+          </button>
+
+          <button class="category-card booking-option" type="button" data-type="Firmaarrangementer">
+            <div class="category-chip">Bookingtype</div>
+            <h3>Firmaarrangementer</h3>
+            <p>For bedrifter, lanseringer, samlinger og events som ønsker en servering folk faktisk husker.</p>
+          </button>
+
+          <button class="category-card booking-option" type="button" data-type="Private arrangementer">
+            <div class="category-chip">Bookingtype</div>
+            <h3>Private arrangementer</h3>
+            <p>For bryllup, bursdager, jubileer og andre feiringer hvor maten også skal være en del av opplevelsen.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in">
+      <div class="container">
+        <div class="card reference-shell">
+          <div class="section-head" style="margin-bottom: 0;">
+            <h2>Arrangementer vi har vært en del av</h2>
+            <p>Her er et utvalg arrangementer og samarbeid vi har levert til.</p>
+          </div>
+
+          <div class="reference-grid">
+            <a class="reference-card" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-top">
+                <div class="reference-tag">Arrangement</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Jul i Vinterland</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Slottsfjell</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Stavernfestivalen</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-top">
+                <div class="reference-tag">Arrangement</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Gladmat</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Idyll</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in">
+      <div class="container">
+        <div class="card">
+          <div class="section-head">
+            <h2>Bilder fra arrangementer</h2>
+            <p>
+              Foreløpig er dette satt opp som plassholdere. Når du vet hvilke bilder du vil bruke, setter vi inn ekte eventbilder her.
+            </p>
+          </div>
+
+          <div class="gallery-placeholder">
+            <div class="gallery-box large">Stort eventbilde / food truck / setup</div>
+            <div class="gallery-box">Servering / kø / stemning</div>
+            <div class="gallery-box">Crêpes i miljø / detaljbilde</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking-form" class="fade-in">
+      <div class="container">
+        <div class="card form-shell">
+          <div class="section-head">
+            <h2>Send en bookingforespørsel</h2>
+            <p>
+              Fortell oss litt om arrangementet ditt, så tar vi kontakt for å se på mulighetene.
+            </p>
+          </div>
+
+          <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
+
+          <form class="form-grid" action="https://formsubmit.co/Crepedelacrepes@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Ny bookingforespørsel - Crepe de la Crepe">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://crepedelacrepe.com/takk.html">
+
+            <div class="field">
+              <label for="navn">Navn</label>
+              <input id="navn" name="Navn" type="text" required>
+            </div>
+
+            <div class="field">
+              <label for="firma">Firma / arrangør</label>
+              <input id="firma" name="Firma / arrangør" type="text">
+            </div>
+
+            <div class="field">
+              <label for="epost">E-post</label>
+              <input id="epost" name="E-post" type="email" required>
+            </div>
+
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input id="telefon" name="Telefon" type="tel">
+            </div>
+
+            <div class="field">
+              <label for="type">Type arrangement</label>
+              <select id="type" name="Type arrangement" required>
+                <option value="" selected disabled>Velg kategori</option>
+                <option value="Festivaler">Festivaler</option>
+                <option value="Firmaarrangementer">Firmaarrangementer</option>
+                <option value="Private arrangementer">Private arrangementer</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="dato">Dato</label>
+              <input id="dato" name="Dato" type="text" placeholder="f.eks. 14. juni 2026">
+            </div>
+
+            <div class="field">
+              <label for="sted">Sted</label>
+              <input id="sted" name="Sted" type="text">
+            </div>
+
+            <div class="field">
+              <label for="gjester">Antall gjester / forventet besøk</label>
+              <input id="gjester" name="Antall gjester / forventet besøk" type="text">
+            </div>
+
+            <div class="field full">
+              <label for="melding">Melding</label>
+              <textarea id="melding" name="Melding" placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."></textarea>
+            </div>
+
+            <div class="field full">
+              <button class="btn btn-primary" type="submit">Send bookingforespørsel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="https://crepedelacrepe.com/" class="brand">
+              <div class="brand-logo-wrap">
+                <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+              </div>
+              <div class="brand-text">
+                <div class="brand-title">Crepe de la Crepe</div>
+                <div class="brand-subtitle">Love at first bite</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="footer-block">
+            <h4>Snarveier</h4>
+            <div class="footer-links">
+              <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
+              <a href="https://crepedelacrepe.com/#menu">Meny</a>
+              <a href="https://crepedelacrepe.com/book-oss.html">Book oss</a>
+              <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
+              <a href="#booking-form">Kontakt</a>
+            </div>
+          </div>
+
+          <div class="footer-block">
+            <h4>Kontakt</h4>
+            <div class="footer-list">
+              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+              <a href="tel:+4748408749">+47 48 40 87 49</a>
+              <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
+            </div>
+
+            <div class="footer-actions">
+              <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
+              <a class="btn btn-secondary" href="#booking-form">Book oss</a>
+            </div>
+          </div>
+
+          <div class="footer-block">
+            <h4>Følg oss</h4>
+            <div class="footer-list" style="margin-bottom: 16px;">
+              <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
+            </div>
+
+            <h4>Booking</h4>
+            <div class="footer-list">
+              <div>Festivaler</div>
+              <div>Firmaarrangementer</div>
+              <div>Private arrangementer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-mini">
+          <div>© 2026 Crepe de la Crepe</div>
+          <div>Booking & arrangementer</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    const navWrap = document.getElementById('navWrap');
+
+    function updateNavState() {
+      if (window.scrollY > 24) {
+        navWrap.classList.add('scrolled');
+      } else {
+        navWrap.classList.remove('scrolled');
+      }
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState);
+
+    const bookingButtons = document.querySelectorAll('.booking-option');
+    const typeSelect = document.getElementById('type');
+    const selectedTypeLabel = document.getElementById('selectedTypeLabel');
+
+    function updateBookingUI(type) {
+      bookingButtons.forEach((button) => {
+        if (button.dataset.type === type) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+
+      if (type) {
+        selectedTypeLabel.hidden = false;
+        selectedTypeLabel.textContent = 'Valgt kategori: ' + type;
+      } else {
+        selectedTypeLabel.hidden = true;
+        selectedTypeLabel.textContent = 'Valgt kategori: ';
+      }
+    }
+
+    function setBookingType(type) {
+      typeSelect.value = type;
+      updateBookingUI(type);
+
+      document.getElementById('booking-form').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    bookingButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setBookingType(button.dataset.type);
+      });
+    });
+
+    typeSelect.addEventListener('change', () => {
+      updateBookingUI(typeSelect.value);
+    });
+
+    updateBookingUI(typeSelect.value);
+  </script>
 </body>
 </html>
