@@ -22,6 +22,7 @@
       --muted: #695548;
       --muted-soft: #8a7261;
       --line: rgba(66, 39, 23, 0.10);
+      --line-strong: rgba(66, 39, 23, 0.16);
       --accent: #c88d54;
       --accent-2: #7d5139;
       --accent-3: #f2dfcc;
@@ -109,14 +110,14 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.52);
+      background: rgba(255,255,255,0.56);
       border-color: rgba(60, 35, 20, 0.12);
       color: var(--text);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
     }
 
     .nav-wrap {
@@ -130,13 +131,13 @@
 
     .nav-wrap.scrolled {
       backdrop-filter: blur(14px);
-      background: rgba(239, 228, 216, 0.66);
+      background: rgba(239, 228, 216, 0.68);
       border-bottom-color: rgba(66, 39, 23, 0.08);
       box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
     }
 
     nav {
-      min-height: 88px;
+      min-height: 84px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -150,15 +151,15 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       justify-self: center;
       min-width: 0;
     }
 
     .brand-logo-wrap {
-      width: 70px;
-      height: 70px;
-      border-radius: 22px;
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
       overflow: hidden;
       background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(240,220,200,0.60));
       border: 1px solid rgba(255,255,255,0.20);
@@ -174,7 +175,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding: 7px;
+      padding: 6px;
     }
 
     .brand-text {
@@ -186,9 +187,9 @@
 
     .brand-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: 38px;
+      font-size: 34px;
       font-weight: 700;
-      line-height: 0.94;
+      line-height: 0.96;
       letter-spacing: -0.04em;
       color: #fff7ef;
       text-shadow: 0 4px 20px rgba(0,0,0,0.18);
@@ -216,7 +217,7 @@
       justify-self: end;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       color: rgba(255,247,239,0.92);
       font-size: 15px;
       font-weight: 700;
@@ -248,7 +249,7 @@
 
     .hero {
       position: relative;
-      min-height: 78vh;
+      min-height: 74vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -259,7 +260,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(20,13,10,0.72) 0%, rgba(20,13,10,0.50) 40%, rgba(20,13,10,0.34) 100%),
+        linear-gradient(90deg, rgba(20,13,10,0.72) 0%, rgba(20,13,10,0.52) 42%, rgba(20,13,10,0.36) 100%),
         linear-gradient(to top, rgba(20,13,10,0.38), rgba(20,13,10,0.08)),
         url('hero-crepes.jpg') center center / cover;
       transform: scale(1.03);
@@ -269,8 +270,8 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 930px;
-      padding: 150px 0 110px;
+      max-width: 900px;
+      padding: 148px 0 108px;
       color: #fff8f1;
     }
 
@@ -291,18 +292,18 @@
     .hero h1 {
       margin: 18px 0 16px;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(58px, 8vw, 110px);
+      font-size: clamp(58px, 8vw, 104px);
       line-height: 0.92;
       letter-spacing: -0.05em;
-      max-width: 11ch;
+      max-width: 10ch;
     }
 
     .hero p {
       margin: 0;
-      max-width: 760px;
+      max-width: 720px;
       color: rgba(255,248,241,0.88);
       font-size: 18px;
-      line-height: 1.85;
+      line-height: 1.8;
     }
 
     .hero-actions {
@@ -339,57 +340,175 @@
       margin: 0;
       color: var(--muted);
       max-width: 72ch;
-      line-height: 1.9;
+      line-height: 1.85;
     }
 
     .card {
       background: linear-gradient(180deg, rgba(252,246,240,0.94), rgba(244,233,223,0.96));
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 30px;
       padding: 30px;
       box-shadow: var(--shadow);
     }
 
-    .intro-grid {
+    .booking-intro {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
       align-items: stretch;
     }
 
-    .intro-copy {
+    .intro-main {
+      padding: 40px 42px;
       display: grid;
-      gap: 18px;
+      gap: 24px;
+      min-height: 100%;
     }
 
-    .intro-copy p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.95;
-    }
-
-    .intro-stat {
-      display: grid;
-      gap: 16px;
-      align-content: center;
-      background:
-        radial-gradient(circle at top right, rgba(200,141,84,0.14), transparent 28%),
-        linear-gradient(180deg, rgba(255,252,248,0.92), rgba(243,232,221,0.96));
-    }
-
-    .intro-stat h3 {
+    .intro-main h2 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: 34px;
+      font-size: clamp(44px, 5vw, 74px);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .intro-main p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 60ch;
+    }
+
+    .intro-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .intro-point {
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .intro-point-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .intro-point-badge {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.14);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .intro-point h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .intro-point p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .booking-side {
+      padding: 28px;
+      display: grid;
+      gap: 22px;
+      align-content: start;
+      background:
+        radial-gradient(circle at top right, rgba(200,141,84,0.14), transparent 26%),
+        linear-gradient(180deg, rgba(255,252,248,0.96), rgba(243,232,221,0.98));
+    }
+
+    .booking-side-top {
+      display: grid;
+      gap: 10px;
+    }
+
+    .booking-side-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .booking-side h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
       line-height: 0.98;
       letter-spacing: -0.02em;
     }
 
-    .intro-stat p {
+    .booking-side p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.8;
+    }
+
+    .booking-side-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .booking-mini-card {
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(66, 39, 23, 0.10);
+      border-radius: 20px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .booking-mini-card strong {
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .booking-mini-card span {
+      color: var(--muted-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .booking-side .btn {
+      margin-top: 4px;
+      width: 100%;
     }
 
     .category-grid {
@@ -450,45 +569,86 @@
       text-transform: uppercase;
     }
 
-    .event-layout {
+    .references-shell {
       display: grid;
-      gap: 18px;
+      gap: 20px;
     }
 
-    .event-block {
-      display: grid;
-      gap: 18px;
-    }
-
-    .event-grid {
+    .reference-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 14px;
     }
 
-    .event-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(241,231,221,0.94));
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 20px 16px;
-      text-align: center;
+    .reference-card {
+      min-height: 148px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
+      border: 1px solid rgba(66, 39, 23, 0.10);
       box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: space-between;
+      transition: 0.22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reference-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,141,84,0.28);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
+    }
+
+    .reference-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .reference-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      color: var(--muted-soft);
+      font-size: 11px;
       font-weight: 800;
-      color: #3a261d;
-      min-height: 112px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reference-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
       display: grid;
       place-items: center;
+      background: rgba(200,141,84,0.12);
+      border: 1px solid rgba(200,141,84,0.16);
+      color: var(--accent-2);
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
     }
 
-    .event-link {
-      transition: 0.22s ease;
+    .reference-card h3 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      max-width: 10ch;
     }
 
-    .event-link:hover {
-      transform: translateY(-3px);
-      border-color: rgba(200,141,84,0.30);
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
-      color: #2a1913;
+    .reference-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .gallery-placeholder {
@@ -663,18 +823,18 @@
       font-size: 13px;
     }
 
-    @media (max-width: 1080px) {
-      .intro-grid,
+    @media (max-width: 1180px) {
+      .booking-intro,
       .gallery-placeholder,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .intro-points {
+        grid-template-columns: 1fr 1fr 1fr;
       }
 
-      .event-grid {
+      .reference-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
@@ -699,6 +859,14 @@
       .form-grid {
         grid-template-columns: 1fr;
       }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-points {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
@@ -714,19 +882,20 @@
         font-size: clamp(48px, 13vw, 72px);
       }
 
-      .category-grid,
-      .event-grid {
+      .reference-grid {
         grid-template-columns: 1fr;
       }
 
       .card,
-      .footer-shell {
+      .footer-shell,
+      .intro-main,
+      .booking-side {
         padding: 22px;
       }
 
       .brand-logo-wrap {
-        width: 62px;
-        height: 62px;
+        width: 58px;
+        height: 58px;
       }
 
       .brand-title {
@@ -736,6 +905,10 @@
       .brand-subtitle {
         font-size: 10px;
         letter-spacing: 0.14em;
+      }
+
+      .intro-main h2 {
+        max-width: 11ch;
       }
     }
 
@@ -748,7 +921,7 @@
       .btn,
       .category-card,
       .nav-wrap,
-      .event-link {
+      .reference-card {
         transition: none;
       }
     }
@@ -800,24 +973,67 @@
   <main>
     <section class="fade-in">
       <div class="container">
-        <div class="intro-grid">
-          <div class="card intro-copy">
-            <div class="section-head" style="margin-bottom: 0;">
-              <h2>Crêpes laget på stedet, tilpasset arrangementet ditt</h2>
+        <div class="booking-intro">
+          <div class="card intro-main">
+            <h2>Crêpes som løfter arrangementet</h2>
+
+            <p>
+              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi kombinerer kvalitet, flyt i serveringen og et uttrykk som folk legger merke til.
+            </p>
+
+            <div class="intro-points">
+              <div class="intro-point">
+                <div class="intro-point-top">
+                  <div class="intro-point-badge">01</div>
+                </div>
+                <h3>Laget på stedet</h3>
+                <p>Fersk servering som skaper mer liv enn standard catering.</p>
+              </div>
+
+              <div class="intro-point">
+                <div class="intro-point-top">
+                  <div class="intro-point-badge">02</div>
+                </div>
+                <h3>Tilpasset formatet</h3>
+                <p>Festivaler, firmaevents og private feiringer krever ulike løsninger.</p>
+              </div>
+
+              <div class="intro-point">
+                <div class="intro-point-top">
+                  <div class="intro-point-badge">03</div>
+                </div>
+                <h3>En servering folk husker</h3>
+                <p>Et visuelt og smakfullt konsept som føles mer gjennomført.</p>
+              </div>
             </div>
-            <p>
-              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi tilpasser oppsettet etter arrangementets format og legger vekt på kvalitet, effektiv servering og en helhetlig opplevelse.
-            </p>
-            <p>
-              Målet med denne siden er å gjøre det enkelt å se hva vi tilbyr og ta kontakt for booking.
-            </p>
           </div>
 
-          <div class="card intro-stat">
-            <h3>Festivaler, firmaarrangementer og private arrangementer</h3>
-            <p>
-              Vi tar oppdrag i ulike formater og tilpasser oss både publikumsarrangementer, bedriftsevents og private feiringer som bryllup, bursdager og jubileer.
-            </p>
+          <div class="card booking-side">
+            <div class="booking-side-top">
+              <div class="booking-side-label">Book oss til</div>
+              <h3>Tre tydelige formater</h3>
+              <p>
+                Vi holder det enkelt og bygger booking rundt de typene oppdrag vi faktisk gjør mest av.
+              </p>
+            </div>
+
+            <div class="booking-side-list">
+              <div class="booking-mini-card">
+                <strong>Festivaler</strong>
+                <span>Høy trafikk</span>
+              </div>
+
+              <div class="booking-mini-card">
+                <strong>Firmaarrangementer</strong>
+                <span>Events & samlinger</span>
+              </div>
+
+              <div class="booking-mini-card">
+                <strong>Private arrangementer</strong>
+                <span>Bryllup, bursdag, jubileum</span>
+              </div>
+            </div>
+
             <a class="btn btn-primary" href="#booking-form">Start bookingforespørsel</a>
           </div>
         </div>
@@ -857,18 +1073,67 @@
 
     <section class="fade-in">
       <div class="container">
-        <div class="card event-block">
+        <div class="card references-shell">
           <div class="section-head" style="margin-bottom: 0;">
             <h2>Arrangementer vi har vært en del av</h2>
             <p>Her er et utvalg arrangementer og samarbeid vi har levert til.</p>
           </div>
 
-          <div class="event-grid">
-            <a class="event-card event-link" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">Jul i Vinterland</a>
-            <a class="event-card event-link" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">Slottsfjell</a>
-            <a class="event-card event-link" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">Stavernfestivalen</a>
-            <a class="event-card event-link" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">Gladmat</a>
-            <a class="event-card event-link" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">Idyll</a>
+          <div class="reference-grid">
+            <a class="reference-card" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-card-top">
+                <div class="reference-tag">Arrangement</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Jul i Vinterland</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-card-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Slottsfjell</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-card-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Stavernfestivalen</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-card-top">
+                <div class="reference-tag">Arrangement</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Gladmat</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
+
+            <a class="reference-card" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
+              <div class="reference-card-top">
+                <div class="reference-tag">Festival</div>
+                <div class="reference-arrow">↗</div>
+              </div>
+              <div>
+                <h3>Idyll</h3>
+                <p>Besøk nettside</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
