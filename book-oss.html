@@ -22,10 +22,8 @@
       --muted: #695548;
       --muted-soft: #8a7261;
       --line: rgba(66, 39, 23, 0.10);
-      --line-strong: rgba(66, 39, 23, 0.16);
       --accent: #c88d54;
       --accent-2: #7d5139;
-      --accent-3: #f2dfcc;
       --max: 1240px;
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
@@ -117,7 +115,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.76);
     }
 
     .nav-wrap {
@@ -249,7 +247,7 @@
 
     .hero {
       position: relative;
-      min-height: 74vh;
+      min-height: 72vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -270,8 +268,8 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 900px;
-      padding: 148px 0 108px;
+      max-width: 860px;
+      padding: 146px 0 104px;
       color: #fff8f1;
     }
 
@@ -292,7 +290,7 @@
     .hero h1 {
       margin: 18px 0 16px;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(58px, 8vw, 104px);
+      font-size: clamp(58px, 8vw, 100px);
       line-height: 0.92;
       letter-spacing: -0.05em;
       max-width: 10ch;
@@ -300,7 +298,7 @@
 
     .hero p {
       margin: 0;
-      max-width: 720px;
+      max-width: 700px;
       color: rgba(255,248,241,0.88);
       font-size: 18px;
       line-height: 1.8;
@@ -351,30 +349,30 @@
       box-shadow: var(--shadow);
     }
 
-    .booking-intro {
+    .intro-shell {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 20px;
       align-items: stretch;
     }
 
-    .intro-main {
-      padding: 40px 42px;
+    .intro-copy {
       display: grid;
-      gap: 24px;
-      min-height: 100%;
+      gap: 20px;
+      align-content: start;
+      padding: 38px 40px;
     }
 
-    .intro-main h2 {
+    .intro-copy h2 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(44px, 5vw, 74px);
-      line-height: 0.94;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 0.95;
       letter-spacing: -0.04em;
       max-width: 10ch;
     }
 
-    .intro-main p {
+    .intro-copy p {
       margin: 0;
       color: var(--muted);
       font-size: 17px;
@@ -382,75 +380,44 @@
       max-width: 60ch;
     }
 
-    .intro-points {
+    .intro-bullets {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 12px;
       margin-top: 4px;
     }
 
-    .intro-point {
-      background: rgba(255,255,255,0.48);
-      border: 1px solid rgba(66, 39, 23, 0.08);
-      border-radius: 22px;
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      gap: 10px;
-      align-content: start;
-    }
-
-    .intro-point-top {
+    .intro-bullet {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.46);
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      color: #322119;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
     }
 
-    .intro-point-badge {
-      display: inline-flex;
-      width: 34px;
-      height: 34px;
-      align-items: center;
-      justify-content: center;
+    .intro-bullet-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      background: rgba(200,141,84,0.14);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-      font-weight: 800;
-      font-size: 13px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      flex-shrink: 0;
     }
 
-    .intro-point h3 {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    .intro-point p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .booking-side {
-      padding: 28px;
+    .intro-side {
       display: grid;
-      gap: 22px;
+      gap: 18px;
       align-content: start;
+      padding: 28px;
       background:
-        radial-gradient(circle at top right, rgba(200,141,84,0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(200,141,84,0.14), transparent 28%),
         linear-gradient(180deg, rgba(255,252,248,0.96), rgba(243,232,221,0.98));
     }
 
-    .booking-side-top {
-      display: grid;
-      gap: 10px;
-    }
-
-    .booking-side-label {
+    .intro-side-label {
       display: inline-flex;
       width: fit-content;
       padding: 7px 11px;
@@ -464,7 +431,7 @@
       text-transform: uppercase;
     }
 
-    .booking-side h3 {
+    .intro-side h3 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-size: 38px;
@@ -472,43 +439,44 @@
       letter-spacing: -0.02em;
     }
 
-    .booking-side p {
+    .intro-side p {
       margin: 0;
       color: var(--muted);
       line-height: 1.8;
     }
 
-    .booking-side-list {
+    .format-list {
       display: grid;
       gap: 12px;
     }
 
-    .booking-mini-card {
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(66, 39, 23, 0.10);
-      border-radius: 20px;
-      padding: 16px 18px;
+    .format-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(66, 39, 23, 0.10);
       box-shadow: var(--shadow-soft);
     }
 
-    .booking-mini-card strong {
-      font-size: 16px;
+    .format-item strong {
+      font-size: 17px;
       letter-spacing: -0.01em;
     }
 
-    .booking-mini-card span {
+    .format-item span {
       color: var(--muted-soft);
       font-size: 13px;
       font-weight: 700;
+      text-align: right;
     }
 
-    .booking-side .btn {
-      margin-top: 4px;
+    .intro-side .btn {
       width: 100%;
+      margin-top: 4px;
     }
 
     .category-grid {
@@ -569,7 +537,7 @@
       text-transform: uppercase;
     }
 
-    .references-shell {
+    .reference-shell {
       display: grid;
       gap: 20px;
     }
@@ -581,18 +549,16 @@
     }
 
     .reference-card {
-      min-height: 148px;
+      min-height: 132px;
       border-radius: 24px;
       background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
       border: 1px solid rgba(66, 39, 23, 0.10);
       box-shadow: var(--shadow-soft);
       padding: 18px;
       display: grid;
-      gap: 14px;
+      gap: 16px;
       align-content: space-between;
       transition: 0.22s ease;
-      position: relative;
-      overflow: hidden;
     }
 
     .reference-card:hover {
@@ -601,7 +567,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
     }
 
-    .reference-card-top {
+    .reference-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -641,7 +607,7 @@
       font-size: 21px;
       line-height: 1.2;
       letter-spacing: -0.02em;
-      max-width: 10ch;
+      max-width: 11ch;
     }
 
     .reference-card p {
@@ -824,14 +790,10 @@
     }
 
     @media (max-width: 1180px) {
-      .booking-intro,
+      .intro-shell,
       .gallery-placeholder,
       .footer-grid {
         grid-template-columns: 1fr;
-      }
-
-      .intro-points {
-        grid-template-columns: 1fr 1fr 1fr;
       }
 
       .reference-grid {
@@ -856,15 +818,8 @@
         gap: 18px;
       }
 
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .form-grid,
       .category-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .intro-points {
         grid-template-columns: 1fr;
       }
     }
@@ -888,8 +843,8 @@
 
       .card,
       .footer-shell,
-      .intro-main,
-      .booking-side {
+      .intro-copy,
+      .intro-side {
         padding: 22px;
       }
 
@@ -905,10 +860,6 @@
       .brand-subtitle {
         font-size: 10px;
         letter-spacing: 0.14em;
-      }
-
-      .intro-main h2 {
-        max-width: 11ch;
       }
     }
 
@@ -933,7 +884,7 @@
       <nav>
         <div class="nav-spacer"></div>
 
-        <a href="index.html#top" class="brand">
+        <a href="https://crepedelacrepe.com/" class="brand">
           <div class="brand-logo-wrap">
             <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
           </div>
@@ -944,10 +895,10 @@
         </a>
 
         <div class="nav-links">
-          <a href="index.html#om-oss">Om oss</a>
-          <a href="index.html#menu">Meny</a>
-          <a href="book-oss.html" class="active">Book oss</a>
-          <a href="index.html#lokasjon">Lokasjon</a>
+          <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
+          <a href="https://crepedelacrepe.com/#menu">Meny</a>
+          <a href="https://crepedelacrepe.com/book-oss.html" class="active">Book oss</a>
+          <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
           <a href="#booking-form">Kontakt</a>
         </div>
       </nav>
@@ -973,62 +924,46 @@
   <main>
     <section class="fade-in">
       <div class="container">
-        <div class="booking-intro">
-          <div class="card intro-main">
-            <h2>Crêpes som løfter arrangementet</h2>
-
+        <div class="intro-shell">
+          <div class="card intro-copy">
+            <h2>En servering folk husker</h2>
             <p>
-              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi kombinerer kvalitet, flyt i serveringen og et uttrykk som folk legger merke til.
+              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi fokuserer på kvalitet, flyt i serveringen og et uttrykk som løfter helheten.
             </p>
 
-            <div class="intro-points">
-              <div class="intro-point">
-                <div class="intro-point-top">
-                  <div class="intro-point-badge">01</div>
-                </div>
-                <h3>Laget på stedet</h3>
-                <p>Fersk servering som skaper mer liv enn standard catering.</p>
+            <div class="intro-bullets">
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Ferske crêpes laget på stedet</span>
               </div>
-
-              <div class="intro-point">
-                <div class="intro-point-top">
-                  <div class="intro-point-badge">02</div>
-                </div>
-                <h3>Tilpasset formatet</h3>
-                <p>Festivaler, firmaevents og private feiringer krever ulike løsninger.</p>
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Passer festivaler, firmaevents og private feiringer</span>
               </div>
-
-              <div class="intro-point">
-                <div class="intro-point-top">
-                  <div class="intro-point-badge">03</div>
-                </div>
-                <h3>En servering folk husker</h3>
-                <p>Et visuelt og smakfullt konsept som føles mer gjennomført.</p>
+              <div class="intro-bullet">
+                <div class="intro-bullet-dot"></div>
+                <span>Et konsept som ser bra ut og fungerer i praksis</span>
               </div>
             </div>
           </div>
 
-          <div class="card booking-side">
-            <div class="booking-side-top">
-              <div class="booking-side-label">Book oss til</div>
-              <h3>Tre tydelige formater</h3>
-              <p>
-                Vi holder det enkelt og bygger booking rundt de typene oppdrag vi faktisk gjør mest av.
-              </p>
-            </div>
+          <div class="card intro-side">
+            <div class="intro-side-label">Book oss til</div>
+            <h3>Tre tydelige formater</h3>
+            <p>
+              Vi holder det enkelt og bygger booking rundt de typene oppdrag vi faktisk gjør mest av.
+            </p>
 
-            <div class="booking-side-list">
-              <div class="booking-mini-card">
+            <div class="format-list">
+              <div class="format-item">
                 <strong>Festivaler</strong>
                 <span>Høy trafikk</span>
               </div>
-
-              <div class="booking-mini-card">
+              <div class="format-item">
                 <strong>Firmaarrangementer</strong>
                 <span>Events & samlinger</span>
               </div>
-
-              <div class="booking-mini-card">
+              <div class="format-item">
                 <strong>Private arrangementer</strong>
                 <span>Bryllup, bursdag, jubileum</span>
               </div>
@@ -1073,7 +1008,7 @@
 
     <section class="fade-in">
       <div class="container">
-        <div class="card references-shell">
+        <div class="card reference-shell">
           <div class="section-head" style="margin-bottom: 0;">
             <h2>Arrangementer vi har vært en del av</h2>
             <p>Her er et utvalg arrangementer og samarbeid vi har levert til.</p>
@@ -1081,7 +1016,7 @@
 
           <div class="reference-grid">
             <a class="reference-card" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-card-top">
+              <div class="reference-top">
                 <div class="reference-tag">Arrangement</div>
                 <div class="reference-arrow">↗</div>
               </div>
@@ -1092,7 +1027,7 @@
             </a>
 
             <a class="reference-card" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-card-top">
+              <div class="reference-top">
                 <div class="reference-tag">Festival</div>
                 <div class="reference-arrow">↗</div>
               </div>
@@ -1103,7 +1038,7 @@
             </a>
 
             <a class="reference-card" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-card-top">
+              <div class="reference-top">
                 <div class="reference-tag">Festival</div>
                 <div class="reference-arrow">↗</div>
               </div>
@@ -1114,7 +1049,7 @@
             </a>
 
             <a class="reference-card" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-card-top">
+              <div class="reference-top">
                 <div class="reference-tag">Arrangement</div>
                 <div class="reference-arrow">↗</div>
               </div>
@@ -1125,7 +1060,7 @@
             </a>
 
             <a class="reference-card" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-card-top">
+              <div class="reference-top">
                 <div class="reference-tag">Festival</div>
                 <div class="reference-arrow">↗</div>
               </div>
@@ -1174,7 +1109,7 @@
             <input type="hidden" name="_subject" value="Ny bookingforespørsel - Crepe de la Crepe">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://DIN-DOMENE.no/takk.html">
+            <input type="hidden" name="_next" value="https://crepedelacrepe.com/takk.html">
 
             <div class="field">
               <label for="navn">Navn</label>
@@ -1240,7 +1175,7 @@
       <div class="footer-shell">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html#top" class="brand">
+            <a href="https://crepedelacrepe.com/" class="brand">
               <div class="brand-logo-wrap">
                 <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
               </div>
@@ -1254,10 +1189,10 @@
           <div class="footer-block">
             <h4>Snarveier</h4>
             <div class="footer-links">
-              <a href="index.html#om-oss">Om oss</a>
-              <a href="index.html#menu">Meny</a>
-              <a href="book-oss.html">Book oss</a>
-              <a href="index.html#lokasjon">Lokasjon</a>
+              <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
+              <a href="https://crepedelacrepe.com/#menu">Meny</a>
+              <a href="https://crepedelacrepe.com/book-oss.html">Book oss</a>
+              <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
               <a href="#booking-form">Kontakt</a>
             </div>
           </div>
