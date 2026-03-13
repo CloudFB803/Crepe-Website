@@ -24,8 +24,6 @@
       --line: rgba(66, 39, 23, 0.10);
       --accent: #c88d54;
       --accent-2: #7d5139;
-      --foodora: #d70f64;
-      --foodora-dark: #b20d54;
       --max: 1240px;
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
@@ -131,17 +129,6 @@
     .btn-secondary:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,0.76);
-    }
-
-    .btn-foodora {
-      background: linear-gradient(135deg, var(--foodora), var(--foodora-dark));
-      color: #fff;
-      box-shadow: 0 16px 34px rgba(215, 15, 100, 0.22);
-    }
-
-    .btn-foodora:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.03);
     }
 
     .nav-wrap {
@@ -273,7 +260,7 @@
 
     .hero {
       position: relative;
-      min-height: 72vh;
+      min-height: 68vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -294,7 +281,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 860px;
+      max-width: 760px;
       padding: 146px 0 104px;
       color: #fff8f1;
     }
@@ -316,15 +303,15 @@
     .hero h1 {
       margin: 18px 0 16px;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(58px, 8vw, 100px);
-      line-height: 0.92;
+      font-size: clamp(56px, 8vw, 92px);
+      line-height: 0.94;
       letter-spacing: -0.05em;
-      max-width: 10ch;
+      max-width: 7ch;
     }
 
     .hero p {
       margin: 0;
-      max-width: 720px;
+      max-width: 680px;
       color: rgba(255,248,241,0.88);
       font-size: 18px;
       line-height: 1.8;
@@ -373,7 +360,7 @@
     }
 
     .booking-lead {
-      max-width: 860px;
+      max-width: 760px;
       display: grid;
       gap: 12px;
     }
@@ -395,18 +382,10 @@
     .booking-lead h2 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(48px, 6vw, 78px);
+      font-size: clamp(48px, 6vw, 76px);
       line-height: 0.94;
       letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-
-    .booking-lead p {
-      margin: 0;
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.9;
+      max-width: 9ch;
     }
 
     .category-grid {
@@ -428,7 +407,7 @@
       text-align: left;
       cursor: pointer;
       transition: 0.24s ease;
-      min-height: 280px;
+      min-height: 268px;
       overflow: hidden;
     }
 
@@ -591,14 +570,7 @@
       max-width: 11ch;
     }
 
-    .reference-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .gallery-placeholder {
+    .gallery-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr 0.9fr;
       gap: 16px;
@@ -720,20 +692,20 @@
     .footer-shell {
       background: linear-gradient(180deg, rgba(247,239,230,0.84), rgba(236,224,212,0.92));
       border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 28px;
+      border-radius: 34px;
+      padding: 34px;
       box-shadow: var(--shadow);
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr 1fr 0.9fr;
-      gap: 24px;
+      grid-template-columns: 1.25fr 0.8fr 1fr 0.85fr;
+      gap: 28px;
     }
 
     .footer-brand {
       display: grid;
-      gap: 14px;
+      gap: 18px;
       align-content: start;
     }
 
@@ -748,6 +720,36 @@
 
     .footer .brand-subtitle {
       color: #866b5d;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+      max-width: 34ch;
+    }
+
+    .footer-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .footer-point {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3b291f;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .footer-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      flex-shrink: 0;
     }
 
     .footer-block h4 {
@@ -783,7 +785,7 @@
     }
 
     .footer-mini {
-      margin-top: 24px;
+      margin-top: 28px;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       display: flex;
@@ -799,7 +801,7 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .gallery-placeholder,
+      .gallery-grid,
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -894,7 +896,7 @@
       <nav>
         <div class="nav-spacer"></div>
 
-        <a href="https://crepedelacrepe.com/" class="brand">
+        <a href="./index.html" class="brand">
           <div class="brand-logo-wrap">
             <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
           </div>
@@ -905,10 +907,10 @@
         </a>
 
         <div class="nav-links">
-          <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
-          <a href="https://crepedelacrepe.com/#menu">Meny</a>
-          <a href="https://crepedelacrepe.com/book-oss.html" class="active">Book oss</a>
-          <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
+          <a href="./index.html#om-oss">Om oss</a>
+          <a href="./index.html#menu">Meny</a>
+          <a href="./book-oss.html" class="active">Book oss</a>
+          <a href="./index.html#lokasjon">Lokasjon</a>
           <a href="#booking-form">Kontakt</a>
         </div>
       </nav>
@@ -919,14 +921,13 @@
     <div class="container">
       <div class="hero-content">
         <div class="eyebrow">Booking</div>
-        <h1>Book Crêpe de la Crepe</h1>
+        <h1>Book oss</h1>
         <p>
-          Vi tilbyr fersklagede crêpes til festivaler, firmaarrangementer og private arrangementer. Et konsept som kombinerer kvalitet, effektiv servering og en opplevelse som huskes.
+          Crepe de la Crepe leverer fersklagede crêpes til festivaler, firmaarrangementer og private arrangementer — med kvalitet i uttrykk, flyt i serveringen og en opplevelse som huskes.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#booking-categories">Book oss</a>
           <a class="btn btn-secondary" href="#booking-form">Send bookingforespørsel</a>
-          <a class="btn btn-foodora" href="https://www.foodora.no/restaurant/SETT-INN-DIN-LENKE-HER" target="_blank" rel="noopener noreferrer">Foodora</a>
         </div>
       </div>
     </div>
@@ -939,9 +940,6 @@
           <div class="booking-lead">
             <div class="booking-kicker">Booking</div>
             <h2>En servering som huskes</h2>
-            <p>
-              For arrangementer som trenger kvalitet, effektivitet og et uttrykk som løfter opplevelsen.
-            </p>
           </div>
 
           <div class="category-grid">
@@ -990,7 +988,6 @@
         <div class="card reference-shell">
           <div class="section-head" style="margin-bottom: 0;">
             <h2>Arrangementer vi har vært en del av</h2>
-            <p>Her er et utvalg arrangementer og samarbeid vi har levert til.</p>
           </div>
 
           <div class="reference-grid">
@@ -1001,7 +998,6 @@
               </div>
               <div>
                 <h3>Jul i Vinterland</h3>
-                <p>Besøk nettside</p>
               </div>
             </a>
 
@@ -1012,7 +1008,6 @@
               </div>
               <div>
                 <h3>Slottsfjell</h3>
-                <p>Besøk nettside</p>
               </div>
             </a>
 
@@ -1023,7 +1018,6 @@
               </div>
               <div>
                 <h3>Stavernfestivalen</h3>
-                <p>Besøk nettside</p>
               </div>
             </a>
 
@@ -1034,7 +1028,6 @@
               </div>
               <div>
                 <h3>Gladmat</h3>
-                <p>Besøk nettside</p>
               </div>
             </a>
 
@@ -1045,7 +1038,6 @@
               </div>
               <div>
                 <h3>Idyll</h3>
-                <p>Besøk nettside</p>
               </div>
             </a>
           </div>
@@ -1058,12 +1050,9 @@
         <div class="card">
           <div class="section-head">
             <h2>Bilder fra arrangementer</h2>
-            <p>
-              Foreløpig er dette satt opp som plassholdere. Når du vet hvilke bilder du vil bruke, setter vi inn ekte eventbilder her.
-            </p>
           </div>
 
-          <div class="gallery-placeholder">
+          <div class="gallery-grid">
             <div class="gallery-box large">Stort eventbilde / food truck / setup</div>
             <div class="gallery-box">Servering / kø / stemning</div>
             <div class="gallery-box">Crêpes i miljø / detaljbilde</div>
@@ -1077,9 +1066,6 @@
         <div class="card form-shell">
           <div class="section-head">
             <h2>Send en bookingforespørsel</h2>
-            <p>
-              Fortell oss litt om arrangementet ditt, så tar vi kontakt for å se på mulighetene.
-            </p>
           </div>
 
           <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
@@ -1150,7 +1136,7 @@
       <div class="footer-shell">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="https://crepedelacrepe.com/" class="brand">
+            <a href="./index.html" class="brand">
               <div class="brand-logo-wrap">
                 <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
               </div>
@@ -1159,15 +1145,34 @@
                 <div class="brand-subtitle">Love at first bite</div>
               </div>
             </a>
+
+            <div class="footer-copy">
+              Fersklagede crêpes til festivaler, firmaarrangementer og private feiringer — servert med et uttrykk som løfter helheten.
+            </div>
+
+            <div class="footer-points">
+              <div class="footer-point">
+                <div class="footer-dot"></div>
+                <span>Ferskt laget på stedet</span>
+              </div>
+              <div class="footer-point">
+                <div class="footer-dot"></div>
+                <span>Passer små og store arrangementer</span>
+              </div>
+              <div class="footer-point">
+                <div class="footer-dot"></div>
+                <span>Enkel booking og tydelig dialog</span>
+              </div>
+            </div>
           </div>
 
           <div class="footer-block">
             <h4>Snarveier</h4>
             <div class="footer-links">
-              <a href="https://crepedelacrepe.com/#om-oss">Om oss</a>
-              <a href="https://crepedelacrepe.com/#menu">Meny</a>
-              <a href="https://crepedelacrepe.com/book-oss.html">Book oss</a>
-              <a href="https://crepedelacrepe.com/#lokasjon">Lokasjon</a>
+              <a href="./index.html#om-oss">Om oss</a>
+              <a href="./index.html#menu">Meny</a>
+              <a href="./book-oss.html">Book oss</a>
+              <a href="./index.html#lokasjon">Lokasjon</a>
               <a href="#booking-form">Kontakt</a>
             </div>
           </div>
@@ -1183,7 +1188,6 @@
             <div class="footer-actions">
               <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
               <a class="btn btn-secondary" href="#booking-form">Book oss</a>
-              <a class="btn btn-foodora" href="https://www.foodora.no/restaurant/SETT-INN-DIN-LENKE-HER" target="_blank" rel="noopener noreferrer">Foodora</a>
             </div>
           </div>
 
@@ -1194,9 +1198,11 @@
               <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
             </div>
 
-            <h4>Bestill</h4>
+            <h4>Booking</h4>
             <div class="footer-list">
-              <a href="https://www.foodora.no/restaurant/SETT-INN-DIN-LENKE-HER" target="_blank" rel="noopener noreferrer">Bestill med Foodora</a>
+              <div>Festivaler</div>
+              <div>Firmaarrangementer</div>
+              <div>Private arrangementer</div>
             </div>
           </div>
         </div>
@@ -1321,7 +1327,7 @@
         showStatus('Bookingforespørselen er sendt. Du videresendes nå.', 'success');
 
         setTimeout(() => {
-          window.location.href = '/takk.html';
+          window.location.href = './takk.html';
         }, 700);
       } catch (error) {
         showStatus(error.message || 'Noe gikk galt. Prøv igjen.', 'error');
