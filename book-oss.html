@@ -6,7 +6,7 @@
   <title>Book oss | Crepe de la Crepe</title>
   <meta
     name="description"
-    content="Book Crepe de la Crepe til festivaler, firmaarrangementer, private arrangementer, catering, markeder og spesielle anledninger."
+    content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -480,60 +480,15 @@
       place-items: center;
     }
 
-    .small-event-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .event-link {
+      transition: 0.22s ease;
     }
 
-    .small-event-pill {
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.62);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-weight: 700;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .partner-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .partner-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 20px 16px;
-      min-height: 130px;
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      gap: 12px;
-      align-content: center;
-      justify-items: center;
-      text-align: center;
-    }
-
-    .partner-logo {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.78);
-      border: 1px dashed rgba(66, 39, 23, 0.16);
-      display: grid;
-      place-items: center;
-      color: var(--muted-soft);
-      font-size: 12px;
-      font-weight: 800;
-      padding: 8px;
-    }
-
-    .partner-card span {
-      font-size: 14px;
-      font-weight: 800;
-      color: #3a261d;
+    .event-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(200,141,84,0.30);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
+      color: #2a1913;
     }
 
     .gallery-placeholder {
@@ -624,13 +579,6 @@
     .field textarea {
       min-height: 140px;
       resize: vertical;
-    }
-
-    .form-note {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 0;
     }
 
     .footer {
@@ -726,8 +674,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .event-grid,
-      .partner-grid {
+      .event-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
@@ -768,8 +715,7 @@
       }
 
       .category-grid,
-      .event-grid,
-      .partner-grid {
+      .event-grid {
         grid-template-columns: 1fr;
       }
 
@@ -801,7 +747,8 @@
       .fade-in,
       .btn,
       .category-card,
-      .nav-wrap {
+      .nav-wrap,
+      .event-link {
         transition: none;
       }
     }
@@ -840,7 +787,7 @@
         <div class="eyebrow">Booking</div>
         <h1>Book Crêpe de la Crepe</h1>
         <p>
-          Vi tilbyr fersklagede crêpes til festivaler, firmaarrangementer, private arrangementer, catering, markeder og spesielle anledninger. Et konsept som kombinerer kvalitet, effektiv servering og en opplevelse folk husker.
+          Vi tilbyr fersklagede crêpes til festivaler, firmaarrangementer og private arrangementer. Et konsept som kombinerer kvalitet, effektiv servering og en opplevelse folk husker.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#booking-categories">Book oss</a>
@@ -856,20 +803,20 @@
         <div class="intro-grid">
           <div class="card intro-copy">
             <div class="section-head" style="margin-bottom: 0;">
-              <h2>For arrangementer som vil tilby noe mer enn standard catering</h2>
+              <h2>Crêpes laget på stedet, tilpasset arrangementet ditt</h2>
             </div>
             <p>
-              Crêpe de la Crêpe leverer ferske crêpes laget på stedet, enten det er snakk om store festivaler, bedriftsarrangementer eller private feiringer. Vi legger vekt på kvalitet, effektiv servering og en helhet som passer inn i profesjonelle arrangementer.
+              Crêpe de la Crêpe leverer ferske crêpes laget på stedet til festivaler, firmaarrangementer og private arrangementer. Vi tilpasser oppsettet etter arrangementets format og legger vekt på kvalitet, effektiv servering og en helhetlig opplevelse.
             </p>
             <p>
-              Praktiske detaljer avtales nærmere ved booking. Målet med denne siden er enkelt: å vise hvem vi er, hvor vi har vært, og gjøre det lett å ta kontakt.
+              Målet med denne siden er å gjøre det enkelt å se hva vi tilbyr og ta kontakt for booking.
             </p>
           </div>
 
           <div class="card intro-stat">
-            <h3>Fra store festivaler til mindre private arrangementer</h3>
+            <h3>Festivaler, firmaarrangementer og private arrangementer</h3>
             <p>
-              Vi tar oppdrag i flere formater og tilpasser oss ulike typer arrangementer. Enten det er høyt volum over flere timer eller en mer intim setting, skal opplevelsen føles ryddig, smakfull og profesjonell.
+              Vi tar oppdrag i ulike formater og tilpasser oss både publikumsarrangementer, bedriftsevents og private feiringer som bryllup, bursdager og jubileer.
             </p>
             <a class="btn btn-primary" href="#booking-form">Start bookingforespørsel</a>
           </div>
@@ -882,45 +829,27 @@
         <div class="section-head">
           <h2>Book oss til</h2>
           <p>
-            Velg det som passer best. Når du trykker på en kategori, blir den valgt i skjemaet lenger ned på siden.
+            Velg kategorien som passer best for arrangementet ditt. Dette oppdaterer skjemaet lenger ned på siden.
           </p>
         </div>
 
         <div class="category-grid">
-          <button class="category-card booking-option active" type="button" data-type="Festivaler">
+          <button class="category-card booking-option" type="button" data-type="Festivaler">
             <div class="category-chip">Bookingtype</div>
             <h3>Festivaler</h3>
-            <p>For store publikumsarrangementer med høy trafikk og tydelig matprofil.</p>
+            <p>For publikumsarrangementer med høy trafikk, tydelig stemning og behov for effektiv servering.</p>
           </button>
 
           <button class="category-card booking-option" type="button" data-type="Firmaarrangementer">
             <div class="category-chip">Bookingtype</div>
             <h3>Firmaarrangementer</h3>
-            <p>For bedrifter, lanseringer, samlinger og events som trenger noe mer minneverdig enn standard servering.</p>
+            <p>For bedrifter, lanseringer, samlinger og events som ønsker en servering folk faktisk husker.</p>
           </button>
 
           <button class="category-card booking-option" type="button" data-type="Private arrangementer">
             <div class="category-chip">Bookingtype</div>
             <h3>Private arrangementer</h3>
-            <p>For bursdager, feiringer og andre private opplevelser hvor maten også skal være en del av stemningen.</p>
-          </button>
-
-          <button class="category-card booking-option" type="button" data-type="Catering">
-            <div class="category-chip">Bookingtype</div>
-            <h3>Catering</h3>
-            <p>For oppdrag der du ønsker Crêpe de la Crêpe som en del av et planlagt serveringsopplegg.</p>
-          </button>
-
-          <button class="category-card booking-option" type="button" data-type="Markeder">
-            <div class="category-chip">Bookingtype</div>
-            <h3>Markeder</h3>
-            <p>For konseptdrevne markeder og byarrangementer som ønsker et tilbud folk faktisk stopper opp for.</p>
-          </button>
-
-          <button class="category-card booking-option" type="button" data-type="Spesielle anledninger">
-            <div class="category-chip">Bookingtype</div>
-            <h3>Spesielle anledninger</h3>
-            <p>For alt som ikke passer perfekt i en standard boks, men fortsatt fortjener en ordentlig matopplevelse.</p>
+            <p>For bryllup, bursdager, jubileer og andre feiringer hvor maten også skal være en del av opplevelsen.</p>
           </button>
         </div>
       </div>
@@ -928,70 +857,18 @@
 
     <section class="fade-in">
       <div class="container">
-        <div class="event-layout">
-          <div class="card event-block">
-            <div class="section-head" style="margin-bottom: 0;">
-              <h2>Store arrangementer vi har vært en del av</h2>
-              <p>Dette er de tydeligste troverdighetsmarkørene deres. Bra at de får egen plass.</p>
-            </div>
-
-            <div class="event-grid">
-              <div class="event-card">Jul i Vinterland</div>
-              <div class="event-card">Slottsfjell</div>
-              <div class="event-card">Stavernfestivalen</div>
-              <div class="event-card">Gladmat</div>
-              <div class="event-card">Idyll</div>
-            </div>
+        <div class="card event-block">
+          <div class="section-head" style="margin-bottom: 0;">
+            <h2>Arrangementer vi har vært en del av</h2>
+            <p>Her er et utvalg arrangementer og samarbeid vi har levert til.</p>
           </div>
 
-          <div class="card event-block">
-            <div class="section-head" style="margin-bottom: 0;">
-              <h2>Mindre arrangementer</h2>
-              <p>Her viser du at dere også tar private og mindre oppdrag, uten å gjøre det til hovedfokuset.</p>
-            </div>
-
-            <div class="small-event-row">
-              <div class="small-event-pill">Private events</div>
-              <div class="small-event-pill">Bursdager</div>
-              <div class="small-event-pill">Mindre feiringer</div>
-              <div class="small-event-pill">Lokale arrangementer</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="fade-in">
-      <div class="container">
-        <div class="card">
-          <div class="section-head">
-            <h2>Samarbeidspartnere</h2>
-            <p>
-              Her holder vi det rent og profesjonelt. Når du har ekte logoer, bytter vi ut plassholderne under.
-            </p>
-          </div>
-
-          <div class="partner-grid">
-            <div class="partner-card">
-              <div class="partner-logo">Logo</div>
-              <span>Jul i Vinterland</span>
-            </div>
-            <div class="partner-card">
-              <div class="partner-logo">Logo</div>
-              <span>Slottsfjell</span>
-            </div>
-            <div class="partner-card">
-              <div class="partner-logo">Logo</div>
-              <span>Stavernfestivalen</span>
-            </div>
-            <div class="partner-card">
-              <div class="partner-logo">Logo</div>
-              <span>Gladmat</span>
-            </div>
-            <div class="partner-card">
-              <div class="partner-logo">Logo</div>
-              <span>Idyll</span>
-            </div>
+          <div class="event-grid">
+            <a class="event-card event-link" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">Jul i Vinterland</a>
+            <a class="event-card event-link" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">Slottsfjell</a>
+            <a class="event-card event-link" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">Stavernfestivalen</a>
+            <a class="event-card event-link" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">Gladmat</a>
+            <a class="event-card event-link" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">Idyll</a>
           </div>
         </div>
       </div>
@@ -1026,7 +903,7 @@
             </p>
           </div>
 
-          <div class="selected-type" id="selectedTypeLabel">Valgt kategori: Festivaler</div>
+          <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
 
           <form class="form-grid" action="https://formsubmit.co/Crepedelacrepes@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Ny bookingforespørsel - Crepe de la Crepe">
@@ -1057,12 +934,10 @@
             <div class="field">
               <label for="type">Type arrangement</label>
               <select id="type" name="Type arrangement" required>
-                <option value="Festivaler" selected>Festivaler</option>
+                <option value="" selected disabled>Velg kategori</option>
+                <option value="Festivaler">Festivaler</option>
                 <option value="Firmaarrangementer">Firmaarrangementer</option>
                 <option value="Private arrangementer">Private arrangementer</option>
-                <option value="Catering">Catering</option>
-                <option value="Markeder">Markeder</option>
-                <option value="Spesielle anledninger">Spesielle anledninger</option>
               </select>
             </div>
 
@@ -1090,10 +965,6 @@
               <button class="btn btn-primary" type="submit">Send bookingforespørsel</button>
             </div>
           </form>
-
-          <p class="form-note">
-            Praktiske detaljer som oppsett, plassbehov og tekniske behov avtales nærmere ved kontakt.
-          </p>
         </div>
       </div>
     </section>
@@ -1192,10 +1063,7 @@
     const typeSelect = document.getElementById('type');
     const selectedTypeLabel = document.getElementById('selectedTypeLabel');
 
-    function setBookingType(type) {
-      typeSelect.value = type;
-      selectedTypeLabel.textContent = 'Valgt kategori: ' + type;
-
+    function updateBookingUI(type) {
       bookingButtons.forEach((button) => {
         if (button.dataset.type === type) {
           button.classList.add('active');
@@ -1203,6 +1071,19 @@
           button.classList.remove('active');
         }
       });
+
+      if (type) {
+        selectedTypeLabel.hidden = false;
+        selectedTypeLabel.textContent = 'Valgt kategori: ' + type;
+      } else {
+        selectedTypeLabel.hidden = true;
+        selectedTypeLabel.textContent = 'Valgt kategori: ';
+      }
+    }
+
+    function setBookingType(type) {
+      typeSelect.value = type;
+      updateBookingUI(type);
 
       document.getElementById('booking-form').scrollIntoView({
         behavior: 'smooth',
@@ -1217,16 +1098,10 @@
     });
 
     typeSelect.addEventListener('change', () => {
-      selectedTypeLabel.textContent = 'Valgt kategori: ' + typeSelect.value;
-
-      bookingButtons.forEach((button) => {
-        if (button.dataset.type === typeSelect.value) {
-          button.classList.add('active');
-        } else {
-          button.classList.remove('active');
-        }
-      });
+      updateBookingUI(typeSelect.value);
     });
+
+    updateBookingUI(typeSelect.value);
   </script>
 </body>
 </html>
