@@ -28,6 +28,8 @@
       --accent: #cd9a62;
       --accent-2: #925f43;
       --accent-3: #f3ddc2;
+      --foodora: #ff2b85;
+      --foodora-dark: #e31c72;
       --max: 1240px;
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.12);
@@ -122,6 +124,18 @@
       border-color: rgba(255, 250, 245, 0.42);
     }
 
+    .btn-foodora {
+      background: linear-gradient(135deg, var(--foodora), var(--foodora-dark));
+      color: white;
+      box-shadow: 0 16px 34px rgba(255, 43, 133, 0.22);
+    }
+
+    .btn-foodora:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 18px 38px rgba(255, 43, 133, 0.28);
+    }
+
     .nav-wrap {
       position: fixed;
       top: 0;
@@ -149,8 +163,44 @@
       position: relative;
     }
 
-    .nav-spacer {
-      min-height: 1px;
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,247,239,0.90);
+    }
+
+    .nav-group.left {
+      justify-self: start;
+    }
+
+    .nav-group.right {
+      justify-self: end;
+    }
+
+    .nav-wrap.scrolled .nav-group {
+      color: #705b4e;
+    }
+
+    .nav-group a {
+      position: relative;
+    }
+
+    .nav-group a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-group a:hover::after {
+      width: 100%;
     }
 
     .brand {
@@ -217,39 +267,6 @@
 
     .nav-wrap.scrolled .brand-subtitle {
       color: #866b5d;
-    }
-
-    .nav-links {
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      color: rgba(255,247,239,0.90);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .nav-wrap.scrolled .nav-links {
-      color: #705b4e;
-    }
-
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
     }
 
     .hero {
@@ -333,6 +350,7 @@
       align-items: end;
       gap: 20px;
       margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
     .section-head h2,
@@ -539,7 +557,6 @@
       font-size: 46px;
       line-height: 0.95;
       font-weight: 400;
-      letter-spacing: 0;
       text-shadow: 0 6px 22px rgba(0,0,0,0.24);
     }
 
@@ -550,6 +567,19 @@
     .menu-wrap {
       display: grid;
       gap: 28px;
+    }
+
+    .menu-header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .foodora-note {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .menu-group {
@@ -1000,17 +1030,15 @@
         padding: 14px 0;
       }
 
-      .nav-spacer {
-        display: none;
-      }
-
       .brand {
         justify-self: center;
       }
 
-      .nav-links {
+      .nav-group.left,
+      .nav-group.right {
         justify-self: center;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 18px;
       }
 
@@ -1141,7 +1169,11 @@
   <div class="nav-wrap" id="navWrap">
     <div class="container">
       <nav>
-        <div class="nav-spacer"></div>
+        <div class="nav-group left">
+          <a href="#om-oss">Om oss</a>
+          <a href="#menu">Meny</a>
+          <a href="./book-oss.html">Book oss</a>
+        </div>
 
         <a href="#top" class="brand">
           <div class="brand-logo-wrap">
@@ -1153,10 +1185,7 @@
           </div>
         </a>
 
-        <div class="nav-links">
-          <a href="#om-oss">Om oss</a>
-          <a href="#menu">Meny</a>
-          <a href="book-oss.html">Book oss</a>
+        <div class="nav-group right">
           <a href="#lokasjon">Lokasjon</a>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -1172,7 +1201,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#menu">Se menyen</a>
-            <a class="btn btn-secondary" href="book-oss.html">Book oss</a>
+            <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
           </div>
 
           <div class="hero-note">
@@ -1186,7 +1215,7 @@
       <div class="container">
         <div class="intro-card">
           <div class="intro-left">
-            <div class="eyebrow">Om oss</div>
+            <div class="eyebrow">Crepe de la Crepe</div>
             <div class="script-title">Om oss</div>
 
             <div class="intro-copy">
@@ -1222,6 +1251,18 @@
         <div class="section-head">
           <div>
             <h2>Meny</h2>
+          </div>
+
+          <div class="menu-header-right">
+            <div class="foodora-note">Bestill direkte fra Storo</div>
+            <a
+              class="btn btn-foodora"
+              href="https://www.foodora.no/restaurant/storo/crepe-de-la-crepe"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bestill i Foodora
+            </a>
           </div>
         </div>
 
@@ -1442,7 +1483,7 @@
             <div class="footer-links">
               <a href="#om-oss">Om oss</a>
               <a href="#menu">Meny</a>
-              <a href="book-oss.html">Book oss</a>
+              <a href="./book-oss.html">Book oss</a>
               <a href="#lokasjon">Lokasjon</a>
               <a href="#kontakt">Kontakt</a>
             </div>
@@ -1458,7 +1499,7 @@
 
             <div class="footer-actions">
               <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-              <a class="btn btn-secondary" href="book-oss.html">Book oss</a>
+              <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
               <a
                 class="btn btn-secondary"
                 href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
