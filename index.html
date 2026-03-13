@@ -126,14 +126,14 @@
 
     .btn-foodora {
       background: linear-gradient(135deg, var(--foodora), var(--foodora-dark));
-      color: white;
-      box-shadow: 0 16px 34px rgba(255, 43, 133, 0.22);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(255, 43, 133, 0.24);
     }
 
     .btn-foodora:hover {
       transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(255, 43, 133, 0.30);
       filter: brightness(1.04);
-      box-shadow: 0 18px 38px rgba(255, 43, 133, 0.28);
     }
 
     .nav-wrap {
@@ -572,14 +572,23 @@
     .menu-header-right {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .foodora-note {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
+    .menu-hint {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(205,154,98,0.10);
+      border: 1px solid rgba(205,154,98,0.18);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
     .menu-group {
@@ -915,29 +924,28 @@
       background: rgba(34, 20, 14, 0.88);
     }
 
-    footer {
-      padding: 28px 0 42px;
+    .footer {
+      padding: 30px 0 42px;
       border-top: 1px solid var(--line);
-      color: #6f5b4e;
     }
 
     .footer-shell {
       background: linear-gradient(180deg, rgba(247,239,230,0.84), rgba(236,224,212,0.92));
       border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 28px;
+      border-radius: 34px;
+      padding: 34px;
       box-shadow: var(--shadow);
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr 1fr 0.9fr;
-      gap: 24px;
+      grid-template-columns: 1fr 0.8fr 1fr 0.85fr;
+      gap: 28px;
     }
 
     .footer-brand {
       display: grid;
-      gap: 14px;
+      gap: 18px;
       align-content: start;
     }
 
@@ -945,12 +953,12 @@
       justify-self: start;
     }
 
-    footer .brand-title {
+    .footer .brand-title {
       color: #2b1a14;
       text-shadow: none;
     }
 
-    footer .brand-subtitle {
+    .footer .brand-subtitle {
       color: #866b5d;
     }
 
@@ -980,25 +988,24 @@
     }
 
     .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+      max-width: 360px;
     }
 
-    .footer-actions .btn-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.44);
-      border-color: rgba(60, 35, 20, 0.12);
+    .footer-actions-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .footer-actions .btn-secondary:hover {
-      background: rgba(255,255,255,0.68);
-      border-color: rgba(60, 35, 20, 0.18);
+    .footer-actions-bottom {
+      display: grid;
     }
 
     .footer-mini {
-      margin-top: 24px;
+      margin-top: 28px;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       display: flex;
@@ -1055,6 +1062,12 @@
 
       .hero-content {
         padding: 136px 24px 180px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .footer-actions-top {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1146,6 +1159,10 @@
       .brand-subtitle {
         font-size: 10px;
         letter-spacing: 0.14em;
+      }
+
+      .menu-header-right {
+        justify-content: flex-start;
       }
     }
 
@@ -1254,10 +1271,10 @@
           </div>
 
           <div class="menu-header-right">
-            <div class="foodora-note">Bestill direkte fra Storo</div>
+            <div class="menu-hint">Trykk på en crêpe for bilde</div>
             <a
               class="btn btn-foodora"
-              href="https://www.foodora.no/restaurant/storo/crepe-de-la-crepe"
+              href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1462,7 +1479,7 @@
     </div>
   </div>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
       <div class="footer-shell">
         <div class="footer-grid">
@@ -1498,16 +1515,20 @@
             </div>
 
             <div class="footer-actions">
-              <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-              <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-              <a
-                class="btn btn-secondary"
-                href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Åpne i kart
-              </a>
+              <div class="footer-actions-top">
+                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
+                <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
+              </div>
+              <div class="footer-actions-bottom">
+                <a
+                  class="btn btn-secondary"
+                  href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Åpne i kart
+                </a>
+              </div>
             </div>
           </div>
 
@@ -1518,18 +1539,18 @@
               <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
             </div>
 
-            <h4>Åpningstider</h4>
+            <h4>Booking</h4>
             <div class="footer-list">
-              <div>Mandag–Fredag: 10:00–21:00</div>
-              <div>Lørdag: 10:00–20:00</div>
-              <div>Søndag: Stengt</div>
+              <div>Festivaler</div>
+              <div>Firmaarrangementer</div>
+              <div>Private arrangementer</div>
             </div>
           </div>
         </div>
 
         <div class="footer-mini">
           <div>© 2026 Crepe de la Crepe</div>
-          <div>Storo Storsenter · Oslo</div>
+          <div>Booking & arrangementer</div>
         </div>
       </div>
     </div>
