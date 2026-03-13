@@ -105,7 +105,7 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       border-color: rgba(66, 39, 23, 0.12);
       color: #2d1b15;
       box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
@@ -113,7 +113,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.96);
       border-color: rgba(66, 39, 23, 0.18);
     }
 
@@ -919,43 +919,56 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.8fr 1fr 0.85fr;
+      grid-template-columns: 0.9fr 0.8fr 1fr 0.85fr;
       gap: 28px;
+      align-items: start;
     }
 
     .footer-brand {
       display: grid;
       gap: 18px;
       align-content: start;
+      min-width: 0;
     }
 
     .footer-brand .brand {
       justify-self: start;
+      display: flex;
+      align-items: center;
       gap: 16px;
-      align-items: flex-start;
+      min-width: 0;
     }
 
     .footer .brand-logo-wrap {
-      width: 96px;
-      height: 96px;
-      border-radius: 28px;
+      width: 82px;
+      height: 82px;
+      border-radius: 24px;
       flex-shrink: 0;
+    }
+
+    .footer .brand-text {
+      min-width: 0;
+      max-width: 100%;
     }
 
     .footer .brand-title {
       color: #2b1a14;
       text-shadow: none;
-      font-size: 50px;
-      line-height: 0.88;
+      font-size: 30px;
+      line-height: 0.95;
       letter-spacing: -0.04em;
       white-space: nowrap;
     }
 
     .footer .brand-subtitle {
       color: #866b5d;
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 12px;
       letter-spacing: 0.16em;
+    }
+
+    .footer-block {
+      min-width: 0;
     }
 
     .footer-block h4 {
@@ -1001,14 +1014,14 @@
     }
 
     .footer .footer-actions .btn-secondary {
-      background: rgba(255,255,255,0.72);
-      border-color: rgba(66, 39, 23, 0.12);
+      background: rgba(255,255,255,0.90);
+      border: 1px solid rgba(66, 39, 23, 0.12);
       color: #2d1b15;
       box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
     }
 
     .footer .footer-actions .btn-secondary:hover {
-      background: rgba(255,255,255,0.90);
+      background: rgba(255,255,255,1);
       border-color: rgba(66, 39, 23, 0.18);
     }
 
@@ -1030,11 +1043,11 @@
       }
 
       .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
-      .footer .brand-title {
-        font-size: 40px;
+      .footer-brand {
+        grid-column: 1 / -1;
       }
     }
 
@@ -1073,13 +1086,17 @@
     }
 
     @media (max-width: 720px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
       .footer-actions-top {
         grid-template-columns: 1fr;
       }
 
       .footer .brand-title {
         white-space: normal;
-        font-size: 34px;
+        font-size: 28px;
       }
     }
 
@@ -1149,6 +1166,15 @@
       .brand-subtitle {
         font-size: 10px;
         letter-spacing: 0.14em;
+      }
+
+      .footer .brand-logo-wrap {
+        width: 72px;
+        height: 72px;
+      }
+
+      .footer .brand-title {
+        font-size: 26px;
       }
     }
 
