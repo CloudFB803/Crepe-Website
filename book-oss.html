@@ -28,6 +28,12 @@
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
       --shadow-soft: 0 14px 34px rgba(56, 33, 20, 0.08);
+      --success-bg: rgba(69, 122, 86, 0.10);
+      --success-text: #2f5a3c;
+      --success-line: rgba(69, 122, 86, 0.24);
+      --error-bg: rgba(160, 52, 52, 0.10);
+      --error-text: #842d2d;
+      --error-line: rgba(160, 52, 52, 0.22);
     }
 
     * {
@@ -105,6 +111,13 @@
     .btn-primary:hover {
       transform: translateY(-2px);
       filter: brightness(1.03);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
     }
 
     .btn-secondary {
@@ -707,6 +720,37 @@
       resize: vertical;
     }
 
+    .form-status {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .form-status.success {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-line);
+    }
+
+    .form-status.error {
+      background: var(--error-bg);
+      color: var(--error-text);
+      border: 1px solid var(--error-line);
+    }
+
+    .form-note {
+      margin: -2px 0 4px;
+      color: var(--muted-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .footer {
       padding: 30px 0 42px;
       border-top: 1px solid var(--line);
@@ -1104,36 +1148,34 @@
           </div>
 
           <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
+          <p class="form-note">Skjemaet sendes direkte til oss uten videresending til tredjepartsside.</p>
 
-          <form class="form-grid" action="https://formsubmit.co/Crepedelacrepes@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Ny bookingforespørsel - Crepe de la Crepe">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://crepe-website-3bkcprb2y-crepe-de-la-crepe.vercel.app/">
+          <div class="form-status" id="formStatus" aria-live="polite"></div>
 
+          <form class="form-grid" id="bookingRequestForm" novalidate>
             <div class="field">
               <label for="navn">Navn</label>
-              <input id="navn" name="Navn" type="text" required>
+              <input id="navn" name="navn" type="text" required>
             </div>
 
             <div class="field">
               <label for="firma">Firma / arrangør</label>
-              <input id="firma" name="Firma / arrangør" type="text">
+              <input id="firma" name="firma" type="text">
             </div>
 
             <div class="field">
               <label for="epost">E-post</label>
-              <input id="epost" name="E-post" type="email" required>
+              <input id="epost" name="epost" type="email" required>
             </div>
 
             <div class="field">
               <label for="telefon">Telefon</label>
-              <input id="telefon" name="Telefon" type="tel">
+              <input id="telefon" name="telefon" type="tel">
             </div>
 
             <div class="field">
               <label for="type">Type arrangement</label>
-              <select id="type" name="Type arrangement" required>
+              <select id="type" name="type" required>
                 <option value="" selected disabled>Velg kategori</option>
                 <option value="Festivaler">Festivaler</option>
                 <option value="Firmaarrangementer">Firmaarrangementer</option>
@@ -1143,26 +1185,26 @@
 
             <div class="field">
               <label for="dato">Dato</label>
-              <input id="dato" name="Dato" type="text" placeholder="f.eks. 14. juni 2026">
+              <input id="dato" name="dato" type="text" placeholder="f.eks. 14. juni 2026">
             </div>
 
             <div class="field">
               <label for="sted">Sted</label>
-              <input id="sted" name="Sted" type="text">
+              <input id="sted" name="sted" type="text">
             </div>
 
             <div class="field">
               <label for="gjester">Antall gjester / forventet besøk</label>
-              <input id="gjester" name="Antall gjester / forventet besøk" type="text">
+              <input id="gjester" name="gjester" type="text">
             </div>
 
             <div class="field full">
               <label for="melding">Melding</label>
-              <textarea id="melding" name="Melding" placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."></textarea>
+              <textarea id="melding" name="melding" placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."></textarea>
             </div>
 
             <div class="field full">
-              <button class="btn btn-primary" type="submit">Send bookingforespørsel</button>
+              <button class="btn btn-primary" id="submitButton" type="submit">Send bookingforespørsel</button>
             </div>
           </form>
         </div>
@@ -1262,6 +1304,9 @@
     const bookingButtons = document.querySelectorAll('.booking-option');
     const typeSelect = document.getElementById('type');
     const selectedTypeLabel = document.getElementById('selectedTypeLabel');
+    const bookingForm = document.getElementById('bookingRequestForm');
+    const submitButton = document.getElementById('submitButton');
+    const formStatus = document.getElementById('formStatus');
 
     function updateBookingUI(type) {
       bookingButtons.forEach((button) => {
@@ -1291,6 +1336,16 @@
       });
     }
 
+    function showStatus(message, type) {
+      formStatus.textContent = message;
+      formStatus.className = 'form-status show ' + type;
+    }
+
+    function clearStatus() {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+    }
+
     bookingButtons.forEach((button) => {
       button.addEventListener('click', () => {
         setBookingType(button.dataset.type);
@@ -1299,6 +1354,49 @@
 
     typeSelect.addEventListener('change', () => {
       updateBookingUI(typeSelect.value);
+    });
+
+    bookingForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sender...';
+
+      const formData = new FormData(bookingForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('/api/send-booking', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || 'Kunne ikke sende forespørselen.');
+        }
+
+        showStatus('Bookingforespørselen er sendt. Du videresendes nå.', 'success');
+
+        setTimeout(() => {
+          window.location.href = '/takk.html';
+        }, 700);
+      } catch (error) {
+        showStatus(error.message || 'Noe gikk galt. Prøv igjen.', 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send bookingforespørsel';
+      }
     });
 
     updateBookingUI(typeSelect.value);
