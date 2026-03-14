@@ -620,6 +620,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+      position: relative;
     }
 
     .field {
@@ -639,7 +640,8 @@
 
     .field input,
     .field select,
-    .field textarea {
+    .field textarea,
+    .date-toggle {
       width: 100%;
       border: 1px solid rgba(66, 39, 23, 0.12);
       background: rgba(255,255,255,0.76);
@@ -652,7 +654,8 @@
 
     .field input:focus,
     .field select:focus,
-    .field textarea:focus {
+    .field textarea:focus,
+    .date-toggle:focus {
       border-color: rgba(200,141,84,0.46);
       background: rgba(255,255,255,0.94);
       box-shadow: 0 0 0 4px rgba(200,141,84,0.10);
@@ -661,6 +664,92 @@
     .field textarea {
       min-height: 140px;
       resize: vertical;
+    }
+
+    .date-range-shell {
+      display: grid;
+      gap: 10px;
+    }
+
+    .date-toggle {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .date-toggle-text {
+      display: grid;
+      gap: 4px;
+    }
+
+    .date-toggle-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+
+    .date-toggle-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .date-toggle-arrow {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-2);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .date-range-shell.open .date-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    .date-panel {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid rgba(66, 39, 23, 0.10);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.46);
+    }
+
+    .date-range-shell.open .date-panel {
+      display: grid;
+    }
+
+    .date-mini-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+      margin-bottom: 8px;
+    }
+
+    .field-hint {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted-soft);
+    }
+
+    .honeypot-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
 
     .form-status {
@@ -806,7 +895,8 @@
       }
 
       .category-grid,
-      .form-grid {
+      .form-grid,
+      .date-panel {
         grid-template-columns: 1fr;
       }
 
@@ -869,7 +959,8 @@
       .btn,
       .category-card,
       .nav-wrap,
-      .reference-card {
+      .reference-card,
+      .date-toggle-arrow {
         transition: none;
       }
     }
@@ -1060,22 +1151,22 @@
           <form class="form-grid" id="bookingRequestForm" novalidate>
             <div class="field">
               <label for="navn">Navn</label>
-              <input id="navn" name="navn" type="text" required>
+              <input id="navn" name="navn" type="text" required maxlength="80" autocomplete="name">
             </div>
 
             <div class="field">
               <label for="firma">Firma / arrangør</label>
-              <input id="firma" name="firma" type="text">
+              <input id="firma" name="firma" type="text" maxlength="120" autocomplete="organization">
             </div>
 
             <div class="field">
               <label for="epost">E-post</label>
-              <input id="epost" name="epost" type="email" required>
+              <input id="epost" name="epost" type="email" required maxlength="150" autocomplete="email" inputmode="email">
             </div>
 
             <div class="field">
               <label for="telefon">Telefon</label>
-              <input id="telefon" name="telefon" type="tel">
+              <input id="telefon" name="telefon" type="tel" maxlength="30" autocomplete="tel" inputmode="tel">
             </div>
 
             <div class="field">
@@ -1088,24 +1179,62 @@
               </select>
             </div>
 
-            <div class="field">
-              <label for="dato">Dato</label>
-              <input id="dato" name="dato" type="text" placeholder="f.eks. 14. juni 2026">
+            <div class="field full">
+              <label for="dateToggle">Dato</label>
+              <div class="date-range-shell" id="dateRangeShell">
+                <button class="date-toggle" id="dateToggle" type="button" aria-expanded="false" aria-controls="datePanel">
+                  <span class="date-toggle-text">
+                    <span class="date-toggle-label">Velg dato</span>
+                    <span class="date-toggle-value" id="dateToggleValue">Fra og til</span>
+                  </span>
+                  <span class="date-toggle-arrow">⌄</span>
+                </button>
+
+                <div class="date-panel" id="datePanel">
+                  <div>
+                    <div class="date-mini-label">Fra</div>
+                    <input id="datoFra" type="date" autocomplete="off">
+                  </div>
+                  <div>
+                    <div class="date-mini-label">Til</div>
+                    <input id="datoTil" type="date" autocomplete="off">
+                  </div>
+                </div>
+
+                <p class="field-hint">Velg én dag eller et datointervall.</p>
+                <input id="dato" name="dato" type="hidden">
+              </div>
             </div>
 
             <div class="field">
               <label for="sted">Sted</label>
-              <input id="sted" name="sted" type="text">
+              <input id="sted" name="sted" type="text" maxlength="120" autocomplete="address-level2">
             </div>
 
             <div class="field">
               <label for="gjester">Antall gjester / forventet besøk</label>
-              <input id="gjester" name="gjester" type="text">
+              <input id="gjester" name="gjester" type="text" maxlength="40" inputmode="numeric">
             </div>
 
             <div class="field full">
               <label for="melding">Melding</label>
-              <textarea id="melding" name="melding" placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."></textarea>
+              <textarea
+                id="melding"
+                name="melding"
+                maxlength="2000"
+                placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."
+              ></textarea>
+            </div>
+
+            <div class="honeypot-field" aria-hidden="true">
+              <label for="website">Ikke fyll ut dette feltet</label>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              >
             </div>
 
             <div class="field full">
@@ -1225,6 +1354,13 @@
     const submitButton = document.getElementById('submitButton');
     const formStatus = document.getElementById('formStatus');
 
+    const dateRangeShell = document.getElementById('dateRangeShell');
+    const dateToggle = document.getElementById('dateToggle');
+    const dateToggleValue = document.getElementById('dateToggleValue');
+    const datoFra = document.getElementById('datoFra');
+    const datoTil = document.getElementById('datoTil');
+    const datoHidden = document.getElementById('dato');
+
     function updateBookingUI(type) {
       bookingButtons.forEach((button) => {
         if (button.dataset.type === type) {
@@ -1263,6 +1399,60 @@
       formStatus.className = 'form-status';
     }
 
+    function formatDateForDisplay(value) {
+      if (!value) return '';
+      const [year, month, day] = value.split('-');
+      if (!year || !month || !day) return value;
+      return `${day}.${month}.${year}`;
+    }
+
+    function syncDateRange() {
+      const fromValue = datoFra.value;
+      const toValue = datoTil.value;
+
+      if (fromValue && toValue && toValue < fromValue) {
+        datoTil.setCustomValidity('Til-dato kan ikke være før fra-dato.');
+      } else {
+        datoTil.setCustomValidity('');
+      }
+
+      if (!fromValue && !toValue) {
+        datoHidden.value = '';
+        dateToggleValue.textContent = 'Fra og til';
+        return;
+      }
+
+      if (fromValue && !toValue) {
+        datoHidden.value = '';
+        dateToggleValue.textContent = `Fra ${formatDateForDisplay(fromValue)}`;
+        return;
+      }
+
+      if (!fromValue && toValue) {
+        datoHidden.value = '';
+        dateToggleValue.textContent = `Til ${formatDateForDisplay(toValue)}`;
+        return;
+      }
+
+      if (fromValue === toValue) {
+        datoHidden.value = fromValue;
+        dateToggleValue.textContent = formatDateForDisplay(fromValue);
+        return;
+      }
+
+      datoHidden.value = `${fromValue} - ${toValue}`;
+      dateToggleValue.textContent = `${formatDateForDisplay(fromValue)} – ${formatDateForDisplay(toValue)}`;
+    }
+
+    function toggleDatePanel(forceOpen) {
+      const shouldOpen = typeof forceOpen === 'boolean'
+        ? forceOpen
+        : !dateRangeShell.classList.contains('open');
+
+      dateRangeShell.classList.toggle('open', shouldOpen);
+      dateToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    }
+
     bookingButtons.forEach((button) => {
       button.addEventListener('click', () => {
         setBookingType(button.dataset.type);
@@ -1273,9 +1463,40 @@
       updateBookingUI(typeSelect.value);
     });
 
+    dateToggle.addEventListener('click', () => {
+      toggleDatePanel();
+    });
+
+    datoFra.addEventListener('input', () => {
+      syncDateRange();
+      if (datoFra.value) {
+        toggleDatePanel(true);
+      }
+    });
+
+    datoTil.addEventListener('input', () => {
+      syncDateRange();
+      if (datoTil.value) {
+        toggleDatePanel(true);
+      }
+    });
+
     bookingForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       clearStatus();
+      syncDateRange();
+
+      if ((datoFra.value && !datoTil.value) || (!datoFra.value && datoTil.value)) {
+        showStatus('Velg både fra-dato og til-dato, eller la begge stå tomme.', 'error');
+        toggleDatePanel(true);
+        return;
+      }
+
+      if (datoFra.value && datoTil.value && datoTil.value < datoFra.value) {
+        showStatus('Til-dato kan ikke være før fra-dato.', 'error');
+        toggleDatePanel(true);
+        return;
+      }
 
       if (!bookingForm.checkValidity()) {
         bookingForm.reportValidity();
@@ -1316,6 +1537,7 @@
       }
     });
 
+    syncDateRange();
     updateBookingUI(typeSelect.value);
   </script>
 </body>
