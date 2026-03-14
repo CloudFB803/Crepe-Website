@@ -29,34 +29,93 @@ function normalizeHeaderValue(value = "") {
     .trim();
 }
 
+function clamp(value, maxLength) {
+  return normalizeText(value).slice(0, maxLength);
+}
+
 function isValidEmail(email = "") {
   const normalized = String(email).trim().toLowerCase();
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized) && normalized.length <= 150;
 }
 
+function isValidName(name = "") {
+  const trimmed = String(name).trim();
+
+  if (trimmed.length < 2 || trimmed.length > 80) return false;
+  if (/\d/.test(trimmed)) return false;
+  if (/([a-zA-ZæøåÆØÅ])\1{3,}/.test(trimmed)) return false;
+
+  const lettersOnly = trimmed.replace(/[^A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]/g, "");
+  const letterCount = lettersOnly.replace(/[\s'’\-]/g, "").length;
+
+  if (letterCount < 2) return false;
+  if (!/^[A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]+$/.test(trimmed)) return false;
+
+  return true;
+}
+
 function isValidPhone(phone = "") {
   if (!phone) return true;
-  return /^[0-9+()\-\s]{5,30}$/.test(phone);
+  return /^\+\d{6,17}$/.test(phone);
+}
+
+function isValidGuests(value = "") {
+  if (!value) return true;
+  return /^\d{1,6}$/.test(value);
 }
 
 function isValidDateInput(value = "") {
   if (!value) return true;
-  return /^[0-9.\-\/\s]{4,40}$/.test(value);
-}
 
-function clampAndNormalize(value, maxLength) {
-  return normalizeText(value).slice(0, maxLength);
+  const singleDatePattern = /^\d{4}-\d{2}-\d{2}$/;
+  const rangePattern = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
+
+  if (singleDatePattern.test(value)) return true;
+
+  const rangeMatch = value.match(rangePattern);
+  if (!rangeMatch) return false;
+
+  const from = rangeMatch[1];
+  const to = rangeMatch[2];
+
+  return to >= from;
 }
 
 function getAllowedTypes() {
   return [
     "Festivaler",
     "Firmaarrangementer",
-    "Private arrangementer",
-    "Festival",
-    "Firmaarrangement",
-    "Privat arrangement"
+    "Private arrangementer"
   ];
+}
+
+function looksLikeSpamMessage(message = "") {
+  if (!message) return false;
+
+  const text = message.toLowerCase().trim();
+  if (!text) return false;
+
+  if (text.length > 1200) return true;
+  if (/https?:\/\/|www\./i.test(text)) return true;
+  if (/([a-z])\1{5,}/i.test(text)) return true;
+  if (/\b(?:test|asdf|qwerty|awd|awdawd|jaf+ia?|heiheihei)\b/i.test(text)) return true;
+
+  const repeatedChunkPattern = /(.{12,40}?)\1{2,}/i;
+  if (repeatedChunkPattern.test(text.replace(/\s+/g, " "))) return true;
+
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return false;
+
+  const longWord = words.some((word) => word.length > 35);
+  if (longWord) return true;
+
+  if (words.length >= 20) {
+    const uniqueWords = new Set(words).size;
+    const uniqueRatio = uniqueWords / words.length;
+    if (uniqueRatio < 0.35) return true;
+  }
+
+  return false;
 }
 
 export default {
@@ -66,6 +125,11 @@ export default {
     }
 
     try {
+      const contentLength = Number(request.headers.get("content-length") || "0");
+      if (contentLength > 20000) {
+        return jsonResponse({ ok: false, error: "Forespørselen er for stor." }, 413);
+      }
+
       const contentType = request.headers.get("content-type") || "";
       const origin = request.headers.get("origin") || "";
       const host = request.headers.get("host") || "";
@@ -98,20 +162,20 @@ export default {
         data = Object.fromEntries(formData.entries());
       }
 
-      const honeypot = clampAndNormalize(data.website || data.companyWebsite || "", 200);
+      const honeypot = clamp(data.website || data.companyWebsite || "", 200);
       if (honeypot) {
         return jsonResponse({ ok: true });
       }
 
-      const navn = clampAndNormalize(data.navn || "", 80);
-      const firma = clampAndNormalize(data.firma || "", 120);
-      const epost = clampAndNormalize(data.epost || "", 150).toLowerCase();
-      const telefon = clampAndNormalize(data.telefon || "", 30);
-      const type = clampAndNormalize(data.type || "", 60);
-      const dato = clampAndNormalize(data.dato || "", 40);
-      const sted = clampAndNormalize(data.sted || "", 120);
-      const gjester = clampAndNormalize(data.gjester || "", 40);
-      const melding = clampAndNormalize(data.melding || "", 2000);
+      const navn = clamp(data.navn || "", 80);
+      const firma = clamp(data.firma || "", 120);
+      const epost = clamp(data.epost || "", 150).toLowerCase();
+      const telefon = clamp(data.telefon || "", 30);
+      const type = clamp(data.type || "", 60);
+      const dato = clamp(data.dato || "", 60);
+      const sted = clamp(data.sted || "", 120);
+      const gjester = clamp(data.gjester || "", 6);
+      const melding = clamp(data.melding || "", 1200);
 
       if (!navn || !epost || !type) {
         return jsonResponse({
@@ -120,10 +184,10 @@ export default {
         }, 400);
       }
 
-      if (navn.length < 2) {
+      if (!isValidName(navn)) {
         return jsonResponse({
           ok: false,
-          error: "Navn er for kort."
+          error: "Ugyldig navn."
         }, 400);
       }
 
@@ -141,6 +205,13 @@ export default {
         }, 400);
       }
 
+      if (!isValidGuests(gjester)) {
+        return jsonResponse({
+          ok: false,
+          error: "Antall gjester må være et tall."
+        }, 400);
+      }
+
       if (!isValidDateInput(dato)) {
         return jsonResponse({
           ok: false,
@@ -153,6 +224,20 @@ export default {
         return jsonResponse({
           ok: false,
           error: "Ugyldig arrangementstype."
+        }, 400);
+      }
+
+      if (melding && melding.length < 12) {
+        return jsonResponse({
+          ok: false,
+          error: "Meldingen er for kort."
+        }, 400);
+      }
+
+      if (looksLikeSpamMessage(melding)) {
+        return jsonResponse({
+          ok: false,
+          error: "Meldingen ser ugyldig ut. Skriv litt mer konkret om arrangementet."
         }, 400);
       }
 
