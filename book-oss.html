@@ -15,19 +15,26 @@
 
   <style>
     :root {
-      --bg: #ece0d3;
-      --surface: rgba(255, 249, 243, 0.92);
-      --surface-strong: rgba(255, 252, 248, 0.97);
-      --text: #241711;
-      --muted: #695548;
-      --muted-soft: #8a7261;
-      --line: rgba(66, 39, 23, 0.10);
-      --accent: #c88d54;
-      --accent-2: #7d5139;
-      --max: 1240px;
-      --radius: 30px;
-      --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
-      --shadow-soft: 0 14px 34px rgba(56, 33, 20, 0.08);
+      --bg: #e8dacd;
+      --bg-2: #f2e8de;
+      --surface: rgba(255, 249, 243, 0.84);
+      --surface-strong: rgba(255, 252, 248, 0.96);
+      --surface-dark: #2a1a14;
+      --text: #231610;
+      --muted: #6c584c;
+      --muted-soft: #917b6d;
+      --line: rgba(58, 33, 21, 0.11);
+      --line-strong: rgba(58, 33, 21, 0.18);
+      --accent: #c78951;
+      --accent-2: #7d4f37;
+      --accent-3: #9e6a47;
+      --max: 1260px;
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+      --radius-sm: 16px;
+      --shadow: 0 22px 54px rgba(45, 24, 14, 0.10);
+      --shadow-soft: 0 14px 30px rgba(45, 24, 14, 0.07);
       --success-bg: rgba(69, 122, 86, 0.10);
       --success-text: #2f5a3c;
       --success-line: rgba(69, 122, 86, 0.24);
@@ -50,9 +57,9 @@
       color: var(--text);
       line-height: 1.55;
       background:
-        radial-gradient(circle at top right, rgba(200, 141, 84, 0.10), transparent 20%),
-        radial-gradient(circle at 10% 14%, rgba(125, 81, 57, 0.08), transparent 18%),
-        linear-gradient(180deg, #efe4d8 0%, #e5d7ca 100%);
+        radial-gradient(circle at top right, rgba(199, 137, 81, 0.10), transparent 20%),
+        radial-gradient(circle at 8% 12%, rgba(125, 79, 55, 0.08), transparent 18%),
+        linear-gradient(180deg, #f0e3d7 0%, #e7d8cb 100%);
     }
 
     a {
@@ -70,6 +77,11 @@
     select,
     textarea {
       font: inherit;
+    }
+
+    button {
+      border: 0;
+      background: none;
     }
 
     .container {
@@ -92,7 +104,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
+      min-height: 54px;
       padding: 14px 24px;
       border-radius: 999px;
       border: 1px solid transparent;
@@ -105,7 +117,7 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #fffaf5;
-      box-shadow: 0 16px 34px rgba(125, 81, 57, 0.22);
+      box-shadow: 0 16px 34px rgba(125, 81, 57, 0.20);
     }
 
     .btn-primary:hover {
@@ -134,7 +146,7 @@
     .nav-wrap {
       position: fixed;
       inset: 0 0 auto 0;
-      z-index: 120;
+      z-index: 150;
       background: transparent;
       border-bottom: 1px solid transparent;
       transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
@@ -263,9 +275,9 @@
 
     .hero {
       position: relative;
-      min-height: 68vh;
+      min-height: 64vh;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       overflow: hidden;
     }
 
@@ -274,8 +286,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(20,13,10,0.72) 0%, rgba(20,13,10,0.52) 42%, rgba(20,13,10,0.36) 100%),
-        linear-gradient(to top, rgba(20,13,10,0.38), rgba(20,13,10,0.08)),
+        linear-gradient(92deg, rgba(18,12,10,0.76) 0%, rgba(18,12,10,0.56) 38%, rgba(18,12,10,0.30) 100%),
+        linear-gradient(to top, rgba(18,12,10,0.48), rgba(18,12,10,0.10)),
         url('hero-crepes.jpg') center center / cover;
       transform: scale(1.03);
     }
@@ -285,7 +297,7 @@
       z-index: 1;
       width: 100%;
       max-width: 760px;
-      padding: 146px 0 104px;
+      padding: 150px 0 92px;
       color: #fff8f1;
     }
 
@@ -304,27 +316,20 @@
     }
 
     .hero h1 {
-      margin: 18px 0 16px;
+      margin: 18px 0 14px;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(56px, 8vw, 92px);
-      line-height: 0.94;
+      line-height: 0.92;
       letter-spacing: -0.05em;
-      max-width: 7ch;
+      max-width: 6.5ch;
     }
 
     .hero p {
       margin: 0;
-      max-width: 680px;
+      max-width: 660px;
       color: rgba(255,248,241,0.88);
       font-size: 18px;
       line-height: 1.8;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
     }
 
     main {
@@ -333,41 +338,22 @@
     }
 
     section {
-      padding: 78px 0;
+      padding: 84px 0;
     }
 
     .section-head {
       display: grid;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
-    .section-head h2 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 4vw, 56px);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .booking-shell {
-      display: grid;
-      gap: 28px;
-    }
-
-    .booking-lead {
-      max-width: 760px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .booking-kicker {
+    .section-kicker {
       display: inline-flex;
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.18);
       color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
@@ -375,13 +361,25 @@
       text-transform: uppercase;
     }
 
-    .booking-lead h2 {
+    .section-head h2 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(48px, 6vw, 76px);
-      line-height: 0.94;
+      font-size: clamp(38px, 4vw, 60px);
+      line-height: 0.95;
       letter-spacing: -0.04em;
-      max-width: 9ch;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .booking-shell {
+      display: grid;
+      gap: 30px;
     }
 
     .category-grid {
@@ -403,7 +401,7 @@
       text-align: left;
       cursor: pointer;
       transition: 0.24s ease;
-      min-height: 268px;
+      min-height: 256px;
       overflow: hidden;
     }
 
@@ -412,15 +410,15 @@
       position: absolute;
       inset: 0 0 auto 0;
       height: 4px;
-      background: linear-gradient(135deg, rgba(200,141,84,0.78), rgba(125,81,57,0.88));
+      background: linear-gradient(135deg, rgba(199,137,81,0.78), rgba(125,79,55,0.90));
       opacity: 0;
       transition: opacity 0.24s ease;
     }
 
     .category-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(200,141,84,0.30);
-      box-shadow: 0 22px 40px rgba(125,81,57,0.10);
+      border-color: rgba(199,137,81,0.30);
+      box-shadow: 0 22px 40px rgba(125,79,55,0.10);
       background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
     }
 
@@ -430,8 +428,8 @@
     }
 
     .category-card.active {
-      border-color: rgba(200,141,84,0.46);
-      box-shadow: 0 24px 42px rgba(125,81,57,0.12);
+      border-color: rgba(199,137,81,0.46);
+      box-shadow: 0 24px 42px rgba(125,79,55,0.12);
       transform: translateY(-4px);
       background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(239,227,214,0.99));
     }
@@ -457,21 +455,21 @@
       width: fit-content;
       padding: 7px 11px;
       border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.18);
       color: var(--accent-2);
     }
 
     .category-card h3 {
       margin: 0;
-      font-size: 22px;
-      line-height: 1.15;
+      font-size: 24px;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       color: var(--text);
     }
 
     .category-card p {
-      margin: 0;
+      margin: 10px 0 0;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.8;
@@ -488,111 +486,311 @@
     .card {
       background: linear-gradient(180deg, rgba(252,246,240,0.94), rgba(244,233,223,0.96));
       border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 30px;
+      border-radius: var(--radius-xl);
+      padding: 32px;
       box-shadow: var(--shadow);
     }
 
-    .reference-shell {
+    .credibility-shell {
       display: grid;
-      gap: 20px;
+      gap: 24px;
     }
 
-    .reference-grid {
+    .credibility-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
     }
 
-    .reference-card {
-      min-height: 132px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,231,221,0.96));
-      border: 1px solid rgba(66, 39, 23, 0.10);
-      box-shadow: var(--shadow-soft);
+    .credibility-feature {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: 30px;
+      padding: 30px;
+      background:
+        linear-gradient(135deg, rgba(32,20,15,0.92), rgba(56,34,24,0.84)),
+        radial-gradient(circle at top right, rgba(199,137,81,0.16), transparent 30%);
+      color: #fff8f1;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 28px 60px rgba(36, 18, 11, 0.22);
+      display: grid;
+      align-content: space-between;
+      gap: 26px;
+    }
+
+    .credibility-feature::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,137,81,0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .credibility-top {
+      display: grid;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .credibility-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,248,241,0.88);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .credibility-feature h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+    }
+
+    .credibility-feature p {
+      margin: 0;
+      max-width: 640px;
+      color: rgba(255,248,241,0.80);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .credibility-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      border-radius: 22px;
       padding: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+      min-height: 116px;
       display: grid;
-      gap: 16px;
+      align-content: space-between;
+      gap: 12px;
+    }
+
+    .stat-value {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: #fff8f1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: rgba(255,248,241,0.74);
+    }
+
+    .credibility-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .credibility-rail {
+      display: grid;
+      gap: 18px;
+    }
+
+    .credibility-item {
+      min-height: 108px;
+      border-radius: 26px;
+      padding: 22px 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(242,232,222,0.98));
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 12px;
       align-content: space-between;
       transition: 0.22s ease;
     }
 
-    .reference-card:hover {
+    .credibility-item:hover {
       transform: translateY(-4px);
-      border-color: rgba(200,141,84,0.28);
+      border-color: rgba(199,137,81,0.24);
       background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
     }
 
-    .reference-top {
+    .credibility-item-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .reference-tag {
+    .credibility-item-tag {
       display: inline-flex;
       width: fit-content;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.74);
-      border: 1px solid rgba(66, 39, 23, 0.08);
-      color: var(--muted-soft);
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.16);
+      color: var(--accent-2);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .reference-arrow {
+    .credibility-item-arrow {
       width: 34px;
       height: 34px;
       border-radius: 999px;
       display: grid;
       place-items: center;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.16);
+      background: rgba(199,137,81,0.10);
+      border: 1px solid rgba(199,137,81,0.16);
       color: var(--accent-2);
       font-size: 16px;
       font-weight: 800;
       flex-shrink: 0;
     }
 
-    .reference-card h3 {
+    .credibility-item h3 {
       margin: 0;
-      font-size: 21px;
-      line-height: 1.2;
+      font-size: 23px;
+      line-height: 1.08;
       letter-spacing: -0.02em;
-      max-width: 11ch;
+    }
+
+    .credibility-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr 0.95fr;
       gap: 16px;
     }
 
     .gallery-box {
-      min-height: 220px;
-      border-radius: 26px;
+      min-height: 240px;
+      border-radius: 28px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.60), rgba(241,231,221,0.94));
+        linear-gradient(180deg, rgba(255,255,255,0.62), rgba(241,231,221,0.96));
       box-shadow: var(--shadow-soft);
-      padding: 22px;
+      padding: 24px;
       display: grid;
       align-content: end;
+      gap: 8px;
       color: var(--muted);
-      font-weight: 700;
     }
 
     .gallery-box.large {
-      min-height: 300px;
+      min-height: 320px;
+    }
+
+    .gallery-box h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .gallery-box p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .form-aside {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .aside-panel {
+      border-radius: 28px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.78), rgba(243,233,223,0.98));
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 16px;
+    }
+
+    .aside-panel h3 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .aside-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .aside-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .aside-list-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .aside-bullet {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.16);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 1px;
     }
 
     .form-shell {
       display: grid;
-      gap: 18px;
+      gap: 22px;
     }
 
     .selected-type {
@@ -600,155 +798,13 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.18);
       color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      position: relative;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-size: 14px;
-      font-weight: 700;
-      color: #3c2a20;
-    }
-
-    .field input,
-    .field select,
-    .field textarea,
-    .date-toggle {
-      width: 100%;
-      border: 1px solid rgba(66, 39, 23, 0.12);
-      background: rgba(255,255,255,0.76);
-      border-radius: 18px;
-      padding: 14px 16px;
-      color: var(--text);
-      outline: none;
-      transition: 0.2s ease;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus,
-    .date-toggle:focus {
-      border-color: rgba(200,141,84,0.46);
-      background: rgba(255,255,255,0.94);
-      box-shadow: 0 0 0 4px rgba(200,141,84,0.10);
-    }
-
-    .field textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .date-range-shell {
-      display: grid;
-      gap: 10px;
-    }
-
-    .date-toggle {
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .date-toggle-text {
-      display: grid;
-      gap: 4px;
-    }
-
-    .date-toggle-label {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted-soft);
-    }
-
-    .date-toggle-value {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .date-toggle-arrow {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--accent-2);
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .date-range-shell.open .date-toggle-arrow {
-      transform: rotate(180deg);
-    }
-
-    .date-panel {
-      display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      padding: 14px;
-      border: 1px solid rgba(66, 39, 23, 0.10);
-      border-radius: 22px;
-      background: rgba(255,255,255,0.46);
-    }
-
-    .date-range-shell.open .date-panel {
-      display: grid;
-    }
-
-    .date-mini-label {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted-soft);
-      margin-bottom: 8px;
-    }
-
-    .field-hint {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.5;
-      color: var(--muted-soft);
-    }
-
-    .phone-shell {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 12px;
-    }
-
-    .honeypot-field {
-      position: absolute;
-      left: -9999px;
-      opacity: 0;
-      pointer-events: none;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
     }
 
     .form-status {
@@ -775,8 +831,407 @@
       border: 1px solid var(--error-line);
     }
 
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+
+    .field {
+      display: grid;
+      gap: 9px;
+    }
+
+    .span-6 {
+      grid-column: span 6;
+    }
+
+    .span-12 {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #3c2a20;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(66, 39, 23, 0.12);
+      background: rgba(255,255,255,0.78);
+      border-radius: 18px;
+      padding: 15px 16px;
+      color: var(--text);
+      outline: none;
+      transition: 0.2s ease;
+      min-height: 56px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(199,137,81,0.46);
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 0 0 4px rgba(199,137,81,0.10);
+    }
+
+    .field textarea {
+      min-height: 158px;
+      resize: vertical;
+    }
+
+    .field-hint {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted-soft);
+    }
+
+    .phone-shell {
+      display: grid;
+      grid-template-columns: 195px 1fr;
+      gap: 12px;
+    }
+
+    .booking-balance-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1.18fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .booking-balance-row .field {
+      min-width: 0;
+    }
+
+    .date-field {
+      position: relative;
+    }
+
+    .date-trigger {
+      width: 100%;
+      min-height: 92px;
+      border-radius: 24px;
+      border: 1px solid rgba(66, 39, 23, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.82), rgba(245,237,228,0.98));
+      padding: 16px 18px;
+      display: grid;
+      gap: 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 22px rgba(44, 25, 15, 0.04);
+    }
+
+    .date-trigger:hover {
+      border-color: rgba(199,137,81,0.28);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(243,233,223,0.98));
+    }
+
+    .date-trigger:focus-visible,
+    .date-trigger.active {
+      border-color: rgba(199,137,81,0.46);
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 0 0 4px rgba(199,137,81,0.10);
+      outline: none;
+    }
+
+    .date-trigger-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .date-trigger-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted-soft);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .date-trigger-badge {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.16);
+      color: var(--accent-2);
+    }
+
+    .date-trigger-arrow {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(199,137,81,0.12);
+      border: 1px solid rgba(199,137,81,0.16);
+      color: var(--accent-2);
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .date-trigger.active .date-trigger-arrow {
+      transform: rotate(180deg);
+    }
+
+    .date-trigger-main {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .date-pill {
+      min-height: 42px;
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(66,39,23,0.08);
+      display: grid;
+      gap: 4px;
+    }
+
+    .date-pill-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+
+    .date-pill-value {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .date-trigger-divider {
+      color: var(--muted-soft);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .date-popover {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      width: min(760px, 100%);
+      z-index: 90;
+      border-radius: 30px;
+      border: 1px solid rgba(66,39,23,0.10);
+      background:
+        linear-gradient(180deg, rgba(255,252,248,0.98), rgba(245,236,227,0.98));
+      box-shadow: 0 30px 80px rgba(35, 18, 11, 0.16);
+      padding: 18px;
+      display: none;
+    }
+
+    .date-popover.open {
+      display: block;
+    }
+
+    .date-popover-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .calendar-panel {
+      border-radius: 24px;
+      border: 1px solid rgba(66,39,23,0.08);
+      background: rgba(255,255,255,0.60);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .calendar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .calendar-title-group {
+      display: grid;
+      gap: 2px;
+    }
+
+    .calendar-mini-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+
+    .calendar-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .calendar-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .calendar-nav button {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,39,23,0.08);
+      background: rgba(255,255,255,0.78);
+      color: var(--accent-2);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .calendar-nav button:hover {
+      background: rgba(255,255,255,0.95);
+      border-color: rgba(199,137,81,0.22);
+    }
+
+    .calendar-weekdays,
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .calendar-weekdays div {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+      padding: 4px 0;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.18s ease;
+      position: relative;
+    }
+
+    .calendar-day:hover {
+      background: rgba(199,137,81,0.10);
+      border-color: rgba(199,137,81,0.14);
+    }
+
+    .calendar-day.muted {
+      color: rgba(108,88,76,0.40);
+    }
+
+    .calendar-day.today {
+      border-color: rgba(199,137,81,0.24);
+    }
+
+    .calendar-day.selected {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fffaf5;
+      box-shadow: 0 10px 20px rgba(125,79,55,0.18);
+    }
+
+    .calendar-day.in-range {
+      background: rgba(199,137,81,0.12);
+      border-color: rgba(199,137,81,0.08);
+    }
+
+    .calendar-day.range-edge {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fffaf5;
+    }
+
+    .calendar-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(66,39,23,0.08);
+    }
+
+    .calendar-summary {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .calendar-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .calendar-link-btn {
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,39,23,0.10);
+      background: rgba(255,255,255,0.66);
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .calendar-link-btn:hover {
+      background: rgba(255,255,255,0.92);
+      border-color: rgba(199,137,81,0.20);
+    }
+
+    .honeypot-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
     .footer {
-      padding: 30px 0 42px;
+      padding: 28px 0 42px;
       border-top: 1px solid var(--line);
     }
 
@@ -868,12 +1323,22 @@
     }
 
     @media (max-width: 1180px) {
-      .reference-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
+      .credibility-grid,
+      .form-wrap,
       .gallery-grid,
       .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-aside {
+        position: static;
+      }
+
+      .date-popover {
+        width: 100%;
+      }
+
+      .date-popover-inner {
         grid-template-columns: 1fr;
       }
     }
@@ -893,9 +1358,24 @@
         gap: 18px;
       }
 
-      .category-grid,
-      .form-grid,
-      .date-panel {
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credibility-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .span-6,
+      .span-12 {
+        grid-column: 1 / -1;
+      }
+
+      .booking-balance-row {
         grid-template-columns: 1fr;
       }
 
@@ -903,8 +1383,12 @@
         grid-template-columns: 1fr;
       }
 
-      .category-card {
-        min-height: auto;
+      .date-trigger-main {
+        grid-template-columns: 1fr;
+      }
+
+      .date-trigger-divider {
+        display: none;
       }
     }
 
@@ -914,15 +1398,11 @@
       }
 
       .hero-content {
-        padding: 132px 0 90px;
+        padding: 136px 0 84px;
       }
 
       .hero h1 {
         font-size: clamp(48px, 13vw, 72px);
-      }
-
-      .reference-grid {
-        grid-template-columns: 1fr;
       }
 
       .card,
@@ -944,8 +1424,29 @@
         letter-spacing: 0.14em;
       }
 
-      .booking-lead h2 {
-        font-size: clamp(42px, 13vw, 62px);
+      .credibility-feature {
+        min-height: auto;
+        padding: 22px;
+      }
+
+      .credibility-item {
+        padding: 18px;
+      }
+
+      .calendar-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .calendar-cta {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .calendar-link-btn,
+      .calendar-cta .btn {
+        width: 100%;
+        justify-content: center;
       }
 
       .footer-actions-top {
@@ -962,8 +1463,10 @@
       .btn,
       .category-card,
       .nav-wrap,
-      .reference-card,
-      .date-toggle-arrow {
+      .credibility-item,
+      .date-trigger,
+      .calendar-day,
+      .calendar-nav button {
         transition: none;
       }
     }
@@ -1003,11 +1506,8 @@
         <div class="eyebrow">Booking</div>
         <h1>Book oss</h1>
         <p>
-          Crepe de la Crepe leverer fersklagde crêpes til festivaler, firmaarrangementer og private arrangementer — profesjonelt, effektivt og tilpasset anledningen.
+          Crêpes servert med tempo, kvalitet og et uttrykk som passer arrangementer med høy standard.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#booking-categories">Start booking</a>
-        </div>
       </div>
     </div>
   </header>
@@ -1016,9 +1516,12 @@
     <section id="booking-categories" class="fade-in">
       <div class="container">
         <div class="booking-shell">
-          <div class="booking-lead">
-            <div class="booking-kicker">Booking</div>
-            <h2>En servering som huskes</h2>
+          <div class="section-head">
+            <div class="section-kicker">Booking</div>
+            <h2>Et opplegg som ser like profesjonelt ut som det smaker</h2>
+            <p>
+              Velg arrangementstype først. Deretter fyller du inn forespørselen med dato, sted og behov.
+            </p>
           </div>
 
           <div class="category-grid">
@@ -1029,7 +1532,7 @@
               </div>
               <div>
                 <h3>Festivaler</h3>
-                <p>For arrangementer med høy trafikk og behov for rask, stabil og effektiv servering.</p>
+                <p>Bygget for høy trafikk, stabil gjennomføring og servering som tåler trykket.</p>
               </div>
               <div class="category-tag">Høy kapasitet</div>
             </button>
@@ -1041,9 +1544,9 @@
               </div>
               <div>
                 <h3>Firmaarrangementer</h3>
-                <p>For samlinger, lanseringer og events med et profesjonelt opplegg og tydelig servering.</p>
+                <p>For lanseringer, samlinger og events som krever ryddig presentasjon og profesjonell drift.</p>
               </div>
-              <div class="category-tag">Profesjonell servering</div>
+              <div class="category-tag">Stramt opplegg</div>
             </button>
 
             <button class="category-card booking-option" type="button" data-type="Private arrangementer">
@@ -1053,9 +1556,9 @@
               </div>
               <div>
                 <h3>Private arrangementer</h3>
-                <p>For bryllup, bursdager og feiringer der maten også skal være en del av opplevelsen.</p>
+                <p>For bryllup, bursdager og feiringer der serveringen også skal føles gjennomført.</p>
               </div>
-              <div class="category-tag">Fleksibelt opplegg</div>
+              <div class="category-tag">Fleksibel levering</div>
             </button>
           </div>
         </div>
@@ -1064,59 +1567,90 @@
 
     <section class="fade-in">
       <div class="container">
-        <div class="card reference-shell">
-          <div class="section-head" style="margin-bottom: 0;">
-            <h2>Arrangementer vi har vært en del av</h2>
+        <div class="credibility-shell">
+          <div class="credibility-grid">
+            <div class="credibility-feature">
+              <div class="credibility-top">
+                <div class="credibility-badge">Track record</div>
+                <h2>Noen av våre sterkeste stopp</h2>
+                <p>
+                  Vi ønsker ikke at denne delen skal se ut som fem tilfeldige kort. Derfor er den bygget som en tydelig
+                  credibility-seksjon: større tyngde, renere hierarki og mer autoritativ presentasjon.
+                </p>
+              </div>
+
+              <div class="credibility-stats">
+                <div class="stat-card">
+                  <div class="stat-value">5</div>
+                  <div class="stat-label">Store arrangementer og festivaler fremhevet her</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">Høy</div>
+                  <div class="stat-label">Kapasitet for trykk, kø og jevn servering</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">Sterk</div>
+                  <div class="stat-label">Passform for både publikumsrettede og private oppdrag</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="credibility-rail">
+              <a class="credibility-item" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
+                <div class="credibility-item-top">
+                  <span class="credibility-item-tag">Arrangement</span>
+                  <span class="credibility-item-arrow">↗</span>
+                </div>
+                <div>
+                  <h3>Jul i Vinterland</h3>
+                  <p>Stor publikumsstrøm, tydelig eksponering og et miljø der kvalitet må holde hele dagen.</p>
+                </div>
+              </a>
+
+              <a class="credibility-item" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
+                <div class="credibility-item-top">
+                  <span class="credibility-item-tag">Festival</span>
+                  <span class="credibility-item-arrow">↗</span>
+                </div>
+                <div>
+                  <h3>Slottsfjell</h3>
+                  <p>Et navn som gir tyngde. Krever tempo, driftssikkerhet og servering som tåler høyt volum.</p>
+                </div>
+              </a>
+
+              <a class="credibility-item" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
+                <div class="credibility-item-top">
+                  <span class="credibility-item-tag">Festival</span>
+                  <span class="credibility-item-arrow">↗</span>
+                </div>
+                <div>
+                  <h3>Stavernfestivalen</h3>
+                  <p>Et sterkt festivalnavn som viser at opplegget vårt fungerer i krevende, kommersielle settinger.</p>
+                </div>
+              </a>
+            </div>
           </div>
 
-          <div class="reference-grid">
-            <a class="reference-card" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-top">
-                <div class="reference-tag">Arrangement</div>
-                <div class="reference-arrow">↗</div>
-              </div>
-              <div>
-                <h3>Jul i Vinterland</h3>
-              </div>
-            </a>
-
-            <a class="reference-card" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-top">
-                <div class="reference-tag">Festival</div>
-                <div class="reference-arrow">↗</div>
-              </div>
-              <div>
-                <h3>Slottsfjell</h3>
-              </div>
-            </a>
-
-            <a class="reference-card" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-top">
-                <div class="reference-tag">Festival</div>
-                <div class="reference-arrow">↗</div>
-              </div>
-              <div>
-                <h3>Stavernfestivalen</h3>
-              </div>
-            </a>
-
-            <a class="reference-card" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-top">
-                <div class="reference-tag">Arrangement</div>
-                <div class="reference-arrow">↗</div>
+          <div class="credibility-list" style="grid-template-columns: repeat(2, 1fr); display: grid;">
+            <a class="credibility-item" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
+              <div class="credibility-item-top">
+                <span class="credibility-item-tag">Matfestival</span>
+                <span class="credibility-item-arrow">↗</span>
               </div>
               <div>
                 <h3>Gladmat</h3>
+                <p>Relevant for merkevaren. Publikum kommer for mat, og nivået blir målt deretter.</p>
               </div>
             </a>
 
-            <a class="reference-card" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="reference-top">
-                <div class="reference-tag">Festival</div>
-                <div class="reference-arrow">↗</div>
+            <a class="credibility-item" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
+              <div class="credibility-item-top">
+                <span class="credibility-item-tag">Festival</span>
+                <span class="credibility-item-arrow">↗</span>
               </div>
               <div>
                 <h3>Idyll</h3>
+                <p>Viser bredde i porteføljen og at konseptet fungerer i moderne publikumsdrevne arrangementer.</p>
               </div>
             </a>
           </div>
@@ -1128,13 +1662,26 @@
       <div class="container">
         <div class="card">
           <div class="section-head">
-            <h2>Bilder fra arrangementer</h2>
+            <div class="section-kicker">Visuelt</div>
+            <h2>Hvordan det kan se ut på plass</h2>
+            <p>
+              Denne delen blir mye sterkere når du bytter ut tekstflatene med ekte bilder fra events. Men layouten er nå satt opp mer premium enn før.
+            </p>
           </div>
 
           <div class="gallery-grid">
-            <div class="gallery-box large">Stort eventbilde / food truck / setup</div>
-            <div class="gallery-box">Servering / kø / stemning</div>
-            <div class="gallery-box">Crêpes i miljø / detaljbilde</div>
+            <div class="gallery-box large">
+              <h3>Food truck / setup</h3>
+              <p>Bruk et sterkt, bredt bilde her.</p>
+            </div>
+            <div class="gallery-box">
+              <h3>Servering i drift</h3>
+              <p>Kø, tempo og miljø.</p>
+            </div>
+            <div class="gallery-box">
+              <h3>Produkt i kontekst</h3>
+              <p>Detaljbilde av crêpes under arrangement.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1142,139 +1689,250 @@
 
     <section id="booking-form" class="fade-in">
       <div class="container">
-        <div class="card form-shell">
-          <div class="section-head">
-            <h2>Send en bookingforespørsel</h2>
-          </div>
-
-          <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
-          <div class="form-status" id="formStatus" aria-live="polite"></div>
-
-          <form class="form-grid" id="bookingRequestForm" novalidate>
-            <div class="field">
-              <label for="navn">Navn</label>
-              <input id="navn" name="navn" type="text" required maxlength="80" autocomplete="name">
+        <div class="form-wrap">
+          <div class="card form-shell">
+            <div class="section-head" style="margin-bottom: 0;">
+              <div class="section-kicker">Forespørsel</div>
+              <h2>Send en bookingforespørsel</h2>
+              <p>
+                Kort og ryddig. Velg kategori, dato og skriv det viktigste. Resten tar vi videre derfra.
+              </p>
             </div>
 
-            <div class="field">
-              <label for="firma">Firma / arrangør</label>
-              <input id="firma" name="firma" type="text" maxlength="120" autocomplete="organization">
-            </div>
+            <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
+            <div class="form-status" id="formStatus" aria-live="polite"></div>
 
-            <div class="field">
-              <label for="epost">E-post</label>
-              <input id="epost" name="epost" type="email" required maxlength="150" autocomplete="email" inputmode="email">
-            </div>
-
-            <div class="field">
-              <label for="telefonNummer">Telefon</label>
-              <div class="phone-shell">
-                <select id="telefonLand" aria-label="Velg landkode">
-                  <option value="+47">🇳🇴 +47 Norge</option>
-                  <option value="+46">🇸🇪 +46 Sverige</option>
-                  <option value="+45">🇩🇰 +45 Danmark</option>
-                  <option value="+358">🇫🇮 +358 Finland</option>
-                  <option value="+44">🇬🇧 +44 Storbritannia</option>
-                  <option value="+49">🇩🇪 +49 Tyskland</option>
-                  <option value="+33">🇫🇷 +33 Frankrike</option>
-                  <option value="+34">🇪🇸 +34 Spania</option>
-                  <option value="+39">🇮🇹 +39 Italia</option>
-                  <option value="+31">🇳🇱 +31 Nederland</option>
-                  <option value="+32">🇧🇪 +32 Belgia</option>
-                  <option value="+41">🇨🇭 +41 Sveits</option>
-                  <option value="+43">🇦🇹 +43 Østerrike</option>
-                  <option value="+48">🇵🇱 +48 Polen</option>
-                  <option value="+90">🇹🇷 +90 Tyrkia</option>
-                  <option value="+355">🇦🇱 +355 Albania</option>
-                  <option value="+1">🇺🇸 +1 USA / Canada</option>
-                  <option value="+61">🇦🇺 +61 Australia</option>
-                  <option value="+971">🇦🇪 +971 De forente arabiske emirater</option>
-                </select>
-                <input
-                  id="telefonNummer"
-                  type="tel"
-                  maxlength="20"
-                  autocomplete="tel-national"
-                  inputmode="tel"
-                  placeholder="Telefonnummer"
-                >
+            <form class="form-grid" id="bookingRequestForm" novalidate>
+              <div class="field span-6">
+                <label for="navn">Navn</label>
+                <input id="navn" name="navn" type="text" required maxlength="80" autocomplete="name">
               </div>
-              <input id="telefon" name="telefon" type="hidden">
-            </div>
 
-            <div class="field">
-              <label for="type">Type arrangement</label>
-              <select id="type" name="type" required>
-                <option value="" selected disabled>Velg kategori</option>
-                <option value="Festivaler">Festivaler</option>
-                <option value="Firmaarrangementer">Firmaarrangementer</option>
-                <option value="Private arrangementer">Private arrangementer</option>
-              </select>
-            </div>
+              <div class="field span-6">
+                <label for="firma">Firma / arrangør</label>
+                <input id="firma" name="firma" type="text" maxlength="120" autocomplete="organization">
+              </div>
 
-            <div class="field full">
-              <label for="dateToggle">Dato</label>
-              <div class="date-range-shell" id="dateRangeShell">
-                <button class="date-toggle" id="dateToggle" type="button" aria-expanded="false" aria-controls="datePanel">
-                  <span class="date-toggle-text">
-                    <span class="date-toggle-label">Velg dato</span>
-                    <span class="date-toggle-value" id="dateToggleValue">Fra og til</span>
-                  </span>
-                  <span class="date-toggle-arrow">⌄</span>
-                </button>
+              <div class="field span-6">
+                <label for="epost">E-post</label>
+                <input id="epost" name="epost" type="email" required maxlength="150" autocomplete="email" inputmode="email">
+              </div>
 
-                <div class="date-panel" id="datePanel">
-                  <div>
-                    <div class="date-mini-label">Fra</div>
-                    <input id="datoFra" type="date" autocomplete="off">
-                  </div>
-                  <div>
-                    <div class="date-mini-label">Til</div>
-                    <input id="datoTil" type="date" autocomplete="off">
-                  </div>
+              <div class="field span-6">
+                <label for="telefonNummer">Telefon</label>
+                <div class="phone-shell">
+                  <select id="telefonLand" aria-label="Velg landkode">
+                    <option value="+47">🇳🇴 +47 Norge</option>
+                    <option value="+46">🇸🇪 +46 Sverige</option>
+                    <option value="+45">🇩🇰 +45 Danmark</option>
+                    <option value="+358">🇫🇮 +358 Finland</option>
+                    <option value="+44">🇬🇧 +44 Storbritannia</option>
+                    <option value="+49">🇩🇪 +49 Tyskland</option>
+                    <option value="+33">🇫🇷 +33 Frankrike</option>
+                    <option value="+34">🇪🇸 +34 Spania</option>
+                    <option value="+39">🇮🇹 +39 Italia</option>
+                    <option value="+31">🇳🇱 +31 Nederland</option>
+                    <option value="+32">🇧🇪 +32 Belgia</option>
+                    <option value="+41">🇨🇭 +41 Sveits</option>
+                    <option value="+43">🇦🇹 +43 Østerrike</option>
+                    <option value="+48">🇵🇱 +48 Polen</option>
+                    <option value="+90">🇹🇷 +90 Tyrkia</option>
+                    <option value="+355">🇦🇱 +355 Albania</option>
+                    <option value="+1">🇺🇸 +1 USA / Canada</option>
+                    <option value="+61">🇦🇺 +61 Australia</option>
+                    <option value="+971">🇦🇪 +971 De forente arabiske emirater</option>
+                  </select>
+                  <input
+                    id="telefonNummer"
+                    type="tel"
+                    maxlength="20"
+                    autocomplete="tel-national"
+                    inputmode="tel"
+                    placeholder="Telefonnummer"
+                  >
+                </div>
+                <input id="telefon" name="telefon" type="hidden">
+              </div>
+
+              <div class="booking-balance-row">
+                <div class="field">
+                  <label for="type">Type arrangement</label>
+                  <select id="type" name="type" required>
+                    <option value="" selected disabled>Velg kategori</option>
+                    <option value="Festivaler">Festivaler</option>
+                    <option value="Firmaarrangementer">Firmaarrangementer</option>
+                    <option value="Private arrangementer">Private arrangementer</option>
+                  </select>
                 </div>
 
-                <p class="field-hint">Velg én dag eller et datointervall.</p>
-                <input id="dato" name="dato" type="hidden">
+                <div class="field date-field">
+                  <label for="dateTrigger">Dato</label>
+
+                  <button
+                    class="date-trigger"
+                    id="dateTrigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-haspopup="dialog"
+                    aria-controls="datePopover"
+                  >
+                    <div class="date-trigger-top">
+                      <div class="date-trigger-meta">
+                        <span class="date-trigger-badge">Velg periode</span>
+                      </div>
+                      <span class="date-trigger-arrow">⌄</span>
+                    </div>
+
+                    <div class="date-trigger-main">
+                      <div class="date-pill">
+                        <span class="date-pill-label">Fra</span>
+                        <span class="date-pill-value" id="fromDisplay">Ikke valgt</span>
+                      </div>
+                      <div class="date-trigger-divider">til</div>
+                      <div class="date-pill">
+                        <span class="date-pill-label">Til</span>
+                        <span class="date-pill-value" id="toDisplay">Ikke valgt</span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <div class="date-popover" id="datePopover" role="dialog" aria-label="Velg dato">
+                    <div class="date-popover-inner">
+                      <div class="calendar-panel">
+                        <div class="calendar-top">
+                          <div class="calendar-title-group">
+                            <div class="calendar-mini-kicker">Fra</div>
+                            <h3 class="calendar-title" id="fromMonthLabel">Måned</h3>
+                          </div>
+                          <div class="calendar-nav">
+                            <button type="button" id="fromPrev" aria-label="Forrige måned">‹</button>
+                            <button type="button" id="fromNext" aria-label="Neste måned">›</button>
+                          </div>
+                        </div>
+                        <div class="calendar-weekdays">
+                          <div>Man</div>
+                          <div>Tir</div>
+                          <div>Ons</div>
+                          <div>Tor</div>
+                          <div>Fre</div>
+                          <div>Lør</div>
+                          <div>Søn</div>
+                        </div>
+                        <div class="calendar-days" id="fromCalendarDays"></div>
+                      </div>
+
+                      <div class="calendar-panel">
+                        <div class="calendar-top">
+                          <div class="calendar-title-group">
+                            <div class="calendar-mini-kicker">Til</div>
+                            <h3 class="calendar-title" id="toMonthLabel">Måned</h3>
+                          </div>
+                          <div class="calendar-nav">
+                            <button type="button" id="toPrev" aria-label="Forrige måned">‹</button>
+                            <button type="button" id="toNext" aria-label="Neste måned">›</button>
+                          </div>
+                        </div>
+                        <div class="calendar-weekdays">
+                          <div>Man</div>
+                          <div>Tir</div>
+                          <div>Ons</div>
+                          <div>Tor</div>
+                          <div>Fre</div>
+                          <div>Lør</div>
+                          <div>Søn</div>
+                        </div>
+                        <div class="calendar-days" id="toCalendarDays"></div>
+                      </div>
+                    </div>
+
+                    <div class="calendar-actions">
+                      <div class="calendar-summary" id="calendarSummary">
+                        Velg én dag eller et intervall.
+                      </div>
+                      <div class="calendar-cta">
+                        <button class="calendar-link-btn" type="button" id="clearDatesButton">Nullstill</button>
+                        <button class="btn btn-primary" type="button" id="applyDatesButton">Bruk dato</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="field-hint">Velg én dag eller et datointervall. Hele raden er klikkbar.</p>
+                  <input id="dato" name="dato" type="hidden">
+                </div>
+              </div>
+
+              <div class="field span-6">
+                <label for="sted">Sted</label>
+                <input id="sted" name="sted" type="text" maxlength="120" autocomplete="address-level2">
+              </div>
+
+              <div class="field span-6">
+                <label for="gjester">Antall gjester / forventet besøk</label>
+                <input id="gjester" name="gjester" type="number" min="1" max="100000" step="1" inputmode="numeric" autocomplete="off">
+              </div>
+
+              <div class="field span-12">
+                <label for="melding">Melding</label>
+                <textarea
+                  id="melding"
+                  name="melding"
+                  maxlength="1200"
+                  placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."
+                ></textarea>
+                <p class="field-hint">Maks 1200 tegn.</p>
+              </div>
+
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="website">Ikke fyll ut dette feltet</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                >
+              </div>
+
+              <div class="field span-12">
+                <button class="btn btn-primary" id="submitButton" type="submit">Send bookingforespørsel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-aside">
+            <div class="aside-panel">
+              <h3>Det vi trenger for å gi deg et tydelig svar</h3>
+              <div class="aside-list">
+                <div class="aside-list-item">
+                  <div class="aside-bullet">01</div>
+                  <div>Hva slags arrangement det er.</div>
+                </div>
+                <div class="aside-list-item">
+                  <div class="aside-bullet">02</div>
+                  <div>Når det skjer, og om det gjelder én dag eller flere.</div>
+                </div>
+                <div class="aside-list-item">
+                  <div class="aside-bullet">03</div>
+                  <div>Hvor mange gjester eller hvor mye trafikk du forventer.</div>
+                </div>
+                <div class="aside-list-item">
+                  <div class="aside-bullet">04</div>
+                  <div>Sted og kort info om rammene rundt oppdraget.</div>
+                </div>
               </div>
             </div>
 
-            <div class="field">
-              <label for="sted">Sted</label>
-              <input id="sted" name="sted" type="text" maxlength="120" autocomplete="address-level2">
+            <div class="aside-panel">
+              <h3>Kontakt</h3>
+              <p>
+                For direkte kontakt kan du også bruke telefon eller e-post. Men booking-skjemaet gjør at vi får alt ryddig med én gang.
+              </p>
+              <div class="footer-list">
+                <a href="tel:+4748408749">+47 48 40 87 49</a>
+                <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
+              </div>
             </div>
-
-            <div class="field">
-              <label for="gjester">Antall gjester / forventet besøk</label>
-              <input id="gjester" name="gjester" type="number" min="1" max="100000" step="1" inputmode="numeric" autocomplete="off">
-            </div>
-
-            <div class="field full">
-              <label for="melding">Melding</label>
-              <textarea
-                id="melding"
-                name="melding"
-                maxlength="1200"
-                placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."
-              ></textarea>
-              <p class="field-hint">Maks 1200 tegn.</p>
-            </div>
-
-            <div class="honeypot-field" aria-hidden="true">
-              <label for="website">Ikke fyll ut dette feltet</label>
-              <input
-                id="website"
-                name="website"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              >
-            </div>
-
-            <div class="field full">
-              <button class="btn btn-primary" id="submitButton" type="submit">Send bookingforespørsel</button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -1388,16 +2046,92 @@
     const submitButton = document.getElementById('submitButton');
     const formStatus = document.getElementById('formStatus');
 
-    const dateRangeShell = document.getElementById('dateRangeShell');
-    const dateToggle = document.getElementById('dateToggle');
-    const dateToggleValue = document.getElementById('dateToggleValue');
-    const datoFra = document.getElementById('datoFra');
-    const datoTil = document.getElementById('datoTil');
-    const datoHidden = document.getElementById('dato');
-
     const telefonLand = document.getElementById('telefonLand');
     const telefonNummer = document.getElementById('telefonNummer');
     const telefonHidden = document.getElementById('telefon');
+
+    const datoHidden = document.getElementById('dato');
+    const dateTrigger = document.getElementById('dateTrigger');
+    const datePopover = document.getElementById('datePopover');
+    const fromDisplay = document.getElementById('fromDisplay');
+    const toDisplay = document.getElementById('toDisplay');
+    const calendarSummary = document.getElementById('calendarSummary');
+
+    const fromMonthLabel = document.getElementById('fromMonthLabel');
+    const toMonthLabel = document.getElementById('toMonthLabel');
+    const fromCalendarDays = document.getElementById('fromCalendarDays');
+    const toCalendarDays = document.getElementById('toCalendarDays');
+
+    const fromPrev = document.getElementById('fromPrev');
+    const fromNext = document.getElementById('fromNext');
+    const toPrev = document.getElementById('toPrev');
+    const toNext = document.getElementById('toNext');
+
+    const clearDatesButton = document.getElementById('clearDatesButton');
+    const applyDatesButton = document.getElementById('applyDatesButton');
+
+    const monthNames = [
+      'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni',
+      'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'
+    ];
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let selectedFrom = null;
+    let selectedTo = null;
+
+    let fromView = new Date(today.getFullYear(), today.getMonth(), 1);
+    let toView = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+
+    function pad(number) {
+      return String(number).padStart(2, '0');
+    }
+
+    function formatDateISO(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function parseISODate(value) {
+      if (!value) return null;
+      const [year, month, day] = value.split('-').map(Number);
+      if (!year || !month || !day) return null;
+      return new Date(year, month - 1, day);
+    }
+
+    function formatDateForDisplay(value) {
+      const date = typeof value === 'string' ? parseISODate(value) : value;
+      if (!date) return '';
+      return `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()}`;
+    }
+
+    function formatDateLong(date) {
+      return `${date.getDate()}. ${monthNames[date.getMonth()].toLowerCase()} ${date.getFullYear()}`;
+    }
+
+    function isSameDate(a, b) {
+      return a && b &&
+        a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate();
+    }
+
+    function isBetween(date, start, end) {
+      if (!start || !end) return false;
+      return date > start && date < end;
+    }
+
+    function startOfMonth(date) {
+      return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function addMonths(date, count) {
+      return new Date(date.getFullYear(), date.getMonth() + count, 1);
+    }
+
+    function getMondayFirstIndex(jsDay) {
+      return jsDay === 0 ? 6 : jsDay - 1;
+    }
 
     function updateBookingUI(type) {
       bookingButtons.forEach((button) => {
@@ -1437,60 +2171,6 @@
       formStatus.className = 'form-status';
     }
 
-    function formatDateForDisplay(value) {
-      if (!value) return '';
-      const [year, month, day] = value.split('-');
-      if (!year || !month || !day) return value;
-      return `${day}.${month}.${year}`;
-    }
-
-    function syncDateRange() {
-      const fromValue = datoFra.value;
-      const toValue = datoTil.value;
-
-      if (fromValue && toValue && toValue < fromValue) {
-        datoTil.setCustomValidity('Til-dato kan ikke være før fra-dato.');
-      } else {
-        datoTil.setCustomValidity('');
-      }
-
-      if (!fromValue && !toValue) {
-        datoHidden.value = '';
-        dateToggleValue.textContent = 'Fra og til';
-        return;
-      }
-
-      if (fromValue && !toValue) {
-        datoHidden.value = '';
-        dateToggleValue.textContent = `Fra ${formatDateForDisplay(fromValue)}`;
-        return;
-      }
-
-      if (!fromValue && toValue) {
-        datoHidden.value = '';
-        dateToggleValue.textContent = `Til ${formatDateForDisplay(toValue)}`;
-        return;
-      }
-
-      if (fromValue === toValue) {
-        datoHidden.value = fromValue;
-        dateToggleValue.textContent = formatDateForDisplay(fromValue);
-        return;
-      }
-
-      datoHidden.value = `${fromValue} - ${toValue}`;
-      dateToggleValue.textContent = `${formatDateForDisplay(fromValue)} – ${formatDateForDisplay(toValue)}`;
-    }
-
-    function toggleDatePanel(forceOpen) {
-      const shouldOpen = typeof forceOpen === 'boolean'
-        ? forceOpen
-        : !dateRangeShell.classList.contains('open');
-
-      dateRangeShell.classList.toggle('open', shouldOpen);
-      dateToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-    }
-
     function syncPhone() {
       const rawNumber = telefonNummer.value.replace(/[^\d]/g, '');
       if (!rawNumber) {
@@ -1498,6 +2178,165 @@
         return;
       }
       telefonHidden.value = `${telefonLand.value}${rawNumber}`;
+    }
+
+    function updateDateSummary() {
+      if (!selectedFrom && !selectedTo) {
+        fromDisplay.textContent = 'Ikke valgt';
+        toDisplay.textContent = 'Ikke valgt';
+        calendarSummary.textContent = 'Velg én dag eller et intervall.';
+        datoHidden.value = '';
+        return;
+      }
+
+      if (selectedFrom && !selectedTo) {
+        fromDisplay.textContent = formatDateForDisplay(selectedFrom);
+        toDisplay.textContent = 'Velg sluttdato';
+        calendarSummary.textContent = `Start valgt: ${formatDateLong(selectedFrom)}. Velg sluttdato eller bruk samme dag.`;
+        datoHidden.value = '';
+        return;
+      }
+
+      if (selectedFrom && selectedTo) {
+        fromDisplay.textContent = formatDateForDisplay(selectedFrom);
+        toDisplay.textContent = formatDateForDisplay(selectedTo);
+
+        const fromISO = formatDateISO(selectedFrom);
+        const toISO = formatDateISO(selectedTo);
+
+        if (fromISO === toISO) {
+          calendarSummary.textContent = `Valgt dato: ${formatDateLong(selectedFrom)}.`;
+          datoHidden.value = fromISO;
+        } else {
+          calendarSummary.textContent = `Valgt periode: ${formatDateLong(selectedFrom)} – ${formatDateLong(selectedTo)}.`;
+          datoHidden.value = `${fromISO} - ${toISO}`;
+        }
+      }
+    }
+
+    function renderCalendar(container, labelElement, viewDate, panelType) {
+      const year = viewDate.getFullYear();
+      const month = viewDate.getMonth();
+
+      labelElement.textContent = `${monthNames[month]} ${year}`;
+      container.innerHTML = '';
+
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const leading = getMondayFirstIndex(firstDay.getDay());
+      const daysInMonth = lastDay.getDate();
+
+      const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+      for (let i = leading - 1; i >= 0; i--) {
+        const day = prevMonthLastDay - i;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'calendar-day muted';
+        btn.textContent = day;
+        btn.tabIndex = -1;
+        btn.disabled = true;
+        container.appendChild(btn);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const current = new Date(year, month, day);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'calendar-day';
+        btn.textContent = day;
+        btn.dataset.date = formatDateISO(current);
+        btn.dataset.panel = panelType;
+
+        if (isSameDate(current, today)) {
+          btn.classList.add('today');
+        }
+
+        if (selectedFrom && isSameDate(current, selectedFrom)) {
+          btn.classList.add('selected', 'range-edge');
+        }
+
+        if (selectedTo && isSameDate(current, selectedTo)) {
+          btn.classList.add('selected', 'range-edge');
+        }
+
+        if (selectedFrom && selectedTo && isBetween(current, selectedFrom, selectedTo)) {
+          btn.classList.add('in-range');
+        }
+
+        btn.addEventListener('click', () => handleDateSelection(current, panelType));
+        container.appendChild(btn);
+      }
+
+      const totalCells = leading + daysInMonth;
+      const trailing = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+
+      for (let day = 1; day <= trailing; day++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'calendar-day muted';
+        btn.textContent = day;
+        btn.tabIndex = -1;
+        btn.disabled = true;
+        container.appendChild(btn);
+      }
+    }
+
+    function renderCalendars() {
+      renderCalendar(fromCalendarDays, fromMonthLabel, fromView, 'from');
+      renderCalendar(toCalendarDays, toMonthLabel, toView, 'to');
+      updateDateSummary();
+    }
+
+    function handleDateSelection(date, panelType) {
+      if (panelType === 'from') {
+        selectedFrom = new Date(date);
+        if (!selectedTo || selectedTo < selectedFrom) {
+          selectedTo = new Date(date);
+        }
+        if (toView < startOfMonth(selectedFrom)) {
+          toView = addMonths(selectedFrom, 1);
+        }
+      } else {
+        if (!selectedFrom) {
+          selectedFrom = new Date(date);
+          selectedTo = new Date(date);
+        } else if (date < selectedFrom) {
+          selectedTo = new Date(selectedFrom);
+          selectedFrom = new Date(date);
+        } else {
+          selectedTo = new Date(date);
+        }
+      }
+
+      renderCalendars();
+    }
+
+    function openDatePopover() {
+      datePopover.classList.add('open');
+      dateTrigger.classList.add('active');
+      dateTrigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDatePopover() {
+      datePopover.classList.remove('open');
+      dateTrigger.classList.remove('active');
+      dateTrigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleDatePopover() {
+      if (datePopover.classList.contains('open')) {
+        closeDatePopover();
+      } else {
+        openDatePopover();
+      }
+    }
+
+    function clearDates() {
+      selectedFrom = null;
+      selectedTo = null;
+      updateDateSummary();
+      renderCalendars();
     }
 
     bookingButtons.forEach((button) => {
@@ -1510,41 +2349,76 @@
       updateBookingUI(typeSelect.value);
     });
 
-    dateToggle.addEventListener('click', () => {
-      toggleDatePanel();
-    });
-
-    datoFra.addEventListener('input', () => {
-      syncDateRange();
-      if (datoFra.value) toggleDatePanel(true);
-    });
-
-    datoTil.addEventListener('input', () => {
-      syncDateRange();
-      if (datoTil.value) toggleDatePanel(true);
-    });
-
     telefonLand.addEventListener('change', syncPhone);
     telefonNummer.addEventListener('input', () => {
-      telefonNummer.value = telefonNummer.value.replace(/[^\d\s()-]/g, '');
+      telefonNummer.value = telefonNummer.value.replace(/[^\d\s()+-]/g, '');
       syncPhone();
+    });
+
+    dateTrigger.addEventListener('click', () => {
+      toggleDatePopover();
+    });
+
+    fromPrev.addEventListener('click', () => {
+      fromView = addMonths(fromView, -1);
+      renderCalendars();
+    });
+
+    fromNext.addEventListener('click', () => {
+      fromView = addMonths(fromView, 1);
+      renderCalendars();
+    });
+
+    toPrev.addEventListener('click', () => {
+      toView = addMonths(toView, -1);
+      renderCalendars();
+    });
+
+    toNext.addEventListener('click', () => {
+      toView = addMonths(toView, 1);
+      renderCalendars();
+    });
+
+    clearDatesButton.addEventListener('click', () => {
+      clearDates();
+    });
+
+    applyDatesButton.addEventListener('click', () => {
+      if (selectedFrom && !selectedTo) {
+        selectedTo = new Date(selectedFrom);
+      }
+      updateDateSummary();
+      renderCalendars();
+      closeDatePopover();
+    });
+
+    document.addEventListener('click', (event) => {
+      const clickedInside = dateTrigger.contains(event.target) || datePopover.contains(event.target);
+      if (!clickedInside) {
+        closeDatePopover();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeDatePopover();
+      }
     });
 
     bookingForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       clearStatus();
-      syncDateRange();
       syncPhone();
 
-      if ((datoFra.value && !datoTil.value) || (!datoFra.value && datoTil.value)) {
-        showStatus('Velg både fra-dato og til-dato, eller la begge stå tomme.', 'error');
-        toggleDatePanel(true);
+      if ((selectedFrom && !selectedTo) || (!selectedFrom && selectedTo)) {
+        showStatus('Velg både fra-dato og til-dato, eller nullstill datoene.', 'error');
+        openDatePopover();
         return;
       }
 
-      if (datoFra.value && datoTil.value && datoTil.value < datoFra.value) {
+      if (selectedFrom && selectedTo && selectedTo < selectedFrom) {
         showStatus('Til-dato kan ikke være før fra-dato.', 'error');
-        toggleDatePanel(true);
+        openDatePopover();
         return;
       }
 
@@ -1587,7 +2461,7 @@
       }
     });
 
-    syncDateRange();
+    renderCalendars();
     syncPhone();
     updateBookingUI(typeSelect.value);
   </script>
