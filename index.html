@@ -23,10 +23,14 @@
       --accent-2: #925f43;
       --foodora: #ff2b85;
       --foodora-dark: #e31c72;
+      --bg-1: #f4e7d9;
+      --bg-2: #e7d7c7;
+      --white: #fffaf5;
       --max: 1240px;
       --radius: 30px;
       --shadow: 0 20px 54px rgba(56, 33, 20, 0.12);
       --shadow-soft: 0 12px 30px rgba(56, 33, 20, 0.08);
+      --shadow-modal: 0 28px 80px rgba(0, 0, 0, 0.34);
     }
 
     * {
@@ -40,13 +44,13 @@
     body {
       margin: 0;
       font-family: "Manrope", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.55;
       background:
         radial-gradient(circle at top right, rgba(248, 210, 148, 0.16), transparent 24%),
         radial-gradient(circle at 12% 16%, rgba(205, 154, 98, 0.10), transparent 20%),
         radial-gradient(circle at bottom left, rgba(146, 95, 67, 0.08), transparent 22%),
-        linear-gradient(180deg, #f4e7d9 0%, #e7d7c7 100%);
-      color: var(--text);
-      line-height: 1.55;
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
     }
 
     a {
@@ -55,8 +59,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     button {
@@ -86,10 +90,14 @@
       min-height: 52px;
       padding: 14px 24px;
       border-radius: 999px;
-      font-weight: 800;
       border: 1px solid transparent;
-      transition: 0.22s ease;
+      font-weight: 800;
       gap: 10px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
@@ -99,41 +107,36 @@
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
       box-shadow: 0 18px 36px rgba(143, 93, 66, 0.25);
       filter: brightness(1.03);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.82);
-      border-color: rgba(66, 39, 23, 0.12);
+      background: rgba(255,255,255,0.84);
       color: #2d1b15;
+      border-color: rgba(66, 39, 23, 0.12);
       box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
     }
 
     .btn-secondary:hover {
-      transform: translateY(-2px);
       background: rgba(255,255,255,0.96);
       border-color: rgba(66, 39, 23, 0.18);
     }
 
     .btn-foodora {
       background: linear-gradient(135deg, var(--foodora), var(--foodora-dark));
-      color: #fff;
+      color: white;
       box-shadow: 0 16px 34px rgba(255, 43, 133, 0.24);
     }
 
     .btn-foodora:hover {
-      transform: translateY(-2px);
       box-shadow: 0 18px 38px rgba(255, 43, 133, 0.30);
       filter: brightness(1.04);
     }
 
     .nav-wrap {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      inset: 0 0 auto 0;
       z-index: 120;
       background: transparent;
       border-bottom: 1px solid transparent;
@@ -141,8 +144,8 @@
     }
 
     .nav-wrap.scrolled {
+      background: rgba(244, 231, 217, 0.52);
       backdrop-filter: blur(14px);
-      background: rgba(244, 231, 217, 0.48);
       border-bottom-color: rgba(66, 39, 23, 0.08);
       box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
     }
@@ -244,11 +247,6 @@
       white-space: nowrap;
     }
 
-    .nav-wrap.scrolled .brand-title {
-      color: #2b1a14;
-      text-shadow: none;
-    }
-
     .brand-subtitle {
       margin-top: 5px;
       font-size: 11px;
@@ -256,6 +254,11 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .nav-wrap.scrolled .brand-title {
+      color: #2b1a14;
+      text-shadow: none;
     }
 
     .nav-wrap.scrolled .brand-subtitle {
@@ -395,7 +398,8 @@
       padding-right: 6px;
     }
 
-    .eyebrow {
+    .eyebrow,
+    .menu-hint {
       display: inline-flex;
       width: fit-content;
       padding: 8px 12px;
@@ -405,7 +409,7 @@
       color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
@@ -563,20 +567,6 @@
       justify-content: flex-end;
     }
 
-    .menu-hint {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(205,154,98,0.10);
-      border: 1px solid rgba(205,154,98,0.18);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
     .menu-group {
       display: grid;
       gap: 16px;
@@ -620,6 +610,11 @@
       border-color: rgba(199, 149, 99, 0.34);
       background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(236,223,209,0.96));
       box-shadow: 0 16px 34px rgba(56, 33, 20, 0.09);
+    }
+
+    .menu-item:focus-visible {
+      outline: 3px solid rgba(205, 154, 98, 0.40);
+      outline-offset: 3px;
     }
 
     .menu-main {
@@ -815,12 +810,12 @@
     .crepe-modal {
       position: fixed;
       inset: 0;
-      background: rgba(31, 20, 15, 0.78);
+      z-index: 999;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      z-index: 999;
+      background: rgba(25, 16, 12, 0.82);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease;
@@ -833,31 +828,74 @@
 
     .crepe-modal-content {
       position: relative;
-      width: min(920px, 100%);
-      border-radius: 24px;
+      width: min(1020px, 100%);
+      border-radius: 28px;
       overflow: hidden;
-      background: #fff8ef;
-      border: 1px solid rgba(60, 35, 20, 0.10);
-      box-shadow: 0 25px 70px rgba(31,20,15,0.28);
+      background: #f7ecdf;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-modal);
     }
 
-    .crepe-modal-content img {
+    .crepe-modal-figure {
+      position: relative;
+      background: #efe1d4;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .crepe-modal-figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.50), rgba(0,0,0,0.08) 38%, rgba(0,0,0,0.14)),
+        linear-gradient(to right, rgba(0,0,0,0.14), transparent 24%, transparent 76%, rgba(0,0,0,0.14));
+    }
+
+    #crepeModalImage {
       width: 100%;
-      max-height: 80vh;
+      max-height: 82vh;
       object-fit: cover;
       display: block;
       background: #efe1d4;
+      touch-action: pan-y;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .crepe-modal-title-wrap {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      z-index: 3;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
     }
 
     .crepe-modal-title {
-      position: absolute;
-      left: 20px;
-      bottom: 18px;
-      z-index: 2;
-      font-size: 24px;
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 800;
       color: white;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+      text-shadow: 0 4px 18px rgba(0,0,0,0.42);
+    }
+
+    .crepe-modal-count {
+      flex-shrink: 0;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.92);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
     }
 
     .crepe-modal-loading {
@@ -866,8 +904,8 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 2;
-      background: linear-gradient(180deg, rgba(46,28,20,0.10), rgba(46,28,20,0.20));
+      z-index: 4;
+      background: linear-gradient(180deg, rgba(46,28,20,0.14), rgba(46,28,20,0.24));
       color: white;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -877,31 +915,66 @@
       display: flex;
     }
 
-    .crepe-modal-content::after {
-      content: '';
+    .crepe-modal-close,
+    .crepe-modal-arrow {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05));
-      pointer-events: none;
-    }
-
-    .crepe-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 3;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
+      z-index: 5;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(34, 20, 14, 0.66);
       color: white;
-      font-size: 22px;
       cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+      backdrop-filter: blur(10px);
     }
 
-    .crepe-modal-close:hover {
+    .crepe-modal-close:hover,
+    .crepe-modal-arrow:hover {
       background: rgba(34, 20, 14, 0.88);
+      transform: translateY(-1px);
+    }
+
+    .crepe-modal-close {
+      top: 14px;
+      right: 14px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 24px;
+    }
+
+    .crepe-modal-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .crepe-modal-arrow:hover {
+      transform: translateY(-50%) scale(1.03);
+    }
+
+    .crepe-modal-arrow.prev {
+      left: 18px;
+    }
+
+    .crepe-modal-arrow.next {
+      right: 18px;
+    }
+
+    .crepe-modal-arrow.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .crepe-modal-arrow:focus-visible,
+    .crepe-modal-close:focus-visible {
+      outline: 3px solid rgba(255,255,255,0.38);
+      outline-offset: 2px;
     }
 
     .footer {
@@ -933,10 +1006,7 @@
 
     .footer-brand .brand {
       justify-self: start;
-      display: flex;
-      align-items: center;
       gap: 16px;
-      min-width: 0;
     }
 
     .footer .brand-logo-wrap {
@@ -944,11 +1014,6 @@
       height: 82px;
       border-radius: 24px;
       flex-shrink: 0;
-    }
-
-    .footer .brand-text {
-      min-width: 0;
-      max-width: 100%;
     }
 
     .footer .brand-title {
@@ -965,10 +1030,6 @@
       margin-top: 8px;
       font-size: 12px;
       letter-spacing: 0.16em;
-    }
-
-    .footer-block {
-      min-width: 0;
     }
 
     .footer-block h4 {
@@ -988,7 +1049,7 @@
     .footer-list div {
       color: var(--muted);
       font-size: 14px;
-      transition: 0.2s ease;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -1098,6 +1159,32 @@
         white-space: normal;
         font-size: 28px;
       }
+
+      .crepe-modal {
+        padding: 14px;
+      }
+
+      .crepe-modal-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+
+      .crepe-modal-arrow.prev {
+        left: 10px;
+      }
+
+      .crepe-modal-arrow.next {
+        right: 10px;
+      }
+
+      .crepe-modal-title-wrap {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1176,6 +1263,15 @@
       .footer .brand-title {
         font-size: 26px;
       }
+
+      .crepe-modal-close {
+        width: 44px;
+        height: 44px;
+      }
+
+      .crepe-modal-figure {
+        min-height: 320px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1188,7 +1284,9 @@
       .menu-item,
       .contact-chip,
       .crepe-modal,
-      .nav-wrap {
+      .nav-wrap,
+      .crepe-modal-arrow,
+      .crepe-modal-close {
         transition: none;
       }
     }
@@ -1483,11 +1581,25 @@
   </main>
 
   <div class="crepe-modal" id="crepeModal" aria-hidden="true">
-    <div class="crepe-modal-content">
+    <div class="crepe-modal-content" role="dialog" aria-modal="true" aria-labelledby="crepeModalTitle">
       <button class="crepe-modal-close" id="closeCrepeModal" type="button" aria-label="Lukk bildevisning">&times;</button>
-      <div class="crepe-modal-loading" id="crepeModalLoading">Laster bilde…</div>
-      <img id="crepeModalImage" src="" alt="">
-      <div class="crepe-modal-title" id="crepeModalTitle"></div>
+
+      <button class="crepe-modal-arrow prev" id="prevCrepeButton" type="button" aria-label="Forrige crêpe">
+        &#8249;
+      </button>
+
+      <button class="crepe-modal-arrow next" id="nextCrepeButton" type="button" aria-label="Neste crêpe">
+        &#8250;
+      </button>
+
+      <div class="crepe-modal-figure">
+        <div class="crepe-modal-loading" id="crepeModalLoading">Laster bilde…</div>
+        <img id="crepeModalImage" src="" alt="">
+        <div class="crepe-modal-title-wrap">
+          <div class="crepe-modal-title" id="crepeModalTitle"></div>
+          <div class="crepe-modal-count" id="crepeModalCount"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1592,58 +1704,93 @@
     updateNavState();
     window.addEventListener('scroll', updateNavState);
 
-    const crepeData = {
-      'sweet-cinnamon': {
+    const crepeOrder = [
+      {
+        key: 'sweet-cinnamon',
         title: 'Sweet Cinnamon',
         image: 'sweet-cinnamon.jpg'
       },
-      'nutella': {
+      {
+        key: 'nutella',
         title: 'Nutella',
         image: 'nutella-crepe.jpg'
       },
-      'monkey-business': {
+      {
+        key: 'monkey-business',
         title: 'Monkey Business',
         image: 'monkey-business.jpg'
       },
-      'protein-nutella-crepe': {
+      {
+        key: 'protein-nutella-crepe',
         title: 'Protein Nutella Crêpe',
         image: 'protein-nutella-crepe.jpg'
       },
-      'strawberry-madness': {
+      {
+        key: 'strawberry-madness',
         title: 'Strawberry Madness',
         image: 'strawberry-madness.jpg'
       },
-      'bueno-fusion': {
+      {
+        key: 'bueno-fusion',
         title: 'Bueno Fusion',
         image: 'bueno-fusion.jpg'
       },
-      'the-goat': {
+      {
+        key: 'the-goat',
         title: 'The GOAT',
         image: 'the-goat.jpg'
       },
-      'the-tuna-way': {
+      {
+        key: 'the-tuna-way',
         title: 'The Tuna Way',
         image: 'the-tuna-way.jpg'
       }
-    };
+    ];
+
+    const crepeMap = Object.fromEntries(
+      crepeOrder.map((item, index) => [item.key, { ...item, index }])
+    );
 
     const crepeButtons = document.querySelectorAll('.menu-button');
     const crepeModal = document.getElementById('crepeModal');
     const crepeModalImage = document.getElementById('crepeModalImage');
     const crepeModalTitle = document.getElementById('crepeModalTitle');
+    const crepeModalCount = document.getElementById('crepeModalCount');
+    const crepeModalLoading = document.getElementById('crepeModalLoading');
     const closeCrepeModal = document.getElementById('closeCrepeModal');
+    const prevCrepeButton = document.getElementById('prevCrepeButton');
+    const nextCrepeButton = document.getElementById('nextCrepeButton');
 
     let currentImageLoader = null;
+    let currentCrepeIndex = 0;
 
-    function openCrepeModal(item) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    let isSwiping = false;
+
+    function updateModalNav() {
+      const isFirst = currentCrepeIndex === 0;
+      const isLast = currentCrepeIndex === crepeOrder.length - 1;
+
+      prevCrepeButton.classList.toggle('hidden', isFirst);
+      nextCrepeButton.classList.toggle('hidden', isLast);
+
+      crepeModalCount.textContent = `${currentCrepeIndex + 1} / ${crepeOrder.length}`;
+    }
+
+    function renderCrepeAtIndex(index) {
+      const item = crepeOrder[index];
       if (!item) return;
 
-      crepeModal.classList.add('open', 'loading');
-      crepeModal.setAttribute('aria-hidden', 'false');
-      crepeModalTitle.textContent = item.title;
+      currentCrepeIndex = index;
+      updateModalNav();
 
-      crepeModalImage.removeAttribute('src');
+      crepeModal.classList.add('loading');
+      crepeModalTitle.textContent = item.title;
       crepeModalImage.alt = item.title;
+      crepeModalImage.removeAttribute('src');
 
       const imgLoader = new Image();
       currentImageLoader = imgLoader;
@@ -1658,25 +1805,76 @@
       imgLoader.onerror = () => {
         if (currentImageLoader !== imgLoader) return;
         crepeModal.classList.remove('loading');
+        crepeModalLoading.textContent = 'Kunne ikke laste bildet.';
       };
 
+      crepeModalLoading.textContent = 'Laster bilde…';
       imgLoader.src = item.image;
+    }
+
+    function openCrepeModalByKey(key) {
+      const item = crepeMap[key];
+      if (!item) return;
+
+      crepeModal.classList.add('open');
+      crepeModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      renderCrepeAtIndex(item.index);
     }
 
     function closeModal() {
       crepeModal.classList.remove('open', 'loading');
       crepeModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
       currentImageLoader = null;
+      resetSwipe();
+    }
+
+    function goToPreviousCrepe() {
+      if (currentCrepeIndex <= 0) return;
+      renderCrepeAtIndex(currentCrepeIndex - 1);
+    }
+
+    function goToNextCrepe() {
+      if (currentCrepeIndex >= crepeOrder.length - 1) return;
+      renderCrepeAtIndex(currentCrepeIndex + 1);
+    }
+
+    function resetSwipe() {
+      touchStartX = 0;
+      touchStartY = 0;
+      touchEndX = 0;
+      touchEndY = 0;
+      isSwiping = false;
+    }
+
+    function handleSwipeGesture() {
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+
+      const absX = Math.abs(deltaX);
+      const absY = Math.abs(deltaY);
+
+      if (absX < 50) return;
+      if (absY > absX * 0.7) return;
+
+      if (deltaX < 0) {
+        goToNextCrepe();
+      } else {
+        goToPreviousCrepe();
+      }
     }
 
     crepeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const key = button.dataset.crepe;
-        const item = crepeData[key];
-        openCrepeModal(item);
+        openCrepeModalByKey(key);
       });
     });
 
+    prevCrepeButton.addEventListener('click', goToPreviousCrepe);
+    nextCrepeButton.addEventListener('click', goToNextCrepe);
     closeCrepeModal.addEventListener('click', closeModal);
 
     crepeModal.addEventListener('click', (e) => {
@@ -1686,10 +1884,48 @@
     });
 
     document.addEventListener('keydown', (e) => {
+      const isOpen = crepeModal.classList.contains('open');
+      if (!isOpen) return;
+
       if (e.key === 'Escape') {
         closeModal();
       }
+
+      if (e.key === 'ArrowLeft') {
+        goToPreviousCrepe();
+      }
+
+      if (e.key === 'ArrowRight') {
+        goToNextCrepe();
+      }
     });
+
+    crepeModalImage.addEventListener('touchstart', (e) => {
+      if (!crepeModal.classList.contains('open')) return;
+      if (e.touches.length !== 1) return;
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchEndX = touchStartX;
+      touchEndY = touchStartY;
+      isSwiping = true;
+    }, { passive: true });
+
+    crepeModalImage.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      if (e.touches.length !== 1) return;
+
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+    }, { passive: true });
+
+    crepeModalImage.addEventListener('touchend', () => {
+      if (!isSwiping) return;
+      handleSwipeGesture();
+      resetSwipe();
+    });
+
+    crepeModalImage.addEventListener('touchcancel', resetSwipe);
   </script>
 </body>
 </html>
