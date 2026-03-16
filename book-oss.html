@@ -59,7 +59,8 @@
       overflow-x: hidden;
     }
 
-    body.overlay-open {
+    body.overlay-open,
+    body.modal-open {
       overflow: hidden;
     }
 
@@ -343,16 +344,45 @@
       letter-spacing: 0.04em;
     }
 
+    .options-banner-wrap {
+      padding: 24px 0 8px;
+      background: #000;
+    }
+
+    .options-banner {
+      min-height: 168px;
+      border-radius: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        linear-gradient(135deg, rgba(216,178,135,0.08), transparent 38%),
+        var(--panel);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .options-banner h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+    }
+
     .setups {
       position: relative;
       z-index: 1;
+      padding-bottom: 40px;
     }
 
     .setup-screen {
       min-height: 100svh;
       display: flex;
       align-items: center;
-      padding: 26px 0;
+      padding: 20px 0;
       position: relative;
       opacity: 0.42;
       transform: translateY(34px) scale(0.985);
@@ -371,7 +401,7 @@
 
     .setup-shell {
       width: 100%;
-      min-height: calc(100svh - 52px);
+      min-height: calc(100svh - 40px);
       display: grid;
       grid-template-columns: 1.06fr 0.94fr;
       overflow: hidden;
@@ -426,13 +456,12 @@
     .setup-name {
       margin: 18px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.7rem, 4.9vw, 5.2rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.9rem, 5vw, 5.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.045em;
     }
 
-    .setup-name .setup-brand,
-    .setup-name .setup-model {
+    .setup-name span {
       display: block;
     }
 
@@ -451,12 +480,8 @@
       margin-top: 28px;
     }
 
-    .setup-subcopy {
-      margin-top: 14px;
-      max-width: 520px;
-      color: var(--muted-2);
-      line-height: 1.72;
-      font-size: 0.94rem;
+    .setup-actions .btn-primary {
+      min-width: 132px;
     }
 
     .transition-fade {
@@ -466,6 +491,114 @@
       height: 140px;
       background: linear-gradient(180deg, rgba(11,9,8,0), rgba(11,9,8,0.68));
       z-index: 2;
+    }
+
+    .closing-cta-wrap {
+      padding: 12px 0 26px;
+    }
+
+    .closing-cta {
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        linear-gradient(135deg, rgba(216,178,135,0.07), transparent 40%),
+        var(--panel);
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .closing-cta h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4.2vw, 4.3rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .closing-cta p {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    .site-footer {
+      padding: 0 0 28px;
+      background: #000;
+    }
+
+    .footer-shell {
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10,8,7,0.55);
+      padding: clamp(24px, 4vw, 44px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
+      gap: 34px;
+    }
+
+    .footer-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3.4vw, 3.3rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .footer-col-title {
+      margin: 0 0 16px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer-links a,
+    .footer-links span {
+      color: rgba(244,238,231,0.88);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 60;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(21,18,15,0.88);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.24);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 220ms var(--ease), transform 220ms var(--ease), background 220ms var(--ease);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(28,24,20,0.98);
     }
 
     .booking-overlay {
@@ -488,10 +621,6 @@
       width: 100%;
       height: 100svh;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 400px;
-    }
-
-    .overlay-shell.success-mode {
       grid-template-columns: 1fr;
     }
 
@@ -509,7 +638,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
 
     .overlay-brand {
@@ -547,6 +676,24 @@
       font-size: 0.82rem;
     }
 
+    .overlay-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-toggle-btn {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
     .overlay-close {
       width: 56px;
       height: 56px;
@@ -567,7 +714,7 @@
 
     .overlay-progress-wrap {
       flex: 0 0 auto;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
     }
 
     .overlay-progress-meta {
@@ -616,7 +763,7 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
-      padding: 22px;
+      padding: 18px 22px;
     }
 
     .step-card {
@@ -631,7 +778,7 @@
     .step-card.active {
       display: grid;
       grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 20px;
+      gap: 16px;
       opacity: 1;
       transform: translateY(0);
       height: 100%;
@@ -660,7 +807,7 @@
     .step-title {
       margin: 10px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 3.6vw, 4rem);
+      font-size: clamp(2rem, 3.4vw, 3.8rem);
       line-height: 0.98;
       letter-spacing: -0.04em;
       max-width: 720px;
@@ -668,10 +815,10 @@
     }
 
     .step-desc {
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       max-width: 620px;
-      font-size: 0.98rem;
-      line-height: 1.7;
+      font-size: 0.96rem;
+      line-height: 1.68;
       color: var(--muted);
     }
 
@@ -690,8 +837,8 @@
       align-self: end;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding-top: 4px;
+      gap: 8px;
+      padding-top: 2px;
     }
 
     .step-actions {
@@ -785,14 +932,14 @@
 
     .text-input,
     .country-select {
-      min-height: 72px;
-      padding: 20px 22px;
-      font-size: 1.02rem;
+      min-height: 68px;
+      padding: 18px 22px;
+      font-size: 1rem;
       font-weight: 700;
     }
 
     .textarea-input {
-      min-height: 190px;
+      min-height: 170px;
       padding: 18px 20px;
       resize: none;
       line-height: 1.72;
@@ -818,7 +965,7 @@
 
     .phone-row {
       display: grid;
-      grid-template-columns: 250px minmax(0, 1fr);
+      grid-template-columns: 240px minmax(0, 1fr);
       gap: 12px;
       align-items: stretch;
     }
@@ -883,7 +1030,7 @@
     }
 
     .mode-btn {
-      min-height: 46px;
+      min-height: 44px;
       padding: 0 18px;
       border-radius: 999px;
       font-size: 0.84rem;
@@ -900,14 +1047,18 @@
 
     .date-summary {
       display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .date-summary.range {
       gap: 12px;
-      margin-top: 16px;
     }
 
     .date-summary-btn {
       width: 100%;
       text-align: left;
-      padding: 16px;
+      padding: 15px 16px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
@@ -944,101 +1095,32 @@
       font-weight: 600;
     }
 
-    .overlay-side {
-      height: 100svh;
-      border-left: 1px solid rgba(255,255,255,0.06);
-      padding: 22px 22px 22px 18px;
-      display: flex;
-      flex-direction: column;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        linear-gradient(135deg, rgba(216,178,135,0.06), transparent 40%),
-        rgba(255,255,255,0.01);
-    }
-
-    .overlay-shell.success-mode .overlay-side {
-      display: none;
-    }
-
-    .summary-card {
-      flex: 1 1 auto;
-      min-height: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
-      padding: 22px;
-      background: rgba(255,255,255,0.03);
-      overflow: auto;
-    }
-
-    .summary-title {
-      margin: 0;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .summary-list {
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .summary-item {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .summary-item:last-child {
-      border-bottom: 0;
-    }
-
-    .summary-label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-    }
-
-    .summary-value {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.96rem;
-      line-height: 1.6;
-      word-break: break-word;
-    }
-
-    .summary-empty {
-      margin-top: 16px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
     .success-wrap {
       display: grid;
-      place-items: center;
+      place-items: stretch;
       height: 100%;
     }
 
-    .success-panel {
-      width: min(100%, 920px);
-      min-height: min(78svh, 760px);
+    .success-page {
+      height: 100%;
       border-radius: 34px;
       border: 1px solid rgba(255,255,255,0.08);
       background:
         radial-gradient(circle at 12% 18%, rgba(216,178,135,0.08), transparent 26%),
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
         rgba(12,10,8,0.5);
-      padding: clamp(26px, 4vw, 54px);
+      padding: clamp(24px, 4vw, 54px);
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 18px;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
       box-shadow: var(--shadow);
+    }
+
+    .success-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .success-mark {
@@ -1050,6 +1132,7 @@
       background: rgba(216,235,200,0.08);
       border: 1px solid rgba(216,235,200,0.16);
       color: var(--success);
+      flex: 0 0 auto;
     }
 
     .success-kicker {
@@ -1060,73 +1143,27 @@
       color: var(--accent);
     }
 
+    .success-copy-wrap {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      max-width: 760px;
+    }
+
     .success-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.7rem, 5vw, 5rem);
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      max-width: 640px;
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.045em;
     }
 
     .success-copy {
       margin: 0;
-      max-width: 560px;
+      max-width: 620px;
       color: var(--muted);
       line-height: 1.75;
-      font-size: 1rem;
-    }
-
-    .success-toggle {
-      justify-self: start;
-    }
-
-    .success-summary {
-      display: none;
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 18px;
-      background: rgba(255,255,255,0.025);
-      max-height: 300px;
-      overflow: auto;
-    }
-
-    .success-summary.open {
-      display: block;
-    }
-
-    .success-summary-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .success-summary-item {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .success-summary-item:last-child {
-      border-bottom: 0;
-    }
-
-    .success-summary-label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-    }
-
-    .success-summary-value {
-      display: block;
-      margin-top: 7px;
-      line-height: 1.6;
-      word-break: break-word;
+      font-size: 1.02rem;
     }
 
     .success-actions {
@@ -1134,7 +1171,6 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      padding-top: 6px;
     }
 
     .hidden-honeypot {
@@ -1147,7 +1183,10 @@
       overflow: hidden !important;
     }
 
-    .calendar-modal {
+    .calendar-modal,
+    .info-modal,
+    .summary-modal,
+    .success-summary-modal {
       position: fixed;
       inset: 0;
       z-index: 1001;
@@ -1159,11 +1198,17 @@
       backdrop-filter: blur(10px);
     }
 
-    .calendar-modal.open {
+    .calendar-modal.open,
+    .info-modal.open,
+    .summary-modal.open,
+    .success-summary-modal.open {
       display: flex;
     }
 
-    .calendar-panel {
+    .calendar-panel,
+    .modal-panel,
+    .summary-panel,
+    .success-summary-panel {
       width: min(100%, 520px);
       border-radius: 26px;
       border: 1px solid rgba(255,255,255,0.1);
@@ -1172,6 +1217,105 @@
         var(--panel);
       box-shadow: var(--shadow);
       padding: 16px;
+    }
+
+    .modal-panel.large {
+      width: min(100%, 720px);
+    }
+
+    .summary-panel,
+    .success-summary-panel {
+      width: min(100%, 640px);
+      max-height: min(86svh, 760px);
+      overflow: auto;
+      padding: 22px;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .modal-close,
+    .calendar-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      flex: 0 0 auto;
+    }
+
+    .modal-kicker {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .modal-title {
+      margin: 8px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3.8vw, 3.5rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .modal-body {
+      color: var(--muted);
+      line-height: 1.74;
+      font-size: 1rem;
+    }
+
+    .summary-list,
+    .success-summary-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-item,
+    .success-summary-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .summary-item:last-child,
+    .success-summary-item:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-label,
+    .success-summary-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .summary-value,
+    .success-summary-value {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .summary-empty {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     .calendar-top {
@@ -1188,8 +1332,7 @@
       gap: 10px;
     }
 
-    .calendar-nav button,
-    .calendar-close {
+    .calendar-nav button {
       width: 42px;
       height: 42px;
       border-radius: 50%;
@@ -1292,16 +1435,6 @@
     }
 
     @media (max-width: 1180px) {
-      .overlay-shell {
-        grid-template-columns: 1fr;
-      }
-
-      .overlay-side {
-        display: none;
-      }
-    }
-
-    @media (max-width: 980px) {
       .setup-shell,
       .setup-screen.reverse .setup-shell {
         grid-template-columns: 1fr;
@@ -1312,9 +1445,16 @@
       }
 
       .setup-shell {
-        min-height: calc(100svh - 48px);
+        min-height: auto;
       }
 
+      .closing-cta,
+      .footer-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
       .phone-row {
         grid-template-columns: 1fr;
       }
@@ -1359,11 +1499,7 @@
 
       .setup-screen {
         padding: 12px 0;
-      }
-
-      .setup-shell {
         min-height: auto;
-        border-radius: 26px;
       }
 
       .setup-content {
@@ -1383,7 +1519,7 @@
       }
 
       .overlay-header {
-        padding-bottom: 10px;
+        padding-bottom: 8px;
       }
 
       .overlay-brand-copy strong {
@@ -1392,6 +1528,12 @@
 
       .overlay-brand-copy span {
         font-size: 0.76rem;
+      }
+
+      .summary-toggle-btn {
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 0.72rem;
       }
 
       .overlay-close {
@@ -1404,26 +1546,26 @@
       }
 
       .stage {
-        padding: 16px 14px 14px;
+        padding: 14px 14px 12px;
       }
 
       .step-card.active {
-        gap: 16px;
+        gap: 14px;
       }
 
       .step-title {
-        font-size: clamp(2rem, 9vw, 3rem);
+        font-size: clamp(1.9rem, 8.6vw, 3rem);
         max-width: 100%;
       }
 
       .step-desc {
-        font-size: 0.95rem;
+        font-size: 0.94rem;
       }
 
       .text-input,
       .country-select {
-        min-height: 64px;
-        padding: 18px 18px;
+        min-height: 62px;
+        padding: 16px 18px;
         border-radius: 18px;
         font-size: 1rem;
       }
@@ -1437,7 +1579,7 @@
       }
 
       .textarea-input {
-        min-height: 150px;
+        min-height: 140px;
         padding: 16px;
         border-radius: 18px;
       }
@@ -1472,20 +1614,33 @@
         text-align: center;
       }
 
-      .success-panel {
-        min-height: auto;
-        padding: 24px 18px;
+      .success-page {
+        padding: 22px 18px;
         border-radius: 26px;
       }
 
-      .calendar-panel {
+      .success-header {
+        display: grid;
+        justify-content: start;
+      }
+
+      .calendar-panel,
+      .modal-panel,
+      .summary-panel,
+      .success-summary-panel {
         border-radius: 22px;
-        padding: 14px;
       }
 
       .calendar-day {
         min-height: 46px;
         font-size: 0.88rem;
+      }
+
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        right: 14px;
+        bottom: 14px;
       }
     }
   </style>
@@ -1500,14 +1655,15 @@
 
       <nav class="nav-links" aria-label="Sekundær navigasjon">
         <a href="index.html">Forside</a>
+        <a href="#muligheter">Muligheter</a>
         <a href="#oppsett">Oppsett</a>
       </nav>
 
-      <button class="btn btn-primary nav-cta js-open-booking">Be om booking</button>
+      <button class="btn btn-primary nav-cta js-open-booking">Book</button>
     </div>
   </div>
 
-  <main>
+  <main id="top">
     <section class="hero" aria-label="Crepe de la Crepe Events hero">
       <div class="container hero-shell">
         <div class="hero-card">
@@ -1525,11 +1681,19 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#oppsett" class="btn btn-primary">Utforsk oppsettene</a>
-            <button class="btn btn-secondary js-open-booking">Be om booking</button>
+            <a href="#muligheter" class="btn btn-secondary">Se muligheter</a>
+            <button class="btn btn-primary js-open-booking">Book</button>
           </div>
 
           <div class="hero-note">Hero-video legges bak denne seksjonen.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="muligheter" class="options-banner-wrap" aria-label="Dine muligheter">
+      <div class="container">
+        <div class="options-banner">
+          <h2>DINE MULIGHETER</h2>
         </div>
       </div>
     </section>
@@ -1546,21 +1710,23 @@
               <div class="eyebrow">Oppsett 01</div>
 
               <h2 class="setup-name" id="wagon-title">
-                <span class="setup-brand">CREPE DE LA CREPE</span>
-                <span class="setup-model">WAGON</span>
+                <span>Crepe de</span>
+                <span>la crepe</span>
+                <span>Wagon</span>
               </h2>
 
               <p class="setup-copy">
                 For dager der dere vil at serveringen skal stå tydelig, se sterk ut og håndtere mye flyt uten å miste følelsen.
               </p>
 
-              <p class="setup-subcopy">
-                Et større oppsett for festivaler, store firmaarrangementer og dager med høyt trykk.
-              </p>
-
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Wagon">Be om booking</button>
-                <a href="#stand-title" class="btn btn-secondary">Neste oppsett</a>
+                <button class="btn btn-primary js-open-booking" data-setup="Wagon">Book</button>
+                <button class="btn btn-secondary js-open-info" data-title="Wagon" data-kicker="Les mer" data-size="small" data-content="test1">
+                  Les mer
+                </button>
+                <button class="btn btn-secondary js-open-info" data-title="Wagon" data-kicker="Spesifikasjoner" data-size="large" data-content="dimensjon1">
+                  Spesifikasjoner
+                </button>
               </div>
             </div>
           </div>
@@ -1575,21 +1741,20 @@
               <div class="eyebrow">Oppsett 02</div>
 
               <h2 class="setup-name" id="stand-title">
-                <span class="setup-brand">CREPE DE LA CREPE</span>
-                <span class="setup-model">STAND</span>
+                <span>Crepe de</span>
+                <span>la crepe</span>
+                <span>Stand</span>
               </h2>
 
               <p class="setup-copy">
                 Når dere vil ha et rent, profesjonelt serveringspunkt som er lettere å plassere, men fortsatt ser gjennomført ut.
               </p>
 
-              <p class="setup-subcopy">
-                Passer godt for messer, bedriftsdager, markeder og flater der løsningen må være strammere.
-              </p>
-
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Stand">Be om booking</button>
-                <a href="#popup-title" class="btn btn-secondary">Neste oppsett</a>
+                <button class="btn btn-primary js-open-booking" data-setup="Stand">Book</button>
+                <button class="btn btn-secondary js-open-info" data-title="Stand" data-kicker="Les mer" data-size="small" data-content="test2">
+                  Les mer
+                </button>
               </div>
             </div>
 
@@ -1612,28 +1777,75 @@
               <div class="eyebrow">Oppsett 03</div>
 
               <h2 class="setup-name" id="popup-title">
-                <span class="setup-brand">CREPE DE LA CREPE</span>
-                <span class="setup-model">POP-UP</span>
+                <span>Crepe de</span>
+                <span>la crepe</span>
+                <span>Pop-Up</span>
               </h2>
 
               <p class="setup-copy">
                 En lettere løsning for arrangementer som trenger fleksibilitet, raskere plassering og en servering som fortsatt føles varm og ryddig.
               </p>
 
-              <p class="setup-subcopy">
-                Godt egnet for private arrangementer, mindre bedriftsopplegg og kortere aktiveringer.
-              </p>
-
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Be om booking</button>
-                <a href="#top" class="btn btn-secondary" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Til toppen</a>
+                <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Book</button>
+                <button class="btn btn-secondary js-open-info" data-title="Pop-Up" data-kicker="Les mer" data-size="small" data-content="test3">
+                  Les mer
+                </button>
               </div>
             </div>
           </div>
         </div>
       </article>
     </section>
+
+    <section class="closing-cta-wrap" aria-label="Booking call to action">
+      <div class="container">
+        <div class="closing-cta">
+          <div>
+            <div class="eyebrow">Booking</div>
+            <h3>Hvilket oppsett passer best for deg?</h3>
+            <p>Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.</p>
+          </div>
+
+          <button class="btn btn-primary js-open-booking">Be om booking nå</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-shell">
+          <div>
+            <p class="footer-brand">Crepe de la Crepe</p>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Navigasjon</p>
+            <div class="footer-links">
+              <a href="index.html">Tilbake til forsiden</a>
+              <a href="personvern.html">Personvern</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Kontakt</p>
+            <div class="footer-links">
+              <a href="mailto:crepedelacrepes@gmail.com">crepedelacrepes@gmail.com</a>
+              <a href="tel:+4790212929">+47 90 21 29 29</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="TikTok">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </main>
+
+  <button class="back-to-top" id="backToTop" aria-label="Til toppen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 18V6M12 6L7 11M12 6L17 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
 
   <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
     <div class="overlay-shell" id="overlayShell">
@@ -1647,11 +1859,15 @@
             </div>
           </div>
 
-          <button class="overlay-close" id="closeOverlayBtn" aria-label="Lukk booking">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-            </svg>
-          </button>
+          <div class="overlay-header-actions">
+            <button type="button" class="summary-toggle-btn" id="openSummaryBtn">Oppsummering</button>
+
+            <button class="overlay-close" id="closeOverlayBtn" aria-label="Lukk booking">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="overlay-progress-wrap">
@@ -1783,7 +1999,7 @@
                         <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
                       </div>
 
-                      <div class="date-summary">
+                      <div class="date-summary" id="dateSummaryWrap">
                         <button type="button" class="date-summary-btn" id="startDateBtn">
                           <span class="date-summary-label">Startdato</span>
                           <span class="date-summary-value" id="startDateValue">Velg dato</span>
@@ -1896,7 +2112,7 @@
                             type="tel"
                             id="phone"
                             name="phone"
-                            placeholder="45 55 86 02"
+                            placeholder="12 34 56 78"
                             autocomplete="tel-national"
                             inputmode="numeric"
                           />
@@ -2013,30 +2229,27 @@
 
               <section class="step-card success-step" data-step="10">
                 <div class="success-wrap">
-                  <div class="success-panel">
-                    <div class="success-mark" aria-hidden="true">
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                  <div class="success-page">
+                    <div class="success-header">
+                      <div class="success-mark" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+
+                      <div class="success-kicker">Forespørsel sendt</div>
                     </div>
 
-                    <div class="success-kicker">Forespørsel sendt</div>
+                    <div class="success-copy-wrap">
+                      <h2 class="success-title">Takk for forespørselen</h2>
 
-                    <h2 class="success-title">Takk for forespørselen</h2>
-
-                    <p class="success-copy">
-                      Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
-                    </p>
-
-                    <button type="button" class="btn btn-secondary success-toggle" id="toggleSuccessSummary">
-                      Vis bookingoppsummering
-                    </button>
-
-                    <div class="success-summary" id="successSummary">
-                      <ul class="success-summary-list" id="successSummaryList"></ul>
+                      <p class="success-copy">
+                        Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
+                      </p>
                     </div>
 
                     <div class="success-actions">
+                      <button type="button" class="btn btn-secondary" id="openSuccessSummaryBtn">Vis bookingoppsummering</button>
                       <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
                       <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
                     </div>
@@ -2047,16 +2260,64 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <aside class="overlay-side">
-        <div class="summary-card">
-          <p class="summary-title">Oppsummering</p>
-          <ul class="summary-list" id="summaryList"></ul>
-          <p class="summary-empty" id="summaryEmpty">
-            Fyll ut stegene, så vises oppsummeringen fortløpende.
-          </p>
+  <div class="summary-modal" id="summaryModal" aria-hidden="true">
+    <div class="summary-panel" role="dialog" aria-modal="true" aria-labelledby="summaryModalTitle">
+      <div class="modal-top">
+        <div>
+          <div class="modal-kicker">Oppsummering</div>
+          <h3 class="modal-title" id="summaryModalTitle">Valgene så langt</h3>
         </div>
-      </aside>
+
+        <button type="button" class="modal-close" id="closeSummaryModal" aria-label="Lukk oppsummering">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="summary-list" id="summaryList"></ul>
+      <p class="summary-empty" id="summaryEmpty">Fyll ut stegene, så vises oppsummeringen fortløpende.</p>
+    </div>
+  </div>
+
+  <div class="success-summary-modal" id="successSummaryModal" aria-hidden="true">
+    <div class="success-summary-panel" role="dialog" aria-modal="true" aria-labelledby="successSummaryTitle">
+      <div class="modal-top">
+        <div>
+          <div class="modal-kicker">Bookingoppsummering</div>
+          <h3 class="modal-title" id="successSummaryTitle">Innsendt forespørsel</h3>
+        </div>
+
+        <button type="button" class="modal-close" id="closeSuccessSummaryModal" aria-label="Lukk bookingoppsummering">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="success-summary-list" id="successSummaryList"></ul>
+    </div>
+  </div>
+
+  <div class="info-modal" id="infoModal" aria-hidden="true">
+    <div class="modal-panel" id="infoModalPanel" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+      <div class="modal-top">
+        <div>
+          <div class="modal-kicker" id="infoModalKicker">Les mer</div>
+          <h3 class="modal-title" id="infoModalTitle">Oppsett</h3>
+        </div>
+
+        <button type="button" class="modal-close" id="closeInfoModal" aria-label="Lukk modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="infoModalBody"></div>
     </div>
   </div>
 
@@ -2106,6 +2367,8 @@
   <script>
     (() => {
       const revealNav = document.getElementById("revealNav");
+      const backToTop = document.getElementById("backToTop");
+
       const overlay = document.getElementById("bookingOverlay");
       const overlayShell = document.getElementById("overlayShell");
       const closeOverlayBtn = document.getElementById("closeOverlayBtn");
@@ -2116,11 +2379,26 @@
       const steps = Array.from(document.querySelectorAll(".step-card"));
       const bookingForm = document.getElementById("bookingForm");
       const submitBtn = document.getElementById("submitBtn");
+
       const summaryList = document.getElementById("summaryList");
       const summaryEmpty = document.getElementById("summaryEmpty");
-      const successSummary = document.getElementById("successSummary");
       const successSummaryList = document.getElementById("successSummaryList");
-      const toggleSuccessSummary = document.getElementById("toggleSuccessSummary");
+
+      const summaryModal = document.getElementById("summaryModal");
+      const openSummaryBtn = document.getElementById("openSummaryBtn");
+      const closeSummaryModal = document.getElementById("closeSummaryModal");
+
+      const successSummaryModal = document.getElementById("successSummaryModal");
+      const openSuccessSummaryBtn = document.getElementById("openSuccessSummaryBtn");
+      const closeSuccessSummaryModal = document.getElementById("closeSuccessSummaryModal");
+
+      const infoModal = document.getElementById("infoModal");
+      const infoModalPanel = document.getElementById("infoModalPanel");
+      const infoModalKicker = document.getElementById("infoModalKicker");
+      const infoModalTitle = document.getElementById("infoModalTitle");
+      const infoModalBody = document.getElementById("infoModalBody");
+      const closeInfoModal = document.getElementById("closeInfoModal");
+      const infoButtons = document.querySelectorAll(".js-open-info");
 
       const singleModeBtn = document.getElementById("singleModeBtn");
       const rangeModeBtn = document.getElementById("rangeModeBtn");
@@ -2131,6 +2409,7 @@
       const dateModeInput = document.getElementById("dateMode");
       const eventStartDate = document.getElementById("eventStartDate");
       const eventEndDate = document.getElementById("eventEndDate");
+      const dateSummaryWrap = document.getElementById("dateSummaryWrap");
 
       const calendarModal = document.getElementById("calendarModal");
       const calendarGrid = document.getElementById("calendarGrid");
@@ -2152,7 +2431,7 @@
       const phonePrefix = document.getElementById("phonePrefix");
 
       const phoneCountryMap = {
-        NO: { dial: "+47", placeholder: "45 55 86 02", minDigits: 8, formatter: "pair" },
+        NO: { dial: "+47", placeholder: "12 34 56 78", minDigits: 8, formatter: "pair" },
         SE: { dial: "+46", placeholder: "70 123 45 67", minDigits: 9, formatter: "sweden" },
         DK: { dial: "+45", placeholder: "12 34 56 78", minDigits: 8, formatter: "pair" },
         GB: { dial: "+44", placeholder: "7123 456789", minDigits: 10, formatter: "uk" },
@@ -2232,10 +2511,25 @@
       }
 
       function syncRevealNav() {
-        if (window.scrollY > window.innerHeight * 0.55) {
-          revealNav.classList.add("visible");
-        } else {
-          revealNav.classList.remove("visible");
+        const scrolled = window.scrollY > window.innerHeight * 0.55;
+        revealNav.classList.toggle("visible", scrolled);
+        backToTop.classList.toggle("visible", window.scrollY > window.innerHeight * 0.8);
+      }
+
+      function openBodyLock() {
+        document.body.classList.add("modal-open");
+      }
+
+      function closeBodyLockIfNoModal() {
+        const anyModalOpen =
+          summaryModal.classList.contains("open") ||
+          successSummaryModal.classList.contains("open") ||
+          infoModal.classList.contains("open") ||
+          calendarModal.classList.contains("open") ||
+          overlay.classList.contains("open");
+
+        if (!anyModalOpen) {
+          document.body.classList.remove("modal-open");
         }
       }
 
@@ -2295,6 +2589,7 @@
         overlay.classList.add("open");
         overlay.setAttribute("aria-hidden", "false");
         document.body.classList.add("overlay-open");
+        document.body.classList.add("modal-open");
 
         if (prefilledSetup) {
           formState.setup = prefilledSetup;
@@ -2307,26 +2602,58 @@
         setTimeout(() => focusStepInput(currentStep), 60);
       }
 
-      function closeOverlay() {
+      function closeOverlay(resetToStart = false) {
         overlay.classList.remove("open");
         overlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("overlay-open");
         closeCalendar();
-        successSummary.classList.remove("open");
-        toggleSuccessSummary.textContent = "Vis bookingoppsummering";
+
+        if (resetToStart) {
+          resetBookingFlow();
+        }
+
+        closeSummary();
+        closeSuccessSummary();
 
         if (previousFocusedElement && typeof previousFocusedElement.focus === "function") {
           previousFocusedElement.focus();
         }
+
+        closeBodyLockIfNoModal();
+      }
+
+      function resetBookingFlow() {
+        bookingForm.reset();
+        formState.setup = "";
+        formState.name = "";
+        formState.company = "";
+        formState.dateMode = "single";
+        formState.eventDateStart = "";
+        formState.eventDateEnd = "";
+        formState.guests = "";
+        formState.email = "";
+        formState.phoneCountry = "NO";
+        formState.phoneLocal = "";
+        formState.eventType = "";
+        formState.location = "";
+        formState.message = "";
+
+        syncChoiceSelection(setupChoices, "");
+        syncChoiceSelection(eventTypeChoices, "");
+        phoneCountry.value = "NO";
+        syncPhoneUi();
+        phoneInput.value = "";
+        setDateMode("single");
+        clearAllErrors();
+        currentStep = 0;
+        updateSteps();
+        updateSummary();
       }
 
       function updateSteps() {
         steps.forEach((step, index) => {
           step.classList.toggle("active", index === currentStep);
         });
-
-        const successMode = currentStep === 10;
-        overlayShell.classList.toggle("success-mode", successMode);
 
         if (currentStep <= totalInputSteps - 1) {
           const humanStep = currentStep + 1;
@@ -2397,7 +2724,6 @@
 
       function updateSummary() {
         const items = buildSummaryItems();
-
         summaryList.innerHTML = "";
         successSummaryList.innerHTML = "";
 
@@ -2427,6 +2753,54 @@
         });
       }
 
+      function openSummary() {
+        updateSummary();
+        summaryModal.classList.add("open");
+        summaryModal.setAttribute("aria-hidden", "false");
+        openBodyLock();
+      }
+
+      function closeSummary() {
+        summaryModal.classList.remove("open");
+        summaryModal.setAttribute("aria-hidden", "true");
+        closeBodyLockIfNoModal();
+      }
+
+      function openSuccessSummary() {
+        updateSummary();
+        successSummaryModal.classList.add("open");
+        successSummaryModal.setAttribute("aria-hidden", "false");
+        openBodyLock();
+      }
+
+      function closeSuccessSummary() {
+        successSummaryModal.classList.remove("open");
+        successSummaryModal.setAttribute("aria-hidden", "true");
+        closeBodyLockIfNoModal();
+      }
+
+      function openInfoModal(button) {
+        const title = button.dataset.title || "Oppsett";
+        const kicker = button.dataset.kicker || "Les mer";
+        const content = button.dataset.content || "";
+        const size = button.dataset.size || "small";
+
+        infoModalKicker.textContent = kicker;
+        infoModalTitle.textContent = title;
+        infoModalBody.textContent = content;
+        infoModalPanel.classList.toggle("large", size === "large");
+
+        infoModal.classList.add("open");
+        infoModal.setAttribute("aria-hidden", "false");
+        openBodyLock();
+      }
+
+      function closeInfo() {
+        infoModal.classList.remove("open");
+        infoModal.setAttribute("aria-hidden", "true");
+        closeBodyLockIfNoModal();
+      }
+
       function setDateMode(mode) {
         formState.dateMode = mode;
         dateModeInput.value = mode;
@@ -2435,6 +2809,7 @@
         singleModeBtn.classList.toggle("active", !isRange);
         rangeModeBtn.classList.toggle("active", isRange);
         endDateBtn.style.display = isRange ? "block" : "none";
+        dateSummaryWrap.classList.toggle("range", isRange);
 
         if (!isRange) {
           formState.eventDateEnd = "";
@@ -2480,11 +2855,13 @@
         renderCalendar();
         calendarModal.classList.add("open");
         calendarModal.setAttribute("aria-hidden", "false");
+        openBodyLock();
       }
 
       function closeCalendar() {
         calendarModal.classList.remove("open");
         calendarModal.setAttribute("aria-hidden", "true");
+        closeBodyLockIfNoModal();
       }
 
       function renderCalendar() {
@@ -2804,7 +3181,7 @@
             });
           },
           {
-            threshold: 0.45
+            threshold: 0.35
           }
         );
 
@@ -2841,11 +3218,34 @@
         });
       });
 
-      closeOverlayBtn.addEventListener("click", closeOverlay);
-      doneBtn.addEventListener("click", closeOverlay);
+      infoButtons.forEach((button) => {
+        button.addEventListener("click", () => openInfoModal(button));
+      });
+
+      closeOverlayBtn.addEventListener("click", () => closeOverlay(true));
+      doneBtn.addEventListener("click", () => closeOverlay(true));
 
       overlay.addEventListener("click", (event) => {
-        if (event.target === overlay) closeOverlay();
+        if (event.target === overlay) closeOverlay(true);
+      });
+
+      openSummaryBtn.addEventListener("click", openSummary);
+      closeSummaryModal.addEventListener("click", closeSummary);
+
+      summaryModal.addEventListener("click", (event) => {
+        if (event.target === summaryModal) closeSummary();
+      });
+
+      openSuccessSummaryBtn.addEventListener("click", openSuccessSummary);
+      closeSuccessSummaryModal.addEventListener("click", closeSuccessSummary);
+
+      successSummaryModal.addEventListener("click", (event) => {
+        if (event.target === successSummaryModal) closeSuccessSummary();
+      });
+
+      closeInfoModal.addEventListener("click", closeInfo);
+      infoModal.addEventListener("click", (event) => {
+        if (event.target === infoModal) closeInfo();
       });
 
       singleModeBtn.addEventListener("click", () => setDateMode("single"));
@@ -2857,8 +3257,8 @@
       prevMonthBtn.addEventListener("click", () => {
         calendarState.visibleMonth -= 1;
         if (calendarState.visibleMonth < 0) {
-          calendarState.visibleMonth = 11;
           calendarState.visibleYear -= 1;
+          calendarState.visibleMonth = 11;
         }
         renderCalendar();
       });
@@ -2866,8 +3266,8 @@
       nextMonthBtn.addEventListener("click", () => {
         calendarState.visibleMonth += 1;
         if (calendarState.visibleMonth > 11) {
-          calendarState.visibleMonth = 0;
           calendarState.visibleYear += 1;
+          calendarState.visibleMonth = 0;
         }
         renderCalendar();
       });
@@ -2881,37 +3281,26 @@
 
       bookingForm.addEventListener("submit", submitForm);
 
-      toggleSuccessSummary.addEventListener("click", () => {
-        const isOpen = successSummary.classList.toggle("open");
-        toggleSuccessSummary.textContent = isOpen
-          ? "Skjul bookingoppsummering"
-          : "Vis bookingoppsummering";
-      });
-
       document.addEventListener("keydown", (event) => {
-        if (!overlay.classList.contains("open")) return;
-
-        if (calendarModal.classList.contains("open")) {
-          if (event.key === "Escape") closeCalendar();
-          return;
-        }
-
         if (event.key === "Escape") {
-          closeOverlay();
+          if (calendarModal.classList.contains("open")) return closeCalendar();
+          if (infoModal.classList.contains("open")) return closeInfo();
+          if (summaryModal.classList.contains("open")) return closeSummary();
+          if (successSummaryModal.classList.contains("open")) return closeSuccessSummary();
+          if (overlay.classList.contains("open")) return closeOverlay(true);
           return;
         }
+
+        if (!overlay.classList.contains("open")) return;
 
         const activeTag = document.activeElement ? document.activeElement.tagName : "";
         const isTextarea = activeTag === "TEXTAREA";
+        const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
+        const isSelect = document.activeElement && document.activeElement.tagName === "SELECT";
 
-        if (event.key === "Enter" && !isTextarea) {
-          const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
-          const isSelect = document.activeElement && document.activeElement.tagName === "SELECT";
-
-          if (!isButton && !isSelect && currentStep > 0 && currentStep < 9) {
-            event.preventDefault();
-            nextStep();
-          }
+        if (event.key === "Enter" && !isTextarea && !isButton && !isSelect && currentStep > 0 && currentStep < 9) {
+          event.preventDefault();
+          nextStep();
         }
       });
 
@@ -2967,6 +3356,10 @@
       document.getElementById("message").addEventListener("input", (e) => {
         formState.message = e.target.value.trim();
         updateSummary();
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
       window.addEventListener("scroll", syncRevealNav, { passive: true });
