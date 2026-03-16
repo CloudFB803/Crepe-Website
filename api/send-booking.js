@@ -33,6 +33,49 @@ function clamp(value, maxLength) {
   return normalizeText(value).slice(0, maxLength);
 }
 
+function pickFirst(...values) {
+  for (const value of values) {
+    if (value !== undefined && value !== null && String(value).trim() !== "") {
+      return value;
+    }
+  }
+  return "";
+}
+
+function normalizePhoneForValidation(phone = "") {
+  return String(phone).replace(/[^\d+]/g, "");
+}
+
+function normalizeSetup(value = "") {
+  const raw = normalizeText(value).toLowerCase();
+
+  if (!raw) return "";
+  if (raw === "wagon" || raw === "crepe de la crepe wagon") return "Wagon";
+  if (raw === "stand" || raw === "crepe de la crepe stand") return "Stand";
+  if (
+    raw === "pop-up" ||
+    raw === "popup" ||
+    raw === "pop up" ||
+    raw === "crepe de la crepe pop-up" ||
+    raw === "crepe de la crepe popup"
+  ) {
+    return "Pop-Up";
+  }
+
+  return "";
+}
+
+function normalizeEventType(value = "") {
+  const raw = normalizeText(value).toLowerCase();
+
+  if (!raw) return "";
+  if (raw === "festival" || raw === "festivaler") return "Festival";
+  if (raw === "firmaarrangement" || raw === "firmaarrangementer") return "Firmaarrangement";
+  if (raw === "privat arrangement" || raw === "private arrangementer") return "Privat arrangement";
+
+  return "";
+}
+
 function isValidEmail(email = "") {
   const normalized = String(email).trim().toLowerCase();
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized) && normalized.length <= 150;
@@ -56,7 +99,11 @@ function isValidName(name = "") {
 
 function isValidPhone(phone = "") {
   if (!phone) return true;
-  return /^\+\d{6,17}$/.test(phone);
+
+  const normalized = normalizePhoneForValidation(phone);
+
+  if (!/^\+\d{6,17}$/.test(normalized)) return false;
+  return true;
 }
 
 function isValidGuests(value = "") {
@@ -94,17 +141,19 @@ function isPastDateString(value = "") {
 function isValidDateInput(value = "") {
   if (!value) return true;
 
+  const normalized = normalizeText(value);
   const singleDatePattern = /^\d{4}-\d{2}-\d{2}$/;
-  const rangePattern = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
+  const rangePatternDash = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
+  const rangePatternTil = /^(\d{4}-\d{2}-\d{2}) til (\d{4}-\d{2}-\d{2})$/i;
 
-  if (singleDatePattern.test(value)) {
-    const date = parseRealDate(value);
+  if (singleDatePattern.test(normalized)) {
+    const date = parseRealDate(normalized);
     if (!date) return false;
-    if (isPastDateString(value)) return false;
+    if (isPastDateString(normalized)) return false;
     return true;
   }
 
-  const rangeMatch = value.match(rangePattern);
+  const rangeMatch = normalized.match(rangePatternDash) || normalized.match(rangePatternTil);
   if (!rangeMatch) return false;
 
   const from = rangeMatch[1];
@@ -118,14 +167,6 @@ function isValidDateInput(value = "") {
   if (isPastDateString(from) || isPastDateString(to)) return false;
 
   return true;
-}
-
-function getAllowedTypes() {
-  return [
-    "Festivaler",
-    "Firmaarrangementer",
-    "Private arrangementer"
-  ];
 }
 
 function looksLikeSpamMessage(message = "") {
@@ -201,25 +242,31 @@ export default {
         data = Object.fromEntries(formData.entries());
       }
 
-      const honeypot = clamp(data.website || data.companyWebsite || "", 200);
+      const honeypot = clamp(
+        pickFirst(data.website, data.companyWebsite),
+        200
+      );
+
       if (honeypot) {
         return jsonResponse({ ok: true });
       }
 
-      const navn = clamp(data.navn || "", 80);
-      const firma = clamp(data.firma || "", 120);
-      const epost = clamp(data.epost || "", 150).toLowerCase();
-      const telefon = clamp(data.telefon || "", 30);
-      const type = clamp(data.type || "", 60);
-      const dato = clamp(data.dato || "", 60);
-      const sted = clamp(data.sted || "", 120);
-      const gjester = clamp(data.gjester || "", 6);
-      const melding = clamp(data.melding || "", 1200);
+      const navn = clamp(pickFirst(data.name, data.navn), 80);
+      const firma = clamp(pickFirst(data.company, data.firma), 120);
+      const epost = clamp(pickFirst(data.email, data.epost), 150).toLowerCase();
+      const telefonRaw = clamp(pickFirst(data.phone, data.telefon), 30);
+      const telefon = normalizeText(telefonRaw);
+      const setup = normalizeSetup(clamp(pickFirst(data.setup, data.oppsett), 40));
+      const type = normalizeEventType(clamp(data.type || "", 60));
+      const dato = clamp(pickFirst(data.date, data.dato), 80);
+      const sted = clamp(pickFirst(data.location, data.sted), 120);
+      const gjester = clamp(pickFirst(data.guests, data.gjester), 6);
+      const melding = clamp(pickFirst(data.message, data.melding), 1200);
 
-      if (!navn || !epost || !type) {
+      if (!navn || !epost || !type || !setup) {
         return jsonResponse({
           ok: false,
-          error: "Navn, e-post og type arrangement er påkrevd."
+          error: "Oppsett, navn, e-post og type arrangement er påkrevd."
         }, 400);
       }
 
@@ -265,8 +312,14 @@ export default {
         }, 400);
       }
 
-      const allowedTypes = getAllowedTypes();
-      if (!allowedTypes.includes(type)) {
+      if (!setup) {
+        return jsonResponse({
+          ok: false,
+          error: "Ugyldig oppsett."
+        }, 400);
+      }
+
+      if (!type) {
         return jsonResponse({
           ok: false,
           error: "Ugyldig arrangementstype."
@@ -302,6 +355,7 @@ export default {
       const safeFirma = escapeHtml(firma);
       const safeEpost = escapeHtml(epost);
       const safeTelefon = escapeHtml(telefon);
+      const safeSetup = escapeHtml(setup);
       const safeType = escapeHtml(type);
       const safeDato = escapeHtml(dato);
       const safeSted = escapeHtml(sted);
@@ -315,6 +369,10 @@ export default {
         <div style="font-family: Arial, Helvetica, sans-serif; color: #241711; line-height: 1.6;">
           <h2 style="margin: 0 0 16px;">Ny bookingforespørsel</h2>
           <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Oppsett</strong></td>
+              <td style="padding: 8px; border: 1px solid #ddd;">${safeSetup}</td>
+            </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"><strong>Navn</strong></td>
               <td style="padding: 8px; border: 1px solid #ddd;">${safeNavn}</td>
