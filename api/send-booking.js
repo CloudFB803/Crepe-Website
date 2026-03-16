@@ -64,13 +64,45 @@ function isValidGuests(value = "") {
   return /^\d{1,6}$/.test(value);
 }
 
+function parseRealDate(value = "") {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month - 1 ||
+    date.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  return date;
+}
+
+function isPastDateString(value = "") {
+  const date = parseRealDate(value);
+  if (!date) return true;
+
+  const now = new Date();
+  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+
+  return date.getTime() < todayUtc;
+}
+
 function isValidDateInput(value = "") {
   if (!value) return true;
 
   const singleDatePattern = /^\d{4}-\d{2}-\d{2}$/;
   const rangePattern = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
 
-  if (singleDatePattern.test(value)) return true;
+  if (singleDatePattern.test(value)) {
+    const date = parseRealDate(value);
+    if (!date) return false;
+    if (isPastDateString(value)) return false;
+    return true;
+  }
 
   const rangeMatch = value.match(rangePattern);
   if (!rangeMatch) return false;
@@ -78,7 +110,14 @@ function isValidDateInput(value = "") {
   const from = rangeMatch[1];
   const to = rangeMatch[2];
 
-  return to >= from;
+  const fromDate = parseRealDate(from);
+  const toDate = parseRealDate(to);
+
+  if (!fromDate || !toDate) return false;
+  if (to < from) return false;
+  if (isPastDateString(from) || isPastDateString(to)) return false;
+
+  return true;
 }
 
 function getAllowedTypes() {
@@ -212,6 +251,13 @@ export default {
         }, 400);
       }
 
+      if (gjester && Number(gjester) < 1) {
+        return jsonResponse({
+          ok: false,
+          error: "Antall gjester må være minst 1."
+        }, 400);
+      }
+
       if (!isValidDateInput(dato)) {
         return jsonResponse({
           ok: false,
@@ -309,22 +355,33 @@ export default {
         </div>
       `;
 
-      const resendResponse = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendApiKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          from: bookingFromEmail,
-          to: [bookingToEmail],
-          reply_to: safeReplyTo,
-          subject: `Ny bookingforespørsel - ${safeSubjectName}`,
-          html
-        })
-      });
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
 
-      const resendData = await resendResponse.json();
+      let resendResponse;
+      let resendData;
+
+      try {
+        resendResponse = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            from: bookingFromEmail,
+            to: [bookingToEmail],
+            reply_to: safeReplyTo,
+            subject: `Ny bookingforespørsel - ${safeSubjectName}`,
+            html
+          }),
+          signal: controller.signal
+        });
+
+        resendData = await resendResponse.json();
+      } finally {
+        clearTimeout(timeout);
+      }
 
       if (!resendResponse.ok) {
         console.error("Resend error:", resendData);
