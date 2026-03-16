@@ -18,27 +18,28 @@
 
   <style>
     :root {
-      --bg: #0d0b09;
-      --bg-soft: #15120f;
-      --panel: #17130f;
-      --panel-2: #1f1914;
-      --card: #120f0c;
-      --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.16);
+      --bg: #0b0908;
+      --bg-2: #12100d;
+      --panel: #15120f;
+      --panel-2: #1a1612;
+      --card: rgba(255,255,255,0.03);
+      --line: rgba(255,255,255,0.08);
+      --line-2: rgba(255,255,255,0.14);
       --text: #f5efe8;
-      --muted: rgba(245, 239, 232, 0.72);
-      --muted-2: rgba(245, 239, 232, 0.5);
-      --accent: #d7b186;
-      --accent-2: #f0d4b2;
-      --success: #d9e9c7;
-      --danger: #ffb2b2;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-      --radius-xl: 28px;
+      --muted: rgba(245,239,232,0.72);
+      --muted-2: rgba(245,239,232,0.5);
+      --accent: #d8b287;
+      --accent-2: #efd6b7;
+      --success: #d8ebc8;
+      --danger: #ffb5b5;
+      --shadow: 0 24px 80px rgba(0,0,0,0.36);
+      --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 12px;
       --container: 1280px;
       --ease: cubic-bezier(.22,.61,.36,1);
+      --nav-h: 74px;
     }
 
     * {
@@ -51,9 +52,9 @@
 
     body {
       margin: 0;
-      font-family: "Manrope", sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-family: "Manrope", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
@@ -76,128 +77,20 @@
 
     button,
     input,
-    textarea,
-    select {
+    textarea {
       font: inherit;
     }
 
     button {
-      cursor: pointer;
       border: 0;
       background: none;
       color: inherit;
+      cursor: pointer;
     }
 
     .container {
       width: min(calc(100% - 40px), var(--container));
       margin: 0 auto;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: rgba(215, 177, 134, 0.55);
-    }
-
-    .section-title {
-      margin: 18px 0 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 4.25rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-    }
-
-    .section-copy {
-      margin: 18px 0 0;
-      max-width: 720px;
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    .hero {
-      min-height: 100svh;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      isolation: isolate;
-      background:
-        linear-gradient(180deg, rgba(13, 11, 9, 0.18) 0%, rgba(13, 11, 9, 0.55) 48%, rgba(13, 11, 9, 0.94) 100%),
-        linear-gradient(120deg, rgba(10, 8, 7, 0.55) 0%, rgba(10, 8, 7, 0.15) 42%, rgba(10, 8, 7, 0.62) 100%),
-        url('hero-video.jpg') center center / cover no-repeat;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(215, 177, 134, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05), transparent 28%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .hero-inner {
-      width: 100%;
-      padding: 110px 0 58px;
-    }
-
-    .hero-panel {
-      max-width: 760px;
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      background: rgba(14, 11, 9, 0.34);
-      backdrop-filter: blur(10px);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: rgba(245,239,232,0.85);
-    }
-
-    .hero-title {
-      margin: 18px 0 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      text-wrap: balance;
-    }
-
-    .hero-copy {
-      margin: 22px 0 0;
-      max-width: 640px;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      line-height: 1.8;
-      color: rgba(245,239,232,0.82);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px 20px;
-      margin-top: 34px;
     }
 
     .btn {
@@ -208,26 +101,21 @@
       min-height: 56px;
       padding: 0 22px;
       border-radius: 999px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease), opacity 220ms var(--ease);
-      will-change: transform;
     }
 
     .btn:hover {
       transform: translateY(-1px);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
-
     .btn-primary {
       background: var(--accent);
-      color: #1b130d;
-      box-shadow: 0 16px 40px rgba(215, 177, 134, 0.18);
+      color: #18110b;
+      box-shadow: 0 16px 40px rgba(216,178,135,0.18);
     }
 
     .btn-primary:hover {
@@ -235,71 +123,278 @@
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.14);
       color: var(--text);
     }
 
     .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.28);
       background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.22);
     }
 
-    .hero-time {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.92rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(216,178,135,0.5);
+    }
+
+    .reveal-nav {
+      position: fixed;
+      top: 12px;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-14px);
+      transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+    }
+
+    .reveal-nav.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .reveal-nav-inner {
+      width: min(calc(100% - 28px), 1180px);
+      margin: 0 auto;
+      min-height: 62px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(10,8,7,0.42);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.18);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nav-brand-badge {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    .nav-brand span {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: rgba(245,239,232,0.88);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      opacity: 0.82;
+      transition: opacity 180ms var(--ease);
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      min-height: 44px;
+      padding: 0 16px;
+      font-size: 0.8rem;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(6,5,4,0.08) 0%, rgba(6,5,4,0.42) 55%, rgba(6,5,4,0.88) 100%),
+        linear-gradient(90deg, rgba(6,5,4,0.46) 0%, rgba(6,5,4,0.12) 50%, rgba(6,5,4,0.46) 100%),
+        url('hero-video.jpg') center center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0,0,0,0.18), transparent 28%),
+        radial-gradient(circle at 50% 40%, rgba(216,178,135,0.08), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero-shell {
+      width: 100%;
+      padding: 42px 0 28px;
+    }
+
+    .hero-card {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 38px 24px 24px;
+      border-radius: 28px;
+      background: rgba(8,7,6,0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-logo {
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.24);
+    }
+
+    .hero-logo span {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      margin: 18px auto 0;
+      max-width: 720px;
+      font-size: clamp(1rem, 1.7vw, 1.22rem);
+      line-height: 1.7;
+      color: rgba(245,239,232,0.88);
+    }
+
+    .hero-sub {
+      margin: 8px auto 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
       color: rgba(245,239,232,0.7);
     }
 
-    .hero-time svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-      opacity: 0.9;
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-skip {
+      margin-top: 16px;
+      color: rgba(245,239,232,0.64);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .intro {
-      padding: 110px 0 50px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.015), transparent),
-        var(--bg);
+      padding: 88px 0 40px;
+      background: var(--bg);
     }
 
     .intro-card {
-      padding: clamp(30px, 4vw, 52px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
+      padding: clamp(28px, 4vw, 52px);
       background:
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
         var(--panel);
       box-shadow: var(--shadow);
     }
 
+    .section-title {
+      margin: 16px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      max-width: 760px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
     .setup-section {
-      padding: 34px 0;
+      padding: 28px 0;
     }
 
     .setup-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      min-height: 720px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 740px;
       overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
       background: var(--panel);
       box-shadow: var(--shadow);
     }
 
     .setup-grid.reverse {
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.95fr 1.05fr;
     }
 
     .setup-media {
       position: relative;
       min-height: 420px;
-      background: #0c0907;
+      background: #080706;
       overflow: hidden;
     }
 
@@ -309,7 +404,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.02);
     }
 
     .setup-media::after {
@@ -317,8 +411,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)),
-        radial-gradient(circle at 75% 18%, rgba(255,255,255,0.1), transparent 26%);
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.22)),
+        radial-gradient(circle at 60% 30%, rgba(255,255,255,0.08), transparent 28%);
       pointer-events: none;
     }
 
@@ -326,71 +420,72 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(30px, 5vw, 72px);
+      padding: clamp(28px, 5vw, 72px);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(215,177,134,0.06), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(216,178,135,0.06), transparent 42%),
         var(--panel);
     }
 
     .setup-name {
-      margin: 18px 0 0;
+      margin: 16px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
     }
 
     .setup-copy {
       margin: 20px 0 0;
-      font-size: 1rem;
-      line-height: 1.78;
-      color: var(--muted);
       max-width: 560px;
-    }
-
-    .setup-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
+      font-size: 1rem;
+      line-height: 1.76;
+      color: var(--muted);
     }
 
     .setup-meta {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 34px;
+      gap: 16px;
+      margin-top: 30px;
     }
 
     .setup-chip {
-      padding: 16px 18px;
+      padding: 18px 18px;
+      border-radius: 20px;
       border: 1px solid var(--line);
-      border-radius: var(--radius-md);
       background: rgba(255,255,255,0.02);
     }
 
     .setup-chip-label {
       font-size: 0.72rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted-2);
     }
 
     .setup-chip-value {
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--text);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .setup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
     }
 
     .spec-box {
+      display: none;
       margin-top: 18px;
+      border-radius: 20px;
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
       background: rgba(255,255,255,0.02);
       overflow: hidden;
-      display: none;
     }
 
     .spec-box.open {
@@ -398,83 +493,79 @@
     }
 
     .spec-inner {
-      padding: 22px 22px 24px;
+      padding: 20px;
     }
 
     .spec-title {
       margin: 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      font-weight: 800;
     }
 
     .spec-list {
       list-style: none;
+      margin: 16px 0 0;
       padding: 0;
-      margin: 18px 0 0;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .spec-list li {
       padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
       color: var(--muted);
       line-height: 1.6;
     }
 
     .cta-section {
-      padding: 40px 0 110px;
+      padding: 36px 0 110px;
     }
 
     .cta-card {
-      padding: clamp(34px, 5vw, 66px);
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
+      padding: clamp(30px, 5vw, 64px);
       background:
-        radial-gradient(circle at 10% 20%, rgba(215,177,134,0.12), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        radial-gradient(circle at 10% 18%, rgba(216,178,135,0.1), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
         var(--panel);
       box-shadow: var(--shadow);
     }
 
     .cta-row {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 28px;
-    }
-
-    .cta-copy {
-      max-width: 720px;
     }
 
     .cta-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.1rem, 4vw, 4rem);
-      line-height: 0.95;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.94;
       letter-spacing: -0.03em;
     }
 
     .cta-text {
       margin: 16px 0 0;
-      font-size: 1rem;
-      line-height: 1.75;
+      max-width: 720px;
       color: var(--muted);
+      line-height: 1.75;
     }
 
     .footer {
-      padding: 0 0 50px;
+      padding: 0 0 44px;
     }
 
     .footer-card {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
       gap: 24px;
       padding: 28px;
       border-radius: 24px;
@@ -491,9 +582,9 @@
 
     .footer-brand p {
       margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
       max-width: 420px;
+      color: var(--muted);
+      line-height: 1.72;
     }
 
     .footer-links {
@@ -510,33 +601,28 @@
 
     .footer-label {
       font-size: 0.72rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted-2);
-      font-weight: 700;
     }
 
     .footer-col a,
     .footer-col span {
       color: var(--text);
       opacity: 0.86;
-      transition: opacity 180ms var(--ease);
-    }
-
-    .footer-col a:hover {
-      opacity: 1;
     }
 
     .booking-overlay {
       position: fixed;
       inset: 0;
-      z-index: 999;
+      z-index: 1000;
       display: none;
       background:
-        radial-gradient(circle at 10% 10%, rgba(215,177,134,0.08), transparent 26%),
-        radial-gradient(circle at 85% 12%, rgba(255,255,255,0.06), transparent 22%),
-        rgba(9, 8, 7, 0.88);
-      backdrop-filter: blur(18px);
+        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.07), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.05), transparent 22%),
+        rgba(7,6,5,0.9);
+      backdrop-filter: blur(16px);
     }
 
     .booking-overlay.open {
@@ -544,25 +630,27 @@
     }
 
     .overlay-shell {
-      min-height: 100svh;
+      width: 100%;
+      height: 100svh;
       display: grid;
-      grid-template-columns: minmax(320px, 1.05fr) minmax(340px, 0.95fr);
+      grid-template-columns: minmax(0, 1fr) 420px;
     }
 
-    .overlay-left {
-      position: relative;
-      padding: 28px 30px 30px;
-      border-right: 1px solid rgba(255,255,255,0.06);
+    .overlay-main {
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      min-height: 100svh;
+      height: 100svh;
+      padding: 18px 22px 20px;
     }
 
-    .overlay-top {
+    .overlay-header {
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      padding-bottom: 14px;
     }
 
     .overlay-brand {
@@ -573,21 +661,17 @@
     }
 
     .overlay-brand-badge {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-weight: 800;
-      font-size: 0.82rem;
-      color: var(--accent);
       flex: 0 0 auto;
-    }
-
-    .overlay-brand-copy {
-      min-width: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.9rem;
     }
 
     .overlay-brand-copy strong {
@@ -599,21 +683,21 @@
 
     .overlay-brand-copy span {
       display: block;
-      margin-top: 3px;
-      font-size: 0.82rem;
+      margin-top: 2px;
       color: var(--muted-2);
+      font-size: 0.82rem;
     }
 
     .overlay-close {
-      width: 52px;
-      height: 52px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      border-radius: 50%;
+      flex: 0 0 auto;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
       transition: background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
-      flex: 0 0 auto;
     }
 
     .overlay-close:hover {
@@ -623,64 +707,95 @@
     }
 
     .overlay-progress-wrap {
-      margin-top: 26px;
+      flex: 0 0 auto;
+      padding-bottom: 18px;
     }
 
     .overlay-progress-meta {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 0.8rem;
       color: var(--muted-2);
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
     .overlay-progress {
       height: 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
       overflow: hidden;
+      background: rgba(255,255,255,0.06);
     }
 
     .overlay-progress-bar {
       height: 100%;
-      width: 0%;
+      width: 0;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), #efd7bc);
-      transition: width 260ms var(--ease);
+      background: linear-gradient(90deg, var(--accent), #efd7bb);
+      transition: width 240ms var(--ease);
     }
 
-    .question-shell {
-      position: relative;
-      flex: 1;
-      display: flex;
+    .booking-time {
+      flex: 0 0 auto;
+      display: inline-flex;
       align-items: center;
-      padding: 26px 0;
-      overflow: hidden;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: rgba(245,239,232,0.72);
+      font-size: 0.88rem;
     }
 
-    .question-stage {
-      width: 100%;
-      max-width: 760px;
+    .booking-time svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .overlay-frame {
+      flex: 1 1 auto;
+      min-height: 0;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        rgba(10,8,7,0.35);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stage {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 22px 18px;
     }
 
     .step-card {
-      width: 100%;
-      max-width: 760px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 220ms var(--ease), transform 220ms var(--ease);
       display: none;
+      height: 100%;
+      min-height: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 180ms var(--ease), transform 180ms var(--ease);
     }
 
     .step-card.active {
-      display: block;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14px;
       opacity: 1;
       transform: translateY(0);
+      height: 100%;
+    }
+
+    .step-top {
+      align-self: start;
     }
 
     .step-kicker {
@@ -695,50 +810,61 @@
     }
 
     .step-title {
-      margin: 18px 0 0;
+      margin: 12px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.3rem, 5vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.035em;
-      max-width: 660px;
+      font-size: clamp(2.3rem, 4.4vw, 4.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      max-width: 720px;
     }
 
     .step-desc {
-      margin: 18px 0 0;
-      max-width: 560px;
-      color: var(--muted);
-      line-height: 1.75;
+      margin: 12px 0 0;
+      max-width: 620px;
       font-size: 1rem;
+      line-height: 1.72;
+      color: var(--muted);
     }
 
-    .step-input-wrap {
-      margin-top: 34px;
-      max-width: 620px;
+    .step-middle {
+      min-height: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .step-middle-inner {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .step-compact .step-middle {
+      align-items: center;
     }
 
     .text-input,
     .textarea-input {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 22px;
-      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
       color: var(--text);
-      padding: 22px 24px;
       outline: none;
-      transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+      transition: border-color 180ms var(--ease), background 180ms var(--ease);
     }
 
     .text-input {
-      min-height: 72px;
-      font-size: 1.08rem;
-      font-weight: 600;
+      min-height: 74px;
+      padding: 20px 22px;
+      font-size: 1.05rem;
+      font-weight: 700;
     }
 
     .textarea-input {
       min-height: 170px;
-      resize: vertical;
-      font-size: 1rem;
+      padding: 18px 20px;
+      resize: none;
       line-height: 1.75;
+      font-size: 1rem;
     }
 
     .text-input::placeholder,
@@ -748,56 +874,36 @@
 
     .text-input:focus,
     .textarea-input:focus {
-      border-color: rgba(215,177,134,0.5);
-      background: rgba(255,255,255,0.055);
+      border-color: rgba(216,178,135,0.5);
+      background: rgba(255,255,255,0.045);
     }
 
-    .step-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .ghost-link {
-      color: var(--muted);
-      font-weight: 600;
-      padding: 10px 0;
-      opacity: 0.86;
-      transition: opacity 180ms var(--ease);
-    }
-
-    .ghost-link:hover {
-      opacity: 1;
-    }
-
-    .helper {
-      margin-top: 16px;
-      font-size: 0.9rem;
+    .field-helper {
+      margin-top: 12px;
+      font-size: 0.92rem;
       color: var(--muted-2);
+      line-height: 1.6;
     }
 
     .error-text {
-      margin-top: 14px;
       min-height: 22px;
+      margin-top: 12px;
       color: var(--danger);
       font-size: 0.92rem;
       font-weight: 600;
     }
 
     .choice-grid {
-      margin-top: 34px;
       display: grid;
-      gap: 14px;
-      max-width: 680px;
+      gap: 12px;
+      max-width: 760px;
     }
 
     .choice-card {
       width: 100%;
       text-align: left;
-      padding: 22px 22px;
-      border-radius: 22px;
+      padding: 18px 18px;
+      border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
       transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
@@ -805,14 +911,14 @@
 
     .choice-card:hover {
       transform: translateY(-1px);
+      background: rgba(255,255,255,0.05);
       border-color: rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.045);
     }
 
     .choice-card.selected {
-      border-color: rgba(215,177,134,0.45);
-      background: rgba(215,177,134,0.09);
-      box-shadow: inset 0 0 0 1px rgba(215,177,134,0.18);
+      background: rgba(216,178,135,0.08);
+      border-color: rgba(216,178,135,0.44);
+      box-shadow: inset 0 0 0 1px rgba(216,178,135,0.14);
     }
 
     .choice-top {
@@ -823,7 +929,7 @@
     }
 
     .choice-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 800;
       letter-spacing: 0.03em;
       text-transform: uppercase;
@@ -841,16 +947,15 @@
     }
 
     .choice-desc {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.96rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     .date-card {
-      margin-top: 34px;
-      max-width: 720px;
-      padding: 24px;
+      max-width: 760px;
+      padding: 18px;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
@@ -859,14 +964,14 @@
     .date-mode {
       display: inline-grid;
       grid-template-columns: 1fr 1fr;
+      gap: 6px;
       padding: 6px;
       border-radius: 999px;
       background: rgba(255,255,255,0.05);
-      gap: 6px;
     }
 
     .mode-btn {
-      min-height: 48px;
+      min-height: 46px;
       padding: 0 18px;
       border-radius: 999px;
       font-size: 0.86rem;
@@ -877,20 +982,20 @@
     }
 
     .mode-btn.active {
-      background: rgba(215,177,134,0.16);
+      background: rgba(216,178,135,0.16);
       color: var(--text);
     }
 
     .date-summary {
-      margin-top: 18px;
       display: grid;
       gap: 12px;
+      margin-top: 16px;
     }
 
     .date-summary-btn {
       width: 100%;
       text-align: left;
-      padding: 18px 18px;
+      padding: 16px 16px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
@@ -898,17 +1003,17 @@
     }
 
     .date-summary-btn:hover {
-      border-color: rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.18);
     }
 
     .date-summary-label {
       display: block;
       font-size: 0.72rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted-2);
-      font-weight: 700;
     }
 
     .date-summary-value {
@@ -919,6 +1024,128 @@
       color: var(--text);
     }
 
+    .step-bottom {
+      align-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 6px;
+    }
+
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ghost-link {
+      color: var(--muted);
+      font-weight: 700;
+      padding: 10px 0;
+      opacity: 0.9;
+    }
+
+    .overlay-side {
+      height: 100svh;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      padding: 22px 22px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        linear-gradient(135deg, rgba(216,178,135,0.06), transparent 40%),
+        rgba(255,255,255,0.01);
+    }
+
+    .summary-card {
+      flex: 1 1 auto;
+      min-height: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 22px;
+      background: rgba(255,255,255,0.03);
+      overflow: auto;
+    }
+
+    .summary-title {
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .summary-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .summary-item:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .summary-value {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .summary-empty {
+      margin-top: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .side-note {
+      margin-top: 14px;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    .success-mark {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(216,235,200,0.08);
+      border: 1px solid rgba(216,235,200,0.16);
+      color: var(--success);
+      margin-bottom: 6px;
+    }
+
+    .hidden-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
     .calendar-modal {
       position: fixed;
       inset: 0;
@@ -926,9 +1153,9 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: rgba(7, 6, 5, 0.72);
-      backdrop-filter: blur(12px);
+      padding: 16px;
+      background: rgba(7,6,5,0.76);
+      backdrop-filter: blur(10px);
     }
 
     .calendar-modal.open {
@@ -936,16 +1163,14 @@
     }
 
     .calendar-panel {
-      width: min(100%, 560px);
-      max-height: min(88svh, 760px);
-      overflow: auto;
-      border-radius: 28px;
+      width: min(100%, 520px);
+      border-radius: 26px;
       border: 1px solid rgba(255,255,255,0.1);
       background:
-        radial-gradient(circle at 12% 12%, rgba(215,177,134,0.1), transparent 26%),
+        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.08), transparent 28%),
         var(--panel);
       box-shadow: var(--shadow);
-      padding: 20px;
+      padding: 16px;
     }
 
     .calendar-top {
@@ -953,7 +1178,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .calendar-nav {
@@ -974,10 +1199,10 @@
     }
 
     .calendar-title {
+      font-size: 0.84rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-size: 0.86rem;
     }
 
     .calendar-weekdays,
@@ -993,173 +1218,67 @@
 
     .calendar-weekdays span {
       text-align: center;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted-2);
-      font-weight: 700;
       padding: 8px 0;
     }
 
     .calendar-day {
-      min-height: 58px;
-      border-radius: 16px;
+      min-height: 54px;
+      border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      transition: border-color 160ms var(--ease), background 160ms var(--ease), transform 160ms var(--ease), opacity 160ms var(--ease);
+      transition: transform 160ms var(--ease), background 160ms var(--ease), border-color 160ms var(--ease), opacity 160ms var(--ease);
     }
 
     .calendar-day:hover:not(:disabled) {
       transform: translateY(-1px);
+      background: rgba(255,255,255,0.05);
       border-color: rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.055);
-    }
-
-    .calendar-day.muted {
-      opacity: 0.28;
-      pointer-events: none;
     }
 
     .calendar-day.disabled {
-      opacity: 0.26;
+      opacity: 0.25;
       pointer-events: none;
       text-decoration: line-through;
     }
 
+    .calendar-day.muted {
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
     .calendar-day.selected {
-      background: rgba(215,177,134,0.18);
-      border-color: rgba(215,177,134,0.55);
-      color: var(--text);
+      background: rgba(216,178,135,0.18);
+      border-color: rgba(216,178,135,0.52);
     }
 
     .calendar-day.in-range {
-      background: rgba(215,177,134,0.08);
-      border-color: rgba(215,177,134,0.22);
+      background: rgba(216,178,135,0.08);
+      border-color: rgba(216,178,135,0.22);
     }
 
     .calendar-footer {
-      margin-top: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      padding-top: 18px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .calendar-footer-text {
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       line-height: 1.6;
-    }
-
-    .overlay-right {
-      position: relative;
-      min-height: 100svh;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(215,177,134,0.08), transparent 36%),
-        rgba(255,255,255,0.01);
-    }
-
-    .summary-card {
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
-      padding: 24px;
-      background: rgba(255,255,255,0.03);
-      min-height: 340px;
-    }
-
-    .summary-title {
-      margin: 0;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .summary-list {
-      margin: 22px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .summary-item {
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .summary-item:last-child {
-      border-bottom: 0;
-    }
-
-    .summary-label {
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      font-weight: 700;
-    }
-
-    .summary-value {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    .summary-empty {
-      margin-top: 18px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .overlay-note {
-      margin-top: 24px;
-      color: var(--muted-2);
-      font-size: 0.9rem;
-      line-height: 1.75;
-      max-width: 420px;
-    }
-
-    .success-card {
-      max-width: 700px;
-    }
-
-    .success-mark {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(217,233,199,0.09);
-      border: 1px solid rgba(217,233,199,0.18);
-      color: var(--success);
-      margin-bottom: 20px;
-    }
-
-    .hidden-honeypot {
-      position: absolute !important;
-      left: -9999px !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-      width: 1px !important;
-      height: 1px !important;
-      overflow: hidden !important;
     }
 
     .loading {
@@ -1172,12 +1291,8 @@
         grid-template-columns: 1fr;
       }
 
-      .overlay-right {
+      .overlay-side {
         display: none;
-      }
-
-      .overlay-left {
-        border-right: 0;
       }
     }
 
@@ -1190,26 +1305,50 @@
 
       .cta-row,
       .footer-card {
-        grid-template-columns: 1fr;
         display: grid;
-      }
-
-      .footer-links {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .container {
         width: min(calc(100% - 24px), var(--container));
       }
 
-      .hero-inner {
-        padding: 100px 0 32px;
+      .reveal-nav-inner {
+        width: calc(100% - 16px);
+        padding: 8px 10px;
+        min-height: 54px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-shell {
+        padding: 26px 0 20px;
+      }
+
+      .hero-card {
+        padding: 30px 16px 18px;
+      }
+
+      .hero-logo {
+        width: 84px;
+        height: 84px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
       }
 
       .intro {
-        padding: 74px 0 28px;
+        padding: 68px 0 24px;
       }
 
       .setup-section {
@@ -1217,97 +1356,167 @@
       }
 
       .cta-section {
-        padding: 20px 0 80px;
+        padding: 18px 0 78px;
       }
 
       .setup-content,
       .intro-card,
       .cta-card {
-        padding: 26px 20px;
+        padding: 24px 18px;
       }
 
-      .setup-actions,
-      .hero-actions,
-      .step-actions {
+      .setup-meta,
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+
+      .setup-actions {
         flex-direction: column;
-        align-items: stretch;
       }
 
-      .btn {
+      .setup-actions .btn {
         width: 100%;
       }
 
-      .overlay-left {
-        padding: 16px 16px 22px;
+      .overlay-main {
+        padding: 10px 10px 12px;
       }
 
-      .question-shell {
-        align-items: flex-start;
-        padding: 22px 0 12px;
+      .overlay-header {
+        padding-bottom: 10px;
+      }
+
+      .overlay-brand-copy strong {
+        font-size: 0.84rem;
+      }
+
+      .overlay-brand-copy span {
+        font-size: 0.76rem;
+      }
+
+      .overlay-close {
+        width: 48px;
+        height: 48px;
+      }
+
+      .booking-time {
+        margin-bottom: 10px;
+      }
+
+      .overlay-frame {
+        border-radius: 22px;
+      }
+
+      .stage {
+        padding: 16px 14px 14px;
+      }
+
+      .step-card.active {
+        gap: 12px;
+      }
+
+      .step-title {
+        font-size: clamp(2rem, 10vw, 3.2rem);
+        max-width: 100%;
+      }
+
+      .step-desc {
+        font-size: 0.96rem;
       }
 
       .text-input {
         min-height: 64px;
         padding: 18px 18px;
         border-radius: 18px;
+        font-size: 1rem;
       }
 
       .textarea-input {
-        padding: 18px;
+        min-height: 140px;
+        padding: 16px;
         border-radius: 18px;
       }
 
       .choice-card {
-        padding: 18px;
+        padding: 16px;
         border-radius: 18px;
       }
 
       .date-card {
-        padding: 18px;
+        padding: 14px;
         border-radius: 20px;
       }
 
-      .calendar-panel {
-        padding: 16px;
-        border-radius: 22px;
+      .mode-btn {
+        min-height: 42px;
+        font-size: 0.8rem;
       }
 
-      .calendar-grid {
-        gap: 6px;
+      .step-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .step-actions .btn {
+        width: 100%;
+      }
+
+      .ghost-link {
+        text-align: center;
+      }
+
+      .calendar-panel {
+        border-radius: 22px;
+        padding: 14px;
       }
 
       .calendar-day {
-        min-height: 48px;
-        border-radius: 14px;
-        font-size: 0.9rem;
-      }
-
-      .footer-links {
-        grid-template-columns: 1fr;
+        min-height: 46px;
+        font-size: 0.88rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="reveal-nav" id="revealNav">
+    <div class="reveal-nav-inner">
+      <div class="nav-brand">
+        <div class="nav-brand-badge">CD</div>
+        <span>Crepe de la Crepe</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Sekundær navigasjon">
+        <a href="index.html">Forside</a>
+        <a href="#muligheter">Muligheter</a>
+        <a href="#oppsett">Oppsett</a>
+        <a href="personvern.html">Personvern</a>
+      </nav>
+
+      <button class="btn btn-primary nav-cta js-open-booking">Be om booking</button>
+    </div>
+  </div>
+
   <main>
     <section class="hero" aria-label="Crepe de la Crepe Events hero">
-      <div class="container hero-inner">
-        <div class="hero-panel">
-          <div class="hero-kicker">Events • Norge</div>
+      <div class="container hero-shell">
+        <div class="hero-card">
+          <div class="hero-logo">
+            <span>CD</span>
+          </div>
+
           <h1 class="hero-title">CREPE DE LA CREPE EVENTS</h1>
           <p class="hero-copy">
             Ferskserverte crêpes til arrangementer i hele Norge.
           </p>
+          <p class="hero-sub">
+            Premium oppsett for festivaler, firmaarrangementer og private arrangementer.
+          </p>
+
           <div class="hero-actions">
             <a href="#muligheter" class="btn btn-primary">Utforsk mulighetene</a>
-            <div class="hero-time" aria-label="Tar rundt 2 minutter">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle>
-                <path d="M12 7.8V12l3.1 1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-              <span>Tar rundt 2 minutter</span>
-            </div>
           </div>
+
+          <div class="hero-skip">Scroll for å se oppsettene</div>
         </div>
       </div>
     </section>
@@ -1318,18 +1527,19 @@
           <div class="eyebrow">Muligheter</div>
           <h2 class="section-title">UTFORSK MULIGHETENE</h2>
           <p class="section-copy">
-            Tre ulike oppsett. Samme fokus på flyt, servering og et uttrykk som løfter arrangementet. Velg løsningen som passer stedet, publikumet og rammen deres best.
+            Tre ulike oppsett. Samme fokus på flyt, servering og et uttrykk som løfter arrangementet. Velg løsningen som passer lokasjonen, publikumet og rammen deres best.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="setup-section" aria-labelledby="wagon-title">
+    <section id="oppsett" class="setup-section" aria-labelledby="wagon-title">
       <div class="container">
         <div class="setup-grid">
           <div class="setup-media">
             <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" />
           </div>
+
           <div class="setup-content">
             <div class="eyebrow">Oppsett 01</div>
             <h2 class="setup-name" id="wagon-title">CREPE DE LA CREPE WAGON</h2>
@@ -1342,6 +1552,7 @@
                 <div class="setup-chip-label">Passer til</div>
                 <div class="setup-chip-value">Festivaler, større firmaevents og publikumstunge dager</div>
               </div>
+
               <div class="setup-chip">
                 <div class="setup-chip-label">Uttrykk</div>
                 <div class="setup-chip-value">Sterk tilstedeværelse, høy kapasitet og premium servering</div>
@@ -1384,6 +1595,7 @@
                 <div class="setup-chip-label">Passer til</div>
                 <div class="setup-chip-value">Messer, bedriftsdager, markeder og kompakte eventflater</div>
               </div>
+
               <div class="setup-chip">
                 <div class="setup-chip-label">Uttrykk</div>
                 <div class="setup-chip-value">Smidig, ryddig og premium uten å ta for mye plass</div>
@@ -1409,6 +1621,7 @@
           <div class="setup-media">
             <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" />
           </div>
+
           <div class="setup-content">
             <div class="eyebrow">Oppsett 03</div>
             <h2 class="setup-name" id="popup-title">CREPE DE LA CREPE POP-UP</h2>
@@ -1421,6 +1634,7 @@
                 <div class="setup-chip-label">Passer til</div>
                 <div class="setup-chip-value">Private arrangementer, mindre bedriftsarrangementer og korte aktiveringer</div>
               </div>
+
               <div class="setup-chip">
                 <div class="setup-chip-label">Uttrykk</div>
                 <div class="setup-chip-value">Lett, fleksibelt og effektivt uten å miste premiumfølelsen</div>
@@ -1440,13 +1654,14 @@
       <div class="container">
         <div class="cta-card">
           <div class="cta-row">
-            <div class="cta-copy">
+            <div>
               <div class="eyebrow">Booking</div>
               <h2 class="cta-title">Hvilket oppsett passer best for deg?</h2>
               <p class="cta-text">
                 Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.
               </p>
             </div>
+
             <button class="btn btn-primary js-open-booking">Be om booking nå</button>
           </div>
         </div>
@@ -1485,8 +1700,8 @@
 
   <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
     <div class="overlay-shell">
-      <div class="overlay-left">
-        <div class="overlay-top">
+      <div class="overlay-main">
+        <div class="overlay-header">
           <div class="overlay-brand">
             <div class="overlay-brand-badge">CD</div>
             <div class="overlay-brand-copy">
@@ -1497,7 +1712,7 @@
 
           <button class="overlay-close" id="closeOverlayBtn" aria-label="Lukk booking">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
             </svg>
           </button>
         </div>
@@ -1507,295 +1722,383 @@
             <span id="progressText">Steg 1 av 10</span>
             <span id="progressPercent">10%</span>
           </div>
-          <div class="overlay-progress" aria-hidden="true">
+          <div class="overlay-progress">
             <div class="overlay-progress-bar" id="progressBar"></div>
           </div>
         </div>
 
-        <div class="question-shell">
-          <div class="question-stage">
-            <form id="bookingForm" novalidate>
-              <input
-                type="text"
-                name="website"
-                id="website"
-                class="hidden-honeypot"
-                tabindex="-1"
-                autocomplete="off"
-              />
+        <div class="booking-time" aria-label="Tar rundt 2 minutter">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle>
+            <path d="M12 7.8V12l3.1 1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>Tar rundt 2 minutter</span>
+        </div>
+
+        <div class="overlay-frame">
+          <div class="stage">
+            <form id="bookingForm" novalidate style="height:100%;">
+              <input type="text" name="website" id="website" class="hidden-honeypot" tabindex="-1" autocomplete="off" />
 
               <section class="step-card active" data-step="0">
-                <div class="step-kicker">Steg 01</div>
-                <h2 class="step-title">Hva ønsker du å booke?</h2>
-                <p class="step-desc">
-                  Velg oppsettet som ligger nærmest behovet deres. Du kan endre dette senere dersom vi finner en bedre løsning sammen.
-                </p>
-
-                <div class="choice-grid" id="setupChoices">
-                  <button type="button" class="choice-card" data-value="Wagon">
-                    <div class="choice-top">
-                      <span class="choice-title">Crepe de la Crepe Wagon</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">Vårt mest komplette eventoppsett for større flater og sterkere tilstedeværelse.</p>
-                  </button>
-
-                  <button type="button" class="choice-card" data-value="Stand">
-                    <div class="choice-top">
-                      <span class="choice-title">Crepe de la Crepe Stand</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">Et fleksibelt og ryddig oppsett med mindre fotavtrykk.</p>
-                  </button>
-
-                  <button type="button" class="choice-card" data-value="Pop-Up">
-                    <div class="choice-top">
-                      <span class="choice-title">Crepe de la Crepe Pop-Up</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">For mindre eller mer mobile arrangementer som trenger en lett løsning.</p>
-                  </button>
+                <div class="step-top">
+                  <div class="step-kicker">Steg 01</div>
+                  <h2 class="step-title">Hva ønsker du å booke?</h2>
+                  <p class="step-desc">
+                    Velg oppsettet som ligger nærmest behovet deres.
+                  </p>
                 </div>
 
-                <div class="error-text" data-error-for="setup"></div>
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <div class="choice-grid" id="setupChoices">
+                      <button type="button" class="choice-card" data-value="Wagon">
+                        <div class="choice-top">
+                          <span class="choice-title">Crepe de la Crepe Wagon</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">Vårt mest komplette eventoppsett for større flater og sterkere tilstedeværelse.</p>
+                      </button>
+
+                      <button type="button" class="choice-card" data-value="Stand">
+                        <div class="choice-top">
+                          <span class="choice-title">Crepe de la Crepe Stand</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">Et fleksibelt og ryddig oppsett med mindre fotavtrykk.</p>
+                      </button>
+
+                      <button type="button" class="choice-card" data-value="Pop-Up">
+                        <div class="choice-top">
+                          <span class="choice-title">Crepe de la Crepe Pop-Up</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">For mindre eller mer mobile arrangementer som trenger en lett løsning.</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-bottom">
+                  <div class="error-text" data-error-for="setup"></div>
+                </div>
               </section>
 
-              <section class="step-card" data-step="1">
-                <div class="step-kicker">Steg 02</div>
-                <h2 class="step-title">Hva er ditt fulle navn?</h2>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="text"
-                    id="fullName"
-                    name="name"
-                    placeholder="Skriv inn fullt navn"
-                    autocomplete="name"
-                  />
+              <section class="step-card step-compact" data-step="1">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 02</div>
+                  <h2 class="step-title">Hva er ditt fulle navn?</h2>
                 </div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="text"
+                      id="fullName"
+                      name="name"
+                      placeholder="Skriv inn fullt navn"
+                      autocomplete="name"
+                    />
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="name"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="name"></div>
+                </div>
               </section>
 
-              <section class="step-card" data-step="2">
-                <div class="step-kicker">Steg 03</div>
-                <h2 class="step-title">Hva heter firmaet ditt?</h2>
-                <p class="step-desc">Valgfritt.</p>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="text"
-                    id="companyName"
-                    name="company"
-                    placeholder="Skriv inn firmanavn"
-                    autocomplete="organization"
-                  />
+              <section class="step-card step-compact" data-step="2">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 03</div>
+                  <h2 class="step-title">Hva heter firmaet ditt?</h2>
+                  <p class="step-desc">Valgfritt.</p>
                 </div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="text"
+                      id="companyName"
+                      name="company"
+                      placeholder="Skriv inn firmanavn"
+                      autocomplete="organization"
+                    />
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="company"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="company"></div>
+                </div>
               </section>
 
               <section class="step-card" data-step="3">
-                <div class="step-kicker">Steg 04</div>
-                <h2 class="step-title">Når skal arrangementet være?</h2>
-                <p class="step-desc">
-                  Velg én dag eller et intervall. Tidligere datoer er låst.
-                </p>
+                <div class="step-top">
+                  <div class="step-kicker">Steg 04</div>
+                  <h2 class="step-title">Når skal arrangementet være?</h2>
+                  <p class="step-desc">
+                    Velg én dag eller et intervall. Tidligere datoer er låst.
+                  </p>
+                </div>
 
-                <div class="date-card">
-                  <div class="date-mode" role="tablist" aria-label="Velg datoformat">
-                    <button type="button" class="mode-btn active" id="singleModeBtn">Én dag</button>
-                    <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
-                  </div>
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <div class="date-card">
+                      <div class="date-mode" role="tablist" aria-label="Velg datoformat">
+                        <button type="button" class="mode-btn active" id="singleModeBtn">Én dag</button>
+                        <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
+                      </div>
 
-                  <div class="date-summary">
-                    <button type="button" class="date-summary-btn" id="startDateBtn">
-                      <span class="date-summary-label">Startdato</span>
-                      <span class="date-summary-value" id="startDateValue">Velg dato</span>
-                    </button>
+                      <div class="date-summary">
+                        <button type="button" class="date-summary-btn" id="startDateBtn">
+                          <span class="date-summary-label">Startdato</span>
+                          <span class="date-summary-value" id="startDateValue">Velg dato</span>
+                        </button>
 
-                    <button type="button" class="date-summary-btn" id="endDateBtn" style="display:none;">
-                      <span class="date-summary-label">Sluttdato</span>
-                      <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
-                    </button>
-                  </div>
+                        <button type="button" class="date-summary-btn" id="endDateBtn" style="display:none;">
+                          <span class="date-summary-label">Sluttdato</span>
+                          <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
+                        </button>
+                      </div>
 
-                  <div class="helper" id="dateHelper">
-                    Én dag er valgt som standard.
+                      <div class="field-helper" id="dateHelper">Én dag er valgt som standard.</div>
+                    </div>
+
+                    <input type="hidden" id="dateMode" value="single" />
+                    <input type="hidden" id="eventStartDate" />
+                    <input type="hidden" id="eventEndDate" />
                   </div>
                 </div>
 
-                <input type="hidden" id="dateMode" value="single" />
-                <input type="hidden" id="eventStartDate" />
-                <input type="hidden" id="eventEndDate" />
-
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="date"></div>
                 </div>
-                <div class="error-text" data-error-for="date"></div>
               </section>
 
-              <section class="step-card" data-step="4">
-                <div class="step-kicker">Steg 05</div>
-                <h2 class="step-title">Hvor mange gjester?</h2>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="text"
-                    inputmode="numeric"
-                    id="guestCount"
-                    name="guests"
-                    placeholder="For eksempel 120"
-                    autocomplete="off"
-                  />
+              <section class="step-card step-compact" data-step="4">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 05</div>
+                  <h2 class="step-title">Hvor mange gjester?</h2>
                 </div>
-                <div class="helper">Et estimat holder.</div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="text"
+                      inputmode="numeric"
+                      id="guestCount"
+                      name="guests"
+                      placeholder="For eksempel 120"
+                      autocomplete="off"
+                    />
+                    <div class="field-helper">Et estimat holder.</div>
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="guests"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="guests"></div>
+                </div>
               </section>
 
-              <section class="step-card" data-step="5">
-                <div class="step-kicker">Steg 06</div>
-                <h2 class="step-title">Hva er e-posten din?</h2>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="navn@firma.no"
-                    autocomplete="email"
-                  />
+              <section class="step-card step-compact" data-step="5">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 06</div>
+                  <h2 class="step-title">Hva er e-posten din?</h2>
                 </div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="navn@firma.no"
+                      autocomplete="email"
+                    />
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="email"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="email"></div>
+                </div>
               </section>
 
-              <section class="step-card" data-step="6">
-                <div class="step-kicker">Steg 07</div>
-                <h2 class="step-title">Hva er telefonnummeret ditt?</h2>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+47 900 00 000"
-                    autocomplete="tel"
-                    value="+47 "
-                  />
+              <section class="step-card step-compact" data-step="6">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 07</div>
+                  <h2 class="step-title">Hva er telefonnummeret ditt?</h2>
                 </div>
-                <div class="helper">Norsk landkode er satt som standard.</div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+47 900 00 000"
+                      autocomplete="tel"
+                      value="+47 "
+                    />
+                    <div class="field-helper">Norsk landkode er satt som standard.</div>
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="phone"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="phone"></div>
+                </div>
               </section>
 
               <section class="step-card" data-step="7">
-                <div class="step-kicker">Steg 08</div>
-                <h2 class="step-title">Hva slags arrangement er det?</h2>
-
-                <div class="choice-grid" id="eventTypeChoices">
-                  <button type="button" class="choice-card" data-value="Festival">
-                    <div class="choice-top">
-                      <span class="choice-title">Festival</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">Publikumsrettet arrangement med høy flyt og stor synlighet.</p>
-                  </button>
-
-                  <button type="button" class="choice-card" data-value="Firmaarrangement">
-                    <div class="choice-top">
-                      <span class="choice-title">Firmaarrangement</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">Bedriftsevent, lansering, intern samling eller kundearrangement.</p>
-                  </button>
-
-                  <button type="button" class="choice-card" data-value="Privat arrangement">
-                    <div class="choice-top">
-                      <span class="choice-title">Privat arrangement</span>
-                      <span class="choice-arrow">→</span>
-                    </div>
-                    <p class="choice-desc">Bryllup, bursdag, privat feiring eller tilsvarende opplegg.</p>
-                  </button>
+                <div class="step-top">
+                  <div class="step-kicker">Steg 08</div>
+                  <h2 class="step-title">Hva slags arrangement er det?</h2>
                 </div>
 
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <div class="choice-grid" id="eventTypeChoices">
+                      <button type="button" class="choice-card" data-value="Festival">
+                        <div class="choice-top">
+                          <span class="choice-title">Festival</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">Publikumsrettet arrangement med høy flyt og stor synlighet.</p>
+                      </button>
+
+                      <button type="button" class="choice-card" data-value="Firmaarrangement">
+                        <div class="choice-top">
+                          <span class="choice-title">Firmaarrangement</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">Bedriftsevent, lansering, intern samling eller kundearrangement.</p>
+                      </button>
+
+                      <button type="button" class="choice-card" data-value="Privat arrangement">
+                        <div class="choice-top">
+                          <span class="choice-title">Privat arrangement</span>
+                          <span class="choice-arrow">→</span>
+                        </div>
+                        <p class="choice-desc">Bryllup, bursdag, privat feiring eller tilsvarende opplegg.</p>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="eventType"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="eventType"></div>
+                </div>
               </section>
 
-              <section class="step-card" data-step="8">
-                <div class="step-kicker">Steg 09</div>
-                <h2 class="step-title">Hvor skal arrangementet være?</h2>
-                <div class="step-input-wrap">
-                  <input
-                    class="text-input"
-                    type="text"
-                    id="location"
-                    name="location"
-                    placeholder="For eksempel Oslo, Norge"
-                    autocomplete="address-level2"
-                  />
+              <section class="step-card step-compact" data-step="8">
+                <div class="step-top">
+                  <div class="step-kicker">Steg 09</div>
+                  <h2 class="step-title">Hvor skal arrangementet være?</h2>
                 </div>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary js-next">Neste</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <input
+                      class="text-input"
+                      type="text"
+                      id="location"
+                      name="location"
+                      placeholder="For eksempel Oslo, Norge"
+                      autocomplete="address-level2"
+                    />
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="location"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="location"></div>
+                </div>
               </section>
 
               <section class="step-card" data-step="9">
-                <div class="step-kicker">Steg 10</div>
-                <h2 class="step-title">Er det noe vi bør vite om arrangementet?</h2>
-                <p class="step-desc">Valgfritt.</p>
-                <div class="step-input-wrap">
-                  <textarea
-                    class="textarea-input"
-                    id="message"
-                    name="message"
-                    placeholder="Del gjerne praktiske detaljer, ønsket timing eller annet relevant."
-                  ></textarea>
+                <div class="step-top">
+                  <div class="step-kicker">Steg 10</div>
+                  <h2 class="step-title">Er det noe vi bør vite om arrangementet?</h2>
+                  <p class="step-desc">Valgfritt.</p>
                 </div>
-                <div class="step-actions">
-                  <button type="submit" class="btn btn-primary" id="submitBtn">Send forespørsel</button>
-                  <button type="button" class="ghost-link js-back">Tilbake</button>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner">
+                    <textarea
+                      class="textarea-input"
+                      id="message"
+                      name="message"
+                      placeholder="Del gjerne praktiske detaljer, ønsket timing eller annet relevant."
+                    ></textarea>
+                  </div>
                 </div>
-                <div class="error-text" data-error-for="submit"></div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Send forespørsel</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
+                  <div class="error-text" data-error-for="submit"></div>
+                </div>
               </section>
 
-              <section class="step-card success-card" data-step="10">
-                <div class="success-mark" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+              <section class="step-card" data-step="10">
+                <div class="step-top">
+                  <div class="success-mark" aria-hidden="true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="step-kicker">Takk</div>
+                  <h2 class="step-title">Takk for forespørselen</h2>
+                  <p class="step-desc">
+                    Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
+                  </p>
                 </div>
-                <div class="step-kicker">Takk</div>
-                <h2 class="step-title">Takk for forespørselen</h2>
-                <p class="step-desc">
-                  Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
-                </p>
-                <div class="step-actions">
-                  <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
-                  <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+
+                <div class="step-middle">
+                  <div class="step-middle-inner"></div>
+                </div>
+
+                <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
+                    <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+                  </div>
                 </div>
               </section>
             </form>
@@ -1803,20 +2106,17 @@
         </div>
       </div>
 
-      <aside class="overlay-right">
-        <div>
-          <div class="summary-card">
-            <p class="summary-title">Oppsummering</p>
-            <ul class="summary-list" id="summaryList"></ul>
-            <p class="summary-empty" id="summaryEmpty">
-              Fyll ut stegene, så vises en oppsummering her fortløpende.
-            </p>
-          </div>
-
-          <p class="overlay-note">
-            Forespørselen sendes til vårt bookingsystem når du fullfører siste steg.
+      <aside class="overlay-side">
+        <div class="summary-card">
+          <p class="summary-title">Oppsummering</p>
+          <ul class="summary-list" id="summaryList"></ul>
+          <p class="summary-empty" id="summaryEmpty">
+            Fyll ut stegene, så vises en oppsummering her fortløpende.
           </p>
         </div>
+        <p class="side-note">
+          Forespørselen sendes til bookingsystemet når du fullfører siste steg.
+        </p>
       </aside>
     </div>
   </div>
@@ -1827,20 +2127,20 @@
         <div class="calendar-nav">
           <button type="button" id="prevMonthBtn" aria-label="Forrige måned">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M14.5 6L8.5 12L14.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.5 6L8.5 12L14.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </button>
           <div class="calendar-title" id="calendarTitle">Måned</div>
           <button type="button" id="nextMonthBtn" aria-label="Neste måned">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M9.5 6L15.5 12L9.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.5 6L15.5 12L9.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </button>
         </div>
 
         <button type="button" class="calendar-close" id="closeCalendarBtn" aria-label="Lukk kalender">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
           </svg>
         </button>
       </div>
@@ -1858,9 +2158,7 @@
       <div class="calendar-grid" id="calendarGrid"></div>
 
       <div class="calendar-footer">
-        <div class="calendar-footer-text" id="calendarFooterText">
-          Velg en dato.
-        </div>
+        <div class="calendar-footer-text" id="calendarFooterText">Velg en dato.</div>
         <button type="button" class="btn btn-primary" id="applyCalendarBtn">Bruk dato</button>
       </div>
     </div>
@@ -1868,6 +2166,7 @@
 
   <script>
     (() => {
+      const revealNav = document.getElementById("revealNav");
       const overlay = document.getElementById("bookingOverlay");
       const closeOverlayBtn = document.getElementById("closeOverlayBtn");
       const doneBtn = document.getElementById("doneBtn");
@@ -1977,6 +2276,14 @@
         if (!startIso) return "";
         if (!endIso || startIso === endIso) return formatDate(startIso);
         return `${formatDate(startIso)} – ${formatDate(endIso)}`;
+      }
+
+      function syncRevealNav() {
+        if (window.scrollY > window.innerHeight * 0.55) {
+          revealNav.classList.add("visible");
+        } else {
+          revealNav.classList.remove("visible");
+        }
       }
 
       function openOverlay(prefilledSetup = "") {
@@ -2185,19 +2492,17 @@
         }).format(new Date(year, month, 1));
 
         calendarTitle.textContent = monthLabel;
+        calendarGrid.innerHTML = "";
 
         const firstDay = new Date(year, month, 1);
         const leadingDays = mondayBasedIndex(firstDay);
         const totalDays = daysInMonth(year, month);
-
-        calendarGrid.innerHTML = "";
 
         for (let i = 0; i < leadingDays; i += 1) {
           const filler = document.createElement("button");
           filler.type = "button";
           filler.className = "calendar-day muted";
           filler.disabled = true;
-          filler.textContent = "";
           calendarGrid.appendChild(filler);
         }
 
@@ -2326,12 +2631,11 @@
             return true;
           }
 
-          case 2: {
+          case 2:
             formState.company = document.getElementById("companyName").value.trim();
             return true;
-          }
 
-          case 3: {
+          case 3:
             if (!formState.eventDateStart) {
               setError("date", "Velg dato for arrangementet.");
               return false;
@@ -2341,7 +2645,6 @@
               return false;
             }
             return true;
-          }
 
           case 4: {
             const value = document.getElementById("guestCount").value.trim();
@@ -2470,9 +2773,7 @@
           }
 
           if (!response.ok) {
-            const errorMessage =
-              (data && data.error) ||
-              "Noe gikk galt. Prøv igjen.";
+            const errorMessage = (data && data.error) || "Noe gikk galt. Prøv igjen.";
             throw new Error(errorMessage);
           }
 
@@ -2480,9 +2781,7 @@
           updateSteps();
           updateSummary();
           setError("submit", "");
-          setTimeout(() => {
-            doneBtn.focus({ preventScroll: true });
-          }, 60);
+          setTimeout(() => doneBtn.focus({ preventScroll: true }), 60);
         } catch (error) {
           setError("submit", error.message || "Noe gikk galt. Prøv igjen.");
         } finally {
@@ -2512,55 +2811,14 @@
         });
       });
 
-      nextButtons.forEach((button) => {
-        button.addEventListener("click", nextStep);
-      });
-
-      backButtons.forEach((button) => {
-        button.addEventListener("click", prevStep);
-      });
+      nextButtons.forEach((button) => button.addEventListener("click", nextStep));
+      backButtons.forEach((button) => button.addEventListener("click", prevStep));
 
       openBookingButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const setup = button.dataset.setup || "";
           openOverlay(setup);
         });
-      });
-
-      closeOverlayBtn.addEventListener("click", closeOverlay);
-      doneBtn.addEventListener("click", closeOverlay);
-
-      overlay.addEventListener("click", (event) => {
-        if (event.target === overlay) {
-          closeOverlay();
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (!overlay.classList.contains("open")) return;
-
-        if (calendarModal.classList.contains("open")) {
-          if (event.key === "Escape") {
-            closeCalendar();
-          }
-          return;
-        }
-
-        if (event.key === "Escape") {
-          closeOverlay();
-          return;
-        }
-
-        const activeTag = document.activeElement ? document.activeElement.tagName : "";
-        const isTextarea = activeTag === "TEXTAREA";
-
-        if (event.key === "Enter" && !isTextarea) {
-          const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
-          if (!isButton && currentStep > 0 && currentStep < 9) {
-            event.preventDefault();
-            nextStep();
-          }
-        }
       });
 
       readMoreButtons.forEach((button) => {
@@ -2573,9 +2831,15 @@
       toggleSpecsButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const target = document.getElementById(button.dataset.target);
-          if (!target) return;
-          target.classList.toggle("open");
+          if (target) target.classList.toggle("open");
         });
+      });
+
+      closeOverlayBtn.addEventListener("click", closeOverlay);
+      doneBtn.addEventListener("click", closeOverlay);
+
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) closeOverlay();
       });
 
       singleModeBtn.addEventListener("click", () => setDateMode("single"));
@@ -2606,12 +2870,35 @@
       applyCalendarBtn.addEventListener("click", applyCalendarSelection);
 
       calendarModal.addEventListener("click", (event) => {
-        if (event.target === calendarModal) {
-          closeCalendar();
-        }
+        if (event.target === calendarModal) closeCalendar();
       });
 
       bookingForm.addEventListener("submit", submitForm);
+
+      document.addEventListener("keydown", (event) => {
+        if (!overlay.classList.contains("open")) return;
+
+        if (calendarModal.classList.contains("open")) {
+          if (event.key === "Escape") closeCalendar();
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeOverlay();
+          return;
+        }
+
+        const activeTag = document.activeElement ? document.activeElement.tagName : "";
+        const isTextarea = activeTag === "TEXTAREA";
+
+        if (event.key === "Enter" && !isTextarea) {
+          const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
+          if (!isButton && currentStep > 0 && currentStep < 9) {
+            event.preventDefault();
+            nextStep();
+          }
+        }
+      });
 
       document.getElementById("fullName").addEventListener("input", (e) => {
         formState.name = e.target.value.trim();
@@ -2655,6 +2942,9 @@
         formState.message = e.target.value.trim();
         updateSummary();
       });
+
+      window.addEventListener("scroll", syncRevealNav, { passive: true });
+      syncRevealNav();
 
       setDateMode("single");
       updateSteps();
