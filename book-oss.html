@@ -19,27 +19,26 @@
   <style>
     :root {
       --bg: #0b0908;
-      --bg-2: #12100d;
+      --bg-2: #13100d;
       --panel: #15120f;
-      --panel-2: #1a1612;
-      --card: rgba(255,255,255,0.03);
-      --line: rgba(255,255,255,0.08);
-      --line-2: rgba(255,255,255,0.14);
-      --text: #f5efe8;
-      --muted: rgba(245,239,232,0.72);
-      --muted-2: rgba(245,239,232,0.5);
+      --panel-2: #191511;
+      --card: rgba(255, 255, 255, 0.035);
+      --line: rgba(255, 255, 255, 0.08);
+      --line-2: rgba(255, 255, 255, 0.14);
+      --text: #f4eee7;
+      --muted: rgba(244, 238, 231, 0.72);
+      --muted-2: rgba(244, 238, 231, 0.5);
       --accent: #d8b287;
-      --accent-2: #efd6b7;
-      --success: #d8ebc8;
-      --danger: #ffb5b5;
-      --shadow: 0 24px 80px rgba(0,0,0,0.36);
-      --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
-      --container: 1280px;
-      --ease: cubic-bezier(.22,.61,.36,1);
-      --nav-h: 74px;
+      --accent-2: #ecd3b5;
+      --danger: #ffb8b8;
+      --success: #d9ebca;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --container: 1320px;
+      --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
     * {
@@ -64,7 +63,8 @@
       overflow: hidden;
     }
 
-    img {
+    img,
+    video {
       display: block;
       width: 100%;
       height: auto;
@@ -77,7 +77,8 @@
 
     button,
     input,
-    textarea {
+    textarea,
+    select {
       font: inherit;
     }
 
@@ -101,11 +102,17 @@
       min-height: 56px;
       padding: 0 22px;
       border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease), opacity 220ms var(--ease);
+      transition:
+        transform 220ms var(--ease),
+        background 220ms var(--ease),
+        border-color 220ms var(--ease),
+        color 220ms var(--ease),
+        opacity 220ms var(--ease),
+        box-shadow 220ms var(--ease);
     }
 
     .btn:hover {
@@ -115,7 +122,7 @@
     .btn-primary {
       background: var(--accent);
       color: #18110b;
-      box-shadow: 0 16px 40px rgba(216,178,135,0.18);
+      box-shadow: 0 16px 44px rgba(216, 178, 135, 0.18);
     }
 
     .btn-primary:hover {
@@ -123,14 +130,14 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.22);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
     .eyebrow {
@@ -148,7 +155,7 @@
       content: "";
       width: 28px;
       height: 1px;
-      background: rgba(216,178,135,0.5);
+      background: rgba(216, 178, 135, 0.5);
     }
 
     .reveal-nav {
@@ -156,7 +163,7 @@
       top: 12px;
       left: 0;
       right: 0;
-      z-index: 40;
+      z-index: 50;
       pointer-events: none;
       opacity: 0;
       transform: translateY(-14px);
@@ -179,10 +186,10 @@
       justify-content: space-between;
       gap: 18px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(10,8,7,0.42);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(10, 8, 7, 0.42);
       backdrop-filter: blur(14px);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
     }
 
     .nav-brand {
@@ -199,8 +206,8 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--accent);
       font-weight: 800;
       font-size: 0.84rem;
@@ -220,7 +227,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      color: rgba(245,239,232,0.88);
+      color: rgba(244, 238, 231, 0.88);
       font-size: 0.86rem;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -247,13 +254,12 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
       isolation: isolate;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(6,5,4,0.08) 0%, rgba(6,5,4,0.42) 55%, rgba(6,5,4,0.88) 100%),
-        linear-gradient(90deg, rgba(6,5,4,0.46) 0%, rgba(6,5,4,0.12) 50%, rgba(6,5,4,0.46) 100%),
-        url('hero-video.jpg') center center / cover no-repeat;
+        linear-gradient(180deg, rgba(5, 4, 3, 0.1) 0%, rgba(5, 4, 3, 0.48) 58%, rgba(5, 4, 3, 0.9) 100%),
+        linear-gradient(90deg, rgba(5, 4, 3, 0.52) 0%, rgba(5, 4, 3, 0.15) 50%, rgba(5, 4, 3, 0.52) 100%),
+        url("hero-video.jpg") center center / cover no-repeat;
     }
 
     .hero::before {
@@ -261,41 +267,42 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 45%, rgba(0,0,0,0.18), transparent 28%),
-        radial-gradient(circle at 50% 40%, rgba(216,178,135,0.08), transparent 24%);
+        radial-gradient(circle at 50% 42%, rgba(216, 178, 135, 0.08), transparent 24%),
+        radial-gradient(circle at 50% 48%, rgba(0, 0, 0, 0.18), transparent 30%);
       pointer-events: none;
     }
 
     .hero-shell {
       width: 100%;
-      padding: 42px 0 28px;
+      position: relative;
+      z-index: 1;
+      padding: 40px 0 28px;
     }
 
     .hero-card {
       max-width: 760px;
       margin: 0 auto;
       text-align: center;
-      padding: 38px 24px 24px;
-      border-radius: 28px;
-      background: rgba(8,7,6,0.2);
+      padding: 28px 20px 18px;
+      border-radius: 30px;
+      background: rgba(7, 6, 5, 0.14);
       backdrop-filter: blur(2px);
     }
 
     .hero-logo {
-      width: 104px;
-      height: 104px;
+      width: 94px;
+      height: 94px;
       margin: 0 auto 18px;
       border-radius: 50%;
-      overflow: hidden;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 12px 34px rgba(0,0,0,0.24);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.24);
     }
 
     .hero-logo span {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       color: var(--accent);
@@ -304,24 +311,21 @@
     .hero-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-size: clamp(3rem, 6.4vw, 5.8rem);
       line-height: 0.9;
       letter-spacing: -0.045em;
     }
 
-    .hero-copy {
-      margin: 18px auto 0;
-      max-width: 720px;
-      font-size: clamp(1rem, 1.7vw, 1.22rem);
-      line-height: 1.7;
-      color: rgba(245,239,232,0.88);
+    .hero-title .hero-line {
+      display: block;
     }
 
-    .hero-sub {
-      margin: 8px auto 0;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(245,239,232,0.7);
+    .hero-copy {
+      margin: 18px auto 0;
+      max-width: 600px;
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      line-height: 1.72;
+      color: rgba(244, 238, 231, 0.88);
     }
 
     .hero-actions {
@@ -332,68 +336,60 @@
       margin-top: 28px;
     }
 
-    .hero-skip {
-      margin-top: 16px;
-      color: rgba(245,239,232,0.64);
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
+    .hero-note {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: rgba(244, 238, 231, 0.54);
+      letter-spacing: 0.04em;
     }
 
-    .intro {
-      padding: 88px 0 40px;
-      background: var(--bg);
+    .setups {
+      position: relative;
+      z-index: 1;
     }
 
-    .intro-card {
-      border: 1px solid var(--line);
+    .setup-screen {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 26px 0;
+      position: relative;
+      opacity: 0.42;
+      transform: translateY(34px) scale(0.985);
+      transition:
+        opacity 700ms var(--ease),
+        transform 700ms var(--ease),
+        filter 700ms var(--ease);
+      filter: saturate(0.92);
+    }
+
+    .setup-screen.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: saturate(1);
+    }
+
+    .setup-shell {
+      width: 100%;
+      min-height: calc(100svh - 52px);
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      overflow: hidden;
       border-radius: var(--radius-xl);
-      padding: clamp(28px, 4vw, 52px);
+      border: 1px solid var(--line);
       background:
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
         var(--panel);
       box-shadow: var(--shadow);
     }
 
-    .section-title {
-      margin: 16px 0 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .section-copy {
-      margin: 18px 0 0;
-      max-width: 760px;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .setup-section {
-      padding: 28px 0;
-    }
-
-    .setup-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      min-height: 740px;
-      overflow: hidden;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .setup-grid.reverse {
-      grid-template-columns: 0.95fr 1.05fr;
+    .setup-screen.reverse .setup-shell {
+      grid-template-columns: 0.94fr 1.06fr;
     }
 
     .setup-media {
       position: relative;
-      min-height: 420px;
+      min-height: 100%;
       background: #080706;
       overflow: hidden;
     }
@@ -411,7 +407,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.22)),
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.24)),
         radial-gradient(circle at 60% 30%, rgba(255,255,255,0.08), transparent 28%);
       pointer-events: none;
     }
@@ -428,48 +424,24 @@
     }
 
     .setup-name {
-      margin: 16px 0 0;
+      margin: 18px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-size: clamp(2.7rem, 4.9vw, 5.2rem);
       line-height: 0.92;
       letter-spacing: -0.04em;
     }
 
+    .setup-name .setup-brand,
+    .setup-name .setup-model {
+      display: block;
+    }
+
     .setup-copy {
-      margin: 20px 0 0;
-      max-width: 560px;
-      font-size: 1rem;
-      line-height: 1.76;
+      margin: 18px 0 0;
+      max-width: 520px;
+      font-size: clamp(1rem, 1.2vw, 1.08rem);
+      line-height: 1.78;
       color: var(--muted);
-    }
-
-    .setup-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .setup-chip {
-      padding: 18px 18px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .setup-chip-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-    }
-
-    .setup-chip-value {
-      margin-top: 10px;
-      font-size: 0.98rem;
-      line-height: 1.5;
-      font-weight: 700;
     }
 
     .setup-actions {
@@ -479,138 +451,21 @@
       margin-top: 28px;
     }
 
-    .spec-box {
-      display: none;
-      margin-top: 18px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      overflow: hidden;
-    }
-
-    .spec-box.open {
-      display: block;
-    }
-
-    .spec-inner {
-      padding: 20px;
-    }
-
-    .spec-title {
-      margin: 0;
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .spec-list {
-      list-style: none;
-      margin: 16px 0 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .spec-list li {
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .cta-section {
-      padding: 36px 0 110px;
-    }
-
-    .cta-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      padding: clamp(30px, 5vw, 64px);
-      background:
-        radial-gradient(circle at 10% 18%, rgba(216,178,135,0.1), transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .cta-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .cta-title {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 0.94;
-      letter-spacing: -0.03em;
-    }
-
-    .cta-text {
-      margin: 16px 0 0;
-      max-width: 720px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .footer {
-      padding: 0 0 44px;
-    }
-
-    .footer-card {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 24px;
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .footer-brand h3 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .footer-brand p {
-      margin: 12px 0 0;
-      max-width: 420px;
-      color: var(--muted);
-      line-height: 1.72;
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .footer-col {
-      display: grid;
-      gap: 10px;
-      align-content: start;
-    }
-
-    .footer-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .setup-subcopy {
+      margin-top: 14px;
+      max-width: 520px;
       color: var(--muted-2);
+      line-height: 1.72;
+      font-size: 0.94rem;
     }
 
-    .footer-col a,
-    .footer-col span {
-      color: var(--text);
-      opacity: 0.86;
+    .transition-fade {
+      pointer-events: none;
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 140px;
+      background: linear-gradient(180deg, rgba(11,9,8,0), rgba(11,9,8,0.68));
+      z-index: 2;
     }
 
     .booking-overlay {
@@ -621,7 +476,7 @@
       background:
         radial-gradient(circle at 10% 10%, rgba(216,178,135,0.07), transparent 28%),
         radial-gradient(circle at 82% 12%, rgba(255,255,255,0.05), transparent 22%),
-        rgba(7,6,5,0.9);
+        rgba(7,6,5,0.92);
       backdrop-filter: blur(16px);
     }
 
@@ -633,7 +488,11 @@
       width: 100%;
       height: 100svh;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 420px;
+      grid-template-columns: minmax(0, 1fr) 400px;
+    }
+
+    .overlay-shell.success-mode {
+      grid-template-columns: 1fr;
     }
 
     .overlay-main {
@@ -708,7 +567,7 @@
 
     .overlay-progress-wrap {
       flex: 0 0 auto;
-      padding-bottom: 18px;
+      padding-bottom: 16px;
     }
 
     .overlay-progress-meta {
@@ -739,22 +598,6 @@
       transition: width 240ms var(--ease);
     }
 
-    .booking-time {
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      color: rgba(245,239,232,0.72);
-      font-size: 0.88rem;
-    }
-
-    .booking-time svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-
     .overlay-frame {
       flex: 1 1 auto;
       min-height: 0;
@@ -773,7 +616,7 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
-      padding: 20px 22px 18px;
+      padding: 22px;
     }
 
     .step-card {
@@ -787,22 +630,27 @@
 
     .step-card.active {
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 14px;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 20px;
       opacity: 1;
       transform: translateY(0);
       height: 100%;
     }
 
+    .step-card.success-step.active {
+      grid-template-rows: 1fr;
+    }
+
     .step-top {
       align-self: start;
+      max-width: 760px;
     }
 
     .step-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -810,26 +658,27 @@
     }
 
     .step-title {
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.3rem, 4.4vw, 4.2rem);
-      line-height: 0.92;
+      font-size: clamp(2.2rem, 3.6vw, 4rem);
+      line-height: 0.98;
       letter-spacing: -0.04em;
       max-width: 720px;
+      text-wrap: balance;
     }
 
     .step-desc {
       margin: 12px 0 0;
       max-width: 620px;
-      font-size: 1rem;
-      line-height: 1.72;
+      font-size: 0.98rem;
+      line-height: 1.7;
       color: var(--muted);
     }
 
     .step-middle {
       min-height: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .step-middle-inner {
@@ -837,60 +686,26 @@
       max-width: 760px;
     }
 
-    .step-compact .step-middle {
+    .step-bottom {
+      align-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    .step-actions {
+      display: flex;
       align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .text-input,
-    .textarea-input {
-      width: 100%;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      outline: none;
-      transition: border-color 180ms var(--ease), background 180ms var(--ease);
-    }
-
-    .text-input {
-      min-height: 74px;
-      padding: 20px 22px;
-      font-size: 1.05rem;
+    .ghost-link {
+      color: var(--muted);
       font-weight: 700;
-    }
-
-    .textarea-input {
-      min-height: 170px;
-      padding: 18px 20px;
-      resize: none;
-      line-height: 1.75;
-      font-size: 1rem;
-    }
-
-    .text-input::placeholder,
-    .textarea-input::placeholder {
-      color: rgba(245,239,232,0.38);
-    }
-
-    .text-input:focus,
-    .textarea-input:focus {
-      border-color: rgba(216,178,135,0.5);
-      background: rgba(255,255,255,0.045);
-    }
-
-    .field-helper {
-      margin-top: 12px;
-      font-size: 0.92rem;
-      color: var(--muted-2);
-      line-height: 1.6;
-    }
-
-    .error-text {
-      min-height: 22px;
-      margin-top: 12px;
-      color: var(--danger);
-      font-size: 0.92rem;
-      font-weight: 600;
+      padding: 10px 0;
+      opacity: 0.9;
     }
 
     .choice-grid {
@@ -903,10 +718,13 @@
       width: 100%;
       text-align: left;
       padding: 18px 18px;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
-      transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+      transition:
+        border-color 180ms var(--ease),
+        background 180ms var(--ease),
+        transform 180ms var(--ease);
     }
 
     .choice-card:hover {
@@ -949,8 +767,102 @@
     .choice-desc {
       margin: 8px 0 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.58;
       font-size: 0.95rem;
+    }
+
+    .text-input,
+    .textarea-input,
+    .country-select {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      outline: none;
+      transition: border-color 180ms var(--ease), background 180ms var(--ease);
+    }
+
+    .text-input,
+    .country-select {
+      min-height: 72px;
+      padding: 20px 22px;
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .textarea-input {
+      min-height: 190px;
+      padding: 18px 20px;
+      resize: none;
+      line-height: 1.72;
+      font-size: 1rem;
+    }
+
+    .text-input::placeholder,
+    .textarea-input::placeholder {
+      color: rgba(244,238,231,0.38);
+    }
+
+    .text-input:focus,
+    .textarea-input:focus,
+    .country-select:focus {
+      border-color: rgba(216,178,135,0.5);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .field-row {
+      display: grid;
+      gap: 14px;
+    }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .country-wrap {
+      position: relative;
+    }
+
+    .country-select {
+      appearance: none;
+      padding-right: 48px;
+      cursor: pointer;
+    }
+
+    .country-wrap::after {
+      content: "";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid rgba(244,238,231,0.7);
+      border-bottom: 2px solid rgba(244,238,231,0.7);
+      transform: translateY(-65%) rotate(45deg);
+      pointer-events: none;
+    }
+
+    .phone-prefix {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted-2);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+    }
+
+    .phone-input-wrap {
+      position: relative;
+    }
+
+    .phone-input-wrap .text-input {
+      padding-left: 72px;
     }
 
     .date-card {
@@ -974,7 +886,7 @@
       min-height: 46px;
       padding: 0 18px;
       border-radius: 999px;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -995,7 +907,7 @@
     .date-summary-btn {
       width: 100%;
       text-align: left;
-      padding: 16px 16px;
+      padding: 16px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
@@ -1024,26 +936,12 @@
       color: var(--text);
     }
 
-    .step-bottom {
-      align-self: end;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding-top: 6px;
-    }
-
-    .step-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .ghost-link {
-      color: var(--muted);
-      font-weight: 700;
-      padding: 10px 0;
-      opacity: 0.9;
+    .error-text {
+      min-height: 22px;
+      margin-top: 2px;
+      color: var(--danger);
+      font-size: 0.92rem;
+      font-weight: 600;
     }
 
     .overlay-side {
@@ -1056,6 +954,10 @@
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
         linear-gradient(135deg, rgba(216,178,135,0.06), transparent 40%),
         rgba(255,255,255,0.01);
+    }
+
+    .overlay-shell.success-mode .overlay-side {
+      display: none;
     }
 
     .summary-card {
@@ -1117,23 +1019,122 @@
       line-height: 1.7;
     }
 
-    .side-note {
-      margin-top: 14px;
-      color: var(--muted-2);
-      font-size: 0.86rem;
-      line-height: 1.7;
+    .success-wrap {
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
+
+    .success-panel {
+      width: min(100%, 920px);
+      min-height: min(78svh, 760px);
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(216,178,135,0.08), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        rgba(12,10,8,0.5);
+      padding: clamp(26px, 4vw, 54px);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      box-shadow: var(--shadow);
     }
 
     .success-mark {
-      width: 74px;
-      height: 74px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
       display: grid;
       place-items: center;
       background: rgba(216,235,200,0.08);
       border: 1px solid rgba(216,235,200,0.16);
       color: var(--success);
-      margin-bottom: 6px;
+    }
+
+    .success-kicker {
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .success-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+      max-width: 640px;
+    }
+
+    .success-copy {
+      margin: 0;
+      max-width: 560px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .success-toggle {
+      justify-self: start;
+    }
+
+    .success-summary {
+      display: none;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(255,255,255,0.025);
+      max-height: 300px;
+      overflow: auto;
+    }
+
+    .success-summary.open {
+      display: block;
+    }
+
+    .success-summary-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .success-summary-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .success-summary-item:last-child {
+      border-bottom: 0;
+    }
+
+    .success-summary-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .success-summary-value {
+      display: block;
+      margin-top: 7px;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .success-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 6px;
     }
 
     .hidden-honeypot {
@@ -1234,7 +1235,11 @@
       color: var(--text);
       font-size: 0.92rem;
       font-weight: 700;
-      transition: transform 160ms var(--ease), background 160ms var(--ease), border-color 160ms var(--ease), opacity 160ms var(--ease);
+      transition:
+        transform 160ms var(--ease),
+        background 160ms var(--ease),
+        border-color 160ms var(--ease),
+        opacity 160ms var(--ease);
     }
 
     .calendar-day:hover:not(:disabled) {
@@ -1282,7 +1287,7 @@
     }
 
     .loading {
-      opacity: 0.7;
+      opacity: 0.72;
       pointer-events: none;
     }
 
@@ -1297,15 +1302,20 @@
     }
 
     @media (max-width: 980px) {
-      .setup-grid,
-      .setup-grid.reverse {
+      .setup-shell,
+      .setup-screen.reverse .setup-shell {
         grid-template-columns: 1fr;
-        min-height: auto;
       }
 
-      .cta-row,
-      .footer-card {
-        display: grid;
+      .setup-media {
+        min-height: 42svh;
+      }
+
+      .setup-shell {
+        min-height: calc(100svh - 48px);
+      }
+
+      .phone-row {
         grid-template-columns: 1fr;
       }
     }
@@ -1326,16 +1336,16 @@
       }
 
       .hero-shell {
-        padding: 26px 0 20px;
+        padding: 24px 0 18px;
       }
 
       .hero-card {
-        padding: 30px 16px 18px;
+        padding: 24px 14px 16px;
       }
 
       .hero-logo {
-        width: 84px;
-        height: 84px;
+        width: 82px;
+        height: 82px;
       }
 
       .hero-actions {
@@ -1347,27 +1357,17 @@
         width: 100%;
       }
 
-      .intro {
-        padding: 68px 0 24px;
+      .setup-screen {
+        padding: 12px 0;
       }
 
-      .setup-section {
-        padding: 18px 0;
+      .setup-shell {
+        min-height: auto;
+        border-radius: 26px;
       }
 
-      .cta-section {
-        padding: 18px 0 78px;
-      }
-
-      .setup-content,
-      .intro-card,
-      .cta-card {
-        padding: 24px 18px;
-      }
-
-      .setup-meta,
-      .footer-links {
-        grid-template-columns: 1fr;
+      .setup-content {
+        padding: 22px 18px 24px;
       }
 
       .setup-actions {
@@ -1399,10 +1399,6 @@
         height: 48px;
       }
 
-      .booking-time {
-        margin-bottom: 10px;
-      }
-
       .overlay-frame {
         border-radius: 22px;
       }
@@ -1412,27 +1408,36 @@
       }
 
       .step-card.active {
-        gap: 12px;
+        gap: 16px;
       }
 
       .step-title {
-        font-size: clamp(2rem, 10vw, 3.2rem);
+        font-size: clamp(2rem, 9vw, 3rem);
         max-width: 100%;
       }
 
       .step-desc {
-        font-size: 0.96rem;
+        font-size: 0.95rem;
       }
 
-      .text-input {
+      .text-input,
+      .country-select {
         min-height: 64px;
         padding: 18px 18px;
         border-radius: 18px;
         font-size: 1rem;
       }
 
+      .phone-input-wrap .text-input {
+        padding-left: 66px;
+      }
+
+      .phone-prefix {
+        left: 16px;
+      }
+
       .textarea-input {
-        min-height: 140px;
+        min-height: 150px;
         padding: 16px;
         border-radius: 18px;
       }
@@ -1452,17 +1457,25 @@
         font-size: 0.8rem;
       }
 
-      .step-actions {
+      .step-actions,
+      .success-actions {
         display: grid;
         grid-template-columns: 1fr;
       }
 
-      .step-actions .btn {
+      .step-actions .btn,
+      .success-actions .btn {
         width: 100%;
       }
 
       .ghost-link {
         text-align: center;
+      }
+
+      .success-panel {
+        min-height: auto;
+        padding: 24px 18px;
+        border-radius: 26px;
       }
 
       .calendar-panel {
@@ -1487,9 +1500,7 @@
 
       <nav class="nav-links" aria-label="Sekundær navigasjon">
         <a href="index.html">Forside</a>
-        <a href="#muligheter">Muligheter</a>
         <a href="#oppsett">Oppsett</a>
-        <a href="personvern.html">Personvern</a>
       </nav>
 
       <button class="btn btn-primary nav-cta js-open-booking">Be om booking</button>
@@ -1504,202 +1515,128 @@
             <span>CD</span>
           </div>
 
-          <h1 class="hero-title">CREPE DE LA CREPE EVENTS</h1>
+          <h1 class="hero-title">
+            <span class="hero-line">CREPE DE LA CREPE</span>
+            <span class="hero-line">EVENTS</span>
+          </h1>
+
           <p class="hero-copy">
             Ferskserverte crêpes til arrangementer i hele Norge.
           </p>
-          <p class="hero-sub">
-            Premium oppsett for festivaler, firmaarrangementer og private arrangementer.
-          </p>
 
           <div class="hero-actions">
-            <a href="#muligheter" class="btn btn-primary">Utforsk mulighetene</a>
+            <a href="#oppsett" class="btn btn-primary">Utforsk oppsettene</a>
+            <button class="btn btn-secondary js-open-booking">Be om booking</button>
           </div>
 
-          <div class="hero-skip">Scroll for å se oppsettene</div>
+          <div class="hero-note">Hero-video legges bak denne seksjonen.</div>
         </div>
       </div>
     </section>
 
-    <section class="intro" id="muligheter">
-      <div class="container">
-        <div class="intro-card">
-          <div class="eyebrow">Muligheter</div>
-          <h2 class="section-title">UTFORSK MULIGHETENE</h2>
-          <p class="section-copy">
-            Tre ulike oppsett. Samme fokus på flyt, servering og et uttrykk som løfter arrangementet. Velg løsningen som passer lokasjonen, publikumet og rammen deres best.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="oppsett" class="setup-section" aria-labelledby="wagon-title">
-      <div class="container">
-        <div class="setup-grid">
-          <div class="setup-media">
-            <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" />
-          </div>
-
-          <div class="setup-content">
-            <div class="eyebrow">Oppsett 01</div>
-            <h2 class="setup-name" id="wagon-title">CREPE DE LA CREPE WAGON</h2>
-            <p class="setup-copy">
-              Vårt mest komplette eventoppsett. Passer godt der dere vil ha et tydelig, profesjonelt serveringspunkt med høy tilstedeværelse og en sterkere visuell signatur.
-            </p>
-
-            <div class="setup-meta">
-              <div class="setup-chip">
-                <div class="setup-chip-label">Passer til</div>
-                <div class="setup-chip-value">Festivaler, større firmaevents og publikumstunge dager</div>
-              </div>
-
-              <div class="setup-chip">
-                <div class="setup-chip-label">Uttrykk</div>
-                <div class="setup-chip-value">Sterk tilstedeværelse, høy kapasitet og premium servering</div>
-              </div>
+    <section id="oppsett" class="setups" aria-label="Våre oppsett">
+      <article class="setup-screen is-visible" aria-labelledby="wagon-title">
+        <div class="container">
+          <div class="setup-shell">
+            <div class="setup-media">
+              <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" />
             </div>
 
-            <div class="setup-actions">
-              <button class="btn btn-secondary js-read-more" data-setup="Wagon">Les mer</button>
-              <button class="btn btn-secondary js-toggle-specs" data-target="wagon-specs">Spesifikasjoner</button>
-              <button class="btn btn-primary js-open-booking" data-setup="Wagon">Be om booking</button>
-            </div>
+            <div class="setup-content">
+              <div class="eyebrow">Oppsett 01</div>
 
-            <div class="spec-box" id="wagon-specs">
-              <div class="spec-inner">
-                <p class="spec-title">Praktisk oppsett</p>
-                <ul class="spec-list">
-                  <li>Trenger egnet plass for servering, køflyt og trygg plassering.</li>
-                  <li>Underlag og adkomst må fungere for innrigg og drift.</li>
-                  <li>Detaljer avklares etter forespørsel ut fra lokasjon og arrangementstype.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              <h2 class="setup-name" id="wagon-title">
+                <span class="setup-brand">CREPE DE LA CREPE</span>
+                <span class="setup-model">WAGON</span>
+              </h2>
 
-    <section class="setup-section" aria-labelledby="stand-title">
-      <div class="container">
-        <div class="setup-grid reverse">
-          <div class="setup-content">
-            <div class="eyebrow">Oppsett 02</div>
-            <h2 class="setup-name" id="stand-title">CREPE DE LA CREPE STAND</h2>
-            <p class="setup-copy">
-              Et fleksibelt oppsett for arrangementer som trenger en ren og profesjonell serveringsløsning med mindre fotavtrykk, men fortsatt tydelig kvalitet i leveransen.
-            </p>
-
-            <div class="setup-meta">
-              <div class="setup-chip">
-                <div class="setup-chip-label">Passer til</div>
-                <div class="setup-chip-value">Messer, bedriftsdager, markeder og kompakte eventflater</div>
-              </div>
-
-              <div class="setup-chip">
-                <div class="setup-chip-label">Uttrykk</div>
-                <div class="setup-chip-value">Smidig, ryddig og premium uten å ta for mye plass</div>
-              </div>
-            </div>
-
-            <div class="setup-actions">
-              <button class="btn btn-secondary js-read-more" data-setup="Stand">Les mer</button>
-              <button class="btn btn-primary js-open-booking" data-setup="Stand">Be om booking</button>
-            </div>
-          </div>
-
-          <div class="setup-media">
-            <img src="stand.jpg" alt="Crepe de la Crepe Stand" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="setup-section" aria-labelledby="popup-title">
-      <div class="container">
-        <div class="setup-grid">
-          <div class="setup-media">
-            <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" />
-          </div>
-
-          <div class="setup-content">
-            <div class="eyebrow">Oppsett 03</div>
-            <h2 class="setup-name" id="popup-title">CREPE DE LA CREPE POP-UP</h2>
-            <p class="setup-copy">
-              For steder som trenger en enklere og mer mobil løsning. Fortsatt varm, profesjonell og tydelig i uttrykket, bare med et lettere oppsett rundt serveringen.
-            </p>
-
-            <div class="setup-meta">
-              <div class="setup-chip">
-                <div class="setup-chip-label">Passer til</div>
-                <div class="setup-chip-value">Private arrangementer, mindre bedriftsarrangementer og korte aktiveringer</div>
-              </div>
-
-              <div class="setup-chip">
-                <div class="setup-chip-label">Uttrykk</div>
-                <div class="setup-chip-value">Lett, fleksibelt og effektivt uten å miste premiumfølelsen</div>
-              </div>
-            </div>
-
-            <div class="setup-actions">
-              <button class="btn btn-secondary js-read-more" data-setup="Pop-Up">Les mer</button>
-              <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Be om booking</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-card">
-          <div class="cta-row">
-            <div>
-              <div class="eyebrow">Booking</div>
-              <h2 class="cta-title">Hvilket oppsett passer best for deg?</h2>
-              <p class="cta-text">
-                Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.
+              <p class="setup-copy">
+                For dager der dere vil at serveringen skal stå tydelig, se sterk ut og håndtere mye flyt uten å miste følelsen.
               </p>
-            </div>
 
-            <button class="btn btn-primary js-open-booking">Be om booking nå</button>
+              <p class="setup-subcopy">
+                Et større oppsett for festivaler, store firmaarrangementer og dager med høyt trykk.
+              </p>
+
+              <div class="setup-actions">
+                <button class="btn btn-primary js-open-booking" data-setup="Wagon">Be om booking</button>
+                <a href="#stand-title" class="btn btn-secondary">Neste oppsett</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="transition-fade" aria-hidden="true"></div>
+      </article>
+
+      <article class="setup-screen reverse" aria-labelledby="stand-title">
+        <div class="container">
+          <div class="setup-shell">
+            <div class="setup-content">
+              <div class="eyebrow">Oppsett 02</div>
+
+              <h2 class="setup-name" id="stand-title">
+                <span class="setup-brand">CREPE DE LA CREPE</span>
+                <span class="setup-model">STAND</span>
+              </h2>
+
+              <p class="setup-copy">
+                Når dere vil ha et rent, profesjonelt serveringspunkt som er lettere å plassere, men fortsatt ser gjennomført ut.
+              </p>
+
+              <p class="setup-subcopy">
+                Passer godt for messer, bedriftsdager, markeder og flater der løsningen må være strammere.
+              </p>
+
+              <div class="setup-actions">
+                <button class="btn btn-primary js-open-booking" data-setup="Stand">Be om booking</button>
+                <a href="#popup-title" class="btn btn-secondary">Neste oppsett</a>
+              </div>
+            </div>
+
+            <div class="setup-media">
+              <img src="stand.jpg" alt="Crepe de la Crepe Stand" />
+            </div>
+          </div>
+        </div>
+        <div class="transition-fade" aria-hidden="true"></div>
+      </article>
+
+      <article class="setup-screen" aria-labelledby="popup-title">
+        <div class="container">
+          <div class="setup-shell">
+            <div class="setup-media">
+              <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" />
+            </div>
+
+            <div class="setup-content">
+              <div class="eyebrow">Oppsett 03</div>
+
+              <h2 class="setup-name" id="popup-title">
+                <span class="setup-brand">CREPE DE LA CREPE</span>
+                <span class="setup-model">POP-UP</span>
+              </h2>
+
+              <p class="setup-copy">
+                En lettere løsning for arrangementer som trenger fleksibilitet, raskere plassering og en servering som fortsatt føles varm og ryddig.
+              </p>
+
+              <p class="setup-subcopy">
+                Godt egnet for private arrangementer, mindre bedriftsopplegg og kortere aktiveringer.
+              </p>
+
+              <div class="setup-actions">
+                <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Be om booking</button>
+                <a href="#top" class="btn btn-secondary" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Til toppen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-card">
-        <div class="footer-brand">
-          <h3>Crepe de la Crepe</h3>
-          <p>
-            Eventforespørsler for festivaler, firmaarrangementer og private arrangementer i hele Norge.
-          </p>
-        </div>
-
-        <div class="footer-links">
-          <div class="footer-col">
-            <span class="footer-label">Navigasjon</span>
-            <a href="index.html">Tilbake til forsiden</a>
-            <a href="personvern.html">Personvern</a>
-          </div>
-
-          <div class="footer-col">
-            <span class="footer-label">Kontakt</span>
-            <a href="mailto:crepedelacrepes@gmail.com">crepedelacrepes@gmail.com</a>
-            <a href="tel:+4790212929">+47 90 21 29 29</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
-    <div class="overlay-shell">
+    <div class="overlay-shell" id="overlayShell">
       <div class="overlay-main">
         <div class="overlay-header">
           <div class="overlay-brand">
@@ -1727,14 +1664,6 @@
           </div>
         </div>
 
-        <div class="booking-time" aria-label="Tar rundt 2 minutter">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle>
-            <path d="M12 7.8V12l3.1 1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span>Tar rundt 2 minutter</span>
-        </div>
-
         <div class="overlay-frame">
           <div class="stage">
             <form id="bookingForm" novalidate style="height:100%;">
@@ -1744,9 +1673,7 @@
                 <div class="step-top">
                   <div class="step-kicker">Steg 01</div>
                   <h2 class="step-title">Hva ønsker du å booke?</h2>
-                  <p class="step-desc">
-                    Velg oppsettet som ligger nærmest behovet deres.
-                  </p>
+                  <p class="step-desc">Velg oppsettet som ligger nærmest det dere trenger.</p>
                 </div>
 
                 <div class="step-middle">
@@ -1757,7 +1684,7 @@
                           <span class="choice-title">Crepe de la Crepe Wagon</span>
                           <span class="choice-arrow">→</span>
                         </div>
-                        <p class="choice-desc">Vårt mest komplette eventoppsett for større flater og sterkere tilstedeværelse.</p>
+                        <p class="choice-desc">For større flater, sterkere tilstedeværelse og høyere kapasitet.</p>
                       </button>
 
                       <button type="button" class="choice-card" data-value="Stand">
@@ -1765,7 +1692,7 @@
                           <span class="choice-title">Crepe de la Crepe Stand</span>
                           <span class="choice-arrow">→</span>
                         </div>
-                        <p class="choice-desc">Et fleksibelt og ryddig oppsett med mindre fotavtrykk.</p>
+                        <p class="choice-desc">Et ryddig oppsett med mindre fotavtrykk og tydelig leveranse.</p>
                       </button>
 
                       <button type="button" class="choice-card" data-value="Pop-Up">
@@ -1773,7 +1700,7 @@
                           <span class="choice-title">Crepe de la Crepe Pop-Up</span>
                           <span class="choice-arrow">→</span>
                         </div>
-                        <p class="choice-desc">For mindre eller mer mobile arrangementer som trenger en lett løsning.</p>
+                        <p class="choice-desc">En lettere løsning for mindre eller mer mobile arrangementer.</p>
                       </button>
                     </div>
                   </div>
@@ -1784,7 +1711,7 @@
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="1">
+              <section class="step-card" data-step="1">
                 <div class="step-top">
                   <div class="step-kicker">Steg 02</div>
                   <h2 class="step-title">Hva er ditt fulle navn?</h2>
@@ -1812,7 +1739,7 @@
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="2">
+              <section class="step-card" data-step="2">
                 <div class="step-top">
                   <div class="step-kicker">Steg 03</div>
                   <h2 class="step-title">Hva heter firmaet ditt?</h2>
@@ -1845,9 +1772,7 @@
                 <div class="step-top">
                   <div class="step-kicker">Steg 04</div>
                   <h2 class="step-title">Når skal arrangementet være?</h2>
-                  <p class="step-desc">
-                    Velg én dag eller et intervall. Tidligere datoer er låst.
-                  </p>
+                  <p class="step-desc">Velg én dag eller et intervall. Tidligere datoer er låst.</p>
                 </div>
 
                 <div class="step-middle">
@@ -1869,8 +1794,6 @@
                           <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
                         </button>
                       </div>
-
-                      <div class="field-helper" id="dateHelper">Én dag er valgt som standard.</div>
                     </div>
 
                     <input type="hidden" id="dateMode" value="single" />
@@ -1888,7 +1811,7 @@
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="4">
+              <section class="step-card" data-step="4">
                 <div class="step-top">
                   <div class="step-kicker">Steg 05</div>
                   <h2 class="step-title">Hvor mange gjester?</h2>
@@ -1905,7 +1828,6 @@
                       placeholder="For eksempel 120"
                       autocomplete="off"
                     />
-                    <div class="field-helper">Et estimat holder.</div>
                   </div>
                 </div>
 
@@ -1918,7 +1840,7 @@
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="5">
+              <section class="step-card" data-step="5">
                 <div class="step-top">
                   <div class="step-kicker">Steg 06</div>
                   <h2 class="step-title">Hva er e-posten din?</h2>
@@ -1946,7 +1868,7 @@
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="6">
+              <section class="step-card" data-step="6">
                 <div class="step-top">
                   <div class="step-kicker">Steg 07</div>
                   <h2 class="step-title">Hva er telefonnummeret ditt?</h2>
@@ -1954,16 +1876,33 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
-                    <input
-                      class="text-input"
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="+47 900 00 000"
-                      autocomplete="tel"
-                      value="+47 "
-                    />
-                    <div class="field-helper">Norsk landkode er satt som standard.</div>
+                    <div class="field-row">
+                      <div class="phone-row">
+                        <div class="country-wrap">
+                          <select class="country-select" id="phoneCountry" name="phoneCountry" autocomplete="tel-country-code">
+                            <option value="NO">🇳🇴 Norge</option>
+                            <option value="SE">🇸🇪 Sverige</option>
+                            <option value="DK">🇩🇰 Danmark</option>
+                            <option value="GB">🇬🇧 Storbritannia</option>
+                            <option value="DE">🇩🇪 Tyskland</option>
+                            <option value="US">🇺🇸 USA</option>
+                          </select>
+                        </div>
+
+                        <div class="phone-input-wrap">
+                          <span class="phone-prefix" id="phonePrefix">+47</span>
+                          <input
+                            class="text-input"
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="45 55 86 02"
+                            autocomplete="tel-national"
+                            inputmode="numeric"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -2013,15 +1952,11 @@
                 </div>
 
                 <div class="step-bottom">
-                  <div class="step-actions">
-                    <button type="button" class="btn btn-primary js-next">Neste</button>
-                    <button type="button" class="ghost-link js-back">Tilbake</button>
-                  </div>
                   <div class="error-text" data-error-for="eventType"></div>
                 </div>
               </section>
 
-              <section class="step-card step-compact" data-step="8">
+              <section class="step-card" data-step="8">
                 <div class="step-top">
                   <div class="step-kicker">Steg 09</div>
                   <h2 class="step-title">Hvor skal arrangementet være?</h2>
@@ -2076,28 +2011,35 @@
                 </div>
               </section>
 
-              <section class="step-card" data-step="10">
-                <div class="step-top">
-                  <div class="success-mark" aria-hidden="true">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                  <div class="step-kicker">Takk</div>
-                  <h2 class="step-title">Takk for forespørselen</h2>
-                  <p class="step-desc">
-                    Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
-                  </p>
-                </div>
+              <section class="step-card success-step" data-step="10">
+                <div class="success-wrap">
+                  <div class="success-panel">
+                    <div class="success-mark" aria-hidden="true">
+                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
 
-                <div class="step-middle">
-                  <div class="step-middle-inner"></div>
-                </div>
+                    <div class="success-kicker">Forespørsel sendt</div>
 
-                <div class="step-bottom">
-                  <div class="step-actions">
-                    <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
-                    <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+                    <h2 class="success-title">Takk for forespørselen</h2>
+
+                    <p class="success-copy">
+                      Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
+                    </p>
+
+                    <button type="button" class="btn btn-secondary success-toggle" id="toggleSuccessSummary">
+                      Vis bookingoppsummering
+                    </button>
+
+                    <div class="success-summary" id="successSummary">
+                      <ul class="success-summary-list" id="successSummaryList"></ul>
+                    </div>
+
+                    <div class="success-actions">
+                      <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
+                      <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -2111,12 +2053,9 @@
           <p class="summary-title">Oppsummering</p>
           <ul class="summary-list" id="summaryList"></ul>
           <p class="summary-empty" id="summaryEmpty">
-            Fyll ut stegene, så vises en oppsummering her fortløpende.
+            Fyll ut stegene, så vises oppsummeringen fortløpende.
           </p>
         </div>
-        <p class="side-note">
-          Forespørselen sendes til bookingsystemet når du fullfører siste steg.
-        </p>
       </aside>
     </div>
   </div>
@@ -2168,6 +2107,7 @@
     (() => {
       const revealNav = document.getElementById("revealNav");
       const overlay = document.getElementById("bookingOverlay");
+      const overlayShell = document.getElementById("overlayShell");
       const closeOverlayBtn = document.getElementById("closeOverlayBtn");
       const doneBtn = document.getElementById("doneBtn");
       const progressBar = document.getElementById("progressBar");
@@ -2178,6 +2118,9 @@
       const submitBtn = document.getElementById("submitBtn");
       const summaryList = document.getElementById("summaryList");
       const summaryEmpty = document.getElementById("summaryEmpty");
+      const successSummary = document.getElementById("successSummary");
+      const successSummaryList = document.getElementById("successSummaryList");
+      const toggleSuccessSummary = document.getElementById("toggleSuccessSummary");
 
       const singleModeBtn = document.getElementById("singleModeBtn");
       const rangeModeBtn = document.getElementById("rangeModeBtn");
@@ -2185,7 +2128,6 @@
       const endDateBtn = document.getElementById("endDateBtn");
       const startDateValue = document.getElementById("startDateValue");
       const endDateValue = document.getElementById("endDateValue");
-      const dateHelper = document.getElementById("dateHelper");
       const dateModeInput = document.getElementById("dateMode");
       const eventStartDate = document.getElementById("eventStartDate");
       const eventEndDate = document.getElementById("eventEndDate");
@@ -2199,14 +2141,24 @@
       const closeCalendarBtn = document.getElementById("closeCalendarBtn");
       const applyCalendarBtn = document.getElementById("applyCalendarBtn");
 
-      const readMoreButtons = document.querySelectorAll(".js-read-more");
       const openBookingButtons = document.querySelectorAll(".js-open-booking");
-      const toggleSpecsButtons = document.querySelectorAll(".js-toggle-specs");
-
       const setupChoices = Array.from(document.querySelectorAll("#setupChoices .choice-card"));
       const eventTypeChoices = Array.from(document.querySelectorAll("#eventTypeChoices .choice-card"));
       const nextButtons = Array.from(document.querySelectorAll(".js-next"));
       const backButtons = Array.from(document.querySelectorAll(".js-back"));
+
+      const phoneCountry = document.getElementById("phoneCountry");
+      const phoneInput = document.getElementById("phone");
+      const phonePrefix = document.getElementById("phonePrefix");
+
+      const phoneCountryMap = {
+        NO: { dial: "+47", placeholder: "45 55 86 02", minDigits: 8, formatter: "pair" },
+        SE: { dial: "+46", placeholder: "70 123 45 67", minDigits: 9, formatter: "sweden" },
+        DK: { dial: "+45", placeholder: "12 34 56 78", minDigits: 8, formatter: "pair" },
+        GB: { dial: "+44", placeholder: "7123 456789", minDigits: 10, formatter: "uk" },
+        DE: { dial: "+49", placeholder: "1512 3456789", minDigits: 10, formatter: "group4" },
+        US: { dial: "+1", placeholder: "201 555 0123", minDigits: 10, formatter: "us" }
+      };
 
       const formState = {
         setup: "",
@@ -2217,7 +2169,8 @@
         eventDateEnd: "",
         guests: "",
         email: "",
-        phone: "+47 ",
+        phoneCountry: "NO",
+        phoneLocal: "",
         eventType: "",
         location: "",
         message: ""
@@ -2286,6 +2239,57 @@
         }
       }
 
+      function getFullPhoneValue() {
+        const country = phoneCountryMap[formState.phoneCountry] || phoneCountryMap.NO;
+        if (!formState.phoneLocal) return "";
+        return `${country.dial} ${formState.phoneLocal}`.trim();
+      }
+
+      function syncPhoneUi() {
+        const country = phoneCountryMap[phoneCountry.value] || phoneCountryMap.NO;
+        phonePrefix.textContent = country.dial;
+        phoneInput.placeholder = country.placeholder;
+      }
+
+      function formatPhoneLocal(rawDigits, formatter) {
+        const digits = rawDigits.replace(/\D/g, "");
+
+        if (formatter === "pair") {
+          return digits.match(/.{1,2}/g)?.join(" ") || "";
+        }
+
+        if (formatter === "us") {
+          const d = digits.slice(0, 10);
+          const p1 = d.slice(0, 3);
+          const p2 = d.slice(3, 6);
+          const p3 = d.slice(6, 10);
+          return [p1, p2, p3].filter(Boolean).join(" ");
+        }
+
+        if (formatter === "uk") {
+          const d = digits.slice(0, 11);
+          if (d.length <= 5) return d;
+          return `${d.slice(0, 5)} ${d.slice(5)}`.trim();
+        }
+
+        if (formatter === "group4") {
+          const d = digits.slice(0, 11);
+          if (d.length <= 4) return d;
+          if (d.length <= 7) return `${d.slice(0, 4)} ${d.slice(4)}`.trim();
+          return `${d.slice(0, 4)} ${d.slice(4, 7)} ${d.slice(7)}`.trim();
+        }
+
+        if (formatter === "sweden") {
+          const d = digits.slice(0, 10);
+          if (d.length <= 3) return d;
+          if (d.length <= 6) return `${d.slice(0, 3)} ${d.slice(3)}`.trim();
+          if (d.length <= 8) return `${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6)}`.trim();
+          return `${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6, 8)} ${d.slice(8)}`.trim();
+        }
+
+        return digits;
+      }
+
       function openOverlay(prefilledSetup = "") {
         previousFocusedElement = document.activeElement;
         overlay.classList.add("open");
@@ -2308,6 +2312,8 @@
         overlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("overlay-open");
         closeCalendar();
+        successSummary.classList.remove("open");
+        toggleSuccessSummary.textContent = "Vis bookingoppsummering";
 
         if (previousFocusedElement && typeof previousFocusedElement.focus === "function") {
           previousFocusedElement.focus();
@@ -2318,6 +2324,9 @@
         steps.forEach((step, index) => {
           step.classList.toggle("active", index === currentStep);
         });
+
+        const successMode = currentStep === 10;
+        overlayShell.classList.toggle("success-mode", successMode);
 
         if (currentStep <= totalInputSteps - 1) {
           const humanStep = currentStep + 1;
@@ -2366,8 +2375,8 @@
         });
       }
 
-      function updateSummary() {
-        const items = [
+      function buildSummaryItems() {
+        return [
           { label: "Oppsett", value: formState.setup },
           { label: "Navn", value: formState.name },
           { label: "Firma", value: formState.company },
@@ -2379,13 +2388,18 @@
           },
           { label: "Gjester", value: formState.guests },
           { label: "E-post", value: formState.email },
-          { label: "Telefon", value: formState.phone && formState.phone !== "+47 " ? formState.phone : "" },
+          { label: "Telefon", value: getFullPhoneValue() },
           { label: "Arrangementstype", value: formState.eventType },
           { label: "Sted", value: formState.location },
           { label: "Melding", value: formState.message }
         ].filter((item) => item.value && String(item.value).trim() !== "");
+      }
+
+      function updateSummary() {
+        const items = buildSummaryItems();
 
         summaryList.innerHTML = "";
+        successSummaryList.innerHTML = "";
 
         if (!items.length) {
           summaryEmpty.style.display = "block";
@@ -2402,6 +2416,14 @@
             <span class="summary-value">${escapeHtml(item.value)}</span>
           `;
           summaryList.appendChild(li);
+
+          const successLi = document.createElement("li");
+          successLi.className = "success-summary-item";
+          successLi.innerHTML = `
+            <span class="success-summary-label">${escapeHtml(item.label)}</span>
+            <span class="success-summary-value">${escapeHtml(item.value)}</span>
+          `;
+          successSummaryList.appendChild(successLi);
         });
       }
 
@@ -2418,9 +2440,6 @@
           formState.eventDateEnd = "";
           eventEndDate.value = "";
           endDateValue.textContent = "Velg sluttdato";
-          dateHelper.textContent = "Én dag er valgt som standard.";
-        } else {
-          dateHelper.textContent = "Velg startdato og sluttdato.";
         }
 
         updateDateDisplay();
@@ -2435,20 +2454,6 @@
         endDateValue.textContent = formState.eventDateEnd
           ? formatDate(formState.eventDateEnd)
           : "Velg sluttdato";
-
-        if (formState.dateMode === "single") {
-          dateHelper.textContent = formState.eventDateStart
-            ? `Valgt dato: ${formatDate(formState.eventDateStart)}`
-            : "Én dag er valgt som standard.";
-        } else {
-          if (formState.eventDateStart && formState.eventDateEnd) {
-            dateHelper.textContent = `Valgt intervall: ${formatDateRange(formState.eventDateStart, formState.eventDateEnd)}`;
-          } else if (formState.eventDateStart && !formState.eventDateEnd) {
-            dateHelper.textContent = "Velg sluttdato for å fullføre intervallet.";
-          } else {
-            dateHelper.textContent = "Velg startdato og sluttdato.";
-          }
-        }
       }
 
       function daysInMonth(year, month) {
@@ -2672,13 +2677,12 @@
           }
 
           case 6: {
-            const value = document.getElementById("phone").value.trim();
-            const digitCount = value.replace(/\D/g, "").length;
-            if (digitCount < 8) {
+            const config = phoneCountryMap[formState.phoneCountry] || phoneCountryMap.NO;
+            const digits = formState.phoneLocal.replace(/\D/g, "");
+            if (digits.length < config.minDigits) {
               setError("phone", "Skriv inn et gyldig telefonnummer.");
               return false;
             }
-            formState.phone = value;
             return true;
           }
 
@@ -2738,7 +2742,7 @@
           date: dateValue,
           guests: formState.guests,
           email: formState.email,
-          phone: formState.phone,
+          phone: getFullPhoneValue(),
           type: formState.eventType,
           location: formState.location,
           message: formState.message,
@@ -2791,6 +2795,22 @@
         }
       }
 
+      function setupScrollReveal() {
+        const sections = document.querySelectorAll(".setup-screen");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entry.target.classList.toggle("is-visible", entry.isIntersecting);
+            });
+          },
+          {
+            threshold: 0.45
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      }
+
       setupChoices.forEach((button) => {
         button.addEventListener("click", () => {
           formState.setup = button.dataset.value;
@@ -2818,20 +2838,6 @@
         button.addEventListener("click", () => {
           const setup = button.dataset.setup || "";
           openOverlay(setup);
-        });
-      });
-
-      readMoreButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const setup = button.dataset.setup || "";
-          openOverlay(setup);
-        });
-      });
-
-      toggleSpecsButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const target = document.getElementById(button.dataset.target);
-          if (target) target.classList.toggle("open");
         });
       });
 
@@ -2875,6 +2881,13 @@
 
       bookingForm.addEventListener("submit", submitForm);
 
+      toggleSuccessSummary.addEventListener("click", () => {
+        const isOpen = successSummary.classList.toggle("open");
+        toggleSuccessSummary.textContent = isOpen
+          ? "Skjul bookingoppsummering"
+          : "Vis bookingoppsummering";
+      });
+
       document.addEventListener("keydown", (event) => {
         if (!overlay.classList.contains("open")) return;
 
@@ -2893,7 +2906,9 @@
 
         if (event.key === "Enter" && !isTextarea) {
           const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
-          if (!isButton && currentStep > 0 && currentStep < 9) {
+          const isSelect = document.activeElement && document.activeElement.tagName === "SELECT";
+
+          if (!isButton && !isSelect && currentStep > 0 && currentStep < 9) {
             event.preventDefault();
             nextStep();
           }
@@ -2921,15 +2936,26 @@
         updateSummary();
       });
 
-      document.getElementById("phone").addEventListener("input", (e) => {
-        let value = e.target.value;
-        if (!value.startsWith("+47 ")) {
-          const digits = value.replace(/\D/g, "");
-          const local = digits.startsWith("47") ? digits.slice(2) : digits;
-          value = `+47 ${local}`;
-        }
-        e.target.value = value;
-        formState.phone = value.trim();
+      phoneCountry.addEventListener("change", () => {
+        formState.phoneCountry = phoneCountry.value;
+        syncPhoneUi();
+
+        const config = phoneCountryMap[formState.phoneCountry] || phoneCountryMap.NO;
+        const digits = phoneInput.value.replace(/\D/g, "");
+        const formatted = formatPhoneLocal(digits, config.formatter);
+
+        phoneInput.value = formatted;
+        formState.phoneLocal = formatted;
+        updateSummary();
+      });
+
+      phoneInput.addEventListener("input", (e) => {
+        const config = phoneCountryMap[formState.phoneCountry] || phoneCountryMap.NO;
+        const digits = e.target.value.replace(/\D/g, "").slice(0, 14);
+        const formatted = formatPhoneLocal(digits, config.formatter);
+
+        e.target.value = formatted;
+        formState.phoneLocal = formatted;
         updateSummary();
       });
 
@@ -2945,7 +2971,10 @@
 
       window.addEventListener("scroll", syncRevealNav, { passive: true });
       syncRevealNav();
+      setupScrollReveal();
 
+      formState.phoneCountry = phoneCountry.value;
+      syncPhoneUi();
       setDateMode("single");
       updateSteps();
       updateSummary();
