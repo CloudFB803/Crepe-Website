@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crepe de la Crepe</title>
+  <title>Crepe de la Crepe | Crêpes i Oslo</title>
   <meta
     name="description"
-    content="Søte og savoury crêpes, åpningstider, lokasjon og kontakt for Crepe de la Crepe."
+    content="Søte og savoury crêpes i Oslo. Se meny, åpningstider, lokasjon og kontakt for Crepe de la Crepe."
   />
+  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+  <link rel="canonical" href="https://project-vuseb.vercel.app/" />
+
+  <meta property="og:title" content="Crepe de la Crepe | Crêpes i Oslo" />
+  <meta property="og:description" content="Søte og savoury crêpes i Oslo. Se meny, åpningstider, lokasjon og kontakt for Crepe de la Crepe." />
+  <meta property="og:image" content="https://project-vuseb.vercel.app/hero-crepes.jpg" />
+  <meta property="og:url" content="https://project-vuseb.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1098,6 +1107,41 @@
       font-size: 13px;
     }
 
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 140;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(66, 39, 23, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.88);
+      color: #2d1b15;
+      box-shadow: 0 16px 34px rgba(56, 33, 20, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 800;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(199, 149, 99, 0.34);
+    }
+
     @media (max-width: 1180px) {
       .intro-card {
         grid-template-columns: 1fr;
@@ -1184,6 +1228,13 @@
         bottom: 16px;
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .back-to-top {
+        right: 14px;
+        bottom: 14px;
+        width: 50px;
+        height: 50px;
       }
     }
 
@@ -1286,7 +1337,8 @@
       .crepe-modal,
       .nav-wrap,
       .crepe-modal-arrow,
-      .crepe-modal-close {
+      .crepe-modal-close,
+      .back-to-top {
         transition: none;
       }
     }
@@ -1299,7 +1351,7 @@
         <div class="nav-group left">
           <a href="#om-oss">Om oss</a>
           <a href="#menu">Meny</a>
-          <a href="./book-oss.html">Book-oss</a>
+          <a href="./book-oss.html">Book oss</a>
         </div>
 
         <a href="#top" class="brand">
@@ -1328,7 +1380,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#menu">Se menyen</a>
-            <a class="btn btn-secondary" href="./book-oss.html">Book-oss</a>
+            <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
           </div>
 
           <div class="hero-note">
@@ -1624,9 +1676,10 @@
             <div class="footer-links">
               <a href="#om-oss">Om oss</a>
               <a href="#menu">Meny</a>
-              <a href="./book-oss.html">Book-oss</a>
+              <a href="./book-oss.html">Book oss</a>
               <a href="#lokasjon">Lokasjon</a>
               <a href="#kontakt">Kontakt</a>
+              <a href="./personvern.html">Personvern</a>
             </div>
           </div>
 
@@ -1641,7 +1694,7 @@
             <div class="footer-actions">
               <div class="footer-actions-top">
                 <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-                <a class="btn btn-secondary" href="./book-oss.html">Book-oss</a>
+                <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
               </div>
               <div class="footer-actions-bottom">
                 <a
@@ -1680,6 +1733,8 @@
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Til toppen">↑</button>
+
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1692,6 +1747,7 @@
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
     const navWrap = document.getElementById('navWrap');
+    const backToTop = document.getElementById('backToTop');
 
     function updateNavState() {
       if (window.scrollY > 24) {
@@ -1699,10 +1755,23 @@
       } else {
         navWrap.classList.remove('scrolled');
       }
+
+      if (window.scrollY > 520) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
     }
 
     updateNavState();
     window.addEventListener('scroll', updateNavState);
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
     const crepeOrder = [
       {
