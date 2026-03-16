@@ -8,6 +8,15 @@
     name="description"
     content="Takk for bookingforespørselen din. Vi har mottatt forespørselen og følger opp så snart vi har gått gjennom detaljene."
   />
+  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+  <link rel="canonical" href="https://project-vuseb.vercel.app/takk.html" />
+
+  <meta property="og:title" content="Takk for bookingforespørselen | Crepe de la Crepe" />
+  <meta property="og:description" content="Vi har mottatt bookingforespørselen din og følger opp så snart vi har gått gjennom detaljene." />
+  <meta property="og:image" content="https://project-vuseb.vercel.app/hero-crepes.jpg" />
+  <meta property="og:url" content="https://project-vuseb.vercel.app/takk.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,6 +168,22 @@
       z-index: 1;
     }
 
+    .response-note {
+      margin: 22px auto 0;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(200,141,84,0.10);
+      border: 1px solid rgba(200,141,84,0.18);
+      color: #7d5139;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
     .actions {
       margin-top: 34px;
       display: flex;
@@ -166,6 +191,7 @@
       gap: 12px;
       position: relative;
       z-index: 1;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -194,6 +220,17 @@
       filter: brightness(1.03);
     }
 
+    .btn-secondary {
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      border-color: rgba(66, 39, 23, 0.12);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.92);
+    }
+
     @media (max-width: 720px) {
       .shell {
         padding: 34px 22px;
@@ -218,11 +255,14 @@
 
       <h1>Takk for bookingforespørselen</h1>
       <p>
-        Vi har mottatt forespørselen din og ser frem til å høre mer om arrangementet. Du får svar fra oss så snart vi har gått gjennom detaljene.
+        Vi har mottatt forespørselen din og ser frem til å høre mer om arrangementet. Vi går gjennom detaljene og følger opp så snart vi kan.
       </p>
+
+      <div class="response-note">Vi svarer vanligvis innen 24–48 timer</div>
 
       <div class="actions">
         <a class="btn btn-primary" href="./index.html">Til forsiden</a>
+        <a class="btn btn-secondary" href="./book-oss.html">Send ny forespørsel</a>
       </div>
     </section>
   </main>
