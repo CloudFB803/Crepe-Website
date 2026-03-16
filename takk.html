@@ -1,461 +1,243 @@
-function jsonResponse(body, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8"
-    }
-  });
-}
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Takk | Crepe de la Crepe</title>
+  <meta
+    name="description"
+    content="Takk for bookingforespørselen. Vi har mottatt forespørselen din og følger opp innen 24–48 timer."
+  />
 
-function escapeHtml(value = "") {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-function normalizeText(value = "") {
-  return String(value)
-    .replace(/\r/g, "")
-    .trim();
-}
-
-function normalizeHeaderValue(value = "") {
-  return String(value)
-    .replace(/[\r\n]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function clamp(value, maxLength) {
-  return normalizeText(value).slice(0, maxLength);
-}
-
-function pickFirst(...values) {
-  for (const value of values) {
-    if (value !== undefined && value !== null && String(value).trim() !== "") {
-      return value;
-    }
-  }
-  return "";
-}
-
-function normalizePhoneForValidation(phone = "") {
-  return String(phone).replace(/[^\d+]/g, "");
-}
-
-function normalizeSetup(value = "") {
-  const raw = normalizeText(value).toLowerCase();
-
-  if (!raw) return "";
-  if (raw === "wagon" || raw === "crepe de la crepe wagon") return "Wagon";
-  if (raw === "stand" || raw === "crepe de la crepe stand") return "Stand";
-  if (
-    raw === "pop-up" ||
-    raw === "popup" ||
-    raw === "pop up" ||
-    raw === "crepe de la crepe pop-up" ||
-    raw === "crepe de la crepe popup"
-  ) {
-    return "Pop-Up";
-  }
-
-  return "";
-}
-
-function normalizeEventType(value = "") {
-  const raw = normalizeText(value).toLowerCase();
-
-  if (!raw) return "";
-  if (raw === "festival" || raw === "festivaler") return "Festival";
-  if (raw === "firmaarrangement" || raw === "firmaarrangementer") return "Firmaarrangement";
-  if (raw === "privat arrangement" || raw === "private arrangementer") return "Privat arrangement";
-
-  return "";
-}
-
-function isValidEmail(email = "") {
-  const normalized = String(email).trim().toLowerCase();
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized) && normalized.length <= 150;
-}
-
-function isValidName(name = "") {
-  const trimmed = String(name).trim();
-
-  if (trimmed.length < 2 || trimmed.length > 80) return false;
-  if (/\d/.test(trimmed)) return false;
-  if (/([a-zA-ZæøåÆØÅ])\1{3,}/.test(trimmed)) return false;
-
-  const lettersOnly = trimmed.replace(/[^A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]/g, "");
-  const letterCount = lettersOnly.replace(/[\s'’\-]/g, "").length;
-
-  if (letterCount < 2) return false;
-  if (!/^[A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]+$/.test(trimmed)) return false;
-
-  return true;
-}
-
-function isValidPhone(phone = "") {
-  if (!phone) return true;
-
-  const normalized = normalizePhoneForValidation(phone);
-
-  if (!/^\+\d{6,17}$/.test(normalized)) return false;
-  return true;
-}
-
-function isValidGuests(value = "") {
-  if (!value) return true;
-  return /^\d{1,6}$/.test(value);
-}
-
-function parseRealDate(value = "") {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
-
-  const [year, month, day] = value.split("-").map(Number);
-  const date = new Date(Date.UTC(year, month - 1, day));
-
-  if (
-    date.getUTCFullYear() !== year ||
-    date.getUTCMonth() !== month - 1 ||
-    date.getUTCDate() !== day
-  ) {
-    return null;
-  }
-
-  return date;
-}
-
-function isPastDateString(value = "") {
-  const date = parseRealDate(value);
-  if (!date) return true;
-
-  const now = new Date();
-  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-
-  return date.getTime() < todayUtc;
-}
-
-function isValidDateInput(value = "") {
-  if (!value) return true;
-
-  const normalized = normalizeText(value);
-  const singleDatePattern = /^\d{4}-\d{2}-\d{2}$/;
-  const rangePatternDash = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
-  const rangePatternTil = /^(\d{4}-\d{2}-\d{2}) til (\d{4}-\d{2}-\d{2})$/i;
-
-  if (singleDatePattern.test(normalized)) {
-    const date = parseRealDate(normalized);
-    if (!date) return false;
-    if (isPastDateString(normalized)) return false;
-    return true;
-  }
-
-  const rangeMatch = normalized.match(rangePatternDash) || normalized.match(rangePatternTil);
-  if (!rangeMatch) return false;
-
-  const from = rangeMatch[1];
-  const to = rangeMatch[2];
-
-  const fromDate = parseRealDate(from);
-  const toDate = parseRealDate(to);
-
-  if (!fromDate || !toDate) return false;
-  if (to < from) return false;
-  if (isPastDateString(from) || isPastDateString(to)) return false;
-
-  return true;
-}
-
-function looksLikeSpamMessage(message = "") {
-  if (!message) return false;
-
-  const text = message.toLowerCase().trim();
-  if (!text) return false;
-
-  if (text.length > 1200) return true;
-  if (/https?:\/\/|www\./i.test(text)) return true;
-  if (/([a-z])\1{5,}/i.test(text)) return true;
-  if (/\b(?:test|asdf|qwerty|awd|awdawd|jaf+ia?|heiheihei)\b/i.test(text)) return true;
-
-  const repeatedChunkPattern = /(.{12,40}?)\1{2,}/i;
-  if (repeatedChunkPattern.test(text.replace(/\s+/g, " "))) return true;
-
-  const words = text.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return false;
-
-  const longWord = words.some((word) => word.length > 35);
-  if (longWord) return true;
-
-  if (words.length >= 20) {
-    const uniqueWords = new Set(words).size;
-    const uniqueRatio = uniqueWords / words.length;
-    if (uniqueRatio < 0.35) return true;
-  }
-
-  return false;
-}
-
-export default {
-  async fetch(request) {
-    if (request.method !== "POST") {
-      return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
+  <style>
+    :root {
+      --bg: #0d0b09;
+      --panel: #17130f;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f5efe8;
+      --muted: rgba(245, 239, 232, 0.72);
+      --muted-2: rgba(245, 239, 232, 0.5);
+      --accent: #d7b186;
+      --accent-2: #f0d4b2;
+      --success: #d9e9c7;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --ease: cubic-bezier(.22,.61,.36,1);
     }
 
-    try {
-      const contentLength = Number(request.headers.get("content-length") || "0");
-      if (contentLength > 20000) {
-        return jsonResponse({ ok: false, error: "Forespørselen er for stor." }, 413);
-      }
-
-      const contentType = request.headers.get("content-type") || "";
-      const origin = request.headers.get("origin") || "";
-      const host = request.headers.get("host") || "";
-
-      if (
-        !contentType.includes("application/json") &&
-        !contentType.includes("multipart/form-data") &&
-        !contentType.includes("application/x-www-form-urlencoded")
-      ) {
-        return jsonResponse({ ok: false, error: "Ugyldig innholdstype." }, 400);
-      }
-
-      if (origin) {
-        try {
-          const originUrl = new URL(origin);
-          if (originUrl.host !== host) {
-            return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403);
-          }
-        } catch {
-          return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403);
-        }
-      }
-
-      let data = {};
-
-      if (contentType.includes("application/json")) {
-        data = await request.json();
-      } else {
-        const formData = await request.formData();
-        data = Object.fromEntries(formData.entries());
-      }
-
-      const honeypot = clamp(
-        pickFirst(data.website, data.companyWebsite),
-        200
-      );
-
-      if (honeypot) {
-        return jsonResponse({ ok: true });
-      }
-
-      const navn = clamp(pickFirst(data.name, data.navn), 80);
-      const firma = clamp(pickFirst(data.company, data.firma), 120);
-      const epost = clamp(pickFirst(data.email, data.epost), 150).toLowerCase();
-      const telefonRaw = clamp(pickFirst(data.phone, data.telefon), 30);
-      const telefon = normalizeText(telefonRaw);
-      const setup = normalizeSetup(clamp(pickFirst(data.setup, data.oppsett), 40));
-      const type = normalizeEventType(clamp(data.type || "", 60));
-      const dato = clamp(pickFirst(data.date, data.dato), 80);
-      const sted = clamp(pickFirst(data.location, data.sted), 120);
-      const gjester = clamp(pickFirst(data.guests, data.gjester), 6);
-      const melding = clamp(pickFirst(data.message, data.melding), 1200);
-
-      if (!navn || !epost || !type || !setup) {
-        return jsonResponse({
-          ok: false,
-          error: "Oppsett, navn, e-post og type arrangement er påkrevd."
-        }, 400);
-      }
-
-      if (!isValidName(navn)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig navn."
-        }, 400);
-      }
-
-      if (!isValidEmail(epost)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig e-postadresse."
-        }, 400);
-      }
-
-      if (!isValidPhone(telefon)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig telefonnummer."
-        }, 400);
-      }
-
-      if (!isValidGuests(gjester)) {
-        return jsonResponse({
-          ok: false,
-          error: "Antall gjester må være et tall."
-        }, 400);
-      }
-
-      if (gjester && Number(gjester) < 1) {
-        return jsonResponse({
-          ok: false,
-          error: "Antall gjester må være minst 1."
-        }, 400);
-      }
-
-      if (!isValidDateInput(dato)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig dato."
-        }, 400);
-      }
-
-      if (!setup) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig oppsett."
-        }, 400);
-      }
-
-      if (!type) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig arrangementstype."
-        }, 400);
-      }
-
-      if (melding && melding.length < 12) {
-        return jsonResponse({
-          ok: false,
-          error: "Meldingen er for kort."
-        }, 400);
-      }
-
-      if (looksLikeSpamMessage(melding)) {
-        return jsonResponse({
-          ok: false,
-          error: "Meldingen ser ugyldig ut. Skriv litt mer konkret om arrangementet."
-        }, 400);
-      }
-
-      const resendApiKey = process.env.RESEND_API_KEY;
-      const bookingToEmail = process.env.BOOKING_TO_EMAIL;
-      const bookingFromEmail = process.env.BOOKING_FROM_EMAIL;
-
-      if (!resendApiKey || !bookingToEmail || !bookingFromEmail) {
-        return jsonResponse({
-          ok: false,
-          error: "Manglende environment variables på serveren."
-        }, 500);
-      }
-
-      const safeNavn = escapeHtml(navn);
-      const safeFirma = escapeHtml(firma);
-      const safeEpost = escapeHtml(epost);
-      const safeTelefon = escapeHtml(telefon);
-      const safeSetup = escapeHtml(setup);
-      const safeType = escapeHtml(type);
-      const safeDato = escapeHtml(dato);
-      const safeSted = escapeHtml(sted);
-      const safeGjester = escapeHtml(gjester);
-      const safeMelding = escapeHtml(melding).replace(/\n/g, "<br>");
-
-      const safeReplyTo = normalizeHeaderValue(epost);
-      const safeSubjectName = normalizeHeaderValue(navn).slice(0, 60);
-
-      const html = `
-        <div style="font-family: Arial, Helvetica, sans-serif; color: #241711; line-height: 1.6;">
-          <h2 style="margin: 0 0 16px;">Ny bookingforespørsel</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Oppsett</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeSetup}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Navn</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeNavn}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Firma / arrangør</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeFirma || "-"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>E-post</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeEpost}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Telefon</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeTelefon || "-"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Type arrangement</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeType}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Dato</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeDato || "-"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sted</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeSted || "-"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Antall gjester / forventet besøk</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeGjester || "-"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;"><strong>Melding</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${safeMelding || "-"}</td>
-            </tr>
-          </table>
-        </div>
-      `;
-
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12000);
-
-      let resendResponse;
-      let resendData;
-
-      try {
-        resendResponse = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${resendApiKey}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            from: bookingFromEmail,
-            to: [bookingToEmail],
-            reply_to: safeReplyTo,
-            subject: `Ny bookingforespørsel - ${safeSubjectName}`,
-            html
-          }),
-          signal: controller.signal
-        });
-
-        resendData = await resendResponse.json();
-      } finally {
-        clearTimeout(timeout);
-      }
-
-      if (!resendResponse.ok) {
-        console.error("Resend error:", resendData);
-        return jsonResponse({
-          ok: false,
-          error: "Kunne ikke sende bookingforespørselen."
-        }, 500);
-      }
-
-      return jsonResponse({ ok: true });
-    } catch (error) {
-      console.error("Booking API error:", error);
-      return jsonResponse({
-        ok: false,
-        error: "Noe gikk galt på serveren."
-      }, 500);
+    * {
+      box-sizing: border-box;
     }
-  }
-};
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(215,177,134,0.08), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.05), transparent 20%),
+        linear-gradient(180deg, #0d0b09 0%, #120f0c 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .wrap {
+      position: relative;
+      width: min(920px, 100%);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(215,177,134,0.1), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      padding: clamp(32px, 5vw, 64px);
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(217,233,199,0.18);
+      background: rgba(217,233,199,0.08);
+      color: var(--success);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      width: 78px;
+      height: 78px;
+      margin: 24px auto 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(217,233,199,0.08);
+      border: 1px solid rgba(217,233,199,0.16);
+      color: var(--success);
+    }
+
+    h1 {
+      margin: 24px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      margin: 20px auto 0;
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .note {
+      margin: 24px auto 0;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1b130d;
+      box-shadow: 0 16px 40px rgba(215, 177, 134, 0.18);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-2);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .subnav {
+      margin-top: 30px;
+      color: var(--muted-2);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .subnav a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="badge">Booking mottatt</div>
+
+      <div class="icon" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h1>Takk for forespørselen</h1>
+
+      <p>
+        Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer. Dersom vi trenger mer informasjon om oppsett, lokasjon eller praktiske detaljer, tar vi kontakt direkte.
+      </p>
+
+      <div class="note">Vi svarer vanligvis innen 24–48 timer</div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="./index.html">Til forsiden</a>
+        <a class="btn btn-secondary" href="./book-oss.html">Send ny forespørsel</a>
+      </div>
+
+      <div class="subnav">
+        <a href="./personvern.html">Personvern</a>
+        &nbsp;•&nbsp;
+        <a href="mailto:crepedelacrepes@gmail.com">crepedelacrepes@gmail.com</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
