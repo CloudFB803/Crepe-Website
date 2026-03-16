@@ -6,47 +6,39 @@
   <title>Book oss | Crepe de la Crepe</title>
   <meta
     name="description"
-    content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer."
+    content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer i hele Norge."
   />
-  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
-  <link rel="canonical" href="https://project-vuseb.vercel.app/book-oss.html" />
 
-  <meta property="og:title" content="Book oss | Crepe de la Crepe" />
-  <meta property="og:description" content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer." />
-  <meta property="og:image" content="https://project-vuseb.vercel.app/hero-crepes.jpg" />
-  <meta property="og:url" content="https://project-vuseb.vercel.app/book-oss.html" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
-      --bg: #ece0d3;
-      --surface: rgba(255, 249, 243, 0.92);
-      --surface-strong: rgba(255, 252, 248, 0.97);
-      --text: #241711;
-      --muted: #695548;
-      --muted-soft: #8a7261;
-      --line: rgba(66, 39, 23, 0.10);
-      --accent: #c88d54;
-      --accent-2: #7d5139;
-      --coffee: #8b5e43;
-      --coffee-dark: #6e4632;
-      --coffee-soft: rgba(139, 94, 67, 0.10);
-      --max: 1240px;
-      --radius: 30px;
-      --shadow: 0 20px 54px rgba(56, 33, 20, 0.10);
-      --shadow-soft: 0 14px 34px rgba(56, 33, 20, 0.08);
-      --success-bg: rgba(69, 122, 86, 0.10);
-      --success-text: #2f5a3c;
-      --success-line: rgba(69, 122, 86, 0.24);
-      --error-bg: rgba(160, 52, 52, 0.10);
-      --error-text: #842d2d;
-      --error-line: rgba(160, 52, 52, 0.22);
-      --modal-overlay: rgba(30, 18, 12, 0.34);
+      --bg: #0d0b09;
+      --bg-soft: #15120f;
+      --panel: #17130f;
+      --panel-2: #1f1914;
+      --card: #120f0c;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #f5efe8;
+      --muted: rgba(245, 239, 232, 0.72);
+      --muted-2: rgba(245, 239, 232, 0.5);
+      --accent: #d7b186;
+      --accent-2: #f0d4b2;
+      --success: #d9e9c7;
+      --danger: #ffb2b2;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --container: 1280px;
+      --ease: cubic-bezier(.22,.61,.36,1);
     }
 
     * {
@@ -59,17 +51,22 @@
 
     body {
       margin: 0;
-      font-family: "Manrope", Arial, Helvetica, sans-serif;
+      font-family: "Manrope", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
-      background:
-        radial-gradient(circle at top right, rgba(200, 141, 84, 0.10), transparent 20%),
-        radial-gradient(circle at 10% 14%, rgba(125, 81, 57, 0.08), transparent 18%),
-        linear-gradient(180deg, #efe4d8 0%, #e5d7ca 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
-    body.modal-open {
+    body.overlay-open {
       overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     a {
@@ -77,1077 +74,886 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     button,
     input,
-    select,
-    textarea {
+    textarea,
+    select {
       font: inherit;
     }
 
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      color: inherit;
+    }
+
     .container {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(calc(100% - 40px), var(--container));
       margin: 0 auto;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(215, 177, 134, 0.55);
+    }
+
+    .section-title {
+      margin: 18px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 5vw, 4.25rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      max-width: 720px;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      isolation: isolate;
+      background:
+        linear-gradient(180deg, rgba(13, 11, 9, 0.18) 0%, rgba(13, 11, 9, 0.55) 48%, rgba(13, 11, 9, 0.94) 100%),
+        linear-gradient(120deg, rgba(10, 8, 7, 0.55) 0%, rgba(10, 8, 7, 0.15) 42%, rgba(10, 8, 7, 0.62) 100%),
+        url('hero-video.jpg') center center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(215, 177, 134, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05), transparent 28%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-inner {
+      width: 100%;
+      padding: 110px 0 58px;
+    }
+
+    .hero-panel {
+      max-width: 760px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(14, 11, 9, 0.34);
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(245,239,232,0.85);
+    }
+
+    .hero-title {
+      margin: 18px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      margin: 22px 0 0;
+      max-width: 640px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.8;
+      color: rgba(245,239,232,0.82);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 20px;
+      margin-top: 34px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 800;
-      transition: 0.22s ease;
       gap: 10px;
-      cursor: pointer;
+      min-height: 56px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease), opacity 220ms var(--ease);
+      will-change: transform;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf5;
-      box-shadow: 0 16px 34px rgba(125, 81, 57, 0.22);
+      background: var(--accent);
+      color: #1b130d;
+      box-shadow: 0 16px 40px rgba(215, 177, 134, 0.18);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.03);
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.75;
-      cursor: not-allowed;
-      transform: none;
-      filter: none;
+      background: var(--accent-2);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.56);
-      border-color: rgba(60, 35, 20, 0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.03);
       color: var(--text);
     }
 
     .btn-secondary:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.76);
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.05);
     }
 
-    .nav-wrap {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 120;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+    .hero-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: rgba(245,239,232,0.7);
     }
 
-    .nav-wrap.scrolled {
-      backdrop-filter: blur(14px);
-      background: rgba(239, 228, 216, 0.68);
-      border-bottom-color: rgba(66, 39, 23, 0.08);
-      box-shadow: 0 8px 24px rgba(56, 33, 20, 0.05);
+    .hero-time svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      opacity: 0.9;
     }
 
-    nav {
-      min-height: 84px;
+    .intro {
+      padding: 110px 0 50px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.015), transparent),
+        var(--bg);
+    }
+
+    .intro-card {
+      padding: clamp(30px, 4vw, 52px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .setup-section {
+      padding: 34px 0;
+    }
+
+    .setup-grid {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-group {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 15px;
-      font-weight: 700;
-      color: rgba(255,247,239,0.92);
-    }
-
-    .nav-group.left {
-      justify-self: start;
-    }
-
-    .nav-group.right {
-      justify-self: end;
-    }
-
-    .nav-wrap.scrolled .nav-group {
-      color: #705b4e;
-    }
-
-    .nav-group a {
-      position: relative;
-    }
-
-    .nav-group a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease;
-    }
-
-    .nav-group a:hover::after,
-    .nav-group a.active::after {
-      width: 100%;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      justify-self: center;
-      min-width: 0;
-    }
-
-    .brand-logo-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 720px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(240,220,200,0.60));
-      border: 1px solid rgba(255,255,255,0.20);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      box-shadow:
-        0 10px 24px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255,255,255,0.62);
+      background: var(--panel);
+      box-shadow: var(--shadow);
     }
 
-    .brand-logo {
+    .setup-grid.reverse {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .setup-media {
+      position: relative;
+      min-height: 420px;
+      background: #0c0907;
+      overflow: hidden;
+    }
+
+    .setup-media img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      padding: 6px;
+      object-fit: cover;
+      transform: scale(1.02);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      text-align: left;
-    }
-
-    .brand-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-      color: #fff7ef;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.18);
-    }
-
-    .brand-subtitle {
-      margin-top: 5px;
-      font-size: 11px;
-      color: rgba(255,247,239,0.86);
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .nav-wrap.scrolled .brand-title {
-      color: #2b1a14;
-      text-shadow: none;
-    }
-
-    .nav-wrap.scrolled .brand-subtitle {
-      color: #866b5d;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 68vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero::before {
+    .setup-media::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(20,13,10,0.72) 0%, rgba(20,13,10,0.52) 42%, rgba(20,13,10,0.36) 100%),
-        linear-gradient(to top, rgba(20,13,10,0.38), rgba(20,13,10,0.08)),
-        url('hero-crepes.jpg') center center / cover;
-      transform: scale(1.03);
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)),
+        radial-gradient(circle at 75% 18%, rgba(255,255,255,0.1), transparent 26%);
+      pointer-events: none;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 760px;
-      padding: 146px 0 104px;
-      color: #fff8f1;
+    .setup-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(30px, 5vw, 72px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(215,177,134,0.06), transparent 40%),
+        var(--panel);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.10);
-      color: rgba(255,248,241,0.92);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      margin: 18px 0 16px;
+    .setup-name {
+      margin: 18px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(56px, 8vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      max-width: 7ch;
-    }
-
-    .hero p {
-      margin: 0;
-      max-width: 680px;
-      color: rgba(255,248,241,0.88);
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    section {
-      padding: 78px 0;
-    }
-
-    .section-head {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 4vw, 56px);
+      font-size: clamp(2.2rem, 5vw, 4rem);
       line-height: 0.95;
       letter-spacing: -0.03em;
     }
 
-    .section-head p {
-      margin: 0;
-      max-width: 760px;
+    .setup-copy {
+      margin: 20px 0 0;
+      font-size: 1rem;
+      line-height: 1.78;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
+      max-width: 560px;
     }
 
-    .card {
-      background: linear-gradient(180deg, rgba(252,246,240,0.94), rgba(244,233,223,0.96));
+    .setup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .setup-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .setup-chip {
+      padding: 16px 18px;
       border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 30px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .setup-chip-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .setup-chip-value {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .spec-box {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      display: none;
+    }
+
+    .spec-box.open {
+      display: block;
+    }
+
+    .spec-inner {
+      padding: 22px 22px 24px;
+    }
+
+    .spec-title {
+      margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .spec-list li {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      padding: 40px 0 110px;
+    }
+
+    .cta-card {
+      padding: clamp(34px, 5vw, 66px);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(215,177,134,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        var(--panel);
       box-shadow: var(--shadow);
     }
 
-    .booking-shell {
-      display: grid;
+    .cta-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
       gap: 28px;
     }
 
-    .booking-lead {
-      max-width: 760px;
-      display: grid;
-      gap: 12px;
+    .cta-copy {
+      max-width: 720px;
     }
 
-    .booking-kicker {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .booking-lead h2 {
+    .cta-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(48px, 6vw, 76px);
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      max-width: 12ch;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
-    .booking-lead p {
-      margin: 0;
+    .cta-text {
+      margin: 16px 0 0;
+      font-size: 1rem;
+      line-height: 1.75;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
-      max-width: 820px;
     }
 
-    .category-grid {
+    .footer {
+      padding: 0 0 50px;
+    }
+
+    .footer-card {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .category-card {
-      position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(242,232,222,0.98));
-      border: 1px solid var(--line);
-      border-radius: 28px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
       padding: 28px;
-      box-shadow: var(--shadow-soft);
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-brand h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-brand p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    .footer-links {
       display: grid;
-      gap: 20px;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.24s ease;
-      min-height: 268px;
-      overflow: hidden;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .category-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(135deg, rgba(200,141,84,0.78), rgba(125,81,57,0.88));
-      opacity: 0;
-      transition: opacity 0.24s ease;
+    .footer-col {
+      display: grid;
+      gap: 10px;
+      align-content: start;
     }
 
-    .category-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,141,84,0.30);
-      box-shadow: 0 22px 40px rgba(125,81,57,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,227,214,0.98));
+    .footer-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      font-weight: 700;
     }
 
-    .category-card:hover::before,
-    .category-card.active::before {
+    .footer-col a,
+    .footer-col span {
+      color: var(--text);
+      opacity: 0.86;
+      transition: opacity 180ms var(--ease);
+    }
+
+    .footer-col a:hover {
       opacity: 1;
     }
 
-    .category-card.active {
-      border-color: rgba(200,141,84,0.46);
-      box-shadow: 0 24px 42px rgba(125,81,57,0.12);
-      transform: translateY(-4px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(239,227,214,0.99));
+    .booking-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(215,177,134,0.08), transparent 26%),
+        radial-gradient(circle at 85% 12%, rgba(255,255,255,0.06), transparent 22%),
+        rgba(9, 8, 7, 0.88);
+      backdrop-filter: blur(18px);
     }
 
-    .category-topline {
+    .booking-overlay.open {
+      display: block;
+    }
+
+    .overlay-shell {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(320px, 1.05fr) minmax(340px, 0.95fr);
+    }
+
+    .overlay-left {
+      position: relative;
+      padding: 28px 30px 30px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+    }
+
+    .overlay-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      color: var(--muted-soft);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .category-index {
-      opacity: 0.72;
-    }
-
-    .category-meta {
-      display: inline-flex;
-      width: fit-content;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-    }
-
-    .category-card h3 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .category-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .category-tag {
-      margin-top: auto;
-      color: #3a281f;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
-    .process-card {
-      position: relative;
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(243,233,223,0.96));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      gap: 16px;
-      overflow: hidden;
-    }
-
-    .process-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf5;
-      font-size: 16px;
-      font-weight: 800;
-      box-shadow: 0 12px 24px rgba(125,81,57,0.16);
-    }
-
-    .process-card h3 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.14;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .process-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    .response-note {
-      margin-top: 18px;
-      padding: 16px 18px;
-      border-radius: 20px;
-      background: rgba(200,141,84,0.10);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: #6d4c39;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .events-shell {
-      display: grid;
-      gap: 24px;
-    }
-
-    .events-intro {
-      max-width: 820px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .events-title {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(44px, 5vw, 68px);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-      color: #2a1812;
-      max-width: 12ch;
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .event-card {
-      position: relative;
-      grid-column: span 2;
-      min-height: 240px;
-      border-radius: 26px;
-      padding: 22px;
-      border: 1px solid rgba(90, 55, 39, 0.30);
-      box-shadow: 0 18px 40px rgba(74, 46, 33, 0.16);
-      color: #fff8f2;
-      display: grid;
-      gap: 16px;
-      transition: 0.22s ease;
-      overflow: hidden;
-      isolation: isolate;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .event-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(32,20,14,0.30), rgba(32,20,14,0.74)),
-        linear-gradient(135deg, rgba(139, 94, 67, 0.30), rgba(110, 70, 50, 0.44));
-      z-index: 0;
-    }
-
-    .events-grid .event-card:nth-child(4) {
-      grid-column: 2 / span 2;
-    }
-
-    .events-grid .event-card:nth-child(5) {
-      grid-column: 4 / span 2;
-    }
-
-    .event-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 42px rgba(74, 46, 33, 0.18);
-      filter: brightness(1.02);
-    }
-
-    .event-top,
-    .event-copy {
-      position: relative;
-      z-index: 1;
-    }
-
-    .event-top {
+    .overlay-brand {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
+      min-width: 0;
     }
 
-    .event-tag {
-      display: inline-flex;
-      width: fit-content;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,248,242,0.94);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      backdrop-filter: blur(6px);
-    }
-
-    .event-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
+    .overlay-brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.16);
-      color: #fff8f2;
-      font-size: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
       font-weight: 800;
-      flex-shrink: 0;
-      backdrop-filter: blur(6px);
+      font-size: 0.82rem;
+      color: var(--accent);
+      flex: 0 0 auto;
     }
 
-    .event-card h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      color: #fff8f2;
+    .overlay-brand-copy {
+      min-width: 0;
     }
 
-    .event-card p {
-      margin: 0;
-      color: rgba(255,248,242,0.88);
-      font-size: 15px;
-      line-height: 1.75;
-      max-width: 28ch;
-    }
-
-    .event-jul {
-      background-image: url('jul-i-vinterland.jpg');
-    }
-
-    .event-slottsfjell {
-      background-image: url('slottsfjell.jpg');
-    }
-
-    .event-stavern {
-      background-image: url('stavernfestivalen.jpg');
-    }
-
-    .event-gladmat {
-      background-image: url('gladmat.jpg');
-    }
-
-    .event-idyll {
-      background-image: url('idyll-festival.jpg');
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr 0.9fr;
-      gap: 16px;
-    }
-
-    .gallery-box {
-      position: relative;
-      min-height: 220px;
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      display: grid;
-      align-content: end;
-      padding: 22px;
-    }
-
-    .gallery-box.large {
-      min-height: 320px;
-    }
-
-    .gallery-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(24,16,12,0.10), rgba(24,16,12,0.62)),
-        linear-gradient(135deg, rgba(200,141,84,0.10), rgba(125,81,57,0.20));
-    }
-
-    .gallery-box > div {
-      position: relative;
-      z-index: 1;
-      color: #fff8f2;
-    }
-
-    .gallery-box h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.14;
-      letter-spacing: -0.02em;
-      color: #fff8f2;
-    }
-
-    .gallery-box p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.7;
-      font-weight: 600;
-      color: rgba(255,248,242,0.88);
-      max-width: 32ch;
-    }
-
-    .gallery-event-1 {
-      background-image: url('event-bilde-1.jpg');
-    }
-
-    .gallery-event-2 {
-      background-image: url('event-bilde-2.jpg');
-    }
-
-    .gallery-event-3 {
-      background-image: url('event-bilde-3.jpg');
-    }
-
-    .form-shell {
-      display: grid;
-      gap: 18px;
-    }
-
-    .selected-type {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+    .overlay-brand-copy strong {
+      display: block;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .form-intro-meta {
+    .overlay-brand-copy span {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.82rem;
+      color: var(--muted-2);
+    }
+
+    .overlay-close {
+      width: 52px;
+      height: 52px;
       display: grid;
-      gap: 12px;
-      margin-top: 6px;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      transition: background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
+      flex: 0 0 auto;
     }
 
-    .form-response-time {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.18);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .overlay-close:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-1px);
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      position: relative;
-      align-items: start;
+    .overlay-progress-wrap {
+      margin-top: 26px;
     }
 
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-size: 14px;
-      font-weight: 700;
-      color: #3c2a20;
-    }
-
-    .field input,
-    .field select,
-    .field textarea,
-    .date-toggle {
-      width: 100%;
-      border: 1px solid rgba(66, 39, 23, 0.12);
-      background: rgba(255,255,255,0.76);
-      border-radius: 18px;
-      color: var(--text);
-      outline: none;
-      transition: 0.2s ease;
-    }
-
-    .field input,
-    .field select {
-      min-height: 62px;
-      padding: 14px 16px;
-    }
-
-    .field textarea {
-      min-height: 140px;
-      resize: vertical;
-      padding: 16px;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus,
-    .date-toggle:focus,
-    .date-toggle.active {
-      border-color: rgba(200,141,84,0.46);
-      background: rgba(255,255,255,0.94);
-      box-shadow: 0 0 0 4px rgba(200,141,84,0.10);
-    }
-
-    .field-hint {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.5;
-      color: var(--muted-soft);
-    }
-
-    .phone-shell {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 12px;
-    }
-
-    .date-range-shell {
-      display: grid;
-      gap: 8px;
-    }
-
-    .date-toggle {
-      min-height: 62px;
-      padding: 10px 14px;
-      display: grid;
-      gap: 8px;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .date-toggle:hover {
-      border-color: rgba(200,141,84,0.26);
-      background: rgba(255,255,255,0.88);
-    }
-
-    .date-toggle-top {
+    .overlay-progress-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-    }
-
-    .date-toggle-label {
-      font-size: 11px;
-      font-weight: 800;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: var(--muted-2);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted-soft);
-    }
-
-    .date-toggle-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(200,141,84,0.12);
-      border: 1px solid rgba(200,141,84,0.16);
-      color: var(--accent-2);
-      font-size: 15px;
-      font-weight: 800;
-      flex-shrink: 0;
-      transition: transform 0.2s ease;
-    }
-
-    .date-toggle.active .date-toggle-arrow {
-      transform: rotate(180deg);
-    }
-
-    .date-preview {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .date-preview-box {
-      min-height: 36px;
-      border-radius: 14px;
-      border: 1px solid rgba(66,39,23,0.08);
-      background: rgba(255,255,255,0.90);
-      padding: 8px 10px;
-      display: grid;
-      gap: 2px;
-    }
-
-    .date-preview-title {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted-soft);
-    }
-
-    .date-preview-value {
-      font-size: 14px;
       font-weight: 700;
-      line-height: 1.2;
-      color: var(--text);
-      white-space: nowrap;
+    }
+
+    .overlay-progress {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
       overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    .date-preview-divider {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted-soft);
+    .overlay-progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), #efd7bc);
+      transition: width 260ms var(--ease);
     }
 
-    .booking-summary {
-      display: grid;
-      gap: 16px;
-      padding: 22px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(241,230,220,0.96));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
+    .question-shell {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 26px 0;
+      overflow: hidden;
     }
 
-    .booking-summary[hidden] {
+    .question-stage {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .step-card {
+      width: 100%;
+      max-width: 760px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 220ms var(--ease), transform 220ms var(--ease);
       display: none;
     }
 
-    .booking-summary h3 {
-      margin: 0;
-      font-size: 20px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--text);
+    .step-card.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .summary-grid {
+    .step-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .step-title {
+      margin: 18px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      max-width: 660px;
+    }
+
+    .step-desc {
+      margin: 18px 0 0;
+      max-width: 560px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .step-input-wrap {
+      margin-top: 34px;
+      max-width: 620px;
+    }
+
+    .text-input,
+    .textarea-input {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 22px 24px;
+      outline: none;
+      transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+    }
+
+    .text-input {
+      min-height: 72px;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .textarea-input {
+      min-height: 170px;
+      resize: vertical;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .text-input::placeholder,
+    .textarea-input::placeholder {
+      color: rgba(245,239,232,0.38);
+    }
+
+    .text-input:focus,
+    .textarea-input:focus {
+      border-color: rgba(215,177,134,0.5);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .step-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .ghost-link {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 10px 0;
+      opacity: 0.86;
+      transition: opacity 180ms var(--ease);
+    }
+
+    .ghost-link:hover {
+      opacity: 1;
+    }
+
+    .helper {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--muted-2);
+    }
+
+    .error-text {
+      margin-top: 14px;
+      min-height: 22px;
+      color: var(--danger);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .choice-grid {
+      margin-top: 34px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 680px;
+    }
+
+    .choice-card {
+      width: 100%;
+      text-align: left;
+      padding: 22px 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+    }
+
+    .choice-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .choice-card.selected {
+      border-color: rgba(215,177,134,0.45);
+      background: rgba(215,177,134,0.09);
+      box-shadow: inset 0 0 0 1px rgba(215,177,134,0.18);
+    }
+
+    .choice-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
     }
 
-    .summary-item {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.84);
-      border: 1px solid rgba(66,39,23,0.08);
+    .choice-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .choice-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .choice-desc {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .date-card {
+      margin-top: 34px;
+      max-width: 720px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .date-mode {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
       gap: 6px;
     }
 
-    .summary-label {
-      font-size: 11px;
+    .mode-btn {
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-size: 0.86rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted-soft);
+      color: var(--muted);
     }
 
-    .summary-value {
-      font-size: 15px;
+    .mode-btn.active {
+      background: rgba(215,177,134,0.16);
+      color: var(--text);
+    }
+
+    .date-summary {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .date-summary-btn {
+      width: 100%;
+      text-align: left;
+      padding: 18px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 180ms var(--ease), background 180ms var(--ease);
+    }
+
+    .date-summary-btn:hover {
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .date-summary-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      font-weight: 700;
+    }
+
+    .date-summary-value {
+      display: block;
+      margin-top: 7px;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
-      line-height: 1.4;
-      word-break: break-word;
     }
 
     .calendar-modal {
       position: fixed;
       inset: 0;
-      z-index: 500;
+      z-index: 1001;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
+      background: rgba(7, 6, 5, 0.72);
+      backdrop-filter: blur(12px);
     }
 
     .calendar-modal.open {
       display: flex;
     }
 
-    .calendar-backdrop {
-      position: absolute;
-      inset: 0;
-      background: var(--modal-overlay);
-      backdrop-filter: blur(6px);
-    }
-
-    .calendar-dialog {
-      position: relative;
-      width: min(780px, calc(100vw - 24px));
-      max-height: min(90vh, 860px);
+    .calendar-panel {
+      width: min(100%, 560px);
+      max-height: min(88svh, 760px);
       overflow: auto;
-      border-radius: 30px;
-      border: 1px solid rgba(66,39,23,0.10);
-      background: linear-gradient(180deg, rgba(255,252,248,0.99), rgba(245,236,227,0.99));
-      box-shadow: 0 30px 90px rgba(35, 18, 11, 0.20);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(215,177,134,0.1), transparent 26%),
+        var(--panel);
+      box-shadow: var(--shadow);
       padding: 20px;
-      z-index: 1;
     }
 
-    .calendar-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .calendar-header-left {
-      display: grid;
-      gap: 4px;
-    }
-
-    .calendar-title {
-      margin: 0;
-      font-size: 20px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .calendar-subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .calendar-close {
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(66,39,23,0.08);
-      background: rgba(255,255,255,0.80);
-      color: var(--accent-2);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      font-size: 18px;
-      font-weight: 800;
-      transition: 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .calendar-close:hover {
-      background: rgba(255,255,255,0.96);
-      border-color: rgba(200,141,84,0.22);
-    }
-
-    .calendar-nav-row {
+    .calendar-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       margin-bottom: 16px;
-    }
-
-    .calendar-month-name {
-      margin: 0;
-      font-size: clamp(26px, 4vw, 36px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
     }
 
     .calendar-nav {
@@ -1156,709 +962,406 @@
       gap: 10px;
     }
 
-    .calendar-nav button {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      border: 1px solid rgba(66,39,23,0.08);
-      background: rgba(255,255,255,0.80);
-      color: var(--accent-2);
+    .calendar-nav button,
+    .calendar-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      cursor: pointer;
-      font-size: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .calendar-title {
       font-weight: 800;
-      transition: 0.2s ease;
-    }
-
-    .calendar-nav button:hover:not(:disabled) {
-      background: rgba(255,255,255,0.96);
-      border-color: rgba(200,141,84,0.22);
-    }
-
-    .calendar-nav button:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-
-    .calendar-month {
-      border-radius: 24px;
-      border: 1px solid rgba(66,39,23,0.08);
-      background: rgba(255,255,255,0.66);
-      padding: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
     }
 
     .calendar-weekdays,
-    .calendar-days {
+    .calendar-grid {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
     }
 
     .calendar-weekdays {
       margin-bottom: 10px;
     }
 
-    .calendar-weekdays div {
+    .calendar-weekdays span {
       text-align: center;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted-soft);
-      padding: 4px 0;
+      color: var(--muted-2);
+      font-weight: 700;
+      padding: 8px 0;
     }
 
     .calendar-day {
-      aspect-ratio: 1 / 1;
-      border-radius: 18px;
-      border: 1px solid transparent;
-      background: transparent;
+      min-height: 58px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
       color: var(--text);
-      font-size: 15px;
+      font-size: 0.95rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: 0.18s ease;
-      display: grid;
-      place-items: center;
-      padding: 0;
-      min-height: 56px;
+      transition: border-color 160ms var(--ease), background 160ms var(--ease), transform 160ms var(--ease), opacity 160ms var(--ease);
     }
 
-    .calendar-day:hover:not(.disabled):not(.muted) {
-      background: rgba(200,141,84,0.10);
-      border-color: rgba(200,141,84,0.14);
+    .calendar-day:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.055);
     }
 
     .calendar-day.muted {
-      color: rgba(108,88,76,0.20);
-      cursor: default;
+      opacity: 0.28;
+      pointer-events: none;
     }
 
     .calendar-day.disabled {
-      color: rgba(108,88,76,0.28);
-      cursor: not-allowed;
-      background: rgba(120, 100, 85, 0.04);
-    }
-
-    .calendar-day.today {
-      border-color: rgba(200,141,84,0.24);
+      opacity: 0.26;
+      pointer-events: none;
+      text-decoration: line-through;
     }
 
     .calendar-day.selected {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf5;
-      box-shadow: 0 10px 20px rgba(125,79,55,0.18);
+      background: rgba(215,177,134,0.18);
+      border-color: rgba(215,177,134,0.55);
+      color: var(--text);
     }
 
     .calendar-day.in-range {
-      background: rgba(200,141,84,0.12);
-      border-color: rgba(200,141,84,0.08);
+      background: rgba(215,177,134,0.08);
+      border-color: rgba(215,177,134,0.22);
     }
 
     .calendar-footer {
+      margin-top: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(66,39,23,0.08);
+      gap: 14px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    .calendar-summary {
+    .calendar-footer-text {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 0.94rem;
       line-height: 1.6;
     }
 
-    .calendar-actions {
+    .overlay-right {
+      position: relative;
+      min-height: 100svh;
+      padding: 30px;
       display: flex;
-      gap: 10px;
-      flex-shrink: 0;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(215,177,134,0.08), transparent 36%),
+        rgba(255,255,255,0.01);
     }
 
-    .calendar-clear {
-      min-height: 44px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(66,39,23,0.10);
-      background: rgba(255,255,255,0.66);
-      color: var(--text);
+    .summary-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 24px;
+      background: rgba(255,255,255,0.03);
+      min-height: 340px;
+    }
+
+    .summary-title {
+      margin: 0;
+      font-size: 0.8rem;
       font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s ease;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
 
-    .calendar-clear:hover {
-      background: rgba(255,255,255,0.92);
-      border-color: rgba(200,141,84,0.20);
+    .summary-list {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
     }
 
-    .honeypot-field {
-      position: absolute;
-      left: -9999px;
-      opacity: 0;
-      pointer-events: none;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+    .summary-item {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .form-status {
-      display: none;
-      padding: 14px 16px;
-      border-radius: 18px;
-      font-size: 14px;
+    .summary-item:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
       font-weight: 700;
     }
 
-    .form-status.show {
+    .summary-value {
       display: block;
-    }
-
-    .form-status.success {
-      background: var(--success-bg);
-      color: var(--success-text);
-      border: 1px solid var(--success-line);
-    }
-
-    .form-status.error {
-      background: var(--error-bg);
-      color: var(--error-text);
-      border: 1px solid var(--error-line);
-    }
-
-    .footer {
-      padding: 30px 0 42px;
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-shell {
-      background: linear-gradient(180deg, rgba(247,239,230,0.84), rgba(236,224,212,0.92));
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr 1fr 0.85fr;
-      gap: 28px;
-    }
-
-    .footer-brand {
-      display: grid;
-      gap: 18px;
-      align-content: start;
-    }
-
-    .footer-brand .brand {
-      justify-self: start;
-    }
-
-    .footer .brand-title {
-      color: #2b1a14;
-      text-shadow: none;
-    }
-
-    .footer .brand-subtitle {
-      color: #866b5d;
-    }
-
-    .footer-block h4 {
-      margin: 0 0 14px;
-      font-size: 16px;
-      color: #2d1c15;
-    }
-
-    .footer-links,
-    .footer-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .footer-links a,
-    .footer-list a,
-    .footer-list div {
-      color: var(--muted);
-      font-size: 14px;
-      transition: 0.2s ease;
-    }
-
-    .footer-links a:hover,
-    .footer-list a:hover {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      line-height: 1.65;
       color: var(--text);
+      word-break: break-word;
     }
 
-    .footer-actions {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-      max-width: 360px;
+    .summary-empty {
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
-    .footer-actions-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .overlay-note {
+      margin-top: 24px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      max-width: 420px;
     }
 
-    .footer-actions-bottom {
-      display: grid;
+    .success-card {
+      max-width: 700px;
     }
 
-    .footer-mini {
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-      color: #826c5f;
-      font-size: 13px;
-    }
-
-    .back-to-top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 140;
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(66, 39, 23, 0.12);
-      border-radius: 999px;
-      background: rgba(255, 250, 245, 0.88);
-      color: #2d1b15;
-      box-shadow: 0 16px 34px rgba(56, 33, 20, 0.14);
+    .success-mark {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      font-size: 22px;
-      font-weight: 800;
-      cursor: pointer;
-      opacity: 0;
+      background: rgba(217,233,199,0.09);
+      border: 1px solid rgba(217,233,199,0.18);
+      color: var(--success);
+      margin-bottom: 20px;
+    }
+
+    .hidden-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
+    .loading {
+      opacity: 0.7;
       pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-      background: rgba(255, 255, 255, 0.98);
-      border-color: rgba(199, 149, 99, 0.34);
     }
 
     @media (max-width: 1180px) {
-      .gallery-grid,
-      .footer-grid {
+      .overlay-shell {
         grid-template-columns: 1fr;
       }
 
-      .events-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .overlay-right {
+        display: none;
       }
 
-      .event-card,
-      .events-grid .event-card:nth-child(4),
-      .events-grid .event-card:nth-child(5) {
-        grid-column: auto;
+      .overlay-left {
+        border-right: 0;
       }
     }
 
     @media (max-width: 980px) {
-      nav {
+      .setup-grid,
+      .setup-grid.reverse {
         grid-template-columns: 1fr;
-        justify-items: center;
-        padding: 14px 0;
-      }
-
-      .nav-group.left,
-      .nav-group.right {
-        justify-self: center;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-      }
-
-      .category-grid,
-      .form-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .phone-shell,
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .category-card {
         min-height: auto;
       }
 
-      .events-grid {
+      .cta-row,
+      .footer-card {
         grid-template-columns: 1fr;
+        display: grid;
       }
 
-      .date-preview {
-        grid-template-columns: 1fr;
-      }
-
-      .date-preview-divider {
-        display: none;
+      .footer-links {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 720px) {
       .container {
-        width: min(var(--max), calc(100% - 20px));
+        width: min(calc(100% - 24px), var(--container));
       }
 
-      .hero-content {
-        padding: 132px 0 90px;
+      .hero-inner {
+        padding: 100px 0 32px;
       }
 
-      .hero h1 {
-        font-size: clamp(48px, 13vw, 72px);
+      .intro {
+        padding: 74px 0 28px;
       }
 
-      .card,
-      .footer-shell {
-        padding: 22px;
+      .setup-section {
+        padding: 18px 0;
       }
 
-      .brand-logo-wrap {
-        width: 58px;
-        height: 58px;
+      .cta-section {
+        padding: 20px 0 80px;
       }
 
-      .brand-title {
-        font-size: 30px;
+      .setup-content,
+      .intro-card,
+      .cta-card {
+        padding: 26px 20px;
       }
 
-      .brand-subtitle {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-      }
-
-      .booking-lead h2 {
-        font-size: clamp(42px, 13vw, 62px);
-      }
-
-      .footer-actions-top {
-        grid-template-columns: 1fr;
-      }
-
-      .calendar-modal {
-        padding: 10px;
-        align-items: flex-end;
-      }
-
-      .calendar-dialog {
-        width: 100%;
-        max-height: 88vh;
-        border-radius: 24px 24px 0 0;
-        padding: 16px;
-      }
-
-      .calendar-header {
-        margin-bottom: 12px;
-      }
-
-      .calendar-nav-row {
-        margin-bottom: 12px;
-      }
-
-      .calendar-month {
-        padding: 14px;
-      }
-
-      .calendar-weekdays,
-      .calendar-days {
-        gap: 8px;
-      }
-
-      .calendar-day {
-        min-height: 46px;
-        border-radius: 16px;
-        font-size: 14px;
-      }
-
-      .calendar-footer {
+      .setup-actions,
+      .hero-actions,
+      .step-actions {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .calendar-actions {
+      .btn {
         width: 100%;
-        flex-direction: column;
       }
 
-      .calendar-actions .btn,
-      .calendar-clear {
-        width: 100%;
-        justify-content: center;
+      .overlay-left {
+        padding: 16px 16px 22px;
       }
 
-      .back-to-top {
-        right: 14px;
-        bottom: 14px;
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
+      .question-shell {
+        align-items: flex-start;
+        padding: 22px 0 12px;
       }
 
-      .fade-in,
-      .btn,
-      .category-card,
-      .nav-wrap,
-      .event-card,
-      .date-toggle,
-      .date-toggle-arrow,
-      .calendar-day,
-      .calendar-close,
-      .calendar-nav button,
-      .back-to-top {
-        transition: none;
+      .text-input {
+        min-height: 64px;
+        padding: 18px 18px;
+        border-radius: 18px;
+      }
+
+      .textarea-input {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .choice-card {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .date-card {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .calendar-panel {
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .calendar-grid {
+        gap: 6px;
+      }
+
+      .calendar-day {
+        min-height: 48px;
+        border-radius: 14px;
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <div class="nav-wrap" id="navWrap">
-    <div class="container">
-      <nav>
-        <div class="nav-group left">
-          <a href="./index.html#om-oss">Om oss</a>
-          <a href="./index.html#menu">Meny</a>
-          <a href="./book-oss.html" class="active">Book oss</a>
-        </div>
-
-        <a href="./index.html" class="brand">
-          <div class="brand-logo-wrap">
-            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
-          </div>
-          <div class="brand-text">
-            <div class="brand-title">Crepe de la Crepe</div>
-            <div class="brand-subtitle">Love at first bite</div>
-          </div>
-        </a>
-
-        <div class="nav-group right">
-          <a href="./index.html#lokasjon">Lokasjon</a>
-          <a href="#booking-form">Kontakt</a>
-        </div>
-      </nav>
-    </div>
-  </div>
-
-  <header class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="eyebrow">Booking</div>
-        <h1>Book oss</h1>
-        <p>
-          Crepe de la Crepe leverer fersklagde crêpes til festivaler, firmaarrangementer og private arrangementer — profesjonelt, effektivt og tilpasset anledningen.
-        </p>
-      </div>
-    </div>
-  </header>
-
   <main>
-    <section id="booking-categories" class="fade-in">
-      <div class="container">
-        <div class="booking-shell">
-          <div class="booking-lead">
-            <div class="booking-kicker">Booking</div>
-            <h2>En servering som huskes</h2>
-            <p>Velg arrangementstype først. Deretter fyller du inn forespørselen med dato, sted og behov.</p>
-          </div>
-
-          <div class="category-grid">
-            <button class="category-card booking-option" type="button" data-type="Festivaler">
-              <div class="category-topline">
-                <span class="category-index">01</span>
-                <span class="category-meta">Festival</span>
-              </div>
-              <div>
-                <h3>Festivaler</h3>
-                <p>For arrangementer med høy trafikk og behov for rask, stabil og effektiv servering.</p>
-              </div>
-              <div class="category-tag">Høy kapasitet</div>
-            </button>
-
-            <button class="category-card booking-option" type="button" data-type="Firmaarrangementer">
-              <div class="category-topline">
-                <span class="category-index">02</span>
-                <span class="category-meta">Bedrift</span>
-              </div>
-              <div>
-                <h3>Firmaarrangementer</h3>
-                <p>For samlinger, lanseringer og events med et profesjonelt opplegg og tydelig servering.</p>
-              </div>
-              <div class="category-tag">Profesjonell servering</div>
-            </button>
-
-            <button class="category-card booking-option" type="button" data-type="Private arrangementer">
-              <div class="category-topline">
-                <span class="category-index">03</span>
-                <span class="category-meta">Privat</span>
-              </div>
-              <div>
-                <h3>Private arrangementer</h3>
-                <p>For bryllup, bursdager og feiringer der maten også skal være en del av opplevelsen.</p>
-              </div>
-              <div class="category-tag">Fleksibelt opplegg</div>
-            </button>
+    <section class="hero" aria-label="Crepe de la Crepe Events hero">
+      <div class="container hero-inner">
+        <div class="hero-panel">
+          <div class="hero-kicker">Events • Norge</div>
+          <h1 class="hero-title">CREPE DE LA CREPE EVENTS</h1>
+          <p class="hero-copy">
+            Ferskserverte crêpes til arrangementer i hele Norge.
+          </p>
+          <div class="hero-actions">
+            <a href="#muligheter" class="btn btn-primary">Utforsk mulighetene</a>
+            <div class="hero-time" aria-label="Tar rundt 2 minutter">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle>
+                <path d="M12 7.8V12l3.1 1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span>Tar rundt 2 minutter</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="fade-in">
+    <section class="intro" id="muligheter">
       <div class="container">
-        <div class="card">
-          <div class="section-head">
-            <div class="booking-kicker">Prosess</div>
-            <h2>Slik fungerer booking</h2>
-            <p>Dette gjør det enkelt å sende en forespørsel, og enkelt for oss å følge deg opp videre.</p>
-          </div>
-
-          <div class="process-grid">
-            <div class="process-card">
-              <div class="process-number">01</div>
-              <h3>Send forespørsel</h3>
-              <p>Velg type arrangement og fyll inn dato, sted og grunnleggende detaljer om behovet ditt.</p>
-            </div>
-
-            <div class="process-card">
-              <div class="process-number">02</div>
-              <h3>Vi går gjennom detaljene</h3>
-              <p>Vi ser på type arrangement, kapasitet, lokasjon og hva som trengs for å sette opp et godt opplegg.</p>
-            </div>
-
-            <div class="process-card">
-              <div class="process-number">03</div>
-              <h3>Du får videre oppfølging</h3>
-              <p>Vi følger opp forespørselen med neste steg, slik at planleggingen kan tas videre på en ryddig måte.</p>
-            </div>
-          </div>
-
-          <div class="response-note">
-            Vi svarer vanligvis innen 24–48 timer på bookingforespørsler.
-          </div>
+        <div class="intro-card">
+          <div class="eyebrow">Muligheter</div>
+          <h2 class="section-title">UTFORSK MULIGHETENE</h2>
+          <p class="section-copy">
+            Tre ulike oppsett. Samme fokus på flyt, servering og et uttrykk som løfter arrangementet. Velg løsningen som passer stedet, publikumet og rammen deres best.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="fade-in">
+    <section class="setup-section" aria-labelledby="wagon-title">
       <div class="container">
-        <div class="card events-shell">
-          <div class="events-intro">
-            <div class="booking-kicker">Arrangementer</div>
-            <h2 class="events-title">Arrangementer vi har vært en del av</h2>
+        <div class="setup-grid">
+          <div class="setup-media">
+            <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" />
           </div>
+          <div class="setup-content">
+            <div class="eyebrow">Oppsett 01</div>
+            <h2 class="setup-name" id="wagon-title">CREPE DE LA CREPE WAGON</h2>
+            <p class="setup-copy">
+              Vårt mest komplette eventoppsett. Passer godt der dere vil ha et tydelig, profesjonelt serveringspunkt med høy tilstedeværelse og en sterkere visuell signatur.
+            </p>
 
-          <div class="events-grid">
-            <a class="event-card event-jul" href="https://julivinterland.no/" target="_blank" rel="noopener noreferrer">
-              <div class="event-top">
-                <span class="event-tag">Julemarked</span>
-                <span class="event-arrow">↗</span>
+            <div class="setup-meta">
+              <div class="setup-chip">
+                <div class="setup-chip-label">Passer til</div>
+                <div class="setup-chip-value">Festivaler, større firmaevents og publikumstunge dager</div>
               </div>
-              <div class="event-copy">
-                <h3>Jul i Vinterland</h3>
-                <p>Et av Norges mest kjente julemarkeder, med stort publikum og høy aktivitet gjennom hele perioden.</p>
-              </div>
-            </a>
-
-            <a class="event-card event-slottsfjell" href="https://slottsfjell.no/" target="_blank" rel="noopener noreferrer">
-              <div class="event-top">
-                <span class="event-tag">Festival</span>
-                <span class="event-arrow">↗</span>
-              </div>
-              <div class="event-copy">
-                <h3>Slottsfjell</h3>
-                <p>En stor norsk musikkfestival med høyt besøkstall og behov for effektiv og stabil servering.</p>
-              </div>
-            </a>
-
-            <a class="event-card event-stavern" href="https://www.stavernfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="event-top">
-                <span class="event-tag">Festival</span>
-                <span class="event-arrow">↗</span>
-              </div>
-              <div class="event-copy">
-                <h3>Stavernfestivalen</h3>
-                <p>Et etablert sommerarrangement der tempo, volum og god flyt i serveringen betyr mye.</p>
-              </div>
-            </a>
-
-            <a class="event-card event-gladmat" href="https://gladmat.no/" target="_blank" rel="noopener noreferrer">
-              <div class="event-top">
-                <span class="event-tag">Matfestival</span>
-                <span class="event-arrow">↗</span>
-              </div>
-              <div class="event-copy">
-                <h3>Gladmat</h3>
-                <p>En av de mest kjente matfestivalene i Norge, der kvaliteten på selve produktet står ekstra sterkt.</p>
-              </div>
-            </a>
-
-            <a class="event-card event-idyll" href="https://idyllfestivalen.no/" target="_blank" rel="noopener noreferrer">
-              <div class="event-top">
-                <span class="event-tag">Festival</span>
-                <span class="event-arrow">↗</span>
-              </div>
-              <div class="event-copy">
-                <h3>Idyll</h3>
-                <p>En moderne festival med stort publikum og et miljø der helhetsinntrykk og gjennomføring teller.</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="fade-in">
-      <div class="container">
-        <div class="card">
-          <div class="section-head">
-            <div class="booking-kicker">Visuelt</div>
-            <h2>Bilder fra arrangementer</h2>
-            <p>Bytt disse filnavnene med de ekte eventbildene deres når de er klare.</p>
-          </div>
-
-          <div class="gallery-grid">
-            <div class="gallery-box gallery-event-1 large">
-              <div>
-                <h3>Setup / food truck</h3>
-                <p>Bruk et sterkt oversiktsbilde som viser rigg, uttrykk og tilstedeværelse på arrangement.</p>
+              <div class="setup-chip">
+                <div class="setup-chip-label">Uttrykk</div>
+                <div class="setup-chip-value">Sterk tilstedeværelse, høy kapasitet og premium servering</div>
               </div>
             </div>
 
-            <div class="gallery-box gallery-event-2">
-              <div>
-                <h3>Servering / kø / stemning</h3>
-                <p>Bruk et bilde med aktivitet, folk og flyt i serveringen.</p>
-              </div>
+            <div class="setup-actions">
+              <button class="btn btn-secondary js-read-more" data-setup="Wagon">Les mer</button>
+              <button class="btn btn-secondary js-toggle-specs" data-target="wagon-specs">Spesifikasjoner</button>
+              <button class="btn btn-primary js-open-booking" data-setup="Wagon">Be om booking</button>
             </div>
 
-            <div class="gallery-box gallery-event-3">
-              <div>
-                <h3>Crêpes i miljø</h3>
-                <p>Bruk et nærmere eventbilde av produktet ute på arrangement.</p>
+            <div class="spec-box" id="wagon-specs">
+              <div class="spec-inner">
+                <p class="spec-title">Praktisk oppsett</p>
+                <ul class="spec-list">
+                  <li>Trenger egnet plass for servering, køflyt og trygg plassering.</li>
+                  <li>Underlag og adkomst må fungere for innrigg og drift.</li>
+                  <li>Detaljer avklares etter forespørsel ut fra lokasjon og arrangementstype.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1866,786 +1369,1297 @@
       </div>
     </section>
 
-    <section id="booking-form" class="fade-in">
+    <section class="setup-section" aria-labelledby="stand-title">
       <div class="container">
-        <div class="card form-shell">
-          <div class="section-head">
-            <h2>Send en bookingforespørsel</h2>
-            <div class="form-intro-meta">
-              <div class="form-response-time">Vi svarer vanligvis innen 24–48 timer</div>
+        <div class="setup-grid reverse">
+          <div class="setup-content">
+            <div class="eyebrow">Oppsett 02</div>
+            <h2 class="setup-name" id="stand-title">CREPE DE LA CREPE STAND</h2>
+            <p class="setup-copy">
+              Et fleksibelt oppsett for arrangementer som trenger en ren og profesjonell serveringsløsning med mindre fotavtrykk, men fortsatt tydelig kvalitet i leveransen.
+            </p>
+
+            <div class="setup-meta">
+              <div class="setup-chip">
+                <div class="setup-chip-label">Passer til</div>
+                <div class="setup-chip-value">Messer, bedriftsdager, markeder og kompakte eventflater</div>
+              </div>
+              <div class="setup-chip">
+                <div class="setup-chip-label">Uttrykk</div>
+                <div class="setup-chip-value">Smidig, ryddig og premium uten å ta for mye plass</div>
+              </div>
+            </div>
+
+            <div class="setup-actions">
+              <button class="btn btn-secondary js-read-more" data-setup="Stand">Les mer</button>
+              <button class="btn btn-primary js-open-booking" data-setup="Stand">Be om booking</button>
             </div>
           </div>
 
-          <div class="selected-type" id="selectedTypeLabel" hidden>Valgt kategori: </div>
-          <div class="form-status" id="formStatus" aria-live="polite"></div>
+          <div class="setup-media">
+            <img src="stand.jpg" alt="Crepe de la Crepe Stand" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <form class="form-grid" id="bookingRequestForm" novalidate>
-            <div class="field">
-              <label for="navn">Navn</label>
-              <input id="navn" name="navn" type="text" required maxlength="80" autocomplete="name">
-            </div>
+    <section class="setup-section" aria-labelledby="popup-title">
+      <div class="container">
+        <div class="setup-grid">
+          <div class="setup-media">
+            <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" />
+          </div>
+          <div class="setup-content">
+            <div class="eyebrow">Oppsett 03</div>
+            <h2 class="setup-name" id="popup-title">CREPE DE LA CREPE POP-UP</h2>
+            <p class="setup-copy">
+              For steder som trenger en enklere og mer mobil løsning. Fortsatt varm, profesjonell og tydelig i uttrykket, bare med et lettere oppsett rundt serveringen.
+            </p>
 
-            <div class="field">
-              <label for="firma">Firma / arrangør</label>
-              <input id="firma" name="firma" type="text" maxlength="120" autocomplete="organization">
-            </div>
-
-            <div class="field">
-              <label for="epost">E-post</label>
-              <input id="epost" name="epost" type="email" required maxlength="150" autocomplete="email" inputmode="email">
-            </div>
-
-            <div class="field">
-              <label for="telefonNummer">Telefon</label>
-              <div class="phone-shell">
-                <select id="telefonLand" aria-label="Velg landkode">
-                  <option value="+47">🇳🇴 +47 Norge</option>
-                  <option value="+46">🇸🇪 +46 Sverige</option>
-                  <option value="+45">🇩🇰 +45 Danmark</option>
-                  <option value="+358">🇫🇮 +358 Finland</option>
-                  <option value="+44">🇬🇧 +44 Storbritannia</option>
-                  <option value="+49">🇩🇪 +49 Tyskland</option>
-                  <option value="+33">🇫🇷 +33 Frankrike</option>
-                  <option value="+34">🇪🇸 +34 Spania</option>
-                  <option value="+39">🇮🇹 +39 Italia</option>
-                  <option value="+31">🇳🇱 +31 Nederland</option>
-                  <option value="+32">🇧🇪 +32 Belgia</option>
-                  <option value="+41">🇨🇭 +41 Sveits</option>
-                  <option value="+43">🇦🇹 +43 Østerrike</option>
-                  <option value="+48">🇵🇱 +48 Polen</option>
-                  <option value="+90">🇹🇷 +90 Tyrkia</option>
-                  <option value="+355">🇦🇱 +355 Albania</option>
-                  <option value="+1">🇺🇸 +1 USA / Canada</option>
-                  <option value="+61">🇦🇺 +61 Australia</option>
-                  <option value="+971">🇦🇪 +971 De forente arabiske emirater</option>
-                </select>
-                <input
-                  id="telefonNummer"
-                  type="tel"
-                  maxlength="20"
-                  autocomplete="tel-national"
-                  inputmode="tel"
-                  placeholder="Telefonnummer"
-                >
+            <div class="setup-meta">
+              <div class="setup-chip">
+                <div class="setup-chip-label">Passer til</div>
+                <div class="setup-chip-value">Private arrangementer, mindre bedriftsarrangementer og korte aktiveringer</div>
               </div>
-              <input id="telefon" name="telefon" type="hidden">
-            </div>
-
-            <div class="field">
-              <label for="type">Type arrangement</label>
-              <select id="type" name="type" required>
-                <option value="" selected disabled>Velg kategori</option>
-                <option value="Festivaler">Festivaler</option>
-                <option value="Firmaarrangementer">Firmaarrangementer</option>
-                <option value="Private arrangementer">Private arrangementer</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="dateToggle">Dato</label>
-              <div class="date-range-shell" id="dateRangeShell">
-                <button class="date-toggle" id="dateToggle" type="button" aria-expanded="false" aria-controls="calendarModal">
-                  <div class="date-toggle-top">
-                    <span class="date-toggle-label">Velg dato</span>
-                    <span class="date-toggle-arrow">⌄</span>
-                  </div>
-
-                  <div class="date-preview">
-                    <div class="date-preview-box">
-                      <span class="date-preview-title">Fra</span>
-                      <span class="date-preview-value" id="dateFromValue">Ikke valgt</span>
-                    </div>
-                    <div class="date-preview-divider">til</div>
-                    <div class="date-preview-box">
-                      <span class="date-preview-title">Til</span>
-                      <span class="date-preview-value" id="dateToValue">Ikke valgt</span>
-                    </div>
-                  </div>
-                </button>
-
-                <p class="field-hint">Velg én dag eller et datointervall.</p>
-                <input id="dato" name="dato" type="hidden">
+              <div class="setup-chip">
+                <div class="setup-chip-label">Uttrykk</div>
+                <div class="setup-chip-value">Lett, fleksibelt og effektivt uten å miste premiumfølelsen</div>
               </div>
             </div>
 
-            <div class="field">
-              <label for="sted">Sted</label>
-              <input id="sted" name="sted" type="text" maxlength="120" autocomplete="address-level2">
+            <div class="setup-actions">
+              <button class="btn btn-secondary js-read-more" data-setup="Pop-Up">Les mer</button>
+              <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Be om booking</button>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="field">
-              <label for="gjester">Antall gjester / forventet besøk</label>
-              <input id="gjester" name="gjester" type="number" min="1" max="100000" step="1" inputmode="numeric" autocomplete="off">
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-row">
+            <div class="cta-copy">
+              <div class="eyebrow">Booking</div>
+              <h2 class="cta-title">Hvilket oppsett passer best for deg?</h2>
+              <p class="cta-text">
+                Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.
+              </p>
             </div>
-
-            <div class="field full">
-              <label for="melding">Melding</label>
-              <textarea
-                id="melding"
-                name="melding"
-                maxlength="1200"
-                placeholder="Fortell kort om arrangementet, ønsket opplegg og annen relevant informasjon."
-              ></textarea>
-              <p class="field-hint">Maks 1200 tegn.</p>
-            </div>
-
-            <div class="field full">
-              <div class="booking-summary" id="bookingSummary" hidden>
-                <h3>Oppsummering før innsending</h3>
-
-                <div class="summary-grid">
-                  <div class="summary-item">
-                    <div class="summary-label">Type</div>
-                    <div class="summary-value" id="summaryType">Ikke valgt</div>
-                  </div>
-
-                  <div class="summary-item">
-                    <div class="summary-label">Dato</div>
-                    <div class="summary-value" id="summaryDate">Ikke valgt</div>
-                  </div>
-
-                  <div class="summary-item">
-                    <div class="summary-label">Sted</div>
-                    <div class="summary-value" id="summaryPlace">Ikke oppgitt</div>
-                  </div>
-
-                  <div class="summary-item">
-                    <div class="summary-label">Gjester</div>
-                    <div class="summary-value" id="summaryGuests">Ikke oppgitt</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="honeypot-field" aria-hidden="true">
-              <label for="website">Ikke fyll ut dette feltet</label>
-              <input
-                id="website"
-                name="website"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              >
-            </div>
-
-            <div class="field full">
-              <button class="btn btn-primary" id="submitButton" type="submit">Send bookingforespørsel</button>
-            </div>
-          </form>
+            <button class="btn btn-primary js-open-booking">Be om booking nå</button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="calendar-modal" id="calendarModal" aria-hidden="true">
-    <div class="calendar-backdrop" id="calendarBackdrop"></div>
-
-    <div class="calendar-dialog" role="dialog" aria-modal="true" aria-labelledby="calendarTitle">
-      <div class="calendar-header">
-        <div class="calendar-header-left">
-          <h3 class="calendar-title" id="calendarTitle">Velg dato eller intervall</h3>
-          <p class="calendar-subtitle">Velg først fra-dato, deretter til-dato. Gamle datoer er låst.</p>
-        </div>
-        <button class="calendar-close" type="button" id="calendarClose" aria-label="Lukk datooversikt">✕</button>
-      </div>
-
-      <div class="calendar-nav-row">
-        <h4 class="calendar-month-name" id="monthLabel">Måned</h4>
-        <div class="calendar-nav">
-          <button type="button" id="calendarPrev" aria-label="Forrige måned">‹</button>
-          <button type="button" id="calendarNext" aria-label="Neste måned">›</button>
-        </div>
-      </div>
-
-      <div class="calendar-month">
-        <div class="calendar-weekdays">
-          <div>Man</div>
-          <div>Tir</div>
-          <div>Ons</div>
-          <div>Tor</div>
-          <div>Fre</div>
-          <div>Lør</div>
-          <div>Søn</div>
-        </div>
-        <div class="calendar-days" id="calendarDays"></div>
-      </div>
-
-      <div class="calendar-footer">
-        <div class="calendar-summary" id="calendarSummary">Velg én dag eller et datointervall.</div>
-        <div class="calendar-actions">
-          <button class="calendar-clear" type="button" id="clearDatesButton">Nullstill</button>
-          <button class="btn btn-primary" type="button" id="applyDatesButton">Bruk dato</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <footer class="footer">
     <div class="container">
-      <div class="footer-shell">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="./index.html" class="brand">
-              <div class="brand-logo-wrap">
-                <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
-              </div>
-              <div class="brand-text">
-                <div class="brand-title">Crepe de la Crepe</div>
-                <div class="brand-subtitle">Love at first bite</div>
-              </div>
-            </a>
-          </div>
-
-          <div class="footer-block">
-            <h4>Snarveier</h4>
-            <div class="footer-links">
-              <a href="./index.html#om-oss">Om oss</a>
-              <a href="./index.html#menu">Meny</a>
-              <a href="./book-oss.html">Book oss</a>
-              <a href="./index.html#lokasjon">Lokasjon</a>
-              <a href="#booking-form">Kontakt</a>
-              <a href="./personvern.html">Personvern</a>
-            </div>
-          </div>
-
-          <div class="footer-block">
-            <h4>Kontakt</h4>
-            <div class="footer-list">
-              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
-              <a href="tel:+4748408749">+47 48 40 87 49</a>
-              <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
-            </div>
-
-            <div class="footer-actions">
-              <div class="footer-actions-top">
-                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-                <a class="btn btn-secondary" href="#booking-form">Book oss</a>
-              </div>
-              <div class="footer-actions-bottom">
-                <a
-                  class="btn btn-secondary"
-                  href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Åpne i kart
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-block">
-            <h4>Følg oss</h4>
-            <div class="footer-list" style="margin-bottom: 16px;">
-              <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
-            </div>
-
-            <h4>Booking</h4>
-            <div class="footer-list">
-              <div>Festivaler</div>
-              <div>Firmaarrangementer</div>
-              <div>Private arrangementer</div>
-            </div>
-          </div>
+      <div class="footer-card">
+        <div class="footer-brand">
+          <h3>Crepe de la Crepe</h3>
+          <p>
+            Eventforespørsler for festivaler, firmaarrangementer og private arrangementer i hele Norge.
+          </p>
         </div>
 
-        <div class="footer-mini">
-          <div>© 2026 Crepe de la Crepe</div>
-          <div>Booking & arrangementer</div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <span class="footer-label">Navigasjon</span>
+            <a href="index.html">Tilbake til forsiden</a>
+            <a href="personvern.html">Personvern</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-label">Kontakt</span>
+            <a href="mailto:crepedelacrepes@gmail.com">crepedelacrepes@gmail.com</a>
+            <a href="tel:+4790212929">+47 90 21 29 29</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop" type="button" aria-label="Til toppen">↑</button>
+  <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
+    <div class="overlay-shell">
+      <div class="overlay-left">
+        <div class="overlay-top">
+          <div class="overlay-brand">
+            <div class="overlay-brand-badge">CD</div>
+            <div class="overlay-brand-copy">
+              <strong>Crepe de la Crepe</strong>
+              <span>Bookingforespørsel</span>
+            </div>
+          </div>
+
+          <button class="overlay-close" id="closeOverlayBtn" aria-label="Lukk booking">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="overlay-progress-wrap">
+          <div class="overlay-progress-meta">
+            <span id="progressText">Steg 1 av 10</span>
+            <span id="progressPercent">10%</span>
+          </div>
+          <div class="overlay-progress" aria-hidden="true">
+            <div class="overlay-progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="question-shell">
+          <div class="question-stage">
+            <form id="bookingForm" novalidate>
+              <input
+                type="text"
+                name="website"
+                id="website"
+                class="hidden-honeypot"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <section class="step-card active" data-step="0">
+                <div class="step-kicker">Steg 01</div>
+                <h2 class="step-title">Hva ønsker du å booke?</h2>
+                <p class="step-desc">
+                  Velg oppsettet som ligger nærmest behovet deres. Du kan endre dette senere dersom vi finner en bedre løsning sammen.
+                </p>
+
+                <div class="choice-grid" id="setupChoices">
+                  <button type="button" class="choice-card" data-value="Wagon">
+                    <div class="choice-top">
+                      <span class="choice-title">Crepe de la Crepe Wagon</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">Vårt mest komplette eventoppsett for større flater og sterkere tilstedeværelse.</p>
+                  </button>
+
+                  <button type="button" class="choice-card" data-value="Stand">
+                    <div class="choice-top">
+                      <span class="choice-title">Crepe de la Crepe Stand</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">Et fleksibelt og ryddig oppsett med mindre fotavtrykk.</p>
+                  </button>
+
+                  <button type="button" class="choice-card" data-value="Pop-Up">
+                    <div class="choice-top">
+                      <span class="choice-title">Crepe de la Crepe Pop-Up</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">For mindre eller mer mobile arrangementer som trenger en lett løsning.</p>
+                  </button>
+                </div>
+
+                <div class="error-text" data-error-for="setup"></div>
+              </section>
+
+              <section class="step-card" data-step="1">
+                <div class="step-kicker">Steg 02</div>
+                <h2 class="step-title">Hva er ditt fulle navn?</h2>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="text"
+                    id="fullName"
+                    name="name"
+                    placeholder="Skriv inn fullt navn"
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="name"></div>
+              </section>
+
+              <section class="step-card" data-step="2">
+                <div class="step-kicker">Steg 03</div>
+                <h2 class="step-title">Hva heter firmaet ditt?</h2>
+                <p class="step-desc">Valgfritt.</p>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="text"
+                    id="companyName"
+                    name="company"
+                    placeholder="Skriv inn firmanavn"
+                    autocomplete="organization"
+                  />
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="company"></div>
+              </section>
+
+              <section class="step-card" data-step="3">
+                <div class="step-kicker">Steg 04</div>
+                <h2 class="step-title">Når skal arrangementet være?</h2>
+                <p class="step-desc">
+                  Velg én dag eller et intervall. Tidligere datoer er låst.
+                </p>
+
+                <div class="date-card">
+                  <div class="date-mode" role="tablist" aria-label="Velg datoformat">
+                    <button type="button" class="mode-btn active" id="singleModeBtn">Én dag</button>
+                    <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
+                  </div>
+
+                  <div class="date-summary">
+                    <button type="button" class="date-summary-btn" id="startDateBtn">
+                      <span class="date-summary-label">Startdato</span>
+                      <span class="date-summary-value" id="startDateValue">Velg dato</span>
+                    </button>
+
+                    <button type="button" class="date-summary-btn" id="endDateBtn" style="display:none;">
+                      <span class="date-summary-label">Sluttdato</span>
+                      <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
+                    </button>
+                  </div>
+
+                  <div class="helper" id="dateHelper">
+                    Én dag er valgt som standard.
+                  </div>
+                </div>
+
+                <input type="hidden" id="dateMode" value="single" />
+                <input type="hidden" id="eventStartDate" />
+                <input type="hidden" id="eventEndDate" />
+
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="date"></div>
+              </section>
+
+              <section class="step-card" data-step="4">
+                <div class="step-kicker">Steg 05</div>
+                <h2 class="step-title">Hvor mange gjester?</h2>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="text"
+                    inputmode="numeric"
+                    id="guestCount"
+                    name="guests"
+                    placeholder="For eksempel 120"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="helper">Et estimat holder.</div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="guests"></div>
+              </section>
+
+              <section class="step-card" data-step="5">
+                <div class="step-kicker">Steg 06</div>
+                <h2 class="step-title">Hva er e-posten din?</h2>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="navn@firma.no"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="email"></div>
+              </section>
+
+              <section class="step-card" data-step="6">
+                <div class="step-kicker">Steg 07</div>
+                <h2 class="step-title">Hva er telefonnummeret ditt?</h2>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+47 900 00 000"
+                    autocomplete="tel"
+                    value="+47 "
+                  />
+                </div>
+                <div class="helper">Norsk landkode er satt som standard.</div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="phone"></div>
+              </section>
+
+              <section class="step-card" data-step="7">
+                <div class="step-kicker">Steg 08</div>
+                <h2 class="step-title">Hva slags arrangement er det?</h2>
+
+                <div class="choice-grid" id="eventTypeChoices">
+                  <button type="button" class="choice-card" data-value="Festival">
+                    <div class="choice-top">
+                      <span class="choice-title">Festival</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">Publikumsrettet arrangement med høy flyt og stor synlighet.</p>
+                  </button>
+
+                  <button type="button" class="choice-card" data-value="Firmaarrangement">
+                    <div class="choice-top">
+                      <span class="choice-title">Firmaarrangement</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">Bedriftsevent, lansering, intern samling eller kundearrangement.</p>
+                  </button>
+
+                  <button type="button" class="choice-card" data-value="Privat arrangement">
+                    <div class="choice-top">
+                      <span class="choice-title">Privat arrangement</span>
+                      <span class="choice-arrow">→</span>
+                    </div>
+                    <p class="choice-desc">Bryllup, bursdag, privat feiring eller tilsvarende opplegg.</p>
+                  </button>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="eventType"></div>
+              </section>
+
+              <section class="step-card" data-step="8">
+                <div class="step-kicker">Steg 09</div>
+                <h2 class="step-title">Hvor skal arrangementet være?</h2>
+                <div class="step-input-wrap">
+                  <input
+                    class="text-input"
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="For eksempel Oslo, Norge"
+                    autocomplete="address-level2"
+                  />
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary js-next">Neste</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="location"></div>
+              </section>
+
+              <section class="step-card" data-step="9">
+                <div class="step-kicker">Steg 10</div>
+                <h2 class="step-title">Er det noe vi bør vite om arrangementet?</h2>
+                <p class="step-desc">Valgfritt.</p>
+                <div class="step-input-wrap">
+                  <textarea
+                    class="textarea-input"
+                    id="message"
+                    name="message"
+                    placeholder="Del gjerne praktiske detaljer, ønsket timing eller annet relevant."
+                  ></textarea>
+                </div>
+                <div class="step-actions">
+                  <button type="submit" class="btn btn-primary" id="submitBtn">Send forespørsel</button>
+                  <button type="button" class="ghost-link js-back">Tilbake</button>
+                </div>
+                <div class="error-text" data-error-for="submit"></div>
+              </section>
+
+              <section class="step-card success-card" data-step="10">
+                <div class="success-mark" aria-hidden="true">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="step-kicker">Takk</div>
+                <h2 class="step-title">Takk for forespørselen</h2>
+                <p class="step-desc">
+                  Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
+                </p>
+                <div class="step-actions">
+                  <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
+                  <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <aside class="overlay-right">
+        <div>
+          <div class="summary-card">
+            <p class="summary-title">Oppsummering</p>
+            <ul class="summary-list" id="summaryList"></ul>
+            <p class="summary-empty" id="summaryEmpty">
+              Fyll ut stegene, så vises en oppsummering her fortløpende.
+            </p>
+          </div>
+
+          <p class="overlay-note">
+            Forespørselen sendes til vårt bookingsystem når du fullfører siste steg.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="calendar-modal" id="calendarModal" aria-hidden="true">
+    <div class="calendar-panel" role="dialog" aria-modal="true" aria-labelledby="calendarTitle">
+      <div class="calendar-top">
+        <div class="calendar-nav">
+          <button type="button" id="prevMonthBtn" aria-label="Forrige måned">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M14.5 6L8.5 12L14.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="calendar-title" id="calendarTitle">Måned</div>
+          <button type="button" id="nextMonthBtn" aria-label="Neste måned">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9.5 6L15.5 12L9.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <button type="button" class="calendar-close" id="closeCalendarBtn" aria-label="Lukk kalender">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="calendar-weekdays" aria-hidden="true">
+        <span>Man</span>
+        <span>Tir</span>
+        <span>Ons</span>
+        <span>Tor</span>
+        <span>Fre</span>
+        <span>Lør</span>
+        <span>Søn</span>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid"></div>
+
+      <div class="calendar-footer">
+        <div class="calendar-footer-text" id="calendarFooterText">
+          Velg en dato.
+        </div>
+        <button type="button" class="btn btn-primary" id="applyCalendarBtn">Bruk dato</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    (() => {
+      const overlay = document.getElementById("bookingOverlay");
+      const closeOverlayBtn = document.getElementById("closeOverlayBtn");
+      const doneBtn = document.getElementById("doneBtn");
+      const progressBar = document.getElementById("progressBar");
+      const progressText = document.getElementById("progressText");
+      const progressPercent = document.getElementById("progressPercent");
+      const steps = Array.from(document.querySelectorAll(".step-card"));
+      const bookingForm = document.getElementById("bookingForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const summaryList = document.getElementById("summaryList");
+      const summaryEmpty = document.getElementById("summaryEmpty");
+
+      const singleModeBtn = document.getElementById("singleModeBtn");
+      const rangeModeBtn = document.getElementById("rangeModeBtn");
+      const startDateBtn = document.getElementById("startDateBtn");
+      const endDateBtn = document.getElementById("endDateBtn");
+      const startDateValue = document.getElementById("startDateValue");
+      const endDateValue = document.getElementById("endDateValue");
+      const dateHelper = document.getElementById("dateHelper");
+      const dateModeInput = document.getElementById("dateMode");
+      const eventStartDate = document.getElementById("eventStartDate");
+      const eventEndDate = document.getElementById("eventEndDate");
+
+      const calendarModal = document.getElementById("calendarModal");
+      const calendarGrid = document.getElementById("calendarGrid");
+      const calendarTitle = document.getElementById("calendarTitle");
+      const calendarFooterText = document.getElementById("calendarFooterText");
+      const prevMonthBtn = document.getElementById("prevMonthBtn");
+      const nextMonthBtn = document.getElementById("nextMonthBtn");
+      const closeCalendarBtn = document.getElementById("closeCalendarBtn");
+      const applyCalendarBtn = document.getElementById("applyCalendarBtn");
+
+      const readMoreButtons = document.querySelectorAll(".js-read-more");
+      const openBookingButtons = document.querySelectorAll(".js-open-booking");
+      const toggleSpecsButtons = document.querySelectorAll(".js-toggle-specs");
+
+      const setupChoices = Array.from(document.querySelectorAll("#setupChoices .choice-card"));
+      const eventTypeChoices = Array.from(document.querySelectorAll("#eventTypeChoices .choice-card"));
+      const nextButtons = Array.from(document.querySelectorAll(".js-next"));
+      const backButtons = Array.from(document.querySelectorAll(".js-back"));
+
+      const formState = {
+        setup: "",
+        name: "",
+        company: "",
+        dateMode: "single",
+        eventDateStart: "",
+        eventDateEnd: "",
+        guests: "",
+        email: "",
+        phone: "+47 ",
+        eventType: "",
+        location: "",
+        message: ""
+      };
+
+      const totalInputSteps = 10;
+      let currentStep = 0;
+      let previousFocusedElement = null;
+      let submitting = false;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      let calendarState = {
+        visibleMonth: today.getMonth(),
+        visibleYear: today.getFullYear(),
+        pickerTarget: "start",
+        tempStart: "",
+        tempEnd: ""
+      };
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function pad(num) {
+        return String(num).padStart(2, "0");
+      }
+
+      function toISODate(date) {
+        return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+      }
+
+      function parseISODate(iso) {
+        if (!iso) return null;
+        const [y, m, d] = iso.split("-").map(Number);
+        return new Date(y, m - 1, d);
+      }
+
+      function formatDate(iso) {
+        const date = parseISODate(iso);
+        if (!date) return "";
+        return new Intl.DateTimeFormat("nb-NO", {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }).format(date);
+      }
+
+      function formatDateRange(startIso, endIso) {
+        if (!startIso) return "";
+        if (!endIso || startIso === endIso) return formatDate(startIso);
+        return `${formatDate(startIso)} – ${formatDate(endIso)}`;
+      }
+
+      function openOverlay(prefilledSetup = "") {
+        previousFocusedElement = document.activeElement;
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("overlay-open");
+
+        if (prefilledSetup) {
+          formState.setup = prefilledSetup;
+          syncChoiceSelection(setupChoices, formState.setup);
         }
-      });
-    }, { threshold: 0.12 });
 
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    const navWrap = document.getElementById('navWrap');
-    const backToTop = document.getElementById('backToTop');
-
-    function updateNavState() {
-      if (window.scrollY > 24) {
-        navWrap.classList.add('scrolled');
-      } else {
-        navWrap.classList.remove('scrolled');
+        currentStep = formState.setup ? 1 : 0;
+        updateSteps();
+        updateSummary();
+        setTimeout(() => focusStepInput(currentStep), 60);
       }
 
-      if (window.scrollY > 520) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
+      function closeOverlay() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("overlay-open");
+        closeCalendar();
+
+        if (previousFocusedElement && typeof previousFocusedElement.focus === "function") {
+          previousFocusedElement.focus();
+        }
       }
-    }
 
-    updateNavState();
-    window.addEventListener('scroll', updateNavState);
+      function updateSteps() {
+        steps.forEach((step, index) => {
+          step.classList.toggle("active", index === currentStep);
+        });
 
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    const bookingButtons = document.querySelectorAll('.booking-option');
-    const typeSelect = document.getElementById('type');
-    const selectedTypeLabel = document.getElementById('selectedTypeLabel');
-    const bookingForm = document.getElementById('bookingRequestForm');
-    const submitButton = document.getElementById('submitButton');
-    const formStatus = document.getElementById('formStatus');
-
-    const telefonLand = document.getElementById('telefonLand');
-    const telefonNummer = document.getElementById('telefonNummer');
-    const telefonHidden = document.getElementById('telefon');
-
-    const dateToggle = document.getElementById('dateToggle');
-    const dateFromValue = document.getElementById('dateFromValue');
-    const dateToValue = document.getElementById('dateToValue');
-    const datoHidden = document.getElementById('dato');
-
-    const stedInput = document.getElementById('sted');
-    const gjesterInput = document.getElementById('gjester');
-
-    const bookingSummary = document.getElementById('bookingSummary');
-    const summaryType = document.getElementById('summaryType');
-    const summaryDate = document.getElementById('summaryDate');
-    const summaryPlace = document.getElementById('summaryPlace');
-    const summaryGuests = document.getElementById('summaryGuests');
-
-    const calendarModal = document.getElementById('calendarModal');
-    const calendarBackdrop = document.getElementById('calendarBackdrop');
-    const calendarClose = document.getElementById('calendarClose');
-    const calendarSummary = document.getElementById('calendarSummary');
-    const clearDatesButton = document.getElementById('clearDatesButton');
-    const applyDatesButton = document.getElementById('applyDatesButton');
-    const calendarPrev = document.getElementById('calendarPrev');
-    const calendarNext = document.getElementById('calendarNext');
-    const monthLabel = document.getElementById('monthLabel');
-    const calendarDays = document.getElementById('calendarDays');
-
-    const monthNames = [
-      'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni',
-      'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'
-    ];
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const currentMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
-
-    let selectedFrom = null;
-    let selectedTo = null;
-    let visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-
-    function updateBookingUI(type) {
-      bookingButtons.forEach((button) => {
-        if (button.dataset.type === type) {
-          button.classList.add('active');
+        if (currentStep <= totalInputSteps - 1) {
+          const humanStep = currentStep + 1;
+          const percent = Math.round((humanStep / totalInputSteps) * 100);
+          progressText.textContent = `Steg ${humanStep} av ${totalInputSteps}`;
+          progressPercent.textContent = `${percent}%`;
+          progressBar.style.width = `${percent}%`;
         } else {
-          button.classList.remove('active');
+          progressText.textContent = "Fullført";
+          progressPercent.textContent = "100%";
+          progressBar.style.width = "100%";
         }
-      });
-
-      if (type) {
-        selectedTypeLabel.hidden = false;
-        selectedTypeLabel.textContent = 'Valgt kategori: ' + type;
-      } else {
-        selectedTypeLabel.hidden = true;
-        selectedTypeLabel.textContent = 'Valgt kategori: ';
       }
 
-      updateSummary();
-    }
+      function focusStepInput(stepIndex) {
+        const step = steps[stepIndex];
+        if (!step) return;
 
-    function setBookingType(type) {
-      typeSelect.value = type;
-      updateBookingUI(type);
+        const focusTarget =
+          step.querySelector(".choice-card.selected") ||
+          step.querySelector(".text-input") ||
+          step.querySelector(".textarea-input") ||
+          step.querySelector(".choice-card") ||
+          step.querySelector(".btn");
 
-      document.getElementById('booking-form').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-
-    function showStatus(message, type) {
-      formStatus.textContent = message;
-      formStatus.className = 'form-status show ' + type;
-    }
-
-    function clearStatus() {
-      formStatus.textContent = '';
-      formStatus.className = 'form-status';
-    }
-
-    function syncPhone() {
-      const rawNumber = telefonNummer.value.replace(/[^\d]/g, '');
-      if (!rawNumber) {
-        telefonHidden.value = '';
-        return;
-      }
-      telefonHidden.value = `${telefonLand.value}${rawNumber}`;
-    }
-
-    function pad(value) {
-      return String(value).padStart(2, '0');
-    }
-
-    function formatISO(date) {
-      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-    }
-
-    function formatDisplay(date) {
-      return `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()}`;
-    }
-
-    function formatLong(date) {
-      return `${date.getDate()}. ${monthNames[date.getMonth()].toLowerCase()} ${date.getFullYear()}`;
-    }
-
-    function sameDate(a, b) {
-      return a &&
-        b &&
-        a.getFullYear() === b.getFullYear() &&
-        a.getMonth() === b.getMonth() &&
-        a.getDate() === b.getDate();
-    }
-
-    function betweenDates(date, start, end) {
-      return start && end && date > start && date < end;
-    }
-
-    function addMonths(date, amount) {
-      return new Date(date.getFullYear(), date.getMonth() + amount, 1);
-    }
-
-    function mondayIndex(day) {
-      return day === 0 ? 6 : day - 1;
-    }
-
-    function isPastDate(date) {
-      return date < today;
-    }
-
-    function getDateSummaryText() {
-      if (!selectedFrom && !selectedTo) {
-        return 'Ikke valgt';
-      }
-
-      if (selectedFrom && !selectedTo) {
-        return formatDisplay(selectedFrom);
-      }
-
-      if (sameDate(selectedFrom, selectedTo)) {
-        return formatDisplay(selectedFrom);
-      }
-
-      return `${formatDisplay(selectedFrom)} - ${formatDisplay(selectedTo)}`;
-    }
-
-    function updateSummary() {
-      const currentType = typeSelect.value || 'Ikke valgt';
-      const currentDate = getDateSummaryText();
-      const currentPlace = stedInput.value.trim() || 'Ikke oppgitt';
-      const currentGuests = gjesterInput.value.trim() || 'Ikke oppgitt';
-
-      summaryType.textContent = currentType;
-      summaryDate.textContent = currentDate;
-      summaryPlace.textContent = currentPlace;
-      summaryGuests.textContent = currentGuests;
-
-      const hasAnyValue =
-        typeSelect.value ||
-        selectedFrom ||
-        stedInput.value.trim() ||
-        gjesterInput.value.trim();
-
-      bookingSummary.hidden = !hasAnyValue;
-    }
-
-    function syncDateOutput() {
-      if (!selectedFrom && !selectedTo) {
-        dateFromValue.textContent = 'Ikke valgt';
-        dateToValue.textContent = 'Ikke valgt';
-        calendarSummary.textContent = 'Velg én dag eller et datointervall.';
-        datoHidden.value = '';
-        updateSummary();
-        return;
-      }
-
-      if (selectedFrom && !selectedTo) {
-        dateFromValue.textContent = formatDisplay(selectedFrom);
-        dateToValue.textContent = 'Velg sluttdato';
-        calendarSummary.textContent = `Start valgt: ${formatLong(selectedFrom)}. Velg sluttdato eller trykk Bruk dato for én dag.`;
-        datoHidden.value = '';
-        updateSummary();
-        return;
-      }
-
-      dateFromValue.textContent = formatDisplay(selectedFrom);
-      dateToValue.textContent = formatDisplay(selectedTo);
-
-      if (sameDate(selectedFrom, selectedTo)) {
-        calendarSummary.textContent = `Valgt dato: ${formatLong(selectedFrom)}.`;
-        datoHidden.value = formatISO(selectedFrom);
-      } else {
-        calendarSummary.textContent = `Valgt periode: ${formatLong(selectedFrom)} – ${formatLong(selectedTo)}.`;
-        datoHidden.value = `${formatISO(selectedFrom)} - ${formatISO(selectedTo)}`;
-      }
-
-      updateSummary();
-    }
-
-    function updateCalendarNavState() {
-      calendarPrev.disabled = visibleMonth <= currentMonthStart;
-    }
-
-    function renderMonth(date) {
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const firstDay = new Date(year, month, 1);
-      const lastDay = new Date(year, month + 1, 0);
-      const daysInMonth = lastDay.getDate();
-      const leading = mondayIndex(firstDay.getDay());
-
-      monthLabel.textContent = `${monthNames[month]} ${year}`;
-      calendarDays.innerHTML = '';
-
-      for (let i = 0; i < leading; i++) {
-        const empty = document.createElement('button');
-        empty.type = 'button';
-        empty.className = 'calendar-day muted';
-        empty.disabled = true;
-        calendarDays.appendChild(empty);
-      }
-
-      for (let day = 1; day <= daysInMonth; day++) {
-        const current = new Date(year, month, day);
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'calendar-day';
-        button.textContent = day;
-
-        if (sameDate(current, today)) {
-          button.classList.add('today');
+        if (focusTarget) {
+          focusTarget.focus({ preventScroll: true });
         }
+      }
 
-        if (isPastDate(current)) {
-          button.classList.add('disabled');
-          button.disabled = true;
-        }
+      function setError(key, message) {
+        const node = document.querySelector(`[data-error-for="${key}"]`);
+        if (node) node.textContent = message || "";
+      }
 
-        if (selectedFrom && sameDate(current, selectedFrom)) {
-          button.classList.add('selected');
-        }
-
-        if (selectedTo && sameDate(current, selectedTo)) {
-          button.classList.add('selected');
-        }
-
-        if (betweenDates(current, selectedFrom, selectedTo)) {
-          button.classList.add('in-range');
-        }
-
-        button.addEventListener('click', () => {
-          if (isPastDate(current)) {
-            return;
-          }
-
-          if (!selectedFrom || (selectedFrom && selectedTo)) {
-            selectedFrom = new Date(current);
-            selectedTo = null;
-          } else if (current < selectedFrom) {
-            selectedFrom = new Date(current);
-          } else {
-            selectedTo = new Date(current);
-          }
-
-          syncDateOutput();
-          renderCalendars();
+      function clearAllErrors() {
+        document.querySelectorAll(".error-text").forEach((el) => {
+          el.textContent = "";
         });
-
-        calendarDays.appendChild(button);
-      }
-    }
-
-    function renderCalendars() {
-      renderMonth(visibleMonth);
-      updateCalendarNavState();
-    }
-
-    function openCalendarModal() {
-      if (selectedFrom) {
-        const selectedMonthStart = new Date(selectedFrom.getFullYear(), selectedFrom.getMonth(), 1);
-        visibleMonth = selectedMonthStart < currentMonthStart ? currentMonthStart : selectedMonthStart;
-      } else {
-        visibleMonth = new Date(currentMonthStart);
       }
 
-      renderCalendars();
-      calendarModal.classList.add('open');
-      calendarModal.setAttribute('aria-hidden', 'false');
-      dateToggle.classList.add('active');
-      dateToggle.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('modal-open');
-    }
-
-    function closeCalendarModal() {
-      calendarModal.classList.remove('open');
-      calendarModal.setAttribute('aria-hidden', 'true');
-      dateToggle.classList.remove('active');
-      dateToggle.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('modal-open');
-    }
-
-    bookingButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        setBookingType(button.dataset.type);
-      });
-    });
-
-    typeSelect.addEventListener('change', () => {
-      updateBookingUI(typeSelect.value);
-    });
-
-    telefonLand.addEventListener('change', syncPhone);
-    telefonNummer.addEventListener('input', () => {
-      telefonNummer.value = telefonNummer.value.replace(/[^\d\s()-]/g, '');
-      syncPhone();
-    });
-
-    dateToggle.addEventListener('click', () => {
-      openCalendarModal();
-    });
-
-    calendarBackdrop.addEventListener('click', closeCalendarModal);
-    calendarClose.addEventListener('click', closeCalendarModal);
-
-    calendarPrev.addEventListener('click', () => {
-      const previousMonth = addMonths(visibleMonth, -1);
-      if (previousMonth < currentMonthStart) {
-        visibleMonth = new Date(currentMonthStart);
-      } else {
-        visibleMonth = previousMonth;
-      }
-      renderCalendars();
-    });
-
-    calendarNext.addEventListener('click', () => {
-      visibleMonth = addMonths(visibleMonth, 1);
-      renderCalendars();
-    });
-
-    clearDatesButton.addEventListener('click', () => {
-      selectedFrom = null;
-      selectedTo = null;
-      visibleMonth = new Date(currentMonthStart);
-      syncDateOutput();
-      renderCalendars();
-    });
-
-    applyDatesButton.addEventListener('click', () => {
-      if (selectedFrom && !selectedTo) {
-        selectedTo = new Date(selectedFrom);
+      function syncChoiceSelection(collection, selectedValue) {
+        collection.forEach((button) => {
+          button.classList.toggle("selected", button.dataset.value === selectedValue);
+          button.setAttribute("aria-pressed", button.dataset.value === selectedValue ? "true" : "false");
+        });
       }
 
-      syncDateOutput();
-      renderCalendars();
-      closeCalendarModal();
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeCalendarModal();
-      }
-    });
-
-    stedInput.addEventListener('input', updateSummary);
-    gjesterInput.addEventListener('input', updateSummary);
-
-    bookingForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      clearStatus();
-      syncPhone();
-
-      if ((selectedFrom && !selectedTo) || (!selectedFrom && selectedTo)) {
-        showStatus('Velg både fra-dato og til-dato, eller trykk Bruk dato for én dag.', 'error');
-        openCalendarModal();
-        return;
-      }
-
-      if (selectedFrom && selectedTo && selectedTo < selectedFrom) {
-        showStatus('Til-dato kan ikke være før fra-dato.', 'error');
-        openCalendarModal();
-        return;
-      }
-
-      if (selectedFrom && isPastDate(selectedFrom)) {
-        showStatus('Du kan ikke velge en dato som har vært.', 'error');
-        openCalendarModal();
-        return;
-      }
-
-      if (selectedTo && isPastDate(selectedTo)) {
-        showStatus('Du kan ikke velge en dato som har vært.', 'error');
-        openCalendarModal();
-        return;
-      }
-
-      if (!bookingForm.checkValidity()) {
-        bookingForm.reportValidity();
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sender...';
-
-      const formData = new FormData(bookingForm);
-      const payload = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch('/api/send-booking', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
+      function updateSummary() {
+        const items = [
+          { label: "Oppsett", value: formState.setup },
+          { label: "Navn", value: formState.name },
+          { label: "Firma", value: formState.company },
+          {
+            label: "Dato",
+            value: formState.dateMode === "range"
+              ? formatDateRange(formState.eventDateStart, formState.eventDateEnd)
+              : formatDate(formState.eventDateStart)
           },
-          body: JSON.stringify(payload)
-        });
+          { label: "Gjester", value: formState.guests },
+          { label: "E-post", value: formState.email },
+          { label: "Telefon", value: formState.phone && formState.phone !== "+47 " ? formState.phone : "" },
+          { label: "Arrangementstype", value: formState.eventType },
+          { label: "Sted", value: formState.location },
+          { label: "Melding", value: formState.message }
+        ].filter((item) => item.value && String(item.value).trim() !== "");
 
-        const data = await response.json();
+        summaryList.innerHTML = "";
 
-        if (!response.ok || !data.ok) {
-          throw new Error(data.error || 'Kunne ikke sende forespørselen.');
+        if (!items.length) {
+          summaryEmpty.style.display = "block";
+          return;
         }
 
-        showStatus('Bookingforespørselen er sendt. Du videresendes nå.', 'success');
+        summaryEmpty.style.display = "none";
 
-        setTimeout(() => {
-          window.location.href = './takk.html';
-        }, 700);
-      } catch (error) {
-        showStatus(error.message || 'Noe gikk galt. Prøv igjen.', 'error');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send bookingforespørsel';
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          li.className = "summary-item";
+          li.innerHTML = `
+            <span class="summary-label">${escapeHtml(item.label)}</span>
+            <span class="summary-value">${escapeHtml(item.value)}</span>
+          `;
+          summaryList.appendChild(li);
+        });
       }
-    });
 
-    syncDateOutput();
-    renderCalendars();
-    syncPhone();
-    updateBookingUI(typeSelect.value);
-    updateSummary();
+      function setDateMode(mode) {
+        formState.dateMode = mode;
+        dateModeInput.value = mode;
+
+        const isRange = mode === "range";
+        singleModeBtn.classList.toggle("active", !isRange);
+        rangeModeBtn.classList.toggle("active", isRange);
+        endDateBtn.style.display = isRange ? "block" : "none";
+
+        if (!isRange) {
+          formState.eventDateEnd = "";
+          eventEndDate.value = "";
+          endDateValue.textContent = "Velg sluttdato";
+          dateHelper.textContent = "Én dag er valgt som standard.";
+        } else {
+          dateHelper.textContent = "Velg startdato og sluttdato.";
+        }
+
+        updateDateDisplay();
+        updateSummary();
+      }
+
+      function updateDateDisplay() {
+        startDateValue.textContent = formState.eventDateStart
+          ? formatDate(formState.eventDateStart)
+          : "Velg dato";
+
+        endDateValue.textContent = formState.eventDateEnd
+          ? formatDate(formState.eventDateEnd)
+          : "Velg sluttdato";
+
+        if (formState.dateMode === "single") {
+          dateHelper.textContent = formState.eventDateStart
+            ? `Valgt dato: ${formatDate(formState.eventDateStart)}`
+            : "Én dag er valgt som standard.";
+        } else {
+          if (formState.eventDateStart && formState.eventDateEnd) {
+            dateHelper.textContent = `Valgt intervall: ${formatDateRange(formState.eventDateStart, formState.eventDateEnd)}`;
+          } else if (formState.eventDateStart && !formState.eventDateEnd) {
+            dateHelper.textContent = "Velg sluttdato for å fullføre intervallet.";
+          } else {
+            dateHelper.textContent = "Velg startdato og sluttdato.";
+          }
+        }
+      }
+
+      function daysInMonth(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+
+      function mondayBasedIndex(date) {
+        const day = date.getDay();
+        return day === 0 ? 6 : day - 1;
+      }
+
+      function openCalendar(target) {
+        calendarState.pickerTarget = target;
+        const activeDate =
+          target === "end"
+            ? parseISODate(formState.eventDateEnd || formState.eventDateStart || toISODate(today))
+            : parseISODate(formState.eventDateStart || toISODate(today));
+
+        calendarState.visibleMonth = activeDate.getMonth();
+        calendarState.visibleYear = activeDate.getFullYear();
+        calendarState.tempStart = formState.eventDateStart;
+        calendarState.tempEnd = formState.eventDateEnd;
+
+        renderCalendar();
+        calendarModal.classList.add("open");
+        calendarModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeCalendar() {
+        calendarModal.classList.remove("open");
+        calendarModal.setAttribute("aria-hidden", "true");
+      }
+
+      function renderCalendar() {
+        const month = calendarState.visibleMonth;
+        const year = calendarState.visibleYear;
+
+        const monthLabel = new Intl.DateTimeFormat("nb-NO", {
+          month: "long",
+          year: "numeric"
+        }).format(new Date(year, month, 1));
+
+        calendarTitle.textContent = monthLabel;
+
+        const firstDay = new Date(year, month, 1);
+        const leadingDays = mondayBasedIndex(firstDay);
+        const totalDays = daysInMonth(year, month);
+
+        calendarGrid.innerHTML = "";
+
+        for (let i = 0; i < leadingDays; i += 1) {
+          const filler = document.createElement("button");
+          filler.type = "button";
+          filler.className = "calendar-day muted";
+          filler.disabled = true;
+          filler.textContent = "";
+          calendarGrid.appendChild(filler);
+        }
+
+        for (let day = 1; day <= totalDays; day += 1) {
+          const date = new Date(year, month, day);
+          date.setHours(0, 0, 0, 0);
+
+          const iso = toISODate(date);
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "calendar-day";
+          btn.textContent = String(day);
+          btn.dataset.iso = iso;
+
+          const isPast = date < today;
+          const start = calendarState.tempStart;
+          const end = calendarState.tempEnd;
+
+          if (isPast) {
+            btn.classList.add("disabled");
+            btn.disabled = true;
+          } else {
+            const selectedSingle = formState.dateMode === "single" && start === iso;
+            const selectedStart = start === iso;
+            const selectedEnd = end === iso;
+
+            if (selectedSingle || selectedStart || selectedEnd) {
+              btn.classList.add("selected");
+            }
+
+            if (formState.dateMode === "range" && start && end) {
+              if (iso > start && iso < end) {
+                btn.classList.add("in-range");
+              }
+            }
+
+            btn.addEventListener("click", () => onCalendarDateClick(iso));
+          }
+
+          calendarGrid.appendChild(btn);
+        }
+
+        updateCalendarFooter();
+      }
+
+      function updateCalendarFooter() {
+        if (formState.dateMode === "single") {
+          calendarFooterText.textContent = calendarState.tempStart
+            ? `Valgt dato: ${formatDate(calendarState.tempStart)}`
+            : "Velg en dato.";
+          return;
+        }
+
+        if (calendarState.tempStart && calendarState.tempEnd) {
+          calendarFooterText.textContent = `Valgt intervall: ${formatDateRange(calendarState.tempStart, calendarState.tempEnd)}`;
+        } else if (calendarState.tempStart) {
+          calendarFooterText.textContent = "Velg sluttdato.";
+        } else {
+          calendarFooterText.textContent = "Velg startdato.";
+        }
+      }
+
+      function onCalendarDateClick(iso) {
+        if (formState.dateMode === "single") {
+          calendarState.tempStart = iso;
+          calendarState.tempEnd = "";
+          renderCalendar();
+          return;
+        }
+
+        if (calendarState.pickerTarget === "start") {
+          calendarState.tempStart = iso;
+          if (calendarState.tempEnd && calendarState.tempEnd < iso) {
+            calendarState.tempEnd = "";
+          }
+        } else {
+          if (!calendarState.tempStart) {
+            calendarState.tempStart = iso;
+          } else if (iso < calendarState.tempStart) {
+            calendarState.tempEnd = calendarState.tempStart;
+            calendarState.tempStart = iso;
+          } else {
+            calendarState.tempEnd = iso;
+          }
+        }
+
+        renderCalendar();
+      }
+
+      function applyCalendarSelection() {
+        formState.eventDateStart = calendarState.tempStart || "";
+        eventStartDate.value = formState.eventDateStart;
+
+        if (formState.dateMode === "range") {
+          formState.eventDateEnd = calendarState.tempEnd || "";
+          eventEndDate.value = formState.eventDateEnd;
+        } else {
+          formState.eventDateEnd = "";
+          eventEndDate.value = "";
+        }
+
+        updateDateDisplay();
+        updateSummary();
+        setError("date", "");
+        closeCalendar();
+      }
+
+      function validateStep(stepIndex) {
+        clearAllErrors();
+
+        switch (stepIndex) {
+          case 0:
+            if (!formState.setup) {
+              setError("setup", "Velg et oppsett for å gå videre.");
+              return false;
+            }
+            return true;
+
+          case 1: {
+            const value = document.getElementById("fullName").value.trim();
+            if (value.length < 2) {
+              setError("name", "Skriv inn fullt navn.");
+              return false;
+            }
+            formState.name = value;
+            return true;
+          }
+
+          case 2: {
+            formState.company = document.getElementById("companyName").value.trim();
+            return true;
+          }
+
+          case 3: {
+            if (!formState.eventDateStart) {
+              setError("date", "Velg dato for arrangementet.");
+              return false;
+            }
+            if (formState.dateMode === "range" && !formState.eventDateEnd) {
+              setError("date", "Velg sluttdato for intervallet.");
+              return false;
+            }
+            return true;
+          }
+
+          case 4: {
+            const value = document.getElementById("guestCount").value.trim();
+            if (!value) {
+              setError("guests", "Skriv inn antall gjester.");
+              return false;
+            }
+            if (!/^\d{1,6}$/.test(value)) {
+              setError("guests", "Bruk kun tall.");
+              return false;
+            }
+            formState.guests = value;
+            return true;
+          }
+
+          case 5: {
+            const value = document.getElementById("email").value.trim();
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            if (!emailOk) {
+              setError("email", "Skriv inn en gyldig e-post.");
+              return false;
+            }
+            formState.email = value;
+            return true;
+          }
+
+          case 6: {
+            const value = document.getElementById("phone").value.trim();
+            const digitCount = value.replace(/\D/g, "").length;
+            if (digitCount < 8) {
+              setError("phone", "Skriv inn et gyldig telefonnummer.");
+              return false;
+            }
+            formState.phone = value;
+            return true;
+          }
+
+          case 7:
+            if (!formState.eventType) {
+              setError("eventType", "Velg type arrangement.");
+              return false;
+            }
+            return true;
+
+          case 8: {
+            const value = document.getElementById("location").value.trim();
+            if (value.length < 2) {
+              setError("location", "Skriv inn hvor arrangementet skal være.");
+              return false;
+            }
+            formState.location = value;
+            return true;
+          }
+
+          case 9:
+            formState.message = document.getElementById("message").value.trim();
+            return true;
+
+          default:
+            return true;
+        }
+      }
+
+      function nextStep() {
+        if (currentStep >= totalInputSteps) return;
+        if (!validateStep(currentStep)) return;
+
+        currentStep += 1;
+        updateSummary();
+        updateSteps();
+        setTimeout(() => focusStepInput(currentStep), 60);
+      }
+
+      function prevStep() {
+        if (currentStep <= 0) return;
+        currentStep -= 1;
+        updateSteps();
+        setTimeout(() => focusStepInput(currentStep), 60);
+      }
+
+      function buildPayload() {
+        const dateValue =
+          formState.dateMode === "range"
+            ? `${formState.eventDateStart} til ${formState.eventDateEnd}`
+            : formState.eventDateStart;
+
+        return {
+          setup: formState.setup,
+          name: formState.name,
+          company: formState.company,
+          date: dateValue,
+          guests: formState.guests,
+          email: formState.email,
+          phone: formState.phone,
+          type: formState.eventType,
+          location: formState.location,
+          message: formState.message,
+          website: document.getElementById("website").value.trim()
+        };
+      }
+
+      async function submitForm(event) {
+        event.preventDefault();
+        if (submitting) return;
+        if (!validateStep(9)) return;
+
+        const payload = buildPayload();
+        submitting = true;
+        submitBtn.classList.add("loading");
+        submitBtn.textContent = "Sender...";
+
+        try {
+          const response = await fetch("/api/send-booking", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const contentType = response.headers.get("content-type") || "";
+          let data = null;
+
+          if (contentType.includes("application/json")) {
+            data = await response.json();
+          }
+
+          if (!response.ok) {
+            const errorMessage =
+              (data && data.error) ||
+              "Noe gikk galt. Prøv igjen.";
+            throw new Error(errorMessage);
+          }
+
+          currentStep = 10;
+          updateSteps();
+          updateSummary();
+          setError("submit", "");
+          setTimeout(() => {
+            doneBtn.focus({ preventScroll: true });
+          }, 60);
+        } catch (error) {
+          setError("submit", error.message || "Noe gikk galt. Prøv igjen.");
+        } finally {
+          submitting = false;
+          submitBtn.classList.remove("loading");
+          submitBtn.textContent = "Send forespørsel";
+        }
+      }
+
+      setupChoices.forEach((button) => {
+        button.addEventListener("click", () => {
+          formState.setup = button.dataset.value;
+          syncChoiceSelection(setupChoices, formState.setup);
+          updateSummary();
+          setError("setup", "");
+          setTimeout(() => nextStep(), 110);
+        });
+      });
+
+      eventTypeChoices.forEach((button) => {
+        button.addEventListener("click", () => {
+          formState.eventType = button.dataset.value;
+          syncChoiceSelection(eventTypeChoices, formState.eventType);
+          updateSummary();
+          setError("eventType", "");
+          setTimeout(() => nextStep(), 110);
+        });
+      });
+
+      nextButtons.forEach((button) => {
+        button.addEventListener("click", nextStep);
+      });
+
+      backButtons.forEach((button) => {
+        button.addEventListener("click", prevStep);
+      });
+
+      openBookingButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const setup = button.dataset.setup || "";
+          openOverlay(setup);
+        });
+      });
+
+      closeOverlayBtn.addEventListener("click", closeOverlay);
+      doneBtn.addEventListener("click", closeOverlay);
+
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!overlay.classList.contains("open")) return;
+
+        if (calendarModal.classList.contains("open")) {
+          if (event.key === "Escape") {
+            closeCalendar();
+          }
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeOverlay();
+          return;
+        }
+
+        const activeTag = document.activeElement ? document.activeElement.tagName : "";
+        const isTextarea = activeTag === "TEXTAREA";
+
+        if (event.key === "Enter" && !isTextarea) {
+          const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
+          if (!isButton && currentStep > 0 && currentStep < 9) {
+            event.preventDefault();
+            nextStep();
+          }
+        }
+      });
+
+      readMoreButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const setup = button.dataset.setup || "";
+          openOverlay(setup);
+        });
+      });
+
+      toggleSpecsButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = document.getElementById(button.dataset.target);
+          if (!target) return;
+          target.classList.toggle("open");
+        });
+      });
+
+      singleModeBtn.addEventListener("click", () => setDateMode("single"));
+      rangeModeBtn.addEventListener("click", () => setDateMode("range"));
+
+      startDateBtn.addEventListener("click", () => openCalendar("start"));
+      endDateBtn.addEventListener("click", () => openCalendar("end"));
+
+      prevMonthBtn.addEventListener("click", () => {
+        calendarState.visibleMonth -= 1;
+        if (calendarState.visibleMonth < 0) {
+          calendarState.visibleMonth = 11;
+          calendarState.visibleYear -= 1;
+        }
+        renderCalendar();
+      });
+
+      nextMonthBtn.addEventListener("click", () => {
+        calendarState.visibleMonth += 1;
+        if (calendarState.visibleMonth > 11) {
+          calendarState.visibleMonth = 0;
+          calendarState.visibleYear += 1;
+        }
+        renderCalendar();
+      });
+
+      closeCalendarBtn.addEventListener("click", closeCalendar);
+      applyCalendarBtn.addEventListener("click", applyCalendarSelection);
+
+      calendarModal.addEventListener("click", (event) => {
+        if (event.target === calendarModal) {
+          closeCalendar();
+        }
+      });
+
+      bookingForm.addEventListener("submit", submitForm);
+
+      document.getElementById("fullName").addEventListener("input", (e) => {
+        formState.name = e.target.value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("companyName").addEventListener("input", (e) => {
+        formState.company = e.target.value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("guestCount").addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/[^\d]/g, "").slice(0, 6);
+        formState.guests = e.target.value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("email").addEventListener("input", (e) => {
+        formState.email = e.target.value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("phone").addEventListener("input", (e) => {
+        let value = e.target.value;
+        if (!value.startsWith("+47 ")) {
+          const digits = value.replace(/\D/g, "");
+          const local = digits.startsWith("47") ? digits.slice(2) : digits;
+          value = `+47 ${local}`;
+        }
+        e.target.value = value;
+        formState.phone = value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("location").addEventListener("input", (e) => {
+        formState.location = e.target.value.trim();
+        updateSummary();
+      });
+
+      document.getElementById("message").addEventListener("input", (e) => {
+        formState.message = e.target.value.trim();
+        updateSummary();
+      });
+
+      setDateMode("single");
+      updateSteps();
+      updateSummary();
+    })();
   </script>
 </body>
 </html>
