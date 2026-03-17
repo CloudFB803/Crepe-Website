@@ -422,22 +422,92 @@
       text-transform: uppercase;
     }
 
-    .script-title {
-      font-family: "Parisienne", cursive;
-      font-size: clamp(42px, 5vw, 64px);
-      line-height: 0.92;
-      color: #8b573d;
-      margin: -4px 0 2px;
-      text-shadow: 0 6px 18px rgba(255,255,255,0.26);
+    .story-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(46px, 5vw, 70px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.94;
+      color: #2d1c15;
     }
 
     .intro-copy .lead {
       margin: 0;
       color: #4a352b;
       font-size: 17px;
-      line-height: 1.98;
+      line-height: 1.9;
       font-weight: 500;
-      max-width: 68ch;
+      max-width: 64ch;
+    }
+
+    .story-toggle {
+      width: fit-content;
+      background: rgba(250, 242, 234, 0.55);
+      color: #8b573d;
+      border: 1px solid rgba(155, 106, 73, 0.5);
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 11px 20px;
+      cursor: pointer;
+      transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+    }
+
+    .story-toggle:hover {
+      background: rgba(250, 242, 234, 0.92);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(56, 33, 20, 0.12);
+    }
+
+    .history-expanded {
+      margin-top: 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(66, 39, 23, 0.08);
+      background: linear-gradient(180deg, rgba(249,240,231,0.9), rgba(242,228,214,0.94));
+      box-shadow: 0 18px 48px rgba(56, 33, 20, 0.10);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 600ms ease, opacity 300ms ease;
+    }
+
+    .history-expanded.open {
+      opacity: 1;
+    }
+
+    .history-expanded-inner {
+      padding: 32px;
+      display: grid;
+      gap: 20px;
+      color: #4a352b;
+      font-size: 17px;
+      line-height: 1.95;
+      font-weight: 500;
+    }
+
+    .history-expanded p {
+      margin: 0;
+    }
+
+    .history-image-placeholder {
+      width: 100%;
+      height: 260px;
+      border-radius: 22px;
+      border: 1px solid rgba(163, 130, 98, 0.3);
+      background: #ecdfd1;
+      display: grid;
+      place-items: center;
+      color: #8a644d;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .history-close {
+      margin-top: 4px;
+      justify-self: start;
     }
 
     .stops-block {
@@ -1261,7 +1331,7 @@
         padding: 22px;
       }
 
-      .script-title {
+      .story-title {
         font-size: 42px;
       }
 
@@ -1349,7 +1419,7 @@
     <div class="container">
       <nav>
         <div class="nav-group left">
-          <a href="#om-oss">Om oss</a>
+          <a href="#om-oss">Vår historie</a>
           <a href="#menu">Meny</a>
           <a href="./book-oss.html">Book oss</a>
         </div>
@@ -1394,32 +1464,41 @@
       <div class="container">
         <div class="intro-card">
           <div class="intro-left">
-            <div class="eyebrow">Crepe de la Crepe</div>
-            <div class="script-title">Om oss</div>
+            <div class="eyebrow">CREPE DE LA CREPE</div>
+            <h2 class="story-title">Vår historie</h2>
 
             <div class="intro-copy">
               <p class="lead">
-                Etablert i 2021 serverer vi søte og savoury crêpes med fokus på kvalitet, gode og lokale råvarer, og en oppskrift vi dro til Paris for å lære. Det fine med en crêpe er hvor enkel den er — og hvor mye som ligger i å gjøre den ordentlig godt. I dag serveres den hos oss i Oslo, og når vi er på utvalgte arrangementer rundt i landet tar vi med oss den samme smaken og kvaliteten videre.
+                Det startet med en enkel tanke: hvor stort kan egentlig crêpes bli? Det vi ikke visste da, var at spørsmålet ville ta oss til Frankrike, gjennom årets største festivaler — og til noe vi nå kaller hjem.
               </p>
             </div>
 
-            <div class="stops-block">
-              <div class="stops-title">Noen av våre største stopp</div>
-              <div class="stops-line">
-                Jul i Vinterland · Gladmat · Slottsfjell · Stavernfestivalen · Idyll
-              </div>
-            </div>
+            <button class="story-toggle" id="storyToggle" type="button" aria-expanded="false" aria-controls="historyExpanded">
+              Les vår historie →
+            </button>
           </div>
 
           <div class="featured-card">
             <div class="featured-media">
-              <div class="featured-label">Månedens crêpe</div>
-              <div class="featured-price">69 kr</div>
-              <img src="nutella-crepe.jpg" alt="Nutella crêpe">
-              <div class="featured-copy">
-                <h3>Nutella</h3>
-              </div>
+              <img src="nutella-crepe.jpg" alt="Nystekt crêpe fra Crepe de la Crepe">
             </div>
+          </div>
+        </div>
+
+        <div class="history-expanded" id="historyExpanded" aria-hidden="true">
+          <div class="history-expanded-inner">
+            <p>Det startet med en enkel tanke: hvor stort kan egentlig crêpes bli?</p>
+            <p>Men egentlig startet det enda tidligere – med to personer som møttes gjennom en vanlig kontorjobb og etter hvert fant ut at de ønsket å skape noe spesielt sammen. Noe som folk kunne samles rundt.</p>
+            <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange har fått sin første smakebit av crêpene våre. Etter flere sesonger der begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
+            <p>For å finne svaret dro vi til Frankrike – to år på rad. Vi gikk fra små til store crêperier, smakte oss gjennom menyene og hentet inspirasjon fra steder hvor crêpes er en naturlig del av hverdagen.</p>
+            <div class="history-image-placeholder">Bilde</div>
+            <p>En ting la vi spesielt merke til: crêpes var overalt. Fra små boder til store crêperier – nesten hvert hjørne hadde et sted som lagde ferske crêpes, og folk spiste det til alle tider på dagen. Det ga oss en tydelig indikasjon: dette er noe folk virkelig elsker. Men det fikk oss også til å stille et nytt spørsmål: hvorfor er det ikke like utbredt i Norge? Det er akkurat det vi ønsker å gjøre noe med.</p>
+            <p>Inspirert av det vi opplevde lanserte vi i oktober 2025 også vår første salte meny – noe mange hadde etterspurt lenge. Samtidig jobber vi mot et større mål: å gjøre crêpe til en egen kategori, på samme måte som pizza, burger eller pasta.</p>
+            <div class="history-image-placeholder">Bilde</div>
+            <p>Vi ønsker å bygge en kultur rundt dette fantastiske fenomenet. Flere har vært med på å utvikle menyen vår, noen har senere blitt en del av teamet, og andre har blitt ansikter utad på våre sosiale medier.</p>
+            <p>Dette er bare starten – og vi gleder oss til fortsettelsen. #loveatfirstbite</p>
+
+            <button class="story-toggle history-close" id="storyClose" type="button">Lukk ↑</button>
           </div>
         </div>
       </div>
@@ -1674,7 +1753,7 @@
           <div class="footer-block">
             <h4>Snarveier</h4>
             <div class="footer-links">
-              <a href="#om-oss">Om oss</a>
+              <a href="#om-oss">Vår historie</a>
               <a href="#menu">Meny</a>
               <a href="./book-oss.html">Book oss</a>
               <a href="#lokasjon">Lokasjon</a>
@@ -1772,6 +1851,45 @@
         behavior: 'smooth'
       });
     });
+
+    const storyToggle = document.getElementById('storyToggle');
+    const storyClose = document.getElementById('storyClose');
+    const historyExpanded = document.getElementById('historyExpanded');
+
+    function expandHistory() {
+      if (!historyExpanded) return;
+      historyExpanded.classList.add('open');
+      historyExpanded.setAttribute('aria-hidden', 'false');
+      historyExpanded.style.maxHeight = `${historyExpanded.scrollHeight}px`;
+      storyToggle?.setAttribute('aria-expanded', 'true');
+      window.setTimeout(() => {
+        historyExpanded.style.maxHeight = 'none';
+      }, 620);
+    }
+
+    function collapseHistory() {
+      if (!historyExpanded) return;
+      if (historyExpanded.style.maxHeight === 'none') {
+        historyExpanded.style.maxHeight = `${historyExpanded.scrollHeight}px`;
+      }
+      requestAnimationFrame(() => {
+        historyExpanded.style.maxHeight = '0px';
+        historyExpanded.classList.remove('open');
+      });
+      historyExpanded.setAttribute('aria-hidden', 'true');
+      storyToggle?.setAttribute('aria-expanded', 'false');
+    }
+
+    storyToggle?.addEventListener('click', () => {
+      const isOpen = storyToggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        collapseHistory();
+      } else {
+        expandHistory();
+      }
+    });
+
+    storyClose?.addEventListener('click', collapseHistory);
 
     const crepeOrder = [
       {
