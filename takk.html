@@ -26,54 +26,62 @@
       --success: #4f8c5a;
       --success-soft: #76b184;
       --surface: #fffdf9;
-      --ease: cubic-bezier(.22,.61,.36,1);
+      --bg-top: #f8f4ed;
+      --bg-bottom: #fdfaf5;
+      --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "DM Sans", sans-serif;
-      color: var(--heading);
-      background: linear-gradient(180deg, #f8f4ed 0%, #fdfaf5 100%);
+      padding: 20px;
       display: grid;
       place-items: center;
-      padding: 20px;
+      font-family: "DM Sans", sans-serif;
+      color: var(--heading);
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
     .wrap {
-      width: min(900px, 100%);
-      position: relative;
+      width: min(880px, 100%);
     }
 
     .card {
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: 28px;
       border: 1px solid var(--line);
       background: var(--surface);
-      padding: clamp(32px, 6vw, 62px);
+      box-shadow: 0 22px 60px rgba(95, 72, 33, 0.08);
+      padding: clamp(32px, 6vw, 68px);
       text-align: center;
-      box-shadow: 0 20px 60px rgba(95, 72, 33, 0.08);
+      isolation: isolate;
     }
 
     #particleCanvas {
       position: absolute;
       inset: 0;
       z-index: 0;
-      pointer-events: none;
       width: 100%;
       height: 100%;
+      pointer-events: none;
     }
 
     .content {
       position: relative;
       z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
     }
 
     .entry {
@@ -84,52 +92,55 @@
 
     .entry-1 { animation-delay: 80ms; }
     .entry-2 { animation-delay: 220ms; }
-    .entry-3 { animation-delay: 340ms; }
-    .entry-4 { animation-delay: 460ms; }
-    .entry-5 { animation-delay: 560ms; }
-    .entry-6 { animation-delay: 680ms; }
-    .entry-7 { animation-delay: 820ms; }
+    .entry-3 { animation-delay: 360ms; }
+    .entry-4 { animation-delay: 500ms; }
+    .entry-5 { animation-delay: 620ms; }
+    .entry-6 { animation-delay: 760ms; }
+    .entry-7 { animation-delay: 900ms; }
 
     .icon-wrap {
-      margin: 0 auto;
       position: relative;
-      width: 80px;
-      height: 80px;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto;
     }
 
     .icon-pulse {
       position: absolute;
-      inset: -6px;
+      inset: -7px;
       border-radius: 50%;
-      border: 1px solid rgba(79, 140, 90, 0.45);
+      border: 1px solid rgba(79, 140, 90, 0.42);
       animation: iconRing 1.8s ease-out infinite;
     }
 
     .icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(160deg, #d7efdc 0%, #a9d6b1 100%);
-      border: 1px solid rgba(79, 140, 90, 0.6);
+      position: relative;
+      width: 88px;
+      height: 88px;
       display: grid;
       place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #d7efdc 0%, #a9d6b1 100%);
+      border: 1px solid rgba(79, 140, 90, 0.58);
       color: var(--success);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 10px 22px rgba(79, 140, 90, 0.12);
     }
 
     .icon svg path {
       stroke-dasharray: 22;
       stroke-dashoffset: 22;
-      animation: drawCheck 680ms ease forwards;
-      animation-delay: 320ms;
+      animation: drawCheck 700ms ease forwards;
+      animation-delay: 340ms;
     }
 
     .badge {
-      margin: 18px auto 0;
+      margin: 20px auto 0;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 13px;
+      padding: 9px 14px;
       border-radius: 999px;
       border: 1px solid #d9c8a6;
       background: #f4e9d7;
@@ -146,21 +157,22 @@
       border-radius: 50%;
       background: var(--gold);
       animation: pulseDot 1.2s ease-in-out infinite;
+      flex: 0 0 auto;
     }
 
     h1 {
       margin: 20px 0 0;
       font-family: "Playfair Display", serif;
-      font-size: clamp(2.8rem, 8vw, 5.2rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-size: clamp(3rem, 8vw, 5.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
       color: var(--heading);
     }
 
     p {
       margin: 18px auto 0;
-      max-width: 680px;
-      font-size: 1.02rem;
+      max-width: 640px;
+      font-size: 1.03rem;
       font-weight: 400;
       line-height: 1.75;
       color: var(--muted);
@@ -168,7 +180,7 @@
 
     .divider {
       width: min(560px, 100%);
-      margin: 24px auto 0;
+      margin: 26px auto 0;
       border: 0;
       border-top: 1px solid var(--line);
     }
@@ -176,46 +188,46 @@
     .info-card {
       margin: 24px auto 0;
       width: min(560px, 100%);
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--off-white);
-      padding: 14px;
       display: flex;
       align-items: center;
       gap: 14px;
+      padding: 14px;
       text-align: left;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--off-white);
     }
 
     .info-icon {
       width: 42px;
       height: 42px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #9b7f51;
+      flex: 0 0 auto;
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: #9b7f51;
     }
 
     .info-label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      font-weight: 500;
       margin-bottom: 3px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
     .info-value {
       font-size: 0.98rem;
-      color: var(--heading);
       font-weight: 400;
       line-height: 1.5;
+      color: var(--heading);
     }
 
     .actions {
-      margin-top: 26px;
+      margin-top: 28px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -223,18 +235,24 @@
     }
 
     .btn {
+      min-height: 52px;
+      padding: 0 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
       border-radius: 999px;
+      border: 1px solid transparent;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.11em;
       font-size: 0.78rem;
       font-weight: 500;
-      transition: transform 160ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+      transition:
+        transform 160ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease,
+        color 200ms ease,
+        box-shadow 200ms ease;
     }
 
     .btn:hover {
@@ -247,14 +265,15 @@
 
     .btn-primary {
       background: var(--gold);
-      color: #fff;
-      border: 1px solid transparent;
+      color: #ffffff;
+      border-color: var(--gold);
+      box-shadow: 0 10px 20px rgba(200, 160, 96, 0.18);
     }
 
     .btn-secondary {
       background: transparent;
-      border: 1px solid var(--line);
       color: var(--muted);
+      border-color: var(--line);
     }
 
     @keyframes fadeUp {
@@ -265,7 +284,9 @@
     }
 
     @keyframes drawCheck {
-      to { stroke-dashoffset: 0; }
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
     @keyframes iconRing {
@@ -291,6 +312,23 @@
     }
 
     @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 28px 20px 24px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+      }
+
+      p {
+        font-size: 0.98rem;
+      }
+
       .actions {
         flex-direction: column;
       }
@@ -303,29 +341,60 @@
         align-items: flex-start;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .entry {
+        opacity: 1;
+        transform: none;
+      }
+
+      .icon svg path {
+        stroke-dashoffset: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
+    <section class="card" aria-labelledby="thanks-title">
       <canvas id="particleCanvas" aria-hidden="true"></canvas>
 
       <div class="content">
         <div class="icon-wrap entry entry-1" aria-hidden="true">
           <span class="icon-pulse"></span>
           <div class="icon">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12.5L9.5 17L19 7.5" stroke="currentColor" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 12.5L9.5 17L19 7.5"
+                stroke="currentColor"
+                stroke-width="1.95"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
         </div>
 
-        <div class="badge entry entry-2"><span class="badge-dot" aria-hidden="true"></span>Booking mottatt</div>
+        <div class="badge entry entry-2">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Booking mottatt
+        </div>
 
-        <h1 class="entry entry-3">Takk for forespørselen</h1>
+        <h1 id="thanks-title" class="entry entry-3">Takk for forespørselen</h1>
 
         <p class="entry entry-4">
-          Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer. Dersom vi trenger mer informasjon om oppsett, lokasjon eller praktiske detaljer, tar vi kontakt direkte.
+          Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
+          Dersom vi trenger mer informasjon om oppsett, lokasjon eller praktiske detaljer,
+          tar vi kontakt direkte.
         </p>
 
         <hr class="divider entry entry-5" />
@@ -333,10 +402,23 @@
         <div class="info-card entry entry-6">
           <div class="info-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M12 7V12L15 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path
+                d="M12 7V12L15 14"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="8"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
             </svg>
           </div>
+
           <div>
             <div class="info-label">Svarfrist</div>
             <div class="info-value">Vi svarer vanligvis innen 24–48 timer.</div>
@@ -352,96 +434,113 @@
   </main>
 
   <script>
-    const canvas = document.getElementById("particleCanvas");
-    const card = document.querySelector(".card");
-    const ctx = canvas.getContext("2d");
+    (() => {
+      const canvas = document.getElementById("particleCanvas");
+      const card = document.querySelector(".card");
 
-    const colors = ["#c8a060", "#e6d4b2", "#b69765", "#d9c49a", "#a28556"];
-    const particleCount = 38;
-    const particles = [];
-    let rafId;
-    let startTime = 0;
+      if (!canvas || !card) return;
 
-    const setCanvasSize = () => {
-      const rect = card.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-    };
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
 
-    const makeParticle = (fromTop = false) => {
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      return {
-        x: Math.random() * width,
-        y: fromTop ? -12 : Math.random() * height,
-        size: Math.random() * 5 + 3,
-        vy: Math.random() * 0.9 + 0.65,
-        vx: (Math.random() - 0.5) * 0.6,
-        alpha: Math.random() * 0.55 + 0.25,
-        rotate: Math.random() * Math.PI,
-        vRotate: (Math.random() - 0.5) * 0.03,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        shape: Math.random() > 0.52 ? "rect" : "circle"
+      const colors = ["#c8a060", "#e6d4b2", "#b69765", "#d9c49a", "#a28556"];
+      const particleCount = 38;
+      const particles = [];
+      let rafId = null;
+      let startTime = 0;
+
+      const setCanvasSize = () => {
+        const rect = card.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = `${rect.width}px`;
+        canvas.style.height = `${rect.height}px`;
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       };
-    };
 
-    const initParticles = () => {
-      particles.length = 0;
-      for (let i = 0; i < particleCount; i += 1) {
-        particles.push(makeParticle());
-      }
-    };
+      const makeParticle = (fromTop = false) => {
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
 
-    const render = (ts) => {
-      if (!startTime) startTime = ts;
-      const elapsed = ts - startTime;
-      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        return {
+          x: Math.random() * width,
+          y: fromTop ? -12 : Math.random() * height,
+          size: Math.random() * 5 + 3,
+          vy: Math.random() * 0.9 + 0.65,
+          vx: (Math.random() - 0.5) * 0.6,
+          alpha: Math.random() * 0.55 + 0.25,
+          rotate: Math.random() * Math.PI,
+          vRotate: (Math.random() - 0.5) * 0.03,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          shape: Math.random() > 0.52 ? "rect" : "circle"
+        };
+      };
 
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotate += p.vRotate;
-        p.alpha = Math.max(0.08, p.alpha - 0.0009);
-
-        if (p.y > canvas.clientHeight + 12) {
-          Object.assign(p, makeParticle(true));
+      const initParticles = () => {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i += 1) {
+          particles.push(makeParticle());
         }
+      };
 
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotate);
-        ctx.fillStyle = p.color;
+      const render = (ts) => {
+        if (!startTime) startTime = ts;
+        const elapsed = ts - startTime;
 
-        if (p.shape === "rect") {
-          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.72);
-        } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-
-      if (elapsed < 5000) {
-        rafId = window.requestAnimationFrame(render);
-      } else {
-        window.cancelAnimationFrame(rafId);
         ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-      }
-    };
 
-    setCanvasSize();
-    initParticles();
-    rafId = window.requestAnimationFrame(render);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotate += p.vRotate;
+          p.alpha = Math.max(0.08, p.alpha - 0.0009);
 
-    window.addEventListener("resize", () => {
-      setCanvasSize();
-      initParticles();
-    });
+          if (p.y > canvas.clientHeight + 12) {
+            Object.assign(p, makeParticle(true));
+          }
+
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotate);
+          ctx.fillStyle = p.color;
+
+          if (p.shape === "rect") {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.72);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          ctx.restore();
+        }
+
+        if (elapsed < 5000) {
+          rafId = window.requestAnimationFrame(render);
+        } else {
+          if (rafId) window.cancelAnimationFrame(rafId);
+          ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        }
+      };
+
+      const startParticles = () => {
+        setCanvasSize();
+        initParticles();
+        startTime = 0;
+        rafId = window.requestAnimationFrame(render);
+      };
+
+      startParticles();
+
+      window.addEventListener("resize", () => {
+        setCanvasSize();
+        initParticles();
+      });
+    })();
   </script>
 </body>
 </html>
