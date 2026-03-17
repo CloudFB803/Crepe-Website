@@ -414,6 +414,10 @@
       grid-template-columns: 0.94fr 1.06fr;
     }
 
+    .setup-screen[aria-labelledby="wagon-title"] .setup-media img {
+      object-position: center top;
+    }
+
     .setup-media {
       position: relative;
       min-height: 100%;
@@ -1496,6 +1500,11 @@
         padding: 24px 14px 16px;
       }
 
+      .hero-title .hero-line:first-child {
+        white-space: nowrap;
+        font-size: 0.82em;
+      }
+
       .hero-logo {
         width: 82px;
         height: 82px;
@@ -1513,6 +1522,10 @@
       .setup-screen {
         padding: 12px 0;
         min-height: auto;
+      }
+
+      .setup-screen.reverse .setup-media {
+        order: -1;
       }
 
       .setup-content {
