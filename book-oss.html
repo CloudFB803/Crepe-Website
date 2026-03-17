@@ -422,7 +422,7 @@
     }
 
     .setup-screen[aria-labelledby="wagon-title"] .setup-media img {
-      object-position: center top;
+      object-position: center 8%;
     }
 
     .setup-media {
@@ -576,6 +576,19 @@
       line-height: 0.96;
       letter-spacing: -0.04em;
       margin: 0;
+    }
+
+    .footer-brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-brand-logo {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 auto;
+      object-fit: contain;
     }
 
     .footer-col-title {
@@ -1726,8 +1739,7 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#muligheter" class="btn btn-secondary">Se muligheter</a>
-            <button class="btn btn-primary js-open-booking">Book</button>
+            <a href="#muligheter" class="btn btn-secondary">Se alternativer</a>
           </div>
 
           <div class="hero-note">Hero-video legges bak denne seksjonen.</div>
@@ -1838,8 +1850,7 @@
       <div class="container">
         <div class="closing-cta">
           <div>
-            <div class="eyebrow">Booking</div>
-            <h3>Hvilket oppsett passer best for deg?</h3>
+            <h3>Hva passer best for ditt event?</h3>
             <p>Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.</p>
           </div>
 
@@ -1852,7 +1863,10 @@
       <div class="container">
         <div class="footer-shell">
           <div>
-            <p class="footer-brand">Crepe de la Crepe</p>
+            <div class="footer-brand-wrap">
+              <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" class="footer-brand-logo" />
+              <p class="footer-brand">Crepe de la Crepe</p>
+            </div>
           </div>
 
           <div>
