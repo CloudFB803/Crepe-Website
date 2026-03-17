@@ -300,13 +300,13 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 10px 34px rgba(0, 0, 0, 0.24);
+      padding: 14px;
     }
 
-    .hero-logo span {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: var(--accent);
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .hero-title {
@@ -547,13 +547,16 @@
 
     .site-footer {
       padding: 0 0 28px;
-      background: #000;
+      background: var(--bg-2);
     }
 
     .footer-shell {
       border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(10,8,7,0.55);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(216,178,135,0.14), transparent 42%),
+        var(--panel);
       padding: clamp(24px, 4vw, 44px);
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
@@ -574,7 +577,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted-2);
     }
 
     .footer-links {
@@ -584,7 +587,7 @@
 
     .footer-links a,
     .footer-links span {
-      color: rgba(244,238,231,0.88);
+      color: var(--text);
       font-size: 1rem;
       line-height: 1.5;
     }
@@ -624,10 +627,11 @@
       z-index: 1000;
       display: none;
       background:
-        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.07), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.05), transparent 22%),
-        rgba(7,6,5,0.92);
+        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.18), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.22), transparent 30%),
+        var(--bg);
       backdrop-filter: blur(16px);
+      color: var(--text);
     }
 
     .booking-overlay.open {
@@ -672,8 +676,8 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(216, 178, 135, 0.14);
+      border: 1px solid var(--line);
       color: var(--accent);
       font-weight: 800;
       font-size: 0.9rem;
@@ -689,7 +693,7 @@
     .overlay-brand-copy span {
       display: block;
       margin-top: 2px;
-      color: var(--muted-2);
+      color: var(--muted);
       font-size: 0.82rem;
     }
 
@@ -703,8 +707,8 @@
       min-height: 46px;
       padding: 0 18px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.2);
       font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.1em;
@@ -718,14 +722,14 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.2);
       transition: background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
     }
 
     .overlay-close:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.3);
+      border-color: var(--line-2);
       transform: translateY(-1px);
     }
 
@@ -741,7 +745,7 @@
       gap: 14px;
       margin-bottom: 10px;
       font-size: 0.8rem;
-      color: var(--muted-2);
+      color: var(--muted);
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -751,7 +755,7 @@
       height: 8px;
       border-radius: 999px;
       overflow: hidden;
-      background: rgba(255,255,255,0.06);
+      background: rgba(97, 68, 37, 0.12);
     }
 
     .overlay-progress-bar {
@@ -765,11 +769,11 @@
     .overlay-frame {
       flex: 1 1 auto;
       min-height: 0;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
       border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        rgba(10,8,7,0.35);
+        linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08)),
+        var(--panel);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -883,8 +887,8 @@
       text-align: left;
       padding: 18px 18px;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
       transition:
         border-color 180ms var(--ease),
         background 180ms var(--ease),
@@ -893,8 +897,8 @@
 
     .choice-card:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.36);
+      border-color: var(--line-2);
     }
 
     .choice-card.selected {
@@ -940,8 +944,8 @@
     .country-select {
       width: 100%;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
       color: var(--text);
       outline: none;
       transition: border-color 180ms var(--ease), background 180ms var(--ease);
@@ -965,14 +969,14 @@
 
     .text-input::placeholder,
     .textarea-input::placeholder {
-      color: rgba(244,238,231,0.38);
+      color: var(--muted-2);
     }
 
     .text-input:focus,
     .textarea-input:focus,
     .country-select:focus {
       border-color: rgba(216,178,135,0.5);
-      background: rgba(255,255,255,0.045);
+      background: rgba(255,255,255,0.36);
     }
 
     .field-row {
@@ -1004,8 +1008,8 @@
       top: 50%;
       width: 10px;
       height: 10px;
-      border-right: 2px solid rgba(244,238,231,0.7);
-      border-bottom: 2px solid rgba(244,238,231,0.7);
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
       transform: translateY(-65%) rotate(45deg);
       pointer-events: none;
     }
@@ -1033,8 +1037,8 @@
       max-width: 760px;
       padding: 18px;
       border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
     }
 
     .date-mode {
@@ -1077,14 +1081,14 @@
       text-align: left;
       padding: 15px 16px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
       transition: border-color 180ms var(--ease), background 180ms var(--ease);
     }
 
     .date-summary-btn:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.36);
+      border-color: var(--line-2);
     }
 
     .date-summary-label {
@@ -1263,8 +1267,8 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
       flex: 0 0 auto;
     }
 
@@ -1355,8 +1359,8 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.24);
     }
 
     .calendar-title {
@@ -1390,8 +1394,8 @@
     .calendar-day {
       min-height: 54px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.2);
       color: var(--text);
       font-size: 0.92rem;
       font-weight: 700;
@@ -1437,7 +1441,7 @@
       flex-wrap: wrap;
       margin-top: 14px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--line);
     }
 
     .calendar-footer-text {
@@ -1694,7 +1698,7 @@
       <div class="container hero-shell">
         <div class="hero-card">
           <div class="hero-logo">
-            <span>CD</span>
+            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" />
           </div>
 
           <h1 class="hero-title">
