@@ -839,7 +839,7 @@
       align-self: start;
       width: 100%;
       max-width: 860px;
-      padding-top: 4px;
+      padding-top: 6px;
     }
 
     .step-kicker {
@@ -854,7 +854,7 @@
     }
 
     .step-title {
-      margin: 10px 0 0;
+      margin: 14px 0 0;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(2rem, 3.4vw, 3.8rem);
       line-height: 0.98;
@@ -864,7 +864,7 @@
     }
 
     .step-desc {
-      margin: 14px 0 0;
+      margin: 16px 0 0;
       max-width: 620px;
       font-size: 0.96rem;
       line-height: 1.68;
@@ -875,7 +875,8 @@
       min-height: 0;
       display: flex;
       align-items: stretch;
-      padding-top: 4px;
+      padding-top: 10px;
+      overflow-y: auto;
     }
 
     .step-middle-inner {
@@ -886,6 +887,7 @@
       flex-direction: column;
       justify-content: flex-start;
       gap: 16px;
+      padding-bottom: 10px;
     }
 
     .step-bottom {
@@ -894,11 +896,12 @@
       max-width: 860px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       margin-top: auto;
-      padding: 20px 0 6px;
+      padding: 18px 0 8px;
       border-top: 1px solid rgba(103, 71, 35, 0.16);
-      background: linear-gradient(180deg, rgba(248,240,228,0), rgba(248,240,228,0.62) 64%, rgba(248,240,228,0.82));
+      background: rgba(248, 240, 228, 0.72);
+      backdrop-filter: blur(2px);
     }
 
     .step-actions {
@@ -1026,8 +1029,19 @@
 
     .field-row {
       display: grid;
-      gap: 14px;
+      gap: 16px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .field-group.full {
+      grid-column: 1 / -1;
     }
 
     .field-row > * {
@@ -1041,7 +1055,7 @@
     .phone-row {
       display: grid;
       grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-      gap: 14px;
+      gap: 16px;
       align-items: stretch;
     }
 
@@ -1166,11 +1180,12 @@
     }
 
     .error-text {
-      min-height: 22px;
-      margin-top: 2px;
+      min-height: 20px;
+      margin-top: 0;
       color: var(--danger);
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       font-weight: 600;
+      line-height: 1.35;
     }
 
     .success-wrap {
@@ -1669,19 +1684,26 @@
 
       .step-middle {
         align-items: stretch;
-        padding-top: 2px;
+        padding-top: 8px;
       }
 
       .step-middle-inner {
         margin: 0 auto;
         justify-content: flex-start;
         gap: 14px;
+        padding-bottom: 8px;
       }
 
       .step-bottom {
         align-self: stretch;
         max-width: 100%;
-        padding: 16px 0 4px;
+        padding: 14px 0 4px;
+      }
+
+      .field-row,
+      .phone-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .text-input,
@@ -2075,6 +2097,10 @@
                 </div>
 
                 <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
                   <div class="error-text" data-error-for="setup"></div>
                 </div>
               </section>
@@ -2088,48 +2114,61 @@
                 <div class="step-middle">
                   <div class="step-middle-inner">
                     <div class="field-row">
-                      <input
-                        class="text-input"
-                        type="text"
-                        id="fullName"
-                        name="name"
-                        placeholder="Skriv inn fullt navn"
-                        autocomplete="name"
-                      />
+                      <div class="field-group">
+                        <input
+                          class="text-input"
+                          type="text"
+                          id="fullName"
+                          name="name"
+                          placeholder="Skriv inn fullt navn"
+                          autocomplete="name"
+                        />
+                        <div class="error-text" data-error-for="name"></div>
+                      </div>
 
-                      <input
-                        class="text-input"
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="navn@firma.no"
-                        autocomplete="email"
-                      />
+                      <div class="field-group">
+                        <input
+                          class="text-input"
+                          type="email"
+                          id="email"
+                          name="email"
+                          placeholder="navn@firma.no"
+                          autocomplete="email"
+                        />
+                        <div class="error-text" data-error-for="email"></div>
+                      </div>
 
-                      <div class="phone-row">
-                        <div class="country-wrap">
-                          <select class="country-select" id="phoneCountry" name="phoneCountry" autocomplete="tel-country-code">
-                            <option value="NO">🇳🇴 Norge</option>
-                            <option value="SE">🇸🇪 Sverige</option>
-                            <option value="DK">🇩🇰 Danmark</option>
-                            <option value="GB">🇬🇧 Storbritannia</option>
-                            <option value="DE">🇩🇪 Tyskland</option>
-                            <option value="US">🇺🇸 USA</option>
-                          </select>
+                      <div class="field-group full">
+                        <div class="phone-row">
+                          <div class="field-group">
+                            <div class="country-wrap">
+                              <select class="country-select" id="phoneCountry" name="phoneCountry" autocomplete="tel-country-code">
+                                <option value="NO">🇳🇴 Norge</option>
+                                <option value="SE">🇸🇪 Sverige</option>
+                                <option value="DK">🇩🇰 Danmark</option>
+                                <option value="GB">🇬🇧 Storbritannia</option>
+                                <option value="DE">🇩🇪 Tyskland</option>
+                                <option value="US">🇺🇸 USA</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="field-group">
+                            <div class="phone-input-wrap">
+                              <span class="phone-prefix" id="phonePrefix">+47</span>
+                              <input
+                                class="text-input"
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="12 34 56 78"
+                                autocomplete="tel-national"
+                                inputmode="numeric"
+                              />
+                            </div>
+                          </div>
                         </div>
-
-                        <div class="phone-input-wrap">
-                          <span class="phone-prefix" id="phonePrefix">+47</span>
-                          <input
-                            class="text-input"
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="12 34 56 78"
-                            autocomplete="tel-national"
-                            inputmode="numeric"
-                          />
-                        </div>
+                        <div class="error-text" data-error-for="phone"></div>
                       </div>
                     </div>
                   </div>
@@ -2140,9 +2179,6 @@
                     <button type="button" class="btn btn-primary js-next">Neste</button>
                     <button type="button" class="ghost-link js-back">Tilbake</button>
                   </div>
-                  <div class="error-text" data-error-for="name"></div>
-                  <div class="error-text" data-error-for="email"></div>
-                  <div class="error-text" data-error-for="phone"></div>
                 </div>
               </section>
 
@@ -2284,6 +2320,10 @@
                 </div>
 
                 <div class="step-bottom">
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-primary js-next">Neste</button>
+                    <button type="button" class="ghost-link js-back">Tilbake</button>
+                  </div>
                   <div class="error-text" data-error-for="eventType"></div>
                 </div>
               </section>
@@ -2770,6 +2810,11 @@
           step.classList.toggle("active", index === currentStep);
         });
 
+        document.querySelectorAll(".js-back").forEach((button) => {
+          button.style.visibility = currentStep === 0 ? "hidden" : "visible";
+          button.style.pointerEvents = currentStep === 0 ? "none" : "auto";
+        });
+
         if (currentStep <= totalInputSteps - 1) {
           const humanStep = currentStep + 1;
           const percent = Math.round((humanStep / totalInputSteps) * 100);
@@ -3201,6 +3246,23 @@
 
       function nextStep() {
         if (currentStep >= totalInputSteps) return;
+
+        if (currentStep === 0 && formState.setup) {
+          currentStep += 1;
+          updateSummary();
+          updateSteps();
+          setTimeout(() => focusStepInput(currentStep), 60);
+          return;
+        }
+
+        if (currentStep === 5 && formState.eventType) {
+          currentStep += 1;
+          updateSummary();
+          updateSteps();
+          setTimeout(() => focusStepInput(currentStep), 60);
+          return;
+        }
+
         if (!validateStep(currentStep)) return;
 
         currentStep += 1;
@@ -3416,6 +3478,7 @@
 
       document.getElementById("fullName").addEventListener("input", (e) => {
         formState.name = e.target.value.trim();
+        setError("name", "");
         updateSummary();
       });
 
@@ -3427,11 +3490,13 @@
       document.getElementById("guestCount").addEventListener("input", (e) => {
         e.target.value = e.target.value.replace(/[^\d]/g, "").slice(0, 6);
         formState.guests = e.target.value.trim();
+        setError("guests", "");
         updateSummary();
       });
 
       document.getElementById("email").addEventListener("input", (e) => {
         formState.email = e.target.value.trim();
+        setError("email", "");
         updateSummary();
       });
 
@@ -3445,6 +3510,7 @@
 
         phoneInput.value = formatted;
         formState.phoneLocal = formatted;
+        setError("phone", "");
         updateSummary();
       });
 
@@ -3455,11 +3521,13 @@
 
         e.target.value = formatted;
         formState.phoneLocal = formatted;
+        setError("phone", "");
         updateSummary();
       });
 
       document.getElementById("location").addEventListener("input", (e) => {
         formState.location = e.target.value.trim();
+        setError("location", "");
         updateSummary();
       });
 
