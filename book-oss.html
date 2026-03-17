@@ -18,16 +18,16 @@
 
   <style>
     :root {
-      --bg: #0b0908;
-      --bg-2: #13100d;
-      --panel: #15120f;
-      --panel-2: #191511;
-      --card: rgba(255, 255, 255, 0.035);
-      --line: rgba(255, 255, 255, 0.08);
-      --line-2: rgba(255, 255, 255, 0.14);
-      --text: #f4eee7;
-      --muted: rgba(244, 238, 231, 0.72);
-      --muted-2: rgba(244, 238, 231, 0.5);
+      --bg: #f2e7d8;
+      --bg-2: #ebddcb;
+      --panel: #f8f0e4;
+      --panel-2: #f3e8d8;
+      --card: rgba(97, 68, 37, 0.05);
+      --line: rgba(103, 71, 35, 0.16);
+      --line-2: rgba(103, 71, 35, 0.24);
+      --text: #2e2114;
+      --muted: rgba(46, 33, 20, 0.72);
+      --muted-2: rgba(46, 33, 20, 0.5);
       --accent: #d8b287;
       --accent-2: #ecd3b5;
       --danger: #ffb8b8;
@@ -161,14 +161,14 @@
 
     .reveal-nav {
       position: fixed;
-      top: 12px;
+      top: 0;
       left: 0;
       right: 0;
       z-index: 50;
       pointer-events: none;
       opacity: 0;
-      transform: translateY(-14px);
-      transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+      transform: translateY(-12px);
+      transition: opacity 320ms var(--ease), transform 320ms var(--ease);
     }
 
     .reveal-nav.visible {
@@ -346,7 +346,7 @@
 
     .options-banner-wrap {
       padding: 24px 0 8px;
-      background: #000;
+      background: var(--bg-2);
     }
 
     .options-banner {
@@ -384,19 +384,16 @@
       align-items: center;
       padding: 20px 0;
       position: relative;
-      opacity: 0.42;
-      transform: translateY(34px) scale(0.985);
-      transition:
-        opacity 700ms var(--ease),
-        transform 700ms var(--ease),
-        filter 700ms var(--ease);
-      filter: saturate(0.92);
+      opacity: 1;
+      transform: none;
+      transition: none;
+      filter: none;
     }
 
     .setup-screen.is-visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: saturate(1);
+      transform: none;
+      filter: none;
     }
 
     .setup-shell {
@@ -420,7 +417,7 @@
     .setup-media {
       position: relative;
       min-height: 100%;
-      background: #080706;
+      background: #d9c5ad;
       overflow: hidden;
     }
 
@@ -446,28 +443,43 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding: clamp(28px, 5vw, 72px);
+      text-align: center;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(216,178,135,0.06), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(216,178,135,0.18), transparent 42%),
         var(--panel);
     }
 
     .setup-name {
       margin: 18px 0 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.7rem, 2.6vw, 2.6rem);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.75rem);
+      font-weight: 800;
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: 100%;
     }
 
     .setup-name span {
       display: block;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .setup-name span:first-child {
+      white-space: nowrap;
+    }
+
+    .setup-name span + span {
+      margin-top: 10px;
     }
 
     .setup-copy {
       margin: 18px 0 0;
-      max-width: 520px;
+      max-width: 640px;
       font-size: clamp(1rem, 1.2vw, 1.08rem);
       line-height: 1.78;
       color: var(--muted);
@@ -476,6 +488,7 @@
     .setup-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 14px;
       margin-top: 28px;
     }
@@ -489,7 +502,7 @@
       position: absolute;
       inset: auto 0 0 0;
       height: 140px;
-      background: linear-gradient(180deg, rgba(11,9,8,0), rgba(11,9,8,0.68));
+      background: linear-gradient(180deg, rgba(242,231,216,0), rgba(228,209,184,0.72));
       z-index: 2;
     }
 
@@ -1710,7 +1723,7 @@
               
 
               <h2 class="setup-name" id="wagon-title">
-                <span>Crepe de la crepe</span>
+                <span>Crepe de la Crepe</span>
                 <span>Wagon</span>
               </h2>
 
@@ -1740,7 +1753,7 @@
   
 
               <h2 class="setup-name" id="stand-title">
-                <span>Crepe de la crepe</span>
+                <span>Crepe de la Crepe</span>
                 <span>Stand</span>
               </h2>
 
@@ -1775,7 +1788,7 @@
              
 
               <h2 class="setup-name" id="popup-title">
-                <span>Crepe de la crepe</span>
+                <span>Crepe de la Crepe</span>
                 <span>Pop-Up</span>
               </h2>
 
@@ -2508,7 +2521,7 @@
       }
 
       function syncRevealNav() {
-        const scrolled = window.scrollY > window.innerHeight * 0.55;
+        const scrolled = window.scrollY > 48;
         revealNav.classList.toggle("visible", scrolled);
         backToTop.classList.toggle("visible", window.scrollY > window.innerHeight * 0.8);
       }
