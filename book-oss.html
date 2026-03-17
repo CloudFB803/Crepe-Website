@@ -682,11 +682,15 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.9rem;
+      background: rgba(216, 178, 135, 0.14);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .overlay-brand-badge img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
     }
 
     .overlay-brand-copy strong {
@@ -1885,7 +1889,9 @@
       <div class="overlay-main">
         <div class="overlay-header">
           <div class="overlay-brand">
-            <div class="overlay-brand-badge">CD</div>
+            <div class="overlay-brand-badge">
+              <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" />
+            </div>
             <div class="overlay-brand-copy">
               <strong>Crepe de la Crepe</strong>
               <span>Bookingforespørsel</span>
