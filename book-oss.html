@@ -3616,11 +3616,16 @@
             throw new Error(errorMessage);
           }
 
-          currentStep = 8;
-          updateSteps();
-          updateSummary();
+          const submissionSnapshot = {
+            submittedAt: new Date().toISOString(),
+            payload,
+            summary: buildSummaryItems()
+          };
+
+          sessionStorage.setItem("bookingSubmission", JSON.stringify(submissionSnapshot));
           setError("submit", "");
-          setTimeout(() => doneBtn.focus({ preventScroll: true }), 60);
+          window.location.href = "/takk.html";
+          return;
         } catch (error) {
           setError("submit", error.message || "Noe gikk galt. Prøv igjen.");
         } finally {
