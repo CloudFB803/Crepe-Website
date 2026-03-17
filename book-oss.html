@@ -209,9 +209,13 @@
       place-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.84rem;
+      overflow: hidden;
+    }
+
+    .nav-brand-badge img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
 
     .nav-brand span {
@@ -307,6 +311,12 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       color: var(--accent);
+    }
+
+    .hero-logo img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
     }
 
     .hero-title {
@@ -547,13 +557,13 @@
 
     .site-footer {
       padding: 0 0 28px;
-      background: #000;
+      background: var(--bg-2);
     }
 
     .footer-shell {
       border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(10,8,7,0.55);
+      border: 1px solid var(--line);
+      background: var(--panel);
       padding: clamp(24px, 4vw, 44px);
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
@@ -584,7 +594,7 @@
 
     .footer-links a,
     .footer-links span {
-      color: rgba(244,238,231,0.88);
+      color: var(--text);
       font-size: 1rem;
       line-height: 1.5;
     }
@@ -624,9 +634,9 @@
       z-index: 1000;
       display: none;
       background:
-        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.07), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.05), transparent 22%),
-        rgba(7,6,5,0.92);
+        radial-gradient(circle at 10% 10%, rgba(216,178,135,0.14), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(255,255,255,0.18), transparent 22%),
+        rgba(242,231,216,0.95);
       backdrop-filter: blur(16px);
     }
 
@@ -765,11 +775,11 @@
     .overlay-frame {
       flex: 1 1 auto;
       min-height: 0;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
       border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        rgba(10,8,7,0.35);
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03)),
+        var(--panel);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -883,8 +893,8 @@
       text-align: left;
       padding: 18px 18px;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: var(--card);
       transition:
         border-color 180ms var(--ease),
         background 180ms var(--ease),
@@ -893,8 +903,8 @@
 
     .choice-card:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(216,178,135,0.12);
+      border-color: var(--line-2);
     }
 
     .choice-card.selected {
@@ -923,7 +933,7 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.06);
+      background: rgba(216,178,135,0.14);
       color: var(--accent);
       flex: 0 0 auto;
     }
@@ -940,8 +950,8 @@
     .country-select {
       width: 100%;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: var(--card);
       color: var(--text);
       outline: none;
       transition: border-color 180ms var(--ease), background 180ms var(--ease);
@@ -965,14 +975,14 @@
 
     .text-input::placeholder,
     .textarea-input::placeholder {
-      color: rgba(244,238,231,0.38);
+      color: var(--muted-2);
     }
 
     .text-input:focus,
     .textarea-input:focus,
     .country-select:focus {
       border-color: rgba(216,178,135,0.5);
-      background: rgba(255,255,255,0.045);
+      background: rgba(216,178,135,0.08);
     }
 
     .field-row {
@@ -1004,8 +1014,8 @@
       top: 50%;
       width: 10px;
       height: 10px;
-      border-right: 2px solid rgba(244,238,231,0.7);
-      border-bottom: 2px solid rgba(244,238,231,0.7);
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
       transform: translateY(-65%) rotate(45deg);
       pointer-events: none;
     }
@@ -1033,8 +1043,8 @@
       max-width: 760px;
       padding: 18px;
       border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: var(--card);
     }
 
     .date-mode {
@@ -1043,7 +1053,7 @@
       gap: 6px;
       padding: 6px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(216,178,135,0.12);
     }
 
     .mode-btn {
@@ -1077,14 +1087,14 @@
       text-align: left;
       padding: 15px 16px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: var(--card);
       transition: border-color 180ms var(--ease), background 180ms var(--ease);
     }
 
     .date-summary-btn:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(216,178,135,0.12);
+      border-color: var(--line-2);
     }
 
     .date-summary-label {
@@ -1121,11 +1131,11 @@
     .success-page {
       height: 100%;
       border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
       background:
         radial-gradient(circle at 12% 18%, rgba(216,178,135,0.08), transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        rgba(12,10,8,0.5);
+        linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.02)),
+        var(--panel);
       padding: clamp(24px, 4vw, 54px);
       display: grid;
       grid-template-rows: auto 1fr auto;
@@ -1675,7 +1685,7 @@
   <div class="reveal-nav" id="revealNav">
     <div class="reveal-nav-inner">
       <div class="nav-brand">
-        <div class="nav-brand-badge">CD</div>
+        <div class="nav-brand-badge"><img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" /></div>
         <span>Crepe de la Crepe</span>
       </div>
 
@@ -1694,7 +1704,7 @@
       <div class="container hero-shell">
         <div class="hero-card">
           <div class="hero-logo">
-            <span>CD</span>
+            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" />
           </div>
 
           <h1 class="hero-title">
