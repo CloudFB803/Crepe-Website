@@ -825,7 +825,7 @@
     .step-card.active {
       display: grid;
       grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 20px;
+      gap: 26px;
       opacity: 1;
       transform: translateY(0);
       height: 100%;
@@ -839,6 +839,7 @@
       align-self: start;
       width: 100%;
       max-width: 860px;
+      padding-top: 4px;
     }
 
     .step-kicker {
@@ -863,7 +864,7 @@
     }
 
     .step-desc {
-      margin: 10px 0 0;
+      margin: 14px 0 0;
       max-width: 620px;
       font-size: 0.96rem;
       line-height: 1.68;
@@ -874,6 +875,7 @@
       min-height: 0;
       display: flex;
       align-items: stretch;
+      padding-top: 4px;
     }
 
     .step-middle-inner {
@@ -882,19 +884,21 @@
       min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 14px;
+      justify-content: flex-start;
+      gap: 16px;
     }
 
     .step-bottom {
-      align-self: stretch;
+      align-self: start;
+      width: 100%;
+      max-width: 860px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       margin-top: auto;
-      padding: 18px 0 4px;
+      padding: 20px 0 6px;
       border-top: 1px solid rgba(103, 71, 35, 0.16);
-      background: linear-gradient(180deg, rgba(248,240,228,0), rgba(248,240,228,0.74));
+      background: linear-gradient(180deg, rgba(248,240,228,0), rgba(248,240,228,0.62) 64%, rgba(248,240,228,0.82));
     }
 
     .step-actions {
@@ -918,8 +922,9 @@
 
     .choice-grid {
       display: grid;
-      gap: 12px;
-      max-width: 760px;
+      gap: 14px;
+      width: 100%;
+      max-width: 860px;
     }
 
     .choice-card {
@@ -1640,7 +1645,7 @@
       }
 
       .step-card.active {
-        gap: 14px;
+        gap: 20px;
         grid-template-rows: auto minmax(0, 1fr) auto;
       }
 
@@ -1648,6 +1653,7 @@
         align-self: center;
         width: 100%;
         text-align: center;
+        padding-top: 0;
       }
 
       .step-title {
@@ -1663,16 +1669,19 @@
 
       .step-middle {
         align-items: stretch;
+        padding-top: 2px;
       }
 
       .step-middle-inner {
         margin: 0 auto;
         justify-content: flex-start;
+        gap: 14px;
       }
 
       .step-bottom {
         align-self: stretch;
-        padding: 14px 0 2px;
+        max-width: 100%;
+        padding: 16px 0 4px;
       }
 
       .text-input,
