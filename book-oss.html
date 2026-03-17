@@ -957,6 +957,7 @@
 
     .choice-grid {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: 14px;
       width: 100%;
       max-width: 980px;
@@ -1018,6 +1019,30 @@
       color: var(--muted);
       line-height: 1.56;
       font-size: 0.96rem;
+    }
+
+    .step-card.multi-choice-step .step-middle-inner,
+    .step-card.multi-choice-step .step-bottom,
+    .step-card.multi-choice-step .choice-grid {
+      max-width: 1040px;
+    }
+
+    .step-card.multi-choice-step .choice-grid {
+      gap: 16px;
+    }
+
+    .step-card.multi-choice-step .choice-card {
+      min-height: 138px;
+      padding: 22px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .step-card.multi-choice-step .step-actions {
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+      max-width: 1040px;
     }
 
     .text-input,
@@ -1786,16 +1811,17 @@
         border-radius: 18px;
       }
 
-      #setupChoices .choice-card {
+      .step-card.multi-choice-step .choice-card {
         padding: 16px;
+        min-height: 0;
       }
 
-      #setupChoices .choice-top {
+      .step-card.multi-choice-step .choice-top {
         align-items: flex-start;
         gap: 10px;
       }
 
-      #setupChoices .choice-title {
+      .step-card.multi-choice-step .choice-title {
         font-size: 0.88rem;
         line-height: 1.3;
         letter-spacing: 0.02em;
@@ -1803,14 +1829,14 @@
         max-width: calc(100% - 42px);
       }
 
-      #setupChoices .choice-desc {
+      .step-card.multi-choice-step .choice-desc {
         margin-top: 8px;
         font-size: 0.92rem;
         line-height: 1.5;
         text-wrap: pretty;
       }
 
-      #setupChoices .choice-arrow {
+      .step-card.multi-choice-step .choice-arrow {
         width: 30px;
         height: 30px;
         margin-top: 1px;
@@ -1834,6 +1860,10 @@
       .step-actions {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
+      }
+
+      .step-card.multi-choice-step .step-actions {
+        grid-template-columns: 1fr 1fr;
       }
 
       .step-actions .btn,
@@ -2115,7 +2145,7 @@
             <form id="bookingForm" novalidate style="height:100%;">
               <input type="text" name="website" id="website" class="hidden-honeypot" tabindex="-1" autocomplete="off" />
 
-              <section class="step-card active" data-step="0">
+              <section class="step-card multi-choice-step active" data-step="0">
                 <div class="step-top">
                   <div class="step-kicker">Steg 01</div>
                   <h2 class="step-title">Hva ønsker du å booke?</h2>
@@ -2339,7 +2369,7 @@
                 </div>
               </section>
 
-              <section class="step-card" data-step="5">
+              <section class="step-card multi-choice-step" data-step="5">
                 <div class="step-top">
                   <div class="step-kicker">Steg 06</div>
                   <h2 class="step-title">Hva slags arrangement er det?</h2>
