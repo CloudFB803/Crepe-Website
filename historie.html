@@ -171,6 +171,28 @@
     .nav-links a { opacity: .82; transition: opacity 180ms var(--ease); }
     .nav-links a:hover { opacity: 1; }
 
+    .mobile-quick-links {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .mobile-quick-links a {
+      font-size: .70rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(66, 39, 23, 0.22);
+      border-radius: 999px;
+      min-height: 36px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.5);
+    }
+
     main { overflow: clip; }
     section { padding: 88px 0; }
 
@@ -448,13 +470,15 @@
       section { padding: 70px 0; }
       .reveal-nav-inner { min-height: 56px; padding: 8px 12px; }
       .nav-brand span { display: none; }
+      .nav-brand-badge { width: 48px; height: 48px; }
+      .mobile-quick-links { display: flex; }
+      .btn.nav-cta { display: none; }
       .stack-media.double { grid-template-columns: 1fr; }
       .photo-card-1 img,
       .photo-card-2 img { transform: rotate(0deg); }
       .section-question { padding: 46px 0; }
       .footer-shell { padding: 24px; border-radius: 24px; }
       .footer-grid { grid-template-columns: 1fr; }
-      .footer-actions-top { grid-template-columns: 1fr; }
       .footer-mini { flex-direction: column; }
     }
   </style>
@@ -472,7 +496,12 @@
         <a href="#festivaler">Festivaler</a>
         <a href="./index.html">Tilbake til forsiden</a>
       </nav>
-      <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
+      <div class="mobile-quick-links" aria-label="Hurtigvalg">
+        <a href="./index.html">Forside</a>
+        <a href="./index.html#menu">Meny</a>
+        <a href="./book-oss.html">Book oss</a>
+      </div>
+      <a class="btn btn-primary nav-cta" href="./book-oss.html">Book oss</a>
     </div>
   </div>
 
@@ -499,14 +528,14 @@
 
     <section class="fade-in section-vinterland">
       <div class="container story-grid">
-        <div class="stack-media media-left stagger-media">
-          <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
-          <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
-        </div>
         <div class="story-copy stagger-text">
           <div class="eyebrow">De første sesongene</div>
           <h2>Der folk flest møtte oss</h2>
           <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
+        </div>
+        <div class="stack-media media-left stagger-media">
+          <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
+          <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
         </div>
       </div>
     </section>
@@ -624,13 +653,6 @@
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
 
-            <div class="footer-actions">
-              <div class="footer-actions-top">
-                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-                <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-              </div>
-              <a class="btn btn-secondary" href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
-            </div>
           </div>
 
           <div class="footer-block">
@@ -642,9 +664,9 @@
 
             <h4>Booking</h4>
             <div class="footer-list">
-              <div>Festivaler</div>
-              <div>Firmaarrangementer</div>
-              <div>Private arrangementer</div>
+              <a href="./book-oss.html#top">Festivaler</a>
+              <a href="./book-oss.html#top">Firmaarrangementer</a>
+              <a href="./book-oss.html#top">Private arrangementer</a>
             </div>
           </div>
         </div>

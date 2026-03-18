@@ -942,6 +942,10 @@
       gap: 16px;
     }
 
+    .testimonial-mobile-controls {
+      display: none;
+    }
+
     .testimonial-card {
       background: rgba(255, 250, 245, 0.72);
       border: 1px solid rgba(66, 39, 23, 0.1);
@@ -1594,7 +1598,36 @@
         min-height: 0;
       }
       .testimonial-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        gap: 0;
+        overflow: hidden;
+        scroll-behavior: smooth;
+        touch-action: pan-y;
+      }
+
+      .testimonial-card {
+        flex: 0 0 100%;
+      }
+
+      .testimonial-mobile-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .testimonial-nav {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(66, 39, 23, 0.22);
+        background: rgba(255, 250, 245, 0.92);
+        color: #4a352b;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .stats-bar {
@@ -1735,6 +1768,11 @@
               <blockquote>"Dere har den beste crêpen jeg har smakt. Og barna elsker den også! Besøker dere hvert år i Jul i Vinterland i Oslo, men er så glad for at dere har fått et permanent sted på Matværste i Fredrikstad nå, og med nye gode smaker! Veldig gjennomført design også. 10/10 Vi kommer definitivt tilbake!"</blockquote>
               <div class="testimonial-author">— Pia Aya</div>
             </article>
+          </div>
+
+          <div class="testimonial-mobile-controls" aria-label="Naviger kundeomtaler">
+            <button class="testimonial-nav" id="testimonialPrev" type="button" aria-label="Forrige anmeldelse">‹</button>
+            <button class="testimonial-nav" id="testimonialNext" type="button" aria-label="Neste anmeldelse">›</button>
           </div>
 
           <div class="stats-bar" aria-label="Nøkkeltall">
@@ -2044,22 +2082,6 @@
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
 
-            <div class="footer-actions">
-              <div class="footer-actions-top">
-                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-                <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-              </div>
-              <div class="footer-actions-bottom">
-                <a
-                  class="btn btn-secondary"
-                  href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Åpne i kart
-                </a>
-              </div>
-            </div>
           </div>
 
           <div class="footer-block">
@@ -2071,9 +2093,9 @@
 
             <h4>Booking</h4>
             <div class="footer-list">
-              <div>Festivaler</div>
-              <div>Firmaarrangementer</div>
-              <div>Private arrangementer</div>
+              <a href="./book-oss.html#top">Festivaler</a>
+              <a href="./book-oss.html#top">Firmaarrangementer</a>
+              <a href="./book-oss.html#top">Private arrangementer</a>
             </div>
           </div>
         </div>
@@ -2101,6 +2123,11 @@
 
     const navWrap = document.getElementById('navWrap');
     const backToTop = document.getElementById('backToTop');
+    const testimonialGrid = document.querySelector('.testimonial-grid');
+    const testimonialCards = Array.from(document.querySelectorAll('.testimonial-card'));
+    const testimonialPrev = document.getElementById('testimonialPrev');
+    const testimonialNext = document.getElementById('testimonialNext');
+    const testimonialMobileMedia = window.matchMedia('(max-width: 640px)');
 
     function updateNavState() {
       if (window.scrollY > 24) {
@@ -2118,6 +2145,87 @@
 
     updateNavState();
     window.addEventListener('scroll', updateNavState);
+
+    let testimonialIndex = 0;
+    let testimonialAutoScrollId = null;
+    let testimonialTouchStartX = 0;
+    let testimonialTouchCurrentX = 0;
+
+    function goToTestimonial(index) {
+      if (!testimonialGrid || !testimonialCards.length) return;
+      testimonialIndex = (index + testimonialCards.length) % testimonialCards.length;
+      testimonialGrid.scrollTo({
+        left: testimonialGrid.clientWidth * testimonialIndex,
+        behavior: 'smooth'
+      });
+    }
+
+    function resetTestimonialAutoScroll() {
+      if (testimonialAutoScrollId) {
+        window.clearInterval(testimonialAutoScrollId);
+        testimonialAutoScrollId = null;
+      }
+
+      if (!testimonialMobileMedia.matches || testimonialCards.length < 2) return;
+      testimonialAutoScrollId = window.setInterval(() => {
+        goToTestimonial(testimonialIndex + 1);
+      }, 8000);
+    }
+
+    function onTestimonialScroll() {
+      if (!testimonialGrid || !testimonialGrid.clientWidth) return;
+      testimonialIndex = Math.round(testimonialGrid.scrollLeft / testimonialGrid.clientWidth);
+    }
+
+    if (testimonialGrid && testimonialCards.length) {
+      testimonialPrev?.addEventListener('click', () => {
+        goToTestimonial(testimonialIndex - 1);
+        resetTestimonialAutoScroll();
+      });
+
+      testimonialNext?.addEventListener('click', () => {
+        goToTestimonial(testimonialIndex + 1);
+        resetTestimonialAutoScroll();
+      });
+
+      testimonialGrid.addEventListener('scroll', onTestimonialScroll, { passive: true });
+
+      testimonialGrid.addEventListener('touchstart', (event) => {
+        if (!testimonialMobileMedia.matches || event.touches.length !== 1) return;
+        testimonialTouchStartX = event.touches[0].clientX;
+        testimonialTouchCurrentX = testimonialTouchStartX;
+      }, { passive: true });
+
+      testimonialGrid.addEventListener('touchmove', (event) => {
+        if (!testimonialMobileMedia.matches || event.touches.length !== 1) return;
+        testimonialTouchCurrentX = event.touches[0].clientX;
+      }, { passive: true });
+
+      testimonialGrid.addEventListener('touchend', () => {
+        if (!testimonialMobileMedia.matches) return;
+        const deltaX = testimonialTouchCurrentX - testimonialTouchStartX;
+        if (Math.abs(deltaX) > 40) {
+          if (deltaX < 0) {
+            goToTestimonial(testimonialIndex + 1);
+          } else {
+            goToTestimonial(testimonialIndex - 1);
+          }
+        }
+        resetTestimonialAutoScroll();
+      });
+
+      testimonialMobileMedia.addEventListener('change', () => {
+        testimonialIndex = 0;
+        if (testimonialMobileMedia.matches) {
+          goToTestimonial(0);
+        } else {
+          testimonialGrid.scrollTo({ left: 0, behavior: 'auto' });
+        }
+        resetTestimonialAutoScroll();
+      });
+
+      resetTestimonialAutoScroll();
+    }
 
     backToTop.addEventListener('click', () => {
       window.scrollTo({
