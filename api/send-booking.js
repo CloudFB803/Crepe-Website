@@ -198,8 +198,51 @@ function looksLikeSpamMessage(message = "") {
   return false;
 }
 
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const rateLimitStore = new Map();
+
+function isRateLimited(ip = "") {
+  const now = Date.now();
+
+  for (const [storedIp, entry] of rateLimitStore.entries()) {
+    if (!entry || now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) {
+      rateLimitStore.delete(storedIp);
+    }
+  }
+
+  const key = ip || "unknown";
+  const current = rateLimitStore.get(key);
+
+  if (!current) {
+    rateLimitStore.set(key, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (now - current.windowStart >= RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(key, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (current.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true;
+  }
+
+  current.count += 1;
+  rateLimitStore.set(key, current);
+  return false;
+}
+
 export default {
   async fetch(request) {
+    const ip = request.headers.get("CF-Connecting-IP") || "";
+    if (isRateLimited(ip)) {
+      return jsonResponse({
+        ok: false,
+        error: "For mange forespørsler. Prøv igjen senere."
+      }, 429);
+    }
+
     if (request.method !== "POST") {
       return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
     }
@@ -347,7 +390,7 @@ export default {
       if (!resendApiKey || !bookingToEmail || !bookingFromEmail) {
         return jsonResponse({
           ok: false,
-          error: "Manglende environment variables på serveren."
+          error: "Noe gikk galt. Prøv igjen senere."
         }, 500);
       }
 
@@ -445,7 +488,7 @@ export default {
         console.error("Resend error:", resendData);
         return jsonResponse({
           ok: false,
-          error: "Kunne ikke sende bookingforespørselen."
+          error: "Noe gikk galt. Prøv igjen senere."
         }, 500);
       }
 
@@ -454,7 +497,7 @@ export default {
       console.error("Booking API error:", error);
       return jsonResponse({
         ok: false,
-        error: "Noe gikk galt på serveren."
+        error: "Noe gikk galt. Prøv igjen senere."
       }, 500);
     }
   }
