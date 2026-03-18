@@ -726,22 +726,28 @@
 
     .info-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 18px;
       align-items: stretch;
     }
 
     .hours-card {
       display: grid;
-      gap: 18px;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    #lokasjon .section-head h2 {
+      font-size: clamp(31px, 3.4vw, 48px);
+      line-height: 0.98;
     }
 
     .hours-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px 20px;
-      padding: 18px 20px;
-      border-radius: 22px;
+      gap: 10px 16px;
+      padding: 15px 16px;
+      border-radius: 20px;
       background: rgba(255,255,255,0.36);
       border: 1px solid var(--line);
     }
@@ -750,7 +756,7 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      padding: 14px 0;
+      padding: 11px 0;
       border-bottom: 1px solid var(--line);
       color: var(--muted);
     }
@@ -762,19 +768,19 @@
     .contact-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
     }
 
     .contact-chip {
       display: flex;
       gap: 12px;
       align-items: center;
-      padding: 14px 16px;
-      border-radius: 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
       background: rgba(255,255,255,0.40);
       border: 1px solid var(--line);
       color: #5f493d;
-      min-height: 58px;
+      min-height: 52px;
       transition: 0.2s ease;
     }
 
@@ -811,7 +817,7 @@
     .map-box iframe {
       width: 100%;
       height: 100%;
-      min-height: 420px;
+      min-height: 390px;
       border: 0;
       filter: saturate(0.92) contrast(0.96) brightness(0.98);
     }
@@ -1316,6 +1322,10 @@
         grid-template-columns: 1fr;
       }
 
+      .map-box iframe {
+        min-height: 350px;
+      }
+
       .hero-content {
         padding: 136px 24px 180px;
       }
@@ -1400,6 +1410,14 @@
       .footer-shell,
       .card {
         padding: 22px;
+      }
+
+      .hours-card {
+        padding: 20px;
+      }
+
+      .map-box iframe {
+        min-height: 310px;
       }
 
       .script-title {
