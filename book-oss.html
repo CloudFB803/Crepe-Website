@@ -3644,7 +3644,7 @@
             }
 
             const emailValue = document.getElementById("email").value.trim();
-            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+            const emailOk = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(emailValue);
             if (!emailOk) {
               setError("email", "Skriv inn en gyldig e-post.");
               return false;
