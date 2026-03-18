@@ -224,7 +224,23 @@
     .story-copy p,
     .cinema-text p,
     .center-shell p,
-    .community p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    .community p { margin: 0; color: var(--muted); font-size: 1.08rem; }
+
+    .stagger-text,
+    .stagger-media {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible .stagger-text,
+    .fade-in.visible .stagger-media {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in.visible .stagger-media { transition-delay: 150ms; }
+    .fade-in.visible .stagger-media.delay-2 { transition-delay: 260ms; }
 
     .story-media img,
     .stack-media img {
@@ -256,44 +272,86 @@
     }
 
     .cinema-text p { color: rgba(255, 247, 239, 0.84); }
-    .cinema-gallery { margin-top: 24px; }
-    .cinema-gallery img { min-height: 240px; }
+    .cinema-gallery { margin-top: 24px; align-items: start; }
+
+    .photo-card {
+      margin: 0;
+      transition: transform 0.35s var(--ease);
+      width: 100%;
+    }
+
+    .photo-card img {
+      min-height: 240px;
+      border: 8px solid rgba(255, 255, 255, 0.94);
+      box-shadow: 0 18px 36px rgba(10, 7, 5, 0.34);
+      border-radius: 6px;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .photo-card-1 img { transform: rotate(-2.2deg); }
+    .photo-card-2 img { transform: rotate(1.8deg); }
+
+    .photo-card:hover img { transform: rotate(0deg); }
+
+    .photo-note {
+      margin-top: 12px;
+      color: #8b573d;
+      font-family: "Parisienne", cursive;
+      font-size: clamp(1.15rem, 2vw, 1.28rem);
+      line-height: 1.1;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
 
     .question-section { text-align: center; }
     .question-section blockquote {
       margin: 0 auto 20px;
       max-width: 900px;
-      font-family: "Cormorant Garamond", serif;
+      font-family: "Parisienne", cursive;
       font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: #3b2318;
+      letter-spacing: 0.01em;
+      color: #8b573d;
     }
 
-    .festivals { text-align: center; }
+    .festivals { text-align: center; color: #fff2e7; }
     .festival-line {
       margin: 10px auto 16px;
       max-width: 980px;
       font-size: clamp(1.12rem, 2.2vw, 1.7rem);
       font-weight: 700;
-      color: #4a3024;
+      color: #fff2e7;
       padding: 20px;
       border-radius: 20px;
-      border: 1px solid rgba(66, 39, 23, 0.10);
-      background: rgba(255, 250, 245, 0.72);
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 247, 239, 0.18);
+      background: rgba(255, 247, 239, 0.08);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
     }
 
+    .festivals p { color: rgba(255, 242, 231, 0.86); font-size: 1.08rem; }
+
     .community .warm-card {
-      max-width: 900px;
-      margin: 0 auto;
       padding: clamp(30px, 4.4vw, 46px);
       border-radius: 26px;
       background: linear-gradient(140deg, rgba(255,250,245,0.92), rgba(248,230,214,0.88));
       border: 1px solid rgba(66, 39, 23, 0.12);
       box-shadow: var(--shadow-soft);
-      text-align: center;
+      text-align: left;
     }
+
+    .community .story-media img {
+      min-height: 360px;
+      max-height: 520px;
+      object-position: center 28%;
+    }
+
+    .section-starten { background: var(--bg-1); padding: 94px 0 88px; }
+    .section-vinterland { background: var(--bg-2); padding: 82px 0 90px; }
+    .section-frankrike { padding: 124px 0; }
+    .section-question { background: var(--white); padding: 54px 0; }
+    .section-savoury { background: var(--bg-1); padding: 86px 0 96px; }
+    .section-festivals { background: #2f1d14; padding: 92px 0; }
+    .section-community { background: var(--bg-2); padding: 94px 0; }
+    .section-ending { background: #2f1d14; }
 
     .ending {
       text-align: center;
@@ -303,8 +361,18 @@
         linear-gradient(120deg, #2d1b15 0%, #20120f 100%);
     }
 
-    .ending h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 8px; }
-    .ending .tag { color: rgba(255,247,239,.76); font-weight: 600; letter-spacing: .06em; }
+    .ending h2 {
+      font-family: "Parisienne", cursive;
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+    .ending .tag {
+      color: rgba(255,247,239,.82);
+      font-family: "Parisienne", cursive;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      letter-spacing: .02em;
+    }
     .ending-actions { margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     .footer {
@@ -381,6 +449,9 @@
       .reveal-nav-inner { min-height: 56px; padding: 8px 12px; }
       .nav-brand span { display: none; }
       .stack-media.double { grid-template-columns: 1fr; }
+      .photo-card-1 img,
+      .photo-card-2 img { transform: rotate(0deg); }
+      .section-question { padding: 46px 0; }
       .footer-shell { padding: 24px; border-radius: 24px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-actions-top { grid-template-columns: 1fr; }
@@ -413,26 +484,26 @@
       </div>
     </section>
 
-    <section id="starten" class="fade-in">
+    <section id="starten" class="fade-in section-starten">
       <div class="container story-grid">
-        <div class="story-copy">
+        <div class="story-copy stagger-text">
           <div class="eyebrow">2021</div>
           <h2>Det startet med en tanke</h2>
           <p>Det startet med en enkel tanke: hvor stort kan egentlig crêpes bli? Men egentlig startet det enda tidligere — med to personer som møttes gjennom en vanlig kontorjobb og etter hvert fant ut at de ønsket å skape noe spesielt sammen. Noe som folk kunne samles rundt.</p>
         </div>
-        <div class="story-media">
+        <div class="story-media stagger-media">
           <img src="team.jpg" alt="Teamet bak Crepe de la Crepe" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in section-vinterland">
       <div class="container story-grid">
-        <div class="stack-media media-left">
+        <div class="stack-media media-left stagger-media">
           <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
           <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
         </div>
-        <div class="story-copy">
+        <div class="story-copy stagger-text">
           <div class="eyebrow">De første sesongene</div>
           <h2>Der folk flest møtte oss</h2>
           <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
@@ -440,66 +511,75 @@
       </div>
     </section>
 
-    <section id="frankrike" class="cinematic fade-in">
+    <section id="frankrike" class="cinematic fade-in section-frankrike">
       <div class="container">
         <div class="cinema-shell">
-          <div class="cinema-text">
+          <div class="cinema-text stagger-text">
             <div class="eyebrow">Frankrike — to år på rad</div>
             <h2>Vi dro dit for å finne svaret</h2>
             <p>Vi gikk fra små til store crêperier, smakte oss gjennom menyene og hentet inspirasjon fra steder hvor crêpes er en naturlig del av hverdagen. En ting la vi spesielt merke til: crêpes var overalt. Fra små boder til store crêperier — nesten hvert hjørne hadde et sted som lagde ferske crêpes, og folk spiste det til alle tider på dagen.</p>
           </div>
 
-          <div class="stack-media double cinema-gallery">
-            <img src="frankrike2.jpg" alt="Crepe-inspirasjon fra Frankrike" loading="lazy" />
-            <img src="frankrike3.jpg" alt="Crêperier i Frankrike" loading="lazy" />
+          <div class="stack-media double cinema-gallery stagger-media">
+            <figure class="photo-card photo-card-1 stagger-media">
+              <img src="frankrike2.jpg" alt="Crepe-inspirasjon fra Frankrike" loading="lazy" />
+              <figcaption class="photo-note">Paris, 2022</figcaption>
+            </figure>
+            <figure class="photo-card photo-card-2 stagger-media delay-2">
+              <img src="frankrike3.jpg" alt="Crêperier i Frankrike" loading="lazy" />
+              <figcaption class="photo-note">På jakt etter den perfekte crêpen</figcaption>
+            </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="question-section fade-in">
-      <div class="container center-shell">
+    <section class="question-section fade-in section-question">
+      <div class="container center-shell stagger-text">
         <div class="eyebrow">Spørsmålet</div>
         <blockquote>"Hvorfor er ikke crêpes like utbredt i Norge?"</blockquote>
         <p>Det ga oss en tydelig indikasjon: dette er noe folk virkelig elsker. Det er akkurat det vi ønsker å gjøre noe med.</p>
       </div>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in section-savoury">
       <div class="container story-grid">
-        <div class="story-copy">
+        <div class="story-copy stagger-text">
           <div class="eyebrow">Oktober 2025</div>
           <h2>Vi lanserte vår første salte meny</h2>
           <p>Inspirert av det vi opplevde lanserte vi i oktober 2025 vår første salte meny — noe mange hadde etterspurt lenge. Samtidig jobber vi mot et større mål: å gjøre crêpe til en egen kategori, på samme måte som pizza, burger eller pasta.</p>
         </div>
-        <div class="story-media">
+        <div class="story-media stagger-media">
           <img src="frankrike4.jpg" alt="Salte crêpes inspirert av Frankrike" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section id="festivaler" class="festivals fade-in">
-      <div class="container center-shell">
+    <section id="festivaler" class="festivals fade-in section-festivals">
+      <div class="container center-shell stagger-text">
         <div class="eyebrow">Noen av våre største stopp</div>
         <div class="festival-line">Jul i Vinterland · Gladmat · Slottsfjell · Stavernfestivalen · Idyll</div>
         <p>100+ arrangementer. 300 000+ serverte crêpes. Siden 2021.</p>
       </div>
     </section>
 
-    <section class="community fade-in">
-      <div class="container">
-        <div class="warm-card">
+    <section class="community fade-in section-community">
+      <div class="container story-grid">
+        <div class="warm-card stagger-text">
           <div class="eyebrow">Menneskene rundt oss</div>
           <h2>Dette er mer enn en matbod</h2>
           <p>Vi ønsker å bygge en kultur rundt dette fantastiske fenomenet. Mange av menneskene som har fulgt oss har allerede blitt en del av reisen. Flere har vært med på å utvikle menyen vår, noen har senere blitt en del av teamet, og andre har til og med blitt ansikter utad på våre sosiale medier.</p>
         </div>
+        <div class="story-media stagger-media">
+          <img src="team.jpg" alt="Teamet og fellesskapet rundt Crepe de la Crepe" loading="lazy" />
+        </div>
       </div>
     </section>
 
-    <section class="ending fade-in">
+    <section class="ending fade-in section-ending">
       <div class="container">
-        <h2>Dette er bare starten.</h2>
-        <div class="tag">#loveatfirstbite</div>
+        <h2 class="stagger-text">Dette er bare starten.</h2>
+        <div class="tag stagger-text">#loveatfirstbite</div>
         <div class="ending-actions">
           <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
           <a class="btn btn-secondary" href="./index.html">Tilbake til forsiden</a>
