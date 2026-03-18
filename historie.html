@@ -123,8 +123,8 @@
     .reveal-nav-inner {
       width: min(calc(100% - 28px), 1180px);
       margin: 0 auto;
-      min-height: 62px;
-      padding: 10px 16px;
+      min-height: 78px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -138,15 +138,15 @@
 
     .nav-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .nav-brand-badge {
-      width: 36px;
-      height: 36px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       display: grid;
       place-items: center;
       background: rgba(255,255,255,0.4);
       border: 1px solid var(--line);
       overflow: hidden;
-      padding: 6px;
+      padding: 8px;
     }
     .nav-brand-badge img { width: 100%; height: 100%; object-fit: contain; }
     .nav-brand span {
@@ -346,6 +346,11 @@
 
     .section-starten { background: var(--bg-1); padding: 94px 0 88px; }
     .section-vinterland { background: var(--bg-2); padding: 82px 0 90px; }
+    .section-vinterland .story-grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
+      align-items: start;
+    }
     .section-frankrike { padding: 124px 0; }
     .section-question { background: var(--white); padding: 54px 0; }
     .section-savoury { background: var(--bg-1); padding: 86px 0 96px; }
@@ -446,7 +451,12 @@
 
     @media (max-width: 740px) {
       section { padding: 70px 0; }
-      .reveal-nav-inner { min-height: 56px; padding: 8px 12px; }
+      .reveal-nav-inner { min-height: 64px; padding: 8px 12px; }
+      .nav-brand-badge {
+        width: 54px;
+        height: 54px;
+        padding: 7px;
+      }
       .nav-brand span { display: none; }
       .stack-media.double { grid-template-columns: 1fr; }
       .photo-card-1 img,
@@ -456,6 +466,20 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-actions-top { grid-template-columns: 1fr; }
       .footer-mini { flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      .ending-actions {
+        flex-direction: column;
+      }
+
+      .ending-actions .btn {
+        width: 100%;
+      }
+
+      .footer-actions {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -499,14 +523,14 @@
 
     <section class="fade-in section-vinterland">
       <div class="container story-grid">
-        <div class="stack-media media-left stagger-media">
-          <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
-          <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
-        </div>
         <div class="story-copy stagger-text">
           <div class="eyebrow">De første sesongene</div>
           <h2>Der folk flest møtte oss</h2>
           <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
+        </div>
+        <div class="stack-media stagger-media">
+          <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
+          <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
         </div>
       </div>
     </section>
@@ -581,8 +605,9 @@
         <h2 class="stagger-text">Dette er bare starten.</h2>
         <div class="tag stagger-text">#loveatfirstbite</div>
         <div class="ending-actions">
-          <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
-          <a class="btn btn-secondary" href="./index.html">Tilbake til forsiden</a>
+          <a class="btn btn-secondary" href="./index.html">Forside</a>
+          <a class="btn btn-secondary" href="./index.html#menu">Meny</a>
+          <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
         </div>
       </div>
     </section>
@@ -642,9 +667,9 @@
 
             <h4>Booking</h4>
             <div class="footer-list">
-              <div>Festivaler</div>
-              <div>Firmaarrangementer</div>
-              <div>Private arrangementer</div>
+              <a href="./book-oss.html">Festivaler</a>
+              <a href="./book-oss.html">Firmaarrangementer</a>
+              <a href="./book-oss.html">Private arrangementer</a>
             </div>
           </div>
         </div>
