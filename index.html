@@ -816,6 +816,132 @@
       filter: saturate(0.92) contrast(0.96) brightness(0.98);
     }
 
+
+    .social-proof {
+      padding-top: 8px;
+    }
+
+    .social-proof-shell {
+      background: linear-gradient(180deg, rgba(255,255,255,0.58), rgba(240,228,215,0.9));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 34px);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 22px;
+    }
+
+    .social-proof h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 250, 245, 0.72);
+      border: 1px solid rgba(66, 39, 23, 0.1);
+      border-radius: 24px;
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.07);
+    }
+
+    .testimonial-stars {
+      color: #ba7f32;
+      letter-spacing: 0.18em;
+      font-size: 15px;
+    }
+
+    .testimonial-card blockquote {
+      margin: 0;
+      color: #4a352b;
+      line-height: 1.7;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .testimonial-author {
+      color: #6b5649;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding-top: 6px;
+    }
+
+    .stat-pill {
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(66, 39, 23, 0.1);
+      border-radius: 18px;
+      padding: 16px 14px;
+      text-align: center;
+      display: grid;
+      gap: 4px;
+    }
+
+    .stat-pill strong {
+      font-size: clamp(28px, 3.2vw, 38px);
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.9;
+      color: #2d1c15;
+    }
+
+    .stat-pill span {
+      font-size: 13px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #70594b;
+      font-weight: 700;
+    }
+
+    .booking-cta-strip {
+      background: linear-gradient(145deg, #2f1d14 0%, #1f130d 100%);
+      color: #fff5ec;
+      padding: clamp(36px, 6vw, 64px) 0;
+      margin-top: 18px;
+    }
+
+    .booking-cta-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .booking-cta-shell h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .booking-cta-shell p {
+      margin: 12px 0 0;
+      color: rgba(255,245,236,0.82);
+      font-size: 16px;
+      max-width: 64ch;
+    }
+
+    .booking-cta-shell .btn {
+      min-height: 58px;
+      min-width: 180px;
+      font-size: 16px;
+    }
+
     .crepe-modal {
       --modal-image-ratio: 0.72;
       position: fixed;
@@ -1338,6 +1464,21 @@
       .crepe-modal-figure {
         min-height: 0;
       }
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-cta-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-cta-shell .btn {
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1358,6 +1499,31 @@
       }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Crepe de la Crepe",
+    "url": "https://crepe-website-eight.vercel.app",
+    "telephone": "+4748408749",
+    "email": "Crepedelacrepes@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vitaminveien 7",
+      "addressLocality": "Oslo",
+      "postalCode": "0485",
+      "addressCountry": "NO"
+    },
+    "openingHours": ["Mo-Fr 10:00-21:00", "Sa 10:00-20:00"],
+    "servesCuisine": "French",
+    "priceRange": "89-149kr",
+    "sameAs": [
+      "https://www.instagram.com/crepe_delacrepe/",
+      "https://www.tiktok.com/@crepe_delacrepe"
+    ]
+  }
+  </script>
+
 </head>
 <body>
   <div class="nav-wrap" id="navWrap">
@@ -1435,6 +1601,42 @@
                 <h3>Nutella</h3>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="fade-in social-proof" aria-label="Kundeomtaler">
+      <div class="container">
+        <div class="social-proof-shell">
+          <h2>Hva folk sier</h2>
+
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"Crepe de la Crepe leverte til firmafesten vår — køen stod i 45 minutter og alle ville ha mer. Kommer tilbake til neste arrangement."</blockquote>
+              <div class="testimonial-author">— Sofie H., HR-ansvarlig</div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"Beste crêpes jeg har spist utenfor Paris. Strawberry Madness er ren magi."</blockquote>
+              <div class="testimonial-author">— Mikkel T., festivaldeltaker</div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"Enkelt å booke, fleksibelt oppsett og maten snakker for seg selv. Anbefales på det varmeste."</blockquote>
+              <div class="testimonial-author">— Lene K., eventansvarlig</div>
+            </article>
+          </div>
+
+          <div class="stats-bar" aria-label="Nøkkeltall">
+            <div class="stat-pill"><strong>2021</strong><span>Etablert</span></div>
+            <div class="stat-pill"><strong>40+</strong><span>Arrangementer</span></div>
+            <div class="stat-pill"><strong>10 000+</strong><span>Serverte crêpes</span></div>
           </div>
         </div>
       </div>
@@ -1645,6 +1847,19 @@
         </div>
       </div>
     </section>
+
+    <section class="booking-cta-strip" aria-label="Book oss call to action">
+      <div class="container">
+        <div class="booking-cta-shell">
+          <div>
+            <h3>Skal vi være med på ditt arrangement?</h3>
+            <p>Vi tar med oss crêpene — du tar æren. Send oss en forespørsel så ordner vi resten.</p>
+          </div>
+          <a class="btn btn-primary" href="/book-oss.html">Book oss</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <div class="crepe-modal" id="crepeModal" aria-hidden="true">
