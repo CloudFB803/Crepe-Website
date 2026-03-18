@@ -268,6 +268,28 @@
       opacity: 1;
     }
 
+    .mobile-nav-links {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .mobile-nav-links a,
+    .mobile-nav-links button {
+      min-height: 38px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.34);
+      color: var(--text);
+      box-shadow: none;
+    }
+
     .nav-cta {
       min-height: 44px;
       padding: 0 16px;
@@ -1870,6 +1892,23 @@
         display: none;
       }
 
+      .nav-brand span {
+        display: none;
+      }
+
+      .nav-brand-badge {
+        width: 46px;
+        height: 46px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-nav-links {
+        display: flex;
+      }
+
       .hero-shell {
         padding: 24px 0 18px;
       }
@@ -2135,6 +2174,11 @@
         <a href="#muligheter">Muligheter</a>
         <a href="#oppsett">Oppsett</a>
       </nav>
+
+      <div class="mobile-nav-links" aria-label="Hurtigvalg">
+        <a href="index.html">Forside</a>
+        <button type="button" class="js-open-booking">Book oss</button>
+      </div>
 
       <button class="btn btn-primary nav-cta js-open-booking">Book</button>
     </div>
