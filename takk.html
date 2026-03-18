@@ -44,7 +44,7 @@
     body {
       margin: 0;
       min-height: 100svh;
-      padding: 14px;
+      padding: 0;
       display: grid;
       place-items: center;
       overflow: hidden;
@@ -57,7 +57,7 @@
 
     .wrap {
       width: min(920px, 100%);
-      height: min(760px, calc(100svh - 28px));
+      height: 100svh;
       display: flex;
     }
 
@@ -99,7 +99,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-bottom: clamp(10px, 1.8vh, 18px);
+      margin-bottom: clamp(6px, 1.2vh, 14px);
     }
 
     .brand-logo {
@@ -146,22 +146,22 @@
 
     .icon-wrap {
       position: relative;
-      width: 78px;
-      height: 78px;
-      margin: 0 auto;
+      width: 110px;
+      height: 110px;
+      margin: clamp(8px, 1.4vh, 14px) auto 0;
     }
 
     .icon-pulse {
       position: absolute;
-      inset: -6px;
+      inset: -8px;
       border-radius: 50%;
       border: 1px solid rgba(79, 140, 90, 0.4);
       animation: iconRing 1.8s ease-out infinite;
     }
 
     .icon {
-      width: 78px;
-      height: 78px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -181,16 +181,16 @@
     }
 
     .badge {
-      margin: clamp(12px, 1.6vh, 16px) auto 0;
+      margin: clamp(8px, 1.2vh, 12px) auto 0;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 13px;
+      padding: 10px 16px;
       border-radius: 999px;
       border: 1px solid #d9c8a6;
       background: #f4e9d7;
       color: #8f7244;
-      font-size: 0.69rem;
+      font-size: 0.78rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -206,7 +206,7 @@
     }
 
     h1 {
-      margin: clamp(14px, 1.8vh, 18px) 0 0;
+      margin: clamp(10px, 1.4vh, 16px) 0 0;
       font-family: "Playfair Display", serif;
       font-size: clamp(2.5rem, 8vw, 5rem);
       line-height: 0.96;
@@ -215,16 +215,16 @@
     }
 
     .lead {
-      margin: clamp(12px, 1.7vh, 18px) auto 0;
+      margin: clamp(8px, 1.2vh, 14px) auto 0;
       max-width: 620px;
-      font-size: clamp(0.98rem, 1.45vw, 1.08rem);
+      font-size: clamp(1.05rem, 1.6vw, 1.18rem);
       font-weight: 400;
-      line-height: 1.58;
+      line-height: 1.65;
       color: var(--muted);
     }
 
     .info-card {
-      margin: clamp(14px, 2vh, 18px) auto 0;
+      margin: clamp(10px, 1.4vh, 16px) auto 0;
       width: min(560px, 100%);
       display: flex;
       align-items: center;
@@ -250,10 +250,10 @@
 
     .info-label {
       margin-bottom: 2px;
-      font-size: 0.66rem;
+      font-size: 0.74rem;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       color: var(--muted);
     }
 
@@ -265,10 +265,112 @@
     }
 
     .actions {
-      margin-top: clamp(14px, 2vh, 20px);
+      margin-top: clamp(10px, 1.4vh, 16px);
       display: flex;
       justify-content: center;
       gap: 10px;
+    }
+
+    .summary-trigger {
+      margin-top: clamp(10px, 1.4vh, 16px);
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-summary {
+      min-height: 42px;
+      padding: 0 16px;
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .summary-modal[hidden] {
+      display: none;
+    }
+
+    .summary-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(27, 19, 10, 0.38);
+    }
+
+    .summary-panel {
+      width: min(560px, 100%);
+      max-height: min(86svh, 760px);
+      overflow: auto;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--off-white);
+      box-shadow: 0 22px 48px rgba(42, 31, 14, 0.14);
+      padding: 16px;
+    }
+
+    .summary-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .summary-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+      line-height: 1.05;
+      color: var(--heading);
+    }
+
+    .summary-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .summary-item {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fffefb;
+    }
+
+    .summary-item-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .summary-item-value {
+      margin-top: 3px;
+      font-size: 0.96rem;
+      line-height: 1.45;
+      color: var(--heading);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .summary-empty {
+      margin: 10px 0 2px;
+      font-size: 0.96rem;
+      color: var(--muted);
     }
 
     .btn {
@@ -351,11 +453,11 @@
 
     @media (max-width: 700px) {
       body {
-        padding: 10px;
+        padding: 0;
       }
 
       .wrap {
-        height: calc(100svh - 20px);
+        height: 100svh;
       }
 
       .card {
@@ -383,8 +485,12 @@
 
       .icon-wrap,
       .icon {
-        width: 68px;
-        height: 68px;
+        width: 90px;
+        height: 90px;
+      }
+
+      .icon-pulse {
+        inset: -7px;
       }
 
       h1 {
@@ -394,8 +500,6 @@
 
       .lead {
         max-width: 100%;
-        font-size: 0.94rem;
-        line-height: 1.48;
       }
 
       .info-card {
@@ -409,7 +513,7 @@
       }
 
       .info-label {
-        font-size: 0.62rem;
+        font-size: 0.74rem;
       }
 
       .info-value {
@@ -439,8 +543,8 @@
       }
 
       .badge {
-        font-size: 0.64rem;
-        padding: 7px 11px;
+        font-size: 0.74rem;
+        padding: 9px 14px;
       }
 
       h1 {
@@ -448,8 +552,8 @@
       }
 
       .lead {
-        font-size: 0.9rem;
-        line-height: 1.42;
+        font-size: 1.02rem;
+        line-height: 1.58;
       }
 
       .info-card {
@@ -468,38 +572,12 @@
     }
 
     @media (max-height: 760px) {
-      .brand {
-        margin-bottom: 8px;
-      }
-
-      .icon-wrap,
-      .icon {
-        width: 64px;
-        height: 64px;
-      }
-
-      .badge {
-        margin-top: 10px;
-      }
-
       h1 {
-        margin-top: 12px;
         font-size: clamp(2rem, 7vw, 3.7rem);
       }
 
-      .lead {
-        margin-top: 10px;
-        font-size: 0.92rem;
-        line-height: 1.42;
-      }
-
       .info-card {
-        margin-top: 12px;
         padding: 10px 12px;
-      }
-
-      .actions {
-        margin-top: 12px;
       }
 
       .btn {
@@ -600,6 +678,12 @@
           </div>
         </div>
 
+        <div class="summary-trigger entry entry-6">
+          <button class="btn btn-secondary btn-summary" type="button" id="openSummaryBtn">
+            Vis oppsummering
+          </button>
+        </div>
+
         <div class="actions entry entry-6">
           <a class="btn btn-primary" href="./index.html">Til forsiden</a>
           <a class="btn btn-secondary" href="./book-oss.html">Ny forespørsel</a>
@@ -607,6 +691,18 @@
       </div>
     </section>
   </main>
+
+  <div class="summary-modal" id="summaryModal" hidden>
+    <div class="summary-panel" role="dialog" aria-modal="true" aria-labelledby="summaryTitle">
+      <div class="summary-head">
+        <h2 class="summary-title" id="summaryTitle">Innsendt oppsummering</h2>
+        <button class="summary-close" type="button" id="closeSummaryBtn" aria-label="Lukk oppsummering">
+          ×
+        </button>
+      </div>
+      <div class="summary-body" id="summaryBody"></div>
+    </div>
+  </div>
 
   <script>
     (() => {
@@ -714,6 +810,80 @@
       window.addEventListener("resize", () => {
         setCanvasSize();
         initParticles();
+      });
+    })();
+
+    (() => {
+      const openBtn = document.getElementById("openSummaryBtn");
+      const closeBtn = document.getElementById("closeSummaryBtn");
+      const modal = document.getElementById("summaryModal");
+      const summaryBody = document.getElementById("summaryBody");
+
+      if (!openBtn || !closeBtn || !modal || !summaryBody) return;
+
+      const fields = [
+        { label: "Oppsett", keys: ["oppsett", "setup"] },
+        { label: "Navn", keys: ["navn", "name", "fullName"] },
+        { label: "Firma", keys: ["firma", "company"] },
+        { label: "Dato", keys: ["dato", "date"] },
+        { label: "Gjester", keys: ["gjester", "guests"] },
+        { label: "E-post", keys: ["e-post", "epost", "email", "eMail"] },
+        { label: "Telefon", keys: ["telefon", "phone", "phoneNumber"] },
+        { label: "Arrangementstype", keys: ["arrangementstype", "eventType"] },
+        { label: "Sted", keys: ["sted", "location", "lokasjon"] },
+        { label: "Melding", keys: ["melding", "message", "comments"] }
+      ];
+
+      const getValue = (data, keys) => {
+        for (const key of keys) {
+          if (Object.prototype.hasOwnProperty.call(data, key) && data[key] !== undefined && data[key] !== null) {
+            const value = String(data[key]).trim();
+            if (value) return value;
+          }
+        }
+        return "";
+      };
+
+      const renderSummary = () => {
+        const raw = sessionStorage.getItem("bookingSubmission");
+
+        if (!raw) {
+          summaryBody.innerHTML = '<p class="summary-empty">Ingen oppsummering tilgjengelig.</p>';
+          return;
+        }
+
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          summaryBody.innerHTML = '<p class="summary-empty">Ingen oppsummering tilgjengelig.</p>';
+          return;
+        }
+
+        const items = fields
+          .map((field) => {
+            const value = getValue(data, field.keys);
+            return value ? `<div class="summary-item"><div class="summary-item-label">${field.label}</div><div class="summary-item-value">${value}</div></div>` : "";
+          })
+          .filter(Boolean)
+          .join("");
+
+        summaryBody.innerHTML = items || '<p class="summary-empty">Ingen oppsummering tilgjengelig.</p>';
+      };
+
+      const openModal = () => {
+        renderSummary();
+        modal.hidden = false;
+      };
+
+      const closeModal = () => {
+        modal.hidden = true;
+      };
+
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
       });
     })();
   </script>
