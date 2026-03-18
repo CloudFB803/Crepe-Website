@@ -829,19 +829,50 @@
         { label: "Gjester", keys: ["gjester", "guests"] },
         { label: "E-post", keys: ["e-post", "epost", "email", "eMail"] },
         { label: "Telefon", keys: ["telefon", "phone", "phoneNumber"] },
-        { label: "Arrangementstype", keys: ["arrangementstype", "eventType"] },
+        { label: "Arrangementstype", keys: ["arrangementstype", "eventType", "type"] },
         { label: "Sted", keys: ["sted", "location", "lokasjon"] },
         { label: "Melding", keys: ["melding", "message", "comments"] }
       ];
 
+      const escapeHtml = (value) =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+
       const getValue = (data, keys) => {
         for (const key of keys) {
-          if (Object.prototype.hasOwnProperty.call(data, key) && data[key] !== undefined && data[key] !== null) {
-            const value = String(data[key]).trim();
-            if (value) return value;
-          }
+          if (!Object.prototype.hasOwnProperty.call(data, key)) continue;
+          if (data[key] === undefined || data[key] === null) continue;
+          const value = String(data[key]).trim();
+          if (value) return value;
         }
         return "";
+      };
+
+      const readSummaryItems = (data) => {
+        if (Array.isArray(data.summary) && data.summary.length) {
+          return data.summary
+            .map((item) => {
+              if (!item || typeof item !== "object") return null;
+              const label = String(item.label || "").trim();
+              const value = String(item.value || "").trim();
+              if (!label || !value) return null;
+              return { label, value };
+            })
+            .filter(Boolean);
+        }
+
+        const payload = data && typeof data.payload === "object" ? data.payload : data;
+
+        return fields
+          .map((field) => {
+            const value = getValue(payload, field.keys);
+            return value ? { label: field.label, value } : null;
+          })
+          .filter(Boolean);
       };
 
       const renderSummary = () => {
@@ -860,15 +891,27 @@
           return;
         }
 
-        const items = fields
-          .map((field) => {
-            const value = getValue(data, field.keys);
-            return value ? `<div class="summary-item"><div class="summary-item-label">${field.label}</div><div class="summary-item-value">${value}</div></div>` : "";
-          })
-          .filter(Boolean)
-          .join("");
+        const items = readSummaryItems(data);
 
-        summaryBody.innerHTML = items || '<p class="summary-empty">Ingen oppsummering tilgjengelig.</p>';
+        if (!items.length) {
+          summaryBody.innerHTML = '<p class="summary-empty">Ingen oppsummering tilgjengelig.</p>';
+          return;
+        }
+
+        summaryBody.innerHTML = `
+          <div class="summary-list">
+            ${items
+              .map(
+                (item) => `
+                  <div class="summary-item">
+                    <div class="summary-item-label">${escapeHtml(item.label)}</div>
+                    <div class="summary-item-value">${escapeHtml(item.value)}</div>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        `;
       };
 
       const openModal = () => {
