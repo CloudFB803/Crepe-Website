@@ -530,6 +530,62 @@
       z-index: 2;
     }
 
+
+    .setup-actions .js-open-info[data-kicker="Les mer"] {
+      display: none;
+    }
+
+    .why-book-wrap {
+      padding: 10px 0 34px;
+    }
+
+    .why-book-shell {
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(216,178,135,0.14), transparent 42%),
+        var(--panel);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 4vw, 44px);
+      display: grid;
+      gap: 20px;
+    }
+
+    .why-book-shell h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4.2vw, 4rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .why-book-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .why-book-item {
+      background: rgba(255,255,255,0.38);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .why-book-item strong {
+      font-size: 1.05rem;
+    }
+
+    .why-book-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.96rem;
+    }
+
     .closing-cta-wrap {
       padding: 12px 0 26px;
     }
@@ -1848,6 +1904,10 @@
         padding: 22px 18px 24px;
       }
 
+      .why-book-grid {
+        grid-template-columns: 1fr;
+      }
+
       .setup-actions {
         flex-direction: column;
       }
@@ -2199,6 +2259,38 @@
       </article>
     </section>
 
+
+
+    <section class="why-book-wrap" aria-label="Hvorfor booke oss">
+      <div class="container">
+        <div class="why-book-shell">
+          <h3>Hvorfor Crepe de la Crepe?</h3>
+
+          <div class="why-book-grid">
+            <article class="why-book-item">
+              <strong>🏆 Erfaring som teller</strong>
+              <p>Vi har servert på Gladmat, Slottsfjell, Stavernfestivalen og mer. Vi vet hva som kreves på store arrangementer.</p>
+            </article>
+
+            <article class="why-book-item">
+              <strong>🥞 Laget foran gjestene</strong>
+              <p>Hver crêpe lages på stedet. Det er ikke bare mat — det er et innslag i seg selv.</p>
+            </article>
+
+            <article class="why-book-item">
+              <strong>📍 Hele Norge</strong>
+              <p>Vi stiller opp uansett hvor arrangementet er. Kontakt oss så finner vi en løsning.</p>
+            </article>
+
+            <article class="why-book-item">
+              <strong>⚙️ Tre oppsett, én leveranse</strong>
+              <p>Enten det er festival, firmafest eller privat selskap — vi tilpasser oppsettet til plassen og behovet.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="closing-cta-wrap" aria-label="Booking call to action">
       <div class="container">
         <div class="closing-cta">
@@ -2234,9 +2326,9 @@
             <p class="footer-col-title">Kontakt</p>
             <div class="footer-links">
               <a href="mailto:crepedelacrepes@gmail.com">crepedelacrepes@gmail.com</a>
-              <a href="tel:+4790212929">+47 90 21 29 29</a>
-              <a href="#" aria-label="Instagram">Instagram</a>
-              <a href="#" aria-label="TikTok">TikTok</a>
+              <a href="tel:+4748408749">+47 48 40 87 49</a>
+              <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+              <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
             </div>
           </div>
         </div>
