@@ -78,7 +78,7 @@ function normalizeEventType(value = "") {
 
 function isValidEmail(email = "") {
   const normalized = String(email).trim().toLowerCase();
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized) && normalized.length <= 150;
+  return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(normalized) && normalized.length <= 150;
 }
 
 function isValidName(name = "") {
