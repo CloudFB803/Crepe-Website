@@ -942,6 +942,19 @@
       gap: 16px;
     }
 
+    .testimonial-carousel {
+      position: relative;
+    }
+
+    .testimonial-viewport {
+      overflow: visible;
+    }
+
+    .testimonial-arrow,
+    .testimonial-dots {
+      display: none;
+    }
+
     .testimonial-card {
       background: rgba(255, 250, 245, 0.72);
       border: 1px solid rgba(66, 39, 23, 0.1);
@@ -1594,7 +1607,67 @@
         min-height: 0;
       }
       .testimonial-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        grid-template-columns: none;
+        gap: 0;
+        transform: translateX(0);
+        transition: transform 0.62s ease;
+        touch-action: pan-y;
+      }
+
+      .testimonial-viewport {
+        overflow: hidden;
+        border-radius: 24px;
+      }
+
+      .testimonial-card {
+        flex: 0 0 100%;
+      }
+
+      .testimonial-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid rgba(66, 39, 23, 0.15);
+        background: rgba(255, 250, 245, 0.96);
+        color: var(--text);
+        font-size: 24px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        z-index: 2;
+        box-shadow: 0 10px 22px rgba(56, 33, 20, 0.14);
+      }
+
+      .testimonial-arrow.prev {
+        left: 8px;
+      }
+
+      .testimonial-arrow.next {
+        right: 8px;
+      }
+
+      .testimonial-dots {
+        margin-top: 14px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .testimonial-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(111, 88, 76, 0.35);
+        padding: 0;
+      }
+
+      .testimonial-dot.active {
+        background: var(--accent-2);
       }
 
       .stats-bar {
@@ -1607,6 +1680,10 @@
 
       .booking-cta-shell .btn {
         width: 100%;
+      }
+
+      .footer-actions {
+        display: none;
       }
     }
 
@@ -1717,25 +1794,32 @@
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
 
-          <div class="testimonial-grid">
-            <article class="testimonial-card">
-              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-              <blockquote>"Å kjøpe en crêpe her føles som å unne seg et lite øyeblikk av ro. Man blir møtt med smil, nystekte dufter og en atmosfære som minner om små gater i Sør-Frankrike"</blockquote>
-              <div class="testimonial-author">— Alexis Kayembe</div>
-            </article>
+          <div class="testimonial-carousel" id="testimonialCarousel">
+            <button class="testimonial-arrow prev" id="testimonialPrev" type="button" aria-label="Forrige omtale">‹</button>
+            <div class="testimonial-viewport">
+              <div class="testimonial-grid" id="testimonialGrid">
+                <article class="testimonial-card">
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                  <blockquote>"Å kjøpe en crêpe her føles som å unne seg et lite øyeblikk av ro. Man blir møtt med smil, nystekte dufter og en atmosfære som minner om små gater i Sør-Frankrike"</blockquote>
+                  <div class="testimonial-author">— Alexis Kayembe</div>
+                </article>
 
-            <article class="testimonial-card">
-              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-              <blockquote>"Ett fantastisk sted og utrolig deilige crêpes😍 Når du kommer inn, blir du møtt av ett fantastisk personale som alltid er klar til å hjelpe deg. Utvalget av crêpes er imponerende, med både søte og salte alternativer. Kvaliteten på produktene er høy, og du kan virkelig smake forskjellen. I tillegg er prisen rimelig."</blockquote>
-              <div class="testimonial-author">— Jonas Hjørnerød</div>
-            </article>
+                <article class="testimonial-card">
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                  <blockquote>"Ett fantastisk sted og utrolig deilige crêpes😍 Når du kommer inn, blir du møtt av ett fantastisk personale som alltid er klar til å hjelpe deg. Utvalget av crêpes er imponerende, med både søte og salte alternativer. Kvaliteten på produktene er høy, og du kan virkelig smake forskjellen. I tillegg er prisen rimelig."</blockquote>
+                  <div class="testimonial-author">— Jonas Hjørnerød</div>
+                </article>
 
-            <article class="testimonial-card">
-              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-              <blockquote>"Dere har den beste crêpen jeg har smakt. Og barna elsker den også! Besøker dere hvert år i Jul i Vinterland i Oslo, men er så glad for at dere har fått et permanent sted på Matværste i Fredrikstad nå, og med nye gode smaker! Veldig gjennomført design også. 10/10 Vi kommer definitivt tilbake!"</blockquote>
-              <div class="testimonial-author">— Pia Aya</div>
-            </article>
+                <article class="testimonial-card">
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                  <blockquote>"Dere har den beste crêpen jeg har smakt. Og barna elsker den også! Besøker dere hvert år i Jul i Vinterland i Oslo, men er så glad for at dere har fått et permanent sted på Matværste i Fredrikstad nå, og med nye gode smaker! Veldig gjennomført design også. 10/10 Vi kommer definitivt tilbake!"</blockquote>
+                  <div class="testimonial-author">— Pia Aya</div>
+                </article>
+              </div>
+            </div>
+            <button class="testimonial-arrow next" id="testimonialNext" type="button" aria-label="Neste omtale">›</button>
           </div>
+          <div class="testimonial-dots" id="testimonialDots" aria-label="Velg omtale"></div>
 
           <div class="stats-bar" aria-label="Nøkkeltall">
             <div class="stat-pill"><strong>2021</strong><span>Etablert</span></div>
@@ -2071,9 +2155,9 @@
 
             <h4>Booking</h4>
             <div class="footer-list">
-              <div>Festivaler</div>
-              <div>Firmaarrangementer</div>
-              <div>Private arrangementer</div>
+              <a href="./book-oss.html">Festivaler</a>
+              <a href="./book-oss.html">Firmaarrangementer</a>
+              <a href="./book-oss.html">Private arrangementer</a>
             </div>
           </div>
         </div>
@@ -2125,6 +2209,100 @@
         behavior: 'smooth'
       });
     });
+
+    (() => {
+      const mobileQuery = window.matchMedia('(max-width: 640px)');
+      const grid = document.getElementById('testimonialGrid');
+      const prevButton = document.getElementById('testimonialPrev');
+      const nextButton = document.getElementById('testimonialNext');
+      const dotsWrap = document.getElementById('testimonialDots');
+      if (!grid || !prevButton || !nextButton || !dotsWrap) return;
+
+      const cards = Array.from(grid.querySelectorAll('.testimonial-card'));
+      let activeIndex = 0;
+      let autoTimer = null;
+      let resumeTimer = null;
+      let touchStartX = 0;
+      let touchCurrentX = 0;
+
+      const dots = cards.map((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'testimonial-dot';
+        dot.setAttribute('aria-label', `Vis omtale ${index + 1}`);
+        dot.addEventListener('click', () => {
+          goTo(index, true);
+        });
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      function refreshDots() {
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      }
+
+      function goTo(index, fromManualAction = false) {
+        activeIndex = (index + cards.length) % cards.length;
+        grid.style.transform = `translateX(-${activeIndex * 100}%)`;
+        refreshDots();
+        if (fromManualAction) {
+          pauseAutoScroll();
+        }
+      }
+
+      function startAutoScroll() {
+        if (!mobileQuery.matches || cards.length < 2) return;
+        clearInterval(autoTimer);
+        autoTimer = window.setInterval(() => {
+          goTo(activeIndex + 1);
+        }, 5000);
+      }
+
+      function pauseAutoScroll() {
+        clearInterval(autoTimer);
+        clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(() => {
+          startAutoScroll();
+        }, 8000);
+      }
+
+      prevButton.addEventListener('click', () => goTo(activeIndex - 1, true));
+      nextButton.addEventListener('click', () => goTo(activeIndex + 1, true));
+
+      grid.addEventListener('touchstart', (event) => {
+        touchStartX = event.touches[0].clientX;
+        touchCurrentX = touchStartX;
+      }, { passive: true });
+
+      grid.addEventListener('touchmove', (event) => {
+        touchCurrentX = event.touches[0].clientX;
+      }, { passive: true });
+
+      grid.addEventListener('touchend', () => {
+        if (!mobileQuery.matches) return;
+        const deltaX = touchCurrentX - touchStartX;
+        if (Math.abs(deltaX) > 40) {
+          goTo(activeIndex + (deltaX < 0 ? 1 : -1), true);
+        }
+      });
+
+      function handleViewportMode() {
+        if (mobileQuery.matches) {
+          goTo(activeIndex);
+          startAutoScroll();
+        } else {
+          clearInterval(autoTimer);
+          clearTimeout(resumeTimer);
+          grid.style.transform = '';
+        }
+      }
+
+      refreshDots();
+      handleViewportMode();
+      mobileQuery.addEventListener('change', handleViewportMode);
+    })();
 
     const crepeOrder = [
       {
