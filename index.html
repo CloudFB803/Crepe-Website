@@ -944,12 +944,18 @@
 
     .testimonial-carousel {
       position: relative;
+      display: grid;
+      gap: 14px;
+      min-width: 0;
     }
 
     .testimonial-viewport {
-      overflow: visible;
+      overflow: hidden;
+      width: 100%;
+      min-width: 0;
     }
 
+    .testimonial-controls,
     .testimonial-arrow,
     .testimonial-dots {
       display: none;
@@ -963,6 +969,8 @@
       display: grid;
       gap: 12px;
       box-shadow: 0 10px 24px rgba(56, 33, 20, 0.07);
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .testimonial-stars {
@@ -977,6 +985,7 @@
       line-height: 1.7;
       font-size: 15px;
       font-weight: 500;
+      overflow-wrap: anywhere;
     }
 
     .testimonial-author {
@@ -1606,10 +1615,15 @@
       .crepe-modal-figure {
         min-height: 0;
       }
+      .testimonial-carousel {
+        gap: 12px;
+      }
+
       .testimonial-grid {
         display: flex;
         grid-template-columns: none;
         gap: 0;
+        width: 100%;
         transform: translateX(0);
         transition: transform 0.62s ease;
         touch-action: pan-y;
@@ -1618,43 +1632,54 @@
       .testimonial-viewport {
         overflow: hidden;
         border-radius: 24px;
+        width: 100%;
       }
 
       .testimonial-card {
         flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 20px 16px 18px;
+      }
+
+      .testimonial-controls {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 10px;
       }
 
       .testimonial-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
+        position: static;
+        transform: none;
+        width: 38px;
+        height: 38px;
         border-radius: 999px;
         border: 1px solid rgba(66, 39, 23, 0.15);
         background: rgba(255, 250, 245, 0.96);
         color: var(--text);
-        font-size: 24px;
+        font-size: 22px;
         line-height: 1;
         display: grid;
         place-items: center;
-        z-index: 2;
         box-shadow: 0 10px 22px rgba(56, 33, 20, 0.14);
       }
 
       .testimonial-arrow.prev {
-        left: 8px;
+        justify-self: start;
       }
 
       .testimonial-arrow.next {
-        right: 8px;
+        justify-self: end;
       }
 
       .testimonial-dots {
-        margin-top: 14px;
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 8px;
+        margin: 0;
       }
 
       .testimonial-dot {
@@ -1795,7 +1820,6 @@
           <h2>Hva folk sier</h2>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
-            <button class="testimonial-arrow prev" id="testimonialPrev" type="button" aria-label="Forrige omtale">‹</button>
             <div class="testimonial-viewport">
               <div class="testimonial-grid" id="testimonialGrid">
                 <article class="testimonial-card">
@@ -1817,9 +1841,12 @@
                 </article>
               </div>
             </div>
-            <button class="testimonial-arrow next" id="testimonialNext" type="button" aria-label="Neste omtale">›</button>
+            <div class="testimonial-controls">
+              <button class="testimonial-arrow prev" id="testimonialPrev" type="button" aria-label="Forrige omtale">‹</button>
+              <div class="testimonial-dots" id="testimonialDots" aria-label="Velg omtale"></div>
+              <button class="testimonial-arrow next" id="testimonialNext" type="button" aria-label="Neste omtale">›</button>
+            </div>
           </div>
-          <div class="testimonial-dots" id="testimonialDots" aria-label="Velg omtale"></div>
 
           <div class="stats-bar" aria-label="Nøkkeltall">
             <div class="stat-pill"><strong>2021</strong><span>Etablert</span></div>
