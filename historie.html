@@ -170,6 +170,18 @@
 
     .nav-links a { opacity: .82; transition: opacity 180ms var(--ease); }
     .nav-links a:hover { opacity: 1; }
+    .nav-mobile-links {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      color: var(--text);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .nav-mobile-links a { opacity: .82; transition: opacity 180ms var(--ease); }
+    .nav-mobile-links a:hover { opacity: 1; }
 
     main { overflow: clip; }
     section { padding: 88px 0; }
@@ -452,6 +464,7 @@
     @media (max-width: 740px) {
       section { padding: 70px 0; }
       .reveal-nav-inner { min-height: 64px; padding: 8px 12px; }
+      .nav-mobile-links { display: flex; }
       .nav-brand-badge {
         width: 54px;
         height: 54px;
@@ -496,6 +509,11 @@
         <a href="#festivaler">Festivaler</a>
         <a href="./index.html">Tilbake til forsiden</a>
       </nav>
+      <nav class="nav-mobile-links" aria-label="Mobilnavigasjon">
+        <a href="./index.html">Forside</a>
+        <a href="./index.html#menu">Meny</a>
+        <a href="./book-oss.html">Book oss</a>
+      </nav>
       <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
     </div>
   </div>
@@ -513,7 +531,7 @@
         <div class="story-copy stagger-text">
           <div class="eyebrow">2021</div>
           <h2>Det startet med en tanke</h2>
-          <p>Det startet med en enkel tanke: hvor stort kan egentlig crêpes bli? Men egentlig startet det enda tidligere — med to personer som møttes gjennom en vanlig kontorjobb og etter hvert fant ut at de ønsket å skape noe spesielt sammen. Noe som folk kunne samles rundt.</p>
+          <p>Hvor stort kan egentlig crêpes bli? Men egentlig startet det enda tidligere — med to personer som møttes gjennom en vanlig kontorjobb og etter hvert fant ut at de ønsket å skape noe spesielt sammen. Noe som folk kunne samles rundt.</p>
         </div>
         <div class="story-media stagger-media">
           <img src="team.jpg" alt="Teamet bak Crepe de la Crepe" loading="lazy" />
@@ -526,7 +544,7 @@
         <div class="story-copy stagger-text">
           <div class="eyebrow">De første sesongene</div>
           <h2>Der folk flest møtte oss</h2>
-          <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
+          <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der, begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
         </div>
         <div class="stack-media stagger-media">
           <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
@@ -649,13 +667,6 @@
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
 
-            <div class="footer-actions">
-              <div class="footer-actions-top">
-                <a class="btn btn-primary" href="tel:+4748408749">Ring oss</a>
-                <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-              </div>
-              <a class="btn btn-secondary" href="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
-            </div>
           </div>
 
           <div class="footer-block">
