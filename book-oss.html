@@ -8,8 +8,9 @@
     name="description"
     content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer i hele Norge."
   />
-
-  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+  <link rel="icon" type="image/png" href="/crepe-logo-transparent.png">
+  <link rel="apple-touch-icon" href="/crepe-logo-transparent.png">
+  <meta name="theme-color" content="#c8973a">
   <meta property="og:title" content="Book oss | Crepe de la Crepe" />
   <meta property="og:description" content="Book Crepe de la Crepe til festivaler, firmaarrangementer og private arrangementer i hele Norge." />
   <meta property="og:type" content="website" />
@@ -21,6 +22,47 @@
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
+
+  <script>
+    window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+    window.loadAnalyticsIfConsented = function () {
+      if (window.__gaLoaded) return;
+
+      let consentValue = null;
+      try {
+        consentValue = localStorage.getItem('consent');
+      } catch (error) {
+        consentValue = null;
+      }
+
+      if (consentValue !== 'granted') return;
+
+      window.__gaLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID);
+
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${window.GA_MEASUREMENT_ID}`;
+      document.head.appendChild(gaScript);
+    };
+
+    window.setCookieConsent = function (value) {
+      try {
+        localStorage.setItem('consent', value);
+      } catch (error) {
+        return;
+      }
+
+      if (value === 'granted') {
+        window.loadAnalyticsIfConsented();
+      }
+    };
+
+    window.loadAnalyticsIfConsented();
+  </script>
 
   <style>
     :root {
