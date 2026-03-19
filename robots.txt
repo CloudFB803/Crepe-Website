@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /personvern.html
+
+Sitemap: https://crepedelacrepe.no/sitemap.xml
