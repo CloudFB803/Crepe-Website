@@ -4,19 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crêpe de la Crêpe | Crêpes i Oslo</title>
-  <meta
-    name="description"
-    content="Søte og savoury crêpes i Oslo. Se meny, åpningstider, lokasjon og kontakt for Crepe de la Crepe."
-  />
+  <meta name="description" content="Crêpe de la Crêpe – Oslos beste crêpes på Storo Storsenter. Søte og salte crêpes laget med kjærlighet. Bestill på Foodora eller book oss til ditt arrangement.">
+  <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
-  <link rel="canonical" href="https://project-vuseb.vercel.app/" />
+  <link rel="canonical" href="https://crepedelacrepe.no/" />
 
-  <meta property="og:title" content="Crepe de la Crepe | Crêpes i Oslo" />
-  <meta property="og:description" content="Søte og savoury crêpes i Oslo. Se meny, åpningstider, lokasjon og kontakt for Crepe de la Crepe." />
-  <meta property="og:image" content="https://project-vuseb.vercel.app/hero-crepes.jpg" />
-  <meta property="og:url" content="https://project-vuseb.vercel.app/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:title" content="Crêpe de la Crêpe | Love at first bite">
+  <meta property="og:description" content="Oslos beste crêpes – søte, salte og alltid laget med kjærlighet. Finn oss på Storo Storsenter eller book oss til ditt arrangement.">
+  <meta property="og:image" content="/crepe-logo-transparent.png">
+  <meta property="og:url" content="https://crepedelacrepe.no/">
+  <meta property="og:type" content="restaurant">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crêpe de la Crêpe | Love at first bite">
+  <meta name="twitter:description" content="Oslos beste crêpes – søte, salte og alltid laget med kjærlighet. Finn oss på Storo Storsenter eller book oss til ditt arrangement.">
+  <meta name="twitter:image" content="/crepe-logo-transparent.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,22 +314,87 @@
       text-align: center;
     }
 
-    .hero h1 {
+    .hero-title-sequence {
       margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(64px, 8vw, 122px);
-      line-height: 0.90;
-      letter-spacing: -0.05em;
+      display: grid;
+      gap: 6px;
+      justify-items: center;
+    }
+
+    .hero-line {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroFadeUp 0.7s ease-out forwards;
       color: #fff8f1;
       text-shadow: 0 8px 30px rgba(0,0,0,0.22);
     }
 
+    .hero-line-1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(32px, 4.6vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+      animation-delay: 0s;
+    }
+
+    .hero-line-2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(64px, 8vw, 122px);
+      font-weight: 700;
+      line-height: 0.90;
+      letter-spacing: -0.05em;
+      animation-delay: 0.6s;
+    }
+
     .hero-actions {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroFadeUp 0.7s ease-out forwards;
+      animation-delay: 1.45s;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 14px;
       margin-top: 30px;
+    }
+
+    .hero-foodora-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 247, 238, 0.62);
+      color: rgba(255, 247, 238, 0.94);
+      background: rgba(17, 10, 7, 0.12);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroFadeUp 0.7s ease-out forwards;
+      animation-delay: 1.55s;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .hero-foodora-link:hover {
+      border-color: rgba(255, 247, 238, 0.8);
+      background: rgba(17, 10, 7, 0.2);
+    }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-note {
@@ -1507,7 +1573,11 @@
         width: min(var(--max), calc(100% - 20px));
       }
 
-      .hero h1 {
+      .hero-line-1 {
+        font-size: clamp(28px, 8vw, 40px);
+      }
+
+      .hero-line-2 {
         font-size: clamp(50px, 13vw, 76px);
       }
 
@@ -1719,6 +1789,9 @@
 
       .fade-in,
       .btn,
+      .hero-line,
+      .hero-actions,
+      .hero-foodora-link,
       .menu-item,
       .contact-chip,
       .crepe-modal,
@@ -1728,14 +1801,22 @@
       .back-to-top {
         transition: none;
       }
+
+      .hero-line,
+      .hero-actions,
+      .hero-foodora-link {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
-    "name": "Crepe de la Crepe",
-    "url": "https://crepe-website-eight.vercel.app",
+    "name": "Crêpe de la Crêpe",
+    "url": "https://crepedelacrepe.no",
     "telephone": "+4748408749",
     "email": "Crepedelacrepes@gmail.com",
     "address": {
@@ -1745,12 +1826,26 @@
       "postalCode": "0485",
       "addressCountry": "NO"
     },
-    "openingHours": ["Mo-Fr 10:00-21:00", "Sa 10:00-20:00"],
-    "servesCuisine": "French",
-    "priceRange": "89-149kr",
+    "servesCuisine": ["French", "Crêpes", "Street Food"],
+    "priceRange": "kr",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ],
     "sameAs": [
       "https://www.instagram.com/crepe_delacrepe/",
-      "https://www.tiktok.com/@crepe_delacrepe"
+      "https://www.tiktok.com/@crepe_delacrepe",
+      "https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
     ]
   }
   </script>
@@ -1788,12 +1883,23 @@
     <section class="hero">
       <div class="hero-stage">
         <div class="hero-content">
-          <h1>Love at first bite.</h1>
+          <div class="hero-title-sequence" aria-label="Welcome to Crêpe de la Crêpe">
+            <div class="hero-line hero-line-1">Welcome to</div>
+            <div class="hero-line hero-line-2">Crêpe de la Crêpe</div>
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#menu">Se menyen</a>
             <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
           </div>
+          <a
+            class="hero-foodora-link"
+            href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🛵 Bestill på Foodora
+          </a>
 
         </div>
       </div>
