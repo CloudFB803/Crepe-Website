@@ -8,7 +8,9 @@
     name="description"
     content="Søte og savoury crêpes i Oslo. Se meny, åpningstider, lokasjon og kontakt for Crepe de la Crepe."
   />
-  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+  <link rel="icon" type="image/png" href="/crepe-logo-transparent.png">
+  <link rel="apple-touch-icon" href="/crepe-logo-transparent.png">
+  <meta name="theme-color" content="#c8973a">
   <link rel="canonical" href="https://project-vuseb.vercel.app/" />
 
   <meta property="og:title" content="Crepe de la Crepe | Crêpes i Oslo" />
@@ -21,6 +23,47 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+    window.loadAnalyticsIfConsented = function () {
+      if (window.__gaLoaded) return;
+
+      let consentValue = null;
+      try {
+        consentValue = localStorage.getItem('consent');
+      } catch (error) {
+        consentValue = null;
+      }
+
+      if (consentValue !== 'granted') return;
+
+      window.__gaLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID);
+
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${window.GA_MEASUREMENT_ID}`;
+      document.head.appendChild(gaScript);
+    };
+
+    window.setCookieConsent = function (value) {
+      try {
+        localStorage.setItem('consent', value);
+      } catch (error) {
+        return;
+      }
+
+      if (value === 'granted') {
+        window.loadAnalyticsIfConsented();
+      }
+    };
+
+    window.loadAnalyticsIfConsented();
+  </script>
 
   <style>
     :root {
@@ -1712,6 +1755,81 @@
       }
     }
 
+
+    .cookie-banner {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 200;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(200, 151, 58, 0.38);
+      background: #f5f0e8;
+      color: #2c2c2c;
+      box-shadow: 0 18px 42px rgba(44, 44, 44, 0.22);
+      display: none;
+      transform: translateY(26px);
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .cookie-banner.is-visible {
+      display: block;
+      animation: cookieSlideUp 0.35s ease forwards;
+    }
+
+    .cookie-banner.is-hidden {
+      display: none;
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .cookie-actions {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cookie-btn {
+      border-radius: 999px;
+      min-height: 44px;
+      padding: 10px 18px;
+      font-weight: 700;
+      border: 1px solid #c8973a;
+      cursor: pointer;
+    }
+
+    .cookie-btn.accept {
+      background: #c8973a;
+      color: #fff;
+    }
+
+    .cookie-btn.reject {
+      background: transparent;
+      color: #2c2c2c;
+    }
+
+    @keyframes cookieSlideUp {
+      from {
+        transform: translateY(26px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1725,10 +1843,32 @@
       .nav-wrap,
       .crepe-modal-arrow,
       .crepe-modal-close,
-      .back-to-top {
+      .back-to-top,
+      .cookie-banner {
         transition: none;
+        animation: none;
+        transform: none;
       }
     }
+
+    @media (max-width: 640px) {
+      .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 14px;
+      }
+
+      .cookie-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cookie-btn {
+        width: 100%;
+      }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -2119,6 +2259,15 @@
     </div>
   </div>
 
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-samtykke">
+    <p>Vi bruker informasjonskapsler for å forbedre din opplevelse og analysere trafikk. Ved å fortsette godtar du vår bruk av cookies.</p>
+    <div class="cookie-actions">
+      <button class="cookie-btn accept" id="acceptCookiesBtn" type="button">Godta</button>
+      <button class="cookie-btn reject" id="rejectCookiesBtn" type="button">Avvis</button>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-shell">
@@ -2182,6 +2331,46 @@
   </footer>
 
   <button class="back-to-top" id="backToTop" type="button" aria-label="Til toppen">↑</button>
+
+
+  <script>
+    (() => {
+      const banner = document.getElementById('cookieBanner');
+      const acceptBtn = document.getElementById('acceptCookiesBtn');
+      const rejectBtn = document.getElementById('rejectCookiesBtn');
+      if (!banner || !acceptBtn || !rejectBtn) return;
+
+      let consentValue = null;
+      try {
+        consentValue = localStorage.getItem('consent');
+      } catch (error) {
+        consentValue = null;
+      }
+
+      if (consentValue === 'granted') {
+        window.loadAnalyticsIfConsented();
+        return;
+      }
+
+      if (consentValue === 'denied') {
+        return;
+      }
+
+      banner.classList.add('is-visible');
+
+      acceptBtn.addEventListener('click', () => {
+        window.setCookieConsent('granted');
+        banner.classList.remove('is-visible');
+        banner.classList.add('is-hidden');
+      });
+
+      rejectBtn.addEventListener('click', () => {
+        window.setCookieConsent('denied');
+        banner.classList.remove('is-visible');
+        banner.classList.add('is-hidden');
+      });
+    })();
+  </script>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
