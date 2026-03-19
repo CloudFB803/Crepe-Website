@@ -463,14 +463,43 @@
 
     @media (max-width: 740px) {
       section { padding: 70px 0; }
-      .reveal-nav-inner { min-height: 64px; padding: 8px 12px; }
-      .nav-mobile-links { display: flex; }
+      .reveal-nav {
+        top: 6px;
+      }
+      .reveal-nav-inner {
+        min-height: 56px;
+        padding: 6px 10px;
+        gap: 12px;
+        width: min(calc(100% - 14px), 1180px);
+        background: rgba(248, 240, 228, 0.64);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
+      }
+      .nav-mobile-links {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 0;
+        gap: 10px;
+        font-size: .67rem;
+        letter-spacing: .04em;
+        white-space: nowrap;
+      }
+      .nav-mobile-links a {
+        white-space: nowrap;
+      }
       .nav-brand-badge {
-        width: 54px;
-        height: 54px;
-        padding: 7px;
+        width: 44px;
+        height: 44px;
+        padding: 6px;
+      }
+      .nav-brand {
+        gap: 8px;
       }
       .nav-brand span { display: none; }
+      .reveal-nav-inner > .btn.btn-primary {
+        display: none;
+      }
       .stack-media.double { grid-template-columns: 1fr; }
       .photo-card-1 img,
       .photo-card-2 img { transform: rotate(0deg); }
