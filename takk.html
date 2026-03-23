@@ -14,30 +14,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --bg: #f6f1e9;
-      --surface: rgba(255, 252, 247, 0.96);
-      --surface-strong: #fffdf9;
-      --line: #e9e0d2;
-      --line-strong: #dcc9a7;
-      --text: #2b2115;
-      --muted: #7c6c54;
-      --soft: #9b8a70;
-      --accent: #b98d4c;
-      --accent-deep: #8d6b37;
-      --button: #2f2417;
-      --button-hover: #241a10;
-      --shadow: 0 18px 46px rgba(60, 43, 20, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-pill: 999px;
-      --container: 760px;
+      --bg: #26201a;
+      --text: #f0e6d3;
+      --accent: #c4973a;
+      --muted: rgba(240, 218, 185, 0.5);
+      --very-muted: rgba(240, 218, 185, 0.3);
+      --nav-brand: rgba(240, 230, 211, 0.38);
+      --status-border: rgba(196, 151, 58, 0.3);
+      --status-text: rgba(196, 151, 58, 0.85);
+      --footer-left: rgba(196, 151, 58, 0.25);
+      --footer-right: rgba(240, 218, 185, 0.12);
     }
 
     * {
@@ -51,220 +43,322 @@
 
     body {
       margin: 0;
-      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.65), transparent 42%),
-        linear-gradient(180deg, #f8f3eb 0%, #f4efe7 100%);
+      font-family: "Jost", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      background: radial-gradient(
+        ellipse at center 42%,
+        rgba(196, 151, 58, 0.055) 0%,
+        transparent 70%
+      );
+    }
+
+    body::after {
+      height: 1px;
+      inset: 0 0 auto;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(196, 151, 58, 0.35) 50%,
+        transparent 100%
+      );
+    }
+
+    .vertical-line {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(196, 151, 58, 0.08) 50%,
+        transparent 100%
+      );
+    }
+
+    .vertical-line.left {
+      left: 52px;
+    }
+
+    .vertical-line.right {
+      right: 52px;
+    }
+
+    .top-nav,
+    .bottom-bar,
+    .content,
+    .summary-modal {
+      position: relative;
+      z-index: 2;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 56px;
+      z-index: 5;
+    }
+
+    .brand {
+      font-size: 11px;
+      font-weight: 500;
+      font-family: "Jost", sans-serif;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--nav-brand);
+      white-space: nowrap;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--status-border);
+      color: var(--status-text);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2.8s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 0.25;
+      }
+      50% {
+        opacity: 1;
+      }
     }
 
     .page {
       min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 18px;
+      padding: 140px 24px 100px;
     }
 
-    .card {
-      width: min(var(--container), 100%);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      padding: clamp(24px, 4vw, 42px);
-      backdrop-filter: blur(10px);
-    }
-
-    .inner {
-      width: min(620px, 100%);
-      margin: 0 auto;
+    .content {
       text-align: center;
+      max-width: 720px;
+      animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 22px;
-      text-align: left;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid rgba(185, 141, 76, 0.28);
-      background: #f7efe4;
-      flex: 0 0 auto;
-    }
-
-    .brand-copy {
-      line-height: 1.12;
-    }
-
-    .brand-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .brand-subtitle {
-      margin-top: 4px;
-      font-size: 0.92rem;
-      color: var(--muted);
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      padding: 9px 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.72);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      gap: 16px;
+      margin-bottom: 40px;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--soft);
+      color: rgba(196, 151, 58, 0.7);
     }
 
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex: 0 0 auto;
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 52px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(196, 151, 58, 0.45) 100%
+      );
+    }
+
+    .eyebrow::after {
+      transform: scaleX(-1);
     }
 
     h1 {
       margin: 0;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2.45rem, 7.4vw, 4.95rem);
-      line-height: 0.96;
-      letter-spacing: -0.035em;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: clamp(68px, 10vw, 118px);
+      line-height: 0.92;
       color: var(--text);
       text-wrap: balance;
     }
 
-    .lead {
-      margin: 18px auto 0;
-      max-width: 590px;
-      font-size: clamp(1.03rem, 1.55vw, 1.12rem);
-      line-height: 1.7;
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      max-width: 400px;
+      margin: 44px auto 0;
+      font-family: "Jost", sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.95;
       color: var(--muted);
       text-wrap: pretty;
     }
 
-    .meta {
-      margin: 24px auto 0;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
+    .ornament {
+      margin: 52px auto 44px;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--soft);
-      font-size: 0.95rem;
-      line-height: 1.45;
+      gap: 13px;
     }
 
-    .meta svg {
+    .ornament-line {
+      width: 64px;
+      height: 1px;
+      background: rgba(196, 151, 58, 0.22);
+    }
+
+    .ornament-diamond {
+      width: 5px;
+      height: 5px;
+      transform: rotate(45deg);
+      background: rgba(196, 151, 58, 0.45);
       flex: 0 0 auto;
-      color: var(--accent-deep);
     }
 
-    .actions {
-      margin-top: 28px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .response-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 56px;
+      font-family: "Jost", sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--very-muted);
+    }
+
+    .response-time svg {
+      width: 15px;
+      height: 15px;
+      color: rgba(240, 218, 185, 0.36);
+    }
+
+    .button-group {
+      margin: 0 auto;
+      display: inline-flex;
+      border: 1px solid var(--accent);
+      overflow: hidden;
     }
 
     .btn {
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: var(--radius-pill);
-      border: 1px solid transparent;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.11em;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
       white-space: nowrap;
-      transition:
-        background-color 180ms ease,
-        border-color 180ms ease,
-        color 180ms ease,
-        transform 140ms ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn:active {
-      transform: translateY(0);
     }
 
     .btn-primary {
-      background: var(--button);
-      color: #ffffff;
-      border-color: var(--button);
+      padding: 19px 52px;
+      font-weight: 500;
+      background: var(--accent);
+      border: 0;
+      color: #1a1410;
     }
 
     .btn-primary:hover {
-      background: var(--button-hover);
-      border-color: var(--button-hover);
+      background: #d4a84a;
+    }
+
+    .button-divider {
+      width: 1px;
+      background: rgba(196, 151, 58, 0.2);
     }
 
     .btn-secondary {
+      padding: 19px 44px;
+      font-weight: 400;
       background: transparent;
-      color: var(--muted);
-      border-color: var(--line);
+      border: 0;
+      border-left: 0;
+      color: rgba(240, 218, 185, 0.65);
+      box-shadow: inset 0 0 0 1px rgba(240, 218, 185, 0.18);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.7);
-      color: var(--text);
-      border-color: var(--line-strong);
+      color: rgba(240, 218, 185, 0.8);
+      background: rgba(240, 218, 185, 0.04);
+      box-shadow: inset 0 0 0 1px rgba(240, 218, 185, 0.4);
     }
 
     .summary-trigger {
-      margin-top: 18px;
+      margin-top: 40px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      padding: 0;
       border: 0;
+      padding: 0 0 2px;
       background: transparent;
-      color: var(--soft);
-      font: inherit;
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-family: "Jost", sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(196, 151, 58, 0.35);
+      border-bottom: 1px solid rgba(196, 151, 58, 0.15);
       cursor: pointer;
-      transition: color 180ms ease;
+      transition: color 180ms ease, border-color 180ms ease;
     }
 
     .summary-trigger:hover {
-      color: var(--text);
-    }
-
-    .summary-trigger svg {
-      flex: 0 0 auto;
+      color: rgba(196, 151, 58, 0.75);
+      border-color: rgba(196, 151, 58, 0.35);
     }
 
     .summary-modal[hidden] {
@@ -274,23 +368,22 @@
     .summary-modal {
       position: fixed;
       inset: 0;
-      z-index: 20;
       display: grid;
       place-items: center;
-      padding: 16px;
-      background: rgba(24, 18, 10, 0.42);
-      backdrop-filter: blur(6px);
+      padding: 20px;
+      background: rgba(10, 8, 6, 0.66);
+      backdrop-filter: blur(4px);
+      z-index: 15;
     }
 
     .summary-panel {
-      width: min(560px, 100%);
+      width: min(580px, 100%);
       max-height: min(84svh, 760px);
       overflow: auto;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-      box-shadow: 0 24px 52px rgba(42, 31, 14, 0.16);
-      padding: 18px;
+      border: 1px solid rgba(240, 218, 185, 0.14);
+      background: linear-gradient(180deg, #2d251f 0%, #27211b 100%);
+      box-shadow: 0 28px 58px rgba(0, 0, 0, 0.44);
+      padding: 20px;
     }
 
     .summary-head {
@@ -299,163 +392,152 @@
       justify-content: space-between;
       gap: 12px;
       padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(240, 218, 185, 0.12);
     }
 
     .summary-title {
       margin: 0;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(1.42rem, 3vw, 1.86rem);
-      line-height: 1.05;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(31px, 4vw, 36px);
+      font-weight: 300;
       color: var(--text);
     }
 
     .summary-close {
-      width: 38px;
-      height: 38px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: #fff;
-      color: var(--muted);
-      font-size: 1.05rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(240, 218, 185, 0.2);
+      background: transparent;
+      color: rgba(240, 218, 185, 0.7);
+      font-size: 20px;
       line-height: 1;
       cursor: pointer;
-      transition:
-        background-color 160ms ease,
-        border-color 160ms ease,
-        color 160ms ease;
+      transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
     }
 
     .summary-close:hover {
-      background: #fbf8f2;
-      border-color: var(--line-strong);
+      border-color: rgba(240, 218, 185, 0.45);
       color: var(--text);
+      background: rgba(240, 218, 185, 0.05);
     }
 
     .summary-list {
+      margin-top: 16px;
       display: grid;
       gap: 10px;
-      margin-top: 14px;
     }
 
     .summary-item {
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--line);
-      background: #fffdf9;
+      border: 1px solid rgba(240, 218, 185, 0.13);
+      background: rgba(240, 218, 185, 0.03);
+      padding: 12px;
       text-align: left;
     }
 
     .summary-item-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.11em;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--soft);
+      color: rgba(196, 151, 58, 0.7);
     }
 
     .summary-item-value {
-      margin-top: 5px;
-      font-size: 0.98rem;
-      line-height: 1.55;
-      color: var(--text);
+      margin-top: 6px;
+      font-family: "Jost", sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 300;
+      color: rgba(240, 218, 185, 0.82);
       white-space: pre-wrap;
       word-break: break-word;
     }
 
     .summary-empty {
       margin: 16px 0 4px;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.55;
+      color: rgba(240, 218, 185, 0.62);
+      font-family: "Jost", sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
       text-align: left;
     }
 
-    @media (max-width: 700px) {
-      .page {
-        padding: 10px;
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 56px;
+      border-top: 1px solid rgba(196, 151, 58, 0.07);
+      z-index: 5;
+    }
+
+    .footer-tagline {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--footer-left);
+    }
+
+    .footer-copy {
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      color: var(--footer-right);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .top-nav,
+      .bottom-bar {
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
-      .card {
-        min-height: calc(100svh - 20px);
-        display: flex;
-        align-items: center;
-        border-radius: 22px;
-        padding: 22px 16px;
+      .vertical-line.left {
+        left: 14px;
       }
 
-      .brand {
-        margin-bottom: 18px;
-        gap: 10px;
+      .vertical-line.right {
+        right: 14px;
       }
 
-      .brand-logo {
-        width: 38px;
-        height: 38px;
+      .button-group {
+        display: inline-grid;
+        border: 1px solid var(--accent);
       }
 
-      .brand-title,
-      .brand-subtitle {
-        font-size: 0.84rem;
-      }
-
-      .eyebrow {
-        margin-bottom: 16px;
-        padding: 8px 12px;
-        font-size: 0.7rem;
-      }
-
-      .lead {
-        margin-top: 16px;
-      }
-
-      .meta {
-        margin-top: 20px;
-        padding-top: 16px;
-        font-size: 0.9rem;
-      }
-
-      .actions {
-        margin-top: 24px;
-        gap: 8px;
-      }
-
-      .btn {
-        flex: 1 1 0;
-        min-height: 48px;
-        padding: 0 14px;
-        font-size: 0.67rem;
-        letter-spacing: 0.09em;
-      }
-
-      .summary-trigger {
-        margin-top: 16px;
-        font-size: 0.84rem;
+      .button-divider {
+        width: auto;
+        height: 1px;
       }
     }
 
-    @media (max-width: 420px) {
-      .card {
-        padding: 20px 14px;
+    @media (max-width: 620px) {
+      .top-nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .page {
+        padding-top: 170px;
       }
 
       h1 {
-        font-size: clamp(2.12rem, 11vw, 3.1rem);
+        font-size: clamp(54px, 16vw, 68px);
       }
 
-      .lead {
-        font-size: 0.99rem;
-        line-height: 1.62;
+      .subtitle {
+        max-width: 92%;
       }
 
-      .meta {
-        gap: 8px;
-        font-size: 0.88rem;
-      }
-
-      .btn {
-        min-height: 46px;
-        font-size: 0.64rem;
+      .bottom-bar {
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
     }
 
@@ -471,82 +553,77 @@
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="card" aria-labelledby="thanks-title">
-      <div class="inner">
-        <div class="brand">
-          <img
-            class="brand-logo"
-            src="./crepe-logo-transparent.png"
-            alt="Crêpe de la Crêpe logo"
-            onerror="this.style.display='none'; this.parentNode.style.justifyContent='center';"
-          />
-          <div class="brand-copy">
-            <div class="brand-title">Crêpe de la Crêpe</div>
-            <div class="brand-subtitle">Bookingforespørsel</div>
-          </div>
-        </div>
+  <span class="vertical-line left" aria-hidden="true"></span>
+  <span class="vertical-line right" aria-hidden="true"></span>
 
-        <div class="eyebrow" aria-label="Bookingforespørsel mottatt">
-          <span class="eyebrow-dot" aria-hidden="true"></span>
-          Bookingforespørsel mottatt
-        </div>
+  <header class="top-nav" aria-label="Toppnavigasjon">
+    <div class="brand">CRÊPE DE LA CRÊPE</div>
+    <div class="status-pill">
+      <span class="status-dot" aria-hidden="true"></span>
+      FORESPØRSEL MOTTATT
+    </div>
+  </header>
 
-        <h1 id="thanks-title">Takk for forespørselen</h1>
+  <main class="page" aria-labelledby="thanks-title">
+    <section class="content">
+      <div class="eyebrow">Bookingforespørsel</div>
 
-        <p class="lead">
-          Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer.
-          Dersom vi trenger mer informasjon om oppsett, lokasjon eller praktiske detaljer,
-          tar vi kontakt direkte.
-        </p>
+      <h1 id="thanks-title">
+        Takk for
+        <br />
+        <em>forespørselen.</em>
+      </h1>
 
-        <div class="meta" aria-label="Vanlig svartid">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M12 7V12L15 14"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <circle
-              cx="12"
-              cy="12"
-              r="8"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-          </svg>
-          <span>Vanlig svartid er 24–48 timer.</span>
-        </div>
+      <p class="subtitle">
+        Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer. Trenger vi mer informasjon om
+        oppsett, lokasjon eller praktiske detaljer, tar vi kontakt direkte.
+      </p>
 
-        <div class="actions">
-          <a class="btn btn-primary" href="./index.html">Til forsiden</a>
-          <a class="btn btn-secondary" href="./book-oss.html">Ny forespørsel</a>
-        </div>
-
-        <button class="summary-trigger" type="button" id="openSummaryBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M6 9H18M6 13H14M6 17H12M6 5H18"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-          </svg>
-          Vis oppsummering
-        </button>
+      <div class="ornament" aria-hidden="true">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
       </div>
+
+      <div class="response-time" aria-label="Vanlig svartid er 24–48 timer">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 7V12L15 14"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <span>Vanlig svartid er 24–48 timer</span>
+      </div>
+
+      <div class="button-group" role="group" aria-label="Valg etter innsending">
+        <a class="btn btn-primary" href="./index.html">TIL FORSIDEN</a>
+        <span class="button-divider" aria-hidden="true"></span>
+        <a class="btn btn-secondary" href="./book-oss.html">NY FORESPØRSEL</a>
+      </div>
+
+      <button class="summary-trigger" type="button" id="openSummaryBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9H18M6 13H14M6 17H12M6 5H18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        Vis oppsummering
+      </button>
     </section>
   </main>
+
+  <footer class="bottom-bar" aria-label="Sidefot">
+    <span class="footer-tagline">Love at first bite</span>
+    <span class="footer-copy">© 2026</span>
+  </footer>
 
   <div class="summary-modal" id="summaryModal" hidden>
     <div class="summary-panel" role="dialog" aria-modal="true" aria-labelledby="summaryTitle">
       <div class="summary-head">
         <h2 class="summary-title" id="summaryTitle">Innsendt oppsummering</h2>
-        <button class="summary-close" type="button" id="closeSummaryBtn" aria-label="Lukk oppsummering">
-          ×
-        </button>
+        <button class="summary-close" type="button" id="closeSummaryBtn" aria-label="Lukk oppsummering">×</button>
       </div>
       <div class="summary-body" id="summaryBody"></div>
     </div>
