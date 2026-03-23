@@ -8,12 +8,12 @@
 
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
   <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
-  <link rel="canonical" href="https://crepedelacrepe.no/book-oss.html">
+  <link rel="canonical" href="https://crepe-website-eight.vercel.app/book-oss.html">
 
   <meta property="og:title" content="Book oss | Crêpe de la Crêpe">
   <meta property="og:description" content="Book Crêpe de la Crêpe til ditt neste arrangement. Festival, firma eller privat – vi stiller opp.">
   <meta property="og:image" content="/crepe-logo-transparent.png">
-  <meta property="og:url" content="https://crepedelacrepe.no/book-oss.html">
+  <meta property="og:url" content="https://crepe-website-eight.vercel.app/book-oss.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Book oss | Crêpe de la Crêpe">
@@ -100,6 +100,18 @@
       background: none;
       color: inherit;
       cursor: pointer;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .container {
@@ -2205,7 +2217,7 @@
       <a class="nav-mobile-home" href="./index.html">Forside</a>
       <div class="nav-brand">
         <div class="nav-brand-badge">
-          <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" />
+          <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" width="120" height="120" />
         </div>
         <span>Crêpe de la Crêpe</span>
       </div>
@@ -2225,7 +2237,7 @@
       <div class="container hero-shell">
         <div class="hero-card">
           <div class="hero-logo">
-            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" />
+            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" width="64" height="64" />
           </div>
 
           <h1 class="hero-title">
@@ -2234,7 +2246,7 @@
           </h1>
 
           <p class="hero-copy">
-            Ferskserverte crêpes til arrangementer i hele Norge.
+            Book Crêpe de la Crêpe til festivaler, firmaarrangementer og private arrangementer. Vi har fast lokasjon på Storo Storsenter i Oslo, og leverer også eventer andre steder.
           </p>
 
           <div class="hero-actions">
@@ -2258,7 +2270,7 @@
         <div class="container">
           <div class="setup-shell">
             <div class="setup-media">
-              <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" />
+              <img src="wagon.jpg" alt="Crepe de la Crepe Wagon" loading="lazy" width="1600" height="1200" />
             </div>
 
             <div class="setup-content">
@@ -2308,7 +2320,7 @@
             </div>
 
             <div class="setup-media">
-              <img src="stand.jpg" alt="Crepe de la Crepe Stand" />
+              <img src="stand.jpg" alt="Crepe de la Crepe Stand" loading="lazy" width="1600" height="1200" />
             </div>
           </div>
         </div>
@@ -2319,7 +2331,7 @@
         <div class="container">
           <div class="setup-shell">
             <div class="setup-media">
-              <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" />
+              <img src="popup.jpg" alt="Crepe de la Crepe Pop-Up" loading="lazy" width="1600" height="1200" />
             </div>
 
             <div class="setup-content">
@@ -2344,6 +2356,16 @@
       </article>
     </section>
 
+    <section class="closing-cta-wrap" aria-label="Slik fungerer booking" style="padding-top:20px;">
+      <div class="container">
+        <div class="closing-cta">
+          <div>
+            <h3>Slik fungerer booking</h3>
+            <p style="margin:0;">Vi leverer til festivaler, firmaarrangementer og private arrangementer. Oppsett og pris vurderes ut fra lokasjon, varighet, antall gjester og hvilket oppsett som passer best. Etter innsending går vi gjennom forespørselen og tar kontakt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     <section class="why-book-wrap" aria-label="Hvorfor booke oss">
@@ -2394,7 +2416,7 @@
         <div class="footer-shell">
           <div>
             <div class="footer-brand-wrap">
-              <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" class="footer-brand-logo" />
+              <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" class="footer-brand-logo" loading="lazy" width="84" height="84" />
               <p class="footer-brand">Crêpe de la Crêpe</p>
             </div>
           </div>
@@ -2523,6 +2545,7 @@
                   <div class="step-middle-inner">
                     <div class="field-row">
                       <div class="field-group">
+                        <label class="sr-only" for="fullName">Fullt navn</label>
                         <input
                           class="text-input"
                           type="text"
@@ -2535,6 +2558,7 @@
                       </div>
 
                       <div class="field-group">
+                        <label class="sr-only" for="email">E-post</label>
                         <input
                           class="text-input"
                           type="email"
@@ -2550,6 +2574,7 @@
                         <div class="phone-row">
                           <div class="field-group">
                             <div class="country-wrap">
+                              <label class="sr-only" for="phoneCountry">Landskode</label>
                               <select class="country-select" id="phoneCountry" name="phoneCountry" autocomplete="tel-country-code">
                                 <option value="NO">🇳🇴 Norge</option>
                                 <option value="SE">🇸🇪 Sverige</option>
@@ -2564,6 +2589,7 @@
                           <div class="field-group">
                             <div class="phone-input-wrap">
                               <span class="phone-prefix" id="phonePrefix">+47</span>
+                              <label class="sr-only" for="phone">Telefonnummer</label>
                               <input
                                 class="text-input"
                                 type="tel"
@@ -2599,6 +2625,7 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
+                    <label class="sr-only" for="companyName">Hva heter firmaet ditt?</label>
                     <input
                       class="text-input"
                       type="text"
@@ -2670,10 +2697,13 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
+                    <label class="sr-only" for="guestCount">Antall gjester</label>
                     <input
                       class="text-input"
                       type="text"
                       inputmode="numeric"
+                      pattern="[0-9]*"
+                      maxlength="6"
                       id="guestCount"
                       name="guests"
                       placeholder="For eksempel 120"
@@ -2744,6 +2774,7 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
+                    <label class="sr-only" for="location">Sted for arrangement</label>
                     <input
                       class="text-input"
                       type="text"
@@ -2773,6 +2804,7 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
+                    <label class="sr-only" for="message">Melding om arrangementet</label>
                     <textarea
                       class="textarea-input"
                       id="message"
@@ -3649,8 +3681,8 @@
               return false;
             }
 
-            const emailValue = document.getElementById("email").value.trim();
-            const emailOk = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(emailValue);
+            const emailValue = document.getElementById("email").value.trim().toLowerCase();
+            const emailOk = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(emailValue) && emailValue.length <= 150;
             if (!emailOk) {
               setError("email", "Skriv inn en gyldig e-post.");
               return false;
@@ -3673,9 +3705,14 @@
             formState.company = document.getElementById("companyName").value.trim();
             return true;
 
-          case 3:
+          case 3: {
             if (!formState.eventDateStart) {
               setError("date", "Velg dato for arrangementet.");
+              return false;
+            }
+            const todayIso = toISODate(today);
+            if (formState.eventDateStart < todayIso) {
+              setError("date", "Dato kan ikke være i fortiden.");
               return false;
             }
             if (formState.dateMode === "range" && !formState.eventDateEnd) {
@@ -3686,7 +3723,12 @@
               setError("date", "Sluttdato kan ikke være før startdato.");
               return false;
             }
+            if (formState.dateMode === "range" && formState.eventDateEnd < todayIso) {
+              setError("date", "Dato kan ikke være i fortiden.");
+              return false;
+            }
             return true;
+          }
 
           case 4: {
             const value = document.getElementById("guestCount").value.trim();
@@ -3698,7 +3740,12 @@
               setError("guests", "Bruk kun tall.");
               return false;
             }
-            formState.guests = value;
+            const guestNumber = Number(value);
+            if (!Number.isInteger(guestNumber) || guestNumber < 1 || guestNumber > 999999) {
+              setError("guests", "Antall gjester må være mellom 1 og 999999.");
+              return false;
+            }
+            formState.guests = String(guestNumber);
             return true;
           }
 
@@ -3719,9 +3766,19 @@
             return true;
           }
 
-          case 7:
-            formState.message = document.getElementById("message").value.trim();
+          case 7: {
+            const messageValue = document.getElementById("message").value.trim();
+            if (messageValue && messageValue.length < 12) {
+              setError("submit", "Skriv litt mer om arrangementet, eller la feltet stå tomt.");
+              return false;
+            }
+            if (messageValue.length > 1200) {
+              setError("submit", "Meldingen er for lang. Hold den under 1200 tegn.");
+              return false;
+            }
+            formState.message = messageValue;
             return true;
+          }
 
           default:
             return true;
@@ -4039,6 +4096,7 @@
 
       document.getElementById("message").addEventListener("input", (e) => {
         formState.message = e.target.value.trim();
+        setError("submit", "");
         updateSummary();
       });
 

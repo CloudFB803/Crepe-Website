@@ -272,6 +272,20 @@ function isRateLimited(ip = "") {
   return false;
 }
 
+function getClientIp(request) {
+  const forwarded = request.headers.get("x-forwarded-for") || "";
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+
+  return (
+    request.headers.get("x-real-ip") ||
+    request.headers.get("x-vercel-forwarded-for") ||
+    request.headers.get("cf-connecting-ip") ||
+    ""
+  ).trim();
+}
+
 function logEvent(level, event, requestId, details = {}) {
   const payload = {
     level,
@@ -290,7 +304,7 @@ function logEvent(level, event, requestId, details = {}) {
 export default {
   async fetch(request) {
     const requestId = crypto.randomUUID();
-    const ip = request.headers.get("CF-Connecting-IP") || "";
+    const ip = getClientIp(request);
 
     if (request.method !== "POST") {
       return jsonResponse({ ok: false, error: "Method not allowed" }, 405, requestId);
