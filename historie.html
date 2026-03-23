@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vår historie | Crêpe de la Crêpe</title>
-  <meta name="description" content="Les historien bak Crêpe de la Crêpe – fra en enkel tanke til Oslos mest elskede crêperi. To personer, én drøm og mye kjærlighet til mat.">
+  <meta name="description" content="Les historien bak Crêpe de la Crêpe – fra en enkel tanke til Oslos mest elskede crêperi.">
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png">
-  <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
   <link rel="canonical" href="https://crepedelacrepe.no/historie.html">
 
   <meta property="og:title" content="Vår historie | Crêpe de la Crêpe">
@@ -14,745 +13,822 @@
   <meta property="og:image" content="/crepe-logo-transparent.png">
   <meta property="og:url" content="https://crepedelacrepe.no/historie.html">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vår historie | Crêpe de la Crêpe">
-  <meta name="twitter:description" content="Fra kontorjobb til crêperi – les historien bak Crêpe de la Crêpe.">
-  <meta name="twitter:image" content="/crepe-logo-transparent.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --text: #2d1b15;
-      --muted: #6f584c;
-      --muted-soft: #8b7262;
-      --line: rgba(66, 39, 23, 0.10);
-      --accent: #cd9a62;
-      --accent-2: #925f43;
-      --bg-1: #f4e7d9;
-      --bg-2: #e7d7c7;
-      --white: #fffaf5;
-      --max: 1240px;
-      --radius: 30px;
-      --shadow: 0 20px 54px rgba(56, 33, 20, 0.12);
-      --shadow-soft: 0 12px 30px rgba(56, 33, 20, 0.08);
-      --ease: cubic-bezier(.2,.9,.2,1);
+      --cream: #f5ead8;
+      --cream-2: #ede0cc;
+      --dark: #1a0f0a;
+      --dark-2: #271509;
+      --gold: #c9903a;
+      --gold-light: #e6b86a;
+      --gold-pale: #f2d5a0;
+      --rust: #8c3d1e;
+      --text-on-dark: #f5ead8;
+      --text-muted-dark: rgba(245,234,216,0.62);
+      --text-on-light: #1a0f0a;
+      --text-muted-light: #6b4c35;
+      --max: 1160px;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: "Manrope", Arial, Helvetica, sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background:
-        radial-gradient(circle at top right, rgba(248, 210, 148, 0.16), transparent 24%),
-        radial-gradient(circle at 12% 16%, rgba(205, 154, 98, 0.10), transparent 20%),
-        radial-gradient(circle at bottom left, rgba(146, 95, 67, 0.08), transparent 22%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      font-family: "Manrope", Arial, sans-serif;
+      background: var(--dark);
+      color: var(--text-on-dark);
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
-    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .74rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: rgba(216, 178, 135, 0.5);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 800;
-      gap: 10px;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf5;
-      box-shadow: 0 16px 34px rgba(143, 93, 66, 0.20);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.84);
-      color: #2d1b15;
-      border-color: rgba(66, 39, 23, 0.12);
-      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
-    }
-
-    .reveal-nav {
+    /* ─── NAV ─── */
+    .nav {
       position: fixed;
-      top: 12px;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(-12px);
-      transition: opacity 320ms var(--ease), transform 320ms var(--ease);
-    }
-
-    .reveal-nav.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .reveal-nav-inner {
-      width: min(calc(100% - 28px), 1180px);
-      margin: 0 auto;
-      min-height: 78px;
-      padding: 8px 16px;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(248, 240, 228, 0.72);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.12);
+      gap: 16px;
+      background: rgba(26,15,10,0);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
     }
 
-    .nav-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .nav-brand-badge {
-      width: 64px;
-      height: 64px;
+    .nav.scrolled {
+      background: rgba(26,15,10,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201,144,58,0.12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-img {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(201,144,58,0.3);
+      padding: 6px;
+      overflow: hidden;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.4);
-      border: 1px solid var(--line);
-      overflow: hidden;
-      padding: 8px;
     }
-    .nav-brand-badge img { width: 100%; height: 100%; object-fit: contain; }
-    .nav-brand span {
-      font-size: .82rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      white-space: nowrap;
+
+    .nav-logo-img img { width: 100%; height: 100%; object-fit: contain; }
+
+    .nav-wordmark {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-on-dark);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 16px;
-      color: var(--text);
-      font-size: .78rem;
+      gap: 24px;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: .05em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--text-muted-dark);
     }
 
-    .nav-links a { opacity: .82; transition: opacity 180ms var(--ease); }
-    .nav-links a:hover { opacity: 1; }
-    .nav-mobile-links {
-      display: none;
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      display: inline-flex;
       align-items: center;
-      gap: 16px;
-      color: var(--text);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .05em;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--rust));
+      color: var(--cream);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(140,61,30,0.28);
+      white-space: nowrap;
     }
-    .nav-mobile-links a { opacity: .82; transition: opacity 180ms var(--ease); }
-    .nav-mobile-links a:hover { opacity: 1; }
 
-    main { overflow: clip; }
-    section { padding: 88px 0; }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(140,61,30,0.38);
+    }
 
-    .hero {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: #fff7ef;
+    /* ─── SCENE SYSTEM ─── */
+    /* Each .scene is a full-height sticky panel */
+    .scenes { position: relative; }
+
+    .scene {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* The scroll track for each scene creates the "dwell" time */
+    .scene-track {
+      height: 200svh; /* scene dwells for 100vh of scroll */
+      position: relative;
+    }
+
+    .scene-track:last-child { height: 100svh; }
+
+    /* ─── SCENE 0: HERO ─── */
+    .scene-hero {
       background:
-        linear-gradient(180deg, rgba(5, 4, 3, 0.1) 0%, rgba(5, 4, 3, 0.42) 58%, rgba(5, 4, 3, 0.78) 100%),
-        linear-gradient(90deg, rgba(5, 4, 3, 0.5) 0%, rgba(5, 4, 3, 0.14) 50%, rgba(5, 4, 3, 0.5) 100%),
+        linear-gradient(180deg, rgba(26,15,10,0.18) 0%, rgba(26,15,10,0.72) 70%, rgba(26,15,10,1) 100%),
         url("hero-crepes.jpg") center center / cover no-repeat;
-      padding-top: 120px;
+      text-align: center;
     }
 
-    .hero h1 {
-      margin: 0;
+    .scene-hero .inner { position: relative; z-index: 2; padding: 0 24px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.3s ease forwards;
+    }
+
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: rgba(230,184,106,0.5);
+    }
+
+    .scene-hero h1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 10vw, 6rem);
-      letter-spacing: -0.04em;
-      line-height: .9;
-      text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      font-size: clamp(4rem, 13vw, 9rem);
+      font-weight: 600;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      opacity: 0;
+      animation: fadeUp 1s 0.5s ease forwards;
     }
 
-    .hero p {
-      margin: 18px 0 0;
-      font-size: clamp(1.05rem, 3vw, 1.4rem);
-      color: rgba(255, 247, 239, 0.88);
+    .hero-sub {
+      margin-top: 22px;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted-dark);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.75s ease forwards;
     }
 
-    .story-grid {
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.2s ease forwards;
+    }
+
+    .scroll-hint span {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245,234,216,0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(201,144,58,0.6), transparent);
+      animation: scrollPulse 2s 1.5s ease-in-out infinite;
+    }
+
+    /* ─── SCENES: DARK BACKGROUND ─── */
+    .scene-dark {
+      background: var(--dark);
+    }
+
+    /* ─── SCENES: LIGHT BACKGROUND ─── */
+    .scene-light {
+      background: var(--cream);
+      color: var(--text-on-light);
+    }
+
+    /* ─── SCENE: SPLIT LAYOUT ─── */
+    .scene-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 38px;
+      height: 100svh;
+      align-items: stretch;
+    }
+
+    .split-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 7vw, 100px);
+    }
+
+    .split-media {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .split-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .split-media .media-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(26,15,10,0.5), transparent);
+    }
+
+    /* ─── SCENE: CINEMATIC (image bg) ─── */
+    .scene-cinematic {
+      background: linear-gradient(180deg, rgba(26,15,10,0.5), rgba(26,15,10,0.75)),
+                  url("frankrike1.jpg") center center / cover no-repeat;
+    }
+
+    /* ─── SCENE: STAT STRIP ─── */
+    .scene-stats {
+      background: var(--dark-2);
+    }
+
+    /* ─── TYPOGRAPHY SYSTEM ─── */
+    .label {
+      display: inline-flex;
       align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
     }
 
-    .story-copy h2,
-    .cinema-text h2,
-    .center-shell h2,
-    .community h2,
-    .ending h2 {
-      margin: 0 0 14px;
+    .label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    .label.light { color: var(--rust); }
+
+    .scene-heading {
       font-family: "Cormorant Garamond", serif;
-      letter-spacing: -0.025em;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 600;
       line-height: 1;
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.025em;
     }
 
-    .story-copy p,
-    .cinema-text p,
-    .center-shell p,
-    .community p { margin: 0; color: var(--muted); font-size: 1.08rem; }
+    .scene-heading em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
 
-    .stagger-text,
-    .stagger-media {
+    .scene-heading.on-light em { color: var(--rust); }
+
+    .scene-body {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-muted-dark);
+      max-width: 42ch;
+    }
+
+    .scene-body.on-light { color: var(--text-muted-light); }
+
+    /* ─── QUOTE SCENE ─── */
+    .scene-quote {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .big-quote {
+      font-family: "Parisienne", cursive;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.15;
+      color: var(--rust);
+      max-width: 16ch;
+      margin: 0 auto 20px;
+    }
+
+    .quote-body {
+      font-size: 1.05rem;
+      color: var(--text-muted-light);
+      max-width: 44ch;
+      margin: 0 auto;
+    }
+
+    /* ─── FESTIVAL SCENE ─── */
+    .scene-festival {
+      background: var(--dark-2);
+      text-align: center;
+    }
+
+    .festival-strip {
+      margin: 28px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 0;
+    }
+
+    .festival-pill {
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      padding: 0 16px;
+      border-right: 1px solid rgba(201,144,58,0.25);
+      line-height: 1.3;
+    }
+
+    .festival-pill:last-child { border-right: none; }
+
+    .festival-stat {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 22px 36px;
+      border: 1px solid rgba(201,144,58,0.18);
+      border-radius: 16px;
+      background: rgba(201,144,58,0.06);
+    }
+
+    .festival-stat .num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 600;
+      line-height: 1;
+      color: var(--gold-light);
+    }
+
+    .festival-stat .desc {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* ─── ENDING SCENE ─── */
+    .scene-ending {
+      background: var(--dark);
+      text-align: center;
+      min-height: 100svh;
+      padding: 120px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ending-title {
+      font-family: "Parisienne", cursive;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .ending-tag {
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 36px;
+    }
+
+    .ending-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,144,58,0.3);
+      color: var(--cream);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(201,144,58,0.08);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(201,144,58,0.18);
+      border-color: rgba(201,144,58,0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--rust));
+      color: var(--cream);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 28px rgba(140,61,30,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(140,61,30,0.42);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #120b06;
+      border-top: 1px solid rgba(201,144,58,0.1);
+      padding: 52px 24px 36px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted-dark);
+      margin-bottom: 28px;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-mini {
+      font-size: 0.76rem;
+      color: rgba(245,234,216,0.3);
+    }
+
+    /* ─── SCENE-IN ANIMATION ─── */
+    .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
 
-    .fade-in.visible .stagger-text,
-    .fade-in.visible .stagger-media {
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.22s; }
+    .reveal.d3 { transition-delay: 0.36s; }
+
+    .reveal.in {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .fade-in.visible .stagger-media { transition-delay: 150ms; }
-    .fade-in.visible .stagger-media.delay-2 { transition-delay: 260ms; }
-
-    .story-media img,
-    .stack-media img {
-      width: 100%;
-      border-radius: 22px;
-      box-shadow: var(--shadow-soft);
-      object-fit: cover;
-      min-height: 300px;
-      background: #dbc5b0;
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(22px); }
     }
 
-    .stack-media { display: grid; gap: 14px; }
-    .stack-media.double { grid-template-columns: 1fr 1fr; }
-
-    .cinematic {
-      position: relative;
-      color: #fff7ef;
-      background:
-        linear-gradient(180deg, rgba(5, 4, 3, 0.55), rgba(5, 4, 3, 0.72)),
-        url("frankrike1.jpg") center center / cover no-repeat;
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 0.9; transform: scaleY(1.15); }
     }
 
-    .cinema-shell {
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(26, 18, 14, 0.52);
-      padding: clamp(26px, 4vw, 42px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+    /* ─── HORIZONTAL DIVIDER ─── */
+    .gold-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      margin: 24px 0;
     }
 
-    .cinema-text p { color: rgba(255, 247, 239, 0.84); }
-    .cinema-gallery { margin-top: 24px; align-items: start; }
-
-    .photo-card {
-      margin: 0;
-      transition: transform 0.35s var(--ease);
-      width: 100%;
-    }
-
-    .photo-card img {
-      min-height: 240px;
-      border: 8px solid rgba(255, 255, 255, 0.94);
-      box-shadow: 0 18px 36px rgba(10, 7, 5, 0.34);
-      border-radius: 6px;
-      transition: transform 0.35s var(--ease);
-    }
-
-    .photo-card-1 img { transform: rotate(-2.2deg); }
-    .photo-card-2 img { transform: rotate(1.8deg); }
-
-    .photo-card:hover img { transform: rotate(0deg); }
-
-    .photo-note {
-      margin-top: 12px;
-      color: #8b573d;
-      font-family: "Parisienne", cursive;
-      font-size: clamp(1.15rem, 2vw, 1.28rem);
-      line-height: 1.1;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    }
-
-    .question-section { text-align: center; }
-    .question-section blockquote {
-      margin: 0 auto 20px;
-      max-width: 900px;
-      font-family: "Parisienne", cursive;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 1.05;
-      letter-spacing: 0.01em;
-      color: #8b573d;
-    }
-
-    .festivals { text-align: center; color: #fff2e7; }
-    .festival-line {
-      margin: 10px auto 16px;
-      max-width: 980px;
-      font-size: clamp(1.12rem, 2.2vw, 1.7rem);
-      font-weight: 700;
-      color: #fff2e7;
-      padding: 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 247, 239, 0.18);
-      background: rgba(255, 247, 239, 0.08);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
-    }
-
-    .festivals p { color: rgba(255, 242, 231, 0.86); font-size: 1.08rem; }
-
-    .community .warm-card {
-      padding: clamp(30px, 4.4vw, 46px);
-      border-radius: 26px;
-      background: linear-gradient(140deg, rgba(255,250,245,0.92), rgba(248,230,214,0.88));
-      border: 1px solid rgba(66, 39, 23, 0.12);
-      box-shadow: var(--shadow-soft);
-      text-align: left;
-    }
-
-    .community .story-media img {
-      min-height: 360px;
-      max-height: 520px;
-      object-position: center 28%;
-    }
-
-    .section-starten { background: var(--bg-1); padding: 94px 0 88px; }
-    .section-vinterland { background: var(--bg-2); padding: 82px 0 90px; }
-    .section-vinterland .story-grid {
-      grid-template-columns: 1fr;
-      gap: 26px;
-      align-items: start;
-    }
-    .section-frankrike { padding: 124px 0; }
-    .section-question { background: var(--white); padding: 54px 0; }
-    .section-savoury { background: var(--bg-1); padding: 86px 0 96px; }
-    .section-festivals { background: #2f1d14; padding: 92px 0; }
-    .section-community { background: var(--bg-2); padding: 94px 0; }
-    .section-ending { background: #2f1d14; }
-
-    .ending {
-      text-align: center;
-      color: #fff7ef;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(205, 154, 98, 0.16), transparent 32%),
-        linear-gradient(120deg, #2d1b15 0%, #20120f 100%);
-    }
-
-    .ending h2 {
-      font-family: "Parisienne", cursive;
-      font-size: clamp(2.6rem, 6vw, 4.7rem);
-      margin-bottom: 8px;
-      letter-spacing: 0.01em;
-    }
-    .ending .tag {
-      color: rgba(255,247,239,.82);
-      font-family: "Parisienne", cursive;
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      letter-spacing: .02em;
-    }
-    .ending-actions { margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    .footer {
-      padding: 46px 0 32px;
-      color: #f6e8db;
-      background: radial-gradient(circle at 80% -20%, rgba(205, 154, 98, 0.24), transparent 40%), #241812;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-shell {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
-      gap: 28px;
-    }
-
-    .footer-brand .brand { display: flex; align-items: center; gap: 14px; }
-    .footer .brand-logo-wrap {
-      width: 74px;
-      height: 74px;
-      border-radius: 22px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(240,220,200,0.56));
-      border: 1px solid rgba(255,255,255,0.18);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .footer .brand-logo { width: 100%; height: 100%; object-fit: contain; padding: 7px; }
-    .footer .brand-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 33px;
-      letter-spacing: -0.03em;
-      line-height: .95;
-      color: #fff7ef;
-    }
-    .footer .brand-subtitle { color: rgba(255,247,239,0.72); font-size: .86rem; letter-spacing: .12em; text-transform: uppercase; }
-
-    .footer-block h4 { margin: 0 0 10px; font-size: .92rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,247,239,0.82); }
-    .footer-links, .footer-list { display: grid; gap: 8px; }
-    .footer-links a, .footer-list a, .footer-list div { color: rgba(255,247,239,0.76); font-size: .95rem; }
-
-    .footer-actions { margin-top: 14px; display: grid; gap: 10px; }
-    .footer-actions-top { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
-    .footer-actions .btn { min-height: 46px; padding: 10px 18px; }
-    .footer-mini {
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,247,239,0.58);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: .84rem;
-    }
-
-    @media (max-width: 1080px) {
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
       .nav-links { display: none; }
-      .story-grid { grid-template-columns: 1fr; gap: 26px; }
-      .media-left { order: -1; }
-      .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    }
-
-    @media (max-width: 740px) {
-      section { padding: 70px 0; }
-      .reveal-nav {
-        top: 6px;
+      .scene-split {
+        grid-template-columns: 1fr;
       }
-      .reveal-nav-inner {
-        min-height: 56px;
-        padding: 6px 10px;
-        gap: 12px;
-        width: min(calc(100% - 14px), 1180px);
-        background: rgba(248, 240, 228, 0.64);
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
-      }
-      .nav-mobile-links {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: flex-end;
-        min-width: 0;
-        gap: 10px;
-        font-size: .67rem;
-        letter-spacing: .04em;
-        white-space: nowrap;
-      }
-      .nav-mobile-links a {
-        white-space: nowrap;
-      }
-      .nav-brand-badge {
-        width: 44px;
-        height: 44px;
-        padding: 6px;
-      }
-      .nav-brand {
-        gap: 8px;
-      }
-      .nav-brand span { display: none; }
-      .reveal-nav-inner > .btn.btn-primary {
+      .split-media {
         display: none;
       }
-      .stack-media.double { grid-template-columns: 1fr; }
-      .photo-card-1 img,
-      .photo-card-2 img { transform: rotate(0deg); }
-      .section-question { padding: 46px 0; }
-      .footer-shell { padding: 24px; border-radius: 24px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-actions-top { grid-template-columns: 1fr; }
-      .footer-mini { flex-direction: column; }
+      .split-text {
+        padding: 48px 28px;
+        justify-content: center;
+      }
+      .scene-track { height: 160svh; }
     }
 
-    @media (max-width: 640px) {
-      .ending-actions {
-        flex-direction: column;
-      }
-
-      .ending-actions .btn {
-        width: 100%;
-      }
-
-      .footer-actions {
-        display: none;
-      }
+    @media (max-width: 560px) {
+      .nav-wordmark { display: none; }
+      .scene-track { height: 140svh; }
+      .festival-pill { font-size: 1rem; }
+      .ending-actions { flex-direction: column; align-items: center; }
+      .ending-actions .btn-outline,
+      .ending-actions .btn-gold { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <div class="reveal-nav" id="revealNav">
-    <div class="reveal-nav-inner">
-      <a class="nav-brand" href="#top">
-        <div class="nav-brand-badge"><img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" /></div>
-        <span>Crêpe de la Crêpe</span>
-      </a>
-      <nav class="nav-links" aria-label="Sidenavigasjon">
-        <a href="#starten">Starten</a>
-        <a href="#frankrike">Frankrike</a>
-        <a href="#festivaler">Festivaler</a>
-        <a href="./index.html">Tilbake til forsiden</a>
-      </nav>
-      <nav class="nav-mobile-links" aria-label="Mobilnavigasjon">
-        <a href="./index.html">Forside</a>
-        <a href="./index.html#menu">Meny</a>
-        <a href="./book-oss.html">Book oss</a>
-      </nav>
-      <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="./index.html">
+      <div class="nav-logo-img"><img src="crepe-logo-transparent.png" alt="Logo"></div>
+      <span class="nav-wordmark">Crêpe de la Crêpe</span>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html">Forside</a>
+      <a href="./index.html#menu">Meny</a>
+      <a href="./book-oss.html">Book oss</a>
     </div>
+    <a class="nav-cta" href="./book-oss.html">Book oss</a>
+  </nav>
+
+  <!-- ═══════════════════════════
+       SCENE 0 · HERO
+  ══════════════════════════════ -->
+  <div class="scene-track" style="height: 160svh;">
+    <section class="scene scene-hero">
+      <div class="inner">
+        <div class="hero-eyebrow">Siden 2021</div>
+        <h1>Vår<br>historie</h1>
+        <p class="hero-sub">Fra kontorjobb til crêpes i hele Norge.</p>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
   </div>
 
-  <main id="top">
-    <section class="hero fade-in" aria-label="Vår historie hero">
-      <div class="container">
-        <h1>Vår historie</h1>
-        <p>Fra en kontorjobb til crêpes i hele Norge.</p>
+  <!-- ═══════════════════════════
+       SCENE 1 · DET STARTET
+  ══════════════════════════════ -->
+  <div class="scene-track">
+    <section class="scene scene-split scene-dark">
+      <div class="split-text">
+        <div class="reveal"><div class="label">2021</div></div>
+        <h2 class="scene-heading reveal d1">
+          En tanke.<br>To folk.<br><em>Én drøm.</em>
+        </h2>
+        <p class="scene-body reveal d2">
+          Det startet ikke med en businessplan. Det startet med et spørsmål — og to folk fra samme kontorjobb som fant ut at de ville skape noe folk samles rundt.
+        </p>
+      </div>
+      <div class="split-media">
+        <img src="team.jpg" alt="Teamet bak Crepe de la Crepe" loading="lazy" />
+        <div class="media-overlay"></div>
       </div>
     </section>
+  </div>
 
-    <section id="starten" class="fade-in section-starten">
-      <div class="container story-grid">
-        <div class="story-copy stagger-text">
-          <div class="eyebrow">2021</div>
-          <h2>Det startet med en tanke</h2>
-          <p>Hvor stort kan egentlig crêpes bli? Men egentlig startet det enda tidligere — med to personer som møttes gjennom en vanlig kontorjobb og etter hvert fant ut at de ønsket å skape noe spesielt sammen. Noe som folk kunne samles rundt.</p>
-        </div>
-        <div class="story-media stagger-media">
-          <img src="team.jpg" alt="Teamet bak Crepe de la Crepe" loading="lazy" />
-        </div>
+  <!-- ═══════════════════════════
+       SCENE 2 · VINTERLAND
+  ══════════════════════════════ -->
+  <div class="scene-track">
+    <section class="scene scene-split scene-light" style="direction: rtl;">
+      <div class="split-text" style="direction: ltr;">
+        <div class="reveal"><div class="label light">De første sesongene</div></div>
+        <h2 class="scene-heading on-light reveal d1">
+          Flest møtte oss<br>i kulden —<br><em style="color:var(--rust)">Jul i Vinterland.</em>
+        </h2>
+        <p class="scene-body on-light reveal d2">
+          Vi stod der sesongen etter sesongen og serverte crêpes mens folk pakket seg inn i vinterjakker. Det var da vi skjønte: folk elsker dette. Nok til å stå i kø i minusgrader.
+        </p>
+      </div>
+      <div class="split-media" style="direction: ltr;">
+        <img src="vinterlandhistorie1.jpg" alt="Jul i Vinterland" loading="lazy" />
       </div>
     </section>
+  </div>
 
-    <section class="fade-in section-vinterland">
-      <div class="container story-grid">
-        <div class="story-copy stagger-text">
-          <div class="eyebrow">De første sesongene</div>
-          <h2>Der folk flest møtte oss</h2>
-          <p>De fleste kjenner oss i dag fra Jul i Vinterland, hvor mange fikk sin første smakebit av crêpene våre. Etter flere sesonger der, begynte vi å stille oss et spørsmål: er crêpes egentlig bare dessert?</p>
-        </div>
-        <div class="stack-media stagger-media">
-          <img src="vinterlandhistorie1.jpg" alt="Crepe de la Crepe i Jul i Vinterland" loading="lazy" />
-          <img src="vinterlandhistorie2.jpg" alt="Folk i kø for crêpes i Jul i Vinterland" loading="lazy" />
-        </div>
+  <!-- ═══════════════════════════
+       SCENE 3 · FRANKRIKE
+  ══════════════════════════════ -->
+  <div class="scene-track">
+    <section class="scene scene-cinematic">
+      <div style="max-width: 720px; padding: 0 28px; text-align: center;">
+        <div class="reveal"><div class="label" style="justify-content: center;">Frankrike — to år på rad</div></div>
+        <h2 class="scene-heading reveal d1" style="font-size: clamp(2.8rem, 6vw, 5rem); text-align: center;">
+          Vi dro dit for å<br><em>finne svaret.</em>
+        </h2>
+        <div class="gold-line reveal d2" style="margin: 24px auto;"></div>
+        <p class="scene-body reveal d3" style="max-width: 52ch; margin: 0 auto; text-align: center; color: rgba(245,234,216,0.78);">
+          Fra små boder til store crêperier — nesten hvert hjørne i Paris hadde ferske crêpes. Folk spiste det til frokost, lunsj og middag. Vi hentet inspirasjon og dro hjem med ett spørsmål.
+        </p>
       </div>
     </section>
+  </div>
 
-    <section id="frankrike" class="cinematic fade-in section-frankrike">
-      <div class="container">
-        <div class="cinema-shell">
-          <div class="cinema-text stagger-text">
-            <div class="eyebrow">Frankrike — to år på rad</div>
-            <h2>Vi dro dit for å finne svaret</h2>
-            <p>Vi gikk fra små til store crêperier, smakte oss gjennom menyene og hentet inspirasjon fra steder hvor crêpes er en naturlig del av hverdagen. En ting la vi spesielt merke til: crêpes var overalt. Fra små boder til store crêperier — nesten hvert hjørne hadde et sted som lagde ferske crêpes, og folk spiste det til alle tider på dagen.</p>
+  <!-- ═══════════════════════════
+       SCENE 4 · SPØRSMÅLET
+  ══════════════════════════════ -->
+  <div class="scene-track" style="height: 140svh;">
+    <section class="scene scene-quote">
+      <div style="padding: 0 28px;">
+        <div class="reveal"><div class="label light" style="justify-content: center;">Spørsmålet</div></div>
+        <blockquote class="big-quote reveal d1">
+          "Hvorfor er ikke crêpes like utbredt i Norge?"
+        </blockquote>
+        <p class="quote-body reveal d2">
+          Det ga oss svaret vi trengte. Det er akkurat dette vi ønsker å gjøre noe med.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════
+       SCENE 5 · SALTE CRÊPES
+  ══════════════════════════════ -->
+  <div class="scene-track">
+    <section class="scene scene-split scene-dark">
+      <div class="split-text">
+        <div class="reveal"><div class="label">Oktober 2025</div></div>
+        <h2 class="scene-heading reveal d1">
+          Vi lanserte<br><em>salt på menyen.</em>
+        </h2>
+        <p class="scene-body reveal d2">
+          Inspirert av det vi opplevde i Frankrike. Mange hadde etterspurt det lenge — og vi jobber mot et større mål: å gjøre crêpe til en egen kategori, på lik linje med pizza og burger.
+        </p>
+      </div>
+      <div class="split-media">
+        <img src="frankrike4.jpg" alt="Salte crêpes" loading="lazy" />
+        <div class="media-overlay"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════
+       SCENE 6 · FESTIVALER
+  ══════════════════════════════ -->
+  <div class="scene-track" style="height: 160svh;">
+    <section class="scene scene-festival">
+      <div style="padding: 0 24px; text-align: center; max-width: var(--max); margin: 0 auto;">
+        <div class="reveal"><div class="label" style="justify-content: center;">Noen av våre største stopp</div></div>
+
+        <div class="festival-strip reveal d1">
+          <span class="festival-pill">Jul i Vinterland</span>
+          <span class="festival-pill">Gladmat</span>
+          <span class="festival-pill">Slottsfjell</span>
+          <span class="festival-pill">Stavernfestivalen</span>
+          <span class="festival-pill">Idyll</span>
+        </div>
+
+        <div class="stat-row reveal d2">
+          <div class="festival-stat">
+            <span class="num">100+</span>
+            <span class="desc">Arrangementer</span>
           </div>
-
-          <div class="stack-media double cinema-gallery stagger-media">
-            <figure class="photo-card photo-card-1 stagger-media">
-              <img src="frankrike2.jpg" alt="Crepe-inspirasjon fra Frankrike" loading="lazy" />
-              <figcaption class="photo-note">Paris, 2022</figcaption>
-            </figure>
-            <figure class="photo-card photo-card-2 stagger-media delay-2">
-              <img src="frankrike3.jpg" alt="Crêperier i Frankrike" loading="lazy" />
-              <figcaption class="photo-note">På jakt etter den perfekte crêpen</figcaption>
-            </figure>
+          <div class="festival-stat">
+            <span class="num">300k+</span>
+            <span class="desc">Serverte crêpes</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="question-section fade-in section-question">
-      <div class="container center-shell stagger-text">
-        <div class="eyebrow">Spørsmålet</div>
-        <blockquote>"Hvorfor er ikke crêpes like utbredt i Norge?"</blockquote>
-        <p>Det ga oss en tydelig indikasjon: dette er noe folk virkelig elsker. Det er akkurat det vi ønsker å gjøre noe med.</p>
-      </div>
-    </section>
-
-    <section class="fade-in section-savoury">
-      <div class="container story-grid">
-        <div class="story-copy stagger-text">
-          <div class="eyebrow">Oktober 2025</div>
-          <h2>Vi lanserte vår første salte meny</h2>
-          <p>Inspirert av det vi opplevde lanserte vi i oktober 2025 vår første salte meny — noe mange hadde etterspurt lenge. Samtidig jobber vi mot et større mål: å gjøre crêpe til en egen kategori, på samme måte som pizza, burger eller pasta.</p>
-        </div>
-        <div class="story-media stagger-media">
-          <img src="frankrike4.jpg" alt="Salte crêpes inspirert av Frankrike" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <section id="festivaler" class="festivals fade-in section-festivals">
-      <div class="container center-shell stagger-text">
-        <div class="eyebrow">Noen av våre største stopp</div>
-        <div class="festival-line">Jul i Vinterland · Gladmat · Slottsfjell · Stavernfestivalen · Idyll</div>
-        <p>100+ arrangementer. 300 000+ serverte crêpes. Siden 2021.</p>
-      </div>
-    </section>
-
-    <section class="community fade-in section-community">
-      <div class="container story-grid">
-        <div class="warm-card stagger-text">
-          <div class="eyebrow">Menneskene rundt oss</div>
-          <h2>Dette er mer enn en matbod</h2>
-          <p>Vi ønsker å bygge en kultur rundt dette fantastiske fenomenet. Mange av menneskene som har fulgt oss har allerede blitt en del av reisen. Flere har vært med på å utvikle menyen vår, noen har senere blitt en del av teamet, og andre har til og med blitt ansikter utad på våre sosiale medier.</p>
-        </div>
-        <div class="story-media stagger-media">
-          <img src="team.jpg" alt="Teamet og fellesskapet rundt Crepe de la Crepe" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <section class="ending fade-in section-ending">
-      <div class="container">
-        <h2 class="stagger-text">Dette er bare starten.</h2>
-        <div class="tag stagger-text">#loveatfirstbite</div>
-        <div class="ending-actions">
-          <a class="btn btn-secondary" href="./index.html">Forside</a>
-          <a class="btn btn-secondary" href="./index.html#menu">Meny</a>
-          <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-shell">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="#top" class="brand">
-              <div class="brand-logo-wrap">
-                <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
-              </div>
-              <div class="brand-text">
-                <div class="brand-title">Crêpe de la Crêpe</div>
-                <div class="brand-subtitle">Love at first bite</div>
-              </div>
-            </a>
-          </div>
-
-          <div class="footer-block">
-            <h4>Snarveier</h4>
-            <div class="footer-links">
-              <a href="#starten">Starten</a>
-              <a href="#frankrike">Frankrike</a>
-              <a href="#festivaler">Festivaler</a>
-              <a href="./book-oss.html">Book oss</a>
-              <a href="./index.html">Forside</a>
-              <a href="./personvern.html">Personvern</a>
-            </div>
-          </div>
-
-          <div class="footer-block">
-            <h4>Kontakt</h4>
-            <div class="footer-list">
-              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
-              <a href="tel:+4748408749">+47 48 40 87 49</a>
-              <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
-            </div>
-
-          </div>
-
-          <div class="footer-block">
-            <h4>Følg oss</h4>
-            <div class="footer-list" style="margin-bottom: 16px;">
-              <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
-            </div>
-
-            <h4>Booking</h4>
-            <div class="footer-list">
-              <a href="./book-oss.html">Festivaler</a>
-              <a href="./book-oss.html">Firmaarrangementer</a>
-              <a href="./book-oss.html">Private arrangementer</a>
-            </div>
+          <div class="festival-stat">
+            <span class="num">2021</span>
+            <span class="desc">Siden år</span>
           </div>
         </div>
+      </div>
+    </section>
+  </div>
 
-        <div class="footer-mini">
-          <div>© 2026 Crêpe de la Crêpe</div>
-          <div>Vår historie</div>
-        </div>
+  <!-- ═══════════════════════════
+       SCENE 7 · COMMUNITY
+  ══════════════════════════════ -->
+  <div class="scene-track">
+    <section class="scene scene-split scene-light" style="direction: rtl;">
+      <div class="split-text" style="direction: ltr;">
+        <div class="reveal"><div class="label light">Menneskene rundt oss</div></div>
+        <h2 class="scene-heading on-light reveal d1">
+          Dette er mer<br>enn <em style="color:var(--rust)">en matbod.</em>
+        </h2>
+        <p class="scene-body on-light reveal d2">
+          Mange av folkene som fulgte oss har blitt en del av reisen. Noen hjalp til med menyen. Andre ble en del av teamet. Noen er nå ansiktene du ser på sosiale medier.
+        </p>
+      </div>
+      <div class="split-media" style="direction: ltr;">
+        <img src="team.jpg" alt="Teamet og fellesskapet" loading="lazy" />
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════
+       ENDING (not sticky)
+  ══════════════════════════════ -->
+  <section class="scene-ending">
+    <div>
+      <div class="reveal"><div class="label" style="justify-content: center; margin-bottom: 20px;">Fremtiden</div></div>
+      <h2 class="ending-title reveal d1">Dette er bare starten.</h2>
+      <p class="ending-tag reveal d2">#loveatfirstbite</p>
+      <div class="ending-actions reveal d3">
+        <a class="btn-outline" href="./index.html">Forside</a>
+        <a class="btn-outline" href="./index.html#menu">Meny</a>
+        <a class="btn-gold" href="./book-oss.html">Book oss</a>
       </div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-brand">Crêpe de la Crêpe</div>
+    <div class="footer-tagline">Love at first bite</div>
+    <nav class="footer-links">
+      <a href="./index.html">Forside</a>
+      <a href="./index.html#menu">Meny</a>
+      <a href="./book-oss.html">Book oss</a>
+      <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="./personvern.html">Personvern</a>
+    </nav>
+    <p class="footer-mini">© 2026 Crêpe de la Crêpe · Storo Storsenter, Oslo</p>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    const revealNav = document.getElementById('revealNav');
-    function syncRevealNav() {
-      revealNav.classList.toggle('visible', window.scrollY > 48);
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    function syncNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
     }
+    syncNav();
+    window.addEventListener('scroll', syncNav, { passive: true });
 
-    syncRevealNav();
-    window.addEventListener('scroll', syncRevealNav, { passive: true });
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('in');
+      });
+    }, { threshold: 0.18 });
+    revealEls.forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>
