@@ -3783,12 +3783,17 @@
         };
       }
 
+      const BOOKING_SUBMIT_TIMEOUT_MS = 12000;
+
       async function submitForm(event) {
         event.preventDefault();
         if (submitting) return;
         if (!validateStep(7)) return;
 
         const payload = buildPayload();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), BOOKING_SUBMIT_TIMEOUT_MS);
+
         submitting = true;
         submitBtn.classList.add("loading");
         submitBtn.textContent = "Sender...";
@@ -3799,7 +3804,8 @@
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
+            signal: controller.signal
           });
 
           const contentType = response.headers.get("content-type") || "";
@@ -3810,8 +3816,9 @@
           }
 
           if (!response.ok) {
-            const errorMessage = (data && data.error) || "Noe gikk galt. Prøv igjen.";
-            throw new Error(errorMessage);
+            const fallbackMessage = "Kunne ikke sende forespørselen akkurat nå. Prøv igjen om litt.";
+            const serverMessage = data && typeof data.error === "string" ? data.error.trim() : "";
+            throw new Error(serverMessage || fallbackMessage);
           }
 
           const submissionSnapshot = {
@@ -3825,8 +3832,13 @@
           window.location.href = "/takk.html";
           return;
         } catch (error) {
-          setError("submit", error.message || "Noe gikk galt. Prøv igjen.");
+          const fallbackMessage = "Kunne ikke sende forespørselen akkurat nå. Prøv igjen om litt.";
+          const userMessage = error && typeof error.message === "string" && error.message.trim()
+            ? error.message.trim()
+            : fallbackMessage;
+          setError("submit", userMessage);
         } finally {
+          clearTimeout(timeoutId);
           submitting = false;
           submitBtn.classList.remove("loading");
           submitBtn.textContent = "Send forespørsel";
