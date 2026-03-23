@@ -1,9 +1,15 @@
-function jsonResponse(body, status = 200) {
+function jsonResponse(body, status = 200, requestId = "") {
+  const headers = {
+    "Content-Type": "application/json; charset=utf-8"
+  };
+
+  if (requestId) {
+    headers["X-Request-ID"] = requestId;
+  }
+
   return new Response(JSON.stringify(body), {
     status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8"
-    }
+    headers
   });
 }
 
@@ -98,17 +104,20 @@ function isValidName(name = "") {
 }
 
 function isValidPhone(phone = "") {
-  if (!phone) return true;
-
   const normalized = normalizePhoneForValidation(phone);
-
-  if (!/^\+\d{6,17}$/.test(normalized)) return false;
-  return true;
+  return /^\+\d{6,17}$/.test(normalized);
 }
 
 function isValidGuests(value = "") {
-  if (!value) return true;
-  return /^\d{1,6}$/.test(value);
+  if (!/^\d{1,6}$/.test(value)) return false;
+
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed >= 1 && parsed <= 999999;
+}
+
+function isValidLocation(value = "") {
+  const trimmed = normalizeText(value);
+  return trimmed.length >= 2 && trimmed.length <= 120;
 }
 
 function parseRealDate(value = "") {
@@ -139,9 +148,9 @@ function isPastDateString(value = "") {
 }
 
 function isValidDateInput(value = "") {
-  if (!value) return true;
-
   const normalized = normalizeText(value);
+  if (!normalized) return false;
+
   const singleDatePattern = /^\d{4}-\d{2}-\d{2}$/;
   const rangePatternDash = /^(\d{4}-\d{2}-\d{2}) - (\d{4}-\d{2}-\d{2})$/;
   const rangePatternTil = /^(\d{4}-\d{2}-\d{2}) til (\d{4}-\d{2}-\d{2})$/i;
@@ -198,8 +207,38 @@ function looksLikeSpamMessage(message = "") {
   return false;
 }
 
+function parseAllowedOrigins(raw = "") {
+  if (!raw || typeof raw !== "string") return [];
+
+  const origins = raw
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  const unique = new Set();
+
+  for (const origin of origins) {
+    let parsed;
+
+    try {
+      parsed = new URL(origin);
+    } catch {
+      continue;
+    }
+
+    if (!parsed.protocol || !parsed.host) continue;
+    if (parsed.username || parsed.password) continue;
+    if (parsed.pathname !== "/" || parsed.search || parsed.hash) continue;
+
+    unique.add(parsed.origin);
+  }
+
+  return Array.from(unique);
+}
+
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
+// NOTE: In-memory limiter only. This is not a durable distributed production rate limiter.
 const rateLimitStore = new Map();
 
 function isRateLimited(ip = "") {
@@ -233,56 +272,83 @@ function isRateLimited(ip = "") {
   return false;
 }
 
+function logEvent(level, event, requestId, details = {}) {
+  const payload = {
+    level,
+    event,
+    requestId,
+    ...details
+  };
+
+  if (level === "error") {
+    console.error(JSON.stringify(payload));
+  } else {
+    console.warn(JSON.stringify(payload));
+  }
+}
+
 export default {
   async fetch(request) {
+    const requestId = crypto.randomUUID();
     const ip = request.headers.get("CF-Connecting-IP") || "";
-    if (isRateLimited(ip)) {
-      return jsonResponse({
-        ok: false,
-        error: "For mange forespørsler. Prøv igjen senere."
-      }, 429);
-    }
 
     if (request.method !== "POST") {
-      return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
+      return jsonResponse({ ok: false, error: "Method not allowed" }, 405, requestId);
     }
 
     try {
       const contentLength = Number(request.headers.get("content-length") || "0");
-      if (contentLength > 20000) {
-        return jsonResponse({ ok: false, error: "Forespørselen er for stor." }, 413);
+      if (Number.isFinite(contentLength) && contentLength > 20000) {
+        return jsonResponse({ ok: false, error: "Forespørselen er for stor." }, 413, requestId);
       }
 
       const contentType = request.headers.get("content-type") || "";
-      const origin = request.headers.get("origin") || "";
-      const host = request.headers.get("host") || "";
-
-      if (
-        !contentType.includes("application/json") &&
-        !contentType.includes("multipart/form-data") &&
-        !contentType.includes("application/x-www-form-urlencoded")
-      ) {
-        return jsonResponse({ ok: false, error: "Ugyldig innholdstype." }, 400);
+      if (!contentType.toLowerCase().includes("application/json")) {
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_content_type" });
+        return jsonResponse({ ok: false, error: "Ugyldig innholdstype." }, 400, requestId);
       }
 
-      if (origin) {
-        try {
-          const originUrl = new URL(origin);
-          if (originUrl.host !== host) {
-            return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403);
-          }
-        } catch {
-          return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403);
-        }
+      const allowedOrigins = parseAllowedOrigins(process.env.ALLOWED_ORIGINS || "");
+      if (allowedOrigins.length === 0) {
+        logEvent("error", "unexpected_failure", requestId, { reason: "missing_allowed_origins" });
+        return jsonResponse({
+          ok: false,
+          error: "Noe gikk galt. Prøv igjen senere."
+        }, 500, requestId);
+      }
+
+      const origin = request.headers.get("origin") || "";
+      if (!origin) {
+        logEvent("warn", "origin_failed", requestId, { reason: "origin_missing" });
+        return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403, requestId);
+      }
+
+      let originValue = "";
+      try {
+        const originUrl = new URL(origin);
+        originValue = originUrl.origin;
+      } catch {
+        logEvent("warn", "origin_failed", requestId, { reason: "origin_malformed" });
+        return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403, requestId);
+      }
+
+      if (!allowedOrigins.includes(originValue)) {
+        logEvent("warn", "origin_failed", requestId, { reason: "origin_not_allowed", origin: originValue });
+        return jsonResponse({ ok: false, error: "Ugyldig origin." }, 403, requestId);
+      }
+
+      const secFetchSite = (request.headers.get("sec-fetch-site") || "").toLowerCase();
+      if (secFetchSite === "cross-site") {
+        logEvent("warn", "origin_failed", requestId, { reason: "cross_site_request" });
+        return jsonResponse({ ok: false, error: "Ugyldig forespørsel." }, 403, requestId);
       }
 
       let data = {};
-
-      if (contentType.includes("application/json")) {
+      try {
         data = await request.json();
-      } else {
-        const formData = await request.formData();
-        data = Object.fromEntries(formData.entries());
+      } catch {
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_json" });
+        return jsonResponse({ ok: false, error: "Ugyldig JSON-data." }, 400, requestId);
       }
 
       const honeypot = clamp(
@@ -291,7 +357,15 @@ export default {
       );
 
       if (honeypot) {
-        return jsonResponse({ ok: true });
+        return jsonResponse({ ok: true }, 200, requestId);
+      }
+
+      if (isRateLimited(ip)) {
+        logEvent("warn", "rate_limit", requestId, { ip: ip || "unknown" });
+        return jsonResponse({
+          ok: false,
+          error: "For mange forespørsler. Prøv igjen senere."
+        }, 429, requestId);
       }
 
       const navn = clamp(pickFirst(data.name, data.navn), 80);
@@ -306,81 +380,65 @@ export default {
       const gjester = clamp(pickFirst(data.guests, data.gjester), 6);
       const melding = clamp(pickFirst(data.message, data.melding), 1200);
 
-      if (!navn || !epost || !type || !setup) {
+      if (!setup || !navn || !epost || !telefon || !type || !dato || !sted || !gjester) {
+        logEvent("warn", "validation_failed", requestId, { reason: "missing_required_fields" });
         return jsonResponse({
           ok: false,
-          error: "Oppsett, navn, e-post og type arrangement er påkrevd."
-        }, 400);
+          error: "Oppsett, navn, e-post, telefon, arrangementstype, dato, sted og antall gjester er påkrevd."
+        }, 400, requestId);
       }
 
       if (!isValidName(navn)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig navn."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_name" });
+        return jsonResponse({ ok: false, error: "Ugyldig navn." }, 400, requestId);
       }
 
       if (!isValidEmail(epost)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig e-postadresse."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_email" });
+        return jsonResponse({ ok: false, error: "Ugyldig e-postadresse." }, 400, requestId);
       }
 
       if (!isValidPhone(telefon)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig telefonnummer."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_phone" });
+        return jsonResponse({ ok: false, error: "Ugyldig telefonnummer." }, 400, requestId);
       }
 
       if (!isValidGuests(gjester)) {
-        return jsonResponse({
-          ok: false,
-          error: "Antall gjester må være et tall."
-        }, 400);
-      }
-
-      if (gjester && Number(gjester) < 1) {
-        return jsonResponse({
-          ok: false,
-          error: "Antall gjester må være minst 1."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_guests" });
+        return jsonResponse({ ok: false, error: "Antall gjester må være et tall mellom 1 og 999999." }, 400, requestId);
       }
 
       if (!isValidDateInput(dato)) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig dato."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_date" });
+        return jsonResponse({ ok: false, error: "Ugyldig dato." }, 400, requestId);
+      }
+
+      if (!isValidLocation(sted)) {
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_location" });
+        return jsonResponse({ ok: false, error: "Sted må være mellom 2 og 120 tegn." }, 400, requestId);
       }
 
       if (!setup) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig oppsett."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_setup" });
+        return jsonResponse({ ok: false, error: "Ugyldig oppsett." }, 400, requestId);
       }
 
       if (!type) {
-        return jsonResponse({
-          ok: false,
-          error: "Ugyldig arrangementstype."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "invalid_event_type" });
+        return jsonResponse({ ok: false, error: "Ugyldig arrangementstype." }, 400, requestId);
       }
 
       if (melding && melding.length < 12) {
-        return jsonResponse({
-          ok: false,
-          error: "Meldingen er for kort."
-        }, 400);
+        logEvent("warn", "validation_failed", requestId, { reason: "message_too_short" });
+        return jsonResponse({ ok: false, error: "Meldingen er for kort." }, 400, requestId);
       }
 
       if (looksLikeSpamMessage(melding)) {
+        logEvent("warn", "validation_failed", requestId, { reason: "message_flagged_as_spam" });
         return jsonResponse({
           ok: false,
           error: "Meldingen ser ugyldig ut. Skriv litt mer konkret om arrangementet."
-        }, 400);
+        }, 400, requestId);
       }
 
       const resendApiKey = process.env.RESEND_API_KEY;
@@ -388,10 +446,11 @@ export default {
       const bookingFromEmail = process.env.BOOKING_FROM_EMAIL;
 
       if (!resendApiKey || !bookingToEmail || !bookingFromEmail) {
+        logEvent("error", "unexpected_failure", requestId, { reason: "missing_email_configuration" });
         return jsonResponse({
           ok: false,
           error: "Noe gikk galt. Prøv igjen senere."
-        }, 500);
+        }, 500, requestId);
       }
 
       const safeNavn = escapeHtml(navn);
@@ -485,20 +544,26 @@ export default {
       }
 
       if (!resendResponse.ok) {
-        console.error("Resend error:", resendData);
+        logEvent("error", "resend_failed", requestId, {
+          status: resendResponse.status,
+          resendError: typeof resendData?.error === "string" ? resendData.error : "unknown"
+        });
         return jsonResponse({
           ok: false,
           error: "Noe gikk galt. Prøv igjen senere."
-        }, 500);
+        }, 500, requestId);
       }
 
-      return jsonResponse({ ok: true });
+      return jsonResponse({ ok: true }, 200, requestId);
     } catch (error) {
-      console.error("Booking API error:", error);
+      logEvent("error", "unexpected_failure", requestId, {
+        errorName: error?.name || "Error",
+        errorMessage: error?.message || "unknown"
+      });
       return jsonResponse({
         ok: false,
         error: "Noe gikk galt. Prøv igjen senere."
-      }, 500);
+      }, 500, requestId);
     }
   }
 };
