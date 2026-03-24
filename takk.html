@@ -23,13 +23,13 @@
       --bg: #26201a;
       --text: #f0e6d3;
       --accent: #c4973a;
-      --muted: rgba(240, 218, 185, 0.5);
-      --very-muted: rgba(240, 218, 185, 0.3);
+      --muted: rgba(240, 218, 185, 0.74);
+      --very-muted: rgba(240, 218, 185, 0.5);
       --nav-brand: rgba(240, 230, 211, 0.38);
-      --status-border: rgba(196, 151, 58, 0.3);
-      --status-text: rgba(196, 151, 58, 0.85);
-      --footer-left: rgba(196, 151, 58, 0.25);
-      --footer-right: rgba(240, 218, 185, 0.12);
+      --status-border: rgba(196, 151, 58, 0.22);
+      --status-text: rgba(196, 151, 58, 0.68);
+      --footer-left: rgba(196, 151, 58, 0.22);
+      --footer-right: rgba(240, 218, 185, 0.16);
     }
 
     * {
@@ -135,22 +135,22 @@
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
+      gap: 7px;
+      padding: 7px 11px;
       border-radius: 999px;
       border: 1px solid var(--status-border);
       color: var(--status-text);
       font-family: "Jost", sans-serif;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .status-dot {
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--accent);
       animation: blink 2.8s infinite ease-in-out;
@@ -175,7 +175,7 @@
 
     .content {
       text-align: center;
-      max-width: 720px;
+      max-width: 760px;
       animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -236,18 +236,28 @@
     }
 
     .subtitle {
-      max-width: 400px;
+      max-width: 490px;
       margin: 44px auto 0;
       font-family: "Jost", sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.95;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
       color: var(--muted);
       text-wrap: pretty;
     }
 
+    .confirmation-block {
+      width: min(620px, 100%);
+      margin: 38px auto 0;
+      padding: 30px 30px 26px;
+      border: 1px solid rgba(196, 151, 58, 0.18);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(240, 218, 185, 0.04) 0%, rgba(240, 218, 185, 0.01) 100%);
+      box-shadow: inset 0 1px 0 rgba(240, 218, 185, 0.05);
+    }
+
     .ornament {
-      margin: 52px auto 44px;
+      margin: 0 auto 22px;
       display: inline-flex;
       align-items: center;
       gap: 13px;
@@ -271,11 +281,11 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 56px;
+      margin-bottom: 30px;
       font-family: "Jost", sans-serif;
       font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      font-weight: 400;
+      letter-spacing: 0.07em;
       color: var(--very-muted);
     }
 
@@ -288,7 +298,9 @@
     .button-group {
       margin: 0 auto;
       display: inline-flex;
-      border: 1px solid var(--accent);
+      align-items: center;
+      border: 1px solid rgba(196, 151, 58, 0.8);
+      border-radius: 999px;
       overflow: hidden;
     }
 
@@ -299,14 +311,14 @@
       text-decoration: none;
       font-family: "Jost", sans-serif;
       font-size: 10px;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
       white-space: nowrap;
     }
 
     .btn-primary {
-      padding: 19px 52px;
+      padding: 15px 38px;
       font-weight: 500;
       background: var(--accent);
       border: 0;
@@ -323,7 +335,7 @@
     }
 
     .btn-secondary {
-      padding: 19px 44px;
+      padding: 15px 30px;
       font-weight: 400;
       background: transparent;
       border: 0;
@@ -339,26 +351,28 @@
     }
 
     .summary-trigger {
-      margin-top: 40px;
+      margin-top: 18px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 0;
-      padding: 0 0 2px;
-      background: transparent;
+      border: 1px solid rgba(240, 218, 185, 0.18);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(240, 218, 185, 0.02);
       font-family: "Jost", sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(196, 151, 58, 0.35);
-      border-bottom: 1px solid rgba(196, 151, 58, 0.15);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240, 218, 185, 0.58);
       cursor: pointer;
-      transition: color 180ms ease, border-color 180ms ease;
+      transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
     }
 
     .summary-trigger:hover {
-      color: rgba(196, 151, 58, 0.75);
-      border-color: rgba(196, 151, 58, 0.35);
+      color: rgba(240, 218, 185, 0.82);
+      border-color: rgba(240, 218, 185, 0.35);
+      background: rgba(240, 218, 185, 0.05);
     }
 
     .summary-modal[hidden] {
@@ -471,23 +485,25 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 56px;
-      border-top: 1px solid rgba(196, 151, 58, 0.07);
+      padding: 10px 56px 12px;
+      border-top: 1px solid rgba(196, 151, 58, 0.09);
+      background: linear-gradient(180deg, rgba(38, 32, 26, 0.15) 0%, rgba(38, 32, 26, 0.68) 100%);
       z-index: 5;
     }
 
     .footer-tagline {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--footer-left);
+      letter-spacing: 0.04em;
     }
 
     .footer-copy {
       font-family: "Jost", sans-serif;
-      font-size: 10px;
+      font-size: 9px;
       color: var(--footer-right);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
@@ -508,7 +524,7 @@
 
       .button-group {
         display: inline-grid;
-        border: 1px solid var(--accent);
+        border-radius: 16px;
       }
 
       .button-divider {
@@ -533,11 +549,22 @@
 
       .subtitle {
         max-width: 92%;
+        font-size: 15px;
+      }
+
+      .confirmation-block {
+        width: min(520px, 100%);
+        margin-top: 32px;
+        padding: 24px 18px 20px;
       }
 
       .bottom-bar {
         padding-top: 10px;
         padding-bottom: 10px;
+      }
+
+      .footer-tagline {
+        font-size: 11px;
       }
     }
 
@@ -579,38 +606,40 @@
         oppsett, lokasjon eller praktiske detaljer, tar vi kontakt direkte.
       </p>
 
-      <div class="ornament" aria-hidden="true">
-        <span class="ornament-line"></span>
-        <span class="ornament-diamond"></span>
-        <span class="ornament-line"></span>
-      </div>
+      <div class="confirmation-block">
+        <div class="ornament" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="ornament-diamond"></span>
+          <span class="ornament-line"></span>
+        </div>
 
-      <div class="response-time" aria-label="Vanlig svartid er 24–48 timer">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M12 7V12L15 14"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
-        </svg>
-        <span>Vanlig svartid er 24–48 timer</span>
-      </div>
+        <div class="response-time" aria-label="Vanlig svartid er 24–48 timer">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 7V12L15 14"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          <span>Vanlig svartid er 24–48 timer</span>
+        </div>
 
-      <div class="button-group" role="group" aria-label="Valg etter innsending">
-        <a class="btn btn-primary" href="./index.html">TIL FORSIDEN</a>
-        <span class="button-divider" aria-hidden="true"></span>
-        <a class="btn btn-secondary" href="./book-oss.html">NY FORESPØRSEL</a>
-      </div>
+        <div class="button-group" role="group" aria-label="Valg etter innsending">
+          <a class="btn btn-primary" href="./index.html">TIL FORSIDEN</a>
+          <span class="button-divider" aria-hidden="true"></span>
+          <a class="btn btn-secondary" href="./book-oss.html">NY FORESPØRSEL</a>
+        </div>
 
-      <button class="summary-trigger" type="button" id="openSummaryBtn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 9H18M6 13H14M6 17H12M6 5H18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-        </svg>
-        Vis oppsummering
-      </button>
+        <button class="summary-trigger" type="button" id="openSummaryBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 9H18M6 13H14M6 17H12M6 5H18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          Vis oppsummering
+        </button>
+      </div>
     </section>
   </main>
 
