@@ -6,7 +6,7 @@
   <title>Takk | Crêpe de la Crêpe</title>
   <meta
     name="description"
-    content="Takk for bookingforespørselen. Vi har mottatt forespørselen din og følger opp innen 24–48 timer."
+    content="Forespørselen din er mottatt. Crêpe de la Crêpe følger opp bookingforespørsler innen 24–48 timer."
   />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="googlebot" content="noindex, nofollow" />
@@ -14,20 +14,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Jost:wght@200;300;400&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --bg-main: #18120f;
-      --bg-top: #211915;
-      --text-primary: #f1e6d2;
-      --text-secondary: rgba(241, 230, 210, 0.78);
-      --text-tertiary: rgba(241, 230, 210, 0.56);
-      --gold: #b88a3a;
-      --gold-soft: rgba(184, 138, 58, 0.28);
-      --line: rgba(241, 230, 210, 0.14);
+      --gold: #C9A84C;
+      --gold-light: #E2C17A;
+      --cream: #F5ECD7;
+      --dark: #1A1209;
+      --text-muted: rgba(245, 236, 215, 0.45);
+      --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -36,274 +34,369 @@
 
     html,
     body {
-      margin: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
+      margin: 0;
     }
 
     body {
       font-family: "Jost", sans-serif;
-      color: var(--text-primary);
-      background:
-        radial-gradient(circle at 50% 32%, rgba(184, 138, 58, 0.1) 0%, transparent 62%),
-        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-main) 100%);
+      background: var(--dark);
+      color: var(--cream);
+      overflow-x: hidden;
+      position: relative;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      position: relative;
     }
 
-    .thankyou-shell {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: clamp(14px, 2.6vh, 24px) clamp(18px, 4vw, 54px);
-      isolation: isolate;
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.04;
+    }
+
+    .gold-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        ellipse 70% 60% at 50% 50%,
+        rgba(201, 168, 76, 0.08),
+        transparent
+      );
     }
 
     .logo-watermark {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -46%);
-      width: min(1080px, 90vw);
-      max-width: none;
-      opacity: 0.06;
-      filter: brightness(0.2) contrast(0.8) saturate(0.75);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 55vw;
+      min-width: 280px;
+      max-width: 900px;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      object-fit: contain;
       pointer-events: none;
-      user-select: none;
-      z-index: -2;
+      z-index: 1;
+      animation: fadeIn 2s var(--ease-premium) 0.3s forwards;
     }
 
-    .thankyou-shell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, transparent 0%, rgba(12, 9, 7, 0.58) 76%);
-      pointer-events: none;
-      z-index: -1;
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 1.45rem clamp(1rem, 4vw, 3rem);
+      opacity: 0;
+      animation: slideDown 0.95s var(--ease-premium) 0.2s forwards;
     }
 
-    .top-row {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 34px;
-      flex: 0 0 auto;
-    }
-
-    .brand-wordmark {
+    .brand-name {
       margin: 0;
-      font-size: clamp(10px, 1.2vw, 12px);
-      letter-spacing: 0.26em;
+      font-family: "Jost", sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      font-weight: 500;
-      color: rgba(241, 230, 210, 0.64);
+      color: var(--cream);
       white-space: nowrap;
     }
 
-    .main-layout {
-      flex: 1;
+    main {
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      min-height: 0;
-      padding: clamp(8px, 1.8vh, 20px) 0;
+      position: relative;
+      z-index: 5;
+      padding: 7rem 1.2rem 5rem;
     }
 
-    .confirmation-block {
-      width: min(680px, 100%);
+    .content-stack {
+      width: min(900px, 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      display: grid;
-      gap: clamp(12px, 1.5vh, 16px);
-      justify-items: center;
-      padding: clamp(14px, 2.4vh, 22px) clamp(16px, 4vw, 28px);
-      border: 1px solid rgba(241, 230, 210, 0.12);
-      background: linear-gradient(180deg, rgba(33, 25, 21, 0.48) 0%, rgba(24, 18, 15, 0.58) 100%);
-      backdrop-filter: blur(2px);
+      gap: 1.1rem;
     }
 
-    .status-label {
-      font-size: clamp(10px, 1.15vw, 11px);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(184, 138, 58, 0.82);
+    .decor-line {
+      width: 1px;
+      height: 0;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      animation: growLine 0.95s var(--ease-premium) 0.8s forwards;
+    }
+
+    .tag-label,
+    .hero-title,
+    .subtitle,
+    .info-row,
+    .cta-row,
+    .site-footer {
+      opacity: 0;
+    }
+
+    .tag-label {
       margin: 0;
-      font-weight: 400;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      animation: fadeUp 0.95s var(--ease-premium) 1s forwards;
     }
 
-    .headline {
+    .hero-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 5.5vw, 54px);
-      line-height: 1.04;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      text-wrap: balance;
-      color: var(--text-primary);
+      font-weight: 300;
+      font-size: clamp(2.8rem, 9vw, 5.5rem);
+      line-height: 0.95;
+      animation: fadeUp 0.95s var(--ease-premium) 1.2s forwards;
     }
 
-    .body-copy {
-      margin: 0;
-      max-width: 55ch;
-      font-size: clamp(14px, 1.85vw, 17px);
-      line-height: 1.55;
-      color: var(--text-secondary);
-      text-wrap: pretty;
+    .hero-title em {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-light);
     }
 
-    .meta-line {
+    .subtitle {
       margin: 0;
-      padding-top: 2px;
-      font-size: clamp(12px, 1.35vw, 13px);
-      letter-spacing: 0.08em;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+      color: var(--text-muted);
+      animation: fadeUp 0.95s var(--ease-premium) 1.4s forwards;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 0.6rem;
+      animation: fadeUp 0.95s var(--ease-premium) 1.6s forwards;
+    }
+
+    .divider {
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.55), transparent);
+    }
+
+    .info-item {
+      min-width: 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .icon-circle {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .item-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--text-tertiary);
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .item-value {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+      font-weight: 300;
+      color: var(--cream);
     }
 
     .cta-row {
-      margin-top: clamp(6px, 1.1vh, 10px);
-      width: min(420px, 100%);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      border: 1px solid transparent;
-      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
-      white-space: nowrap;
-    }
-
-    .cta-primary {
-      background: linear-gradient(180deg, #c79a47 0%, #b88936 100%);
-      color: #1b150f;
-      font-weight: 500;
-      border-color: rgba(196, 151, 58, 0.95);
-    }
-
-    .cta-primary:hover,
-    .cta-primary:focus-visible {
-      background: linear-gradient(180deg, #d3a451 0%, #c0913d 100%);
-    }
-
-    .cta-secondary {
-      background: rgba(241, 230, 210, 0.02);
-      border-color: var(--line);
-      color: rgba(241, 230, 210, 0.8);
-      font-weight: 400;
-    }
-
-    .cta-secondary:hover,
-    .cta-secondary:focus-visible {
-      background: rgba(241, 230, 210, 0.06);
-      border-color: rgba(241, 230, 210, 0.3);
-      color: var(--text-primary);
-    }
-
-    .bottom-row {
-      min-height: 26px;
+      margin-top: 0.9rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 0 0 auto;
-      color: rgba(241, 230, 210, 0.4);
-      font-size: 10px;
-      letter-spacing: 0.16em;
+      gap: 1rem;
+      animation: fadeUp 0.95s var(--ease-premium) 1.8s forwards;
+    }
+
+    .btn {
+      position: relative;
+      min-width: 196px;
+      min-height: 48px;
+      padding: 0.82rem 1.5rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Jost", sans-serif;
+      font-weight: 400;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
+      overflow: hidden;
+      transition: color 320ms ease, border-color 320ms ease, background-color 320ms ease;
     }
 
-    @media (max-width: 760px) {
-      .thankyou-shell {
-        padding: 14px 14px 12px;
-      }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+      border: 1px solid var(--gold);
+      isolation: isolate;
+    }
 
-      .logo-watermark {
-        width: min(760px, 170vw);
-        transform: translate(-50%, -47%);
-        opacity: 0.055;
-      }
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--gold-light);
+      transform: translateX(-102%);
+      transition: transform 430ms var(--ease-premium);
+      z-index: -1;
+    }
 
-      .confirmation-block {
-        gap: 12px;
-        padding: 14px 14px 18px;
-      }
+    .btn-primary:hover::before,
+    .btn-primary:focus-visible::before {
+      transform: translateX(0);
+    }
 
-      .headline {
-        font-size: clamp(30px, 9.3vw, 42px);
-      }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--cream);
+      color: var(--cream);
+    }
 
-      .body-copy {
-        font-size: clamp(13px, 3.8vw, 15px);
-        line-height: 1.5;
-      }
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
 
-      .meta-line {
-        font-size: 11px;
-        letter-spacing: 0.06em;
+    .site-footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      padding: 1rem 0 1.15rem;
+      text-align: center;
+      font-family: "Jost", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      animation: fadeUp 0.95s var(--ease-premium) 2.2s forwards;
+    }
+
+    .footer-dot {
+      width: 3px;
+      height: 3px;
+      display: inline-block;
+      border-radius: 50%;
+      background: var(--gold);
+      margin: 0 0.8rem;
+      vertical-align: middle;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 0.06;
       }
     }
 
-    @media (max-width: 520px) {
-      .top-row {
-        min-height: 28px;
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes growLine {
+      from {
+        height: 0;
+      }
+      to {
+        height: 60px;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-nav {
+        padding: 1rem 0.85rem;
       }
 
-      .main-layout {
-        padding: 6px 0;
+      .brand-name {
+        font-size: 0.6rem;
+      }
+
+      main {
+        padding-top: 6.2rem;
+      }
+
+      .info-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .info-item {
+        min-width: 145px;
       }
 
       .cta-row {
         width: 100%;
-        grid-template-columns: 1fr;
-        gap: 8px;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .cta {
-        min-height: 44px;
+      .btn {
+        width: 100%;
+        max-width: 300px;
       }
 
-      .bottom-row {
-        min-height: 20px;
-        font-size: 9px;
-      }
-    }
-
-    @media (max-height: 690px) {
-      .thankyou-shell {
-        padding-top: 10px;
-        padding-bottom: 10px;
+      .site-footer {
+        padding-bottom: 0.7rem;
+        letter-spacing: 0.28em;
       }
 
-      .confirmation-block {
-        gap: 10px;
-        padding-top: 12px;
-        padding-bottom: 14px;
-      }
-
-      .headline {
-        font-size: clamp(30px, 5vw, 44px);
-      }
-
-      .body-copy {
-        font-size: 13px;
-        line-height: 1.45;
-      }
-
-      .meta-line {
-        font-size: 11px;
-      }
-
-      .cta {
-        min-height: 42px;
+      .footer-dot {
+        margin: 0 0.55rem;
       }
     }
 
@@ -313,47 +406,93 @@
       *::after {
         animation: none !important;
         transition: none !important;
-        scroll-behavior: auto !important;
+      }
+
+      .logo-watermark,
+      .top-nav,
+      .tag-label,
+      .hero-title,
+      .subtitle,
+      .info-row,
+      .cta-row,
+      .site-footer {
+        opacity: 1;
+      }
+
+      .decor-line {
+        height: 60px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="thankyou-shell">
-    <img
-      src="./crepe-logo-transparent.png"
-      alt=""
-      class="logo-watermark"
-      aria-hidden="true"
-      decoding="async"
-      fetchpriority="low"
-    />
+  <svg class="noise-overlay" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+  </svg>
 
-    <header class="top-row" aria-label="Toppnavigasjon">
-      <p class="brand-wordmark">Crêpe de la Crêpe</p>
-    </header>
+  <div class="gold-glow" aria-hidden="true"></div>
 
-    <main class="main-layout" aria-labelledby="thanks-title">
-      <section class="confirmation-block">
-        <p class="status-label">Bookingforespørsel mottatt</p>
+  <img
+    class="logo-watermark"
+    src="./crepe-logo-transparent.png"
+    alt=""
+    aria-hidden="true"
+    decoding="async"
+    fetchpriority="low"
+  />
 
-        <h1 class="headline" id="thanks-title">Takk for forespørselen</h1>
+  <header class="top-nav" aria-label="Toppnavigasjon">
+    <p class="brand-name">CRÊPE DE LA CRÊPE</p>
+  </header>
 
-        <p class="body-copy">
-          Vi har mottatt bookingforespørselen din og følger opp innen 24–48 timer. Trenger vi mer informasjon,
-          tar vi kontakt direkte.
-        </p>
+  <main aria-labelledby="thanks-title">
+    <section class="content-stack">
+      <div class="decor-line" aria-hidden="true"></div>
+      <p class="tag-label">FORESPØRSEL MOTTATT</p>
 
-        <p class="meta-line">Vanlig svartid: 24–48 timer • Bekreftelse sendes på e-post</p>
+      <h1 class="hero-title" id="thanks-title">
+        Vi gleder oss til
+        <em>å møte deg</em>
+      </h1>
 
-        <div class="cta-row" role="group" aria-label="Valg etter innsending">
-          <a class="cta cta-primary" href="./index.html">Til forsiden</a>
-          <a class="cta cta-secondary" href="./book-oss.html">Ny forespørsel</a>
-        </div>
-      </section>
-    </main>
+      <p class="subtitle">Noe godt er på vei — vi følger opp innen kort tid.</p>
 
-    <footer class="bottom-row" aria-label="Sidefot">© 2026 Crêpe de la Crêpe</footer>
-  </div>
+      <div class="info-row" aria-label="Neste steg">
+        <article class="info-item">
+          <div class="icon-circle" aria-hidden="true">📅</div>
+          <span class="item-label">SVARTID</span>
+          <span class="item-value">24–48 timer</span>
+        </article>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <article class="info-item">
+          <div class="icon-circle" aria-hidden="true">✉️</div>
+          <span class="item-label">BEKREFTELSE</span>
+          <span class="item-value">Sendes på e-post</span>
+        </article>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <article class="info-item">
+          <div class="icon-circle" aria-hidden="true">🥐</div>
+          <span class="item-label">DITT EVENT</span>
+          <span class="item-value">Blir uforglemmelig</span>
+        </article>
+      </div>
+
+      <div class="cta-row" role="group" aria-label="Handlinger etter innsending">
+        <a class="btn btn-primary" href="/">TIL FORSIDEN</a>
+        <a class="btn btn-ghost" href="/booking">NY FORESPØRSEL</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2026 CRÊPE DE LA CRÊPE <span class="footer-dot" aria-hidden="true"></span> LOVE AT FIRST BITE
+  </footer>
 </body>
 </html>
