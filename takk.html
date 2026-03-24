@@ -26,8 +26,11 @@
       --dark: #1a1209;
       --text-muted: rgba(245, 236, 215, 0.45);
       --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-      --footer-safe-space: clamp(5.6rem, 11svh, 7.3rem);
-      --nav-safe-space: clamp(4.4rem, 10svh, 6.2rem);
+      --footer-safe-space: clamp(5.8rem, 10.5svh, 7.2rem);
+      --nav-safe-space: clamp(4.5rem, 8.5svh, 5.9rem);
+      --stage-max-width: 1080px;
+      --content-max-width: 980px;
+      --hero-scale: clamp(0.93, 0.86 + 0.26vw, 1.16);
     }
 
     * {
@@ -119,24 +122,34 @@
 
     main {
       min-height: 0;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       z-index: 5;
-      padding: clamp(0.8rem, 2.1svh, 1.5rem) 1.2rem var(--footer-safe-space);
+      padding: clamp(0.95rem, 2.2svh, 1.55rem) clamp(1.2rem, 3vw, 2.2rem) var(--footer-safe-space);
       overflow: hidden;
     }
 
+    .main-stage {
+      width: min(100%, var(--stage-max-width));
+      height: 100%;
+      display: grid;
+      place-items: center;
+    }
+
     .content-stack {
-      width: min(900px, 100%);
+      width: min(100%, var(--content-max-width));
       max-height: calc(100dvh - var(--nav-safe-space) - var(--footer-safe-space));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: clamp(0.44rem, 1.2svh, 0.95rem);
-      padding-inline: clamp(0rem, 1.2vw, 0.7rem);
+      gap: clamp(0.58rem, 1.1svh, 1.02rem);
+      padding-inline: clamp(0.35rem, 1.4vw, 1rem);
+      transform: scale(var(--hero-scale));
+      transform-origin: center;
     }
 
     .decor-line {
@@ -157,7 +170,7 @@
 
     .tag-label {
       margin: 0;
-      font-size: 0.64rem;
+      font-size: clamp(0.68rem, 0.66rem + 0.09vw, 0.76rem);
       font-weight: 300;
       letter-spacing: 0.45em;
       text-transform: uppercase;
@@ -169,7 +182,7 @@
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-weight: 300;
-      font-size: clamp(2.45rem, 7.3svh, 5rem);
+      font-size: clamp(2.8rem, 2.05rem + 2.2vw, 4.9rem);
       line-height: 0.93;
       animation: fadeUp 0.95s var(--ease-premium) 1.2s forwards;
     }
@@ -183,11 +196,12 @@
 
     .subtitle {
       margin: 0;
-      max-width: min(90%, 720px);
+      max-width: min(86%, 710px);
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(1rem, 2.3svh, 1.46rem);
+      font-size: clamp(1.14rem, 0.98rem + 0.5vw, 1.5rem);
+      line-height: 1.2;
       color: var(--text-muted);
       animation: fadeUp 0.95s var(--ease-premium) 1.4s forwards;
     }
@@ -196,8 +210,8 @@
       display: flex;
       align-items: stretch;
       justify-content: center;
-      gap: clamp(0.7rem, 1.7svh, 1.1rem);
-      margin-top: clamp(0.2rem, 0.9svh, 0.5rem);
+      gap: clamp(0.75rem, 1svh, 1.1rem);
+      margin-top: clamp(0.24rem, 0.75svh, 0.52rem);
       animation: fadeUp 0.95s var(--ease-premium) 1.6s forwards;
     }
 
@@ -207,11 +221,11 @@
     }
 
     .info-item {
-      min-width: clamp(135px, 12vw, 170px);
+      min-width: clamp(148px, 12.2vw, 186px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(0.3rem, 0.9svh, 0.45rem);
+      gap: clamp(0.32rem, 0.7svh, 0.5rem);
     }
 
     .icon-circle {
@@ -226,7 +240,7 @@
     }
 
     .item-label {
-      font-size: 0.6rem;
+      font-size: clamp(0.63rem, 0.6rem + 0.06vw, 0.7rem);
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -235,34 +249,37 @@
 
     .item-value {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.02rem, 2svh, 1.35rem);
+      font-size: clamp(1.1rem, 0.95rem + 0.45vw, 1.42rem);
       font-weight: 300;
       color: var(--cream);
+      white-space: nowrap;
     }
 
     .cta-row {
-      margin-top: clamp(0.45rem, 1.3svh, 0.82rem);
+      margin-top: clamp(0.62rem, 1.4svh, 0.95rem);
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: clamp(0.7rem, 1.9svh, 1rem);
+      gap: clamp(0.7rem, 0.95vw, 1rem);
+      flex-wrap: nowrap;
       animation: fadeUp 0.95s var(--ease-premium) 1.8s forwards;
     }
 
     .btn {
       position: relative;
-      min-width: 188px;
-      min-height: 46px;
-      padding: 0.76rem 1.35rem;
+      min-width: clamp(190px, 16vw, 228px);
+      min-height: clamp(46px, 5svh, 52px);
+      padding: clamp(0.78rem, 0.72rem + 0.18vw, 0.92rem) clamp(1.35rem, 1.05rem + 0.6vw, 1.7rem);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-family: "Jost", sans-serif;
       font-weight: 400;
-      font-size: 0.64rem;
+      font-size: clamp(0.66rem, 0.62rem + 0.08vw, 0.74rem);
       letter-spacing: 0.28em;
       text-transform: uppercase;
+      white-space: nowrap;
       overflow: hidden;
       transition: color 320ms ease, border-color 320ms ease, background-color 320ms ease;
     }
@@ -304,10 +321,10 @@
     .site-footer {
       position: relative;
       z-index: 10;
-      padding: 0.7rem 1rem clamp(1rem, 2.8svh, 1.35rem);
+      padding: 0.8rem 1rem clamp(1.05rem, 2.7svh, 1.35rem);
       text-align: center;
       font-family: "Jost", sans-serif;
-      font-size: 0.58rem;
+      font-size: clamp(0.58rem, 0.55rem + 0.05vw, 0.62rem);
       font-weight: 300;
       letter-spacing: 0.35em;
       text-transform: uppercase;
@@ -391,8 +408,14 @@
         padding: clamp(0.45rem, 1.6svh, 1rem) 0.95rem 2rem;
       }
 
+      .main-stage {
+        width: 100%;
+      }
+
       .content-stack {
         max-height: none;
+        transform: none;
+        gap: clamp(0.52rem, 1.3svh, 0.95rem);
       }
 
       .info-row {
@@ -413,6 +436,7 @@
         width: 100%;
         flex-direction: column;
         align-items: center;
+        flex-wrap: nowrap;
       }
 
       .btn {
@@ -430,6 +454,10 @@
     }
 
     @media (max-height: 760px) and (min-width: 761px) {
+      :root {
+        --hero-scale: clamp(0.84, 0.78 + 0.2vw, 0.94);
+      }
+
       .info-item {
         min-width: 145px;
       }
@@ -497,46 +525,48 @@
     </header>
 
     <main aria-labelledby="thanks-title">
-      <section class="content-stack">
-        <div class="decor-line" aria-hidden="true"></div>
-        <p class="tag-label">FORESPØRSEL MOTTATT</p>
+      <div class="main-stage">
+        <section class="content-stack">
+          <div class="decor-line" aria-hidden="true"></div>
+          <p class="tag-label">FORESPØRSEL MOTTATT</p>
 
-        <h1 class="hero-title" id="thanks-title">
-          Vi gleder oss til
-          <em>å møte deg</em>
-        </h1>
+          <h1 class="hero-title" id="thanks-title">
+            Vi gleder oss til
+            <em>å møte deg</em>
+          </h1>
 
-        <p class="subtitle">Noe godt er på vei — vi følger opp innen kort tid.</p>
+          <p class="subtitle">Noe godt er på vei — vi følger opp innen kort tid.</p>
 
-        <div class="info-row" aria-label="Neste steg">
-          <article class="info-item">
-            <div class="icon-circle" aria-hidden="true">📅</div>
-            <span class="item-label">SVARTID</span>
-            <span class="item-value">24–48 timer</span>
-          </article>
+          <div class="info-row" aria-label="Neste steg">
+            <article class="info-item">
+              <div class="icon-circle" aria-hidden="true">📅</div>
+              <span class="item-label">SVARTID</span>
+              <span class="item-value">24–48 timer</span>
+            </article>
 
-          <div class="divider" aria-hidden="true"></div>
+            <div class="divider" aria-hidden="true"></div>
 
-          <article class="info-item">
-            <div class="icon-circle" aria-hidden="true">✉️</div>
-            <span class="item-label">BEKREFTELSE</span>
-            <span class="item-value">Sendes på e-post</span>
-          </article>
+            <article class="info-item">
+              <div class="icon-circle" aria-hidden="true">✉️</div>
+              <span class="item-label">BEKREFTELSE</span>
+              <span class="item-value">Sendes på e-post</span>
+            </article>
 
-          <div class="divider" aria-hidden="true"></div>
+            <div class="divider" aria-hidden="true"></div>
 
-          <article class="info-item">
-            <div class="icon-circle" aria-hidden="true">🥐</div>
-            <span class="item-label">DITT EVENT</span>
-            <span class="item-value">Blir uforglemmelig</span>
-          </article>
-        </div>
+            <article class="info-item">
+              <div class="icon-circle" aria-hidden="true">🥐</div>
+              <span class="item-label">DITT EVENT</span>
+              <span class="item-value">Blir uforglemmelig</span>
+            </article>
+          </div>
 
-        <div class="cta-row" role="group" aria-label="Handlinger etter innsending">
-          <a class="btn btn-primary" href="/">TIL FORSIDEN</a>
-          <a class="btn btn-ghost" href="/booking">NY FORESPØRSEL</a>
-        </div>
-      </section>
+          <div class="cta-row" role="group" aria-label="Handlinger etter innsending">
+            <a class="btn btn-primary" href="/">TIL FORSIDEN</a>
+            <a class="btn btn-ghost" href="/booking">NY FORESPØRSEL</a>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
