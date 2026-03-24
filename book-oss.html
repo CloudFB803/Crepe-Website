@@ -1409,7 +1409,7 @@
     .date-card {
       width: 100%;
       max-width: 980px;
-      padding: 18px;
+      padding: 20px;
       border-radius: 24px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.24);
@@ -1443,6 +1443,26 @@
       color: var(--text);
     }
 
+    .booking-details-layout {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .compact-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 240px);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .compact-field .text-input,
+    .compact-field .country-select {
+      min-height: 54px;
+      padding: 12px 16px;
+      border-radius: 16px;
+    }
+
     .date-summary {
       display: grid;
       gap: 12px;
@@ -1456,20 +1476,6 @@
     .step-card[data-step="2"] .step-bottom {
       margin-top: 16px;
       padding-top: 18px;
-    }
-
-    .compact-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .compact-field .text-input,
-    .compact-field .country-select {
-      min-height: 58px;
-      padding: 14px 18px;
-      border-radius: 18px;
     }
 
     .date-summary.range {
@@ -2076,12 +2082,16 @@
       }
 
       .step-card[data-step="2"] .step-middle-inner {
-        padding-bottom: 14px;
+        padding-bottom: 8px;
       }
 
       .step-card[data-step="2"] .step-bottom {
-        margin-top: 22px;
-        padding-top: 20px;
+        margin-top: 16px;
+        padding-top: 16px;
+      }
+
+      .step-card[data-step="2"] .date-card {
+        padding: 16px;
       }
 
       .field-row,
@@ -2090,8 +2100,13 @@
         gap: 12px;
       }
 
+      .booking-details-layout {
+        gap: 12px;
+      }
+
       .compact-row {
         grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .text-input,
@@ -2651,49 +2666,51 @@
 
                 <div class="step-middle">
                   <div class="step-middle-inner">
-                    <div class="date-card">
-                      <div class="date-mode" role="tablist" aria-label="Velg datoformat">
-                        <button type="button" class="mode-btn active" id="singleModeBtn">Én dag</button>
-                        <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
+                    <div class="booking-details-layout">
+                      <div class="compact-row">
+                        <div class="field-group compact-field">
+                          <label class="sr-only" for="eventType">Type arrangement</label>
+                          <select class="country-select" id="eventType" name="eventType">
+                            <option value="">Type arrangement</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Firmaarrangement">Firmaarrangement</option>
+                            <option value="Privat arrangement">Privat arrangement</option>
+                          </select>
+                        </div>
+
+                        <div class="field-group compact-field">
+                          <label class="sr-only" for="guestCount">Antall gjester</label>
+                          <input
+                            class="text-input"
+                            type="text"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            maxlength="6"
+                            id="guestCount"
+                            name="guests"
+                            placeholder="Antall gjester"
+                            autocomplete="off"
+                          />
+                        </div>
                       </div>
 
-                      <div class="date-summary" id="dateSummaryWrap">
-                        <button type="button" class="date-summary-btn" id="startDateBtn">
-                          <span class="date-summary-label">Startdato</span>
-                          <span class="date-summary-value" id="startDateValue">Velg dato</span>
-                        </button>
+                      <div class="date-card">
+                        <div class="date-mode" role="tablist" aria-label="Velg datoformat">
+                          <button type="button" class="mode-btn active" id="singleModeBtn">Én dag</button>
+                          <button type="button" class="mode-btn" id="rangeModeBtn">Intervall</button>
+                        </div>
 
-                        <button type="button" class="date-summary-btn" id="endDateBtn" style="display:none;">
-                          <span class="date-summary-label">Sluttdato</span>
-                          <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
-                        </button>
-                      </div>
-                    </div>
+                        <div class="date-summary" id="dateSummaryWrap">
+                          <button type="button" class="date-summary-btn" id="startDateBtn">
+                            <span class="date-summary-label">Startdato</span>
+                            <span class="date-summary-value" id="startDateValue">Velg dato</span>
+                          </button>
 
-                    <div class="compact-row">
-                      <div class="field-group compact-field">
-                        <label class="sr-only" for="eventType">Type arrangement</label>
-                        <select class="country-select" id="eventType" name="eventType">
-                          <option value="">Type arrangement</option>
-                          <option value="Festival">Festival</option>
-                          <option value="Firmaarrangement">Firmaarrangement</option>
-                          <option value="Privat arrangement">Privat arrangement</option>
-                        </select>
-                      </div>
-
-                      <div class="field-group compact-field">
-                        <label class="sr-only" for="guestCount">Antall gjester</label>
-                        <input
-                          class="text-input"
-                          type="text"
-                          inputmode="numeric"
-                          pattern="[0-9]*"
-                          maxlength="6"
-                          id="guestCount"
-                          name="guests"
-                          placeholder="Antall gjester"
-                          autocomplete="off"
-                        />
+                          <button type="button" class="date-summary-btn" id="endDateBtn" style="display:none;">
+                            <span class="date-summary-label">Sluttdato</span>
+                            <span class="date-summary-value" id="endDateValue">Velg sluttdato</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
 
@@ -2728,7 +2745,7 @@
                       type="text"
                       id="location"
                       name="location"
-                      placeholder="For eksempel Oslo, Norge"
+                      placeholder="For eksempel Oslo"
                       autocomplete="address-level2"
                     />
                   </div>
