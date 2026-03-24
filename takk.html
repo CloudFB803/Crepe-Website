@@ -20,11 +20,11 @@
 
   <style>
     :root {
-      --gold: #c9a84c;
-      --gold-light: #e2c17a;
-      --cream: #f5ecd7;
-      --dark: #1a1209;
-      --text-muted: rgba(245, 236, 215, 0.45);
+      --gold: #c98376;
+      --gold-light: #ead9d2;
+      --cream: #fff7f2;
+      --dark: #3b2e2a;
+      --text-muted: rgba(111, 90, 83, 0.62);
       --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
       --footer-safe-space: clamp(5.6rem, 10svh, 6.8rem);
       --nav-safe-space: clamp(4.3rem, 8svh, 5.5rem);
@@ -46,8 +46,8 @@
 
     body {
       font-family: "Jost", sans-serif;
-      background: var(--dark);
-      color: var(--cream);
+      background: linear-gradient(180deg, #fbf7f1 0%, #f3e8dc 48%, #f7f2e9 100%);
+      color: var(--dark);
       overflow: hidden;
       position: relative;
       -webkit-font-smoothing: antialiased;
@@ -79,7 +79,7 @@
       z-index: 0;
       background: radial-gradient(
         ellipse 70% 60% at 50% 50%,
-        rgba(201, 168, 76, 0.08),
+        rgba(201, 131, 118, 0.09),
         transparent
       );
     }
@@ -115,7 +115,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--dark);
       white-space: nowrap;
     }
 
@@ -215,7 +215,7 @@
 
     .divider {
       width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.55), transparent);
+      background: linear-gradient(to bottom, transparent, rgba(201, 131, 118, 0.45), transparent);
     }
 
     .info-item {
@@ -249,7 +249,7 @@
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.34rem, 1.12rem + 0.65vw, 1.9rem);
       font-weight: 300;
-      color: var(--cream);
+      color: var(--dark);
       white-space: nowrap;
     }
 
@@ -306,8 +306,8 @@
 
     .btn-ghost {
       background: transparent;
-      border: 1px solid var(--cream);
-      color: var(--cream);
+      border: 1px solid rgba(147, 97, 86, 0.28);
+      color: var(--dark);
     }
 
     .btn-ghost:hover,
@@ -327,8 +327,8 @@
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--text-muted);
-      border-top: 1px solid rgba(226, 193, 122, 0.1);
-      background: linear-gradient(to top, rgba(10, 7, 4, 0.58), rgba(10, 7, 4, 0));
+      border-top: 1px solid rgba(147, 97, 86, 0.14);
+      background: linear-gradient(to top, rgba(247, 241, 231, 0.88), rgba(247, 241, 231, 0));
       animation: fadeUp 0.95s var(--ease-premium) 2.2s forwards;
     }
 
@@ -347,7 +347,7 @@
         opacity: 0;
       }
       to {
-        opacity: 0.055;
+        opacity: 0.04;
       }
     }
 
