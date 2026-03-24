@@ -187,7 +187,7 @@
     }
 
     .hero-copy {
-      max-width: 780px;
+      max-width: 760px;
     }
 
     .eyebrow {
@@ -231,10 +231,10 @@
     }
 
     .hero-sub {
-      margin-top: 18px;
-      max-width: 34ch;
-      font-size: clamp(0.98rem, 1.6vw, 1.1rem);
-      line-height: 1.85;
+      margin-top: 16px;
+      max-width: 30ch;
+      font-size: clamp(0.95rem, 1.5vw, 1.06rem);
+      line-height: 1.75;
       color: var(--muted);
       opacity: 0;
       transform: translateY(20px);
@@ -311,7 +311,7 @@
 
     .split {
       display: grid;
-      grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
       gap: clamp(22px, 3vw, 34px);
       align-items: stretch;
     }
@@ -360,15 +360,15 @@
     }
 
     .section-text {
-      margin-top: 20px;
-      max-width: 34ch;
-      font-size: 1rem;
-      line-height: 1.9;
+      margin-top: 14px;
+      max-width: 28ch;
+      font-size: 0.98rem;
+      line-height: 1.8;
       color: var(--muted);
     }
 
     .section-note {
-      margin-top: 26px;
+      margin-top: 24px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -394,75 +394,15 @@
     }
 
     .media-panel.truck {
-      min-height: 82svh;
+      min-height: 86svh;
     }
 
     .media-panel.truck img {
       object-position: center center;
     }
 
-    .mosaic {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: clamp(22px, 3vw, 34px);
-      align-items: stretch;
-    }
-
-    .stack {
-      display: grid;
-      gap: clamp(22px, 3vw, 34px);
-    }
-
-    .card {
-      position: relative;
-      min-height: 340px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: rgba(255,255,255,0.03);
-      box-shadow: var(--shadow);
-    }
-
-    .card video,
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(7,3,2,0.1) 0%, rgba(7,3,2,0.1) 35%, rgba(7,3,2,0.88) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-    }
-
-    .card-tag {
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(245,234,216,0.54);
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 3.6vw, 3.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      font-weight: 500;
-    }
-
-    .card-copy {
-      margin-top: 10px;
-      max-width: 28ch;
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--muted);
+    .media-panel.runtime {
+      min-height: 64svh;
     }
 
     .proof {
@@ -506,7 +446,7 @@
     }
 
     .proof-copy {
-      max-width: 760px;
+      max-width: 720px;
     }
 
     .proof-title {
@@ -524,10 +464,10 @@
     }
 
     .proof-text {
-      margin-top: 18px;
-      max-width: 34ch;
-      font-size: 1rem;
-      line-height: 1.9;
+      margin-top: 14px;
+      max-width: 28ch;
+      font-size: 0.98rem;
+      line-height: 1.8;
       color: var(--muted);
     }
 
@@ -620,10 +560,10 @@
     }
 
     .closing p {
-      margin: 18px auto 0;
-      max-width: 32ch;
-      font-size: 1rem;
-      line-height: 1.9;
+      margin: 14px auto 0;
+      max-width: 30ch;
+      font-size: 0.98rem;
+      line-height: 1.8;
       color: var(--muted);
     }
 
@@ -693,8 +633,6 @@
     }
 
     .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
@@ -714,8 +652,7 @@
     @media (max-width: 1100px) {
       .hero-shell,
       .proof-shell,
-      .split,
-      .mosaic {
+      .split {
         grid-template-columns: 1fr;
       }
 
@@ -760,7 +697,6 @@
       .section-title,
       .proof-title,
       .hero h1 { max-width: none; }
-      .card { min-height: 300px; }
       .proof { min-height: auto; }
       .proof-shell { min-height: auto; }
       .events { grid-template-columns: 1fr; }
@@ -796,7 +732,7 @@
         <span class="eyebrow">Crêpe de la Crêpe · siden 2021</span>
         <h1>Bygd i fart.<br /><em>Servert varmt.</em></h1>
         <p class="hero-sub">
-          Dette startet ikke som en polert merkevare. Det startet som en idé som måtte fungere i virkeligheten — ute, under press, og foran folk.
+          Et konsept bygget i virkeligheten — med tempo, varme plater og folk rett foran disken.
         </p>
       </div>
 
@@ -824,48 +760,31 @@
 
   <main>
     <section class="section split">
-      <div class="copy-panel reveal">
-        <span class="section-label">Starten</span>
-        <h2 class="section-title">Fra idé<br />til <em>vogn.</em></h2>
-        <p class="section-text">
-          Det startet ikke med en pitch eller en plan på et møterom. Bare en idé om å bygge noe folk faktisk ville oppsøke — noe varmt, ekte og verdt å stoppe opp for.
-        </p>
-        <span class="section-note">Før alt ble strømlinjeformet</span>
+      <div class="media-panel truck reveal">
+        <img src="historie-truck-start.jpg" alt="Den første vognen til Crêpe de la Crêpe" loading="lazy" />
       </div>
 
-      <div class="media-panel truck reveal delay-1">
-        <img src="historie-truck-start.jpg" alt="Den første vognen til Crêpe de la Crêpe" loading="lazy" />
+      <div class="copy-panel reveal delay-1">
+        <span class="section-label">Starten</span>
+        <h2 class="section-title">Første stopp:<br /><em>vognen.</em></h2>
+        <p class="section-text">
+          Alt startet med én ting som måtte fungere ute blant folk.
+        </p>
+        <span class="section-note">Fra idé til vogn.</span>
       </div>
     </section>
 
-    <section class="section mosaic">
-      <div class="card reveal">
-        <img src="historie-counter.jpg" alt="Bak disken hos Crêpe de la Crêpe" loading="lazy" />
-        <div class="card-overlay">
-          <span class="card-tag">Virkeligheten</span>
-          <h3 class="card-title">Det måtte tåle <br />tempoet.</h3>
-          <p class="card-copy">
-            Det holder ikke å se bra ut i teori. Det må fungere når det er trykk, varme plater, ventende folk og null rom for slurv.
-          </p>
-        </div>
+    <section class="section split">
+      <div class="copy-panel reveal">
+        <span class="section-label">Drift</span>
+        <h2 class="section-title">Tempo. Flyt.<br /><em>Presisjon.</em></h2>
+        <p class="section-text">
+          Hver servering måtte sitte — igjen og igjen.
+        </p>
       </div>
 
-      <div class="stack">
-        <div class="card reveal delay-1">
-          <video src="historie-service-loop.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <div class="card-overlay">
-            <span class="card-tag">Service</span>
-            <h3 class="card-title">Front mot <br />kunden.</h3>
-          </div>
-        </div>
-
-        <div class="copy-panel reveal delay-2">
-          <span class="section-label">Nivå</span>
-          <h2 class="section-title">Ikke bare<br /><em>oppmerksomhet.</em></h2>
-          <p class="section-text">
-            Når folk først kommer bort, starter den virkelige testen. Da handler det ikke om hype. Da handler det om nivå, flyt og om det faktisk smaker så bra som det ser ut.
-          </p>
-        </div>
+      <div class="media-panel runtime reveal delay-1">
+        <video src="historie-service-loop.mp4" autoplay muted loop playsinline preload="metadata"></video>
       </div>
     </section>
 
@@ -878,22 +797,22 @@
           <span class="section-label">Når det traff</span>
           <h2 class="proof-title">Så kom <br /><em>køen.</em></h2>
           <p class="proof-text">
-            Etter hvert handlet det ikke lenger bare om å få det i gang. Det handlet om å holde nivået når folk faktisk stilte seg opp, ventet, og kom tilbake igjen.
+            Et tydelig bevis: folk ventet, kom tilbake, og tok oss med videre.
           </p>
         </div>
 
         <div class="stat-panel reveal delay-1">
           <div class="stat-row">
             <div class="stat-num">100+</div>
-            <div class="stat-desc">Arrangementer, festivaler og oppdrag der konseptet har blitt testet i ekte tempo.</div>
+            <div class="stat-desc">Arrangementer, festivaler og oppdrag i ekte drift.</div>
           </div>
           <div class="stat-row">
             <div class="stat-num">300k+</div>
-            <div class="stat-desc">Serverte crêpes gjennom årene — ikke som teori, men som faktisk drift.</div>
+            <div class="stat-desc">Serverte crêpes gjennom årene.</div>
           </div>
           <div class="stat-row">
             <div class="stat-num">4</div>
-            <div class="stat-desc">År med bygging, justering og videre utvikling av konseptet.</div>
+            <div class="stat-desc">År med bygging, justering og utvikling.</div>
           </div>
         </div>
       </div>
@@ -911,7 +830,7 @@
       <span class="closing-kicker">Fortsatt i bevegelse</span>
       <h2>Og vi er fortsatt<br /><em>ikke ferdige.</em></h2>
       <p>
-        Historien er ikke sterk fordi den er pyntet opp. Den er sterk fordi den er bygget på ekte drift, ekte trykk og ekte folk som faktisk stoppet opp.
+        Historien bygges videre i samme stil: ekte drift, høy standard og varme serveringer.
       </p>
 
       <div class="closing-actions">
