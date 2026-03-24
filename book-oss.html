@@ -1359,7 +1359,7 @@
 
     .phone-row {
       display: grid;
-      grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
       gap: 16px;
       align-items: stretch;
     }
@@ -1449,13 +1449,27 @@
       margin-top: 16px;
     }
 
-    .step-card[data-step="3"] .step-middle-inner {
+    .step-card[data-step="2"] .step-middle-inner {
       padding-bottom: 8px;
     }
 
-    .step-card[data-step="3"] .step-bottom {
+    .step-card[data-step="2"] .step-bottom {
       margin-top: 16px;
       padding-top: 18px;
+    }
+
+    .compact-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .compact-field .text-input,
+    .compact-field .country-select {
+      min-height: 58px;
+      padding: 14px 18px;
+      border-radius: 18px;
     }
 
     .date-summary.range {
@@ -2061,11 +2075,11 @@
         padding-top: 14px;
       }
 
-      .step-card[data-step="3"] .step-middle-inner {
+      .step-card[data-step="2"] .step-middle-inner {
         padding-bottom: 14px;
       }
 
-      .step-card[data-step="3"] .step-bottom {
+      .step-card[data-step="2"] .step-bottom {
         margin-top: 22px;
         padding-top: 20px;
       }
@@ -2074,6 +2088,10 @@
       .phone-row {
         grid-template-columns: 1fr;
         gap: 12px;
+      }
+
+      .compact-row {
+        grid-template-columns: 1fr;
       }
 
       .text-input,
@@ -2372,7 +2390,7 @@
           <div class="why-book-grid">
             <article class="why-book-item">
               <strong>🏆 Erfaring som teller</strong>
-              <p>100+ arrangementer. 300 000+ serverte crêpes. — Siden 2021.</p>
+              <p>100+ arrangementer. 100,000+ servert crêpes. — Siden 2021.</p>
             </article>
 
             <article class="why-book-item">
@@ -2381,8 +2399,8 @@
             </article>
 
             <article class="why-book-item">
-              <strong>📍 Hele Norge</strong>
-              <p>Vi stiller opp uansett hvor arrangementet er. Kontakt oss så finner vi en løsning.</p>
+              <strong>📍 Fleksibel lokasjon</strong>
+              <p>Vi tilpasser leveransen til arrangementet ditt. Kontakt oss så finner vi en løsning.</p>
             </article>
 
             <article class="why-book-item">
@@ -2472,8 +2490,8 @@
 
         <div class="overlay-progress-wrap">
           <div class="overlay-progress-meta">
-            <span id="progressText">Steg 1 av 8</span>
-            <span id="progressPercent">13%</span>
+            <span id="progressText">Steg 1 av 5</span>
+            <span id="progressPercent">20%</span>
           </div>
           <div class="overlay-progress">
             <div class="overlay-progress-bar" id="progressBar"></div>
@@ -2566,6 +2584,18 @@
                         <div class="error-text" data-error-for="email"></div>
                       </div>
 
+                      <div class="field-group">
+                        <label class="sr-only" for="companyName">Firma (valgfritt)</label>
+                        <input
+                          class="text-input"
+                          type="text"
+                          id="companyName"
+                          name="company"
+                          placeholder="Firma (valgfritt)"
+                          autocomplete="organization"
+                        />
+                      </div>
+
                       <div class="field-group full">
                         <div class="phone-row">
                           <div class="field-group">
@@ -2615,38 +2645,8 @@
               <section class="step-card" data-step="2">
                 <div class="step-top">
                   <div class="step-kicker">Steg 03</div>
-                  <h2 class="step-title">Hva heter firmaet ditt?</h2>
-                  <p class="step-desc">Valgfritt.</p>
-                </div>
-
-                <div class="step-middle">
-                  <div class="step-middle-inner">
-                    <label class="sr-only" for="companyName">Hva heter firmaet ditt?</label>
-                    <input
-                      class="text-input"
-                      type="text"
-                      id="companyName"
-                      name="company"
-                      placeholder="Skriv inn firmanavn"
-                      autocomplete="organization"
-                    />
-                  </div>
-                </div>
-
-                <div class="step-bottom">
-                  <div class="step-actions">
-                    <button type="button" class="btn btn-primary js-next">Neste</button>
-                    <button type="button" class="ghost-link js-back">Tilbake</button>
-                  </div>
-                  <div class="error-text" data-error-for="company"></div>
-                </div>
-              </section>
-
-              <section class="step-card" data-step="3">
-                <div class="step-top">
-                  <div class="step-kicker">Steg 04</div>
-                  <h2 class="step-title">Når skal arrangementet være?</h2>
-                  <p class="step-desc">Velg én dag eller et intervall. Tidligere datoer er låst.</p>
+                  <h2 class="step-title">Arrangementsdetaljer</h2>
+                  <p class="step-desc">Legg inn dato, type arrangement og antall gjester.</p>
                 </div>
 
                 <div class="step-middle">
@@ -2670,6 +2670,33 @@
                       </div>
                     </div>
 
+                    <div class="compact-row">
+                      <div class="field-group compact-field">
+                        <label class="sr-only" for="eventType">Type arrangement</label>
+                        <select class="country-select" id="eventType" name="eventType">
+                          <option value="">Type arrangement</option>
+                          <option value="Festival">Festival</option>
+                          <option value="Firmaarrangement">Firmaarrangement</option>
+                          <option value="Privat arrangement">Privat arrangement</option>
+                        </select>
+                      </div>
+
+                      <div class="field-group compact-field">
+                        <label class="sr-only" for="guestCount">Antall gjester</label>
+                        <input
+                          class="text-input"
+                          type="text"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                          maxlength="6"
+                          id="guestCount"
+                          name="guests"
+                          placeholder="Antall gjester"
+                          autocomplete="off"
+                        />
+                      </div>
+                    </div>
+
                     <input type="hidden" id="dateMode" value="single" />
                     <input type="hidden" id="eventStartDate" />
                     <input type="hidden" id="eventEndDate" />
@@ -2682,89 +2709,14 @@
                     <button type="button" class="ghost-link js-back">Tilbake</button>
                   </div>
                   <div class="error-text" data-error-for="date"></div>
-                </div>
-              </section>
-
-              <section class="step-card" data-step="4">
-                <div class="step-top">
-                  <div class="step-kicker">Steg 05</div>
-                  <h2 class="step-title">Hvor mange gjester?</h2>
-                </div>
-
-                <div class="step-middle">
-                  <div class="step-middle-inner">
-                    <label class="sr-only" for="guestCount">Antall gjester</label>
-                    <input
-                      class="text-input"
-                      type="text"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      maxlength="6"
-                      id="guestCount"
-                      name="guests"
-                      placeholder="For eksempel 120"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-
-                <div class="step-bottom">
-                  <div class="step-actions">
-                    <button type="button" class="btn btn-primary js-next">Neste</button>
-                    <button type="button" class="ghost-link js-back">Tilbake</button>
-                  </div>
+                  <div class="error-text" data-error-for="eventType"></div>
                   <div class="error-text" data-error-for="guests"></div>
                 </div>
               </section>
 
-              <section class="step-card multi-choice-step" data-step="5">
+              <section class="step-card" data-step="3">
                 <div class="step-top">
-                  <div class="step-kicker">Steg 06</div>
-                  <h2 class="step-title">Hva slags arrangement er det?</h2>
-                </div>
-
-                <div class="step-middle">
-                  <div class="step-middle-inner">
-                    <div class="choice-grid" id="eventTypeChoices">
-                      <button type="button" class="choice-card" data-value="Festival">
-                        <div class="choice-top">
-                          <span class="choice-title">Festival</span>
-                          <span class="choice-arrow">→</span>
-                        </div>
-                        <p class="choice-desc">Publikumsrettet arrangement med høy flyt og stor synlighet.</p>
-                      </button>
-
-                      <button type="button" class="choice-card" data-value="Firmaarrangement">
-                        <div class="choice-top">
-                          <span class="choice-title">Firmaarrangement</span>
-                          <span class="choice-arrow">→</span>
-                        </div>
-                        <p class="choice-desc">Bedriftsevent, lansering, intern samling eller kundearrangement.</p>
-                      </button>
-
-                      <button type="button" class="choice-card" data-value="Privat arrangement">
-                        <div class="choice-top">
-                          <span class="choice-title">Privat arrangement</span>
-                          <span class="choice-arrow">→</span>
-                        </div>
-                        <p class="choice-desc">Bryllup, bursdag, privat feiring eller tilsvarende opplegg.</p>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="step-bottom">
-                  <div class="step-actions">
-                    <button type="button" class="btn btn-primary js-next">Neste</button>
-                    <button type="button" class="ghost-link js-back">Tilbake</button>
-                  </div>
-                  <div class="error-text" data-error-for="eventType"></div>
-                </div>
-              </section>
-
-              <section class="step-card" data-step="6">
-                <div class="step-top">
-                  <div class="step-kicker">Steg 07</div>
+                  <div class="step-kicker">Steg 04</div>
                   <h2 class="step-title">Hvor skal arrangementet være?</h2>
                 </div>
 
@@ -2791,9 +2743,9 @@
                 </div>
               </section>
 
-              <section class="step-card" data-step="7">
+              <section class="step-card" data-step="4">
                 <div class="step-top">
-                  <div class="step-kicker">Steg 08</div>
+                  <div class="step-kicker">Steg 05</div>
                   <h2 class="step-title">Er det noe vi bør vite om arrangementet?</h2>
                   <p class="step-desc">Valgfritt.</p>
                 </div>
@@ -2819,7 +2771,7 @@
                 </div>
               </section>
 
-              <section class="step-card success-step" data-step="8">
+              <section class="step-card success-step" data-step="5">
                 <div class="success-wrap">
                   <div class="success-page">
                     <div class="success-header">
@@ -3045,13 +2997,13 @@
 
       const openBookingButtons = document.querySelectorAll(".js-open-booking");
       const setupChoices = Array.from(document.querySelectorAll("#setupChoices .choice-card"));
-      const eventTypeChoices = Array.from(document.querySelectorAll("#eventTypeChoices .choice-card"));
       const nextButtons = Array.from(document.querySelectorAll(".js-next"));
       const backButtons = Array.from(document.querySelectorAll(".js-back"));
 
       const phoneCountry = document.getElementById("phoneCountry");
       const phoneInput = document.getElementById("phone");
       const phonePrefix = document.getElementById("phonePrefix");
+      const eventTypeSelect = document.getElementById("eventType");
 
       const phoneCountryMap = {
         NO: { dial: "+47", placeholder: "12 34 56 78", minDigits: 8, maxDigits: 8, formatter: "pair" },
@@ -3078,7 +3030,7 @@
         message: ""
       };
 
-      const totalInputSteps = 8;
+      const totalInputSteps = 5;
       let currentStep = 0;
       let previousFocusedElement = null;
       let submitting = false;
@@ -3285,8 +3237,8 @@
         formState.message = "";
 
         syncChoiceSelection(setupChoices, "");
-        syncChoiceSelection(eventTypeChoices, "");
         phoneCountry.value = "NO";
+        eventTypeSelect.value = "";
         syncPhoneUi();
         phoneInput.value = "";
         setDateMode("single");
@@ -3694,14 +3646,11 @@
 
             formState.name = fullNameValue;
             formState.email = emailValue;
+            formState.company = document.getElementById("companyName").value.trim();
             return true;
           }
 
-          case 2:
-            formState.company = document.getElementById("companyName").value.trim();
-            return true;
-
-          case 3: {
+          case 2: {
             if (!formState.eventDateStart) {
               setError("date", "Velg dato for arrangementet.");
               return false;
@@ -3723,10 +3672,13 @@
               setError("date", "Dato kan ikke være i fortiden.");
               return false;
             }
-            return true;
-          }
 
-          case 4: {
+            const eventTypeValue = eventTypeSelect.value;
+            if (!eventTypeValue) {
+              setError("eventType", "Velg type arrangement.");
+              return false;
+            }
+
             const value = document.getElementById("guestCount").value.trim();
             if (!value) {
               setError("guests", "Skriv inn antall gjester.");
@@ -3741,18 +3693,13 @@
               setError("guests", "Antall gjester må være mellom 1 og 999999.");
               return false;
             }
+
+            formState.eventType = eventTypeValue;
             formState.guests = String(guestNumber);
             return true;
           }
 
-          case 5:
-            if (!formState.eventType) {
-              setError("eventType", "Velg type arrangement.");
-              return false;
-            }
-            return true;
-
-          case 6: {
+          case 3: {
             const value = document.getElementById("location").value.trim();
             if (value.length < 2) {
               setError("location", "Skriv inn hvor arrangementet skal være.");
@@ -3762,7 +3709,7 @@
             return true;
           }
 
-          case 7: {
+          case 4: {
             const messageValue = document.getElementById("message").value.trim();
             if (messageValue && messageValue.length < 12) {
               setError("submit", "Skriv litt mer om arrangementet, eller la feltet stå tomt.");
@@ -3785,14 +3732,6 @@
         if (currentStep >= totalInputSteps) return;
 
         if (currentStep === 0 && formState.setup) {
-          currentStep += 1;
-          updateSummary();
-          updateSteps();
-          setTimeout(() => focusStepInput(currentStep), 60);
-          return;
-        }
-
-        if (currentStep === 5 && formState.eventType) {
           currentStep += 1;
           updateSummary();
           updateSteps();
@@ -3841,7 +3780,7 @@
       async function submitForm(event) {
         event.preventDefault();
         if (submitting) return;
-        if (!validateStep(7)) return;
+        if (!validateStep(4)) return;
 
         const payload = buildPayload();
         const controller = new AbortController();
@@ -3924,14 +3863,10 @@
         });
       });
 
-      eventTypeChoices.forEach((button) => {
-        button.addEventListener("click", () => {
-          formState.eventType = button.dataset.value;
-          syncChoiceSelection(eventTypeChoices, formState.eventType);
-          updateSummary();
-          setError("eventType", "");
-          setTimeout(() => nextStep(), 110);
-        });
+      eventTypeSelect.addEventListener("change", () => {
+        formState.eventType = eventTypeSelect.value;
+        updateSummary();
+        setError("eventType", "");
       });
 
       nextButtons.forEach((button) => button.addEventListener("click", nextStep));
@@ -4029,7 +3964,7 @@
         const isButton = document.activeElement && document.activeElement.tagName === "BUTTON";
         const isSelect = document.activeElement && document.activeElement.tagName === "SELECT";
 
-        if (event.key === "Enter" && !isTextarea && !isButton && !isSelect && currentStep > 0 && currentStep < 7) {
+        if (event.key === "Enter" && !isTextarea && !isButton && !isSelect && currentStep > 0 && currentStep < 5) {
           event.preventDefault();
           nextStep();
         }
