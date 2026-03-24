@@ -4,31 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vår historie | Crêpe de la Crêpe</title>
-  <meta name="description" content="Les historien bak Crêpe de la Crêpe – fra en enkel tanke til et premium crêpekonsept i Norge.">
-  <link rel="icon" type="image/png" href="crepe-logo-transparent.png">
-  <link rel="canonical" href="https://crepe-website-eight.vercel.app/historie.html">
-  <meta property="og:title" content="Vår historie | Crêpe de la Crêpe">
-  <meta property="og:description" content="Fra kontorjobb til crêpes i hele Norge.">
-  <meta property="og:image" content="/crepe-logo-transparent.png">
-  <meta property="og:url" content="https://crepe-website-eight.vercel.app/historie.html">
-  <meta property="og:type" content="website">
+  <meta
+    name="description"
+    content="Les historien bak Crêpe de la Crêpe – fra kontorjobb til et premium crêpekonsept i Norge."
+  />
+  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+  <link rel="canonical" href="https://crepe-website-eight.vercel.app/historie.html" />
+  <meta property="og:title" content="Vår historie | Crêpe de la Crêpe" />
+  <meta property="og:description" content="Fra kontorjobb til crêpes i hele Norge." />
+  <meta property="og:image" content="/crepe-logo-transparent.png" />
+  <meta property="og:url" content="https://crepe-website-eight.vercel.app/historie.html" />
+  <meta property="og:type" content="website" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
       --cream: #f5ead8;
       --dark: #100804;
+      --dark-2: #0c0502;
       --gold: #c9903a;
       --gold-light: #e6b86a;
       --rust: #8c3d1e;
-      --cream-dim: rgba(245,234,216,0.55);
+      --cream-dim: rgba(245, 234, 216, 0.66);
+      --line: rgba(201, 144, 58, 0.12);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: "Manrope", sans-serif;
@@ -37,26 +52,36 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    /* ─── NAV ─── */
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* NAV */
     .nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 18px 28px;
-      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
       border-bottom: 1px solid transparent;
     }
 
     .nav.solid {
-      background: rgba(16,8,4,0.88);
-      backdrop-filter: blur(20px);
-      border-color: rgba(201,144,58,0.1);
+      background: rgba(16, 8, 4, 0.86);
+      backdrop-filter: blur(18px);
+      border-color: rgba(201, 144, 58, 0.12);
     }
 
     .nav-logo {
@@ -66,21 +91,34 @@
     }
 
     .nav-badge {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      border: 1px solid rgba(201,144,58,0.3);
-      background: rgba(255,255,255,0.06);
-      display: grid; place-items: center;
-      padding: 5px; overflow: hidden;
+      border: 1px solid rgba(201, 144, 58, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+      display: grid;
+      place-items: center;
+      padding: 5px;
+      overflow: hidden;
     }
 
-    .nav-badge img { width: 100%; height: 100%; object-fit: contain; }
+    .nav-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .nav-name {
       font-family: "Cormorant Garamond", serif;
       font-size: 1rem;
       font-weight: 600;
       color: var(--cream);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
     .nav-links {
@@ -90,10 +128,13 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(245,234,216,0.5);
+      color: rgba(245, 234, 216, 0.54);
     }
 
-    .nav-links a:hover { color: var(--gold-light); transition: color 0.2s; }
+    .nav-links a:hover {
+      color: var(--gold-light);
+      transition: color 0.2s ease;
+    }
 
     .nav-cta {
       padding: 9px 22px;
@@ -104,16 +145,16 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--cream);
-      box-shadow: 0 6px 20px rgba(140,61,30,0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(140, 61, 30, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .nav-cta:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(140,61,30,0.44);
+      box-shadow: 0 10px 28px rgba(140, 61, 30, 0.42);
     }
 
-    /* ─── HERO: FULLSCREEN VIDEO ─── */
+    /* HERO */
     .hero {
       position: relative;
       height: 100svh;
@@ -126,10 +167,11 @@
     .hero-video {
       position: absolute;
       inset: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: saturate(0.9) brightness(0.75);
+      filter: saturate(0.9) brightness(0.74);
     }
 
     .hero-grain {
@@ -143,14 +185,15 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(16,8,4,0.18) 0%,
-        rgba(16,8,4,0.05) 30%,
-        rgba(16,8,4,0.05) 55%,
-        rgba(16,8,4,0.75) 85%,
-        rgba(16,8,4,1) 100%
-      );
+      background:
+        linear-gradient(
+          180deg,
+          rgba(16, 8, 4, 0.16) 0%,
+          rgba(16, 8, 4, 0.05) 28%,
+          rgba(16, 8, 4, 0.08) 56%,
+          rgba(16, 8, 4, 0.78) 86%,
+          rgba(16, 8, 4, 1) 100%
+        );
     }
 
     .hero-content {
@@ -161,7 +204,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
+      max-width: 820px;
     }
 
     .hero-eyebrow {
@@ -171,19 +214,19 @@
       text-transform: uppercase;
       color: var(--gold);
       opacity: 0;
-      animation: fadeUp 0.9s 0.3s ease forwards;
+      animation: fadeUp 0.9s 0.25s ease forwards;
     }
 
     .hero-title {
+      margin-top: 12px;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(5.5rem, 18vw, 13rem);
+      font-size: clamp(5rem, 17vw, 12rem);
       font-weight: 500;
       line-height: 0.88;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
       color: var(--cream);
-      margin-top: 12px;
       opacity: 0;
-      animation: fadeUp 1s 0.5s ease forwards;
+      animation: fadeUp 1s 0.45s ease forwards;
     }
 
     .hero-title em {
@@ -192,20 +235,18 @@
     }
 
     .hero-sub {
-      margin-top: 22px;
-      font-size: clamp(0.88rem, 2.2vw, 1rem);
-      font-weight: 400;
-      color: rgba(245,234,216,0.6);
-      letter-spacing: 0.01em;
-      max-width: 34ch;
+      margin-top: 20px;
+      max-width: 32ch;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
       line-height: 1.65;
+      color: rgba(245, 234, 216, 0.62);
       opacity: 0;
-      animation: fadeUp 0.9s 0.75s ease forwards;
+      animation: fadeUp 0.9s 0.7s ease forwards;
     }
 
     .hero-scroll {
       position: absolute;
-      bottom: 38px;
+      bottom: 34px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -213,7 +254,8 @@
       align-items: center;
       gap: 8px;
       opacity: 0;
-      animation: fadeIn 1s 1.4s ease forwards;
+      animation: fadeIn 1s 1.3s ease forwards;
+      z-index: 2;
     }
 
     .hero-scroll span {
@@ -221,112 +263,150 @@
       font-weight: 800;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: rgba(245,234,216,0.28);
+      color: rgba(245, 234, 216, 0.3);
     }
 
     .scroll-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(180deg, rgba(201,144,58,0.7), transparent);
+      width: 1px;
+      height: 46px;
+      background: linear-gradient(180deg, rgba(201, 144, 58, 0.72), transparent);
       animation: scrollPulse 2.2s 1.8s ease-in-out infinite;
     }
 
-    /* ─── ACT I: STARTEN ─── */
-    /* Dark full-bleed text only. No image. Raw typographic power. */
-    .act-1 {
-      background: var(--dark);
-      padding: clamp(100px, 16vw, 160px) clamp(28px, 8vw, 100px);
+    /* START / TRUCK SECTION */
+    .origin {
       position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(340px, 0.92fr) minmax(0, 1.08fr);
+      background: linear-gradient(180deg, #0f0703 0%, #140803 100%);
       overflow: hidden;
     }
 
-    .act-1::before {
-      content: "I";
-      position: absolute;
-      top: -0.12em;
-      right: -0.04em;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(28vw, 42vw, 56vw);
-      font-weight: 700;
-      color: rgba(201,144,58,0.04);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .act-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.64rem;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .act-label::before {
-      content: "";
-      width: 28px; height: 1px;
-      background: var(--gold);
-      opacity: 0.45;
-    }
-
-    .act-1-heading {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.2rem, 9vw, 8.5rem);
-      font-weight: 500;
-      line-height: 0.92;
-      letter-spacing: -0.035em;
-      color: var(--cream);
-      max-width: 12ch;
+    .origin-copy {
       position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      padding: clamp(88px, 10vw, 120px) clamp(28px, 5vw, 68px);
+      border-right: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 24% 16%, rgba(201, 144, 58, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(18, 8, 4, 0.98) 0%, rgba(12, 5, 2, 0.98) 100%);
     }
 
-    .act-1-heading em {
+    .origin-copy-inner {
+      max-width: 560px;
+    }
+
+    .origin-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.8rem, 9vw, 8.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .origin-title em {
+      display: block;
       font-style: italic;
       color: var(--gold-light);
+      font-weight: 500;
     }
 
-    .act-1-body {
-      margin-top: 36px;
-      max-width: 42ch;
-      font-size: clamp(1rem, 2.4vw, 1.12rem);
-      line-height: 1.78;
-      color: var(--cream-dim);
+    .origin-body {
+      margin-top: 28px;
+      max-width: 27ch;
+      font-size: clamp(0.98rem, 1.55vw, 1.08rem);
+      line-height: 1.9;
+      color: rgba(245, 234, 216, 0.7);
+    }
+
+    .origin-body strong {
+      color: var(--cream);
+      font-weight: 700;
+    }
+
+    .origin-media {
       position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      background: #0b0502;
     }
 
-    .act-1-year {
-      display: block;
+    .origin-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 61% center;
+      transform: scale(1.02);
+      filter: saturate(0.9) brightness(0.84);
+    }
+
+    .origin-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(16, 8, 4, 0.88) 0%, rgba(16, 8, 4, 0.18) 20%, rgba(16, 8, 4, 0.08) 44%, rgba(16, 8, 4, 0.44) 100%),
+        linear-gradient(180deg, rgba(16, 8, 4, 0.18) 0%, rgba(16, 8, 4, 0.04) 30%, rgba(16, 8, 4, 0.52) 100%);
+      pointer-events: none;
+    }
+
+    .origin-caption {
+      position: absolute;
+      left: clamp(22px, 3vw, 34px);
+      bottom: clamp(22px, 3vw, 34px);
+      z-index: 2;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 18px;
+      border: 1px solid rgba(201, 144, 58, 0.18);
+      background: rgba(12, 5, 2, 0.56);
+      backdrop-filter: blur(12px);
+    }
+
+    .origin-caption span:first-child {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 234, 216, 0.44);
+    }
+
+    .origin-caption strong {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(6rem, 20vw, 16rem);
-      font-weight: 400;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: rgba(201,144,58,0.12);
-      margin-top: 40px;
-      user-select: none;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1;
+      font-weight: 500;
+      color: var(--cream);
     }
 
-    /* ─── ACT II: PARIS — SPLIT SCREEN ─── */
+    /* PARIS */
     .act-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 90svh;
+      min-height: 92svh;
+      background: var(--dark);
     }
 
     .act-2-img {
       position: relative;
       overflow: hidden;
+      min-height: 60svh;
     }
 
     .act-2-img img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: saturate(0.85);
-      transition: transform 1.2s cubic-bezier(0.2,0.8,0.2,1);
+      filter: saturate(0.85) brightness(0.9);
+      transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .act-2.visible .act-2-img img {
@@ -337,97 +417,91 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent 60%, rgba(16,8,4,0.85) 100%);
+      background: linear-gradient(90deg, transparent 58%, rgba(16, 8, 4, 0.88) 100%);
     }
 
     .act-2-content {
-      background: var(--dark);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(48px, 8vw, 100px) clamp(36px, 6vw, 80px);
-      position: relative;
+      padding: clamp(48px, 8vw, 100px) clamp(32px, 6vw, 78px);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(201, 144, 58, 0.08), transparent 30%),
+        linear-gradient(180deg, #100804 0%, #140803 100%);
     }
 
-    .act-2-content::before {
-      content: "II";
-      position: absolute;
-      bottom: -0.1em;
-      right: -0.04em;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 38vw;
-      font-weight: 700;
-      color: rgba(201,144,58,0.035);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
+    .section-kicker {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
     }
 
-    .act-2-heading {
+    .act-heading {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.8rem, 5.5vw, 6rem);
+      font-size: clamp(3rem, 8vw, 7rem);
       font-weight: 500;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
       color: var(--cream);
-      position: relative;
+      max-width: 10ch;
     }
 
-    .act-2-heading em {
+    .act-heading em {
       font-style: italic;
       color: var(--gold-light);
     }
 
-    .act-2-body {
-      margin-top: 28px;
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
-      line-height: 1.8;
-      color: var(--cream-dim);
-      max-width: 38ch;
-      position: relative;
+    .act-body {
+      margin-top: 24px;
+      max-width: 34ch;
+      font-size: 1rem;
+      line-height: 1.92;
+      color: rgba(245, 234, 216, 0.76);
     }
 
-    .act-2-quote {
-      margin-top: 36px;
-      padding-left: 18px;
-      border-left: 2px solid var(--gold);
+    .act-quote {
+      margin-top: 26px;
+      max-width: 26ch;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.25rem, 2.8vw, 1.7rem);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1.25;
+      color: rgba(230, 184, 106, 0.92);
       font-style: italic;
-      font-weight: 500;
-      color: var(--cream);
-      line-height: 1.45;
-      position: relative;
     }
 
-    /* ─── ACT III: TALL / STATS ─── */
+    /* STATS */
     .act-3 {
-      background: #0a0503;
-      padding: clamp(100px, 14vw, 160px) clamp(28px, 8vw, 100px);
+      background:
+        radial-gradient(circle at 18% 14%, rgba(201, 144, 58, 0.1), transparent 32%),
+        linear-gradient(180deg, #0d0502 0%, #130703 100%);
+      padding: clamp(92px, 12vw, 148px) clamp(24px, 6vw, 72px);
       position: relative;
       overflow: hidden;
     }
 
-    .act-3::before {
-      content: "III";
-      position: absolute;
-      top: -0.08em;
-      left: -0.06em;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(26vw, 38vw, 50vw);
-      font-weight: 700;
-      color: rgba(201,144,58,0.035);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
     .act-3-inner {
-      position: relative;
+      width: min(1120px, 100%);
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 60px;
+      gap: 54px;
+    }
+
+    .act-3-top {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.8fr);
+      gap: clamp(24px, 5vw, 60px);
+      align-items: end;
+    }
+
+    .act-3-text {
+      max-width: 40ch;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(245, 234, 216, 0.72);
     }
 
     .stat-grid {
@@ -435,13 +509,12 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
       width: 100%;
-      max-width: 900px;
     }
 
     .stat-item {
-      padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px);
-      border: 1px solid rgba(201,144,58,0.1);
-      background: rgba(201,144,58,0.03);
+      padding: clamp(28px, 5vw, 52px) clamp(22px, 4vw, 42px);
+      border: 1px solid rgba(201, 144, 58, 0.1);
+      background: rgba(201, 144, 58, 0.03);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -450,87 +523,76 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .stat-item:nth-child(2) { transition-delay: 0.12s; }
-    .stat-item:nth-child(3) { transition-delay: 0.24s; }
-
     .act-3.visible .stat-item {
       opacity: 1;
       transform: translateY(0);
     }
 
+    .act-3.visible .stat-item:nth-child(2) {
+      transition-delay: 0.12s;
+    }
+
+    .act-3.visible .stat-item:nth-child(3) {
+      transition-delay: 0.24s;
+    }
+
     .stat-num {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 400;
-      line-height: 0.9;
-      color: var(--gold-light);
-      letter-spacing: -0.04em;
+      font-size: clamp(2.8rem, 6vw, 5.1rem);
+      line-height: 0.95;
+      color: var(--cream);
+      letter-spacing: -0.05em;
     }
 
     .stat-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(245,234,216,0.32);
+      color: rgba(245, 234, 216, 0.42);
     }
 
     .festival-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      max-width: 800px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s 0.3s ease, transform 0.7s 0.3s ease;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid rgba(201, 144, 58, 0.1);
+      border-bottom: 1px solid rgba(201, 144, 58, 0.1);
     }
-
-    .act-3.visible .festival-list { opacity: 1; transform: translateY(0); }
 
     .festival-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 0;
-      padding-right: 28px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.3rem, 3vw, 2.1rem);
-      font-weight: 500;
-      font-style: italic;
-      color: rgba(245,234,216,0.5);
-      border-bottom: 1px solid rgba(201,144,58,0.07);
-      width: 100%;
-      transition: color 0.25s;
+      padding: 22px 18px;
+      text-align: center;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 234, 216, 0.56);
+      border-right: 1px solid rgba(201, 144, 58, 0.08);
     }
 
-    .festival-item:hover { color: var(--cream); }
-
-    .festival-item::before {
-      content: "→";
-      font-style: normal;
-      font-size: 0.8em;
-      color: var(--gold);
-      opacity: 0.6;
+    .festival-item:last-child {
+      border-right: none;
     }
 
-    /* ─── ACT IV: COMMUNITY ─── */
+    /* TODAY */
     .act-4 {
       position: relative;
-      min-height: 90svh;
+      min-height: 92svh;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
+      background: #090402;
     }
 
     .act-4-bg {
       position: absolute;
       inset: 0;
-      background-image: url('team.jpg');
+      background-image: url("team.jpg");
       background-size: cover;
       background-position: center 30%;
       filter: saturate(0.8);
       transform: scale(1.06);
-      transition: transform 1.3s cubic-bezier(0.2,0.8,0.2,1);
+      transition: transform 1.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .act-4.visible .act-4-bg {
@@ -540,19 +602,20 @@
     .act-4-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(16,8,4,0.97) 0%,
-        rgba(16,8,4,0.55) 40%,
-        rgba(16,8,4,0.15) 72%,
-        rgba(16,8,4,0.04) 100%
-      );
+      background:
+        linear-gradient(
+          to top,
+          rgba(16, 8, 4, 0.97) 0%,
+          rgba(16, 8, 4, 0.56) 40%,
+          rgba(16, 8, 4, 0.15) 72%,
+          rgba(16, 8, 4, 0.04) 100%
+        );
     }
 
     .act-4-content {
       position: relative;
       z-index: 2;
-      padding: clamp(60px, 10vw, 100px) clamp(28px, 8vw, 100px);
+      padding: clamp(60px, 10vw, 100px) clamp(24px, 6vw, 80px);
       width: 100%;
     }
 
@@ -561,15 +624,13 @@
       font-size: clamp(3rem, 9vw, 8rem);
       font-weight: 500;
       line-height: 0.9;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
       color: var(--cream);
-      max-width: 14ch;
+      max-width: 12ch;
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
-
-    .act-4.visible .act-4-heading { opacity: 1; transform: translateY(0); }
 
     .act-4-heading em {
       font-style: italic;
@@ -577,130 +638,123 @@
     }
 
     .act-4-body {
-      margin-top: 22px;
-      font-size: clamp(0.95rem, 2.2vw, 1.07rem);
-      line-height: 1.78;
-      color: var(--cream-dim);
-      max-width: 40ch;
+      margin-top: 18px;
+      max-width: 38ch;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(245, 234, 216, 0.8);
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s 0.15s ease, transform 0.7s 0.15s ease;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease 0.14s, transform 0.75s ease 0.14s;
     }
 
-    .act-4.visible .act-4-body { opacity: 1; transform: translateY(0); }
+    .act-4.visible .act-4-heading,
+    .act-4.visible .act-4-body {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    /* ─── ENDING ─── */
+    /* ENDING */
     .ending {
-      background: var(--dark);
-      padding: clamp(100px, 16vw, 180px) 24px clamp(80px, 12vw, 140px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: clamp(90px, 12vw, 140px) 24px clamp(72px, 10vw, 110px);
+      background:
+        radial-gradient(circle at center, rgba(201, 144, 58, 0.08), transparent 34%),
+        linear-gradient(180deg, #0a0402 0%, #070302 100%);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ending::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(201,144,58,0.07) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     .ending-script {
       font-family: "Parisienne", cursive;
-      font-size: clamp(4rem, 12vw, 9rem);
-      color: var(--cream);
-      line-height: 1;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      color: var(--gold-light);
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-      position: relative;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
-
-    .ending.visible .ending-script { opacity: 1; transform: translateY(0); }
 
     .ending-tag {
-      margin-top: 14px;
+      margin-top: 10px;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: rgba(245, 234, 216, 0.38);
       opacity: 0;
-      transition: opacity 0.7s 0.2s ease;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease 0.12s, transform 0.75s ease 0.12s;
     }
-
-    .ending.visible .ending-tag { opacity: 1; }
 
     .ending-divider {
-      width: 1px; height: 60px;
-      background: linear-gradient(180deg, rgba(201,144,58,0.4), transparent);
-      margin: 36px auto;
+      width: 1px;
+      height: 70px;
+      margin: 28px auto;
+      background: linear-gradient(180deg, rgba(201, 144, 58, 0.7), transparent);
       opacity: 0;
-      transition: opacity 0.6s 0.3s ease;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease 0.22s, transform 0.75s ease 0.22s;
     }
-
-    .ending.visible .ending-divider { opacity: 1; }
 
     .ending-btns {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.7s 0.4s ease, transform 0.7s 0.4s ease;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease 0.32s, transform 0.75s ease 0.32s;
     }
 
-    .ending.visible .ending-btns { opacity: 1; transform: translateY(0); }
+    .ending.visible .ending-script,
+    .ending.visible .ending-tag,
+    .ending.visible .ending-divider,
+    .ending.visible .ending-btns {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-ghost,
+    .btn-fill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 152px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
 
     .btn-ghost {
-      padding: 14px 30px;
-      border-radius: 999px;
-      border: 1px solid rgba(201,144,58,0.25);
-      background: rgba(201,144,58,0.06);
+      border: 1px solid rgba(201, 144, 58, 0.18);
       color: var(--cream);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .btn-ghost:hover {
-      background: rgba(201,144,58,0.14);
-      border-color: rgba(201,144,58,0.45);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      border-color: rgba(201, 144, 58, 0.34);
+      color: var(--gold-light);
     }
 
     .btn-fill {
-      padding: 14px 30px;
-      border-radius: 999px;
+      border: 1px solid transparent;
       background: linear-gradient(135deg, var(--gold), var(--rust));
       color: var(--cream);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 26px rgba(140,61,30,0.35);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 28px rgba(140, 61, 30, 0.25);
     }
 
     .btn-fill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(140,61,30,0.48);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(140, 61, 30, 0.32);
     }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     .footer {
       background: #080402;
-      border-top: 1px solid rgba(201,144,58,0.07);
+      border-top: 1px solid rgba(201, 144, 58, 0.07);
       padding: 48px 24px 34px;
       text-align: center;
     }
@@ -728,89 +782,208 @@
       flex-wrap: wrap;
       font-size: 0.76rem;
       font-weight: 600;
-      color: rgba(245,234,216,0.35);
+      color: rgba(245, 234, 216, 0.35);
       margin-bottom: 24px;
     }
 
-    .footer-links a:hover { color: var(--gold-light); transition: color 0.2s; }
+    .footer-links a:hover {
+      color: var(--gold-light);
+      transition: color 0.2s ease;
+    }
 
     .footer-copy {
       font-size: 0.7rem;
-      color: rgba(245,234,216,0.18);
+      color: rgba(245, 234, 216, 0.18);
     }
 
-    /* ─── SCROLL REVEAL ─── */
+    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.75s ease, transform 0.75s ease;
     }
-    .reveal.d1 { transition-delay: 0.1s; }
-    .reveal.d2 { transition-delay: 0.22s; }
-    .reveal.d3 { transition-delay: 0.34s; }
 
-    .visible .reveal,
-    .reveal.visible {
+    .reveal.d1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal.d2 {
+      transition-delay: 0.22s;
+    }
+
+    .reveal.d3 {
+      transition-delay: 0.34s;
+    }
+
+    .visible.reveal,
+    .visible .reveal {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ─── KEYFRAMES ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
+      from { opacity: 0; }
       to { opacity: 1; }
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; }
-      50%       { opacity: 1; }
+      0%, 100% { transform: scaleY(1); opacity: 0.85; }
+      50% { transform: scaleY(1.18); opacity: 1; }
     }
 
-    /* ─── MOBILE ─── */
-    @media (max-width: 700px) {
-      .nav-links, .nav-name { display: none; }
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .origin {
+        grid-template-columns: 1fr;
+      }
+
+      .origin-copy {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .origin-media {
+        min-height: 76svh;
+      }
+
+      .origin-media img {
+        object-position: center center;
+      }
 
       .act-2 {
         grid-template-columns: 1fr;
-        grid-template-rows: 55svh auto;
       }
 
       .act-2-img::after {
-        background: linear-gradient(180deg, transparent 55%, rgba(16,8,4,0.9) 100%);
+        background: linear-gradient(180deg, transparent 54%, rgba(16, 8, 4, 0.88) 100%);
+      }
+
+      .act-3-top {
+        grid-template-columns: 1fr;
+      }
+
+      .festival-list {
+        grid-template-columns: 1fr;
+      }
+
+      .festival-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 144, 58, 0.08);
+      }
+
+      .festival-item:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        padding: 14px 16px;
+      }
+
+      .nav-name {
+        display: none;
+      }
+
+      .nav-right {
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 14px;
+        font-size: 0.62rem;
+      }
+
+      .nav-cta {
+        padding: 9px 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(4rem, 20vw, 7.2rem);
+      }
+
+      .origin-title,
+      .act-heading,
+      .act-4-heading {
+        max-width: none;
+      }
+
+      .origin-copy {
+        padding-top: 90px;
+      }
+
+      .origin-body,
+      .act-body,
+      .act-3-text,
+      .act-4-body {
+        max-width: none;
       }
 
       .stat-grid {
         grid-template-columns: 1fr;
       }
 
-      .ending-btns {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
+      .stat-item {
+        padding: 28px 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links {
+        display: none;
       }
 
-      .btn-ghost, .btn-fill {
+      .hero-scroll {
+        bottom: 24px;
+      }
+
+      .origin-media {
+        min-height: 68svh;
+      }
+
+      .origin-caption {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .ending-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-ghost,
+      .btn-fill {
         width: 100%;
-        text-align: center;
+        max-width: 280px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav" id="nav">
     <a class="nav-logo" href="./index.html">
       <div class="nav-badge">
-        <img src="crepe-logo-transparent.png" alt="Logo">
+        <img src="crepe-logo-transparent.png" alt="Logo" />
       </div>
       <span class="nav-name">Crêpe de la Crêpe</span>
     </a>
-    <div style="display:flex; align-items:center; gap:24px;">
+
+    <div class="nav-right">
       <div class="nav-links">
         <a href="./index.html">Forside</a>
         <a href="./index.html#menu">Meny</a>
@@ -819,76 +992,97 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════
-       HERO — FULLSCREEN VIDEO
-  ═══════════════════════════════════ -->
   <section class="hero">
     <video
       class="hero-video"
       src="fra-starten-loop-final.mp4"
-      autoplay muted loop playsinline
+      autoplay
+      muted
+      loop
+      playsinline
       preload="auto"
     ></video>
+
     <div class="hero-grain"></div>
     <div class="hero-overlay"></div>
+
     <div class="hero-content">
       <span class="hero-eyebrow">Siden 2021</span>
-      <h1 class="hero-title">Vår<br><em>historie.</em></h1>
-      <p class="hero-sub">Fra kontorjobb til crêpes — dette er historien om hvordan det startet.</p>
+      <h1 class="hero-title">Vår<br /><em>historie.</em></h1>
+      <p class="hero-sub">
+        Fra kontorjobb til crêpes — dette er historien om hvordan det startet.
+      </p>
     </div>
+
     <div class="hero-scroll">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ACT I — STARTEN (typografi, mørk)
-  ═══════════════════════════════════ -->
-  <section class="act-1" id="act1">
-    <div class="act-label reveal">Kapittel I · 2021</div>
-    <h2 class="act-1-heading reveal d1">
-      En tanke.<br>
-      To folk.<br>
-      <em>Én drøm.</em>
-    </h2>
-    <p class="act-1-body reveal d2">
-      Det startet ikke med en businessplan. Det startet med to kollegaer fra samme kontorjobb som ville skape noe folk samles rundt — noe varmt, noe ekte. Et spørsmål ingen hadde svart på ennå.
-    </p>
-    <span class="act-1-year reveal d3" aria-hidden="true">2021</span>
+  <section class="origin" id="origin">
+    <div class="origin-copy">
+      <div class="origin-copy-inner">
+        <h2 class="origin-title reveal">
+          En tanke.<br />
+          To folk.<br />
+          <em>Én drøm.</em>
+        </h2>
+
+        <p class="origin-body reveal d1">
+          Det startet ikke som en plan på papir.
+          Bare en idé om å skape noe varmt, ekte og verdt å samles rundt.
+        </p>
+      </div>
+    </div>
+
+    <div class="origin-media reveal d1">
+      <img src="truck1.jpg" alt="Den første vognen til Crêpe de la Crêpe" loading="lazy" />
+      <div class="origin-caption">
+        <span>Starten</span>
+        <strong>Fra idé til vogn.</strong>
+      </div>
+    </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ACT II — PARIS (split screen)
-  ═══════════════════════════════════ -->
   <section class="act-2" id="act2">
     <div class="act-2-img">
-      <img src="selfie1.jpg" alt="Paris — de to grunnleggerne i gatene" loading="lazy">
+      <img src="selfie1.jpg" alt="Paris — de to grunnleggerne i gatene" loading="lazy" />
     </div>
+
     <div class="act-2-content">
-      <div class="act-label reveal">Kapittel II · Paris</div>
-      <h2 class="act-2-heading reveal d1">
-        Vi dro dit for å<br><em>finne svaret.</em>
+      <span class="section-kicker reveal">Paris</span>
+
+      <h2 class="act-heading reveal d1">
+        Vi dro dit for å<br /><em>finne svaret.</em>
       </h2>
-      <p class="act-2-body reveal d2">
-        To år på rad. Fra små gateboder til store crêperier — nesten hvert hjørne i Paris hadde ferske crêpes. Folk spiste det til frokost, lunsj og midnatt.
+
+      <p class="act-body reveal d2">
+        To år på rad. Fra små gateboder til store crêperier — nesten hvert hjørne i Paris
+        hadde ferske crêpes. Folk spiste det til frokost, lunsj og sent på kvelden.
       </p>
-      <blockquote class="act-2-quote reveal d3">
+
+      <blockquote class="act-quote reveal d3">
         "Hvorfor er ikke crêpes like utbredt i Norge?"
       </blockquote>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ACT III — TALL (mørk, dramatisk)
-  ═══════════════════════════════════ -->
   <section class="act-3" id="act3">
     <div class="act-3-inner">
-      <div>
-        <div class="act-label reveal">Kapittel III · Reisen</div>
-        <h2 class="act-2-heading reveal d1" style="font-size: clamp(2.8rem, 7vw, 6.5rem);">
-          Fra festival<br>til <em>bevegelse.</em>
-        </h2>
+      <div class="act-3-top">
+        <div>
+          <span class="section-kicker reveal">Reisen videre</span>
+          <h2 class="act-heading reveal d1">
+            Fra festival<br />til <em>bevegelse.</em>
+          </h2>
+        </div>
+
+        <p class="act-3-text reveal d2">
+          Det som startet som en idé, ble etter hvert til hundrevis av arrangementer,
+          store festivaler og et konsept folk kjenner igjen. Ikke fordi det var enkelt,
+          men fordi det ble bygget stein for stein.
+        </p>
       </div>
 
       <div class="stat-grid">
@@ -907,7 +1101,6 @@
       </div>
 
       <div class="festival-list">
-        <div class="act-label" style="width:100%; margin-bottom: 8px;">Noen av våre største stopp</div>
         <div class="festival-item">Jul i Vinterland</div>
         <div class="festival-item">Gladmat</div>
         <div class="festival-item">Slottsfjell</div>
@@ -917,30 +1110,30 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ACT IV — COMMUNITY (fullscreen bilde)
-  ═══════════════════════════════════ -->
   <section class="act-4" id="act4">
     <div class="act-4-bg"></div>
     <div class="act-4-overlay"></div>
+
     <div class="act-4-content">
-      <div class="act-label">Kapittel IV · I dag</div>
+      <span class="section-kicker">I dag</span>
+
       <h2 class="act-4-heading">
-        Mer enn<br>en <em>matbod.</em>
+        Mer enn<br />en <em>matbod.</em>
       </h2>
+
       <p class="act-4-body">
-        Noen hjalp til med menyen. Andre ble en del av teamet. Noen er nå ansiktene du ser på sosiale medier. Dette er en bevegelse — ikke bare en bod.
+        Noen hjalp til med menyen. Andre ble en del av teamet.
+        Noen er nå ansiktene du ser videre utad. Dette handler ikke bare om en vogn —
+        det handler om noe som har vokst langt forbi starten.
       </p>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ENDING
-  ═══════════════════════════════════ -->
   <section class="ending" id="ending">
     <p class="ending-script">Dette er bare starten.</p>
     <p class="ending-tag">#loveatfirstbite</p>
     <div class="ending-divider"></div>
+
     <div class="ending-btns">
       <a class="btn-ghost" href="./index.html">Forside</a>
       <a class="btn-ghost" href="./index.html#menu">Meny</a>
@@ -948,10 +1141,10 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-brand">Crêpe de la Crêpe</div>
     <div class="footer-tagline">Love at first bite</div>
+
     <nav class="footer-links">
       <a href="./index.html">Forside</a>
       <a href="./index.html#menu">Meny</a>
@@ -960,38 +1153,50 @@
       <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener">TikTok</a>
       <a href="./personvern.html">Personvern</a>
     </nav>
+
     <p class="footer-copy">© 2026 Crêpe de la Crêpe · Storo Storsenter, Oslo</p>
   </footer>
 
   <script>
-    // Nav scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('solid', window.scrollY > 40);
-    }, { passive: true });
+    const nav = document.getElementById("nav");
 
-    // Reveal on scroll — sections and .reveal elements
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    window.addEventListener(
+      "scroll",
+      () => {
+        nav.classList.toggle("solid", window.scrollY > 40);
+      },
+      { passive: true }
+    );
 
-    document.querySelectorAll(
-      '#act1, #act2, #act3, #act4, #ending, .reveal'
-    ).forEach(el => io.observe(el));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
 
-    // Act-2 image parallax on scroll
-    const act2img = document.querySelector('.act-2-img img');
-    if (act2img) {
-      window.addEventListener('scroll', () => {
-        const rect = document.getElementById('act2').getBoundingClientRect();
-        const pct = Math.max(0, Math.min(1, -rect.top / window.innerHeight));
-        act2img.style.transform = `scale(1.08) translateY(${pct * -5}%)`;
-      }, { passive: true });
+    document
+      .querySelectorAll("#origin, #act2, #act3, #act4, #ending, .reveal")
+      .forEach((el) => io.observe(el));
+
+    const act2Img = document.querySelector(".act-2-img img");
+    const act2Section = document.getElementById("act2");
+
+    if (act2Img && act2Section) {
+      window.addEventListener(
+        "scroll",
+        () => {
+          const rect = act2Section.getBoundingClientRect();
+          const pct = Math.max(0, Math.min(1, -rect.top / window.innerHeight));
+          act2Img.style.transform = `scale(1.08) translateY(${pct * -5}%)`;
+        },
+        { passive: true }
+      );
     }
   </script>
 </body>
