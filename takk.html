@@ -14,15 +14,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --gold: #be7a6d;
+      --paper: #f7f1e7;
+      --cream: #f3eadf;
+      --blush: #ead9d2;
+      --flamingo-muted: #c98376;
+      --flamingo-deep: #9f645b;
+      --ink: #3b2e2a;
+      --ink-soft: #6f5a53;
+      --gold: #c98376;
       --gold-light: #ead7d1;
-      --cream: #f8f2e8;
       --dark: #3b2e2a;
       --text-muted: rgba(111, 90, 83, 0.62);
       --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
@@ -47,10 +53,10 @@
     body {
       font-family: "Manrope", sans-serif;
       background:
-        radial-gradient(circle at 14% 0%, rgba(190, 122, 109, 0.08), transparent 28%),
-        radial-gradient(circle at 84% 7%, rgba(218, 172, 158, 0.08), transparent 36%),
-        linear-gradient(180deg, #f8f2e8 0%, #f2e8dc 48%, #f7f2e9 100%);
-      color: var(--dark);
+        radial-gradient(circle at 18% -4%, rgba(201, 131, 118, 0.11), transparent 38%),
+        radial-gradient(circle at 82% 6%, rgba(233, 179, 164, 0.13), transparent 43%),
+        linear-gradient(180deg, #fbf7f1 0%, #f3e8dc 48%, #f7f2e9 100%);
+      color: var(--ink);
       overflow: hidden;
       position: relative;
       -webkit-font-smoothing: antialiased;
@@ -122,7 +128,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: var(--ink);
       white-space: nowrap;
     }
 
@@ -178,7 +184,7 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--flamingo-deep);
       animation: fadeUp 0.95s var(--ease-premium) 1s forwards;
     }
 
@@ -195,7 +201,7 @@
       display: block;
       font-style: italic;
       font-weight: 500;
-      color: #d7b4aa;
+      color: #aa6f63;
     }
 
     .subtitle {
@@ -206,7 +212,7 @@
       font-weight: 500;
       font-size: clamp(1.38rem, 1.1rem + 0.78vw, 2rem);
       line-height: 1.24;
-      color: var(--text-muted);
+      color: rgba(111, 90, 83, 0.62);
       margin-top: clamp(0.1rem, 0.45svh, 0.42rem);
       animation: fadeUp 0.95s var(--ease-premium) 1.4s forwards;
     }
@@ -236,7 +242,8 @@
     .icon-circle {
       width: clamp(40px, 4.8svh, 52px);
       height: clamp(40px, 4.8svh, 52px);
-      border: 1px solid var(--gold);
+      border: 1px solid #8b655d;
+      color: #8b655d;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -248,7 +255,7 @@
       font-size: clamp(0.7rem, 0.62rem + 0.14vw, 0.88rem);
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(111, 90, 83, 0.62);
       font-weight: 600;
     }
 
@@ -256,7 +263,7 @@
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.34rem, 1.12rem + 0.65vw, 1.9rem);
       font-weight: 600;
-      color: var(--dark);
+      color: var(--ink);
       white-space: nowrap;
     }
 
@@ -290,8 +297,8 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--gold), #965a51);
-      color: #fff8f3;
+      background: linear-gradient(135deg, #c37d6f, #9f645b);
+      color: #fffaf7;
       border: 1px solid rgba(150, 90, 81, 0.35);
       isolation: isolate;
       box-shadow: 0 14px 34px rgba(136, 88, 77, 0.22);
@@ -315,13 +322,13 @@
     .btn-ghost {
       background: rgba(255, 252, 247, 0.64);
       border: 1px solid rgba(147, 97, 86, 0.22);
-      color: var(--dark);
+      color: var(--ink);
     }
 
     .btn-ghost:hover,
     .btn-ghost:focus-visible {
-      color: var(--gold);
-      border-color: var(--gold);
+      color: var(--flamingo-deep);
+      border-color: var(--flamingo-deep);
     }
 
     .site-footer {
@@ -334,7 +341,7 @@
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--flamingo-deep);
       border-top: 1px solid rgba(147, 97, 86, 0.14);
       background: linear-gradient(to top, rgba(247, 241, 231, 0.88), rgba(247, 241, 231, 0));
       animation: fadeUp 0.95s var(--ease-premium) 2.2s forwards;
