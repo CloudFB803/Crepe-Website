@@ -774,7 +774,8 @@
 
     .overlay-shell {
       width: 100%;
-      height: 100svh;
+      height: 100dvh;
+      min-height: 100svh;
       display: grid;
       grid-template-columns: 1fr;
     }
@@ -783,8 +784,10 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      height: 100svh;
-      padding: 18px 22px 20px;
+      height: 100%;
+      min-height: 0;
+      padding: 16px 20px 18px;
+      gap: 10px;
     }
 
     .overlay-header {
@@ -792,8 +795,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 12px;
+      gap: 16px;
+      padding-bottom: 0;
     }
 
     .overlay-brand {
@@ -843,20 +846,20 @@
     }
 
     .summary-toggle-btn {
-      min-height: 46px;
-      padding: 0 18px;
+      min-height: 44px;
+      padding: 0 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.2);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
     .overlay-close {
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -874,7 +877,7 @@
 
     .overlay-progress-wrap {
       flex: 0 0 auto;
-      padding-bottom: 14px;
+      padding-bottom: 0;
     }
 
     .overlay-progress-meta {
@@ -882,8 +885,8 @@
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      margin-bottom: 10px;
-      font-size: 0.8rem;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
       color: var(--muted);
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -891,7 +894,7 @@
     }
 
     .overlay-progress {
-      height: 8px;
+      height: 7px;
       border-radius: 999px;
       overflow: hidden;
       background: rgba(97, 68, 37, 0.12);
@@ -909,7 +912,7 @@
       flex: 1 1 auto;
       min-height: 0;
       border: 1px solid var(--line);
-      border-radius: 28px;
+      border-radius: 26px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08)),
         var(--panel);
@@ -923,7 +926,14 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
-      padding: 20px 28px 22px;
+      padding: 16px 22px 18px;
+    }
+
+    #bookingForm {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     .step-card {
@@ -931,34 +941,37 @@
       height: 100%;
       min-height: 0;
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
       transition: opacity 180ms var(--ease), transform 180ms var(--ease);
     }
 
     .step-card.active {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       opacity: 1;
       transform: translateY(0);
       height: 100%;
+      min-height: 0;
     }
 
     .step-card.success-step.active {
+      display: grid;
       grid-template-rows: 1fr;
     }
 
     .step-top {
       width: 100%;
-      max-width: 980px;
-      padding-top: 2px;
+      max-width: 920px;
+      flex: 0 0 auto;
+      padding-top: 0;
     }
 
     .step-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -966,79 +979,80 @@
     }
 
     .step-title {
-      margin: 12px 0 0;
+      margin: 8px 0 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 3.4vw, 3.8rem);
-      line-height: 0.98;
+      font-size: clamp(1.8rem, 2.8vw, 3rem);
+      line-height: 0.94;
       letter-spacing: -0.04em;
-      max-width: 780px;
+      max-width: 760px;
       text-wrap: balance;
     }
 
     .step-desc {
-      margin: 12px 0 0;
-      max-width: 720px;
-      font-size: 0.98rem;
-      line-height: 1.62;
+      margin: 8px 0 0;
+      max-width: 680px;
+      font-size: 0.9rem;
+      line-height: 1.5;
       color: var(--muted);
     }
 
     .step-middle {
       min-height: 0;
-      display: block;
-      padding-top: 2px;
-      overflow: visible;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: stretch;
     }
 
     .step-middle-inner {
       width: 100%;
-      max-width: 980px;
-      min-height: auto;
+      max-width: 920px;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 14px;
-      padding-bottom: 0;
-      margin-bottom: 0;
+      gap: 10px;
+      margin: 0;
     }
 
     .step-bottom {
       width: 100%;
-      max-width: 980px;
+      max-width: 920px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding-top: 16px;
+      gap: 6px;
+      flex: 0 0 auto;
+      padding-top: 10px;
       border-top: 1px solid rgba(103, 71, 35, 0.12);
-      background: transparent;
-      backdrop-filter: none;
-      margin-top: 18px;
+      margin-top: auto;
     }
 
     .step-actions {
       display: grid;
-      grid-template-columns: minmax(0, 220px) minmax(0, 220px);
+      grid-template-columns: repeat(2, minmax(0, 220px));
       justify-content: start;
-      gap: 12px;
+      gap: 10px;
       align-items: stretch;
     }
 
     .step-actions .btn {
       width: 100%;
       min-width: 0;
+      min-height: 50px;
+      font-size: 0.78rem;
+      padding: 0 14px;
     }
 
     .ghost-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 56px;
-      padding: 0 22px;
+      min-height: 50px;
+      padding: 0 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.2);
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -1059,16 +1073,16 @@
     .choice-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
-      gap: 14px;
+      gap: 10px;
       width: 100%;
-      max-width: 980px;
+      max-width: 920px;
     }
 
     .choice-card {
       width: 100%;
       text-align: left;
-      padding: 20px 24px;
-      border-radius: 24px;
+      padding: 14px 18px;
+      border-radius: 18px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.24);
       transition:
@@ -1094,19 +1108,20 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .choice-title {
-      font-size: 0.98rem;
+      font-size: 0.88rem;
       font-weight: 800;
       letter-spacing: 0.03em;
       text-transform: uppercase;
+      line-height: 1.24;
     }
 
     .choice-arrow {
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -1116,186 +1131,25 @@
     }
 
     .choice-desc {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       color: var(--muted);
-      line-height: 1.56;
-      font-size: 0.96rem;
+      line-height: 1.42;
+      font-size: 0.9rem;
     }
 
     .step-card.multi-choice-step .step-middle-inner,
     .step-card.multi-choice-step .step-bottom,
-    .step-card.multi-choice-step .choice-grid {
-      max-width: 1040px;
-    }
-
-    .step-card.multi-choice-step .choice-grid {
-      gap: 16px;
-    }
-
-    .step-card.multi-choice-step .choice-card {
-      min-height: 138px;
-      padding: 22px 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
+    .step-card.multi-choice-step .choice-grid,
     .step-card.multi-choice-step .step-actions {
+      max-width: 920px;
       width: 100%;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
-      max-width: 1040px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"].active,
-    .step-card.multi-choice-step[data-step="2"].active {
-      grid-template-rows: auto auto auto;
-      align-content: start;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-middle,
-    .step-card.multi-choice-step[data-step="2"] .step-middle {
-      min-height: auto;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-middle-inner,
-    .step-card.multi-choice-step[data-step="2"] .step-middle-inner {
-      gap: 16px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-grid,
-    .step-card.multi-choice-step[data-step="2"] .choice-grid {
-      gap: 16px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-card,
-    .step-card.multi-choice-step[data-step="2"] .choice-card {
-      min-height: 126px;
-      padding: 20px 24px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-bottom,
-    .step-card.multi-choice-step[data-step="2"] .step-bottom {
-      margin-top: 8px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"].active,
-    .step-card.multi-choice-step[data-step="2"].active {
-      gap: 12px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-top,
-    .step-card.multi-choice-step[data-step="2"] .step-top {
-      padding-top: 0;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-title,
-    .step-card.multi-choice-step[data-step="2"] .step-title {
-      margin-top: 8px;
-      font-size: clamp(1.9rem, 2.8vw, 3rem);
-      line-height: 0.92;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-desc,
-    .step-card.multi-choice-step[data-step="2"] .step-desc {
-      margin-top: 8px;
-      font-size: 0.92rem;
-      line-height: 1.42;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-middle-inner,
-    .step-card.multi-choice-step[data-step="2"] .step-middle-inner {
-      gap: 10px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-grid,
-    .step-card.multi-choice-step[data-step="2"] .choice-grid {
-      gap: 10px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-card,
-    .step-card.multi-choice-step[data-step="2"] .choice-card {
-      min-height: 108px;
-      padding: 16px 20px;
-      border-radius: 20px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-title,
-    .step-card.multi-choice-step[data-step="2"] .choice-title {
-      font-size: 0.92rem;
-      line-height: 1.22;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-desc,
-    .step-card.multi-choice-step[data-step="2"] .choice-desc {
-      margin-top: 8px;
-      font-size: 0.92rem;
-      line-height: 1.42;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .choice-arrow,
-    .step-card.multi-choice-step[data-step="2"] .choice-arrow {
-      width: 30px;
-      height: 30px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-bottom,
-    .step-card.multi-choice-step[data-step="2"] .step-bottom {
-      padding-top: 10px;
-      gap: 8px;
-    }
-
-    .step-card.multi-choice-step[data-step="0"] .step-actions .btn,
-    .step-card.multi-choice-step[data-step="0"] .ghost-link,
-    .step-card.multi-choice-step[data-step="2"] .step-actions .btn,
-    .step-card.multi-choice-step[data-step="2"] .ghost-link {
-      min-height: 50px;
-      font-size: 0.76rem;
-      padding: 0 14px;
-    }
-
-    .step-card.multi-choice-step[data-step="2"].active {
-      gap: 10px;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .step-title {
-      margin-top: 6px;
-      font-size: clamp(1.8rem, 2.6vw, 2.8rem);
-      line-height: 0.9;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .step-middle-inner,
-    .step-card.multi-choice-step[data-step="2"] .choice-grid {
-      gap: 8px;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .choice-card {
-      min-height: 100px;
-      padding: 14px 18px;
-      border-radius: 18px;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .choice-desc {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      line-height: 1.36;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .step-bottom {
-      padding-top: 8px;
-      gap: 6px;
-    }
-
-    .step-card.multi-choice-step[data-step="2"] .step-actions .btn,
-    .step-card.multi-choice-step[data-step="2"] .ghost-link {
-      min-height: 48px;
-      font-size: 0.75rem;
     }
 
     .text-input,
     .textarea-input,
     .country-select {
       width: 100%;
-      border-radius: 22px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.24);
       color: var(--text);
@@ -1305,18 +1159,18 @@
 
     .text-input,
     .country-select {
-      min-height: 66px;
-      padding: 18px 22px;
-      font-size: 1rem;
+      min-height: 52px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
       font-weight: 700;
     }
 
     .textarea-input {
-      min-height: 156px;
-      padding: 18px 20px;
+      min-height: 120px;
+      padding: 14px;
       resize: none;
-      line-height: 1.72;
-      font-size: 1rem;
+      line-height: 1.6;
+      font-size: 0.96rem;
     }
 
     .text-input::placeholder,
@@ -1334,7 +1188,7 @@
 
     .field-row {
       display: grid;
-      gap: 16px;
+      gap: 10px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       width: 100%;
     }
@@ -1342,7 +1196,7 @@
     .field-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 4px;
       min-width: 0;
     }
 
@@ -1360,8 +1214,8 @@
 
     .phone-row {
       display: grid;
-      grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: minmax(0, 168px) minmax(0, 1fr);
+      gap: 10px;
       align-items: stretch;
     }
 
@@ -1371,17 +1225,17 @@
 
     .country-select {
       appearance: none;
-      padding-right: 48px;
+      padding-right: 40px;
       cursor: pointer;
     }
 
     .country-wrap::after {
       content: "";
       position: absolute;
-      right: 22px;
+      right: 16px;
       top: 50%;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-right: 2px solid var(--muted);
       border-bottom: 2px solid var(--muted);
       transform: translateY(-65%) rotate(45deg);
@@ -1390,7 +1244,7 @@
 
     .phone-prefix {
       position: absolute;
-      left: 18px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--muted-2);
@@ -1404,14 +1258,14 @@
     }
 
     .phone-input-wrap .text-input {
-      padding-left: 72px;
+      padding-left: 62px;
     }
 
     .date-card {
       width: 100%;
-      max-width: 980px;
-      padding: 20px;
-      border-radius: 24px;
+      max-width: 920px;
+      padding: 14px;
+      border-radius: 18px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.24);
     }
@@ -1419,20 +1273,20 @@
     .date-mode {
       display: grid;
       width: fit-content;
-      min-width: 320px;
+      min-width: 276px;
       max-width: 100%;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      padding: 6px;
+      gap: 4px;
+      padding: 4px;
       border-radius: 999px;
       background: rgba(255,255,255,0.06);
     }
 
     .mode-btn {
-      min-height: 46px;
-      padding: 0 18px;
+      min-height: 40px;
+      padding: 0 14px;
       border-radius: 999px;
-      font-size: 0.84rem;
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -1446,30 +1300,23 @@
 
     .booking-details-layout {
       display: grid;
-      gap: 16px;
+      gap: 10px;
       width: 100%;
+      max-width: 920px;
+      align-content: start;
     }
 
     .compact-field .text-input,
     .compact-field .country-select {
-      min-height: 54px;
-      padding: 12px 16px;
-      border-radius: 16px;
+      min-height: 48px;
+      padding: 10px 12px;
+      border-radius: 14px;
     }
 
     .date-summary {
       display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .step-card[data-step="3"] .step-middle-inner {
-      padding-bottom: 8px;
-    }
-
-    .step-card[data-step="3"] .step-bottom {
-      margin-top: 16px;
-      padding-top: 18px;
+      gap: 8px;
+      margin-top: 10px;
     }
 
     .date-summary.range {
@@ -1479,8 +1326,8 @@
     .date-summary-btn {
       width: 100%;
       text-align: left;
-      padding: 16px 18px;
-      border-radius: 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.24);
       transition: border-color 180ms var(--ease), background 180ms var(--ease);
@@ -1493,7 +1340,7 @@
 
     .date-summary-label {
       display: block;
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -1502,19 +1349,19 @@
 
     .date-summary-value {
       display: block;
-      margin-top: 7px;
-      font-size: 1rem;
+      margin-top: 5px;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--text);
     }
 
     .error-text {
-      min-height: 18px;
+      min-height: 16px;
       margin-top: 0;
       color: var(--danger);
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      line-height: 1.35;
+      line-height: 1.25;
     }
 
     .success-wrap {
@@ -2044,7 +1891,7 @@
       }
 
       .step-card.active {
-        gap: 16px;
+        gap: 10px;
       }
 
       .step-top {
@@ -2067,58 +1914,49 @@
       }
 
       .step-middle-inner {
-        gap: 12px;
+        gap: 8px;
       }
 
       .step-bottom {
         max-width: 100%;
-        padding-top: 14px;
-        margin-top: 16px;
+        padding-top: 8px;
+        margin-top: auto;
       }
 
-      .step-card[data-step="3"] .step-middle-inner {
-        padding-bottom: 8px;
-      }
-
-      .step-card[data-step="3"] .step-bottom {
-        margin-top: 16px;
-        padding-top: 16px;
-      }
-
-      .step-card[data-step="3"] .date-card {
-        padding: 16px;
+       .step-card[data-step="3"] .date-card {
+        padding: 12px;
       }
 
       .field-row,
       .phone-row {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 8px;
       }
 
       .booking-details-layout {
-        gap: 12px;
+        gap: 8px;
       }
 
       .text-input,
       .country-select {
-        min-height: 60px;
-        padding: 16px 18px;
-        border-radius: 18px;
-        font-size: 1rem;
+        min-height: 48px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        font-size: 0.92rem;
       }
 
       .phone-input-wrap .text-input {
-        padding-left: 66px;
+        padding-left: 58px;
       }
 
       .phone-prefix {
-        left: 16px;
+        left: 12px;
       }
 
       .textarea-input {
-        min-height: 132px;
-        padding: 16px;
-        border-radius: 18px;
+        min-height: 108px;
+        padding: 12px;
+        border-radius: 14px;
       }
 
       .choice-card {
@@ -2158,8 +1996,8 @@
       }
 
       .date-card {
-        padding: 14px;
-        border-radius: 20px;
+        padding: 12px;
+        border-radius: 16px;
       }
 
       .date-mode {
@@ -2168,8 +2006,8 @@
       }
 
       .mode-btn {
-        min-height: 42px;
-        font-size: 0.8rem;
+        min-height: 38px;
+        font-size: 0.74rem;
       }
 
       .step-actions {
@@ -2183,9 +2021,9 @@
 
       .step-actions .btn,
       .ghost-link {
-        min-height: 52px;
-        padding: 0 14px;
-        font-size: 0.78rem;
+        min-height: 46px;
+        padding: 0 12px;
+        font-size: 0.72rem;
       }
 
       .success-page {
