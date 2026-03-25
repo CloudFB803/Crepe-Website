@@ -67,9 +67,9 @@
       color: var(--text);
       line-height: 1.55;
       background:
-        radial-gradient(circle at 18% -4%, rgba(201, 131, 118, 0.10), transparent 38%),
-        radial-gradient(circle at 82% 6%, rgba(233, 179, 164, 0.11), transparent 43%),
-        linear-gradient(180deg, #fcf8f3 0%, #f4eadf 48%, #f7f2e9 100%);
+        radial-gradient(58% 40% at 12% 6%, rgba(224, 161, 152, 0.17), rgba(224, 161, 152, 0) 70%),
+        radial-gradient(52% 36% at 88% 8%, rgba(234, 177, 164, 0.14), rgba(234, 177, 164, 0) 72%),
+        linear-gradient(180deg, #fffdf8 0%, #fbf5ec 52%, #f9f2e8 100%);
     }
 
     a {
@@ -172,21 +172,21 @@
     }
 
     .nav-shell {
-      width: min(1080px, calc(100% - 30px));
+      width: min(1100px, calc(100% - 30px));
       margin: 0 auto;
       border-radius: 999px;
-      border: 1px solid rgba(147, 97, 86, 0.12);
-      background: rgba(248, 242, 233, 0.76);
+      border: 1px solid rgba(153, 114, 104, 0.17);
+      background: rgba(255, 251, 245, 0.88);
       backdrop-filter: blur(16px);
-      box-shadow: 0 14px 38px rgba(97, 69, 60, 0.08);
-      padding: 8px 13px;
+      box-shadow: 0 18px 38px rgba(115, 83, 73, 0.09);
+      padding: 10px 16px;
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
     .nav-wrap.scrolled .nav-shell {
-      border-color: rgba(147, 97, 86, 0.14);
-      box-shadow: 0 16px 40px rgba(97, 69, 60, 0.12);
-      background: rgba(248, 242, 233, 0.84);
+      border-color: rgba(147, 97, 86, 0.2);
+      box-shadow: 0 18px 42px rgba(97, 69, 60, 0.12);
+      background: rgba(255, 251, 245, 0.93);
     }
 
     nav {
@@ -291,17 +291,17 @@
       min-height: 100vh;
       min-height: 100svh;
       width: 100%;
-      padding: clamp(118px, 14vh, 156px) 0 clamp(46px, 8vh, 78px);
+      padding: clamp(120px, 15vh, 170px) 0 clamp(46px, 7vh, 70px);
       display: grid;
       align-items: stretch;
       position: relative;
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(62% 48% at 50% 34%, rgba(208, 143, 130, 0.20), rgba(208, 143, 130, 0) 72%),
-        radial-gradient(30% 24% at 24% 22%, rgba(255, 251, 246, 0.78), rgba(255, 251, 246, 0) 100%),
-        radial-gradient(34% 26% at 78% 68%, rgba(233, 200, 192, 0.40), rgba(233, 200, 192, 0) 100%),
-        linear-gradient(180deg, #fbf7f1 0%, #f5ebdf 52%, #f7f2e9 100%);
+        radial-gradient(52% 42% at 50% 34%, rgba(220, 152, 139, 0.20), rgba(220, 152, 139, 0) 74%),
+        radial-gradient(36% 24% at 14% 36%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(32% 24% at 85% 62%, rgba(235, 199, 190, 0.34), rgba(235, 199, 190, 0) 100%),
+        linear-gradient(180deg, #fffdf8 0%, #fbf5ec 60%, #f8f1e7 100%);
     }
 
     .hero::before,
@@ -313,22 +313,22 @@
     }
 
     .hero::before {
-      inset: -10%;
+      inset: -12%;
       background:
-        radial-gradient(38% 28% at 50% 32%, rgba(255,255,255,0.48), rgba(255,255,255,0) 100%),
-        radial-gradient(20% 18% at 68% 38%, rgba(208, 143, 130, 0.12), rgba(208, 143, 130, 0) 100%),
-        radial-gradient(22% 18% at 35% 58%, rgba(159, 100, 91, 0.05), rgba(159, 100, 91, 0) 100%);
+        radial-gradient(42% 30% at 50% 32%, rgba(255,255,255,0.6), rgba(255,255,255,0) 100%),
+        radial-gradient(24% 20% at 72% 36%, rgba(208, 143, 130, 0.10), rgba(208, 143, 130, 0) 100%),
+        radial-gradient(24% 20% at 30% 62%, rgba(159, 100, 91, 0.05), rgba(159, 100, 91, 0) 100%);
       animation: heroDrift 22s ease-in-out infinite alternate;
     }
 
     .hero::after {
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 28%),
-        radial-gradient(circle at 1px 1px, rgba(70, 48, 40, 0.05) 0.6px, transparent 0.7px);
+        linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0) 34%),
+        radial-gradient(circle at 1px 1px, rgba(90, 62, 52, 0.03) 0.6px, transparent 0.7px);
       background-size: auto, 3px 3px;
-      opacity: 0.14;
-      mix-blend-mode: soft-light;
+      opacity: 0.15;
+      mix-blend-mode: multiply;
     }
 
     .hero-shell {
@@ -338,9 +338,9 @@
       display: grid;
       justify-items: center;
       text-align: center;
-      align-content: start;
+      align-content: center;
       min-height: calc(100svh - clamp(164px, 22vh, 224px));
-      padding-top: clamp(72px, 13vh, 132px);
+      padding-top: clamp(36px, 6vh, 70px);
       gap: 0;
       position: relative;
       z-index: 1;
@@ -364,8 +364,8 @@
     .hero-title {
       margin: 0;
       display: grid;
-      gap: clamp(6px, 1vh, 10px);
-      max-width: 16ch;
+      gap: clamp(7px, 1.1vh, 12px);
+      max-width: none;
       text-wrap: balance;
     }
 
@@ -377,53 +377,57 @@
 
     .hero-line-1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.6rem, 3vw, 2.35rem);
-      font-weight: 600;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 500;
       line-height: 1;
-      letter-spacing: 0.01em;
-      color: #5d4942;
+      letter-spacing: 0;
+      color: #6a544c;
+      white-space: nowrap;
       animation-delay: 0.04s;
     }
 
     .hero-line-2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.3rem, 7.6vw, 6.15rem);
+      font-size: clamp(3.6rem, 8vw, 6.6rem);
       font-weight: 600;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
+      font-style: italic;
+      line-height: 0.86;
+      letter-spacing: -0.03em;
       animation-delay: 0.18s;
-      color: var(--flamingo-muted);
+      color: #cb8c82;
+      white-space: nowrap;
       text-shadow:
-        0 1px 0 rgba(255,255,255,0.46),
-        0 12px 30px rgba(121, 78, 68, 0.12);
+        0 1px 0 rgba(255,255,255,0.52),
+        0 12px 30px rgba(121, 78, 68, 0.10);
     }
 
     .hero-subtitle {
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out 0.34s forwards;
-      margin: clamp(16px, 2.6vh, 24px) 0 0;
-      font-size: clamp(0.98rem, 1.8vw, 1.08rem);
-      line-height: 1.78;
-      letter-spacing: 0.01em;
-      color: #655149;
-      max-width: 42ch;
+      margin: clamp(20px, 3vh, 26px) 0 0;
+      font-size: clamp(0.98rem, 1.8vw, 1.06rem);
+      line-height: 1.75;
+      letter-spacing: 0.005em;
+      color: #6b564f;
+      max-width: 66ch;
     }
 
     .hero-actions {
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out 0.48s forwards;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, max-content));
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      column-gap: 12px;
-      row-gap: 10px;
+      gap: 12px;
       margin-top: clamp(22px, 4vh, 34px);
     }
 
     .hero-actions .btn {
-      min-width: clamp(138px, 15vw, 164px);
+      min-width: clamp(158px, 18vw, 214px);
+      min-height: 54px;
+      font-size: 0.72rem;
     }
 
     .hero-actions .btn-primary {
@@ -441,6 +445,65 @@
       color: #3f302b;
       border-color: rgba(111, 90, 83, 0.18);
       box-shadow: 0 10px 24px rgba(92, 64, 56, 0.08);
+    }
+
+    .hero-eyebrow {
+      margin-bottom: clamp(18px, 2.8vh, 24px);
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroFadeUp 0.6s ease-out 0s forwards;
+      background: rgba(255, 249, 241, 0.72);
+      border: 1px solid rgba(173, 130, 120, 0.25);
+      color: #8c695f;
+      letter-spacing: 0.17em;
+      font-size: 0.63rem;
+      box-shadow: 0 8px 16px rgba(108, 75, 65, 0.07);
+    }
+
+    .hero-location {
+      margin: 18px 0 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(91, 69, 61, 0.8);
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroFadeUp 0.6s ease-out 0.6s forwards;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(182, 142, 131, 0.16);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-ring-1 {
+      width: min(850px, 90vw);
+      height: min(850px, 90vw);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -43%);
+    }
+
+    .hero-ring-2 {
+      width: min(1050px, 110vw);
+      height: min(1050px, 110vw);
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -42%);
+      border-color: rgba(182, 142, 131, 0.1);
+    }
+
+    .hero-ring-3 {
+      width: min(1260px, 132vw);
+      height: min(1260px, 132vw);
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -42%);
+      border-color: rgba(182, 142, 131, 0.07);
     }
 
     @keyframes heroFadeUp {
@@ -1586,7 +1649,7 @@
       }
 
       .hero {
-        padding-top: 190px;
+        padding-top: 186px;
       }
     }
 
@@ -1664,8 +1727,8 @@
 
       .nav-links {
         gap: 10px 14px;
-        font-size: 11px;
-        letter-spacing: 0.09em;
+        font-size: 10.5px;
+        letter-spacing: 0.08em;
         justify-content: flex-end;
       }
 
@@ -1678,22 +1741,24 @@
       }
 
       .hero {
-        padding: 172px 0 44px;
+        padding: 168px 0 46px;
       }
 
       .hero-shell {
         width: calc(100% - 28px);
         min-height: calc(100svh - 224px);
-        padding-top: clamp(34px, 8vh, 56px);
+        padding-top: clamp(24px, 6vh, 42px);
       }
 
       .hero-line-1 {
         font-size: clamp(26px, 6.4vw, 34px);
+        white-space: normal;
       }
 
       .hero-line-2 {
-        font-size: clamp(44px, 10.8vw, 58px);
+        font-size: clamp(44px, 10.8vw, 56px);
         line-height: 0.92;
+        white-space: normal;
       }
 
       .hero-subtitle {
@@ -1704,14 +1769,19 @@
       }
 
       .hero-actions {
-        width: 100%;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(430px, 100%);
+        justify-content: center;
         gap: 10px;
       }
 
       .hero-actions .btn {
         width: 100%;
+        flex: 1 1 100%;
         min-height: 48px;
+      }
+
+      .hero-location {
+        letter-spacing: 0.14em;
       }
 
       .intro-card,
@@ -2011,17 +2081,25 @@
   <main id="top">
     <section class="hero" aria-label="Velkommen">
       <div class="hero-shell">
+        <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
+        <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
+        <div class="hero-ring hero-ring-3" aria-hidden="true"></div>
+        <div class="eyebrow hero-eyebrow">Franske crêpes i Oslo</div>
+
         <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
           <span class="hero-line hero-line-1">Velkommen til</span>
           <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
         </h1>
 
-        <p class="hero-subtitle">Crêpes på Storo og for utvalgte arrangementer.</p>
+        <p class="hero-subtitle">Crêpes på Storo Storsenter. Booking for festivaler, firmaarrangementer og private arrangementer.</p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
           <a class="btn btn-secondary" href="#menu">Se meny</a>
+          <a class="btn btn-secondary" href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter" target="_blank" rel="noopener">Bestill Foodora</a>
         </div>
+
+        <p class="hero-location">Storo Storsenter · Oslo</p>
       </div>
     </section>
 
