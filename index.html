@@ -66,10 +66,7 @@
       font-family: "Manrope", sans-serif;
       color: var(--text);
       line-height: 1.55;
-      background:
-        radial-gradient(58% 40% at 12% 6%, rgba(224, 161, 152, 0.17), rgba(224, 161, 152, 0) 70%),
-        radial-gradient(52% 36% at 88% 8%, rgba(234, 177, 164, 0.14), rgba(234, 177, 164, 0) 72%),
-        linear-gradient(180deg, #fffdf8 0%, #fbf5ec 52%, #f9f2e8 100%);
+      background: #f5ebe0;
     }
 
     a {
@@ -297,11 +294,52 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      background:
-        radial-gradient(56% 44% at 41% 32%, rgba(229, 175, 164, 0.24), rgba(229, 175, 164, 0) 76%),
-        radial-gradient(34% 28% at 72% 58%, rgba(236, 205, 196, 0.18), rgba(236, 205, 196, 0) 80%),
-        radial-gradient(42% 30% at 13% 36%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0) 100%),
-        linear-gradient(180deg, #fffdf9 0%, #fcf6ee 56%, #f7efe5 100%);
+      background: #f5ebe0;
+    }
+
+
+
+    .hero-blob-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+    }
+
+    .hero-blob-1 {
+      width: 600px;
+      height: 600px;
+      top: -140px;
+      right: -150px;
+      background: radial-gradient(circle, #c9756c 0%, transparent 70%);
+      animation: floatBlob1 12s ease-in-out infinite;
+    }
+
+    .hero-blob-2 {
+      width: 500px;
+      height: 500px;
+      bottom: -120px;
+      left: -130px;
+      background: radial-gradient(circle, #e8b4a0 0%, transparent 70%);
+      animation: floatBlob2 15s ease-in-out infinite;
+    }
+
+    .hero-blob-3 {
+      width: 350px;
+      height: 350px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #d4927c 0%, transparent 70%);
+      animation: floatBlob3 10s ease-in-out infinite;
     }
 
     .hero::before,
@@ -366,6 +404,18 @@
       gap: clamp(7px, 1.1vh, 12px);
       max-width: none;
       text-wrap: balance;
+    }
+
+    .hero-tagline {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: #c9756c;
+      font-weight: 300;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroFadeUp 0.6s ease-out forwards;
     }
 
     .hero-line {
@@ -487,6 +537,39 @@
       left: 50%;
       transform: translate(-50%, -42%);
       border-color: rgba(182, 142, 131, 0.07);
+    }
+
+    @keyframes floatBlob1 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(-40px, 60px) scale(1.1);
+      }
+      66% {
+        transform: translate(30px, -30px) scale(0.95);
+      }
+    }
+
+    @keyframes floatBlob2 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(60px, -40px) scale(1.08);
+      }
+    }
+
+    @keyframes floatBlob3 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      40% {
+        transform: translate(-30px, 40px) scale(1.15) rotate(10deg);
+      }
+      80% {
+        transform: translate(20px, -20px) scale(0.9) rotate(-5deg);
+      }
     }
 
     @keyframes heroFadeUp {
@@ -2030,6 +2113,11 @@
   </script>
 </head>
 <body>
+  <div class="hero-blob-bg" aria-hidden="true">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+  </div>
   <div class="nav-wrap" id="navWrap">
     <div class="nav-shell">
       <nav aria-label="Hovednavigasjon">
@@ -2059,6 +2147,7 @@
         <div class="hero-ring hero-ring-3" aria-hidden="true"></div>
 
         <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
+          <span class="hero-tagline">✦   HÅNDLAGET MED KJÆRLIGHET   ✦</span>
           <span class="hero-line hero-line-1">Velkommen til</span>
           <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
         </h1>
