@@ -228,9 +228,16 @@
     h2,
     h3 {
       font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
       color: var(--ink);
       letter-spacing: -0.045em;
       line-height: 0.94;
+    }
+
+    p {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink-soft);
+      line-height: 1.85;
     }
 
     .reveal-nav {
@@ -307,10 +314,10 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      color: var(--text);
-      font-size: 0.86rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      color: rgba(59, 46, 42, 0.64);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
@@ -569,12 +576,12 @@
 
     .setup-name {
       margin: 18px 0 0;
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.75rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+      font-weight: 500;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      color: var(--ink);
       width: 100%;
     }
 
@@ -589,7 +596,9 @@
     }
 
     .setup-name span + span {
-      margin-top: 10px;
+      margin-top: 6px;
+      font-style: italic;
+      color: #aa6f63;
     }
 
     .setup-copy {
@@ -755,11 +764,11 @@
 
     .footer-col-title {
       margin: 0 0 16px;
-      font-size: 0.84rem;
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted-2);
+      color: var(--flamingo-deep);
     }
 
     .footer-links {
