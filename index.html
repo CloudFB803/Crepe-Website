@@ -285,9 +285,9 @@
       min-height: 100vh;
       min-height: 100svh;
       width: 100%;
-      padding: clamp(124px, 16vh, 170px) 0 clamp(42px, 8vh, 76px);
+      padding: clamp(118px, 14vh, 156px) 0 clamp(46px, 8vh, 78px);
       display: grid;
-      align-items: center;
+      align-items: stretch;
     }
 
     .hero-shell {
@@ -295,18 +295,19 @@
       margin: 0 auto;
       padding: 0;
       display: grid;
-      gap: clamp(16px, 2.7vh, 28px);
       justify-items: center;
       text-align: center;
-      align-content: center;
-      min-height: calc(100svh - clamp(166px, 22vh, 228px));
+      align-content: start;
+      min-height: calc(100svh - clamp(164px, 22vh, 224px));
+      padding-top: clamp(72px, 13vh, 130px);
+      gap: 0;
     }
 
     .hero-title {
       margin: 0;
       display: grid;
-      gap: 10px;
-      max-width: 16ch;
+      gap: clamp(4px, 1.3vh, 10px);
+      max-width: 18ch;
     }
 
     .hero-line {
@@ -318,44 +319,42 @@
 
     .hero-line-1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4.8vw, 3.8rem);
+      font-size: clamp(2rem, 5vw, 3.7rem);
       font-weight: 500;
-      line-height: 0.96;
+      line-height: 0.94;
       letter-spacing: -0.03em;
-      color: rgba(59, 46, 42, 0.85);
+      color: #fff7f2;
+      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
       animation-delay: 0.05s;
     }
 
     .hero-line-2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 10vw, 7.1rem);
+      font-size: clamp(2.3rem, 5.9vw, 4.4rem);
+      font-style: italic;
       font-weight: 500;
       line-height: 0.92;
       letter-spacing: -0.045em;
       animation-delay: 0.28s;
-      color: var(--ink);
-    }
-
-    .hero-line em {
-      font-style: italic;
-      color: #aa6f63;
-      font-weight: 500;
+      color: #f6d2c8;
+      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
     }
 
     .hero-actions {
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out 0.48s forwards;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, max-content));
       justify-content: center;
-      gap: 12px;
+      column-gap: 12px;
+      row-gap: 10px;
+      margin-top: clamp(20px, 3.8vh, 34px);
     }
 
-    .hero-foodora-link {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.56s forwards;
+    .hero-actions .btn-foodora {
+      grid-column: 1 / -1;
+      justify-self: center;
     }
 
     @keyframes heroFadeUp {
@@ -1454,23 +1453,17 @@
 
     @media (max-width: 980px) {
       .nav-shell {
-        width: min(760px, calc(100% - 24px));
+        width: min(860px, calc(100% - 24px));
         border-radius: 28px;
       }
 
       nav {
-        min-height: auto;
-        flex-direction: column;
-        justify-content: center;
-        padding: 8px 2px;
+        min-height: 64px;
+        padding: 6px 4px;
       }
 
       .nav-links {
-        justify-content: center;
-      }
-
-      .brand {
-        order: -1;
+        justify-content: flex-end;
       }
 
       .menu-grid,
@@ -1565,14 +1558,14 @@
       }
 
       .nav-links {
-        gap: 12px 16px;
+        gap: 10px 14px;
         font-size: 11px;
         letter-spacing: 0.09em;
+        justify-content: flex-end;
       }
 
       .brand {
-        width: 100%;
-        justify-content: center;
+        padding: 0 4px;
       }
 
       .brand-title {
@@ -1580,30 +1573,32 @@
       }
 
       .hero {
-        padding: 184px 0 44px;
+        padding: 172px 0 44px;
       }
 
       .hero-shell {
         width: calc(100% - 28px);
-        min-height: calc(100svh - 228px);
-        gap: 18px;
+        min-height: calc(100svh - 224px);
+        padding-top: clamp(36px, 8vh, 56px);
       }
 
       .hero-line-1 {
-        font-size: clamp(30px, 8.2vw, 40px);
+        font-size: clamp(32px, 8vw, 42px);
       }
 
       .hero-line-2 {
-        font-size: clamp(46px, 13.5vw, 66px);
+        font-size: clamp(36px, 9.6vw, 50px);
       }
 
       .hero-actions {
         width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
       }
 
       .hero-actions .btn {
-        flex: 1 1 100%;
+        width: 100%;
+        min-height: 48px;
       }
 
       .intro-card,
@@ -1808,7 +1803,6 @@
       .btn,
       .hero-line,
       .hero-actions,
-      .hero-foodora-link,
       .menu-item,
       .contact-chip,
       .crepe-modal,
@@ -1820,8 +1814,7 @@
       }
 
       .hero-line,
-      .hero-actions,
-      .hero-foodora-link {
+      .hero-actions {
         animation: none;
         opacity: 1;
         transform: none;
@@ -1872,12 +1865,6 @@
   <div class="nav-wrap" id="navWrap">
     <div class="nav-shell">
       <nav aria-label="Hovednavigasjon">
-        <div class="nav-links">
-          <a href="./historie.html">Vår historie</a>
-          <a href="#menu">Meny</a>
-          <a href="./book-oss.html">Book oss</a>
-        </div>
-
         <a href="#top" class="brand" aria-label="Crêpe de la Crêpe forside">
           <div class="brand-logo-wrap">
             <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
@@ -1886,6 +1873,9 @@
         </a>
 
         <div class="nav-links">
+          <a href="./historie.html">Vår historie</a>
+          <a href="#menu">Meny</a>
+          <a href="./book-oss.html">Book oss</a>
           <a href="#lokasjon">Lokasjon</a>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -1898,14 +1888,14 @@
         <div class="hero-shell">
           <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
             <span class="hero-line hero-line-1">Velkommen til</span>
-            <span class="hero-line hero-line-2"><em>Crêpe</em> de la <em>Crêpe</em></span>
+            <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
           </h1>
 
           <div class="hero-actions">
             <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
             <a class="btn btn-primary" href="#menu">Se meny</a>
             <a
-              class="btn btn-foodora hero-foodora-link"
+              class="btn btn-foodora"
               href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
               target="_blank"
               rel="noopener noreferrer"
