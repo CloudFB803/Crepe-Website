@@ -298,10 +298,10 @@
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(52% 42% at 50% 34%, rgba(220, 152, 139, 0.20), rgba(220, 152, 139, 0) 74%),
-        radial-gradient(36% 24% at 14% 36%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0) 100%),
-        radial-gradient(32% 24% at 85% 62%, rgba(235, 199, 190, 0.34), rgba(235, 199, 190, 0) 100%),
-        linear-gradient(180deg, #fffdf8 0%, #fbf5ec 60%, #f8f1e7 100%);
+        radial-gradient(56% 44% at 41% 32%, rgba(229, 175, 164, 0.24), rgba(229, 175, 164, 0) 76%),
+        radial-gradient(34% 28% at 72% 58%, rgba(236, 205, 196, 0.18), rgba(236, 205, 196, 0) 80%),
+        radial-gradient(42% 30% at 13% 36%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0) 100%),
+        linear-gradient(180deg, #fffdf9 0%, #fcf6ee 56%, #f7efe5 100%);
     }
 
     .hero::before,
@@ -315,9 +315,8 @@
     .hero::before {
       inset: -12%;
       background:
-        radial-gradient(42% 30% at 50% 32%, rgba(255,255,255,0.6), rgba(255,255,255,0) 100%),
-        radial-gradient(24% 20% at 72% 36%, rgba(208, 143, 130, 0.10), rgba(208, 143, 130, 0) 100%),
-        radial-gradient(24% 20% at 30% 62%, rgba(159, 100, 91, 0.05), rgba(159, 100, 91, 0) 100%);
+        radial-gradient(46% 32% at 42% 34%, rgba(255, 248, 241, 0.68), rgba(255, 248, 241, 0) 100%),
+        radial-gradient(24% 20% at 66% 58%, rgba(208, 143, 130, 0.09), rgba(208, 143, 130, 0) 100%);
       animation: heroDrift 22s ease-in-out infinite alternate;
     }
 
@@ -332,7 +331,7 @@
     }
 
     .hero-shell {
-      width: min(960px, calc(100% - 36px));
+      width: min(900px, calc(100% - 36px));
       margin: 0 auto;
       padding: 0;
       display: grid;
@@ -341,7 +340,7 @@
       align-content: center;
       min-height: calc(100svh - clamp(164px, 22vh, 224px));
       padding-top: clamp(36px, 6vh, 70px);
-      gap: 0;
+      gap: clamp(12px, 1.8vh, 20px);
       position: relative;
       z-index: 1;
     }
@@ -350,10 +349,10 @@
       content: "";
       position: absolute;
       left: 50%;
-      top: clamp(72px, 13vh, 126px);
-      width: min(760px, 88vw);
-      height: min(760px, 88vw);
-      transform: translate(-50%, -22%);
+      top: clamp(72px, 13vh, 128px);
+      width: min(780px, 90vw);
+      height: min(780px, 90vw);
+      transform: translate(-46%, -24%);
       border-radius: 50%;
       background:
         radial-gradient(circle at 50% 50%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.28) 24%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 74%);
@@ -399,18 +398,6 @@
         0 12px 30px rgba(121, 78, 68, 0.10);
     }
 
-    .hero-subtitle {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.34s forwards;
-      margin: clamp(20px, 3vh, 26px) 0 0;
-      font-size: clamp(0.98rem, 1.8vw, 1.06rem);
-      line-height: 1.75;
-      letter-spacing: 0.005em;
-      color: #6b564f;
-      max-width: 66ch;
-    }
-
     .hero-actions {
       opacity: 0;
       transform: translateY(14px);
@@ -419,7 +406,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      margin-top: clamp(22px, 4vh, 34px);
+      margin-top: clamp(14px, 2.8vh, 24px);
     }
 
     .hero-actions .btn {
@@ -443,19 +430,6 @@
       color: #3f302b;
       border-color: rgba(111, 90, 83, 0.18);
       box-shadow: 0 10px 24px rgba(92, 64, 56, 0.08);
-    }
-
-    .hero-eyebrow {
-      margin-bottom: clamp(18px, 2.8vh, 24px);
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0s forwards;
-      background: rgba(255, 249, 241, 0.72);
-      border: 1px solid rgba(173, 130, 120, 0.25);
-      color: #8c695f;
-      letter-spacing: 0.17em;
-      font-size: 0.63rem;
-      box-shadow: 0 8px 16px rgba(108, 75, 65, 0.07);
     }
 
     .hero-location {
@@ -1757,13 +1731,6 @@
         line-height: 0.92;
       }
 
-      .hero-subtitle {
-        margin-top: 14px;
-        font-size: clamp(0.9rem, 3.7vw, 1rem);
-        line-height: 1.65;
-        padding: 0 6px;
-      }
-
       .hero-actions {
         width: min(430px, 100%);
         justify-content: center;
@@ -1994,7 +1961,6 @@
       }
 
       .hero-line,
-      .hero-subtitle,
       .hero-actions {
         animation: none;
         opacity: 1;
@@ -2080,19 +2046,15 @@
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-3" aria-hidden="true"></div>
-        <div class="eyebrow hero-eyebrow">Franske crêpes i Oslo</div>
 
         <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
           <span class="hero-line hero-line-1">Velkommen til</span>
           <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
         </h1>
 
-        <p class="hero-subtitle">Crêpes på Storo Storsenter. Booking for festivaler, firmaarrangementer og private arrangementer.</p>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
           <a class="btn btn-secondary" href="#menu">Se meny</a>
-          <a class="btn btn-secondary" href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter" target="_blank" rel="noopener">Bestill Foodora</a>
         </div>
 
         <p class="hero-location">Storo Storsenter · Oslo</p>
