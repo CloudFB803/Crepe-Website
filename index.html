@@ -267,9 +267,15 @@
     h2,
     h3 {
       font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
       color: var(--ink);
       letter-spacing: -0.045em;
       line-height: 0.94;
+    }
+
+    p {
+      color: var(--ink-soft);
+      line-height: 1.85;
     }
 
     .hero {
@@ -277,24 +283,29 @@
     }
 
     .hero-shell {
+      position: relative;
       border-radius: 36px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255, 238, 230, 0.24);
       background:
-        radial-gradient(circle at 90% 0%, rgba(201, 131, 118, 0.15), transparent 40%),
-        linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(244, 232, 221, 0.88));
+        linear-gradient(180deg, rgba(247, 241, 231, 0.04) 0%, rgba(247, 241, 231, 0.02) 28%, rgba(85, 53, 45, 0.2) 76%, rgba(57, 34, 29, 0.58) 100%),
+        url("hero-crepes.jpg") center/cover no-repeat;
       box-shadow: var(--shadow);
       padding: clamp(34px, 5vw, 72px);
       display: grid;
-      gap: 30px;
+      gap: 26px;
       justify-items: start;
+      overflow: hidden;
+      min-height: min(82svh, 860px);
+      align-content: end;
     }
 
     .hero-eyebrow {
-      font-size: 11px;
+      font-size: 0.65rem;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #81564d;
+      color: #f4dfd7;
+      text-shadow: 0 6px 16px rgba(34, 20, 16, 0.28);
     }
 
     .hero-title {
@@ -308,35 +319,42 @@
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out forwards;
-      color: #34241d;
-      text-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
+      color: #fff7f2;
+      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
     }
 
     .hero-line-1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 5.5vw, 62px);
+      font-size: clamp(5rem, 17vw, 12rem);
       font-weight: 500;
-      line-height: 0.94;
-      letter-spacing: -0.03em;
+      line-height: 0.88;
+      letter-spacing: -0.045em;
       animation-delay: 0.05s;
     }
 
     .hero-line-2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(40px, 6.8vw, 76px);
-      font-weight: 600;
-      line-height: 0.92;
-      letter-spacing: -0.035em;
+      font-size: clamp(5rem, 17vw, 12rem);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.045em;
       animation-delay: 0.28s;
-      color: #2e1f18;
+      color: #fff7f2;
+    }
+
+    .hero-line em {
+      font-style: italic;
+      color: #f6d2c8;
+      font-weight: 500;
     }
 
     .hero-sub {
       margin: 0;
       max-width: 52ch;
       font-size: clamp(16px, 2vw, 19px);
-      color: #574337;
+      color: rgba(255, 245, 239, 0.86);
       line-height: 1.85;
+      text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out 0.48s forwards;
@@ -410,10 +428,19 @@
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(34px, 4vw, 54px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #2d1c15;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      color: var(--ink);
       line-height: 0.94;
+    }
+
+    .section-head h2 em,
+    .section-head h3 em,
+    .history-teaser-title em,
+    .booking-cta-copy h3 em {
+      font-style: italic;
+      color: #aa6f63;
+      font-weight: 500;
     }
 
     .card {
@@ -459,15 +486,15 @@
     .menu-hint {
       display: inline-flex;
       width: fit-content;
-      padding: 8px 12px;
       border-radius: 999px;
+      color: var(--flamingo-deep);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
       background: rgba(190,122,109,0.11);
       border: 1px solid rgba(190,122,109,0.24);
-      color: var(--flamingo-deep);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      padding: 8px 12px;
     }
 
     .script-title {
@@ -2022,7 +2049,7 @@
           <div class="hero-eyebrow">Crêperie på Storo Storsenter</div>
           <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
             <span class="hero-line hero-line-1">Velkommen til</span>
-            <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
+            <span class="hero-line hero-line-2"><em>Crêpe</em> de la <em>Crêpe</em></span>
           </h1>
           <p class="hero-sub">Franske crêpes laget med omhu, servert i et rolig og varmt uttrykk. Besøk oss på Storo, bestill på Foodora, eller book oss til neste arrangement.</p>
 
@@ -2047,7 +2074,7 @@
         <div class="history-teaser-card">
           <div class="history-teaser-content">
             <div class="eyebrow">Vår historie</div>
-            <h2 class="history-teaser-title">Det startet med en enkel tanke — og endte opp her.</h2>
+            <h2 class="history-teaser-title">Det startet med en <em>enkel</em> tanke — og endte opp her.</h2>
             <p class="history-teaser-subtext">To personer. En kontorjobb. En tur til Paris. Les historien bak Crêpe de la Crêpe.</p>
             <a class="btn btn-primary" href="./historie.html">Les vår historie →</a>
           </div>
@@ -2331,7 +2358,7 @@
       <div class="container">
         <div class="booking-cta-shell">
           <div>
-            <h3>Skal vi være med på ditt arrangement?</h3>
+            <h3>Skal vi være med på ditt <em>arrangement</em>?</h3>
             <p>Vi tar med oss crêpene — du tar æren. Send oss en forespørsel så ordner vi resten.</p>
           </div>
           <a class="btn btn-primary" href="/book-oss.html">Book oss</a>

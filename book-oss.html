@@ -210,11 +210,11 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.74rem;
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #965a51;
+      color: var(--flamingo-deep);
     }
 
     .eyebrow::before {
@@ -400,23 +400,32 @@
     .hero-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 6.4vw, 5.8rem);
-      line-height: 0.9;
+      font-size: clamp(5rem, 17vw, 12rem);
+      font-weight: 500;
+      line-height: 0.88;
       letter-spacing: -0.045em;
-      color: #2b1d10;
+      color: #fff7f2;
+      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
     }
 
     .hero-title .hero-line {
       display: block;
-      color: rgba(39, 27, 17, 0.96);
+      color: #fff7f2;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: #f6d2c8;
+      font-weight: 500;
     }
 
     .hero-copy {
       margin: 18px auto 0;
       max-width: 600px;
       font-size: clamp(1rem, 1.8vw, 1.18rem);
-      line-height: 1.72;
-      color: rgba(244, 238, 231, 0.88);
+      line-height: 1.85;
+      color: rgba(255, 245, 239, 0.86);
+      text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
     }
 
     .hero-actions {
@@ -457,9 +466,21 @@
     .options-banner h2 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 4.8rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 500;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      color: var(--ink);
+    }
+
+    .options-banner h2 em,
+    .setup-name em,
+    .why-book-shell h3 em,
+    .closing-cta h3 em,
+    .success-title em {
+      font-style: italic;
+      color: #aa6f63;
+      font-weight: 500;
     }
 
     .setups {
@@ -679,21 +700,23 @@
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(2rem, 4.2vw, 4.3rem);
+      font-weight: 500;
       line-height: 0.94;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
+      color: var(--ink);
     }
 
     .closing-cta p {
       margin: 14px 0 0;
       max-width: 760px;
-      color: var(--muted);
-      line-height: 1.7;
+      color: var(--ink-soft);
+      line-height: 1.85;
       font-size: 1.02rem;
     }
 
     .site-footer {
       padding: 0 0 28px;
-      background: var(--bg-2);
+      background: #f4e9dc;
     }
 
     .footer-shell {
@@ -2217,8 +2240,8 @@
           </div>
 
           <h1 class="hero-title">
-            <span class="hero-line">CRÊPE DE LA CRÊPE</span>
-            <span class="hero-line">EVENTS</span>
+            <span class="hero-line"><em>Crêpe</em> de la <em>Crêpe</em></span>
+            <span class="hero-line"><em>Events</em></span>
           </h1>
 
           <div class="hero-actions">
@@ -2232,7 +2255,7 @@
     <section id="muligheter" class="options-banner-wrap" aria-label="Alternativer">
       <div class="container">
         <div class="options-banner">
-          <h2>ALTERNATIVER</h2>
+          <h2><em>Alternativer</em></h2>
         </div>
       </div>
     </section>
@@ -2343,7 +2366,7 @@
     <section class="why-book-wrap" aria-label="Hvorfor booke oss">
       <div class="container">
         <div class="why-book-shell">
-          <h3>Hvorfor Crêpe de la Crêpe?</h3>
+          <h3>Hvorfor <em>Crêpe de la Crêpe</em>?</h3>
 
           <div class="why-book-grid">
             <article class="why-book-item">
@@ -2374,7 +2397,7 @@
       <div class="container">
         <div class="closing-cta">
           <div>
-            <h3>Hva passer best for ditt event?</h3>
+            <h3>Hva passer best for ditt <em>event</em>?</h3>
             <p>Send inn en forespørsel, så ser vi på hva som passer best ut fra type arrangement, antall gjester og lokasjon.</p>
           </div>
 
