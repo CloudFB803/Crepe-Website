@@ -300,9 +300,9 @@
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(120% 80% at 18% 9%, rgba(201, 131, 118, 0.16), transparent 56%),
-        radial-gradient(120% 85% at 82% 12%, rgba(235, 188, 174, 0.15), transparent 58%),
-        linear-gradient(180deg, rgba(251, 247, 241, 0.9) 0%, rgba(243, 232, 220, 0.76) 100%);
+        radial-gradient(92% 68% at 50% 30%, rgba(201, 131, 118, 0.17), rgba(201, 131, 118, 0) 64%),
+        radial-gradient(100% 72% at 18% 12%, rgba(255, 251, 246, 0.58), rgba(255, 251, 246, 0) 68%),
+        linear-gradient(180deg, rgba(251, 247, 241, 0.95) 0%, rgba(243, 232, 220, 0.84) 100%);
     }
 
     .hero::before,
@@ -316,8 +316,9 @@
 
     .hero::before {
       background:
-        radial-gradient(52% 44% at 22% 24%, rgba(255, 251, 246, 0.55), rgba(255, 251, 246, 0) 74%),
-        radial-gradient(50% 44% at 78% 76%, rgba(201, 131, 118, 0.1), rgba(201, 131, 118, 0) 72%);
+        radial-gradient(52% 44% at 24% 24%, rgba(255, 251, 246, 0.52), rgba(255, 251, 246, 0) 74%),
+        radial-gradient(56% 50% at 78% 76%, rgba(201, 131, 118, 0.08), rgba(201, 131, 118, 0) 74%),
+        radial-gradient(120% 86% at 50% 58%, rgba(66, 38, 32, 0.09), rgba(66, 38, 32, 0) 78%);
       animation: heroDrift 24s ease-in-out infinite alternate;
     }
 
@@ -325,7 +326,7 @@
       background-image:
         radial-gradient(circle at 1px 1px, rgba(86, 57, 47, 0.055) 0.6px, transparent 0.7px);
       background-size: 3px 3px;
-      opacity: 0.12;
+      opacity: 0.14;
       mix-blend-mode: soft-light;
     }
 
@@ -364,8 +365,7 @@
       font-weight: 500;
       line-height: 1;
       letter-spacing: 0.02em;
-      color: rgba(255, 249, 243, 0.94);
-      text-shadow: 0 8px 34px rgba(33, 19, 15, 0.29);
+      color: #5f4c45;
       animation-delay: 0.05s;
     }
 
@@ -378,7 +378,7 @@
       letter-spacing: -0.04em;
       animation-delay: 0.24s;
       color: var(--flamingo-muted);
-      text-shadow: 0 10px 36px rgba(33, 19, 15, 0.28);
+      text-shadow: 0 8px 20px rgba(121, 78, 68, 0.12);
     }
 
     .hero-subtitle {
@@ -389,8 +389,7 @@
       font-size: clamp(0.95rem, 1.75vw, 1.08rem);
       line-height: 1.75;
       letter-spacing: 0.015em;
-      color: rgba(255, 249, 243, 0.88);
-      text-shadow: 0 8px 28px rgba(27, 16, 12, 0.24);
+      color: #5f4c45;
       max-width: 42ch;
     }
 
@@ -408,6 +407,26 @@
 
     .hero-actions .btn {
       min-width: clamp(138px, 15vw, 164px);
+    }
+
+    .hero-actions .btn-primary {
+      background: linear-gradient(135deg, var(--flamingo-muted), var(--flamingo-deep));
+      border-color: rgba(159, 100, 91, 0.28);
+      box-shadow: 0 12px 28px rgba(130, 89, 80, 0.24);
+    }
+
+    .hero-actions .btn-secondary {
+      background: rgba(255, 251, 246, 0.92);
+      color: #3f302b;
+      border-color: rgba(111, 90, 83, 0.23);
+      box-shadow: 0 10px 24px rgba(92, 64, 56, 0.1);
+    }
+
+    .hero-actions .btn-foodora {
+      background: rgba(255, 251, 246, 0.86);
+      color: #6b5149;
+      border-color: rgba(147, 97, 86, 0.25);
+      box-shadow: 0 8px 20px rgba(97, 69, 60, 0.1);
     }
 
     @keyframes heroFadeUp {
