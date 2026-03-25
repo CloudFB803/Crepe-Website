@@ -1441,6 +1441,129 @@
       border-color: rgba(199, 149, 99, 0.34);
     }
 
+    /* historie.html component-language migration */
+    .nav-wrap {
+      inset: 0 0 auto;
+    }
+
+    .nav-shell {
+      width: 100%;
+      border-radius: 0;
+      border-inline: 0;
+      padding: 12px 30px;
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 132px 0 54px;
+    }
+
+    .hero-shell,
+    .intro-card,
+    .menu-featured-row,
+    .social-proof-shell,
+    .booking-cta-shell,
+    .footer-shell {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-shell {
+      max-width: 1040px;
+      margin: 0 auto;
+      justify-items: center;
+      text-align: center;
+      gap: 22px;
+      padding: clamp(30px, 5vw, 56px);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(201, 131, 118, 0.14), transparent 38%),
+        radial-gradient(circle at 82% 8%, rgba(233, 179, 164, 0.14), transparent 42%),
+        var(--glass);
+    }
+
+    .hero-title {
+      max-width: 12ch;
+      gap: 0;
+    }
+
+    .hero-eyebrow {
+      color: var(--flamingo-deep);
+      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+    }
+
+    .hero-sub {
+      max-width: 48ch;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    section {
+      padding-bottom: 86px;
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+    }
+
+    .section-head h2,
+    .section-head h3 {
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+    }
+
+    .intro-card {
+      padding: clamp(28px, 4vw, 40px);
+      gap: 24px;
+    }
+
+    .history-teaser-card {
+      min-height: 420px;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
+    }
+
+    .menu-featured-info,
+    .menu-item,
+    .testimonial-card,
+    .stat-pill,
+    .hours-card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 32px rgba(103, 75, 67, 0.09);
+    }
+
+    .menu-item {
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .booking-cta-strip {
+      background: transparent;
+      color: var(--ink);
+      padding: 0 0 86px;
+      margin-top: 0;
+    }
+
+    .booking-cta-shell {
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding: clamp(24px, 3vw, 34px);
+      color: var(--ink);
+    }
+
+    .booking-cta-shell p {
+      color: var(--ink-soft);
+    }
+
+    .footer {
+      padding-top: 0;
+    }
+
     @media (max-width: 1180px) {
       .intro-card {
         grid-template-columns: 1fr;

@@ -1751,6 +1751,95 @@
       pointer-events: none;
     }
 
+    /* historie.html component-language migration */
+    .hero-shell,
+    .options-banner,
+    .setup-shell,
+    .why-book-shell,
+    .closing-cta,
+    .footer-shell,
+    .overlay-main,
+    .overlay-frame,
+    .success-page {
+      border: 1px solid var(--line);
+      background: rgba(247, 241, 231, 0.72);
+      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-shell {
+      padding: 28px 0 18px;
+    }
+
+    .hero-card {
+      background: rgba(247, 241, 231, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: clamp(26px, 4vw, 40px) clamp(20px, 4vw, 36px);
+      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
+      text-align: left;
+    }
+
+    .hero-title,
+    .setup-name,
+    .why-book-shell h3,
+    .closing-cta h3 {
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      color: var(--ink);
+    }
+
+    .hero-copy,
+    .hero-note,
+    .setup-desc,
+    .closing-cta p,
+    .why-book-intro {
+      color: var(--ink-soft);
+    }
+
+    .options-banner {
+      min-height: 128px;
+      border-radius: 30px;
+    }
+
+    .setups {
+      padding-bottom: 22px;
+    }
+
+    .setup-shell {
+      min-height: calc(100svh - 64px);
+      border-radius: 30px;
+    }
+
+    .setup-copy {
+      padding: clamp(24px, 4vw, 40px);
+      gap: 18px;
+    }
+
+    .choice-card,
+    .text-input,
+    .textarea-input,
+    .country-select {
+      background: rgba(247, 241, 231, 0.78);
+      border: 1px solid var(--line);
+    }
+
+    .overlay-main {
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.1)), var(--paper);
+    }
+
+    .overlay-frame {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1)), var(--cream);
+      border-radius: 24px;
+    }
+
+    .site-footer {
+      background: #f4e9dc;
+      padding-top: 12px;
+    }
+
     @media (max-width: 1180px) {
       .setup-shell,
       .setup-screen.reverse .setup-shell {
