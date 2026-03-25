@@ -331,7 +331,7 @@
     }
 
     .hero-shell {
-      width: min(900px, calc(100% - 36px));
+      width: min(1160px, calc(100% - 36px));
       margin: 0 auto;
       padding: 0;
       display: grid;
@@ -364,7 +364,7 @@
       margin: 0;
       display: grid;
       gap: clamp(7px, 1.1vh, 12px);
-      max-width: 17ch;
+      max-width: none;
       text-wrap: balance;
     }
 
@@ -407,6 +407,17 @@
       justify-content: center;
       gap: 12px;
       margin-top: clamp(14px, 2.8vh, 24px);
+    }
+
+    @media (min-width: 641px) {
+      .hero-line-2 {
+        white-space: nowrap;
+        font-size: clamp(3.4rem, 7vw, 6.2rem);
+      }
+
+      .hero-actions {
+        flex-wrap: nowrap;
+      }
     }
 
     .hero-actions .btn {
