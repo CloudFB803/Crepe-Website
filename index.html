@@ -62,7 +62,7 @@
 
     body {
       margin: 0;
-      font-family: "Manrope", Arial, Helvetica, sans-serif;
+      font-family: "Manrope", sans-serif;
       color: var(--text);
       line-height: 1.55;
       background:
@@ -115,7 +115,10 @@
       padding: 14px 24px;
       border-radius: 999px;
       border: 1px solid transparent;
+      font-size: 0.7rem;
       font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       gap: 10px;
       transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
     }
@@ -171,8 +174,8 @@
       border-radius: 999px;
       border: 1px solid rgba(147, 97, 86, 0.14);
       background: rgba(248, 242, 233, 0.82);
-      box-shadow: 0 14px 38px rgba(97, 69, 60, 0.1);
       backdrop-filter: blur(14px);
+      box-shadow: 0 14px 38px rgba(97, 69, 60, 0.1);
       padding: 10px 14px;
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
@@ -351,7 +354,7 @@
     .hero-sub {
       margin: 0;
       max-width: 52ch;
-      font-size: clamp(16px, 2vw, 19px);
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
       color: rgba(255, 245, 239, 0.86);
       line-height: 1.85;
       text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
@@ -427,7 +430,7 @@
     .section-head h3 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 4vw, 54px);
+      font-size: clamp(2.6rem, 6.2vw, 5.2rem);
       font-weight: 500;
       letter-spacing: -0.045em;
       color: var(--ink);
@@ -807,9 +810,12 @@
 
     .menu-item h4 {
       margin: 0;
-      font-size: 21px;
-      color: #2d1c15;
-      letter-spacing: -0.02em;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.55rem, 2.5vw, 2rem);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 0.94;
     }
 
     .menu-item p {
@@ -820,10 +826,10 @@
     }
 
     .menu-meta {
-      color: #8a6d5a;
-      font-size: 13px;
+      color: var(--flamingo-deep);
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
@@ -1369,8 +1375,11 @@
 
     .footer-block h4 {
       margin: 0 0 14px;
-      font-size: 16px;
-      color: #2d1c15;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--flamingo-deep);
     }
 
     .footer-links,
@@ -1466,129 +1475,6 @@
     .back-to-top:hover {
       background: rgba(255, 255, 255, 0.98);
       border-color: rgba(199, 149, 99, 0.34);
-    }
-
-    /* historie.html component-language migration */
-    .nav-wrap {
-      inset: 0 0 auto;
-    }
-
-    .nav-shell {
-      width: 100%;
-      border-radius: 0;
-      border-inline: 0;
-      padding: 12px 30px;
-      box-shadow: none;
-    }
-
-    .hero {
-      padding: 132px 0 54px;
-    }
-
-    .hero-shell,
-    .intro-card,
-    .menu-featured-row,
-    .social-proof-shell,
-    .booking-cta-shell,
-    .footer-shell {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
-      border-radius: 30px;
-      backdrop-filter: blur(8px);
-    }
-
-    .hero-shell {
-      max-width: 1040px;
-      margin: 0 auto;
-      justify-items: center;
-      text-align: center;
-      gap: 22px;
-      padding: clamp(30px, 5vw, 56px);
-      background:
-        radial-gradient(circle at 12% 0%, rgba(201, 131, 118, 0.14), transparent 38%),
-        radial-gradient(circle at 82% 8%, rgba(233, 179, 164, 0.14), transparent 42%),
-        var(--glass);
-    }
-
-    .hero-title {
-      max-width: 12ch;
-      gap: 0;
-    }
-
-    .hero-eyebrow {
-      color: var(--flamingo-deep);
-      letter-spacing: 0.2em;
-      font-size: 0.68rem;
-    }
-
-    .hero-sub {
-      max-width: 48ch;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    section {
-      padding-bottom: 86px;
-    }
-
-    .section-head {
-      margin-bottom: 30px;
-    }
-
-    .section-head h2,
-    .section-head h3 {
-      font-weight: 600;
-      letter-spacing: -0.045em;
-      line-height: 0.92;
-    }
-
-    .intro-card {
-      padding: clamp(28px, 4vw, 40px);
-      gap: 24px;
-    }
-
-    .history-teaser-card {
-      min-height: 420px;
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
-    }
-
-    .menu-featured-info,
-    .menu-item,
-    .testimonial-card,
-    .stat-pill,
-    .hours-card {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      box-shadow: 0 14px 32px rgba(103, 75, 67, 0.09);
-    }
-
-    .menu-item {
-      border-radius: 22px;
-      padding: 20px;
-    }
-
-    .booking-cta-strip {
-      background: transparent;
-      color: var(--ink);
-      padding: 0 0 86px;
-      margin-top: 0;
-    }
-
-    .booking-cta-shell {
-      grid-template-columns: minmax(0, 1fr) auto;
-      padding: clamp(24px, 3vw, 34px);
-      color: var(--ink);
-    }
-
-    .booking-cta-shell p {
-      color: var(--ink-soft);
-    }
-
-    .footer {
-      padding-top: 0;
     }
 
     @media (max-width: 1180px) {
