@@ -282,33 +282,24 @@
     }
 
     .hero {
-      padding: 168px 0 64px;
+      min-height: 100vh;
+      min-height: 100svh;
+      width: 100%;
+      padding: clamp(124px, 16vh, 170px) 0 clamp(42px, 8vh, 76px);
+      display: grid;
+      align-items: center;
     }
 
     .hero-shell {
-      position: relative;
-      border-radius: 36px;
-      border: 1px solid rgba(255, 238, 230, 0.24);
-      background:
-        linear-gradient(180deg, rgba(247, 241, 231, 0.04) 0%, rgba(247, 241, 231, 0.02) 28%, rgba(85, 53, 45, 0.2) 76%, rgba(57, 34, 29, 0.58) 100%),
-        url("hero-crepes.jpg") center/cover no-repeat;
-      box-shadow: var(--shadow);
-      padding: clamp(34px, 5vw, 72px);
+      width: min(960px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0;
       display: grid;
-      gap: 26px;
-      justify-items: start;
-      overflow: hidden;
-      min-height: min(82svh, 860px);
-      align-content: end;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: #f4dfd7;
-      text-shadow: 0 6px 16px rgba(34, 20, 16, 0.28);
+      gap: clamp(16px, 2.7vh, 28px);
+      justify-items: center;
+      text-align: center;
+      align-content: center;
+      min-height: calc(100svh - clamp(166px, 22vh, 228px));
     }
 
     .hero-title {
@@ -322,79 +313,49 @@
       opacity: 0;
       transform: translateY(14px);
       animation: heroFadeUp 0.6s ease-out forwards;
-      color: #fff7f2;
-      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
+      color: var(--ink);
     }
 
     .hero-line-1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(5rem, 17vw, 12rem);
+      font-size: clamp(2rem, 4.8vw, 3.8rem);
       font-weight: 500;
-      line-height: 0.88;
-      letter-spacing: -0.045em;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      color: rgba(59, 46, 42, 0.85);
       animation-delay: 0.05s;
     }
 
     .hero-line-2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(5rem, 17vw, 12rem);
+      font-size: clamp(3rem, 10vw, 7.1rem);
       font-weight: 500;
-      line-height: 0.88;
+      line-height: 0.92;
       letter-spacing: -0.045em;
       animation-delay: 0.28s;
-      color: #fff7f2;
+      color: var(--ink);
     }
 
     .hero-line em {
       font-style: italic;
-      color: #f6d2c8;
+      color: #aa6f63;
       font-weight: 500;
-    }
-
-    .hero-sub {
-      margin: 0;
-      max-width: 52ch;
-      font-size: clamp(0.9rem, 2.2vw, 1rem);
-      color: rgba(255, 245, 239, 0.86);
-      line-height: 1.85;
-      text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.48s forwards;
     }
 
     .hero-actions {
       opacity: 0;
       transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.7s forwards;
+      animation: heroFadeUp 0.6s ease-out 0.48s forwards;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      justify-content: center;
+      gap: 12px;
     }
 
     .hero-foodora-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(147, 97, 86, 0.24);
-      background: rgba(255, 251, 246, 0.72);
-      color: #6a4b42;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: 0.02em;
       opacity: 0;
       transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.82s forwards;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .hero-foodora-link:hover {
-      border-color: rgba(147, 97, 86, 0.42);
-      background: rgba(255, 255, 255, 0.9);
+      animation: heroFadeUp 0.6s ease-out 0.56s forwards;
     }
 
     @keyframes heroFadeUp {
@@ -1527,7 +1488,7 @@
       }
 
       .hero {
-        padding-top: 162px;
+        padding-top: 190px;
       }
     }
 
@@ -1619,26 +1580,30 @@
       }
 
       .hero {
-        padding: 172px 0 52px;
+        padding: 184px 0 44px;
       }
 
       .hero-shell {
-        border-radius: 28px;
-        padding: 30px 20px;
-        gap: 22px;
+        width: calc(100% - 28px);
+        min-height: calc(100svh - 228px);
+        gap: 18px;
       }
 
       .hero-line-1 {
-        font-size: clamp(30px, 9vw, 42px);
+        font-size: clamp(30px, 8.2vw, 40px);
       }
 
       .hero-line-2 {
-        font-size: clamp(38px, 11.5vw, 56px);
+        font-size: clamp(46px, 13.5vw, 66px);
       }
 
-      .hero-sub {
-        font-size: 16px;
-        line-height: 1.7;
+      .hero-actions {
+        width: 100%;
+        gap: 10px;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
       }
 
       .intro-card,
@@ -1930,29 +1895,25 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
-      <div class="container">
         <div class="hero-shell">
-          <div class="hero-eyebrow">Crêperie på Storo Storsenter</div>
           <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
             <span class="hero-line hero-line-1">Velkommen til</span>
             <span class="hero-line hero-line-2"><em>Crêpe</em> de la <em>Crêpe</em></span>
           </h1>
-          <p class="hero-sub">Franske crêpes laget med omhu, servert i et rolig og varmt uttrykk. Besøk oss på Storo, bestill på Foodora, eller book oss til neste arrangement.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#menu">Se menyen</a>
             <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
+            <a class="btn btn-primary" href="#menu">Se meny</a>
+            <a
+              class="btn btn-foodora hero-foodora-link"
+              href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bestill Foodora
+            </a>
           </div>
-          <a
-            class="hero-foodora-link"
-            href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🛵 Bestill på Foodora
-          </a>
         </div>
-      </div>
     </section>
 
     <section class="history-teaser fade-in" aria-label="Vår historie">
