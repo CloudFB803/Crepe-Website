@@ -166,6 +166,9 @@
       inset: 18px 0 auto;
       z-index: 120;
       transition: transform 0.25s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: navReveal 0.7s ease-out 0.08s forwards;
     }
 
     .nav-shell {
@@ -176,7 +179,7 @@
       background: rgba(248, 242, 233, 0.82);
       backdrop-filter: blur(14px);
       box-shadow: 0 14px 38px rgba(97, 69, 60, 0.1);
-      padding: 10px 14px;
+      padding: 8px 13px;
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
@@ -187,7 +190,7 @@
     }
 
     nav {
-      min-height: 64px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -209,6 +212,7 @@
     .nav-links a {
       position: relative;
       padding: 6px 0;
+      transition: color 0.2s ease;
     }
 
     .nav-links a::after {
@@ -226,12 +230,16 @@
       width: 100%;
     }
 
+    .nav-links a:hover {
+      color: rgba(59, 46, 42, 0.95);
+    }
+
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       min-width: 0;
-      padding: 0 10px;
+      padding: 0 8px;
       color: #2f2018;
     }
 
@@ -288,6 +296,37 @@
       padding: clamp(118px, 14vh, 156px) 0 clamp(46px, 8vh, 78px);
       display: grid;
       align-items: stretch;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(120% 80% at 18% 9%, rgba(201, 131, 118, 0.16), transparent 56%),
+        radial-gradient(120% 85% at 82% 12%, rgba(235, 188, 174, 0.15), transparent 58%),
+        linear-gradient(180deg, rgba(251, 247, 241, 0.9) 0%, rgba(243, 232, 220, 0.76) 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero::before {
+      background:
+        radial-gradient(52% 44% at 22% 24%, rgba(255, 251, 246, 0.55), rgba(255, 251, 246, 0) 74%),
+        radial-gradient(50% 44% at 78% 76%, rgba(201, 131, 118, 0.1), rgba(201, 131, 118, 0) 72%);
+      animation: heroDrift 24s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(86, 57, 47, 0.055) 0.6px, transparent 0.7px);
+      background-size: 3px 3px;
+      opacity: 0.12;
+      mix-blend-mode: soft-light;
     }
 
     .hero-shell {
@@ -301,12 +340,14 @@
       min-height: calc(100svh - clamp(164px, 22vh, 224px));
       padding-top: clamp(72px, 13vh, 130px);
       gap: 0;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-title {
       margin: 0;
       display: grid;
-      gap: clamp(4px, 1.3vh, 10px);
+      gap: clamp(4px, 0.9vh, 8px);
       max-width: 18ch;
     }
 
@@ -319,31 +360,44 @@
 
     .hero-line-1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 5vw, 3.7rem);
+      font-size: clamp(1.45rem, 3.1vw, 2.35rem);
       font-weight: 500;
-      line-height: 0.94;
-      letter-spacing: -0.03em;
-      color: #fff7f2;
-      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: rgba(255, 249, 243, 0.94);
+      text-shadow: 0 8px 34px rgba(33, 19, 15, 0.29);
       animation-delay: 0.05s;
     }
 
     .hero-line-2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.3rem, 5.9vw, 4.4rem);
+      font-size: clamp(3rem, 7.3vw, 5.7rem);
       font-style: italic;
-      font-weight: 500;
-      line-height: 0.92;
-      letter-spacing: -0.045em;
-      animation-delay: 0.28s;
-      color: #f6d2c8;
-      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      animation-delay: 0.24s;
+      color: var(--flamingo-muted);
+      text-shadow: 0 10px 36px rgba(33, 19, 15, 0.28);
+    }
+
+    .hero-subtitle {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroFadeUp 0.6s ease-out 0.4s forwards;
+      margin: clamp(14px, 2.4vh, 22px) 0 0;
+      font-size: clamp(0.95rem, 1.75vw, 1.08rem);
+      line-height: 1.75;
+      letter-spacing: 0.015em;
+      color: rgba(255, 249, 243, 0.88);
+      text-shadow: 0 8px 28px rgba(27, 16, 12, 0.24);
+      max-width: 42ch;
     }
 
     .hero-actions {
       opacity: 0;
       transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out 0.48s forwards;
+      animation: heroFadeUp 0.6s ease-out 0.54s forwards;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, max-content));
       justify-content: center;
@@ -352,9 +406,8 @@
       margin-top: clamp(20px, 3.8vh, 34px);
     }
 
-    .hero-actions .btn-foodora {
-      grid-column: 1 / -1;
-      justify-self: center;
+    .hero-actions .btn {
+      min-width: clamp(138px, 15vw, 164px);
     }
 
     @keyframes heroFadeUp {
@@ -363,6 +416,26 @@
         transform: translateY(14px);
       }
 
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroDrift {
+      from {
+        transform: translate3d(-1.5%, -1.1%, 0) scale(1.01);
+      }
+      to {
+        transform: translate3d(1.4%, 1.2%, 0) scale(1.04);
+      }
+    }
+
+    @keyframes navReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1583,11 +1656,18 @@
       }
 
       .hero-line-1 {
-        font-size: clamp(32px, 8vw, 42px);
+        font-size: clamp(27px, 6.8vw, 34px);
       }
 
       .hero-line-2 {
-        font-size: clamp(36px, 9.6vw, 50px);
+        font-size: clamp(43px, 10.5vw, 56px);
+      }
+
+      .hero-subtitle {
+        margin-top: 14px;
+        font-size: clamp(0.9rem, 3.7vw, 1rem);
+        line-height: 1.65;
+        padding: 0 6px;
       }
 
       .hero-actions {
@@ -1814,10 +1894,21 @@
       }
 
       .hero-line,
+      .hero-subtitle,
       .hero-actions {
         animation: none;
         opacity: 1;
         transform: none;
+      }
+
+      .hero::before {
+        animation: none;
+      }
+
+      .nav-wrap {
+        animation: none;
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
@@ -1890,18 +1981,11 @@
             <span class="hero-line hero-line-1">Velkommen til</span>
             <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
           </h1>
+          <p class="hero-subtitle">Crêpes på Storo og for utvalgte arrangementer.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-secondary" href="./book-oss.html">Book oss</a>
-            <a class="btn btn-primary" href="#menu">Se meny</a>
-            <a
-              class="btn btn-foodora"
-              href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Bestill Foodora
-            </a>
+            <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
+            <a class="btn btn-secondary" href="#menu">Se meny</a>
           </div>
         </div>
     </section>
