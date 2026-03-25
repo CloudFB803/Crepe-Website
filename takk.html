@@ -14,15 +14,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Jost:wght@200;300;400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --gold: #c98376;
-      --gold-light: #ead9d2;
-      --cream: #fff7f2;
+      --gold: #be7a6d;
+      --gold-light: #ead7d1;
+      --cream: #f8f2e8;
       --dark: #3b2e2a;
       --text-muted: rgba(111, 90, 83, 0.62);
       --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
@@ -45,8 +45,11 @@
     }
 
     body {
-      font-family: "Jost", sans-serif;
-      background: linear-gradient(180deg, #fbf7f1 0%, #f3e8dc 48%, #f7f2e9 100%);
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(190, 122, 109, 0.08), transparent 28%),
+        radial-gradient(circle at 84% 7%, rgba(218, 172, 158, 0.08), transparent 36%),
+        linear-gradient(180deg, #f8f2e8 0%, #f2e8dc 48%, #f7f2e9 100%);
       color: var(--dark);
       overflow: hidden;
       position: relative;
@@ -64,12 +67,18 @@
       overflow: hidden;
     }
 
+
+    :is(a, .btn):focus-visible {
+      outline: 2px solid rgba(190, 122, 109, 0.5);
+      outline-offset: 3px;
+    }
+
     .noise-overlay {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 2;
-      opacity: 0.04;
+      opacity: 0.025;
     }
 
     .gold-glow {
@@ -79,7 +88,7 @@
       z-index: 0;
       background: radial-gradient(
         ellipse 70% 60% at 50% 50%,
-        rgba(201, 131, 118, 0.09),
+        rgba(190, 122, 109, 0.08),
         transparent
       );
     }
@@ -95,9 +104,7 @@
       object-fit: contain;
       pointer-events: none;
       z-index: 1;
-      animation:
-        fadeIn 1.9s var(--ease-premium) 0.3s forwards,
-        logoBreath 24s ease-in-out 2.5s infinite alternate;
+      animation: fadeIn 1.7s var(--ease-premium) 0.25s forwards;
     }
 
     .top-nav {
@@ -110,10 +117,10 @@
 
     .brand-name {
       margin: 0;
-      font-family: "Jost", sans-serif;
-      font-weight: 200;
-      font-size: 0.68rem;
-      letter-spacing: 0.35em;
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--dark);
       white-space: nowrap;
@@ -168,8 +175,8 @@
     .tag-label {
       margin: 0;
       font-size: clamp(0.82rem, 0.72rem + 0.18vw, 1rem);
-      font-weight: 300;
-      letter-spacing: 0.45em;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
       animation: fadeUp 0.95s var(--ease-premium) 1s forwards;
@@ -178,7 +185,7 @@
     .hero-title {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-weight: 300;
+      font-weight: 600;
       font-size: clamp(3.8rem, 2.8rem + 3vw, 6.8rem);
       line-height: 0.91;
       animation: fadeUp 0.95s var(--ease-premium) 1.2s forwards;
@@ -187,8 +194,8 @@
     .hero-title em {
       display: block;
       font-style: italic;
-      font-weight: 400;
-      color: var(--gold-light);
+      font-weight: 500;
+      color: #d7b4aa;
     }
 
     .subtitle {
@@ -196,7 +203,7 @@
       max-width: min(92%, 940px);
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-weight: 400;
+      font-weight: 500;
       font-size: clamp(1.38rem, 1.1rem + 0.78vw, 2rem);
       line-height: 1.24;
       color: var(--text-muted);
@@ -242,13 +249,13 @@
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--text-muted);
-      font-weight: 300;
+      font-weight: 600;
     }
 
     .item-value {
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.34rem, 1.12rem + 0.65vw, 1.9rem);
-      font-weight: 300;
+      font-weight: 600;
       color: var(--dark);
       white-space: nowrap;
     }
@@ -272,10 +279,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: "Jost", sans-serif;
+      font-family: "Manrope", sans-serif;
       font-weight: 400;
       font-size: clamp(0.74rem, 0.66rem + 0.14vw, 0.9rem);
-      letter-spacing: 0.28em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       white-space: nowrap;
       overflow: hidden;
@@ -283,17 +290,18 @@
     }
 
     .btn-primary {
-      background: var(--gold);
-      color: var(--dark);
-      border: 1px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold), #965a51);
+      color: #fff8f3;
+      border: 1px solid rgba(150, 90, 81, 0.35);
       isolation: isolate;
+      box-shadow: 0 14px 34px rgba(136, 88, 77, 0.22);
     }
 
     .btn-primary::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: var(--gold-light);
+      background: rgba(255, 247, 241, 0.55);
       transform: translateX(-102%);
       transition: transform 430ms var(--ease-premium);
       z-index: -1;
@@ -305,8 +313,8 @@
     }
 
     .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(147, 97, 86, 0.28);
+      background: rgba(255, 252, 247, 0.64);
+      border: 1px solid rgba(147, 97, 86, 0.22);
       color: var(--dark);
     }
 
@@ -321,10 +329,10 @@
       z-index: 10;
       padding: 0.9rem 1rem clamp(1.05rem, 2.55svh, 1.35rem);
       text-align: center;
-      font-family: "Jost", sans-serif;
+      font-family: "Manrope", sans-serif;
       font-size: clamp(0.58rem, 0.54rem + 0.06vw, 0.64rem);
-      font-weight: 300;
-      letter-spacing: 0.35em;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-muted);
       border-top: 1px solid rgba(147, 97, 86, 0.14);
@@ -347,7 +355,7 @@
         opacity: 0;
       }
       to {
-        opacity: 0.04;
+        opacity: 0.025;
       }
     }
 
@@ -442,7 +450,7 @@
       }
 
       .site-footer {
-        letter-spacing: 0.28em;
+        letter-spacing: 0.14em;
       }
 
       .footer-dot {
