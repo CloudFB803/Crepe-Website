@@ -294,17 +294,23 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      background: #FFF5F0;
+      background-color: #FBF6EF;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(193, 154, 107, 0.13) 18px,
+        rgba(193, 154, 107, 0.13) 20px
+      );
     }
 
-
+    .hero-shell > * {
+      position: relative;
+      z-index: 1;
+    }
 
     .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: 0;
-      pointer-events: none;
+      display: none;
     }
 
     .blob-1 {
@@ -353,18 +359,7 @@
     }
 
     .hero-shell::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: clamp(72px, 13vh, 128px);
-      width: min(780px, 90vw);
-      height: min(780px, 90vw);
-      transform: translate(-46%, -24%);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.28) 24%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 74%);
-      filter: blur(20px);
-      z-index: -1;
+      content: none;
     }
 
     .hero-title {
@@ -475,11 +470,7 @@
     }
 
     .hero-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(182, 142, 131, 0.16);
-      pointer-events: none;
-      z-index: -1;
+      display: none;
     }
 
     .hero-ring-1 {
