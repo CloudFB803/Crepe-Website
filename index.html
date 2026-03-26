@@ -294,47 +294,14 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      background: #FFF5F0;
-    }
-
-
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .blob-1 {
-      width: 500px;
-      height: 500px;
-      top: -120px;
-      left: -120px;
-      background: #FFAEC0;
-      opacity: 0.6;
-      animation: blobDriftOne 12s ease-in-out infinite alternate;
-    }
-
-    .blob-2 {
-      width: 400px;
-      height: 400px;
-      right: -120px;
-      bottom: -110px;
-      background: #F9D5D3;
-      opacity: 0.5;
-      animation: blobDriftTwo 14s ease-in-out infinite alternate;
-    }
-
-    .blob-3 {
-      width: 350px;
-      height: 350px;
-      top: 22%;
-      right: 12%;
-      background: #FF8FA3;
-      opacity: 0.4;
-      animation: blobDriftThree 10s ease-in-out infinite alternate;
+      background-color: #FBF6EF;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(193, 154, 107, 0.13) 18px,
+        rgba(193, 154, 107, 0.13) 20px
+      );
     }
 
     .hero-shell {
@@ -352,19 +319,13 @@
       z-index: 1;
     }
 
-    .hero-shell::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: clamp(72px, 13vh, 128px);
-      width: min(780px, 90vw);
-      height: min(780px, 90vw);
-      transform: translate(-46%, -24%);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.28) 24%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 74%);
-      filter: blur(20px);
-      z-index: -1;
+    .hero-title,
+    .hero-tagline,
+    .hero-line,
+    .hero-actions,
+    .hero-location {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-title {
@@ -506,33 +467,6 @@
       left: 50%;
       transform: translate(-50%, -42%);
       border-color: rgba(182, 142, 131, 0.07);
-    }
-
-    @keyframes blobDriftOne {
-      from {
-        transform: translate(0, 0);
-      }
-      to {
-        transform: translate(40px, 35px);
-      }
-    }
-
-    @keyframes blobDriftTwo {
-      from {
-        transform: translate(0, 0);
-      }
-      to {
-        transform: translate(-35px, -30px);
-      }
-    }
-
-    @keyframes blobDriftThree {
-      from {
-        transform: translate(0, 0);
-      }
-      to {
-        transform: translate(28px, -24px);
-      }
     }
 
     @keyframes heroFadeUp {
@@ -1850,24 +1784,6 @@
         letter-spacing: 0.14em;
       }
 
-      .blob-1 {
-        width: 300px;
-        height: 300px;
-        opacity: 0.5;
-      }
-
-      .blob-2 {
-        width: 240px;
-        height: 240px;
-        opacity: 0.42;
-      }
-
-      .blob-3 {
-        width: 210px;
-        height: 210px;
-        opacity: 0.34;
-      }
-
       .intro-card,
       .footer-shell,
       .card {
@@ -2088,10 +2004,6 @@
         transform: none;
       }
 
-      .blob {
-        animation: none;
-      }
-
       .nav-wrap {
         animation: none;
         opacity: 1;
@@ -2163,9 +2075,6 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
-      <div class="blob blob-1" aria-hidden="true"></div>
-      <div class="blob blob-2" aria-hidden="true"></div>
-      <div class="blob blob-3" aria-hidden="true"></div>
       <div class="hero-shell">
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
