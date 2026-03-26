@@ -231,6 +231,27 @@
       color: rgba(59, 46, 42, 0.95);
     }
 
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      background: rgba(255, 255, 255, 0.8);
+      color: #3f2c24;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 700;
+      cursor: pointer;
+      place-items: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(147, 97, 86, 0.34);
+    }
+
     .brand {
       display: inline-flex;
       align-items: center;
@@ -327,6 +348,27 @@
       text-wrap: balance;
       position: relative;
       z-index: 1;
+    }
+
+    .top-eyebrow-wrap {
+      padding-top: 104px;
+      margin: 8px 0 20px;
+      display: grid;
+      justify-items: center;
+      pointer-events: none;
+      position: relative;
+      z-index: 3;
+    }
+
+    .top-eyebrow {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: #c9756c;
+      font-weight: 300;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
     }
 
     .hero-tagline {
@@ -1723,37 +1765,97 @@
       }
     }
 
-    @media (max-width: 640px) {
-      .container {
-        width: min(var(--max), calc(100% - 20px));
-      }
-
+    @media (max-width: 768px) {
       .nav-wrap {
         inset: 12px 0 auto;
       }
 
       .nav-shell {
         width: calc(100% - 16px);
-        padding: 10px 12px;
+        padding: 6px 10px;
+        border-radius: 22px;
+        position: relative;
       }
 
-      .nav-links {
-        gap: 10px 14px;
-        font-size: 10.5px;
-        letter-spacing: 0.08em;
-        justify-content: flex-end;
+      nav {
+        min-height: 50px;
+        padding: 0 2px;
+        gap: 10px;
       }
 
       .brand {
-        padding: 0 4px;
+        gap: 8px;
+        padding: 0 2px;
       }
 
-      .brand-title {
-        font-size: clamp(25px, 8.6vw, 34px);
+      .nav-wrap .brand-logo-wrap {
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav-wrap .brand-title {
+        font-size: clamp(20px, 5.7vw, 24px);
+        white-space: nowrap;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: rgba(255, 251, 245, 0.96);
+        border: 1px solid rgba(153, 114, 104, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 14px 30px rgba(97, 69, 60, 0.14);
+        backdrop-filter: blur(12px);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        padding: 8px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition: max-height 0.28s ease, opacity 0.22s ease, transform 0.22s ease;
+      }
+
+      .nav-shell.mobile-open .nav-links {
+        max-height: 320px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 10px 12px;
+      }
+
+      .top-eyebrow-wrap {
+        padding-top: 84px;
+        margin: 6px 0 28px;
+      }
+
+      .top-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 0.24em;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
       }
 
       .hero {
-        padding: 168px 0 46px;
+        padding: 148px 0 46px;
       }
 
       .hero-shell {
@@ -2087,7 +2189,9 @@
           <div class="brand-title">Crêpe de la Crêpe</div>
         </a>
 
-        <div class="nav-links">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Åpne meny">☰</button>
+
+        <div class="nav-links" id="primaryNav">
           <a href="./historie.html">Vår historie</a>
           <a href="#menu">Meny</a>
           <a href="./book-oss.html">Book oss</a>
@@ -2099,6 +2203,10 @@
   </div>
 
   <main id="top">
+    <div class="top-eyebrow-wrap" aria-hidden="true">
+      <span class="top-eyebrow">✦ LAGET MED KJÆRLIGHET ✦</span>
+    </div>
+
     <section class="hero" aria-label="Velkommen">
       <div class="hero-shell">
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
@@ -2106,7 +2214,6 @@
         <div class="hero-ring hero-ring-3" aria-hidden="true"></div>
 
         <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
-          <span class="hero-tagline">✦   HÅNDLAGET MED KJÆRLIGHET   ✦</span>
           <span class="hero-line hero-line-1">Velkommen til</span>
           <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
         </h1>
@@ -2516,7 +2623,22 @@
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
     const navWrap = document.getElementById('navWrap');
+    const navShell = navWrap?.querySelector('.nav-shell');
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
     const backToTop = document.getElementById('backToTop');
+    const mobileMenuQuery = window.matchMedia('(max-width: 768px)');
+
+    function setMobileMenuState(isOpen) {
+      if (!navShell || !menuToggle) return;
+      navShell.classList.toggle('mobile-open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Lukk meny' : 'Åpne meny');
+    }
+
+    function closeMobileMenu() {
+      setMobileMenuState(false);
+    }
 
     function updateNavState() {
       if (window.scrollY > 24) {
@@ -2534,6 +2656,31 @@
 
     updateNavState();
     window.addEventListener('scroll', updateNavState);
+    mobileMenuQuery.addEventListener('change', (event) => {
+      if (!event.matches) {
+        closeMobileMenu();
+      }
+    });
+
+    if (menuToggle && primaryNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        setMobileMenuState(!isOpen);
+      });
+
+      primaryNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (mobileMenuQuery.matches) closeMobileMenu();
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!mobileMenuQuery.matches || !navShell) return;
+        if (!navShell.contains(event.target)) {
+          closeMobileMenu();
+        }
+      });
+    }
 
     backToTop.addEventListener('click', () => {
       window.scrollTo({
