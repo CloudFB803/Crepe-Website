@@ -356,7 +356,6 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      isolation: isolate;
     }
 
     #hero-video {
@@ -375,100 +374,76 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.55);
       z-index: 1;
     }
 
-    .hero-shell {
-      width: 100%;
+    #hero-content {
       position: relative;
       z-index: 2;
-      padding: 40px 0 28px;
-    }
-
-    .hero-card {
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 28px 20px 18px;
-      border-radius: 30px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-title {
-      margin: 8px 0 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(5rem, 17vw, 12rem);
-      font-weight: 500;
-      line-height: 0.88;
-      letter-spacing: -0.045em;
-      color: #ffffff;
-      text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-title .hero-line {
-      display: block;
-      color: #ffffff;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: #f6d2c8;
-      font-weight: 500;
-    }
-
-    .hero-label {
-      margin: 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-copy {
-      margin: 16px auto 0;
-      max-width: 600px;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: #ffffff;
-      text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-actions {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-      position: relative;
-      z-index: 2;
     }
 
-    .hero-note {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: rgba(244, 238, 231, 0.54);
-      letter-spacing: 0.04em;
-      position: relative;
-      z-index: 2;
+    #hero-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      filter: brightness(0) invert(1);
     }
 
-    .hero .btn-secondary {
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.55);
-      background: rgba(255, 255, 255, 0.16);
+    #hero-heading {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.05;
+      margin: 0 0 20px 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
     }
 
-    .hero .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.26);
-      border-color: rgba(255, 255, 255, 0.75);
+    .hero-line-top {
+      display: block;
+      font-size: 0.45em;
+      font-weight: 700;
+      letter-spacing: 4px;
+      opacity: 0.85;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-line-bottom {
+      display: block;
+    }
+
+    #hero-sub {
+      font-size: clamp(14px, 2vw, 18px);
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 36px 0;
+    }
+
+    #hero-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: transparent;
+      border: 2px solid #FFFFFF;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    #hero-btn:hover {
+      background: #FFFFFF;
+      color: #000000;
     }
 
     .options-banner-wrap {
@@ -2267,15 +2242,14 @@
         <source src="events-hero.mp4" type="video/mp4">
       </video>
       <div id="hero-overlay"></div>
-      <div class="container hero-shell">
-        <div class="hero-card">
-          <p class="hero-label">ARRANGEMENTER &amp; BOOKING</p>
-          <h1 class="hero-title">Crêpe de la Crêpe Events</h1>
-          <p class="hero-copy">Vi tar med oss crêpene — du tar æren.</p>
-          <div class="hero-actions">
-            <a href="#muligheter" class="btn btn-secondary">Se alternativer</a>
-          </div>
-        </div>
+      <div id="hero-content">
+        <img src="crepe-logo-transparent.png" alt="Crêpe de la Crêpe logo" id="hero-logo">
+        <h1 id="hero-heading">
+          <span class="hero-line-top">Crêpe de la Crêpe</span>
+          <span class="hero-line-bottom">Events</span>
+        </h1>
+        <p id="hero-sub">Vi tar med oss crêpene — du tar æren.</p>
+        <a href="#muligheter" id="hero-btn">Se alternativer</a>
       </div>
     </section>
 
