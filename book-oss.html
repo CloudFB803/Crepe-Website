@@ -346,62 +346,57 @@
     }
 
     .hero {
-      min-height: 100svh;
       position: relative;
+      height: 100vh;
+      min-height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
+      justify-content: center;
       isolation: isolate;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(5, 4, 3, 0.1) 0%, rgba(5, 4, 3, 0.42) 58%, rgba(5, 4, 3, 0.78) 100%),
-        linear-gradient(90deg, rgba(5, 4, 3, 0.5) 0%, rgba(5, 4, 3, 0.14) 50%, rgba(5, 4, 3, 0.5) 100%),
-        url("hero-video.jpg") center center / cover no-repeat;
     }
 
-    .hero::before {
-      content: "";
+    #hero-video {
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(201, 131, 118, 0.08), transparent 24%),
-        radial-gradient(circle at 50% 48%, rgba(0, 0, 0, 0.18), transparent 30%);
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
     }
 
     .hero-shell {
       width: 100%;
       position: relative;
-      z-index: 1;
-      padding: 40px 0 28px;
-    }
-
-    .hero-card {
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 28px 20px 18px;
-      border-radius: 30px;
-      background: rgba(7, 6, 5, 0.14);
-      backdrop-filter: blur(2px);
-    }
-
-    .hero-logo {
-      width: 94px;
-      height: 94px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.24);
-      padding: 14px;
-    }
-
-    .hero-logo img {
-      width: 100%;
+      z-index: 2;
+      padding: 0;
       height: 100%;
-      object-fit: contain;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      margin: 0 0 12px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .hero-title {
@@ -411,27 +406,16 @@
       font-weight: 500;
       line-height: 0.88;
       letter-spacing: -0.045em;
-      color: #fff7f2;
+      color: #FFFFFF;
       text-shadow: 0 8px 40px rgba(26, 14, 12, 0.34);
     }
 
-    .hero-title .hero-line {
-      display: block;
-      color: #fff7f2;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: #f6d2c8;
-      font-weight: 500;
-    }
-
-    .hero-copy {
-      margin: 18px auto 0;
-      max-width: 600px;
-      font-size: clamp(1rem, 1.8vw, 1.18rem);
-      line-height: 1.85;
-      color: rgba(255, 245, 239, 0.86);
+    .hero-sub {
+      margin: 20px auto 0;
+      max-width: 34ch;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+      line-height: 1.65;
+      color: #FFFFFF;
       text-shadow: 0 6px 18px rgba(34, 20, 16, 0.34);
     }
 
@@ -443,11 +427,15 @@
       margin-top: 28px;
     }
 
-    .hero-note {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: rgba(244, 238, 231, 0.54);
-      letter-spacing: 0.04em;
+    .hero .btn-secondary {
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .hero .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: rgba(255, 255, 255, 0.75);
     }
 
     .options-banner-wrap {
@@ -1784,7 +1772,6 @@
     }
 
     /* historie.html component-language migration */
-    .hero-shell,
     .options-banner,
     .setup-shell,
     .why-book-shell,
@@ -1799,10 +1786,6 @@
       backdrop-filter: blur(8px);
     }
 
-    .hero-shell {
-      padding: 28px 0 18px;
-    }
-
     .hero-card {
       background: rgba(247, 241, 231, 0.72);
       border: 1px solid var(--line);
@@ -1812,7 +1795,6 @@
       text-align: left;
     }
 
-    .hero-title,
     .setup-name,
     .why-book-shell h3,
     .closing-cta h3 {
@@ -1822,8 +1804,6 @@
       color: var(--ink);
     }
 
-    .hero-copy,
-    .hero-note,
     .setup-desc,
     .closing-cta p,
     .why-book-intro {
@@ -1950,22 +1930,8 @@
         padding: 0 14px;
       }
 
-      .hero-shell {
-        padding: 24px 0 18px;
-      }
-
-      .hero-card {
-        padding: 24px 14px 16px;
-      }
-
-      .hero-title .hero-line:first-child {
-        white-space: nowrap;
-        font-size: 0.82em;
-      }
-
-      .hero-logo {
-        width: 82px;
-        height: 82px;
+      .hero-title {
+        font-size: clamp(4.2rem, 17vw, 12rem);
       }
 
       .hero-actions {
@@ -2242,21 +2208,16 @@
 
   <main id="top">
     <section class="hero" aria-label="Crepe de la Crepe Events hero">
+      <video autoplay muted loop playsinline id="hero-video">
+        <source src="events-hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
       <div class="container hero-shell">
-        <div class="hero-card">
-          <div class="hero-logo">
-            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" width="64" height="64" />
-          </div>
-
-          <h1 class="hero-title">
-            <span class="hero-line"><em>Crêpe</em> de la <em>Crêpe</em></span>
-            <span class="hero-line"><em>Events</em></span>
-          </h1>
-
-          <div class="hero-actions">
-            <a href="#muligheter" class="btn btn-secondary">Se alternativer</a>
-          </div>
-
+        <span class="hero-eyebrow">ARRANGEMENTER &amp; BOOKING</span>
+        <h1 class="hero-title">Crêpe de la Crêpe Events</h1>
+        <p class="hero-sub">Vi tar med oss crêpene — du tar æren.</p>
+        <div class="hero-actions">
+          <a href="#muligheter" class="btn btn-secondary">Se alternativer</a>
         </div>
       </div>
     </section>
