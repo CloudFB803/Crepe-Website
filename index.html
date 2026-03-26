@@ -1191,21 +1191,56 @@
     }
 
     .testimonial-card {
-      background: rgba(255, 250, 245, 0.72);
+      background: linear-gradient(135deg, #FFF0F3, #FFE4E8);
       border: 1px solid rgba(66, 39, 23, 0.1);
       border-radius: 24px;
       padding: 20px;
       display: grid;
       gap: 12px;
-      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.07);
+      box-shadow: 0 4px 24px rgba(255, 143, 163, 0.12);
       min-width: 0;
       overflow-wrap: anywhere;
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-1.2deg);
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -8px;
+      left: 12px;
+      font-size: 120px;
+      font-family: Georgia, serif;
+      line-height: 1;
+      color: #FFAEC0;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .testimonial-card:nth-child(3n + 2) {
+      background: linear-gradient(135deg, #FFF8F5, #FFE8D6);
+    }
+
+    .testimonial-card:nth-child(3n) {
+      background: linear-gradient(135deg, #FDF0F0, #F9D5D3);
+    }
+
+    .testimonial-card:nth-child(even) {
+      transform: rotate(1.2deg);
+    }
+
+    .testimonial-card:hover {
+      transform: rotate(0deg);
     }
 
     .testimonial-stars {
-      color: #b17459;
+      color: #FF8FA3;
       letter-spacing: 0.18em;
       font-size: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-card blockquote {
@@ -1215,12 +1250,32 @@
       font-size: 15px;
       font-weight: 500;
       overflow-wrap: anywhere;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-author {
       color: #6b5649;
       font-weight: 700;
       font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #FFAEC0;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .stats-bar {
@@ -2156,19 +2211,19 @@
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
                   <blockquote>"Å kjøpe en crêpe her føles som å unne seg et lite øyeblikk av ro. Man blir møtt med smil, nystekte dufter og en atmosfære som minner om små gater i Sør-Frankrike"</blockquote>
-                  <div class="testimonial-author">— Alexis Kayembe</div>
+                  <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">A</span> Alexis Kayembe</div>
                 </article>
 
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
                   <blockquote>"Ett fantastisk sted og utrolig deilige crêpes😍 Når du kommer inn, blir du møtt av ett fantastisk personale som alltid er klar til å hjelpe deg. Utvalget av crêpes er imponerende, med både søte og salte alternativer. Kvaliteten på produktene er høy, og du kan virkelig smake forskjellen. I tillegg er prisen rimelig."</blockquote>
-                  <div class="testimonial-author">— Jonas Hjørnerød</div>
+                  <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">J</span> Jonas Hjørnerød</div>
                 </article>
 
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
                   <blockquote>"Dere har den beste crêpen jeg har smakt. Og barna elsker den også! Besøker dere hvert år i Jul i Vinterland i Oslo, men er så glad for at dere har fått et permanent sted på Matværste i Fredrikstad nå, og med nye gode smaker! Veldig gjennomført design også. 10/10 Vi kommer definitivt tilbake!"</blockquote>
-                  <div class="testimonial-author">— Pia Aya</div>
+                  <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">P</span> Pia Aya</div>
                 </article>
               </div>
             </div>
