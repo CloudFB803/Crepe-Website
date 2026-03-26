@@ -337,9 +337,11 @@
       font-weight: 300;
       text-transform: uppercase;
       opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out forwards;
-      position: relative;
+      animation: heroTaglineFadeUp 0.6s ease-out forwards;
+      position: absolute;
+      left: 50%;
+      top: 118px;
+      transform: translateX(-50%);
       z-index: 1;
     }
 
@@ -470,6 +472,17 @@
       left: 50%;
       transform: translate(-50%, -42%);
       border-color: rgba(182, 142, 131, 0.07);
+    }
+
+    @keyframes heroTaglineFadeUp {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 14px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
     }
 
     @keyframes heroFadeUp {
@@ -1663,6 +1676,10 @@
       .hero {
         padding-top: 186px;
       }
+
+      .hero-tagline {
+        top: 134px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -1726,6 +1743,10 @@
     @media (max-width: 640px) {
       .container {
         width: min(var(--max), calc(100% - 20px));
+      }
+
+      .hero-tagline {
+        top: 122px;
       }
 
       .nav-wrap {
@@ -2095,13 +2116,13 @@
           <a href="#kontakt">Kontakt</a>
         </div>
       </nav>
-      <span class="hero-tagline" style="display: block; width: 100%; text-align: center; margin: 0; padding: 8px 0;">✦   LAGET MED KJÆRLIGHET   ✦</span>
     </div>
   </div>
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
       <div class="hero-shell">
+        <span class="hero-tagline" style="display: block; width: 100%; text-align: center; margin: 0; padding: 8px 0;">✦   LAGET MED KJÆRLIGHET   ✦</span>
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-3" aria-hidden="true"></div>
