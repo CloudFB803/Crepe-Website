@@ -68,95 +68,186 @@
       max-width: 100%;
     }
 
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 300;
-      display: flex;
+    .btn {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 28px;
-      transition: opacity 0.35s ease, background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-      border-bottom: 1px solid transparent;
-    }
-
-    .nav.solid {
-      background: rgba(248, 242, 233, 0.82);
-      backdrop-filter: blur(14px);
-      border-color: rgba(147, 97, 86, 0.14);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(147, 97, 86, 0.22);
-      background: rgba(255, 255, 255, 0.58);
-      display: grid;
-      place-items: center;
-      padding: 5px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(103, 75, 67, 0.09);
-    }
-
-    .nav-badge img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .nav-name {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(59, 46, 42, 0.64);
-    }
-
-    .nav-links a:hover {
-      color: var(--flamingo-deep);
-      transition: color 0.2s ease;
-    }
-
-    .nav-cta {
-      padding: 9px 22px;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 24px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #c37d6f, #9f645b);
+      border: 1px solid transparent;
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #fffaf7;
-      box-shadow: 0 10px 24px rgba(130, 89, 80, 0.24);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 10px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
     }
 
-    .nav-cta:hover {
-      transform: translateY(-1px);
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c98376, #9f645b);
+      color: #fffaf7;
+      box-shadow: 0 10px 24px rgba(130, 89, 80, 0.24);
+    }
+
+    .btn-primary:hover {
       box-shadow: 0 14px 30px rgba(130, 89, 80, 0.3);
+      filter: brightness(1.03);
+    }
+
+    .nav-wrap {
+      position: fixed;
+      inset: 18px 0 auto;
+      z-index: 300;
+      transition: transform 0.25s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: navReveal 0.7s ease-out 0.08s forwards;
+    }
+
+    .nav-shell {
+      width: min(1100px, calc(100% - 30px));
+      margin: 0 auto;
+      border-radius: 999px;
+      border: 1px solid rgba(153, 114, 104, 0.17);
+      background: rgba(255, 251, 245, 0.88);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 38px rgba(115, 83, 73, 0.09);
+      padding: 10px 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-wrap.scrolled .nav-shell {
+      border-color: rgba(147, 97, 86, 0.2);
+      box-shadow: 0 18px 42px rgba(97, 69, 60, 0.12);
+      background: rgba(255, 251, 245, 0.93);
+    }
+
+    .nav-wrap nav {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 0 8px;
+      color: #2f2018;
+    }
+
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(86, 58, 49, 0.11);
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 2.7vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2.2vw, 28px);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(59, 46, 42, 0.74);
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 0;
+      height: 1.5px;
+      background: #c98376;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: rgba(59, 46, 42, 0.95);
+    }
+
+    .nav-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .nav-book-btn {
+      min-height: 40px;
+      padding: 10px 18px;
+      font-size: 0.62rem;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(147, 97, 86, 0.24);
+      background: rgba(255, 251, 245, 0.95);
+      color: #553f37;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(86, 58, 49, 0.1);
+    }
+
+    .menu-toggle-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      display: block;
+      margin: 2px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .hero {
@@ -806,6 +897,17 @@
       to { opacity: 1; }
     }
 
+    @keyframes navReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @keyframes scrollPulse {
       0%, 100% { transform: scaleY(1); opacity: 0.85; }
       50% { transform: scaleY(1.18); opacity: 1; }
@@ -839,27 +941,6 @@
     }
 
     @media (max-width: 820px) {
-      .nav {
-        padding: 14px 16px;
-      }
-
-      .nav-name {
-        display: none;
-      }
-
-      .nav-right {
-        gap: 14px;
-      }
-
-      .nav-links {
-        gap: 14px;
-        font-size: 0.62rem;
-      }
-
-      .nav-cta {
-        padding: 9px 16px;
-      }
-
       .hero-title {
         font-size: clamp(4rem, 20vw, 7.2rem);
       }
@@ -887,25 +968,84 @@
       }
     }
 
-    @media (max-width: 560px) {
-      .nav {
-        background: rgba(248, 242, 233, 0.62);
-        backdrop-filter: blur(14px);
-        border-color: rgba(147, 97, 86, 0.1);
-        box-shadow: 0 10px 28px rgba(103, 75, 67, 0.08);
-        opacity: 0.9;
+    @media (max-width: 640px) {
+      .nav-wrap {
+        inset: 12px 0 auto;
       }
 
-      .nav.is-scrolled {
-        background: rgba(248, 242, 233, 0.82);
-        backdrop-filter: blur(14px);
-        border-color: rgba(147, 97, 86, 0.14);
-        box-shadow: none;
-        opacity: 1;
+      .nav-shell {
+        width: calc(100% - 16px);
+        padding: 6px 10px;
+        border-radius: 20px;
+        position: relative;
+      }
+
+      .nav-wrap nav {
+        min-height: 48px;
+        gap: 8px;
+      }
+
+      .nav-actions {
+        display: flex;
+        margin-left: auto;
+        justify-content: flex-end;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        flex-direction: column;
+      }
+
+      .nav-book-btn {
+        display: none;
       }
 
       .nav-links {
         display: none;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: calc(100% + 8px);
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(147, 97, 86, 0.16);
+        background: rgba(255, 250, 244, 0.98);
+        box-shadow: 0 18px 36px rgba(97, 69, 60, 0.18);
+        backdrop-filter: blur(12px);
+        grid-template-columns: 1fr;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-shell.menu-open .nav-links {
+        display: grid;
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      .brand {
+        padding: 0 2px;
+      }
+
+      .nav-wrap .brand-logo-wrap {
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav-wrap .brand-title {
+        font-size: clamp(18px, 6.2vw, 24px);
+        white-space: nowrap;
       }
 
       .hero-scroll {
@@ -940,22 +1080,34 @@
 </head>
 <body>
 
-  <nav class="nav" id="nav">
-    <a class="nav-logo" href="./index.html">
-      <div class="nav-badge">
-        <img src="crepe-logo-transparent.png" alt="Logo" />
-      </div>
-      <span class="nav-name">Crêpe de la Crêpe</span>
-    </a>
+  <div class="nav-wrap" id="navWrap">
+    <div class="nav-shell">
+      <nav aria-label="Hovednavigasjon">
+        <a href="./index.html" class="brand" aria-label="Crêpe de la Crêpe forside">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+          </div>
+          <div class="brand-title">Crêpe de la Crêpe</div>
+        </a>
 
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="./index.html">Forside</a>
-        <a href="./index.html#menu">Meny</a>
-      </div>
-      <a class="nav-cta" href="./book-oss.html">Book oss</a>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-book-btn" href="./book-oss.html">Book oss</a>
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="primaryNavLinks">
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+          </button>
+        </div>
+
+        <div class="nav-links" id="primaryNavLinks">
+          <a href="./index.html">Forside</a>
+          <a href="./historie.html">Vår historie</a>
+          <a href="./index.html#menu">Meny</a>
+          <a href="./book-oss.html">Book oss</a>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </div>
 
   <section class="hero">
     <video
@@ -1122,23 +1274,65 @@
   </footer>
 
   <script>
-    const nav = document.getElementById("nav");
-    const mobileMq = window.matchMedia("(max-width: 560px)");
+    const navWrap = document.getElementById('navWrap');
+    const navShell = navWrap?.querySelector('.nav-shell');
+    const navLinks = document.getElementById('primaryNavLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNavQuery = window.matchMedia('(max-width: 640px)');
+
+    function closeMobileMenu() {
+      if (!navShell || !menuToggle) return;
+      navShell.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Åpne meny');
+    }
+
+    function openMobileMenu() {
+      if (!navShell || !menuToggle) return;
+      navShell.classList.add('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Lukk meny');
+    }
+
+    if (menuToggle && navLinks && navShell) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navShell.classList.contains('menu-open');
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (mobileNavQuery.matches) {
+            closeMobileMenu();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+
+      mobileNavQuery.addEventListener('change', (event) => {
+        if (!event.matches) {
+          closeMobileMenu();
+        }
+      });
+    }
 
     const updateNavState = () => {
-      if (mobileMq.matches) {
-        nav.classList.remove("solid");
-        nav.classList.toggle("is-scrolled", window.scrollY > 24);
-      } else {
-        nav.classList.remove("is-scrolled");
-        nav.classList.toggle("solid", window.scrollY > 40);
-      }
+      if (!navWrap) return;
+      navWrap.classList.toggle('scrolled', window.scrollY > 24);
     };
 
     updateNavState();
 
-    window.addEventListener("scroll", updateNavState, { passive: true });
-    mobileMq.addEventListener("change", updateNavState);
+    window.addEventListener('scroll', updateNavState, { passive: true });
 
     const io = new IntersectionObserver(
       (entries) => {
