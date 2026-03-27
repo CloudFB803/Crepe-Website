@@ -369,18 +369,25 @@
       z-index: 1;
     }
 
-    .hero-tagline {
+    .hero-top-tagline {
       font-family: "Manrope", sans-serif;
       font-size: 0.68rem;
       letter-spacing: 0.3em;
       color: #c9756c;
       font-weight: 300;
       text-transform: uppercase;
+      margin: 0;
+      position: absolute;
+      top: clamp(116px, 16vh, 168px);
+      left: 50%;
+      transform: translateX(-50%) translateY(14px);
       opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out forwards;
-      position: relative;
-      z-index: 1;
+      animation: heroFadeUpTagline 0.6s ease-out 0.05s forwards;
+      z-index: 2;
+      text-align: center;
+      white-space: nowrap;
+      width: max-content;
+      max-width: calc(100% - 32px);
     }
 
     .hero-line {
@@ -521,6 +528,17 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes heroFadeUpTagline {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
       }
     }
 
@@ -1852,6 +1870,13 @@
         padding-top: clamp(24px, 6vh, 42px);
       }
 
+      .hero-top-tagline {
+        top: 122px;
+        font-size: 0.6rem;
+        letter-spacing: 0.22em;
+        white-space: normal;
+      }
+
       .hero-line-1 {
         font-size: clamp(26px, 6.4vw, 34px);
       }
@@ -2199,6 +2224,7 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
+      <p class="hero-top-tagline">✦ LAGET MED KJÆRLIGHET ✦</p>
       <div class="hero-shell">
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
