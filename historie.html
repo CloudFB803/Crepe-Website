@@ -78,14 +78,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 28px;
-      transition: opacity 0.35s ease, background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      transition: opacity 0.55s ease, background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       border-bottom: 1px solid transparent;
+      opacity: 0;
+    }
+
+    .nav.visible {
+      opacity: 1;
     }
 
     .nav.solid {
-      background: rgba(248, 242, 233, 0.82);
-      backdrop-filter: blur(14px);
-      border-color: rgba(147, 97, 86, 0.14);
+      background: rgba(248, 242, 233, 0.96);
+      backdrop-filter: blur(18px);
+      border-color: rgba(147, 97, 86, 0.22);
+      box-shadow: 0 4px 24px rgba(103, 75, 67, 0.13);
     }
 
     .nav-logo {
@@ -887,25 +893,154 @@
       }
     }
 
+    /* ── Mobile nav (hamburger, index.html style) ── */
+    .mob-nav {
+      display: none;
+      position: fixed;
+      inset: 12px 0 auto;
+      z-index: 300;
+      opacity: 0;
+      transition: opacity 0.55s ease;
+    }
+
+    .mob-nav.visible {
+      opacity: 1;
+    }
+
+    .mob-nav-shell {
+      width: calc(100% - 16px);
+      margin: 0 auto;
+      border-radius: 20px;
+      border: 1px solid rgba(153, 114, 104, 0.17);
+      background: rgba(255, 251, 245, 0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 38px rgba(115, 83, 73, 0.09);
+      padding: 6px 10px;
+      position: relative;
+    }
+
+    .mob-nav-shell nav {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mob-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 2px;
+      color: #2f2018;
+      text-decoration: none;
+    }
+
+    .mob-brand-logo-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(86, 58, 49, 0.11);
+      flex-shrink: 0;
+    }
+
+    .mob-brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .mob-brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 6.6vw, 25px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
+    .mob-nav-actions {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .mob-menu-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(147, 97, 86, 0.24);
+      background: rgba(255, 251, 245, 0.95);
+      color: #553f37;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(86, 58, 49, 0.1);
+    }
+
+    .mob-menu-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      display: block;
+      margin: 2px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .mob-nav-links {
+      display: none;
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: calc(100% + 8px);
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(147, 97, 86, 0.16);
+      background: rgba(255, 250, 244, 0.98);
+      box-shadow: 0 18px 36px rgba(97, 69, 60, 0.18);
+      backdrop-filter: blur(12px);
+      grid-template-columns: 1fr;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: rgba(59, 46, 42, 0.74);
+    }
+
+    .mob-nav-shell.menu-open .mob-nav-links {
+      display: grid;
+    }
+
+    .mob-nav-shell.menu-open .mob-menu-line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .mob-nav-shell.menu-open .mob-menu-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mob-nav-shell.menu-open .mob-menu-line:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    /* ── End mobile nav ── */
+
     @media (max-width: 560px) {
       .nav {
-        background: rgba(248, 242, 233, 0.62);
-        backdrop-filter: blur(14px);
-        border-color: rgba(147, 97, 86, 0.1);
-        box-shadow: 0 10px 28px rgba(103, 75, 67, 0.08);
-        opacity: 0.9;
-      }
-
-      .nav.is-scrolled {
-        background: rgba(248, 242, 233, 0.82);
-        backdrop-filter: blur(14px);
-        border-color: rgba(147, 97, 86, 0.14);
-        box-shadow: none;
-        opacity: 1;
-      }
-
-      .nav-links {
         display: none;
+      }
+
+      .mob-nav {
+        display: block;
       }
 
       .hero-scroll {
@@ -951,11 +1086,37 @@
     <div class="nav-right">
       <div class="nav-links">
         <a href="./index.html">Forside</a>
-        <a href="./index.html#menu">Meny</a>
       </div>
       <a class="nav-cta" href="./book-oss.html">Book oss</a>
     </div>
   </nav>
+
+  <div class="mob-nav" id="mobNav">
+    <div class="mob-nav-shell" id="mobNavShell">
+      <nav aria-label="Navigasjon">
+        <a href="./index.html" class="mob-brand">
+          <div class="mob-brand-logo-wrap">
+            <img class="mob-brand-logo" src="crepe-logo-transparent.png" alt="Crêpe de la Crêpe logo" />
+          </div>
+          <div class="mob-brand-title">Crêpe de la Crêpe</div>
+        </a>
+
+        <div class="mob-nav-actions">
+          <button class="mob-menu-toggle" id="mobMenuToggle" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobNavLinks">
+            <span class="mob-menu-line"></span>
+            <span class="mob-menu-line"></span>
+            <span class="mob-menu-line"></span>
+          </button>
+        </div>
+
+        <div class="mob-nav-links" id="mobNavLinks">
+          <a href="./index.html">Forside</a>
+          <a href="./index.html#menu">Meny</a>
+          <a href="./book-oss.html">Book oss</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
   <section class="hero">
     <video
@@ -1123,22 +1284,45 @@
 
   <script>
     const nav = document.getElementById("nav");
+    const mobNav = document.getElementById("mobNav");
+    const mobNavShell = document.getElementById("mobNavShell");
+    const mobMenuToggle = document.getElementById("mobMenuToggle");
+    const mobNavLinks = document.getElementById("mobNavLinks");
     const mobileMq = window.matchMedia("(max-width: 560px)");
 
     const updateNavState = () => {
-      if (mobileMq.matches) {
-        nav.classList.remove("solid");
-        nav.classList.toggle("is-scrolled", window.scrollY > 24);
-      } else {
-        nav.classList.remove("is-scrolled");
+      const scrolled = window.scrollY > 0;
+      if (!mobileMq.matches) {
+        nav.classList.toggle("visible", scrolled);
         nav.classList.toggle("solid", window.scrollY > 40);
+      }
+      if (mobileMq.matches) {
+        mobNav.classList.toggle("visible", scrolled);
       }
     };
 
     updateNavState();
-
     window.addEventListener("scroll", updateNavState, { passive: true });
     mobileMq.addEventListener("change", updateNavState);
+
+    if (mobMenuToggle && mobNavShell) {
+      mobMenuToggle.addEventListener("click", () => {
+        const isOpen = mobNavShell.classList.contains("menu-open");
+        mobNavShell.classList.toggle("menu-open", !isOpen);
+        mobMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobMenuToggle.setAttribute("aria-label", isOpen ? "Åpne meny" : "Lukk meny");
+      });
+
+      if (mobNavLinks) {
+        mobNavLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobNavShell.classList.remove("menu-open");
+            mobMenuToggle.setAttribute("aria-expanded", "false");
+            mobMenuToggle.setAttribute("aria-label", "Åpne meny");
+          });
+        });
+      }
+    }
 
     const io = new IntersectionObserver(
       (entries) => {
