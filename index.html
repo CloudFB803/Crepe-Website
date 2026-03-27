@@ -383,6 +383,20 @@
       z-index: 1;
     }
 
+    .hero-tagline-floating {
+      position: absolute;
+      top: 118px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      padding: 8px 0;
+      width: max-content;
+      text-align: center;
+      z-index: 2;
+      opacity: 1;
+      animation: none;
+    }
+
     .hero-line {
       opacity: 0;
       transform: translateY(14px);
@@ -1704,6 +1718,10 @@
       .hero {
         padding-top: 186px;
       }
+
+      .hero-tagline-floating {
+        top: 122px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -1844,6 +1862,10 @@
 
       .hero {
         padding: 168px 0 46px;
+      }
+
+      .hero-tagline-floating {
+        top: 116px;
       }
 
       .hero-shell {
@@ -2199,6 +2221,7 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
+      <span class="hero-tagline hero-tagline-floating">✦ Laget med kjærlighet ✦</span>
       <div class="hero-shell">
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
