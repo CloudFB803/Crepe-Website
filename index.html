@@ -2165,6 +2165,34 @@
     ]
   }
   </script>
+
+  <style>
+    #floating-bg-elements {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #floating-bg-elements span {
+      position: absolute;
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      opacity: 0.13;
+      animation: floatDrift var(--dur) ease-in-out infinite;
+      animation-delay: var(--delay);
+      left: var(--x);
+      top: var(--y);
+      filter: blur(0.4px);
+    }
+
+    @keyframes floatDrift {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-18px) rotate(6deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+  </style>
+
 </head>
 <body>
   <div class="nav-wrap" id="navWrap">
@@ -2199,6 +2227,20 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
+      <div id="floating-bg-elements" aria-hidden="true">
+        <span style="--dur: 6.4s; --delay: -0.8s; --x: 6%; --y: 12%;">🥞</span>
+        <span style="--dur: 7.2s; --delay: -2.1s; --x: 15%; --y: 32%;">🍫</span>
+        <span style="--dur: 8.9s; --delay: -3.7s; --x: 24%; --y: 68%;">🍓</span>
+        <span style="--dur: 9.7s; --delay: -4.4s; --x: 33%; --y: 20%;">🥞</span>
+        <span style="--dur: 10.5s; --delay: -5.2s; --x: 42%; --y: 80%;">🍫</span>
+        <span style="--dur: 6.8s; --delay: -6.6s; --x: 51%; --y: 46%;">🥞</span>
+        <span style="--dur: 7.9s; --delay: -1.5s; --x: 60%; --y: 14%;">🍓</span>
+        <span style="--dur: 8.3s; --delay: -7.8s; --x: 69%; --y: 58%;">🍫</span>
+        <span style="--dur: 9.1s; --delay: -2.9s; --x: 77%; --y: 28%;">🥞</span>
+        <span style="--dur: 10.9s; --delay: -4.9s; --x: 85%; --y: 74%;">🍓</span>
+        <span style="--dur: 7.5s; --delay: -6.1s; --x: 91%; --y: 40%;">🍫</span>
+        <span style="--dur: 6.9s; --delay: -3.3s; --x: 53%; --y: 85%;">🥞</span>
+      </div>
       <div class="hero-shell">
         <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
         <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
