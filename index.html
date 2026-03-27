@@ -195,7 +195,7 @@
     }
 
     .nav-links {
-      display: flex;
+      display: none;
       align-items: center;
       gap: clamp(12px, 2.2vw, 28px);
       font-size: 12px;
@@ -204,6 +204,44 @@
       text-transform: uppercase;
       color: rgba(59, 46, 42, 0.74);
       flex-wrap: wrap;
+    }
+
+    .nav-center-links {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(18px, 2.6vw, 38px);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(59, 46, 42, 0.74);
+    }
+
+    .nav-center-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-center-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 0;
+      height: 1.5px;
+      background: var(--flamingo-muted);
+      transition: width 0.2s ease;
+    }
+
+    .nav-center-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-center-links a:hover {
+      color: rgba(59, 46, 42, 0.95);
     }
 
     .nav-links a {
@@ -232,10 +270,9 @@
     }
 
     .nav-actions {
-      display: none;
+      display: flex;
       align-items: center;
       gap: 10px;
-      margin-left: auto;
     }
 
     .nav-book-btn {
@@ -281,8 +318,8 @@
     }
 
     .brand-logo-wrap {
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.7);
@@ -302,7 +339,7 @@
 
     .brand-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(24px, 2.7vw, 34px);
+      font-size: clamp(26px, 3vw, 38px);
       font-weight: 600;
       letter-spacing: -0.03em;
       line-height: 0.92;
@@ -1785,6 +1822,10 @@
         gap: 8px;
       }
 
+      .nav-center-links {
+        display: none;
+      }
+
       .nav-actions {
         display: flex;
         margin-left: auto;
@@ -2204,6 +2245,13 @@
           </div>
           <div class="brand-title">Crêpe de la Crêpe</div>
         </a>
+
+        <div class="nav-center-links">
+          <a href="#top">Forside</a>
+          <a href="./historie.html">Vår historie</a>
+          <a href="#menu">Meny</a>
+          <a href="https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter" target="_blank" rel="noopener">Foodora</a>
+        </div>
 
         <div class="nav-actions">
           <a class="btn btn-primary nav-book-btn" href="./book-oss.html">Book oss</a>
