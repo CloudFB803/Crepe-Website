@@ -241,109 +241,157 @@
       line-height: 1.85;
     }
 
-    .reveal-nav {
+    .nav-wrap {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      pointer-events: none;
+      inset: 18px 0 auto;
+      z-index: 120;
       opacity: 0;
-      transform: translateY(-12px);
-      transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+      transform: translateY(-10px);
+      animation: navReveal 0.7s ease-out 0.08s forwards;
     }
 
-    .reveal-nav.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .reveal-nav-inner {
-      width: min(calc(100% - 28px), 1180px);
+    .nav-shell {
+      width: min(1100px, calc(100% - 30px));
       margin: 0 auto;
-      min-height: 62px;
+      border-radius: 999px;
+      border: 1px solid rgba(153, 114, 104, 0.17);
+      background: rgba(255, 251, 245, 0.88);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 38px rgba(115, 83, 73, 0.09);
       padding: 10px 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-wrap.scrolled .nav-shell {
+      border-color: rgba(147, 97, 86, 0.2);
+      box-shadow: 0 18px 42px rgba(97, 69, 60, 0.12);
+      background: rgba(255, 251, 245, 0.93);
+    }
+
+    nav {
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(147, 97, 86, 0.14);
-      background: rgba(248, 242, 233, 0.82);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 12px 30px rgba(87, 61, 53, 0.15);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .nav-brand-badge {
-      width: 36px;
-      height: 36px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid var(--line);
-      overflow: hidden;
-      padding: 6px;
-    }
-
-    .nav-brand-badge img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .nav-brand span {
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      gap: 14px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      color: rgba(59, 46, 42, 0.64);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
+      gap: clamp(12px, 2.2vw, 28px);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
+      color: rgba(59, 46, 42, 0.74);
+      flex-wrap: wrap;
     }
 
     .nav-links a {
-      opacity: 0.82;
-      transition: opacity 180ms var(--ease);
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 0;
+      height: 1.5px;
+      background: var(--flamingo-muted);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-links a:hover {
-      opacity: 1;
+      color: rgba(59, 46, 42, 0.95);
     }
 
-    .nav-mobile-home {
+    .nav-actions {
       display: none;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
     }
 
-    .nav-cta {
-      min-height: 44px;
-      padding: 0 16px;
-      font-size: 0.8rem;
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(147, 97, 86, 0.24);
+      background: rgba(255, 251, 245, 0.95);
+      color: #553f37;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(86, 58, 49, 0.1);
+    }
+
+    .menu-toggle-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      display: block;
+      margin: 2px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 0 8px;
+      color: #2f2018;
+    }
+
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(86, 58, 49, 0.11);
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 2.7vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
+    @keyframes navReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero {
@@ -1911,41 +1959,6 @@
         width: min(calc(100% - 24px), var(--container));
       }
 
-      .reveal-nav-inner {
-        width: calc(100% - 16px);
-        padding: 8px 10px;
-        min-height: 64px;
-        position: relative;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-mobile-home {
-        display: inline-flex;
-      }
-
-      .nav-brand {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .nav-brand span {
-        display: none;
-      }
-
-      .nav-brand-badge {
-        width: 50px;
-        height: 50px;
-      }
-
-      .nav-cta {
-        min-height: 40px;
-        padding: 0 14px;
-      }
-
       .hero-shell {
         padding: 24px 0 18px;
       }
@@ -2216,23 +2229,31 @@
   </style>
 </head>
 <body>
-  <div class="reveal-nav" id="revealNav">
-    <div class="reveal-nav-inner">
-      <a class="nav-mobile-home" href="./index.html">Forside</a>
-      <div class="nav-brand">
-        <div class="nav-brand-badge">
-          <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" width="120" height="120" />
+  <div class="nav-wrap" id="navWrap">
+    <div class="nav-shell">
+      <nav aria-label="Hovednavigasjon">
+        <a href="./index.html" class="brand" aria-label="Crêpe de la Crêpe forside">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+          </div>
+          <div class="brand-title">Crêpe de la Crêpe</div>
+        </a>
+
+        <div class="nav-actions">
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="primaryNavLinks">
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+          </button>
         </div>
-        <span>Crêpe de la Crêpe</span>
-      </div>
 
-      <nav class="nav-links" aria-label="Sekundær navigasjon">
-        <a href="index.html">Forside</a>
-        <a href="#muligheter">Muligheter</a>
-        <a href="#oppsett">Oppsett</a>
+        <div class="nav-links" id="primaryNavLinks">
+          <a href="./historie.html">Vår historie</a>
+          <a href="./index.html#menu">Meny</a>
+          <a href="./index.html#lokasjon">Lokasjon</a>
+          <a href="./index.html#kontakt">Kontakt</a>
+        </div>
       </nav>
-
-      <button class="btn btn-primary nav-cta js-open-booking">Book</button>
     </div>
   </div>
 
@@ -2950,7 +2971,7 @@
 
   <script>
     (() => {
-      const revealNav = document.getElementById("revealNav");
+      const navWrap = document.getElementById("navWrap");
       const backToTop = document.getElementById("backToTop");
 
       const overlay = document.getElementById("bookingOverlay");
@@ -3100,8 +3121,7 @@
       }
 
       function syncRevealNav() {
-        const scrolled = window.scrollY > 48;
-        revealNav.classList.toggle("visible", scrolled);
+        navWrap.classList.toggle("scrolled", window.scrollY > 24);
         backToTop.classList.toggle("visible", window.scrollY > window.innerHeight * 0.8);
       }
 
