@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crêpe de la Crêpe | Meny</title>
+  <meta name="description" content="Se menyen vår — søte og salte crêpes håndlaget med franske teknikker. Crêpe de la Crêpe serverer på festivaler og arrangementer over hele Norge.">
+  <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f7f1e7;
+      --cream: #f3eadf;
+      --blush: #ead9d2;
+      --flamingo-soft: #e9c8c0;
+      --flamingo-muted: #d08f82;
+      --flamingo-deep: #9f645b;
+      --ink: #3b2e2a;
+      --ink-soft: #6f5a53;
+      --line: rgba(147, 97, 86, 0.17);
+      --glass: rgba(247, 241, 231, 0.72);
+      --text: var(--ink);
+      --muted: var(--ink-soft);
+      --muted-soft: rgba(111, 90, 83, 0.78);
+      --accent: #c98376;
+      --accent-2: #9f645b;
+      --accent-soft: var(--blush);
+      --bg-1: #fbf7f1;
+      --bg-2: #f3e8dc;
+      --white: #fffaf7;
+      --max: 1240px;
+      --radius: 30px;
+      --shadow: 0 24px 70px rgba(103, 75, 67, 0.12);
+      --shadow-soft: 0 12px 30px rgba(103, 75, 67, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      line-height: 1.55;
+      background: #FAF7F2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    :is(a, button, .btn, input, textarea, select):focus-visible {
+      outline: 2px solid rgba(159, 100, 91, 0.4);
+      outline-offset: 2px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      gap: 10px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fffaf7;
+      box-shadow: 0 10px 24px rgba(130, 89, 80, 0.24);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 14px 30px rgba(130, 89, 80, 0.3);
+      filter: brightness(1.03);
+    }
+
+    /* ── NAVBAR ── */
+    .nav-wrap {
+      position: fixed;
+      inset: 18px 0 auto;
+      z-index: 120;
+      transition: transform 0.25s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: navReveal 0.7s ease-out 0.08s forwards;
+    }
+
+    .nav-shell {
+      width: min(1100px, calc(100% - 30px));
+      margin: 0 auto;
+      border-radius: 999px;
+      border: 1px solid rgba(153, 114, 104, 0.17);
+      background: rgba(255, 251, 245, 0.88);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 38px rgba(115, 83, 73, 0.09);
+      padding: 10px 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-wrap.scrolled .nav-shell {
+      border-color: rgba(147, 97, 86, 0.2);
+      box-shadow: 0 18px 42px rgba(97, 69, 60, 0.12);
+      background: rgba(255, 251, 245, 0.93);
+    }
+
+    nav {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2.2vw, 28px);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(59, 46, 42, 0.74);
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 0;
+      height: 1.5px;
+      background: var(--flamingo-muted);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--flamingo-deep);
+    }
+
+    .nav-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .nav-book-btn {
+      min-height: 40px;
+      padding: 10px 18px;
+      font-size: 0.62rem;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(147, 97, 86, 0.24);
+      background: rgba(255, 251, 245, 0.95);
+      color: #553f37;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(86, 58, 49, 0.1);
+    }
+
+    .menu-toggle-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      display: block;
+      margin: 2px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 0 8px;
+      color: #2f2018;
+    }
+
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(86, 58, 49, 0.11);
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 2.7vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
+    @keyframes navReveal {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO ── */
+    .menu-hero {
+      min-height: 50vh;
+      background: #FAF7F2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+    }
+
+    .menu-hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .hero-label {
+      font-family: "Parisienne", cursive;
+      font-size: 34px;
+      color: #c98376;
+      line-height: 1.2;
+      margin: 0 0 4px;
+    }
+
+    .hero-h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(52px, 8vw, 88px);
+      font-weight: 600;
+      color: #9f645b;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+    }
+
+    .hero-rule {
+      width: 72px;
+      height: 1.5px;
+      background: #c98376;
+      border: none;
+      margin: 0 auto 22px;
+    }
+
+    .hero-sub {
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      color: #7a6a5e;
+      font-style: italic;
+      max-width: 420px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* ── MENU CATEGORIES ── */
+    .menu-category {
+      padding: 80px 24px;
+    }
+
+    .menu-category--sweet {
+      background: #FAF7F2;
+    }
+
+    .menu-category--savory {
+      background: #FFFFFF;
+    }
+
+    .category-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .category-label {
+      font-family: "Parisienne", cursive;
+      font-size: 28px;
+      color: #c98376;
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .category-rule {
+      width: 56px;
+      height: 1px;
+      background: #c98376;
+      border: none;
+      margin: 0 auto 44px;
+    }
+
+    /* ── MENU ROW ── */
+    .menu-row {
+      display: flex;
+      align-items: flex-end;
+      padding: 16px 12px;
+      margin: 0 -12px;
+      border-bottom: 1px solid #e8ddd5;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+      gap: 0;
+    }
+
+    .menu-row:last-child {
+      border-bottom: none;
+    }
+
+    .menu-row:hover {
+      background: #FDF0EE;
+    }
+
+    .menu-row-left {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .menu-row-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #2C2016;
+      line-height: 1.2;
+    }
+
+    .menu-row-desc {
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+      font-style: italic;
+      color: #7a6a5e;
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .menu-row-dots {
+      flex: 1;
+      min-width: 16px;
+      border-bottom: 2px dotted rgba(201, 131, 118, 0.45);
+      margin: 0 12px 6px;
+      height: 0;
+      align-self: flex-end;
+    }
+
+    .menu-row-price {
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #9f645b;
+      white-space: nowrap;
+      align-self: flex-end;
+      padding-bottom: 2px;
+    }
+
+    /* ── ALLERGEN ── */
+    .allergen {
+      padding: 36px 24px;
+      text-align: center;
+      background: #FAF7F2;
+      border-top: 1px solid rgba(147, 97, 86, 0.12);
+    }
+
+    .allergen p {
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+      color: #9a8880;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── CTA ── */
+    .menu-cta {
+      background: #c98376;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .menu-cta h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .menu-cta p {
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 36px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      background: #fff;
+      color: #c98376;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-cta:hover {
+      background: transparent;
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 30px 0 42px;
+      border-top: 1px solid var(--line);
+      background: #f4e9dc;
+    }
+
+    .footer-shell {
+      background: linear-gradient(180deg, rgba(251,245,238,0.92), rgba(237,226,212,0.95));
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 0.8fr 1fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .footer-brand .brand {
+      justify-self: start;
+      gap: 16px;
+    }
+
+    .footer .brand-logo-wrap {
+      width: 82px;
+      height: 82px;
+      border-radius: 24px;
+      flex-shrink: 0;
+    }
+
+    .footer .brand-title {
+      color: #2b1a14;
+      text-shadow: none;
+      font-size: 30px;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    .footer .brand-subtitle {
+      color: #9f645b;
+      margin-top: 8px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
+
+    .footer-block h4 {
+      margin: 0 0 14px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--flamingo-deep);
+    }
+
+    .footer-links,
+    .footer-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-list a,
+    .footer-list div {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-list a:hover {
+      color: var(--text);
+    }
+
+    .footer-mini {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: #826c5f;
+      font-size: 13px;
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 140;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(110, 78, 67, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.88);
+      color: var(--text);
+      box-shadow: 0 16px 34px rgba(56, 33, 20, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 800;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(199, 149, 99, 0.34);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1180px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-shell {
+        width: min(860px, calc(100% - 24px));
+        border-radius: 28px;
+      }
+
+      nav {
+        min-height: 64px;
+        padding: 6px 4px;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer .brand-title {
+        white-space: normal;
+        font-size: 28px;
+      }
+
+      .back-to-top {
+        right: 14px;
+        bottom: 14px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .nav-wrap {
+        inset: 12px 0 auto;
+      }
+
+      .nav-shell {
+        width: calc(100% - 16px);
+        padding: 6px 10px;
+        border-radius: 20px;
+        position: relative;
+      }
+
+      nav {
+        min-height: 48px;
+        gap: 8px;
+      }
+
+      .nav-actions {
+        display: flex;
+        margin-left: auto;
+        justify-content: flex-end;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        flex-direction: column;
+      }
+
+      .nav-book-btn {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: calc(100% + 8px);
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(147, 97, 86, 0.16);
+        background: rgba(255, 250, 244, 0.98);
+        box-shadow: 0 18px 36px rgba(97, 69, 60, 0.18);
+        backdrop-filter: blur(12px);
+        grid-template-columns: 1fr;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-shell.menu-open .nav-links {
+        display: grid;
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-shell.menu-open .menu-toggle-line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      .brand {
+        padding: 0 2px;
+      }
+
+      .brand-title {
+        font-size: clamp(20px, 6.6vw, 25px);
+      }
+
+      .menu-hero {
+        padding: 110px 24px 60px;
+      }
+
+      .menu-category {
+        padding: 48px 20px;
+      }
+
+      .menu-cta {
+        padding: 48px 24px;
+      }
+
+      .footer-shell {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- NAVBAR -->
+  <div class="nav-wrap" id="navWrap">
+    <div class="nav-shell">
+      <nav aria-label="Hovednavigasjon">
+        <a href="./index.html" class="brand" aria-label="Crêpe de la Crêpe forside">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
+          </div>
+          <div class="brand-title">Crêpe de la Crêpe</div>
+        </a>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-book-btn" href="./book-oss.html">Book oss</a>
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="primaryNavLinks">
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+          </button>
+        </div>
+
+        <div class="nav-links" id="primaryNavLinks">
+          <a href="./historie.html">Vår historie</a>
+          <a href="./meny.html" class="active">Meny</a>
+          <a href="./book-oss.html">Book oss</a>
+          <a href="./index.html#lokasjon">Lokasjon</a>
+          <a href="./index.html#kontakt">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="menu-hero" aria-label="Meny">
+      <div class="menu-hero-inner">
+        <p class="hero-label">La carte</p>
+        <h1 class="hero-h1">Vår meny</h1>
+        <hr class="hero-rule" aria-hidden="true">
+        <p class="hero-sub">Håndlaget med franske teknikker — servert med norsk hjerte.</p>
+      </div>
+    </section>
+
+    <!-- SWEET CRÊPES -->
+    <section class="menu-category menu-category--sweet" aria-labelledby="sweet-heading">
+      <div class="category-inner">
+        <span class="category-label" id="sweet-heading">Søte crêpes</span>
+        <hr class="category-rule" aria-hidden="true">
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Klassisk smør &amp; sukker</span>
+            <span class="menu-row-desc">Enkel, perfekt, tidløs.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">59 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Sjokolade &amp; banan</span>
+            <span class="menu-row-desc">Varm sjokoladesaus, fersk banan.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">79 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Jordbær &amp; krem</span>
+            <span class="menu-row-desc">Friske jordbær, pisket krem.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">85 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Karamell &amp; salt</span>
+            <span class="menu-row-desc">Hjemmelaget salted caramel.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">89 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Nutella &amp; hasselnøtt</span>
+            <span class="menu-row-desc">En klassiker — alltid riktig.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">85 kr</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAVORY CRÊPES -->
+    <section class="menu-category menu-category--savory" aria-labelledby="savory-heading">
+      <div class="category-inner">
+        <span class="category-label" id="savory-heading">Salte crêpes</span>
+        <hr class="category-rule" aria-hidden="true">
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Skinke &amp; ost</span>
+            <span class="menu-row-desc">Røkt skinke, smeltet Gruyère.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">89 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Kylling &amp; pesto</span>
+            <span class="menu-row-desc">Saftig kylling, basilikumpesto, cherrytomater.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">99 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Løk &amp; feta</span>
+            <span class="menu-row-desc">Karamellisert løk, kremet fetaost.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">95 kr</span>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-left">
+            <span class="menu-row-name">Serrano &amp; rucola</span>
+            <span class="menu-row-desc">Serranoskinke, rucola, balsamicoreduksjon.</span>
+          </div>
+          <div class="menu-row-dots" aria-hidden="true"></div>
+          <span class="menu-row-price">109 kr</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALLERGEN NOTE -->
+    <div class="allergen">
+      <p>Allergener: Ta kontakt med oss for fullstendig allergenliste. Vi tilpasser gjerne etter behov.</p>
+    </div>
+
+    <!-- CTA -->
+    <section class="menu-cta" aria-label="Book oss">
+      <h2>Vil du booke oss til ditt arrangement?</h2>
+      <p>Vi serverer crêpes på festivaler, firmaarrangementer og private events over hele Norge.</p>
+      <a class="btn-cta" href="./book-oss.html">Book oss</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="./index.html" class="brand">
+              <div class="brand-logo-wrap">
+                <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo" loading="lazy" width="74" height="74">
+              </div>
+              <div class="brand-text">
+                <div class="brand-title">Crêpe de la Crêpe</div>
+                <div class="brand-subtitle">Love at first bite</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="footer-block">
+            <h4>Snarveier</h4>
+            <div class="footer-links">
+              <a href="./historie.html">Vår historie</a>
+              <a href="./meny.html">Meny</a>
+              <a href="./book-oss.html">Book oss</a>
+              <a href="./index.html#lokasjon">Lokasjon</a>
+              <a href="./index.html#kontakt">Kontakt</a>
+              <a href="./personvern.html">Personvern</a>
+            </div>
+          </div>
+
+          <div class="footer-block">
+            <h4>Kontakt</h4>
+            <div class="footer-list">
+              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+              <a href="tel:+4748408749">+47 48 40 87 49</a>
+              <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="footer-block">
+            <h4>Følg oss</h4>
+            <div class="footer-list" style="margin-bottom: 16px;">
+              <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
+            </div>
+
+            <h4>Booking</h4>
+            <div class="footer-list">
+              <a href="./book-oss.html">Festivaler</a>
+              <a href="./book-oss.html">Firmaarrangementer</a>
+              <a href="./book-oss.html">Private arrangementer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-mini">
+          <div>© 2026 Crêpe de la Crêpe</div>
+          <div>Booking &amp; arrangementer</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Til toppen">↑</button>
+
+  <script>
+    const navWrap = document.getElementById('navWrap');
+    const navShell = navWrap?.querySelector('.nav-shell');
+    const navLinks = document.getElementById('primaryNavLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    const backToTop = document.getElementById('backToTop');
+    const mobileNavQuery = window.matchMedia('(max-width: 640px)');
+
+    function closeMobileMenu() {
+      if (!navShell || !menuToggle) return;
+      navShell.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Åpne meny');
+    }
+
+    function openMobileMenu() {
+      if (!navShell || !menuToggle) return;
+      navShell.classList.add('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Lukk meny');
+    }
+
+    if (menuToggle && navLinks && navShell) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navShell.classList.contains('menu-open');
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (mobileNavQuery.matches) {
+            closeMobileMenu();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+
+      mobileNavQuery.addEventListener('change', (event) => {
+        if (!event.matches) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    function updateNavState() {
+      if (window.scrollY > 24) {
+        navWrap.classList.add('scrolled');
+      } else {
+        navWrap.classList.remove('scrolled');
+      }
+
+      if (window.scrollY > 520) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState);
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
