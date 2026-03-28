@@ -957,6 +957,26 @@
         max-width: 280px;
       }
     }
+
+    /* ── Desktop: less-zoomed video & image framing ─────────── */
+    @media (min-width: 821px) {
+      .hero {
+        background: #1a0e0c;
+      }
+
+      .hero-video {
+        object-fit: contain;
+      }
+
+      .act-4-bg {
+        transform: scale(1.02);
+        background-position: center 20%;
+      }
+
+      .act-4.visible .act-4-bg {
+        transform: scale(0.98);
+      }
+    }
   </style>
 </head>
 <body>
