@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./navbar.css">
 
   <style>
     :root {
@@ -79,12 +80,7 @@
     }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(239, 228, 216, 0.72);
-      border-bottom: 1px solid rgba(66, 39, 23, 0.08);
+      display: none; /* replaced by global site-nav */
     }
 
     .topbar-inner {
@@ -172,7 +168,7 @@
     }
 
     .hero {
-      padding: 44px 0 28px;
+      padding: calc(var(--nav-h, 80px) + 44px) 0 28px;
     }
 
     .hero-grid {
@@ -661,6 +657,7 @@
   </style>
 </head>
 <body>
+  <script src="./navbar.js"></script>
   <div class="topbar">
     <div class="container">
       <div class="topbar-inner">

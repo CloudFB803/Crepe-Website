@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./navbar.css">
 
   <style>
     :root {
@@ -460,36 +461,7 @@
 
 <body id="top">
 
-  <!-- NAVBAR -->
-  <div class="nav-wrap" id="navWrap">
-    <div class="nav-shell">
-      <nav aria-label="Hovednavigasjon">
-        <a href="./index.html" class="brand" aria-label="Crêpe de la Crêpe forside">
-          <div class="brand-logo-wrap">
-            <img class="brand-logo" src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
-          </div>
-          <div class="brand-title">Crêpe de la Crêpe</div>
-        </a>
-
-        <div class="nav-actions">
-          <a class="btn btn-primary nav-book-btn" href="./book-oss.html">Book oss</a>
-          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="primaryNavLinks">
-            <span class="menu-toggle-line"></span>
-            <span class="menu-toggle-line"></span>
-            <span class="menu-toggle-line"></span>
-          </button>
-        </div>
-
-        <div class="nav-links" id="primaryNavLinks">
-          <a href="./historie.html">Vår historie</a>
-          <a href="./meny.html" class="active">Meny</a>
-          <a href="./book-oss.html">Book oss</a>
-          <a href="./index.html#lokasjon">Lokasjon</a>
-          <a href="./index.html#kontakt">Kontakt</a>
-        </div>
-      </nav>
-    </div>
-  </div>
+  <script src="./navbar.js"></script>
 
   <main>
 
@@ -738,10 +710,7 @@
   }
 
   function updateNavState() {
-    const heroHeight = window.innerHeight;
-    const scrolled = window.scrollY > heroHeight * 0.15;
-    navWrap.classList.toggle('scrolled', scrolled);
-    backToTop.classList.toggle('visible', window.scrollY > 520);
+    if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 520);
   }
   updateNavState();
   window.addEventListener('scroll', updateNavState, { passive: true });
