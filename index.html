@@ -515,6 +515,18 @@
       animation: heroFadeUp 0.6s ease-out 0.6s forwards;
       position: relative;
       z-index: 1;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .hero-location-line {
+      display: block;
+      white-space: nowrap;
     }
 
     .hero-ring {
@@ -1500,7 +1512,9 @@
       }
 
       .hero-location {
+        font-size: 0.66rem;
         letter-spacing: 0.14em;
+        gap: 3px;
       }
 
       .blob-1 {
@@ -1831,7 +1845,10 @@
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
-        <p class="hero-location">Storo Storsenter · Oslo</p>
+        <p class="hero-location">
+          <span class="hero-location-line">AKER BRYGGE · OSLO</span>
+          <span class="hero-location-line">STORO STORSENTER · OSLO</span>
+        </p>
       </div>
     </section>
 
