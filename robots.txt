@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://crepe-website-eight.vercel.app/sitemap.xml
+Sitemap: https://crepedelacrepe.no/sitemap.xml
