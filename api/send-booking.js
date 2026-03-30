@@ -236,6 +236,15 @@ function parseAllowedOrigins(raw = "") {
   return Array.from(unique);
 }
 
+const DEFAULT_ALLOWED_ORIGINS = [
+  "https://crepedelacrepe.no",
+  "https://www.crepedelacrepe.no",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173"
+];
+
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 // NOTE: In-memory limiter only. This is not a durable distributed production rate limiter.
@@ -322,7 +331,8 @@ export default {
         return jsonResponse({ ok: false, error: "Ugyldig innholdstype." }, 400, requestId);
       }
 
-      const allowedOrigins = parseAllowedOrigins(process.env.ALLOWED_ORIGINS || "");
+      const envAllowedOrigins = parseAllowedOrigins(process.env.ALLOWED_ORIGINS || "");
+      const allowedOrigins = Array.from(new Set([...DEFAULT_ALLOWED_ORIGINS, ...envAllowedOrigins]));
       if (allowedOrigins.length === 0) {
         logEvent("error", "unexpected_failure", requestId, { reason: "missing_allowed_origins" });
         return jsonResponse({
