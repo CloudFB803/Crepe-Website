@@ -1224,6 +1224,10 @@
       color: var(--text);
     }
 
+    .footer-shortcuts {
+      margin-left: 10px;
+    }
+
     .footer-actions {
       display: grid;
       gap: 12px;
@@ -1350,6 +1354,10 @@
     @media (max-width: 720px) {
       .footer-grid {
         grid-template-columns: 1fr;
+      }
+
+      .footer-shortcuts {
+        margin-left: 0;
       }
 
       .footer-actions-top {
@@ -1955,7 +1963,7 @@
             </a>
           </div>
 
-          <div class="footer-block">
+          <div class="footer-block footer-shortcuts">
             <h4>Snarveier</h4>
             <div class="footer-links">
               <a href="./historie.html">Vår historie</a>
