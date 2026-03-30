@@ -304,3 +304,69 @@
 @media print {
   .site-nav { display: none; }
 }
+
+/* ══════════════════════════════════════════
+   DESKTOP-ONLY RESTYLING (min-width: 769px)
+   ══════════════════════════════════════════ */
+@media (min-width: 769px) {
+
+  /* Always transparent — override scrolled state */
+  .site-nav,
+  .site-nav.is-scrolled {
+    background:              transparent !important;
+    backdrop-filter:         none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow:              none !important;
+  }
+
+  /* Nav text links */
+  .site-nav__left .site-nav__link,
+  .site-nav__right-links .site-nav__link {
+    font-family:    'Manrope', sans-serif;
+    text-transform: uppercase;
+    font-weight:    700;
+    letter-spacing: 0.12em;
+    font-size:      0.85rem;
+    color:          #FFFFFF;
+    transition:     opacity 0.2s ease;
+  }
+
+  .site-nav__left .site-nav__link:hover,
+  .site-nav__right-links .site-nav__link:hover {
+    color:   #FFFFFF;
+    opacity: 0.75;
+  }
+
+  /* Active link — keep white, just slightly dimmed */
+  .site-nav__left .site-nav__link.is-active,
+  .site-nav__right-links .site-nav__link.is-active {
+    color:   #FFFFFF;
+    opacity: 0.75;
+  }
+
+  /* CTA "Book oss" pill */
+  .site-nav__cta {
+    font-family:     'Manrope', sans-serif;
+    text-transform:  uppercase;
+    font-weight:     700;
+    letter-spacing:  0.12em;
+    font-size:       0.85rem;
+    color:           #FFFFFF;
+    background:      #c98376;
+    border:          none;
+    border-radius:   50px;
+    padding:         0.55rem 1.6rem;
+    box-shadow:      none;
+    transition:      background 0.2s ease;
+    opacity:         1;
+    transform:       none;
+  }
+
+  .site-nav__cta:hover {
+    background: #9f645b;
+    color:      #FFFFFF;
+    opacity:    1;
+    transform:  none;
+    box-shadow: none;
+  }
+}
