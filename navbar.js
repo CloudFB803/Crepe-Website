@@ -11,7 +11,7 @@
      1. Injects the League Spartan font into <head>
      2. Builds and inserts the navbar HTML into the DOM
      3. Marks the active link based on the current URL
-     4. Wires up scroll frosting and mobile-menu toggle
+     4. Wires up scroll behaviour and mobile-menu toggle
    ============================================================= */
 
 (function () {
@@ -25,12 +25,15 @@
     document.head.appendChild(fl);
   }
 
-  /* ── 2. Active-page detection ── */
+  /* ── 2. Active-page detection + body class ── */
   var path = window.location.pathname;
   var page = path.indexOf('meny')     !== -1 ? 'meny'
            : path.indexOf('historie') !== -1 ? 'historie'
            : path.indexOf('book-oss') !== -1 ? 'book'
            : 'hjem';
+
+  var isHome = (page === 'hjem');
+  document.body.classList.add(isHome ? 'page-home' : 'page-inner');
 
   function navLink(href, key, label) {
     var cls = 'site-nav__link' + (key === page ? ' is-active' : '');
@@ -86,7 +89,12 @@
         '<a href="./book-oss.html" class="site-nav__mobile-cta">Book oss</a>' +
       '</div>' +
 
-    '</header>';
+    '</header>' +
+
+    /* Floating CTA — desktop only, always visible (hidden via CSS on mobile) */
+    '<a href="./book-oss.html" class="site-nav__floating-cta" aria-label="Book oss – Book Crêpe de la Crêpe">' +
+      'Book oss' +
+    '</a>';
 
   /* ── 4. Insert at top of <body> ── */
   document.body.insertAdjacentHTML('afterbegin', html);
@@ -99,12 +107,44 @@
 
     if (!nav) return;
 
-    /* Scroll → frosted glass */
-    function onScroll() {
-      nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    /* Desktop media query — all new scroll logic is desktop-only */
+    var desktopMQ = window.matchMedia('(min-width: 861px)');
+
+    var ticking = false;
+
+    function updateNav() {
+      var y = window.scrollY;
+
+      if (desktopMQ.matches) {
+        /* ── Desktop scroll logic ── */
+        if (isHome) {
+          /* Home: fade navbar background when scrolled past 80px */
+          nav.classList.toggle('is-scrolled', y > 80);
+        } else {
+          /* Inner pages: slide navbar in at >60px, out again below 30px */
+          if (y > 60) {
+            nav.classList.add('is-visible');
+          } else if (y < 30) {
+            nav.classList.remove('is-visible');
+          }
+        }
+      } else {
+        /* ── Mobile scroll logic — unchanged from original ── */
+        nav.classList.toggle('is-scrolled', y > 40);
+      }
+
+      ticking = false;
     }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateNav);
+        ticking = true;
+      }
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* run once on load */
+    updateNav(); /* run once on load */
 
     if (!toggle || !mobile) return;
 
