@@ -1739,6 +1739,35 @@
       50%  { transform: translateY(-18px) rotate(6deg); }
       100% { transform: translateY(0px) rotate(0deg); }
     }
+
+    /* ── Transparent navbar state (home page hero) ── */
+    .page-home .site-nav.navbar-transparent {
+      background:              transparent !important;
+      border-bottom-color:     transparent !important;
+      box-shadow:              none !important;
+      backdrop-filter:         none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    @media (min-width: 861px) {
+      /* White text so links stay readable against the dark hero video */
+      .page-home .site-nav.navbar-transparent .site-nav__left .site-nav__link,
+      .page-home .site-nav.navbar-transparent .site-nav__right-links .site-nav__link {
+        color:       rgba(255, 252, 247, 0.91) !important;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45) !important;
+        opacity:     1 !important;
+      }
+
+      /* Once navbar-transparent is removed (scrolled), lock in the solid cream
+         background — this overrides the is-scrolled transparent state from navbar.css */
+      .page-home .site-nav:not(.navbar-transparent) {
+        background:              #FAF7F2 !important;
+        border-bottom:           1px solid rgba(44, 32, 22, 0.08) !important;
+        backdrop-filter:         none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow:              none !important;
+      }
+    }
   </style>
 
 </head>
@@ -2148,6 +2177,35 @@
       mobileQuery.addEventListener('change', handleViewportMode);
     })();
 
+  </script>
+
+  <script>
+    /* ── Transparent navbar scroll toggle (index.html only) ── */
+    (function () {
+      var nav = document.getElementById('siteNav');
+      if (!nav) return;
+
+      var ticking = false;
+
+      function updateTransparency() {
+        if (window.scrollY > 50) {
+          nav.classList.remove('navbar-transparent');
+        } else {
+          nav.classList.add('navbar-transparent');
+        }
+        ticking = false;
+      }
+
+      /* Apply transparent state immediately on page load */
+      nav.classList.add('navbar-transparent');
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(updateTransparency);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
