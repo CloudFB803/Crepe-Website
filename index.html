@@ -1725,6 +1725,17 @@
         transform: translateY(0);
       }
     }
+
+    /* ── Lokasjon two-column grid (scoped) ── */
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 767px) {
+      .loc-grid { grid-template-columns: 1fr; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -1846,8 +1857,8 @@
         </div>
 
         <p class="hero-location">
-          <span class="hero-location-line">AKER BRYGGE · OSLO</span>
-          <span class="hero-location-line">STORO STORSENTER · OSLO</span>
+          <span class="hero-location-line" style="font-size:1.1em; font-weight:700; opacity:1;">AKER BRYGGE · OSLO</span>
+          <span class="hero-location-line" style="opacity:0.6; font-size:0.88em;">STORO STORSENTER · OSLO</span>
         </p>
       </div>
     </section>
@@ -1911,13 +1922,37 @@
 
     <section id="lokasjon" class="fade-in">
       <div class="container" style="display:grid; gap:18px;">
-        <div class="info-grid">
+        <div class="loc-grid">
+
+          <!-- Aker Brygge — primær lokasjon -->
+          <div class="card hours-card" style="border-top:3px solid var(--accent);">
+            <div>
+              <h2 style="margin:0; font-size:clamp(20px,2.2vw,28px); line-height:1.2;">Aker Brygge</h2>
+              <span style="display:inline-block; margin-top:8px; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); background:rgba(201,131,118,0.13); padding:3px 11px; border-radius:20px;">Åpner snart</span>
+            </div>
+
+            <div class="contact-box">
+              <div class="contact-chip">📍 Aker Brygge, Oslo</div>
+            </div>
+
+            <p style="margin:0; color:var(--muted); font-style:italic; font-size:0.95rem;">Åpningstider kommer</p>
+
+            <div class="location-actions">
+              <a
+                class="btn btn-secondary"
+                href="https://www.google.com/maps?q=Aker+Brygge+Oslo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Åpne i kart
+              </a>
+            </div>
+          </div>
+
+          <!-- Storo Storsenter — sekundær lokasjon -->
           <div class="card hours-card">
-            <div class="section-head" style="margin-bottom:0;">
-              <div>
-                <h2>Lokasjon &amp; tider</h2>
-                <p style="margin:8px 0 0; color:#6b5649; font-weight:600;">Fast lokasjon: Storo Storsenter i Oslo. Vi tilbyr også booking til arrangementer andre steder.</p>
-              </div>
+            <div>
+              <h3 style="margin:0; font-size:clamp(18px,1.9vw,24px); line-height:1.2; font-weight:700; color:var(--text);">Storo Storsenter</h3>
             </div>
 
             <div class="hours-grid">
@@ -1951,14 +1986,6 @@
             </div>
           </div>
 
-          <div class="map-box">
-            <iframe
-              title="Kart"
-              src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
         </div>
       </div>
     </section>
