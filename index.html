@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crêpe de la Crêpe | Crêpes på Storo Storsenter i Oslo</title>
-  <meta name="description" content="Crêpe de la Crêpe er et crêpe-konsept med fast lokasjon på Storo Storsenter i Oslo. Book oss til festivaler, firmaarrangementer og private arrangementer.">
+  <title>Crêpe de la Crêpe | Franske crêpes i Oslo</title>
+  <meta name="description" content="Crêpe de la Crêpe er et crêpe-konsept med fast lokasjon på Aker Brygge og Storo Storsenter i Oslo. Book oss til festivaler, firmaarrangementer og private arrangementer.">
   <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
   <link rel="canonical" href="https://crepedelacrepe.no/" />
 
   <meta property="og:title" content="Crêpe de la Crêpe | Love at first bite">
-  <meta property="og:description" content="Franske crêpes på Storo Storsenter i Oslo. Bestill på Foodora eller book oss til festivaler, firmaarrangementer og private arrangementer.">
+  <meta property="og:description" content="Franske crêpes på Aker Brygge og Storo Storsenter i Oslo. Book oss til festivaler, firmaarrangementer og private arrangementer.">
   <meta property="og:image" content="/crepe-logo-transparent.png">
   <meta property="og:url" content="https://crepedelacrepe.no/">
   <meta property="og:type" content="restaurant">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Crêpe de la Crêpe | Love at first bite">
-  <meta name="twitter:description" content="Franske crêpes på Storo Storsenter i Oslo. Bestill på Foodora eller book oss til festivaler, firmaarrangementer og private arrangementer.">
+  <meta name="twitter:description" content="Franske crêpes på Aker Brygge og Storo Storsenter i Oslo. Book oss til festivaler, firmaarrangementer og private arrangementer.">
   <meta name="twitter:image" content="/crepe-logo-transparent.png">
+  <meta property="og:locale" content="nb_NO" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1725,6 +1726,17 @@
         transform: translateY(0);
       }
     }
+
+    /* ── Lokasjon two-column grid (scoped) ── */
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 767px) {
+      .loc-grid { grid-template-columns: 1fr; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -1762,6 +1774,55 @@
       "https://www.instagram.com/crepe_delacrepe/",
       "https://www.tiktok.com/@crepe_delacrepe",
       "https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Crêpe de la Crêpe",
+    "url": "https://www.crepedelacrepe.no",
+    "logo": "https://www.crepedelacrepe.no/crepe-logo-transparent.png",
+    "image": "https://www.crepedelacrepe.no/strawberry-madness.jpg",
+    "description": "Håndlagde crêpes med franske teknikker og norsk hjerte. Fast lokasjon på Aker Brygge og Storo Storsenter i Oslo.",
+    "servesCuisine": "French",
+    "priceRange": "89-149 kr",
+    "telephone": "+4748408749",
+    "email": "crepedelacrepes@gmail.com",
+    "foundingDate": "2021",
+    "slogan": "Love at first bite",
+    "location": [
+      {
+        "@type": "Place",
+        "name": "Aker Brygge",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Aker Brygge",
+          "addressLocality": "Oslo",
+          "addressCountry": "NO"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Storo Storsenter",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vitaminveien 7",
+          "postalCode": "0485",
+          "addressLocality": "Oslo",
+          "addressCountry": "NO"
+        },
+        "openingHoursSpecification": [
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "21:00"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "20:00"}
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/crepe_delacrepe/",
+      "https://www.tiktok.com/@crepe_delacrepe"
     ]
   }
   </script>
@@ -1840,14 +1901,16 @@
           <span class="hero-line hero-line-2">Crêpe de la Crêpe</span>
         </h1>
 
+        <p class="hero-tagline" style="animation-delay:0.32s">Franske crêpes i Oslo — Aker Brygge og Storo Storsenter. Book oss til events, festivaler, firmaarrangementer og private selskap.</p>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="./book-oss.html">Book oss</a>
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
         <p class="hero-location">
-          <span class="hero-location-line">AKER BRYGGE · OSLO</span>
-          <span class="hero-location-line">STORO STORSENTER · OSLO</span>
+          <span class="hero-location-line" style="font-size:1.1em; font-weight:700; opacity:1;">AKER BRYGGE · OSLO</span>
+          <span class="hero-location-line" style="opacity:0.6; font-size:0.88em;">STORO STORSENTER · OSLO</span>
         </p>
       </div>
     </section>
@@ -1869,7 +1932,7 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p style="margin: -6px 0 4px; color: #6b5649; font-weight: 600;">Anmeldelser fra gjester og kunder som har besøkt oss på Storo eller booket oss til arrangement.</p>
+          <p style="margin: -6px 0 4px; color: #6b5649; font-weight: 600;">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
@@ -1888,8 +1951,8 @@
 
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                  <blockquote>"Dere har den beste crêpen jeg har smakt. Og barna elsker den også! Besøker dere hvert år i Jul i Vinterland i Oslo, men er så glad for at dere har fått et permanent sted på Matværste i Fredrikstad nå, og med nye gode smaker! Veldig gjennomført design også. 10/10 Vi kommer definitivt tilbake!"</blockquote>
-                  <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">P</span> Pia Aya</div>
+                  <blockquote>"Latterlig gode crepes. Og i tillegg fikk jeg ny mat når jeg selv hadde klart å bestille feil 👌👏 anbefales.."</blockquote>
+                  <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">C</span> Casper Width</div>
                 </article>
               </div>
             </div>
@@ -1911,13 +1974,38 @@
 
     <section id="lokasjon" class="fade-in">
       <div class="container" style="display:grid; gap:18px;">
-        <div class="info-grid">
+        <div class="loc-grid">
+
+          <!-- Aker Brygge — primær lokasjon -->
+          <div class="card hours-card" style="border-top:3px solid var(--accent);">
+            <div>
+              <h2 style="margin:0; font-size:clamp(20px,2.2vw,28px); line-height:1.2;">Aker Brygge</h2>
+              <span style="display:inline-block; margin-top:8px; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); background:rgba(201,131,118,0.13); padding:3px 11px; border-radius:20px;">Åpner snart</span>
+            </div>
+
+            <div class="contact-box">
+              <div class="contact-chip">📍 Aker Brygge, Oslo</div>
+            </div>
+
+            <p style="margin:0; color:var(--muted); font-style:italic; font-size:0.95rem;">Åpningstider kommer</p>
+
+            <div class="location-actions">
+              <a
+                class="btn btn-secondary"
+                href="https://www.google.com/maps?q=Aker+Brygge+Oslo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Åpne i kart
+              </a>
+            </div>
+          </div>
+
+          <!-- Storo Storsenter — sekundær lokasjon -->
           <div class="card hours-card">
-            <div class="section-head" style="margin-bottom:0;">
-              <div>
-                <h2>Lokasjon &amp; tider</h2>
-                <p style="margin:8px 0 0; color:#6b5649; font-weight:600;">Fast lokasjon: Storo Storsenter i Oslo. Vi tilbyr også booking til arrangementer andre steder.</p>
-              </div>
+            <div>
+              <h3 style="margin:0; font-size:clamp(18px,1.9vw,24px); line-height:1.2; font-weight:700; color:var(--text);">Storo Storsenter</h3>
+            </div>
             </div>
 
             <div class="hours-grid">
@@ -1951,14 +2039,6 @@
             </div>
           </div>
 
-          <div class="map-box">
-            <iframe
-              title="Kart"
-              src="https://www.google.com/maps?q=Storo%20Storsenter%20Vitaminveien%207%200485%20Oslo&z=15&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
         </div>
       </div>
     </section>
@@ -2242,6 +2322,101 @@
           ticking = true;
         }
       }, { passive: true });
+    })();
+  </script>
+
+  <!-- ── GDPR Consent Banner ── -->
+  <div id="cookieConsent" style="
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #2C2016;
+    color: #FAF7F2;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
+  " role="dialog" aria-label="Informasjonskapsler">
+    <p style="margin: 0; flex: 1; min-width: 200px; line-height: 1.5;">
+      Vi bruker informasjonskapsler (Google Analytics) for å forstå hvordan nettsiden brukes.
+      Les mer i vår <a href="/personvern.html" style="color: #c98376; text-decoration: underline;">personvernerklæring</a>.
+    </p>
+    <div style="display: flex; gap: 10px; flex-shrink: 0;">
+      <button id="cookieAccept" type="button" style="
+        background: #c98376;
+        color: #FAF7F2;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      ">Godta</button>
+      <button id="cookieDecline" type="button" style="
+        background: transparent;
+        color: #FAF7F2;
+        border: 2px solid #c98376;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      ">Avvis</button>
+    </div>
+  </div>
+
+  <script>
+    /* ── GDPR Consent & GA4 loader ── */
+    /* Replace G-XXXXXXXXXX with your actual GA4 measurement ID */
+    var GA4_ID = 'G-XXXXXXXXXX';
+
+    function loadGA4() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA4_ID);
+    }
+
+    (function () {
+      var banner = document.getElementById('cookieConsent');
+      var consent = localStorage.getItem('cookieConsent');
+
+      if (consent === 'accepted') {
+        loadGA4();
+        return;
+      }
+      if (consent === 'declined') {
+        return;
+      }
+
+      /* Show banner */
+      banner.style.display = 'flex';
+
+      document.getElementById('cookieAccept').addEventListener('click', function () {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.style.display = 'none';
+        loadGA4();
+      });
+
+      document.getElementById('cookieDecline').addEventListener('click', function () {
+        localStorage.setItem('cookieConsent', 'declined');
+        banner.style.display = 'none';
+      });
     })();
   </script>
 </body>
