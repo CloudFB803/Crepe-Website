@@ -2089,6 +2089,44 @@
       box-shadow: var(--shadow);
     }
 
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 0 8px;
+      color: #2f2018;
+    }
+
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 103, 92, 0.25);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(86, 58, 49, 0.11);
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 2.7vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
     .footer-grid { display: grid; grid-template-columns: 1.05fr 0.7fr 1fr 0.85fr; gap: 28px; align-items: start; }
     .footer-brand { display: grid; gap: 18px; align-content: start; min-width: 0; }
     .footer-brand .brand { justify-self: start; gap: 16px; }
