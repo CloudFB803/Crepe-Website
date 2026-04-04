@@ -61,8 +61,8 @@
         /* Right links: LOKASJON · KONTAKT + CTA */
         '<div class="site-nav__right">' +
           '<div class="site-nav__right-links">' +
-            navLink('./index.html#lokasjon', 'lokasjon', 'LOKASJON') +
-            navLink('./index.html#kontakt',  'kontakt',  'KONTAKT')  +
+            navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON') +
+            navLink(isHome ? '#kontakt' : './index.html#kontakt',  'kontakt',  'KONTAKT')  +
           '</div>' +
           '<a href="./book-oss.html" class="site-nav__cta' + (page === 'book' ? ' is-active' : '') + '">' +
             'Book oss' +
@@ -84,8 +84,8 @@
         navLink('./index.html',          'hjem',     'HJEM')         +
         navLink('./meny.html',           'meny',     'MENY')         +
         navLink('./historie.html',       'historie', 'VÅR HISTORIE') +
-        navLink('./index.html#lokasjon', 'lokasjon', 'LOKASJON')     +
-        navLink('./index.html#kontakt',  'kontakt',  'KONTAKT')      +
+        navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON')     +
+        navLink(isHome ? '#kontakt' : './index.html#kontakt',  'kontakt',  'KONTAKT')      +
         '<a href="./book-oss.html" class="site-nav__mobile-cta">Book oss</a>' +
       '</div>' +
 
@@ -116,21 +116,11 @@
       var y = window.scrollY;
 
       if (desktopMQ.matches) {
-        /* ── Desktop scroll logic ── */
-        if (isHome) {
-          /* Home: fade navbar background when scrolled past 80px */
-          nav.classList.toggle('is-scrolled', y > 80);
-        } else {
-          /* Inner pages: slide navbar in at >60px, out again below 30px */
-          if (y > 60) {
-            nav.classList.add('is-visible');
-          } else if (y < 30) {
-            nav.classList.remove('is-visible');
-          }
-        }
+        nav.classList.toggle('is-scrolled', y > 80);
+        nav.classList.toggle('navbar-transparent', y <= 50);
       } else {
-        /* ── Mobile scroll logic — unchanged from original ── */
         nav.classList.toggle('is-scrolled', y > 40);
+        nav.classList.remove('navbar-transparent');
       }
 
       ticking = false;
