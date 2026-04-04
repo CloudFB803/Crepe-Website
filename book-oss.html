@@ -2140,6 +2140,22 @@
     .footer-shortcuts { margin-left: 10px; }
     .footer-mini { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #826c5f; font-size: 13px; }
 
+    /* Override old footer-shell grid layout (conflicts with new 4-column footer design) */
+    .footer .footer-shell {
+      display: block;
+      grid-template-columns: unset;
+      gap: 0;
+      backdrop-filter: none;
+    }
+
+    /* Override old footer-brand typography (conflicts with new grid-based brand area) */
+    .footer .footer-brand {
+      font-family: inherit;
+      font-size: unset;
+      line-height: unset;
+      letter-spacing: unset;
+    }
+
     .back-to-top {
       position: fixed; right: 18px; bottom: 18px; z-index: 140; width: 54px; height: 54px;
       border: 1px solid rgba(110, 78, 67, 0.18); border-radius: 999px; background: rgba(255, 250, 245, 0.88);
