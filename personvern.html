@@ -79,93 +79,6 @@
       margin: 0 auto;
     }
 
-    .topbar {
-      display: none; /* replaced by global site-nav */
-    }
-
-    .topbar-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .back-link,
-    .mini-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 11px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(66, 39, 23, 0.12);
-      background: rgba(255,255,255,0.66);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 14px;
-      transition: 0.2s ease;
-      gap: 8px;
-      white-space: nowrap;
-    }
-
-    .back-link:hover,
-    .mini-link:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.92);
-    }
-
-    .brand-mini {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mini-logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(240,220,200,0.60));
-      border: 1px solid rgba(255,255,255,0.24);
-      display: grid;
-      place-items: center;
-      box-shadow:
-        0 10px 24px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255,255,255,0.62);
-      flex-shrink: 0;
-    }
-
-    .brand-mini-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 6px;
-    }
-
-    .brand-mini-text {
-      min-width: 0;
-    }
-
-    .brand-mini-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      color: #2b1a14;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .brand-mini-subtitle {
-      margin-top: 4px;
-      font-size: 11px;
-      color: #866b5d;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
 
     .hero {
       padding: calc(var(--nav-h, 80px) + 44px) 0 28px;
@@ -569,16 +482,6 @@
         width: min(var(--max), calc(100% - 20px));
       }
 
-      .topbar-inner {
-        min-height: auto;
-        padding: 12px 0;
-        flex-wrap: wrap;
-      }
-
-      .brand-mini-title {
-        white-space: normal;
-        font-size: 24px;
-      }
 
       .hero {
         padding-top: 24px;
@@ -616,8 +519,6 @@
         scroll-behavior: auto;
       }
 
-      .back-link,
-      .mini-link,
       .nav-list a {
         transition: none;
       }
@@ -666,29 +567,11 @@
       .back-to-top { right: 14px; bottom: 14px; width: 50px; height: 50px; }
     }
   </style>
+
+
 </head>
 <body id="top">
   <script src="./navbar.js"></script>
-  <div class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <a class="back-link" href="./index.html">← Til forsiden</a>
-
-        <a class="brand-mini" href="./index.html">
-          <div class="brand-mini-logo">
-            <img src="crepe-logo-transparent.png" alt="Crepe de la Crepe logo">
-          </div>
-          <div class="brand-mini-text">
-            <div class="brand-mini-title">Crêpe de la Crêpe</div>
-            <div class="brand-mini-subtitle">Personvern</div>
-          </div>
-        </a>
-
-        <a class="mini-link" href="mailto:Crepedelacrepes@gmail.com">Kontakt oss</a>
-      </div>
-    </div>
-  </div>
-
   <main>
     <section class="hero">
       <div class="container">
@@ -1113,5 +996,7 @@
     window.addEventListener("scroll", updateNavState, { passive: true });
     backToTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   </script>
+
+
 </body>
 </html>
