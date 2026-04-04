@@ -553,35 +553,6 @@
       word-break: break-word;
     }
 
-    .footer {
-      padding: 0 0 36px;
-    }
-
-    .footer-card {
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(247,239,230,0.84), rgba(236,224,212,0.92));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .footer-copy {
-      color: #7d675a;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
     @media (max-width: 1080px) {
       .hero-grid,
       .content-grid {
@@ -638,9 +609,6 @@
         grid-template-columns: 1fr;
       }
 
-      .footer-card {
-        padding: 20px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -672,6 +640,19 @@
     .footer-links a, .footer-list a, .footer-list div { color: var(--muted); font-size: 14px; transition: color 0.2s ease; }
     .footer-links a:hover, .footer-list a:hover { color: var(--text); }
     .footer-shortcuts { margin-left: 10px; }
+    .footer-actions { display: grid; gap: 12px; margin-top: 16px; max-width: 420px; }
+    .footer-actions-top { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .footer-actions-bottom { display: grid; }
+    .footer .footer-actions .btn-secondary {
+      background: rgba(255,255,255,0.90);
+      border: 1px solid rgba(110, 78, 67, 0.18);
+      color: var(--text);
+      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
+    }
+    .footer .footer-actions .btn-secondary:hover {
+      background: rgba(255,255,255,1);
+      border-color: rgba(66, 39, 23, 0.18);
+    }
     .footer-mini { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #826c5f; font-size: 13px; }
     .back-to-top { position: fixed; right: 18px; bottom: 18px; z-index: 140; width: 54px; height: 54px; border: 1px solid rgba(110, 78, 67, 0.18); border-radius: 999px; background: rgba(255, 250, 245, 0.88); color: var(--text); box-shadow: 0 16px 34px rgba(56, 33, 20, 0.14); display: grid; place-items: center; font-size: 22px; font-weight: 800; cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, border-color 0.22s ease; backdrop-filter: blur(10px); }
     .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
@@ -680,6 +661,7 @@
     @media (max-width: 720px) {
       .footer-grid { grid-template-columns: 1fr; }
       .footer-shortcuts { margin-left: 0; }
+      .footer-actions-top { grid-template-columns: 1fr; }
       .footer .brand-title { white-space: normal; font-size: 28px; }
       .back-to-top { right: 14px; bottom: 14px; width: 50px; height: 50px; }
     }
@@ -1081,8 +1063,8 @@
               <a href="./historie.html">Vår historie</a>
               <a href="./meny.html">Meny</a>
               <a href="./book-oss.html">Book oss</a>
-              <a href="./index.html#lokasjon">Lokasjon</a>
-              <a href="./index.html#kontakt">Kontakt</a>
+              <a href="#lokasjon">Lokasjon</a>
+              <a href="#kontakt">Kontakt</a>
               <a href="./personvern.html">Personvern</a>
             </div>
           </div>
