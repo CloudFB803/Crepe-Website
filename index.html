@@ -506,10 +506,9 @@
 
     .hero-location {
       margin: 18px 0 0;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(246, 240, 232, 0.78);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: rgba(246, 240, 232, 0.86);
       font-weight: 700;
       opacity: 0;
       transform: translateY(14px);
@@ -517,17 +516,30 @@
       position: relative;
       z-index: 1;
       display: inline-flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      line-height: 1.1;
+      gap: 0.44em;
+      line-height: 1.2;
       text-align: center;
+      white-space: nowrap;
     }
 
     .hero-location-line {
-      display: block;
+      display: inline-block;
       white-space: nowrap;
+    }
+
+    .hero-location-separator {
+      display: inline-block;
+      transform: translateY(-0.02em);
+    }
+
+
+    @media (max-width: 460px) {
+      .hero-location {
+        white-space: normal;
+        flex-wrap: wrap;
+      }
     }
 
     .hero-ring {
@@ -1513,9 +1525,13 @@
       }
 
       .hero-location {
-        font-size: 0.66rem;
-        letter-spacing: 0.14em;
-        gap: 3px;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        gap: 0.35em;
+      }
+
+      .hero-location-line {
+        white-space: nowrap;
       }
 
       .blob-1 {
@@ -1857,9 +1873,10 @@
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
-        <p class="hero-location">
-          <span class="hero-location-line" style="font-size:1.1em; font-weight:700; opacity:1;">AKER BRYGGE · OSLO</span>
-          <span class="hero-location-line" style="opacity:0.6; font-size:0.88em;">STORO STORSENTER · OSLO</span>
+        <p class="hero-location" aria-label="Aker Brygge · Storo Storsenter">
+          <span class="hero-location-line">Aker Brygge</span>
+          <span class="hero-location-separator" aria-hidden="true">·</span>
+          <span class="hero-location-line">Storo Storsenter</span>
         </p>
       </div>
     </section>
