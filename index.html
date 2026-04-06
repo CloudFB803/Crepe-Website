@@ -1927,7 +1927,7 @@
 /* Scoped: alle klasser starter med .cdlc-hours */
 .cdlc-hours {
   padding: 5rem 1.5rem;
-  color: #f5f0e8;
+  color: #3f3128;
 }
 .cdlc-hours *,
 .cdlc-hours *::before,
@@ -1941,7 +1941,7 @@
 .cdlc-hours__title {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 400;
-  color: #f5f0e8;
+  color: #3a2c24;
   letter-spacing: 0.01em;
 }
 .cdlc-hours__title em {
@@ -1950,7 +1950,7 @@
 }
 .cdlc-hours__subtitle {
   font-size: 0.9rem;
-  color: #a89e8c;
+  color: #765f50;
   margin-top: 0.6rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1959,9 +1959,9 @@
 /* Grid */
 .cdlc-hours__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  max-width: 860px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+  max-width: 980px;
   margin: 0 auto;
 }
 @media (max-width: 680px) {
@@ -1976,12 +1976,22 @@
 
 /* Card */
 .cdlc-hours__card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 220, 160, 0.08);
+  background: #fffaf3;
+  border: 1px solid #eadcc8;
   border-radius: 14px;
   padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  box-shadow: 0 16px 36px rgba(80, 53, 34, 0.06);
+}
+.cdlc-hours__card + .cdlc-hours__card {
+  border-left: 1px solid #e3d3bf;
+}
+@media (max-width: 680px) {
+  .cdlc-hours__card + .cdlc-hours__card {
+    border-left: 1px solid #eadcc8;
+  }
 }
 .cdlc-hours__card-header {
   display: flex;
@@ -1994,8 +2004,14 @@
 .cdlc-hours__card-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #f5f0e8;
+  color: #3b2d25;
   margin: 0;
+  letter-spacing: 0.01em;
+}
+.cdlc-hours__card-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Badges */
@@ -2009,16 +2025,16 @@
   white-space: nowrap;
 }
 .cdlc-hours__badge--open {
-  background: rgba(125, 186, 106, 0.15);
-  color: #7dba6a;
+  background: #e8f1df;
+  color: #4e6d3f;
 }
 .cdlc-hours__badge--closed {
-  background: rgba(196, 92, 92, 0.12);
-  color: #c45c5c;
+  background: #f6e5e0;
+  color: #9a5346;
 }
 .cdlc-hours__badge--soon {
-  background: rgba(212, 168, 83, 0.15);
-  color: #e8c06a;
+  background: #f4ead7;
+  color: #9b7440;
 }
 
 /* Hours table */
@@ -2028,7 +2044,7 @@
   flex: 1;
 }
 .cdlc-hours__table tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid #efe4d4;
 }
 .cdlc-hours__table tr:last-child {
   border-bottom: none;
@@ -2038,20 +2054,20 @@
   font-size: 0.88rem;
 }
 .cdlc-hours__table .cdlc-hours__day {
-  color: #a89e8c;
-  font-weight: 400;
+  color: #614d40;
+  font-weight: 500;
   width: 45%;
 }
 .cdlc-hours__table .cdlc-hours__time {
-  color: #f5f0e8;
-  font-weight: 500;
+  color: #3f3128;
+  font-weight: 600;
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 .cdlc-hours__table .cdlc-hours__time--closed {
-  color: #a89e8c;
+  color: #7b6656;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* Today highlight */
@@ -2066,28 +2082,35 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.5rem 0;
-  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0.25rem 0 0;
+  gap: 0.75rem;
 }
 .cdlc-hours__coming-icon {
-  font-size: 1.6rem;
-  opacity: 0.6;
+  font-size: 1.15rem;
+  opacity: 1;
+  color: #9b7440;
 }
 .cdlc-hours__coming-text {
-  font-size: 0.9rem;
-  color: #a89e8c;
-  line-height: 1.5;
+  font-size: 0.92rem;
+  color: #5f4b3f;
+  line-height: 1.65;
   margin: 0;
+}
+.cdlc-hours__coming-note {
+  margin: 0;
+  color: #7c6556;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
 }
 
 /* Card footer */
 .cdlc-hours__card-footer {
   margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #efe4d4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2096,14 +2119,14 @@
 }
 .cdlc-hours__address {
   font-size: 0.78rem;
-  color: #a89e8c;
+  color: #6f594b;
   line-height: 1.4;
 }
 .cdlc-hours__map-link {
   font-size: 0.78rem;
-  color: #d4a853;
+  color: #9b7440;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
   transition: opacity 0.2s;
 }
@@ -2125,12 +2148,15 @@
         <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
         <span class="cdlc-hours__badge cdlc-hours__badge--soon">Åpner snart</span>
       </div>
-      <div class="cdlc-hours__coming">
-        <span class="cdlc-hours__coming-icon">🥐</span>
-        <p class="cdlc-hours__coming-text">
-          Vi gjør oss klare på Aker Brygge.<br>
-          Åpningstider kommer snart!
-        </p>
+      <div class="cdlc-hours__card-main">
+        <div class="cdlc-hours__coming">
+          <span class="cdlc-hours__coming-icon">🥐</span>
+          <p class="cdlc-hours__coming-text">
+            Vi gjør oss klare på Aker Brygge med samme ferske crêpes og varme service.
+            Åpningstider publiseres så snart alt er klart.
+          </p>
+          <p class="cdlc-hours__coming-note">Følg oss på sosiale medier for oppdateringer om åpningsdato.</p>
+        </div>
       </div>
       <div class="cdlc-hours__card-footer">
         <span class="cdlc-hours__address">Aker Brygge, Oslo</span>
@@ -2144,15 +2170,17 @@
         <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
         <span class="cdlc-hours__badge" id="cdlc-storo-badge"></span>
       </div>
-      <table class="cdlc-hours__table" id="cdlc-storo-table">
-        <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-        <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-        <tr data-day="3"><td class="cdlc-hours__day">Onsdag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-        <tr data-day="4"><td class="cdlc-hours__day">Torsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-        <tr data-day="5"><td class="cdlc-hours__day">Fredag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-        <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
-        <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
-      </table>
+      <div class="cdlc-hours__card-main">
+        <table class="cdlc-hours__table" id="cdlc-storo-table">
+          <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="3"><td class="cdlc-hours__day">Onsdag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="4"><td class="cdlc-hours__day">Torsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="5"><td class="cdlc-hours__day">Fredag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
+          <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
+        </table>
+      </div>
       <div class="cdlc-hours__card-footer">
         <span class="cdlc-hours__address">Vitaminveien 7, 0485 Oslo</span>
         <a class="cdlc-hours__map-link" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart →</a>
