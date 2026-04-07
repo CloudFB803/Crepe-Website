@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./navbar.css">
 
   <style>
@@ -966,7 +966,7 @@
     }
 
     .social-proof-shell {
-      background: linear-gradient(180deg, rgba(255,253,249,0.64), rgba(241,228,218,0.92));
+      background: linear-gradient(180deg, rgba(255, 252, 247, 0.84), rgba(246, 237, 228, 0.96));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: clamp(24px, 4vw, 34px);
@@ -981,6 +981,15 @@
       font-size: clamp(34px, 4vw, 50px);
       line-height: 0.95;
       letter-spacing: -0.03em;
+      font-weight: 400;
+      color: #2A2118;
+    }
+
+    .social-proof-subtitle {
+      margin: -6px 0 4px;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      color: #8A7562;
     }
 
     .testimonial-grid {
@@ -1009,18 +1018,18 @@
     }
 
     .testimonial-card {
-      background: linear-gradient(135deg, #FFF0F3, #FFE4E8);
-      border: 1px solid rgba(66, 39, 23, 0.1);
+      background: #FFFCF8;
+      border: 1px solid rgba(200, 168, 130, 0.20);
       border-radius: 24px;
       padding: 20px;
       display: grid;
       gap: 12px;
-      box-shadow: 0 4px 24px rgba(255, 143, 163, 0.12);
+      box-shadow: 0 10px 26px rgba(79, 54, 33, 0.08);
       min-width: 0;
       overflow-wrap: anywhere;
       position: relative;
       overflow: hidden;
-      transform: rotate(-1.2deg);
+      transform: rotate(0deg);
       transition: transform 0.3s ease;
     }
 
@@ -1030,23 +1039,23 @@
       top: -8px;
       left: 12px;
       font-size: 120px;
-      font-family: Georgia, serif;
+      font-family: "Cormorant Garamond", serif;
       line-height: 1;
-      color: #FFAEC0;
-      opacity: 0.25;
+      color: #C8A882;
+      opacity: 0.16;
       pointer-events: none;
     }
 
     .testimonial-card:nth-child(3n + 2) {
-      background: linear-gradient(135deg, #FFF8F5, #FFE8D6);
+      background: #F7EFE7;
     }
 
     .testimonial-card:nth-child(3n) {
-      background: linear-gradient(135deg, #FDF0F0, #F9D5D3);
+      background: #FFFCF8;
     }
 
     .testimonial-card:nth-child(even) {
-      transform: rotate(1.2deg);
+      transform: rotate(0deg);
     }
 
     .testimonial-card:hover {
@@ -1054,7 +1063,7 @@
     }
 
     .testimonial-stars {
-      color: #FF8FA3;
+      color: #C8A882;
       letter-spacing: 0.18em;
       font-size: 15px;
       position: relative;
@@ -1063,18 +1072,21 @@
 
     .testimonial-card blockquote {
       margin: 0;
-      color: #4a352b;
+      color: #5C4A3A;
       line-height: 1.7;
       font-size: 15px;
-      font-weight: 500;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 400;
       overflow-wrap: anywhere;
       position: relative;
       z-index: 1;
     }
 
     .testimonial-author {
-      color: #6b5649;
-      font-weight: 700;
+      color: #2A2118;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 500;
       font-size: 14px;
       display: inline-flex;
       align-items: center;
@@ -1087,8 +1099,8 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #FFAEC0;
-      color: #fff;
+      background: #EFD6DC;
+      color: #9F645B;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -1896,7 +1908,7 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p style="margin: -6px 0 4px; color: #6b5649; font-weight: 600;">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
+          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
