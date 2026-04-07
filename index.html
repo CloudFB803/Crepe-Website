@@ -962,31 +962,42 @@
     }
 
     .social-proof {
-      padding-top: 8px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
     }
 
     .social-proof-shell {
-      background: linear-gradient(180deg, rgba(255,253,249,0.64), rgba(241,228,218,0.92));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: clamp(24px, 4vw, 34px);
-      box-shadow: var(--shadow-soft);
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
-      gap: 22px;
+      gap: 0;
     }
 
     .social-proof h2 {
-      margin: 0;
+      margin: 0 0 8px;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(34px, 4vw, 50px);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      color: #2a2118;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .social-proof-subtitle {
+      font-family: "DM Sans", "Manrope", sans-serif;
+      font-size: 14px;
+      color: #8a7562;
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto 48px;
+      text-align: center;
     }
 
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 24px;
     }
 
     .testimonial-carousel {
@@ -1009,123 +1020,102 @@
     }
 
     .testimonial-card {
-      background: linear-gradient(135deg, #FFF0F3, #FFE4E8);
-      border: 1px solid rgba(66, 39, 23, 0.1);
-      border-radius: 24px;
-      padding: 20px;
-      display: grid;
-      gap: 12px;
-      box-shadow: 0 4px 24px rgba(255, 143, 163, 0.12);
+      background: #fffcf8;
+      border: 1px solid rgba(200, 168, 130, 0.2);
+      border-radius: 16px;
+      padding: 32px 28px 28px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
       min-width: 0;
-      overflow-wrap: anywhere;
-      position: relative;
-      overflow: hidden;
-      transform: rotate(-1.2deg);
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: -8px;
-      left: 12px;
-      font-size: 120px;
-      font-family: Georgia, serif;
-      line-height: 1;
-      color: #FFAEC0;
-      opacity: 0.25;
-      pointer-events: none;
-    }
-
-    .testimonial-card:nth-child(3n + 2) {
-      background: linear-gradient(135deg, #FFF8F5, #FFE8D6);
-    }
-
-    .testimonial-card:nth-child(3n) {
-      background: linear-gradient(135deg, #FDF0F0, #F9D5D3);
-    }
-
-    .testimonial-card:nth-child(even) {
-      transform: rotate(1.2deg);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
     }
 
     .testimonial-card:hover {
-      transform: rotate(0deg);
+      box-shadow: 0 4px 30px rgba(42, 33, 24, 0.08);
+      transform: translateY(-2px);
     }
 
     .testimonial-stars {
-      color: #FF8FA3;
-      letter-spacing: 0.18em;
-      font-size: 15px;
-      position: relative;
-      z-index: 1;
+      color: #c8a882;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 16px;
     }
 
     .testimonial-card blockquote {
-      margin: 0;
-      color: #4a352b;
-      line-height: 1.7;
-      font-size: 15px;
-      font-weight: 500;
-      overflow-wrap: anywhere;
-      position: relative;
-      z-index: 1;
+      margin: 0 0 20px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #5c4a3a;
+      flex: 1;
     }
 
     .testimonial-author {
-      color: #6b5649;
-      font-weight: 700;
-      font-size: 14px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 10px;
-      position: relative;
-      z-index: 1;
+      padding-top: 16px;
+      border-top: 1px solid rgba(200, 168, 130, 0.2);
+      font-family: "DM Sans", "Manrope", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #2a2118;
     }
 
     .testimonial-avatar {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: #FFAEC0;
-      color: #fff;
+      background: #f3ece3;
+      color: #5c4a3a;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      font-family: "Cormorant Garamond", serif;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
+      flex-shrink: 0;
     }
 
     .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      padding-top: 6px;
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
     }
 
     .stat-pill {
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(66, 39, 23, 0.1);
-      border-radius: 18px;
-      padding: 16px 14px;
       text-align: center;
       display: grid;
-      gap: 4px;
+      gap: 0;
+      background: none;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
     }
 
     .stat-pill strong {
-      font-size: clamp(28px, 3.2vw, 38px);
       font-family: "Cormorant Garamond", serif;
-      line-height: 0.9;
-      color: #2d1c15;
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 300;
+      color: #2a2118;
+      line-height: 1;
     }
 
     .stat-pill span {
-      font-size: 13px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #70594b;
-      font-weight: 700;
+      font-family: "DM Sans", "Manrope", sans-serif;
+      font-size: 12px;
+      color: #8a7562;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+      text-transform: none;
+      font-weight: 400;
     }
 
     .booking-cta-strip {
@@ -1627,7 +1617,6 @@
 
       .testimonial-viewport {
         overflow: hidden;
-        border-radius: 24px;
         width: 100%;
       }
 
@@ -1636,7 +1625,7 @@
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        padding: 20px 16px 18px;
+        padding: 32px 28px 28px;
       }
 
       .testimonial-controls {
@@ -1652,14 +1641,14 @@
         width: 38px;
         height: 38px;
         border-radius: 999px;
-        border: 1px solid rgba(66, 39, 23, 0.15);
-        background: rgba(255, 250, 245, 0.96);
-        color: var(--text);
+        border: 1px solid rgba(200, 168, 130, 0.35);
+        background: #fffcf8;
+        color: #2a2118;
         font-size: 22px;
         line-height: 1;
         display: grid;
         place-items: center;
-        box-shadow: 0 10px 22px rgba(56, 33, 20, 0.14);
+        box-shadow: 0 2px 20px rgba(42, 33, 24, 0.06);
       }
 
       .testimonial-arrow.prev {
@@ -1683,16 +1672,16 @@
         height: 8px;
         border-radius: 50%;
         border: none;
-        background: rgba(111, 88, 76, 0.35);
+        background: rgba(138, 117, 98, 0.35);
         padding: 0;
       }
 
       .testimonial-dot.active {
-        background: var(--accent-2);
+        background: #c8a882;
       }
 
       .stats-bar {
-        grid-template-columns: 1fr;
+        gap: 32px;
       }
 
       .booking-cta-shell {
@@ -1705,6 +1694,13 @@
 
       .footer-actions {
         display: none;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+      .stats-bar {
+        gap: 32px;
       }
     }
 
@@ -1896,7 +1892,7 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p style="margin: -6px 0 4px; color: #6b5649; font-weight: 600;">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
+          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
@@ -1946,19 +1942,34 @@
       </div>
     </div>
     <style>
-      .section-divider { padding: 48px 0; }
+      .section-divider {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .section-divider .container {
+        width: 100%;
+        margin: 0;
+      }
       .section-divider .container > div {
-        display: flex; align-items: center; gap: 1rem;
-        max-width: var(--max); margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 48px 0;
       }
       .divider-line {
-        flex: 1; height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(111,88,76,0.35), transparent);
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(200, 168, 130, 0.35), transparent);
       }
       .divider-text {
-        font-family: "Manrope", sans-serif;
-        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-        color: #765f50; font-weight: 600; white-space: nowrap;
+        font-family: "DM Sans", "Manrope", sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #8a7562;
+        white-space: nowrap;
       }
     </style>
 
@@ -1967,288 +1978,121 @@
 <style>
 /* Scoped: alle klasser starter med .cdlc-hours */
 .cdlc-hours {
-  padding: 2.65rem 1.5rem 3.5rem;
-  color: #3f3128;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  color: #2a2118;
 }
 .cdlc-hours *,
 .cdlc-hours *::before,
 .cdlc-hours *::after {
   box-sizing: border-box;
 }
-.cdlc-hours__heading {
-  text-align: center;
-  margin-bottom: 2.05rem;
-}
-.cdlc-hours__title {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 400;
-  color: #3a2c24;
-  letter-spacing: 0.01em;
-}
-.cdlc-hours__title em {
-  color: #d4a853;
-  font-style: italic;
-}
-.cdlc-hours__subtitle {
-  font-size: 0.9rem;
-  color: #765f50;
-  margin: 0.45rem 0 0;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+
+.cdlc-hours__heading { display: none; }
+
+.cdlc-hours__viewport {
+  width: 100%;
+  min-width: 0;
 }
 
-/* Grid */
 .cdlc-hours__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-@media (min-width: 1024px) {
-  .cdlc-hours {
-    padding-inline: clamp(1.25rem, 3vw, 2.2rem);
-  }
-}
-@media (max-width: 680px) {
-  .cdlc-hours__grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .cdlc-hours {
-    padding: 3.25rem 1rem 3.75rem;
-  }
+  gap: 24px;
+  width: 100%;
 }
 
-/* Card */
 .cdlc-hours__card {
-  background: #fffaf3;
-  border: 1px solid #eadcc8;
-  border-radius: 14px;
-  padding: 1.45rem 1.55rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  box-shadow: 0 16px 36px rgba(80, 53, 34, 0.06);
-  transition: box-shadow 0.22s ease, border-color 0.22s ease;
+  background: #fffcf8;
+  border: 1px solid rgba(200, 168, 130, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
 }
 .cdlc-hours__card:hover {
-  box-shadow: 0 18px 38px rgba(80, 53, 34, 0.1);
-  border-color: #e3d3bf;
+  box-shadow: 0 4px 30px rgba(42, 33, 24, 0.08);
 }
-.cdlc-hours__card + .cdlc-hours__card {
-  border-left: 1px solid #e3d3bf;
-}
-@media (max-width: 680px) {
-  .cdlc-hours__card + .cdlc-hours__card {
-    border-left: 1px solid #eadcc8;
-  }
-}
+
 .cdlc-hours__card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.1rem;
-  gap: 0.55rem;
-  flex-wrap: wrap;
+  padding: 28px 28px 24px;
 }
-.cdlc-hours__card-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #3b2d25;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
+
 .cdlc-hours__meta-label {
-  margin: 0 0 0.3rem;
-  font-size: 0.68rem;
-  font-weight: 600;
+  margin: 0 0 8px;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #765f50;
+  color: #8a7562;
 }
+
+.cdlc-hours__card-name {
+  margin: 0 0 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #2a2118;
+}
+
 .cdlc-hours__card-main {
-  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Badges */
-.cdlc-hours__badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.3em 0.8em;
-  border-radius: 100px;
-  white-space: nowrap;
-}
-.cdlc-hours__badge--open {
-  background: #e8f1df;
-  color: #4e6d3f;
-}
-.cdlc-hours__badge--closed {
-  background: #f6e5e0;
-  color: #9a5346;
-}
-.cdlc-hours__badge--soon {
-  background: #f4ead7;
-  color: #9b7440;
-}
-
-/* Hours table */
-.cdlc-hours__table {
-  width: 100%;
-  border-collapse: collapse;
-  flex: 1;
-}
-.cdlc-hours__table tr {
-  border-bottom: 1px solid #efe4d4;
-}
-.cdlc-hours__table tr:last-child {
-  border-bottom: none;
-}
-.cdlc-hours__table td {
-  padding: 0.48rem 0;
-  font-size: 0.88rem;
-}
-.cdlc-hours__table .cdlc-hours__day {
-  color: #614d40;
-  font-weight: 500;
-  width: 45%;
-}
-.cdlc-hours__table .cdlc-hours__time {
-  color: #3f3128;
-  font-weight: 600;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-.cdlc-hours__table .cdlc-hours__time--closed {
-  color: #7b6656;
-  font-style: italic;
-  font-weight: 500;
-}
-
-/* Today highlight */
-.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__day,
-.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__time {
-  color: #d4a853;
-  font-weight: 600;
-}
-
-/* "Coming soon" placeholder */
-.cdlc-hours__coming {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: left;
-  padding: 0.1rem 0 0;
-  gap: 0.55rem;
-}
-.cdlc-hours__coming-icon {
-  font-size: 1.15rem;
-  opacity: 1;
-  color: #9b7440;
-}
-.cdlc-hours__coming-text {
-  font-size: 0.92rem;
-  color: #5f4b3f;
-  line-height: 1.55;
-  margin: 0;
-}
-.cdlc-hours__coming-note {
-  margin: 0;
-  color: #7c6556;
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-}
-
-/* Card footer */
-.cdlc-hours__card-footer {
-  margin-top: 0.95rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid #efe4d4;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.cdlc-hours__address {
-  font-size: 0.78rem;
-  color: #6f594b;
-  line-height: 1.4;
-}
-.cdlc-hours__map-link {
-  font-size: 0.78rem;
-  color: #9b7440;
-  text-decoration: none;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
-.cdlc-hours__map-link:hover {
-  opacity: 0.75;
-}
-
-/* --- Surgical update: status, toggle, contact, actions --- */
 .cdlc-hours__address-line {
-  font-size: 0.85rem;
-  color: #6f594b;
-  margin: 0 0 0.5rem;
-  line-height: 1.45;
+  margin: 0;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  color: #8a7562;
+  line-height: 1.5;
+  padding: 0 28px;
 }
+
 .cdlc-hours__status {
+  padding: 16px 28px;
+  border-top: 1px solid rgba(200, 168, 130, 0.2);
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.85rem;
-  color: #3f3128;
-  margin: 0 0 1rem;
-  font-weight: 500;
-  border-top: 1px solid #efe4d4;
-  padding-top: 0.7rem;
+  gap: 8px;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  color: #5c4a3a;
+  margin-top: 16px;
 }
+
 .cdlc-hours__status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.cdlc-hours__status--open .cdlc-hours__status-dot {
-  background: #5a8a3d;
-  box-shadow: 0 0 0 3px rgba(90,138,61,0.18);
-}
-.cdlc-hours__status--closed .cdlc-hours__status-dot {
-  background: #9a5346;
-  box-shadow: 0 0 0 3px rgba(154,83,70,0.16);
-}
+.cdlc-hours__status--open .cdlc-hours__status-dot { background: #6b9e6b; }
+.cdlc-hours__status--closed .cdlc-hours__status-dot { background: #8a7562; }
 
 .cdlc-hours__toggle {
-  appearance: none;
-  background: none;
-  border: none;
-  padding: 0.4rem 0;
-  font: inherit;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #9b7440;
-  cursor: pointer;
-  display: inline-flex;
+  width: 100%;
+  padding: 14px 28px;
+  border: 0;
+  border-top: 1px solid rgba(200, 168, 130, 0.2);
+  background: transparent;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5c4a3a;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.45rem;
-  align-self: flex-start;
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
-.cdlc-hours__toggle:hover { color: #7a5a30; }
+.cdlc-hours__toggle:hover {
+  background: rgba(200, 168, 130, 0.06);
+}
 .cdlc-hours__chev {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 11px;
   transition: transform 0.3s ease;
 }
 .cdlc-hours__toggle.is-open .cdlc-hours__chev { transform: rotate(180deg); }
@@ -2256,92 +2100,134 @@
 .cdlc-hours__hours-wrap {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.38s cubic-bezier(.4,0,.2,1);
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.cdlc-hours__hours-wrap.is-open { max-height: 520px; }
-.cdlc-hours__hours-wrap .cdlc-hours__table { margin-top: 0.5rem; }
+.cdlc-hours__hours-wrap.is-open { max-height: 400px; }
+
+.cdlc-hours__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cdlc-hours__table-wrap {
+  padding: 4px 28px 20px;
+}
+.cdlc-hours__table tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(200, 168, 130, 0.2);
+}
+.cdlc-hours__table tr:last-child { border-bottom: none; }
+.cdlc-hours__table td {
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  padding: 0;
+}
+.cdlc-hours__table .cdlc-hours__day {
+  color: #5c4a3a;
+}
+.cdlc-hours__table .cdlc-hours__time {
+  color: #2a2118;
+  font-weight: 500;
+  text-align: right;
+}
+.cdlc-hours__table .cdlc-hours__time--closed {
+  color: #8a7562;
+  font-weight: 400;
+}
+.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__day,
+.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__time {
+  color: #2a2118;
+  font-weight: 600;
+}
 
 .cdlc-hours__contact {
+  padding: 12px 28px;
+  border-top: 1px solid rgba(200, 168, 130, 0.2);
+}
+.cdlc-hours__contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem 1rem;
-  font-size: 13px;
-  margin: 0.95rem 0 0;
-  padding-top: 0.85rem;
-  border-top: 1px solid #efe4d4;
+  gap: 16px;
 }
 .cdlc-hours__contact a {
-  color: #6f594b;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  color: #5c4a3a;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
-.cdlc-hours__contact a:hover { color: #9b7440; }
+.cdlc-hours__contact a:hover { color: #2a2118; }
 
 .cdlc-hours__actions {
+  padding: 0 28px 24px;
   display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  gap: 10px;
 }
 .cdlc-hours__btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.62rem 1.15rem;
-  border-radius: 100px;
-  font: inherit;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.22s ease;
-  white-space: nowrap;
-}
-.cdlc-hours__btn--primary {
-  background: #3b2d25;
-  color: #fffaf3;
-  border: 1px solid #3b2d25;
-}
-.cdlc-hours__btn--primary:hover {
-  transform: translateY(-1px);
-  background: #2c211b;
-}
-.cdlc-hours__btn--secondary {
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(200, 168, 130, 0.35);
   background: transparent;
-  color: #3b2d25;
-  border: 1px solid #3b2d25;
+  color: #2a2118;
+  transition: all 0.2s ease;
 }
 .cdlc-hours__btn--secondary:hover {
-  background: #3b2d25;
-  color: #fffaf3;
+  background: #f3ece3;
+  border-color: #d4bfa8;
+}
+.cdlc-hours__btn--primary {
+  background: #2a2118;
+  color: #faf6f1;
+  border-color: #2a2118;
+}
+.cdlc-hours__btn--primary:hover {
+  background: #5c4a3a;
 }
 
-.cdlc-hours__badge--soon .cdlc-hours__badge-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
+.cdlc-hours__coming {
+  text-align: center;
+  padding: 20px 28px 28px;
+}
+.cdlc-hours__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "DM Sans", "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c8a882;
+  background: rgba(200, 168, 130, 0.1);
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.cdlc-hours__badge-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #d4a853;
-  margin-right: 0.45em;
-  vertical-align: middle;
+  background: #c8a882;
 }
 .cdlc-hours__coming-line {
-  font-style: italic;
+  margin: 0;
   font-family: "Cormorant Garamond", serif;
-  color: #6f594b;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  margin: 0.35rem 0 0;
+  font-size: 16px;
+  font-style: italic;
+  color: #8a7562;
+  line-height: 1.6;
 }
-.cdlc-hours__coming {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.4rem 0 0;
-}
-.cdlc-hours__spacer { flex: 1; min-height: 0.75rem; }
+
+.cdlc-hours__spacer { display: none; }
+
+.cdlc-hours__controls { display: none; }
 
 /* Mobile carousel for location cards */
 @media (max-width: 680px) {
@@ -2362,7 +2248,7 @@
     min-width: 0;
   }
   .cdlc-hours__card + .cdlc-hours__card {
-    border-left: 1px solid #eadcc8;
+    border-left: 1px solid rgba(200, 168, 130, 0.2);
   }
   .cdlc-hours__controls {
     display: grid;
@@ -2376,10 +2262,10 @@
     width: 38px;
     height: 38px;
     border-radius: 999px;
-    border: 1px solid rgba(66,39,23,0.15);
-    background: rgba(255,250,245,0.96);
-    box-shadow: 0 10px 22px rgba(56,33,20,0.14);
-    color: #3b2d25;
+    border: 1px solid rgba(200, 168, 130, 0.35);
+    background: #fffcf8;
+    box-shadow: 0 2px 20px rgba(42, 33, 24, 0.06);
+    color: #2a2118;
     font-size: 1.2rem;
     cursor: pointer;
     display: grid;
@@ -2397,14 +2283,16 @@
     height: 8px;
     border-radius: 50%;
     border: none;
-    background: rgba(111,88,76,0.35);
+    background: rgba(138, 117, 98, 0.35);
     cursor: pointer;
     padding: 0;
     transition: background 0.2s;
   }
-  .cdlc-hours__dot.is-active { background: #9f645b; }
+  .cdlc-hours__dot.is-active { background: #c8a882; }
+  .cdlc-hours__actions {
+    flex-wrap: wrap;
+  }
 }
-.cdlc-hours__controls { display: none; }
 @media (max-width: 680px) {
   .cdlc-hours__controls { display: grid; }
 }
@@ -2443,6 +2331,7 @@
           <span class="cdlc-hours__chev" aria-hidden="true">▼</span>
         </button>
         <div class="cdlc-hours__hours-wrap" id="cdlc-storo-hours">
+          <div class="cdlc-hours__table-wrap">
           <table class="cdlc-hours__table" id="cdlc-storo-table">
             <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
             <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
@@ -2452,12 +2341,15 @@
             <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
             <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
           </table>
+          </div>
         </div>
         <div class="cdlc-hours__contact">
+          <div class="cdlc-hours__contact-links">
           <a href="tel:+4748408749">+47 48 40 87 49</a>
           <a href="mailto:Crepedelacrepes@gmail.com">E-post</a>
           <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
         </div>
         <div class="cdlc-hours__actions">
           <a class="cdlc-hours__btn cdlc-hours__btn--primary" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart</a>
