@@ -1938,24 +1938,24 @@
 
     <div class="section-divider" aria-hidden="true">
       <div class="container">
-        <div class="section-divider__row">
-          <span class="section-divider__line"></span>
-          <span class="section-divider__label">Finn oss</span>
-          <span class="section-divider__line"></span>
+        <div>
+          <span class="divider-line"></span>
+          <span class="divider-text">Finn oss</span>
+          <span class="divider-line"></span>
         </div>
       </div>
     </div>
     <style>
       .section-divider { padding: 48px 0; }
-      .section-divider__row {
+      .section-divider .container > div {
         display: flex; align-items: center; gap: 1rem;
         max-width: var(--max); margin: 0 auto;
       }
-      .section-divider__line {
+      .divider-line {
         flex: 1; height: 1px;
         background: linear-gradient(90deg, transparent, rgba(111,88,76,0.35), transparent);
       }
-      .section-divider__label {
+      .divider-text {
         font-family: "Manrope", sans-serif;
         font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
         color: #765f50; font-weight: 600; white-space: nowrap;
@@ -2031,6 +2031,11 @@
   flex-direction: column;
   min-height: 100%;
   box-shadow: 0 16px 36px rgba(80, 53, 34, 0.06);
+  transition: box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.cdlc-hours__card:hover {
+  box-shadow: 0 18px 38px rgba(80, 53, 34, 0.1);
+  border-color: #e3d3bf;
 }
 .cdlc-hours__card + .cdlc-hours__card {
   border-left: 1px solid #e3d3bf;
@@ -2054,6 +2059,14 @@
   color: #3b2d25;
   margin: 0;
   letter-spacing: 0.01em;
+}
+.cdlc-hours__meta-label {
+  margin: 0 0 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #765f50;
 }
 .cdlc-hours__card-main {
   flex: 1;
@@ -2196,6 +2209,8 @@
   color: #3f3128;
   margin: 0 0 1rem;
   font-weight: 500;
+  border-top: 1px solid #efe4d4;
+  padding-top: 0.7rem;
 }
 .cdlc-hours__status-dot {
   width: 8px;
@@ -2314,10 +2329,17 @@
 }
 .cdlc-hours__coming-line {
   font-style: italic;
+  font-family: "Cormorant Garamond", serif;
   color: #6f594b;
   font-size: 0.92rem;
   line-height: 1.55;
   margin: 0.35rem 0 0;
+}
+.cdlc-hours__coming {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.4rem 0 0;
 }
 .cdlc-hours__spacer { flex: 1; min-height: 0.75rem; }
 
@@ -2405,7 +2427,10 @@
     <!-- STORO STORSENTER -->
     <div class="cdlc-hours__card">
       <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
+        <div>
+          <p class="cdlc-hours__meta-label">Lokasjon</p>
+          <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
+        </div>
       </div>
       <div class="cdlc-hours__card-main">
         <p class="cdlc-hours__address-line">Vitaminveien 7, 0485 Oslo</p>
@@ -2444,12 +2469,17 @@
     <!-- AKER BRYGGE -->
     <div class="cdlc-hours__card">
       <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--soon"><span class="cdlc-hours__badge-dot"></span>Kommer snart</span>
+        <div>
+          <p class="cdlc-hours__meta-label">Lokasjon</p>
+          <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
+          <p class="cdlc-hours__address-line">Oslo</p>
+        </div>
       </div>
       <div class="cdlc-hours__card-main">
-        <p class="cdlc-hours__address-line">Aker Brygge, Oslo</p>
-        <p class="cdlc-hours__coming-line">Vi gjør oss klare for et nytt kapittel. Mer informasjon kommer.</p>
+        <div class="cdlc-hours__coming">
+          <span class="cdlc-hours__badge cdlc-hours__badge--soon"><span class="cdlc-hours__badge-dot"></span>Kommer snart</span>
+          <p class="cdlc-hours__coming-line">Vi gjør oss klare for et nytt kapittel. Mer informasjon kommer.</p>
+        </div>
         <div class="cdlc-hours__spacer"></div>
         <div class="cdlc-hours__actions">
           <a class="cdlc-hours__btn cdlc-hours__btn--secondary" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
