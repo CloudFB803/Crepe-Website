@@ -67,7 +67,7 @@
       font-family: "Manrope", sans-serif;
       color: var(--text);
       line-height: 1.55;
-      background: #f5ebe0;
+      background: #f6f2ee;
     }
 
     a {
@@ -1953,9 +1953,10 @@
 <style>
 /* Scoped: alle klasser starter med .cdlc-hours */
 .cdlc-hours {
-  padding: 2.6rem 1.5rem 3.4rem;
+  min-height: 100vh;
+  padding: 6.8rem 1.5rem 3.4rem;
   color: #2a2118;
-  background: #faf6f1;
+  background: #f6f2ee;
   font-family: "DM Sans", sans-serif;
 }
 .cdlc-hours *,
@@ -1991,17 +1992,17 @@
 .cdlc-hours__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  max-width: 1120px;
+  gap: 1.35rem;
+  max-width: 1280px;
   margin: 0 auto;
 }
-@media (max-width: 680px) {
+@media (max-width: 900px) {
   .cdlc-hours__grid {
     grid-template-columns: 1fr;
-    gap: 0.95rem;
+    gap: 1rem;
   }
   .cdlc-hours {
-    padding: 2.7rem 1rem 3rem;
+    padding: 6rem 1rem 2.5rem;
   }
 }
 
@@ -2107,7 +2108,7 @@
   color: #2a2118;
 }
 .cdlc-hours__accordion-toggle::after {
-  content: "▾";
+  content: "▴";
   font-size: 0.9rem;
   color: #8a7562;
   transition: transform 0.24s ease;
@@ -2239,27 +2240,6 @@
 
   <div class="cdlc-hours__grid">
 
-    <!-- AKER BRYGGE -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--soon">Kommer snart</span>
-      </div>
-      <div class="cdlc-hours__card-main">
-        <div class="cdlc-hours__coming">
-          <p class="cdlc-hours__coming-text">
-            Vi gjør oss klare på Aker Brygge med samme ferske crêpes og varme service.
-            Åpningstider publiseres så snart alt er klart.
-          </p>
-          <p class="cdlc-hours__coming-note">Følg oss på sosiale medier for oppdateringer om åpningsdato.</p>
-        </div>
-        <span class="cdlc-hours__address">Aker Brygge, Oslo</span>
-        <div class="cdlc-hours__cta-row">
-          <a class="cdlc-hours__cta" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
-        </div>
-      </div>
-    </div>
-
     <!-- STORO STORSENTER -->
     <div class="cdlc-hours__card">
       <div class="cdlc-hours__card-header">
@@ -2294,6 +2274,25 @@
         <div class="cdlc-hours__cta-row">
           <a class="cdlc-hours__cta cdlc-hours__cta--primary" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart</a>
           <a class="cdlc-hours__cta" href="tel:+4748408749">Ring oss</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AKER BRYGGE -->
+    <div class="cdlc-hours__card">
+      <div class="cdlc-hours__card-header">
+        <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
+        <span class="cdlc-hours__badge cdlc-hours__badge--soon">Kommer snart</span>
+      </div>
+      <div class="cdlc-hours__card-main">
+        <div class="cdlc-hours__coming">
+          <p class="cdlc-hours__coming-text">
+            Vi gjør oss klare for et nytt kapittel. Mer informasjon kommer.
+          </p>
+        </div>
+        <span class="cdlc-hours__address">Aker Brygge, Oslo</span>
+        <div class="cdlc-hours__cta-row">
+          <a class="cdlc-hours__cta" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
         </div>
       </div>
     </div>
@@ -2398,13 +2397,11 @@
     var expanded = toggle.getAttribute('aria-expanded') === 'true';
     if (expanded) {
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.textContent = 'Se alle åpningstider';
       panel.style.maxHeight = '0px';
       panel.classList.remove('is-open');
       panel.setAttribute('aria-hidden', 'true');
     } else {
       toggle.setAttribute('aria-expanded', 'true');
-      toggle.textContent = 'Skjul åpningstider';
       panel.classList.add('is-open');
       panel.setAttribute('aria-hidden', 'false');
       panel.style.maxHeight = panel.scrollHeight + 'px';
