@@ -965,6 +965,7 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 80px 24px;
+      background: #F5EEE6;
     }
 
     .social-proof-shell {
@@ -1123,6 +1124,24 @@
       color: #fbf1e7;
       padding: clamp(36px, 6vw, 64px) 0;
       margin-top: 18px;
+    }
+
+    @media (min-width: 981px) {
+      .social-proof {
+        min-height: 100vh;
+        padding: 112px 24px 96px;
+        display: flex;
+        align-items: center;
+      }
+
+      .social-proof .container {
+        width: 100%;
+      }
+
+      .social-proof-shell {
+        min-height: calc(100vh - 208px);
+        align-content: center;
+      }
     }
 
     .booking-cta-shell {
@@ -1946,6 +1965,7 @@
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px;
+        background: #F5EEE6;
       }
       .section-divider .container {
         width: 100%;
@@ -1955,7 +1975,7 @@
         display: flex;
         align-items: center;
         gap: 24px;
-        padding: 48px 0;
+        padding: 56px 0;
       }
       .divider-line {
         flex: 1;
@@ -1971,6 +1991,12 @@
         color: #8a7562;
         white-space: nowrap;
       }
+
+      @media (min-width: 981px) {
+        .section-divider .container > div {
+          padding: 68px 0 56px;
+        }
+      }
     </style>
 
     <!-- ===== ÅPNINGSTIDER SEKSJON START ===== -->
@@ -1982,6 +2008,7 @@
   margin: 0 auto;
   padding: 32px 24px 80px;
   color: #2a2118;
+  background: #F5EEE6;
 }
 .cdlc-hours *,
 .cdlc-hours *::before,
@@ -2001,6 +2028,13 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   width: 100%;
+}
+
+@media (min-width: 981px) {
+  .cdlc-hours {
+    min-height: calc(100vh - 120px);
+    padding: 40px 24px 104px;
+  }
 }
 
 .cdlc-hours__card {
