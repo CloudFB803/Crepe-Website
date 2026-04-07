@@ -2107,6 +2107,8 @@
   cursor: pointer;
   display: inline-flex;
   align-self: flex-start;
+  justify-self: start;
+  width: max-content;
   align-items: center;
   gap: 0.4rem;
   transition: color 0.2s ease;
@@ -2207,14 +2209,15 @@
   color: #2a2118;
 }
 .cdlc-hours__cta--primary {
-  background: #2a2118;
-  border-color: #2a2118;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
   color: #fffcf8;
+  box-shadow: 0 6px 16px rgba(159, 100, 91, 0.22);
 }
 .cdlc-hours__cta--primary:hover {
-  background: #443326;
-  border-color: #443326;
+  filter: brightness(1.05);
   color: #fffcf8;
+  box-shadow: 0 8px 20px rgba(159, 100, 91, 0.28);
 }
 
 /* Coming soon card body */
