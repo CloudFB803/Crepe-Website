@@ -161,8 +161,7 @@
 }
 
 .site-nav__cta:hover {
-  opacity:    0.88;
-  transform:  translateY(-1px);
+  opacity:    0.92;
   box-shadow: 0 7px 26px rgba(201, 131, 118, 0.28);
 }
 
