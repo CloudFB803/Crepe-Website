@@ -962,43 +962,31 @@
     }
 
     .social-proof {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      background: #F5EEE6;
+      padding-top: 8px;
     }
 
     .social-proof-shell {
-      max-width: 1100px;
-      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,253,249,0.64), rgba(241,228,218,0.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 34px);
+      box-shadow: var(--shadow-soft);
       display: grid;
-      gap: 0;
+      gap: 22px;
     }
 
     .social-proof h2 {
-      margin: 0 0 8px;
+      margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 400;
-      color: #2a2118;
-      line-height: 1.1;
-      text-align: center;
-    }
-
-    .social-proof-subtitle {
-      font-family: "DM Sans", "Manrope", sans-serif;
-      font-size: 14px;
-      color: #8a7562;
-      line-height: 1.6;
-      max-width: 480px;
-      margin: 0 auto 48px;
-      text-align: center;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+      gap: 16px;
     }
 
     .testimonial-carousel {
@@ -1021,102 +1009,123 @@
     }
 
     .testimonial-card {
-      background: #fffcf8;
-      border: 1px solid rgba(200, 168, 130, 0.2);
-      border-radius: 16px;
-      padding: 32px 28px 28px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
+      background: linear-gradient(135deg, #FFF0F3, #FFE4E8);
+      border: 1px solid rgba(66, 39, 23, 0.1);
+      border-radius: 24px;
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      box-shadow: 0 4px 24px rgba(255, 143, 163, 0.12);
       min-width: 0;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      overflow-wrap: anywhere;
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-1.2deg);
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -8px;
+      left: 12px;
+      font-size: 120px;
+      font-family: Georgia, serif;
+      line-height: 1;
+      color: #FFAEC0;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .testimonial-card:nth-child(3n + 2) {
+      background: linear-gradient(135deg, #FFF8F5, #FFE8D6);
+    }
+
+    .testimonial-card:nth-child(3n) {
+      background: linear-gradient(135deg, #FDF0F0, #F9D5D3);
+    }
+
+    .testimonial-card:nth-child(even) {
+      transform: rotate(1.2deg);
     }
 
     .testimonial-card:hover {
-      box-shadow: 0 4px 30px rgba(42, 33, 24, 0.08);
-      transform: translateY(-2px);
+      transform: rotate(0deg);
     }
 
     .testimonial-stars {
-      color: #c8a882;
-      letter-spacing: 3px;
-      font-size: 13px;
-      margin-bottom: 16px;
+      color: #FF8FA3;
+      letter-spacing: 0.18em;
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-card blockquote {
-      margin: 0 0 20px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 17px;
-      font-style: italic;
-      font-weight: 400;
-      line-height: 1.6;
-      color: #5c4a3a;
-      flex: 1;
+      margin: 0;
+      color: #4a352b;
+      line-height: 1.7;
+      font-size: 15px;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-author {
-      display: flex;
+      color: #6b5649;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(200, 168, 130, 0.2);
-      font-family: "DM Sans", "Manrope", sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: #2a2118;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-avatar {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: #f3ece3;
-      color: #5c4a3a;
+      background: #FFAEC0;
+      color: #fff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: "Cormorant Garamond", serif;
       font-size: 14px;
-      font-weight: 600;
-      flex-shrink: 0;
+      font-weight: 700;
     }
 
     .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 64px;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 40px 24px 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding-top: 6px;
     }
 
     .stat-pill {
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(66, 39, 23, 0.1);
+      border-radius: 18px;
+      padding: 16px 14px;
       text-align: center;
       display: grid;
-      gap: 0;
-      background: none;
-      border: 0;
-      border-radius: 0;
-      padding: 0;
+      gap: 4px;
     }
 
     .stat-pill strong {
+      font-size: clamp(28px, 3.2vw, 38px);
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(32px, 5vw, 44px);
-      font-weight: 300;
-      color: #2a2118;
-      line-height: 1;
+      line-height: 0.9;
+      color: #2d1c15;
     }
 
     .stat-pill span {
-      font-family: "DM Sans", "Manrope", sans-serif;
-      font-size: 12px;
-      color: #8a7562;
-      letter-spacing: 0.05em;
-      margin-top: 6px;
-      text-transform: none;
-      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #70594b;
+      font-weight: 700;
     }
 
     .booking-cta-strip {
@@ -1124,24 +1133,6 @@
       color: #fbf1e7;
       padding: clamp(36px, 6vw, 64px) 0;
       margin-top: 18px;
-    }
-
-    @media (min-width: 981px) {
-      .social-proof {
-        min-height: 100vh;
-        padding: 112px 24px 96px;
-        display: flex;
-        align-items: center;
-      }
-
-      .social-proof .container {
-        width: 100%;
-      }
-
-      .social-proof-shell {
-        min-height: calc(100vh - 208px);
-        align-content: center;
-      }
     }
 
     .booking-cta-shell {
@@ -1636,6 +1627,7 @@
 
       .testimonial-viewport {
         overflow: hidden;
+        border-radius: 24px;
         width: 100%;
       }
 
@@ -1644,7 +1636,7 @@
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        padding: 32px 28px 28px;
+        padding: 20px 16px 18px;
       }
 
       .testimonial-controls {
@@ -1660,14 +1652,14 @@
         width: 38px;
         height: 38px;
         border-radius: 999px;
-        border: 1px solid rgba(200, 168, 130, 0.35);
-        background: #fffcf8;
-        color: #2a2118;
+        border: 1px solid rgba(66, 39, 23, 0.15);
+        background: rgba(255, 250, 245, 0.96);
+        color: var(--text);
         font-size: 22px;
         line-height: 1;
         display: grid;
         place-items: center;
-        box-shadow: 0 2px 20px rgba(42, 33, 24, 0.06);
+        box-shadow: 0 10px 22px rgba(56, 33, 20, 0.14);
       }
 
       .testimonial-arrow.prev {
@@ -1691,16 +1683,16 @@
         height: 8px;
         border-radius: 50%;
         border: none;
-        background: rgba(138, 117, 98, 0.35);
+        background: rgba(111, 88, 76, 0.35);
         padding: 0;
       }
 
       .testimonial-dot.active {
-        background: #c8a882;
+        background: var(--accent-2);
       }
 
       .stats-bar {
-        gap: 32px;
+        grid-template-columns: 1fr;
       }
 
       .booking-cta-shell {
@@ -1713,13 +1705,6 @@
 
       .footer-actions {
         display: none;
-      }
-    }
-
-
-    @media (max-width: 600px) {
-      .stats-bar {
-        gap: 32px;
       }
     }
 
@@ -1911,26 +1896,26 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
+          <p style="margin: -6px 0 4px; color: #6b5649; font-weight: 600;">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
               <div class="testimonial-grid" id="testimonialGrid">
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                  <blockquote>"Å kjøpe en crêpe her føles som å unne seg et lite øyeblikk av ro. Atmosfæren minner om små gater i Sør-Frankrike."</blockquote>
+                  <blockquote>"Å kjøpe en crêpe her føles som å unne seg et lite øyeblikk av ro. Man blir møtt med smil, nystekte dufter og en atmosfære som minner om små gater i Sør-Frankrike"</blockquote>
                   <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">A</span> Alexis Kayembe</div>
                 </article>
 
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                  <blockquote>"Fantastisk personale og imponerende utvalg. Kvaliteten er høy — du smaker virkelig forskjellen."</blockquote>
+                  <blockquote>"Ett fantastisk sted og utrolig deilige crêpes😍 Når du kommer inn, blir du møtt av ett fantastisk personale som alltid er klar til å hjelpe deg. Utvalget av crêpes er imponerende, med både søte og salte alternativer. Kvaliteten på produktene er høy, og du kan virkelig smake forskjellen. I tillegg er prisen rimelig."</blockquote>
                   <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">J</span> Jonas Hjørnerød</div>
                 </article>
 
                 <article class="testimonial-card">
                   <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                  <blockquote>"Latterlig gode crêpes. Og da jeg bestilte feil, lagde de ny mat uten å nøle. Anbefales."</blockquote>
+                  <blockquote>"Latterlig gode crepes. Og i tillegg fikk jeg ny mat når jeg selv hadde klart å bestille feil 👌👏 anbefales.."</blockquote>
                   <div class="testimonial-author"><span class="testimonial-avatar" aria-hidden="true">C</span> Casper Width</div>
                 </article>
               </div>
@@ -1951,390 +1936,223 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="container">
-        <div>
-          <span class="divider-line"></span>
-          <span class="divider-text">Finn oss</span>
-          <span class="divider-line"></span>
-        </div>
-      </div>
-    </div>
-    <style>
-      .section-divider {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 24px;
-        background: #F5EEE6;
-      }
-      .section-divider .container {
-        width: 100%;
-        margin: 0;
-      }
-      .section-divider .container > div {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        padding: 56px 0;
-      }
-      .divider-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(200, 168, 130, 0.35), transparent);
-      }
-      .divider-text {
-        font-family: "DM Sans", "Manrope", sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #8a7562;
-        white-space: nowrap;
-      }
-
-      @media (min-width: 981px) {
-        .section-divider .container > div {
-          padding: 68px 0 56px;
-        }
-      }
-    </style>
-
     <!-- ===== ÅPNINGSTIDER SEKSJON START ===== -->
 <section class="cdlc-hours" id="lokasjon">
 <style>
 /* Scoped: alle klasser starter med .cdlc-hours */
 .cdlc-hours {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 32px 24px 80px;
-  color: #2a2118;
-  background: #F5EEE6;
+  padding: 2.65rem 1.5rem 3.5rem;
+  color: #3f3128;
 }
 .cdlc-hours *,
 .cdlc-hours *::before,
 .cdlc-hours *::after {
   box-sizing: border-box;
 }
-
-.cdlc-hours__heading { display: none; }
-
-.cdlc-hours__viewport {
-  width: 100%;
-  min-width: 0;
+.cdlc-hours__heading {
+  text-align: center;
+  margin-bottom: 2.05rem;
+}
+.cdlc-hours__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: #3a2c24;
+  letter-spacing: 0.01em;
+}
+.cdlc-hours__title em {
+  color: #d4a853;
+  font-style: italic;
+}
+.cdlc-hours__subtitle {
+  font-size: 0.9rem;
+  color: #765f50;
+  margin: 0.45rem 0 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
+/* Grid */
 .cdlc-hours__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  width: 100%;
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
-
-@media (min-width: 981px) {
+@media (min-width: 1024px) {
   .cdlc-hours {
-    min-height: calc(100vh - 120px);
-    padding: 40px 24px 104px;
+    padding-inline: clamp(1.25rem, 3vw, 2.2rem);
+  }
+}
+@media (max-width: 680px) {
+  .cdlc-hours__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .cdlc-hours {
+    padding: 3.25rem 1rem 3.75rem;
   }
 }
 
+/* Card */
 .cdlc-hours__card {
-  background: #fffcf8;
-  border: 1px solid rgba(200, 168, 130, 0.2);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: box-shadow 0.25s ease;
+  background: #fffaf3;
+  border: 1px solid #eadcc8;
+  border-radius: 14px;
+  padding: 1.45rem 1.55rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  box-shadow: 0 16px 36px rgba(80, 53, 34, 0.06);
 }
-.cdlc-hours__card:hover {
-  box-shadow: 0 4px 30px rgba(42, 33, 24, 0.08);
+.cdlc-hours__card + .cdlc-hours__card {
+  border-left: 1px solid #e3d3bf;
 }
-
+@media (max-width: 680px) {
+  .cdlc-hours__card + .cdlc-hours__card {
+    border-left: 1px solid #eadcc8;
+  }
+}
 .cdlc-hours__card-header {
-  padding: 28px 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  gap: 0.55rem;
+  flex-wrap: wrap;
 }
-
-.cdlc-hours__meta-label {
-  margin: 0 0 8px;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #8a7562;
-}
-
 .cdlc-hours__card-name {
-  margin: 0 0 4px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-  font-weight: 400;
-  color: #2a2118;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3b2d25;
+  margin: 0;
+  letter-spacing: 0.01em;
 }
-
 .cdlc-hours__card-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.cdlc-hours__address-line {
-  margin: 0;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  color: #8a7562;
-  line-height: 1.5;
-  padding: 0 28px;
+/* Badges */
+.cdlc-hours__badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.cdlc-hours__badge--open {
+  background: #e8f1df;
+  color: #4e6d3f;
+}
+.cdlc-hours__badge--closed {
+  background: #f6e5e0;
+  color: #9a5346;
+}
+.cdlc-hours__badge--soon {
+  background: #f4ead7;
+  color: #9b7440;
 }
 
-.cdlc-hours__status {
-  padding: 16px 28px;
-  border-top: 1px solid rgba(200, 168, 130, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  color: #5c4a3a;
-  margin-top: 16px;
-}
-
-.cdlc-hours__status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.cdlc-hours__status--open .cdlc-hours__status-dot { background: #6b9e6b; }
-.cdlc-hours__status--closed .cdlc-hours__status-dot { background: #8a7562; }
-
-.cdlc-hours__toggle {
-  width: 100%;
-  padding: 14px 28px;
-  border: 0;
-  border-top: 1px solid rgba(200, 168, 130, 0.2);
-  background: transparent;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: #5c4a3a;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.cdlc-hours__toggle:hover {
-  background: rgba(200, 168, 130, 0.06);
-}
-.cdlc-hours__chev {
-  display: inline-block;
-  font-size: 11px;
-  transition: transform 0.3s ease;
-}
-.cdlc-hours__toggle.is-open .cdlc-hours__chev { transform: rotate(180deg); }
-
-.cdlc-hours__hours-wrap {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cdlc-hours__hours-wrap.is-open { max-height: 400px; }
-
+/* Hours table */
 .cdlc-hours__table {
   width: 100%;
   border-collapse: collapse;
-}
-.cdlc-hours__table-wrap {
-  padding: 4px 28px 20px;
+  flex: 1;
 }
 .cdlc-hours__table tr {
-  display: flex;
-  justify-content: space-between;
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(200, 168, 130, 0.2);
+  border-bottom: 1px solid #efe4d4;
 }
-.cdlc-hours__table tr:last-child { border-bottom: none; }
+.cdlc-hours__table tr:last-child {
+  border-bottom: none;
+}
 .cdlc-hours__table td {
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  padding: 0;
+  padding: 0.48rem 0;
+  font-size: 0.88rem;
 }
 .cdlc-hours__table .cdlc-hours__day {
-  color: #5c4a3a;
+  color: #614d40;
+  font-weight: 500;
+  width: 45%;
 }
 .cdlc-hours__table .cdlc-hours__time {
-  color: #2a2118;
-  font-weight: 500;
+  color: #3f3128;
+  font-weight: 600;
   text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 .cdlc-hours__table .cdlc-hours__time--closed {
-  color: #8a7562;
-  font-weight: 400;
+  color: #7b6656;
+  font-style: italic;
+  font-weight: 500;
 }
+
+/* Today highlight */
 .cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__day,
 .cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__time {
-  color: #2a2118;
+  color: #d4a853;
   font-weight: 600;
 }
 
-.cdlc-hours__contact {
-  padding: 12px 28px;
-  border-top: 1px solid rgba(200, 168, 130, 0.2);
-}
-.cdlc-hours__contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.cdlc-hours__contact a {
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  color: #5c4a3a;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.cdlc-hours__contact a:hover { color: #2a2118; }
-
-.cdlc-hours__actions {
-  padding: 0 28px 24px;
-  display: flex;
-  gap: 10px;
-}
-.cdlc-hours__btn {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(200, 168, 130, 0.35);
-  background: transparent;
-  color: #2a2118;
-  transition: all 0.2s ease;
-}
-.cdlc-hours__btn--secondary:hover {
-  background: #f3ece3;
-  border-color: #d4bfa8;
-}
-.cdlc-hours__btn--primary {
-  background: #2a2118;
-  color: #faf6f1;
-  border-color: #2a2118;
-}
-.cdlc-hours__btn--primary:hover {
-  background: #5c4a3a;
-}
-
+/* "Coming soon" placeholder */
 .cdlc-hours__coming {
-  text-align: center;
-  padding: 20px 28px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0.1rem 0 0;
+  gap: 0.55rem;
 }
-.cdlc-hours__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: "DM Sans", "Manrope", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #c8a882;
-  background: rgba(200, 168, 130, 0.1);
-  padding: 8px 16px;
-  border-radius: 100px;
-  margin-bottom: 16px;
+.cdlc-hours__coming-icon {
+  font-size: 1.15rem;
+  opacity: 1;
+  color: #9b7440;
 }
-.cdlc-hours__badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #c8a882;
-}
-.cdlc-hours__coming-line {
+.cdlc-hours__coming-text {
+  font-size: 0.92rem;
+  color: #5f4b3f;
+  line-height: 1.55;
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 16px;
-  font-style: italic;
-  color: #8a7562;
-  line-height: 1.6;
+}
+.cdlc-hours__coming-note {
+  margin: 0;
+  color: #7c6556;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
 }
 
-.cdlc-hours__spacer { display: none; }
-
-.cdlc-hours__controls { display: none; }
-
-/* Mobile carousel for location cards */
-@media (max-width: 680px) {
-  .cdlc-hours__viewport {
-    overflow: hidden;
-    width: 100%;
-  }
-  .cdlc-hours__grid {
-    display: flex;
-    grid-template-columns: none;
-    gap: 0;
-    width: 100%;
-    transition: transform 0.62s ease;
-    touch-action: pan-y;
-  }
-  .cdlc-hours__grid > .cdlc-hours__card {
-    flex: 0 0 100%;
-    min-width: 0;
-  }
-  .cdlc-hours__card + .cdlc-hours__card {
-    border-left: 1px solid rgba(200, 168, 130, 0.2);
-  }
-  .cdlc-hours__controls {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 1.1rem auto 0;
-    max-width: 320px;
-  }
-  .cdlc-hours__arrow {
-    width: 38px;
-    height: 38px;
-    border-radius: 999px;
-    border: 1px solid rgba(200, 168, 130, 0.35);
-    background: #fffcf8;
-    box-shadow: 0 2px 20px rgba(42, 33, 24, 0.06);
-    color: #2a2118;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    transition: transform 0.2s;
-  }
-  .cdlc-hours__arrow:hover { transform: translateY(-1px); }
-  .cdlc-hours__dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-  .cdlc-hours__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(138, 117, 98, 0.35);
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s;
-  }
-  .cdlc-hours__dot.is-active { background: #c8a882; }
-  .cdlc-hours__actions {
-    flex-wrap: wrap;
-  }
+/* Card footer */
+.cdlc-hours__card-footer {
+  margin-top: 0.95rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #efe4d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
-@media (max-width: 680px) {
-  .cdlc-hours__controls { display: grid; }
+.cdlc-hours__address {
+  font-size: 0.78rem;
+  color: #6f594b;
+  line-height: 1.4;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .cdlc-hours__hours-wrap,
-  .cdlc-hours__chev,
-  .cdlc-hours__grid { transition: none; }
+.cdlc-hours__map-link {
+  font-size: 0.78rem;
+  color: #9b7440;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.cdlc-hours__map-link:hover {
+  opacity: 0.75;
 }
 </style>
 
@@ -2343,83 +2161,53 @@
     <p class="cdlc-hours__subtitle">To lokasjoner i Oslo</p>
   </div>
 
-  <div class="cdlc-hours__viewport" id="cdlc-hours-viewport">
-  <div class="cdlc-hours__grid" id="cdlc-hours-grid">
-
-    <!-- STORO STORSENTER -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <div>
-          <p class="cdlc-hours__meta-label">Lokasjon</p>
-          <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
-        </div>
-      </div>
-      <div class="cdlc-hours__card-main">
-        <p class="cdlc-hours__address-line">Vitaminveien 7, 0485 Oslo</p>
-        <div class="cdlc-hours__status" id="cdlc-storo-status">
-          <span class="cdlc-hours__status-dot"></span>
-          <span class="cdlc-hours__status-text"></span>
-        </div>
-        <button type="button" class="cdlc-hours__toggle" id="cdlc-storo-toggle" aria-expanded="false" aria-controls="cdlc-storo-hours">
-          <span class="cdlc-hours__toggle-text">Se alle åpningstider</span>
-          <span class="cdlc-hours__chev" aria-hidden="true">▼</span>
-        </button>
-        <div class="cdlc-hours__hours-wrap" id="cdlc-storo-hours">
-          <div class="cdlc-hours__table-wrap">
-          <table class="cdlc-hours__table" id="cdlc-storo-table">
-            <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="3"><td class="cdlc-hours__day">Onsdag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="4"><td class="cdlc-hours__day">Torsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="5"><td class="cdlc-hours__day">Fredag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
-            <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
-          </table>
-          </div>
-        </div>
-        <div class="cdlc-hours__contact">
-          <div class="cdlc-hours__contact-links">
-          <a href="tel:+4748408749">+47 48 40 87 49</a>
-          <a href="mailto:Crepedelacrepes@gmail.com">E-post</a>
-          <a href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener noreferrer">TikTok</a>
-          </div>
-        </div>
-        <div class="cdlc-hours__actions">
-          <a class="cdlc-hours__btn cdlc-hours__btn--primary" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart</a>
-          <a class="cdlc-hours__btn cdlc-hours__btn--secondary" href="tel:+4748408749">Ring oss</a>
-        </div>
-      </div>
-    </div>
+  <div class="cdlc-hours__grid">
 
     <!-- AKER BRYGGE -->
     <div class="cdlc-hours__card">
       <div class="cdlc-hours__card-header">
-        <div>
-          <p class="cdlc-hours__meta-label">Lokasjon</p>
-          <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
-          <p class="cdlc-hours__address-line">Oslo</p>
-        </div>
+        <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
+        <span class="cdlc-hours__badge cdlc-hours__badge--soon">Åpner snart</span>
       </div>
       <div class="cdlc-hours__card-main">
         <div class="cdlc-hours__coming">
-          <span class="cdlc-hours__badge cdlc-hours__badge--soon"><span class="cdlc-hours__badge-dot"></span>Kommer snart</span>
-          <p class="cdlc-hours__coming-line">Vi gjør oss klare for et nytt kapittel. Mer informasjon kommer.</p>
+          <span class="cdlc-hours__coming-icon">🥐</span>
+          <p class="cdlc-hours__coming-text">
+            Vi gjør oss klare på Aker Brygge med samme ferske crêpes og varme service.
+            Åpningstider publiseres så snart alt er klart.
+          </p>
+          <p class="cdlc-hours__coming-note">Følg oss på sosiale medier for oppdateringer om åpningsdato.</p>
         </div>
-        <div class="cdlc-hours__spacer"></div>
-        <div class="cdlc-hours__actions">
-          <a class="cdlc-hours__btn cdlc-hours__btn--secondary" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
-        </div>
+      </div>
+      <div class="cdlc-hours__card-footer">
+        <span class="cdlc-hours__address">Aker Brygge, Oslo</span>
+        <a class="cdlc-hours__map-link" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Åpne i kart →</a>
       </div>
     </div>
 
-  </div>
-  </div>
+    <!-- STORO STORSENTER -->
+    <div class="cdlc-hours__card">
+      <div class="cdlc-hours__card-header">
+        <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
+        <span class="cdlc-hours__badge" id="cdlc-storo-badge"></span>
+      </div>
+      <div class="cdlc-hours__card-main">
+        <table class="cdlc-hours__table" id="cdlc-storo-table">
+          <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="3"><td class="cdlc-hours__day">Onsdag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="4"><td class="cdlc-hours__day">Torsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="5"><td class="cdlc-hours__day">Fredag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
+          <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
+          <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
+        </table>
+      </div>
+      <div class="cdlc-hours__card-footer">
+        <span class="cdlc-hours__address">Vitaminveien 7, 0485 Oslo</span>
+        <a class="cdlc-hours__map-link" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart →</a>
+      </div>
+    </div>
 
-  <div class="cdlc-hours__controls" id="cdlc-hours-controls" aria-label="Bla mellom lokasjoner">
-    <button class="cdlc-hours__arrow" id="cdlc-hours-prev" type="button" aria-label="Forrige lokasjon">‹</button>
-    <div class="cdlc-hours__dots" id="cdlc-hours-dots"></div>
-    <button class="cdlc-hours__arrow" id="cdlc-hours-next" type="button" aria-label="Neste lokasjon">›</button>
   </div>
 
 <script>
@@ -2427,25 +2215,6 @@
   var now = new Date();
   var today = now.getDay();
   var mins = now.getHours() * 60 + now.getMinutes();
-
-  // Hours config: [openMin, closeMin] or null = closed
-  var schedule = {
-    0: null,             // Søndag
-    1: [600, 1260],      // Mandag
-    2: [600, 1260],
-    3: [600, 1260],
-    4: [600, 1260],
-    5: [600, 1260],
-    6: [600, 1200]       // Lørdag
-  };
-  function fmt(m) {
-    var h = Math.floor(m / 60);
-    var mm = m % 60;
-    return (h < 10 ? '0' + h : h) + ':' + (mm < 10 ? '0' + mm : mm);
-  }
-  function dayName(d) {
-    return ['søndag','mandag','tirsdag','onsdag','torsdag','fredag','lørdag'][d];
-  }
 
   // Highlight today
   var rows = document.querySelectorAll('#cdlc-storo-table tr[data-day]');
@@ -2455,132 +2224,21 @@
     }
   }
 
-  // Status text
-  var status = document.getElementById('cdlc-storo-status');
-  var statusText = status.querySelector('.cdlc-hours__status-text');
-  var todaySched = schedule[today];
-  var isOpen = todaySched && mins >= todaySched[0] && mins < todaySched[1];
-
+  // Open/closed badge
+  var badge = document.getElementById('cdlc-storo-badge');
+  var isOpen = false;
+  if (today >= 1 && today <= 5) {
+    isOpen = mins >= 600 && mins < 1260;
+  } else if (today === 6) {
+    isOpen = mins >= 600 && mins < 1200;
+  }
   if (isOpen) {
-    status.classList.add('cdlc-hours__status--open');
-    statusText.textContent = 'Åpen nå · Stenger ' + fmt(todaySched[1]);
+    badge.textContent = 'Åpent nå';
+    badge.className = 'cdlc-hours__badge cdlc-hours__badge--open';
   } else {
-    status.classList.add('cdlc-hours__status--closed');
-    // Find next opening
-    var nextDay = today;
-    var nextOpen = null;
-    if (todaySched && mins < todaySched[0]) {
-      nextOpen = { day: today, time: todaySched[0] };
-    } else {
-      for (var k = 1; k <= 7; k++) {
-        var d = (today + k) % 7;
-        if (schedule[d]) { nextOpen = { day: d, time: schedule[d][0] }; break; }
-      }
-    }
-    if (nextOpen) {
-      var label = nextOpen.day === today ? 'i dag' : (nextOpen.day === (today + 1) % 7 ? 'i morgen' : dayName(nextOpen.day));
-      statusText.textContent = 'Stengt · Åpner ' + label + ' ' + fmt(nextOpen.time);
-    } else {
-      statusText.textContent = 'Stengt';
-    }
+    badge.textContent = 'Stengt';
+    badge.className = 'cdlc-hours__badge cdlc-hours__badge--closed';
   }
-
-  // Toggle
-  var toggle = document.getElementById('cdlc-storo-toggle');
-  var wrap = document.getElementById('cdlc-storo-hours');
-  var toggleText = toggle.querySelector('.cdlc-hours__toggle-text');
-  toggle.addEventListener('click', function() {
-    var open = wrap.classList.toggle('is-open');
-    toggle.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggleText.textContent = open ? 'Skjul åpningstider' : 'Se alle åpningstider';
-  });
-
-  // Mobile carousel
-  var grid = document.getElementById('cdlc-hours-grid');
-  var prev = document.getElementById('cdlc-hours-prev');
-  var next = document.getElementById('cdlc-hours-next');
-  var dotsHost = document.getElementById('cdlc-hours-dots');
-  var cards = grid.querySelectorAll('.cdlc-hours__card');
-  var index = 0;
-  var autoTimer = null;
-  var pauseTimer = null;
-  var mql = window.matchMedia('(max-width: 680px)');
-
-  // Build dots
-  for (var j = 0; j < cards.length; j++) {
-    (function(idx) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'cdlc-hours__dot' + (idx === 0 ? ' is-active' : '');
-      b.setAttribute('aria-label', 'Lokasjon ' + (idx + 1));
-      b.addEventListener('click', function() { go(idx, true); });
-      dotsHost.appendChild(b);
-    })(j);
-  }
-  var dots = dotsHost.querySelectorAll('.cdlc-hours__dot');
-
-  function apply() {
-    if (mql.matches) {
-      grid.style.transform = 'translateX(-' + (index * 100) + '%)';
-    } else {
-      grid.style.transform = '';
-    }
-    for (var i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle('is-active', i === index);
-    }
-  }
-  function go(i, manual) {
-    index = (i + cards.length) % cards.length;
-    apply();
-    if (manual) pauseAuto();
-  }
-  function startAuto() {
-    if (!mql.matches) return;
-    stopAuto();
-    autoTimer = setInterval(function() { go(index + 1); }, 6000);
-  }
-  function stopAuto() {
-    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-  }
-  function pauseAuto() {
-    stopAuto();
-    if (pauseTimer) clearTimeout(pauseTimer);
-    pauseTimer = setTimeout(startAuto, 8000);
-  }
-
-  prev.addEventListener('click', function() { go(index - 1, true); });
-  next.addEventListener('click', function() { go(index + 1, true); });
-
-  // Touch swipe
-  var startX = 0, curX = 0, touching = false;
-  grid.addEventListener('touchstart', function(e) {
-    if (!mql.matches) return;
-    touching = true;
-    startX = e.touches[0].clientX;
-    curX = startX;
-  }, { passive: true });
-  grid.addEventListener('touchmove', function(e) {
-    if (!touching) return;
-    curX = e.touches[0].clientX;
-  }, { passive: true });
-  grid.addEventListener('touchend', function() {
-    if (!touching) return;
-    touching = false;
-    var delta = curX - startX;
-    if (Math.abs(delta) > 40) {
-      go(index + (delta < 0 ? 1 : -1), true);
-    }
-  });
-
-  function handleMql() {
-    index = 0;
-    apply();
-    if (mql.matches) startAuto(); else stopAuto();
-  }
-  if (mql.addEventListener) mql.addEventListener('change', handleMql);
-  else if (mql.addListener) mql.addListener(handleMql);
-  handleMql();
 })();
 </script>
 </section>
