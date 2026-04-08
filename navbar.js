@@ -33,11 +33,15 @@
            : 'hjem';
 
   var isHome = (page === 'hjem');
+  var contactDesktopHref = isHome ? '#footer-kontakt' : './index.html#footer-kontakt';
+  var contactMobileHref = '#footer-kontakt';
   document.body.classList.add(isHome ? 'page-home' : 'page-inner');
 
   function navLink(href, key, label) {
     var cls = 'site-nav__link' + (key === page ? ' is-active' : '');
-    return '<a href="' + href + '" class="' + cls + '">' + label + '</a>';
+    return '<a href="' + href + '" class="' + cls + '"' +
+      (key === 'kontakt' ? ' data-nav-contact="true"' : '') +
+      '>' + label + '</a>';
   }
 
   /* ── 3. Build navbar HTML ── */
@@ -62,7 +66,7 @@
         '<div class="site-nav__right">' +
           '<div class="site-nav__right-links">' +
             navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON') +
-            navLink(isHome ? '#kontakt' : './index.html#kontakt',  'kontakt',  'KONTAKT')  +
+            navLink(contactDesktopHref,  'kontakt',  'KONTAKT')  +
           '</div>' +
           '<a href="./book-oss.html" class="site-nav__cta' + (page === 'book' ? ' is-active' : '') + '">' +
             'Book oss' +
@@ -85,7 +89,7 @@
         navLink('./meny.html',           'meny',     'MENY')         +
         navLink('./historie.html',       'historie', 'VÅR HISTORIE') +
         navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON')     +
-        navLink(isHome ? '#kontakt' : './index.html#kontakt',  'kontakt',  'KONTAKT')      +
+        navLink(contactDesktopHref,  'kontakt',  'KONTAKT')      +
         '<a href="./book-oss.html" class="site-nav__mobile-cta">Book oss</a>' +
       '</div>' +
 
@@ -109,6 +113,14 @@
 
     /* Desktop media query — all new scroll logic is desktop-only */
     var desktopMQ = window.matchMedia('(min-width: 861px)');
+    var mobileMQ = window.matchMedia('(max-width: 860px)');
+
+    function updateContactTargets() {
+      var href = mobileMQ.matches ? contactMobileHref : contactDesktopHref;
+      nav.querySelectorAll('[data-nav-contact="true"]').forEach(function (link) {
+        link.setAttribute('href', href);
+      });
+    }
 
     var ticking = false;
 
@@ -136,6 +148,7 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     updateNav(); /* run once on load */
+    updateContactTargets();
 
     if (!toggle || !mobile) return;
 
@@ -175,7 +188,9 @@
     var mq = window.matchMedia('(min-width: 861px)');
     mq.addEventListener('change', function (e) {
       if (e.matches) closeMenu();
+      updateContactTargets();
     });
+    mobileMQ.addEventListener('change', updateContactTargets);
   }
 
   /* Run after DOM is ready */
