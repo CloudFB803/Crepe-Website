@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Parisienne&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./navbar.css">
 
   <style>
@@ -1951,358 +1951,287 @@
     </section>
 
     <!-- ===== ÅPNINGSTIDER SEKSJON START ===== -->
-<section class="cdlc-hours" id="lokasjon">
+<section class="oh" id="lokasjon">
 <style>
-/* Scoped: alle klasser starter med .cdlc-hours */
-.cdlc-hours {
-  min-height: clamp(560px, 78vh, 760px);
-  padding: clamp(3.5rem, 7vw, 5rem) 1.5rem clamp(3rem, 6vw, 4.5rem);
-  color: #2a2118;
-  background: var(--paper);
-  font-family: "DM Sans", sans-serif;
+.oh {
+  min-height: 100vh;
+  background: #F5F0E8;
+  padding: 4rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  color: #3D3529;
 }
-.cdlc-hours *,
-.cdlc-hours *::before,
-.cdlc-hours *::after {
-  box-sizing: border-box;
-}
-.cdlc-hours__heading {
+.oh *, .oh *::before, .oh *::after { box-sizing: border-box; }
+.oh__header { text-align: center; }
+.oh__pill {
+  display: inline-block;
+  margin: 0 auto 3rem;
+  background: #EDE8DD;
+  border: 1px solid #D9D1C2;
+  border-radius: 999px;
+  padding: 10px 28px;
   text-align: center;
-  margin-bottom: 1.7rem;
 }
-.cdlc-hours__title {
-  margin: 0;
-  font-size: clamp(1.75rem, 3.6vw, 2.4rem);
-  font-weight: 400;
-  color: #2a2118;
-  letter-spacing: 0.01em;
-  font-family: "Cormorant Garamond", serif;
-}
-.cdlc-hours__title em {
-  color: #c8a882;
+.oh__pill-title {
+  display: block;
+  font-family: "Playfair Display", serif;
   font-style: italic;
+  font-size: 18px;
+  color: #7A6B55;
+  line-height: 1.2;
 }
-.cdlc-hours__subtitle {
-  font-size: 0.84rem;
-  color: #8a7562;
-  margin: 0.45rem 0 0;
-  letter-spacing: 0.12em;
+.oh__pill-sub {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9B8E7B;
+  margin-top: 2px;
 }
-
-/* Grid */
-.cdlc-hours__grid {
+.oh__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.35rem;
-  max-width: 1280px;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
 }
-@media (max-width: 900px) {
-  .cdlc-hours__grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .cdlc-hours {
-    padding: clamp(3rem, 10vw, 4.5rem) 1rem clamp(2.5rem, 8vw, 3.5rem);
-    min-height: clamp(520px, 70vh, 680px);
-  }
-}
-
-/* Card */
-.cdlc-hours__card {
-  background: #fffcf8;
-  border: 1px solid rgba(200, 168, 130, 0.2);
-  border-radius: 12px;
-  padding: 1rem 1.05rem;
+.oh__card {
+  background: #FDFBF7;
+  border: 1px solid #E2DCD0;
+  border-radius: 14px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  box-shadow: 0 8px 20px rgba(80, 53, 34, 0.04);
 }
-.cdlc-hours__card-header {
+.oh__accent { height: 3px; background: #C2A87D; }
+.oh__card-body {
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.oh__card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.75rem;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
-.cdlc-hours__card-name {
-  font-size: 1.52rem;
-  line-height: 1.05;
-  font-weight: 600;
-  color: #2a2118;
+.oh__name {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #3D3529;
   margin: 0;
-  letter-spacing: 0.01em;
-  font-family: "Cormorant Garamond", serif;
+  line-height: 1.2;
 }
-.cdlc-hours__card-main {
-  display: grid;
-  gap: 0.65rem;
-}
-
-/* Badges */
-.cdlc-hours__badge {
-  font-size: 0.67rem;
+.oh__badge {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.28em 0.72em;
-  border-radius: 100px;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
   white-space: nowrap;
   border: 1px solid transparent;
 }
-.cdlc-hours__badge--open {
-  background: rgba(107, 158, 107, 0.11);
-  color: #4f7f4f;
-  border-color: rgba(107, 158, 107, 0.3);
+.oh__badge--open {
+  background: #EAF0E0;
+  color: #4A6B2A;
+  border-color: #C8D6B5;
 }
-.cdlc-hours__badge--closed {
-  background: rgba(180, 106, 106, 0.12);
-  color: #9e5b5b;
-  border-color: rgba(180, 106, 106, 0.28);
+.oh__badge--closed {
+  background: #F3E4E0;
+  color: #8B3A2A;
+  border-color: #E0C8C0;
 }
-.cdlc-hours__badge--soon {
-  background: rgba(200, 168, 130, 0.14);
-  color: #856348;
-  border-color: rgba(200, 168, 130, 0.35);
+.oh__badge--soon {
+  background: #F0EADB;
+  color: #8A7450;
+  border-color: #D9CEB5;
 }
-
-/* Status + accordion */
-.cdlc-hours__status {
+.oh__status {
   display: flex;
   align-items: center;
-  gap: 0.48rem;
-  min-height: 1.8rem;
-  color: #5c4a3a;
-  font-size: 0.84rem;
-  letter-spacing: 0.01em;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 13px;
+  color: #6B8B47;
 }
-.cdlc-hours__status-dot {
-  width: 0.52rem;
-  height: 0.52rem;
-  border-radius: 999px;
+.oh__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6B8B47;
   flex: 0 0 auto;
-  background: #b46a6a;
-  box-shadow: 0 0 0 4px rgba(180, 106, 106, 0.13);
 }
-.cdlc-hours__status-dot.is-open {
-  background: #6b9e6b;
-  box-shadow: 0 0 0 4px rgba(107, 158, 107, 0.13);
+.oh__status.is-closed { color: #8B3A2A; }
+.oh__status.is-closed .oh__dot { background: #8B3A2A; }
+.oh__table { width: 100%; border-collapse: collapse; }
+.oh__table tr { border-bottom: 1px solid #EDE8DD; }
+.oh__table tr:last-child { border-bottom: none; }
+.oh__table td { padding: 10px 0; font-size: 13px; }
+.oh__day {
+  color: #9B8E7B;
+  position: relative;
+  padding-left: 14px;
+  width: 50%;
 }
-.cdlc-hours__accordion-toggle {
-  appearance: none;
-  border: none;
-  background: transparent;
-  color: #8a7562;
-  text-align: left;
-  font: 500 0.78rem/1.3 "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  padding: 0.45rem 0;
-  margin: 0;
-  cursor: pointer;
-  display: inline-flex;
-  align-self: flex-start;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 0.2s ease;
-}
-.cdlc-hours__accordion-toggle:hover {
-  color: #2a2118;
-}
-.cdlc-hours__accordion-toggle::after {
-  content: "▾";
-  font-size: 0.78rem;
-  color: currentColor;
-  transition: transform 0.24s ease;
-}
-.cdlc-hours__accordion-toggle[aria-expanded="true"]::after {
-  transform: rotate(180deg);
-}
-.cdlc-hours__accordion-panel {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.32s ease, opacity 0.22s ease;
-}
-.cdlc-hours__accordion-panel.is-open {
-  opacity: 1;
-}
-.cdlc-hours__table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.12rem;
-}
-.cdlc-hours__table tr {
-  border-bottom: 1px solid rgba(200, 168, 130, 0.2);
-}
-.cdlc-hours__table tr:last-child {
-  border-bottom: none;
-}
-.cdlc-hours__table td {
-  padding: 0.43rem 0;
-  font-size: 0.82rem;
-}
-.cdlc-hours__table .cdlc-hours__day {
-  color: #5c4a3a;
-  font-weight: 500;
-  width: 46%;
-}
-.cdlc-hours__table .cdlc-hours__time {
-  color: #2a2118;
-  font-weight: 600;
+.oh__time {
+  color: #3D3529;
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-.cdlc-hours__table .cdlc-hours__time--closed {
-  color: #8a7562;
+.oh__time--closed {
+  color: #B5A997;
   font-style: italic;
+}
+.oh--today .oh__day::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C2A87D;
+}
+.oh--today .oh__day,
+.oh--today .oh__time { color: #7A6040; }
+.oh__actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #EDE8DD;
+  display: flex;
+  gap: 0.5rem;
+}
+.oh__btn {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #D9D1C2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #3D3529;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+.oh__btn:hover { background: #EDE8DD; }
+.oh__soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  flex: 1;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.oh__clock-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #EDE8DD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7A6B55;
+}
+.oh__soon-title {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
   font-weight: 500;
-}
-.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__day,
-.cdlc-hours__table tr.cdlc-hours--today .cdlc-hours__time {
-  color: #9a744b;
-}
-
-/* Contact + CTA */
-.cdlc-hours__contact-row {
-  margin-top: 0.35rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.42rem 0.7rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid rgba(200, 168, 130, 0.2);
-}
-.cdlc-hours__contact-link {
-  color: #5c4a3a;
-  text-decoration: none;
-  font-size: 0.79rem;
-  line-height: 1.2;
-}
-.cdlc-hours__contact-link:hover {
-  color: #2a2118;
-}
-.cdlc-hours__cta-row {
-  margin-top: 0.7rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.cdlc-hours__cta {
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.46rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid rgba(200, 168, 130, 0.35);
-  color: #5c4a3a;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.cdlc-hours__cta:hover {
-  background: rgba(200, 168, 130, 0.15);
-  color: #2a2118;
-}
-.cdlc-hours__cta--primary {
-  background: #2a2118;
-  border-color: #2a2118;
-  color: #fffcf8;
-}
-.cdlc-hours__cta--primary:hover {
-  background: #443326;
-  border-color: #443326;
-  color: #fffcf8;
-}
-
-/* Coming soon card body */
-.cdlc-hours__coming {
-  display: grid;
-  gap: 0.5rem;
-  color: #5c4a3a;
-}
-.cdlc-hours__coming-text {
+  color: #3D3529;
   margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.52;
 }
-.cdlc-hours__coming-note {
+.oh__soon-desc {
+  font-size: 14px;
+  color: #9B8E7B;
+  max-width: 280px;
   margin: 0;
-  color: #8a7562;
-  font-size: 0.78rem;
+  line-height: 1.5;
 }
-.cdlc-hours__address {
-  margin-top: 0.1rem;
-  font-size: 0.78rem;
-  color: #8a7562;
+.oh__soon-loc {
+  font-size: 12px;
+  color: #B5A997;
+  margin: 0;
+}
+.oh__soon .oh__btn {
+  flex: 0 0 auto;
+  margin-top: 0.5rem;
+  padding: 10px 18px;
+}
+@media (max-width: 640px) {
+  .oh { padding: 2.5rem 1rem; }
+  .oh__grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .oh__pill { margin-bottom: 2rem; }
 }
 </style>
 
-  <div class="cdlc-hours__heading">
-    <h2 class="cdlc-hours__title"><em>åpningstider</em></h2>
-    <p class="cdlc-hours__subtitle">To lokasjoner i Oslo</p>
+  <div class="oh__header">
+    <div class="oh__pill">
+      <span class="oh__pill-title">åpningstider</span>
+      <span class="oh__pill-sub">TO LOKASJONER I OSLO</span>
+    </div>
   </div>
 
-  <div class="cdlc-hours__grid">
+  <div class="oh__grid">
 
     <!-- STORO STORSENTER -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
-        <span class="cdlc-hours__badge" id="cdlc-storo-badge"></span>
-      </div>
-      <div class="cdlc-hours__card-main">
-        <div class="cdlc-hours__status" id="cdlc-storo-status-row">
-          <span class="cdlc-hours__status-dot" id="cdlc-storo-status-dot" aria-hidden="true"></span>
-          <span id="cdlc-storo-status-text">Laster status …</span>
+    <article class="oh__card">
+      <div class="oh__accent"></div>
+      <div class="oh__card-body">
+        <header class="oh__card-head">
+          <h3 class="oh__name">Storo Storsenter</h3>
+          <span class="oh__badge oh__badge--open" id="oh-storo-badge">ÅPENT NÅ</span>
+        </header>
+        <div class="oh__status" id="oh-storo-status-row">
+          <span class="oh__dot" id="oh-storo-dot" aria-hidden="true"></span>
+          <span id="oh-storo-status-text">Laster status …</span>
         </div>
-        <button class="cdlc-hours__accordion-toggle" id="cdlc-hours-toggle" type="button" aria-expanded="false" aria-controls="cdlc-hours-panel">
-          Se alle åpningstider
-        </button>
-        <div class="cdlc-hours__accordion-panel" id="cdlc-hours-panel" aria-hidden="true">
-          <table class="cdlc-hours__table" id="cdlc-storo-table">
-            <tr data-day="1"><td class="cdlc-hours__day">Mandag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="2"><td class="cdlc-hours__day">Tirsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="3"><td class="cdlc-hours__day">Onsdag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="4"><td class="cdlc-hours__day">Torsdag</td>    <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="5"><td class="cdlc-hours__day">Fredag</td>     <td class="cdlc-hours__time">10:00 – 21:00</td></tr>
-            <tr data-day="6"><td class="cdlc-hours__day">Lørdag</td>     <td class="cdlc-hours__time">10:00 – 20:00</td></tr>
-            <tr data-day="0"><td class="cdlc-hours__day">Søndag</td>     <td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
-          </table>
-        </div>
-        <div class="cdlc-hours__contact-row">
-          <a class="cdlc-hours__contact-link" href="tel:+4748408749">Telefon</a>
-          <a class="cdlc-hours__contact-link" href="mailto:Crepedelacrepes@gmail.com">E-post</a>
-          <a class="cdlc-hours__contact-link" href="https://www.instagram.com/crepe_delacrepe/" target="_blank" rel="noopener">Instagram</a>
-          <a class="cdlc-hours__contact-link" href="https://www.tiktok.com/@crepe_delacrepe" target="_blank" rel="noopener">TikTok</a>
-        </div>
-        <div class="cdlc-hours__cta-row">
-          <a class="cdlc-hours__cta cdlc-hours__cta--primary" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart</a>
-          <a class="cdlc-hours__cta" href="tel:+4748408749">Ring oss</a>
+        <table class="oh__table" id="oh-storo-table">
+          <tr data-day="1"><td class="oh__day">Mandag</td><td class="oh__time">10:00 – 21:00</td></tr>
+          <tr data-day="2"><td class="oh__day">Tirsdag</td><td class="oh__time">10:00 – 21:00</td></tr>
+          <tr data-day="3"><td class="oh__day">Onsdag</td><td class="oh__time">10:00 – 21:00</td></tr>
+          <tr data-day="4"><td class="oh__day">Torsdag</td><td class="oh__time">10:00 – 21:00</td></tr>
+          <tr data-day="5"><td class="oh__day">Fredag</td><td class="oh__time">10:00 – 21:00</td></tr>
+          <tr data-day="6"><td class="oh__day">Lørdag</td><td class="oh__time">10:00 – 20:00</td></tr>
+          <tr data-day="0"><td class="oh__day">Søndag</td><td class="oh__time oh__time--closed">Stengt</td></tr>
+        </table>
+        <div class="oh__actions">
+          <a class="oh__btn" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener">Åpne i kart</a>
+          <a class="oh__btn" href="tel:+4748408749">Ring oss</a>
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- AKER BRYGGE -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--soon">Kommer snart</span>
-      </div>
-      <div class="cdlc-hours__card-main">
-        <div class="cdlc-hours__coming">
-          <p class="cdlc-hours__coming-text">
-            Vi gjør oss klare for et nytt kapittel. Mer informasjon kommer.
-          </p>
+    <article class="oh__card">
+      <div class="oh__accent"></div>
+      <div class="oh__card-body">
+        <header class="oh__card-head">
+          <h3 class="oh__name">Aker Brygge</h3>
+          <span class="oh__badge oh__badge--soon">KOMMER SNART</span>
+        </header>
+        <div class="oh__soon">
+          <div class="oh__clock-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h4 class="oh__soon-title">Nytt kapittel</h4>
+          <p class="oh__soon-desc">Vi gjør oss klare for Aker Brygge. Mer informasjon kommer snart.</p>
+          <p class="oh__soon-loc">Aker Brygge, Oslo</p>
+          <a class="oh__btn" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
         </div>
-        <span class="cdlc-hours__address">Aker Brygge, Oslo</span>
-        <div class="cdlc-hours__cta-row">
-          <a class="cdlc-hours__cta" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener">Se området i kart</a>
-        </div>
       </div>
-    </div>
+    </article>
 
   </div>
 
@@ -2318,12 +2247,10 @@
     6: { open: 10 * 60, close: 20 * 60, closeText: '20:00' }
   };
   var dayNames = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
-  var statusText = document.getElementById('cdlc-storo-status-text');
-  var statusDot = document.getElementById('cdlc-storo-status-dot');
-  var badge = document.getElementById('cdlc-storo-badge');
-  var rows = document.querySelectorAll('#cdlc-storo-table tr[data-day]');
-  var toggle = document.getElementById('cdlc-hours-toggle');
-  var panel = document.getElementById('cdlc-hours-panel');
+  var statusText = document.getElementById('oh-storo-status-text');
+  var statusRow = document.getElementById('oh-storo-status-row');
+  var badge = document.getElementById('oh-storo-badge');
+  var rows = document.querySelectorAll('#oh-storo-table tr[data-day]');
 
   function getOsloNowParts() {
     var formatter = new Intl.DateTimeFormat('en-GB', {
@@ -2335,9 +2262,7 @@
     });
     var parts = formatter.formatToParts(new Date());
     var weekdayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-    var weekday = 0;
-    var hour = 0;
-    var minute = 0;
+    var weekday = 0, hour = 0, minute = 0;
     for (var i = 0; i < parts.length; i++) {
       if (parts[i].type === 'weekday') weekday = weekdayMap[parts[i].value] || 0;
       if (parts[i].type === 'hour') hour = parseInt(parts[i].value, 10);
@@ -2370,20 +2295,20 @@
 
     for (var i = 0; i < rows.length; i++) {
       var rowDay = parseInt(rows[i].getAttribute('data-day'), 10);
-      rows[i].classList.toggle('cdlc-hours--today', rowDay === day);
+      rows[i].classList.toggle('oh--today', rowDay === day);
     }
 
     if (isOpen) {
-      badge.textContent = 'Åpent nå';
-      badge.className = 'cdlc-hours__badge cdlc-hours__badge--open';
-      statusDot.classList.add('is-open');
+      badge.textContent = 'ÅPENT NÅ';
+      badge.className = 'oh__badge oh__badge--open';
+      statusRow.classList.remove('is-closed');
       statusText.textContent = 'Åpent nå · Stenger ' + rule.closeText;
       return;
     }
 
-    badge.textContent = 'Stengt nå';
-    badge.className = 'cdlc-hours__badge cdlc-hours__badge--closed';
-    statusDot.classList.remove('is-open');
+    badge.textContent = 'STENGT NÅ';
+    badge.className = 'oh__badge oh__badge--closed';
+    statusRow.classList.add('is-closed');
 
     var nextOpen = getNextOpen(day, mins);
     if (!nextOpen) {
@@ -2399,28 +2324,6 @@
       statusText.textContent = 'Stengt nå · Åpner ' + dayNames[nextOpen.day] + ' ' + nextOpen.time;
     }
   }
-
-  function toggleAccordion() {
-    var expanded = toggle.getAttribute('aria-expanded') === 'true';
-    if (expanded) {
-      toggle.setAttribute('aria-expanded', 'false');
-      panel.style.maxHeight = '0px';
-      panel.classList.remove('is-open');
-      panel.setAttribute('aria-hidden', 'true');
-    } else {
-      toggle.setAttribute('aria-expanded', 'true');
-      panel.classList.add('is-open');
-      panel.setAttribute('aria-hidden', 'false');
-      panel.style.maxHeight = panel.scrollHeight + 'px';
-    }
-  }
-
-  toggle.addEventListener('click', toggleAccordion);
-  window.addEventListener('resize', function() {
-    if (toggle.getAttribute('aria-expanded') === 'true') {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
-    }
-  });
 
   refreshStatus();
   window.setInterval(refreshStatus, 60000);
