@@ -119,12 +119,8 @@
         nav.classList.toggle('is-scrolled', y > 80);
         nav.classList.toggle('navbar-transparent', y <= 50);
       } else {
-        /* Keep homepage mobile nav transparent even after scroll */
-        if (isHome) {
-          nav.classList.remove('is-scrolled');
-        } else {
-          nav.classList.toggle('is-scrolled', y > 40);
-        }
+        /* Keep mobile navbar transparent on every page, even after scroll */
+        nav.classList.remove('is-scrolled');
         nav.classList.remove('navbar-transparent');
       }
 
