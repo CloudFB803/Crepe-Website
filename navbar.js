@@ -62,14 +62,14 @@
           '<img src="./crepe-logo-transparent.png" alt="Crêpe de la Crêpe" width="56" height="56">' +
         '</a>' +
 
-        /* Right links: LOKASJON · KONTAKT + CTA */
+        /* Right links: LOKASJON · KONTAKT + MENY-CTA */
         '<div class="site-nav__right">' +
           '<div class="site-nav__right-links">' +
             navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON') +
             navLink(contactDesktopHref,  'kontakt',  'KONTAKT')  +
           '</div>' +
-          '<a href="./book-oss.html" class="site-nav__cta' + (page === 'book' ? ' is-active' : '') + '">' +
-            'Book oss' +
+          '<a href="./meny.html" class="site-nav__cta' + (page === 'meny' ? ' is-active' : '') + '">' +
+            'MENY' +
           '</a>' +
         '</div>' +
 
@@ -90,15 +90,10 @@
         navLink('./historie.html',       'historie', 'VÅR HISTORIE') +
         navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON')     +
         navLink(contactDesktopHref,  'kontakt',  'KONTAKT')      +
-        '<a href="./book-oss.html" class="site-nav__mobile-cta">Book oss</a>' +
+        '<a href="./meny.html" class="site-nav__mobile-cta">MENY</a>' +
       '</div>' +
 
     '</header>' +
-
-    /* Floating CTA — desktop only, always visible (hidden via CSS on mobile) */
-    '<a href="./book-oss.html" class="site-nav__floating-cta" aria-label="Book oss – Book Crêpe de la Crêpe">' +
-      'Book oss' +
-    '</a>';
 
   /* ── 4. Insert at top of <body> ── */
   document.body.insertAdjacentHTML('afterbegin', html);
