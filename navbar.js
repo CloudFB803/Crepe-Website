@@ -93,7 +93,7 @@
         '<a href="./meny.html" class="site-nav__mobile-cta">MENY</a>' +
       '</div>' +
 
-    '</header>' +
+    '</header>';
 
   /* ── 4. Insert at top of <body> ── */
   document.body.insertAdjacentHTML('afterbegin', html);
