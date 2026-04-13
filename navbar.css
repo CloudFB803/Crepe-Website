@@ -405,3 +405,22 @@
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
   }
 }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-nav,
+  .site-nav__link,
+  .site-nav__cta,
+  .site-nav__logo,
+  .site-nav__bar,
+  .site-nav__toggle,
+  .site-nav__floating-cta {
+    transition-duration: 0.01ms !important;
+  }
+}

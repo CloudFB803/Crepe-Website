@@ -815,6 +815,15 @@
       .footer .brand-title { white-space: normal; font-size: 28px; }
       .back-to-top { right: 14px; bottom: 14px; width: 50px; height: 50px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 
 
@@ -843,7 +852,7 @@
 
   <section class="origin" id="origin">
     <div class="origin-media">
-      <img src="truck1.jpg" alt="Den første vognen til Crêpe de la Crêpe" loading="lazy" />
+      <img src="truck1.jpg" alt="Den første vognen til Crêpe de la Crêpe" loading="lazy" width="1200" height="900" />
       <div class="origin-overlay"></div>
     </div>
 
@@ -867,7 +876,7 @@
 
   <section class="act-2" id="act2">
     <div class="act-2-img">
-      <img src="selfie1.jpg" alt="Paris — de to grunnleggerne i gatene" loading="lazy" />
+      <img src="selfie1.jpg" alt="Paris — de to grunnleggerne i gatene" loading="lazy" width="1024" height="1536" />
     </div>
 
     <div class="act-2-content">
@@ -983,8 +992,8 @@
               <a href="./historie.html">Vår historie</a>
               <a href="./meny.html">Meny</a>
               <a href="./book-oss.html">Book oss</a>
-              <a href="#lokasjon">Lokasjon</a>
-              <a href="#kontakt">Kontakt</a>
+              <a href="./index.html#lokasjon">Lokasjon</a>
+              <a href="./index.html#footer-kontakt">Kontakt</a>
               <a href="./personvern.html">Personvern</a>
             </div>
           </div>
