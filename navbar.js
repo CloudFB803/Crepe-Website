@@ -67,6 +67,7 @@
           '<div class="site-nav__right-links">' +
             navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON') +
             navLink(contactDesktopHref,  'kontakt',  'KONTAKT')  +
+            navLink('./book-oss.html',   'book',     'BOOK OSS') +
           '</div>' +
           '<a href="./meny.html" class="site-nav__cta' + (page === 'meny' ? ' is-active' : '') + '">' +
             'MENY' +
@@ -90,7 +91,7 @@
         navLink('./historie.html',       'historie', 'VÅR HISTORIE') +
         navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON')     +
         navLink(contactDesktopHref,  'kontakt',  'KONTAKT')      +
-        '<a href="./meny.html" class="site-nav__mobile-cta">MENY</a>' +
+        navLink('./book-oss.html', 'book', 'BOOK OSS') +
       '</div>' +
 
     '</header>';
@@ -120,11 +121,10 @@
     var ticking = false;
 
     function updateNav() {
-      var y = window.scrollY;
-
       if (desktopMQ.matches) {
-        nav.classList.toggle('is-scrolled', y > 80);
-        nav.classList.toggle('navbar-transparent', y <= 50);
+        /* Desktop: always transparent, no scroll background */
+        nav.classList.remove('is-scrolled');
+        nav.classList.add('navbar-transparent');
       } else {
         /* Keep mobile navbar transparent on every page, even after scroll */
         nav.classList.remove('is-scrolled');
