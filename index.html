@@ -237,33 +237,7 @@
       z-index: 0;
     }
 
-    .hero-video-mobile {
-      display: block;
-    }
-
-    .hero-video-desktop {
-      display: none;
-    }
-
-    @media (min-width: 769px) {
-      .hero-video-mobile {
-        display: none;
-      }
-      .hero-video-desktop {
-        display: block;
-      }
-    }
-
     @media (max-width: 768px) {
-      .hero-video-mobile {
-        display: block;
-        opacity: 1;
-      }
-
-      .hero-video-desktop {
-        display: none;
-      }
-
       #floating-bg-elements,
       .hero-ring {
         display: none !important;
@@ -1646,12 +1620,7 @@
 
   <main id="top">
     <section class="hero" aria-label="Velkommen">
-      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="auto">
-        <source src="assets/video/frontpage-hero-mobile-v2.mp4" type="video/mp4">
-      </video>
-      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline>
-        <source src="assets/video/frontpage-hero-desktop-v1.mp4" type="video/mp4">
-      </video>
+      <div id="heroVideoMount" aria-hidden="true"></div>
       <div class="hero-shell">
         <h1 class="hero-title" aria-label="Velkommen til Crêpe de la Crêpe">
           <span class="hero-line hero-line-1">Velkommen til</span>
@@ -2231,6 +2200,40 @@
         behavior: 'smooth'
       });
     });
+
+    (() => {
+      const mount = document.getElementById('heroVideoMount');
+      if (!mount) return;
+
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const video = document.createElement('video');
+      video.className = 'hero-video';
+      video.autoplay = true;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.preload = 'auto';
+      video.setAttribute('autoplay', '');
+      video.setAttribute('muted', '');
+      video.setAttribute('loop', '');
+      video.setAttribute('playsinline', '');
+
+      const source = document.createElement('source');
+      source.src = isMobile
+        ? 'assets/video/frontpage-hero-mobile-v2.mp4'
+        : 'assets/video/frontpage-hero-desktop-v1.mp4';
+      source.type = 'video/mp4';
+
+      video.appendChild(source);
+      mount.replaceChildren(video);
+
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {
+          /* Ignore autoplay rejections; browser policies decide playback. */
+        });
+      }
+    })();
 
     (() => {
       const mobileQuery = window.matchMedia('(max-width: 640px)');
