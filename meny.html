@@ -480,6 +480,15 @@
         margin-bottom: 1.5rem;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 
 
@@ -514,7 +523,7 @@
     <div class="menu-grid" id="gridSweet">
 
       <div class="menu-card">
-        <img class="menu-card-img" src="strawberry-madness.jpg" alt="Strawberry Madness crêpe" loading="eager">
+        <img class="menu-card-img" src="strawberry-madness.jpg" alt="Strawberry Madness crêpe" loading="eager" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Strawberry Madness</h2>
           <p class="menu-card-desc">Nutella og ferske jordbær.</p>
@@ -527,7 +536,7 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="nutella-crepe.jpg" alt="Nutella crêpe" loading="lazy">
+        <img class="menu-card-img" src="nutella-crepe.jpg" alt="Nutella crêpe" loading="lazy" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Nutella</h2>
           <p class="menu-card-desc">Smeltet Nutella.</p>
@@ -539,7 +548,7 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="sweet-cinnamon.jpg" alt="Sweet Cinnamon crêpe" loading="lazy">
+        <img class="menu-card-img" src="sweet-cinnamon.jpg" alt="Sweet Cinnamon crêpe" loading="lazy" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Sweet Cinnamon</h2>
           <p class="menu-card-desc">Sukker, kanel og smør.</p>
@@ -551,7 +560,7 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="monkey-business.jpg" alt="Monkey Business crêpe" loading="lazy">
+        <img class="menu-card-img" src="monkey-business.jpg" alt="Monkey Business crêpe" loading="lazy" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Monkey Business</h2>
           <p class="menu-card-desc">Nutella, banan og Biscoff-kjeks.</p>
@@ -563,7 +572,7 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="protein-nutella-crepe.jpg" alt="Protein Nutella crêpe" loading="lazy">
+        <img class="menu-card-img" src="protein-nutella-crepe.jpg" alt="Protein Nutella crêpe" loading="lazy" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Protein Nutella Crêpe</h2>
           <p class="menu-card-desc">Proteincrêpe med silkemyk Nutella.</p>
@@ -576,7 +585,7 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="bueno-fusion.jpg" alt="Bueno Fusion crêpe" loading="lazy">
+        <img class="menu-card-img" src="bueno-fusion.jpg" alt="Bueno Fusion crêpe" loading="lazy" width="1024" height="1536">
         <div class="menu-card-info">
           <h2 class="menu-card-name">Bueno Fusion</h2>
           <p class="menu-card-desc">Nutella, hvit sjokolade og Kinder Bueno-biter.</p>
@@ -629,8 +638,8 @@
               <a href="./historie.html">Vår historie</a>
               <a href="./meny.html">Meny</a>
               <a href="./book-oss.html">Book oss</a>
-              <a href="#lokasjon">Lokasjon</a>
-              <a href="#kontakt">Kontakt</a>
+              <a href="./index.html#lokasjon">Lokasjon</a>
+              <a href="./index.html#footer-kontakt">Kontakt</a>
               <a href="./personvern.html">Personvern</a>
             </div>
           </div>

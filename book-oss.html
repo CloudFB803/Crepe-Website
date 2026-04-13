@@ -2180,6 +2180,15 @@
     .site-nav__floating-cta {
       display: none !important;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 
 
@@ -2369,8 +2378,8 @@
               <a href="./historie.html">Vår historie</a>
               <a href="./meny.html">Meny</a>
               <a href="./book-oss.html">Book oss</a>
-              <a href="#lokasjon">Lokasjon</a>
-              <a href="#kontakt">Kontakt</a>
+              <a href="./index.html#lokasjon">Lokasjon</a>
+              <a href="./index.html#footer-kontakt">Kontakt</a>
               <a href="./personvern.html">Personvern</a>
             </div>
           </div>
