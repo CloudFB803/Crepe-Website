@@ -33,8 +33,8 @@
            : 'hjem';
 
   var isHome = (page === 'hjem');
-  var contactDesktopHref = isHome ? '#footer-kontakt' : './index.html#footer-kontakt';
-  var contactMobileHref = '#footer-kontakt';
+  var contactDesktopHref = '#kontakt';
+  var contactMobileHref = '#kontakt';
   document.body.classList.add(isHome ? 'page-home' : 'page-inner');
 
   function navLink(href, key, label) {
