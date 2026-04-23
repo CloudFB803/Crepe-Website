@@ -1880,18 +1880,18 @@
   font-weight: 400;
 }
 
-/* Today indicator (small circle on the left of day name) */
+/* Today indicator (small circle to the left of day name) */
 .cdlc-hours--today .cdlc-hours__day::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   border: 1.5px solid #9b7440;
   background: transparent;
+  vertical-align: middle;
+  margin-left: -1.2rem;
+  margin-right: calc(1.2rem - 8px);
 }
 .cdlc-hours--today .cdlc-hours__day {
   color: #3b2d25;
@@ -2010,17 +2010,25 @@
     <div class="cdlc-hours__card">
       <div class="cdlc-hours__card-header">
         <h3 class="cdlc-hours__card-name">Aker Brygge</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--soon">Kommer snart</span>
+        <span class="cdlc-hours__badge cdlc-hours__badge--open" id="cdlc-aker-badge">Åpent nå</span>
       </div>
-      <div class="cdlc-hours__coming">
-        <svg class="cdlc-hours__coming-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M12 7v5l3 2"/>
-        </svg>
-        <h4 class="cdlc-hours__coming-title">Nytt kapittel</h4>
-        <p class="cdlc-hours__coming-text">Vi gjør oss klare for Aker Brygge. Mer informasjon kommer snart.</p>
-        <p class="cdlc-hours__coming-address">Aker Brygge, Oslo</p>
-        <a class="cdlc-hours__btn cdlc-hours__btn--center" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener noreferrer">Se området i kart</a>
+      <div class="cdlc-hours__status" id="cdlc-aker-status">
+        <span class="cdlc-hours__status-dot"></span>
+        <span class="cdlc-hours__status-text">Åpent nå · Stenger 21:00</span>
+      </div>
+      <div class="cdlc-hours__divider"></div>
+      <table class="cdlc-hours__table" id="cdlc-aker-table">
+        <tr data-day="1" data-open="660" data-close="1260"><td class="cdlc-hours__day">Mandag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="2" data-open="660" data-close="1260"><td class="cdlc-hours__day">Tirsdag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="3" data-open="660" data-close="1260"><td class="cdlc-hours__day">Onsdag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="4" data-open="660" data-close="1260"><td class="cdlc-hours__day">Torsdag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="5" data-open="660" data-close="1260"><td class="cdlc-hours__day">Fredag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="6" data-open="660" data-close="1260"><td class="cdlc-hours__day">Lørdag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+        <tr data-day="0" data-open="660" data-close="1260"><td class="cdlc-hours__day">Søndag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
+      </table>
+      <div class="cdlc-hours__card-actions">
+        <a class="cdlc-hours__btn" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
+        <a class="cdlc-hours__btn" href="tel:+4748408749">Ring oss</a>
       </div>
     </div>
 
@@ -2079,6 +2087,67 @@
       for (var j = 1; j <= 7; j++) {
         var d = (today + j) % 7;
         var nextRow = document.querySelector('#cdlc-storo-table tr[data-day="' + d + '"][data-open]');
+        if (nextRow) {
+          var label = (j === 1) ? 'i morgen' : dayNames[d];
+          statusText.textContent = 'Stengt · Åpner ' + label + ' ' + fmt(parseInt(nextRow.getAttribute('data-open'), 10));
+          break;
+        }
+      }
+    }
+  }
+})();
+</script>
+<script>
+(function() {
+  var now = new Date();
+  var osloTime = now.toLocaleString('en-GB', { timeZone: 'Europe/Oslo', hour12: false });
+  var osloParts = osloTime.split(', ');
+  var osloDateParts = osloParts[0].split('/');
+  var osloTimeParts = osloParts[1].split(':');
+  var osloDate = new Date(osloDateParts[2], osloDateParts[1] - 1, osloDateParts[0], osloTimeParts[0], osloTimeParts[1], osloTimeParts[2]);
+  var today = osloDate.getDay();
+  var mins = osloDate.getHours() * 60 + osloDate.getMinutes();
+
+  var rows = document.querySelectorAll('#cdlc-aker-table tr[data-day]');
+  var todayRow = null;
+  for (var i = 0; i < rows.length; i++) {
+    if (parseInt(rows[i].getAttribute('data-day'), 10) === today) {
+      rows[i].classList.add('cdlc-hours--today');
+      todayRow = rows[i];
+    }
+  }
+
+  var badge = document.getElementById('cdlc-aker-badge');
+  var status = document.getElementById('cdlc-aker-status');
+  var statusText = status.querySelector('.cdlc-hours__status-text');
+
+  var openMin = todayRow && todayRow.getAttribute('data-open')
+    ? parseInt(todayRow.getAttribute('data-open'), 10) : null;
+  var closeMin = todayRow && todayRow.getAttribute('data-close')
+    ? parseInt(todayRow.getAttribute('data-close'), 10) : null;
+  var isOpen = openMin !== null && mins >= openMin && mins < closeMin;
+
+  function fmt(m) {
+    var h = Math.floor(m / 60);
+    var mm = m % 60;
+    return (h < 10 ? '0' + h : h) + ':' + (mm < 10 ? '0' + mm : mm);
+  }
+
+  if (isOpen) {
+    badge.textContent = 'Åpent nå';
+    badge.className = 'cdlc-hours__badge cdlc-hours__badge--open';
+    statusText.textContent = 'Åpent nå · Stenger ' + fmt(closeMin);
+  } else {
+    badge.textContent = 'Stengt';
+    badge.className = 'cdlc-hours__badge cdlc-hours__badge--closed';
+    status.classList.add('cdlc-hours__status--closed');
+    var dayNames = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
+    if (openMin !== null && mins < openMin) {
+      statusText.textContent = 'Stengt · Åpner i dag ' + fmt(openMin);
+    } else {
+      for (var j = 1; j <= 7; j++) {
+        var d = (today + j) % 7;
+        var nextRow = document.querySelector('#cdlc-aker-table tr[data-day="' + d + '"][data-open]');
         if (nextRow) {
           var label = (j === 1) ? 'i morgen' : dayNames[d];
           statusText.textContent = 'Stengt · Åpner ' + label + ' ' + fmt(parseInt(nextRow.getAttribute('data-open'), 10));
