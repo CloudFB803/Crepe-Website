@@ -2356,7 +2356,7 @@
       </div>
     </section>
 
-  <footer class="footer" id="footer-kontakt">
+  <footer class="footer" id="kontakt">
     <div class="container">
       <div class="footer-shell">
         <div class="footer-grid">
@@ -2379,7 +2379,7 @@
               <a href="./meny.html">Meny</a>
               <a href="./book-oss.html">Book oss</a>
               <a href="./index.html#lokasjon">Lokasjon</a>
-              <a href="./index.html#footer-kontakt">Kontakt</a>
+              <a href="#kontakt">Kontakt</a>
               <a href="./personvern.html">Personvern</a>
             </div>
           </div>
@@ -4026,6 +4026,13 @@
 
       backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      document.querySelectorAll('a[href="#kontakt"]').forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        });
       });
 
       window.addEventListener("scroll", syncRevealNav, { passive: true });
