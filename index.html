@@ -1631,10 +1631,8 @@
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
-        <p class="hero-location" aria-label="Aker Brygge · Storo Storsenter">
+        <p class="hero-location" aria-label="Aker Brygge">
           <span class="hero-location-line">Aker Brygge</span>
-          <span class="hero-location-separator" aria-hidden="true">·</span>
-          <span class="hero-location-line">Storo Storsenter</span>
         </p>
       </div>
     </section>
@@ -1737,9 +1735,9 @@
 /* Grid */
 .cdlc-hours__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  max-width: 1180px;
+  max-width: 520px;
   margin: 0 auto;
   align-items: stretch;
 }
@@ -1975,36 +1973,10 @@
 
   <div class="cdlc-hours__heading">
     <h2 class="cdlc-hours__title"><em>åpningstider</em></h2>
-    <p class="cdlc-hours__subtitle">To lokasjoner i Oslo</p>
+    <p class="cdlc-hours__subtitle">Aker Brygge, Oslo</p>
   </div>
 
   <div class="cdlc-hours__grid">
-
-    <!-- STORO STORSENTER -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--open" id="cdlc-storo-badge">Åpent nå</span>
-      </div>
-      <div class="cdlc-hours__status" id="cdlc-storo-status">
-        <span class="cdlc-hours__status-dot"></span>
-        <span class="cdlc-hours__status-text">Åpent nå · Stenger 21:00</span>
-      </div>
-      <div class="cdlc-hours__divider"></div>
-      <table class="cdlc-hours__table" id="cdlc-storo-table">
-        <tr data-day="1" data-open="600" data-close="1260"><td class="cdlc-hours__day">Mandag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="2" data-open="600" data-close="1260"><td class="cdlc-hours__day">Tirsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="3" data-open="600" data-close="1260"><td class="cdlc-hours__day">Onsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="4" data-open="600" data-close="1260"><td class="cdlc-hours__day">Torsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="5" data-open="600" data-close="1260"><td class="cdlc-hours__day">Fredag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="6" data-open="600" data-close="1200"><td class="cdlc-hours__day">Lørdag</td><td class="cdlc-hours__time">12:00 – 19:00</td></tr>
-        <tr data-day="0"><td class="cdlc-hours__day">Søndag</td><td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
-      </table>
-      <div class="cdlc-hours__card-actions">
-        <a class="cdlc-hours__btn" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
-        <a class="cdlc-hours__btn" href="tel:+4748408749">Ring oss</a>
-      </div>
-    </div>
 
     <!-- AKER BRYGGE -->
     <div class="cdlc-hours__card">
@@ -2034,69 +2006,6 @@
 
   </div>
 
-<script>
-(function() {
-  var now = new Date();
-  var osloTime = now.toLocaleString('en-GB', { timeZone: 'Europe/Oslo', hour12: false });
-  var osloParts = osloTime.split(', ');
-  var osloDateParts = osloParts[0].split('/');
-  var osloTimeParts = osloParts[1].split(':');
-  var osloDate = new Date(osloDateParts[2], osloDateParts[1] - 1, osloDateParts[0], osloTimeParts[0], osloTimeParts[1], osloTimeParts[2]);
-  var today = osloDate.getDay();
-  var mins = osloDate.getHours() * 60 + osloDate.getMinutes();
-
-  // Highlight today's row and grab its open/close data
-  var rows = document.querySelectorAll('#cdlc-storo-table tr[data-day]');
-  var todayRow = null;
-  for (var i = 0; i < rows.length; i++) {
-    if (parseInt(rows[i].getAttribute('data-day'), 10) === today) {
-      rows[i].classList.add('cdlc-hours--today');
-      todayRow = rows[i];
-    }
-  }
-
-  var badge = document.getElementById('cdlc-storo-badge');
-  var status = document.getElementById('cdlc-storo-status');
-  var statusText = status.querySelector('.cdlc-hours__status-text');
-
-  var openMin = todayRow && todayRow.getAttribute('data-open')
-    ? parseInt(todayRow.getAttribute('data-open'), 10) : null;
-  var closeMin = todayRow && todayRow.getAttribute('data-close')
-    ? parseInt(todayRow.getAttribute('data-close'), 10) : null;
-  var isOpen = openMin !== null && mins >= openMin && mins < closeMin;
-
-  function fmt(m) {
-    var h = Math.floor(m / 60);
-    var mm = m % 60;
-    return (h < 10 ? '0' + h : h) + ':' + (mm < 10 ? '0' + mm : mm);
-  }
-
-  if (isOpen) {
-    badge.textContent = 'Åpent nå';
-    badge.className = 'cdlc-hours__badge cdlc-hours__badge--open';
-    statusText.textContent = 'Åpent nå · Stenger ' + fmt(closeMin);
-  } else {
-    badge.textContent = 'Stengt';
-    badge.className = 'cdlc-hours__badge cdlc-hours__badge--closed';
-    status.classList.add('cdlc-hours__status--closed');
-    var dayNames = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
-    // Opens later today?
-    if (openMin !== null && mins < openMin) {
-      statusText.textContent = 'Stengt · Åpner i dag ' + fmt(openMin);
-    } else {
-      for (var j = 1; j <= 7; j++) {
-        var d = (today + j) % 7;
-        var nextRow = document.querySelector('#cdlc-storo-table tr[data-day="' + d + '"][data-open]');
-        if (nextRow) {
-          var label = (j === 1) ? 'i morgen' : dayNames[d];
-          statusText.textContent = 'Stengt · Åpner ' + label + ' ' + fmt(parseInt(nextRow.getAttribute('data-open'), 10));
-          break;
-        }
-      }
-    }
-  }
-})();
-</script>
 <script>
 (function() {
   var now = new Date();
