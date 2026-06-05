@@ -365,7 +365,7 @@
 
     .hero-location {
       margin: 18px 0 0;
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       letter-spacing: 0.12em;
       color: rgba(246, 240, 232, 0.86);
       font-weight: 700;
@@ -1306,7 +1306,7 @@
       }
 
       .hero-location {
-        font-size: 0.72rem;
+        font-size: 0.82rem;
         letter-spacing: 0.1em;
         gap: 0.35em;
       }
@@ -1699,7 +1699,7 @@
 <style>
 /* Scoped: alle klasser starter med .cdlc-hours */
 .cdlc-hours {
-  padding: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) 1.5rem clamp(3rem, 6vw, 4.5rem);
   color: #3f3128;
 }
 .cdlc-hours *,
@@ -1720,8 +1720,8 @@
   letter-spacing: 0.01em;
 }
 .cdlc-hours__title em {
-  color: #d4a853;
-  font-style: italic;
+  color: #2a211b;
+  font-style: normal;
 }
 .cdlc-hours__subtitle {
   font-family: 'Manrope', sans-serif;
@@ -1737,13 +1737,43 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  max-width: 520px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: stretch;
 }
 @media (min-width: 1024px) {
   .cdlc-hours {
     padding-inline: clamp(1.25rem, 3vw, 2.2rem);
+  }
+}
+
+/* Desktop: lay the single location out across the full width */
+@media (min-width: 820px) {
+  .cdlc-hours__card {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-areas:
+      "head    table"
+      "status  table"
+      "actions table";
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+    padding: clamp(2.25rem, 3.5vw, 3.25rem) clamp(2.25rem, 4vw, 3.5rem);
+  }
+  .cdlc-hours__card-header { grid-area: head; }
+  .cdlc-hours__status { grid-area: status; margin-bottom: 0; }
+  .cdlc-hours__divider { display: none; }
+  .cdlc-hours__table { grid-area: table; align-self: stretch; }
+  .cdlc-hours__card-actions {
+    grid-area: actions;
+    align-self: end;
+    margin-top: 1.5rem;
+  }
+  .cdlc-hours__card-name { font-size: 1.9rem; }
+  .cdlc-hours__table td {
+    font-size: 1rem;
+    padding: 0.95rem 0;
   }
 }
 @media (max-width: 780px) {
