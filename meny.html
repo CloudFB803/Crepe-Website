@@ -507,7 +507,9 @@
     "servesCuisine": ["French", "Crêpes", "Street Food"],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Stranden",
       "addressLocality": "Oslo",
+      "postalCode": "0250",
       "addressCountry": "NO"
     },
     "hasMenu": {
@@ -560,7 +562,10 @@
     <div class="menu-grid" id="gridSweet">
 
       <div class="menu-card">
-        <img class="menu-card-img" src="sweet-cinnamon.jpg" alt="Sweet Cinnamon crêpe" loading="eager" width="1024" height="1536">
+        <picture>
+          <source srcset="sweet-cinnamon.webp" type="image/webp">
+          <img class="menu-card-img" src="sweet-cinnamon.jpg" alt="Sweet Cinnamon crêpe" loading="eager" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Sweet Cinnamon</h2>
           <p class="menu-card-desc">Sukker og Kanel.</p>
@@ -572,7 +577,10 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="nutella-crepe.jpg" alt="Nutella crêpe" loading="lazy" width="1024" height="1536">
+        <picture>
+          <source srcset="nutella-crepe.webp" type="image/webp">
+          <img class="menu-card-img" src="nutella-crepe.jpg" alt="Nutella crêpe" loading="lazy" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Nutella</h2>
           <p class="menu-card-desc">Smeltet Nutella.</p>
@@ -584,7 +592,10 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="monkey-business.jpg" alt="Monkey Business crêpe" loading="lazy" width="1024" height="1536">
+        <picture>
+          <source srcset="monkey-business.webp" type="image/webp">
+          <img class="menu-card-img" src="monkey-business.jpg" alt="Monkey Business crêpe" loading="lazy" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Monkey Business</h2>
           <p class="menu-card-desc">Nutella og Banan.</p>
@@ -596,7 +607,10 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="biscoff-finest.jpg" alt="Biscoffs Finest crêpe" loading="lazy" width="1024" height="1536">
+        <picture>
+          <source srcset="biscoff-finest.webp" type="image/webp">
+          <img class="menu-card-img" src="biscoff-finest.jpg" alt="Biscoffs Finest crêpe" loading="lazy" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Biscoffs Finest</h2>
           <p class="menu-card-desc">Biscoff Krem og Biscoff Kjeks.</p>
@@ -608,7 +622,10 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="strawberry-madness.jpg" alt="Strawberry Madness crêpe" loading="lazy" width="1024" height="1536">
+        <picture>
+          <source srcset="strawberry-madness.webp" type="image/webp">
+          <img class="menu-card-img" src="strawberry-madness.jpg" alt="Strawberry Madness crêpe" loading="lazy" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Strawberry Madness</h2>
           <p class="menu-card-desc">Nutella og ferske jordbær.</p>
@@ -621,7 +638,10 @@
       </div>
 
       <div class="menu-card">
-        <img class="menu-card-img" src="bueno-fusion.jpg" alt="Bueno Fusion crêpe" loading="lazy" width="1024" height="1536">
+        <picture>
+          <source srcset="bueno-fusion.webp" type="image/webp">
+          <img class="menu-card-img" src="bueno-fusion.jpg" alt="Bueno Fusion crêpe" loading="lazy" width="1024" height="1536">
+        </picture>
         <div class="menu-card-info">
           <h2 class="menu-card-name">Bueno Fusion</h2>
           <p class="menu-card-desc">Nutella, hvit sjokolade og Kinder Bueno-biter.</p>
@@ -683,7 +703,7 @@
           <div class="footer-block">
             <h4>Kontakt</h4>
             <div class="footer-list">
-              <div>Aker Brygge, Oslo</div>
+              <div>Stranden, 0250 Oslo</div>
               <a href="tel:+4748408749">+47 48 40 87 49</a>
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
@@ -748,7 +768,7 @@
   document.querySelectorAll('.menu-card').forEach(card => revealObserver.observe(card));
   </script>
 
-
+  <script src="./cookies.js"></script>
 
 </body>
 </html>
