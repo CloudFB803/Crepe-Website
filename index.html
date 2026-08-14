@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crêpe de la Crêpe | Franske crêpes i Oslo</title>
   <meta name="description" content="Crêpe de la Crêpe serverer franske crêpes i Oslo. Besøk oss eller book oss til festivaler, firmaarrangementer og private arrangementer." />
-  <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
+  <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe aker brygge, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
   <link rel="canonical" href="https://www.crepedelacrepe.no/" />
 
@@ -387,12 +387,6 @@
       display: inline-block;
       white-space: nowrap;
     }
-
-    .hero-location-separator {
-      display: inline-block;
-      transform: translateY(-0.02em);
-    }
-
 
     @media (max-width: 460px) {
       .hero-location {
@@ -1507,16 +1501,6 @@
       }
     }
 
-    /* ── Lokasjon two-column grid (scoped) ── */
-    .loc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 767px) {
-      .loc-grid { grid-template-columns: 1fr; }
-    }
   </style>
 
   <script type="application/ld+json">
@@ -1529,9 +1513,7 @@
     "email": "crepedelacrepes@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Vitaminveien 7",
       "addressLocality": "Oslo",
-      "postalCode": "0485",
       "addressCountry": "NO"
     },
     "servesCuisine": ["French", "Crêpes", "Street Food"],
@@ -1539,21 +1521,14 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "12:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "12:00",
-        "closes": "19:00"
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "13:00",
+        "closes": "22:00"
       }
     ],
     "sameAs": [
       "https://www.instagram.com/crepe_delacrepe/",
-      "https://www.tiktok.com/@crepe_delacrepe",
-      "https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
+      "https://www.tiktok.com/@crepe_delacrepe"
     ]
   }
   </script>
@@ -1631,10 +1606,8 @@
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
-        <p class="hero-location" aria-label="Aker Brygge · Storo Storsenter">
+        <p class="hero-location" aria-label="Aker Brygge">
           <span class="hero-location-line">Aker Brygge</span>
-          <span class="hero-location-separator" aria-hidden="true">·</span>
-          <span class="hero-location-line">Storo Storsenter</span>
         </p>
       </div>
     </section>
@@ -1656,7 +1629,7 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
+          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
@@ -1807,12 +1780,7 @@
   color: #9a5346;
   border-color: #e0bcb4;
 }
-.cdlc-hours__badge--soon {
-  color: #9b7a4a;
-  border-color: #d4c5a9;
-}
-
-/* Storo status line */
+/* Status line */
 .cdlc-hours__status {
   display: flex;
   align-items: center;
@@ -1897,7 +1865,7 @@
   font-weight: 500;
 }
 
-/* Card actions (Storo: two outlined buttons side-by-side) */
+/* Card actions: two outlined buttons side-by-side */
 .cdlc-hours__card-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1926,50 +1894,7 @@
   color: #3b2d25;
   border-color: #c2ae87;
 }
-.cdlc-hours__btn--center {
-  margin: 1.4rem auto 0;
-  padding: 0.85rem 1.6rem;
-  min-width: 200px;
-}
 
-/* Aker Brygge coming-soon content */
-.cdlc-hours__coming {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.7rem;
-  padding: 1.25rem 0.5rem 0.5rem;
-}
-.cdlc-hours__coming-icon {
-  width: 48px;
-  height: 48px;
-  color: #a8947a;
-  margin-bottom: 0.35rem;
-}
-.cdlc-hours__coming-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #3a2c24;
-  margin: 0.25rem 0 0;
-}
-.cdlc-hours__coming-text {
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.94rem;
-  line-height: 1.55;
-  color: #6f594b;
-  margin: 0;
-  max-width: 30ch;
-}
-.cdlc-hours__coming-address {
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.82rem;
-  color: #8a7565;
-  margin: 0.4rem 0 0;
-}
 </style>
 
   <div class="cdlc-hours__heading">
@@ -2118,7 +2043,7 @@
           <div class="footer-block">
             <h4>Kontakt</h4>
             <div class="footer-list">
-              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+              <div>Aker Brygge, Oslo</div>
               <a href="tel:+4748408749">+47 48 40 87 49</a>
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
