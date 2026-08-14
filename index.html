@@ -1747,33 +1747,39 @@
   }
 }
 
-/* Desktop: lay the single location out across the full width */
+/* Desktop: single centered location card — full width, natural proportions */
 @media (min-width: 820px) {
   .cdlc-hours__card {
-    display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    grid-template-areas:
-      "head    table"
-      "status  table"
-      "actions table";
-    grid-template-rows: auto auto 1fr;
-    column-gap: clamp(2.5rem, 5vw, 4.5rem);
-    align-items: start;
-    padding: clamp(2.25rem, 3.5vw, 3.25rem) clamp(2.25rem, 4vw, 3.5rem);
+    padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4rem);
   }
-  .cdlc-hours__card-header { grid-area: head; }
-  .cdlc-hours__status { grid-area: status; margin-bottom: 0; }
-  .cdlc-hours__divider { display: none; }
-  .cdlc-hours__table { grid-area: table; align-self: stretch; }
-  .cdlc-hours__card-actions {
-    grid-area: actions;
-    align-self: end;
-    margin-top: 1.5rem;
+  .cdlc-hours__card-header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.85rem;
   }
-  .cdlc-hours__card-name { font-size: 1.9rem; }
+  .cdlc-hours__card-name {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+  }
+  .cdlc-hours__status {
+    justify-content: center;
+    margin: 1rem 0 1.7rem;
+    font-size: 0.98rem;
+  }
   .cdlc-hours__table td {
-    font-size: 1rem;
-    padding: 0.95rem 0;
+    font-size: 1.12rem;
+    padding: 1.05rem 0;
+  }
+  .cdlc-hours__day {
+    padding-left: 1.6rem;
+  }
+  .cdlc-hours__card-actions {
+    grid-template-columns: repeat(2, minmax(0, auto));
+    justify-content: center;
+    margin-top: 1.9rem;
+  }
+  .cdlc-hours__btn {
+    padding: 0.95rem 2rem;
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 780px) {
@@ -1925,6 +1931,9 @@
   color: #3b2d25;
   font-weight: 500;
 }
+.cdlc-hours--today td {
+  background: rgba(212, 168, 83, 0.11);
+}
 
 /* Card actions (Storo: two outlined buttons side-by-side) */
 .cdlc-hours__card-actions {
@@ -1939,6 +1948,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0.85rem 1rem;
   border: 1px solid #d4c5a9;
   border-radius: 10px;
@@ -1950,10 +1960,23 @@
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
+.cdlc-hours__btn svg {
+  flex-shrink: 0;
+}
 .cdlc-hours__btn:hover {
   background: #f7efdf;
   color: #3b2d25;
   border-color: #c2ae87;
+}
+.cdlc-hours__btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.cdlc-hours__btn--primary:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
 }
 .cdlc-hours__btn--center {
   margin: 1.4rem auto 0;
@@ -2029,8 +2052,14 @@
         <tr data-day="0" data-open="660" data-close="1260"><td class="cdlc-hours__day">Søndag</td><td class="cdlc-hours__time">11:00 – 21:00</td></tr>
       </table>
       <div class="cdlc-hours__card-actions">
-        <a class="cdlc-hours__btn" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
-        <a class="cdlc-hours__btn" href="tel:+4748408749">Ring oss</a>
+        <a class="cdlc-hours__btn" href="https://www.google.com/maps?q=Aker+Brygge+Oslo" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Åpne i kart
+        </a>
+        <a class="cdlc-hours__btn cdlc-hours__btn--primary" href="tel:+4748408749">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+          Ring oss
+        </a>
       </div>
     </div>
 
