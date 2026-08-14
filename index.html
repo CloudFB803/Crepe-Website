@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crêpe de la Crêpe | Franske crêpes i Oslo</title>
   <meta name="description" content="Crêpe de la Crêpe serverer franske crêpes i Oslo. Besøk oss eller book oss til festivaler, firmaarrangementer og private arrangementer." />
-  <meta name="keywords" content="crêpe oslo, crepe oslo, dessert oslo, streetfood oslo, crêpe storo, crepe storo storsenter, fransk dessert oslo, nutella crepe, crepe catering oslo, matbod festival, streetfood festival norge, dessert norge, crêpe norge, pancake oslo, pannekake oslo, crepe bestilling oslo, foodora oslo dessert, crêperie oslo, søt dessert oslo, salte crêpes oslo, crêpe arrangement">
   <link rel="icon" type="image/png" href="crepe-logo-transparent.png" />
   <link rel="canonical" href="https://www.crepedelacrepe.no/" />
 
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="nb_NO" />
+  <meta property="og:site_name" content="Crêpe de la Crêpe" />
   <meta property="og:title" content="Crêpe de la Crêpe | Franske crêpes i Oslo" />
   <meta property="og:description" content="Crêpe de la Crêpe serverer franske crêpes i Oslo. Besøk oss eller book oss til festivaler, firmaarrangementer og private arrangementer." />
   <meta property="og:url" content="https://www.crepedelacrepe.no/" />
@@ -237,13 +238,6 @@
       z-index: 0;
     }
 
-    @media (max-width: 768px) {
-      #floating-bg-elements,
-      .hero-ring {
-        display: none !important;
-      }
-    }
-
     .hero-shell {
       width: min(1160px, calc(100% - 36px));
       margin: 0 auto;
@@ -269,19 +263,6 @@
       z-index: 1;
     }
 
-    .hero-tagline {
-      font-family: "Manrope", sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
-      color: #c9756c;
-      font-weight: 300;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeUp 0.6s ease-out forwards;
-      position: relative;
-      z-index: 1;
-    }
 
     .hero-line {
       opacity: 0;
@@ -401,40 +382,6 @@
       }
     }
 
-    .hero-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(182, 142, 131, 0.16);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .hero-ring-1 {
-      width: min(850px, 90vw);
-      height: min(850px, 90vw);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -43%);
-    }
-
-    .hero-ring-2 {
-      width: min(1050px, 110vw);
-      height: min(1050px, 110vw);
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -42%);
-      border-color: rgba(182, 142, 131, 0.1);
-    }
-
-    .hero-ring-3 {
-      width: min(1260px, 132vw);
-      height: min(1260px, 132vw);
-      top: 46%;
-      left: 50%;
-      transform: translate(-50%, -42%);
-      border-color: rgba(182, 142, 131, 0.07);
-    }
-
     @keyframes heroFadeUp {
       from {
         opacity: 0;
@@ -455,73 +402,13 @@
       padding: 0 0 76px;
     }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
 
-    .section-head h2,
-    .section-head h3 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.6rem, 6.2vw, 5.2rem);
-      font-weight: 500;
-      letter-spacing: -0.045em;
-      color: var(--ink);
-      line-height: 0.94;
-    }
-
-    .section-head h2 em,
-    .section-head h3 em,
-    .history-teaser-title em,
-    .booking-cta-copy h3 em {
+    .history-teaser-title em {
       font-style: italic;
       color: #aa6f63;
       font-weight: 500;
     }
 
-    .card {
-      background: linear-gradient(180deg, rgba(247,239,231,0.90), rgba(239,227,214,0.94));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .intro-wrap {
-      margin-top: 0;
-      position: relative;
-      z-index: 5;
-    }
-
-    .intro-card {
-      background:
-        radial-gradient(circle at top right, rgba(197,130,117,0.16), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(255,255,255,0.30), transparent 26%),
-        linear-gradient(180deg, rgba(253,248,241,0.94), rgba(242,230,220,0.98));
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(66, 39, 23, 0.08);
-      border-radius: 34px;
-      box-shadow:
-        0 24px 70px rgba(56, 33, 20, 0.12),
-        inset 0 1px 0 rgba(255,255,255,0.48);
-      padding: 34px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .intro-left {
-      display: grid;
-      gap: 24px;
-      align-content: start;
-      padding-right: 6px;
-    }
 
     .eyebrow {
       display: inline-flex;
@@ -538,137 +425,6 @@
       padding: 8px 12px;
     }
 
-    .script-title {
-      font-family: "Parisienne", cursive;
-      font-size: clamp(42px, 5vw, 64px);
-      line-height: 0.92;
-      color: #9a6158;
-      margin: -4px 0 2px;
-      text-shadow: 0 6px 18px rgba(255,255,255,0.26);
-    }
-
-    .intro-copy .lead {
-      margin: 0;
-      color: #4a352b;
-      font-size: 17px;
-      line-height: 1.98;
-      font-weight: 500;
-      max-width: 68ch;
-    }
-
-    .stops-block {
-      margin-top: 4px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(66, 39, 23, 0.08);
-      display: grid;
-      gap: 10px;
-      justify-items: center;
-      text-align: center;
-    }
-
-    .stops-title {
-      font-family: "Cormorant Garamond", serif;
-      color: #6b4f42;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .stops-line {
-      color: #5f483c;
-      font-size: 15px;
-      line-height: 1.8;
-      font-weight: 600;
-      max-width: 46ch;
-    }
-
-    .featured-card {
-      position: relative;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(66, 39, 23, 0.08);
-      background: #f7ede3;
-      box-shadow:
-        0 16px 40px rgba(56, 33, 20, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.28);
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-    }
-
-    .featured-media {
-      position: relative;
-      min-height: 100%;
-      flex: 1;
-    }
-
-    .featured-media img {
-      width: 100%;
-      height: 100%;
-      min-height: 360px;
-      max-height: 460px;
-      object-fit: cover;
-      transform: scale(1.01);
-    }
-
-    .featured-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(26,14,10,0.54), rgba(26,14,10,0.06)),
-        radial-gradient(circle at top right, rgba(255,255,255,0.10), transparent 22%);
-      pointer-events: none;
-    }
-
-    .featured-label {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      z-index: 2;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255, 250, 245, 0.84);
-      color: #4c392f;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(66, 39, 23, 0.08);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-    }
-
-    .featured-price {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 2;
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf7;
-      font-size: 20px;
-      font-weight: 800;
-      box-shadow: 0 12px 26px rgba(138, 90, 80, 0.28);
-    }
-
-    .featured-copy {
-      position: absolute;
-      left: 22px;
-      bottom: 22px;
-      z-index: 2;
-      color: white;
-    }
-
-    .featured-copy h3 {
-      margin: 0;
-      font-family: "Parisienne", cursive;
-      font-size: 46px;
-      line-height: 0.95;
-      font-weight: 400;
-      text-shadow: 0 6px 22px rgba(0,0,0,0.24);
-    }
 
     .history-teaser {
       padding-top: clamp(28px, 4vw, 52px);
@@ -713,103 +469,6 @@
       max-width: 42ch;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .hours-card {
-      display: grid;
-      gap: 16px;
-      padding: 24px;
-    }
-
-    #lokasjon .section-head h2 {
-      font-size: clamp(31px, 3.4vw, 48px);
-      line-height: 0.98;
-    }
-
-    .hours-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px 16px;
-      padding: 15px 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.36);
-      border: 1px solid var(--line);
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-    }
-
-    .row strong {
-      color: var(--text);
-    }
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .contact-chip {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.40);
-      border: 1px solid var(--line);
-      color: #5f493d;
-      min-height: 52px;
-      transition: 0.2s ease;
-    }
-
-    .contact-chip:hover {
-      border-color: rgba(199, 149, 99, 0.30);
-      background: rgba(255,255,255,0.62);
-    }
-
-    .location-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .location-actions .btn-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.78);
-      border-color: rgba(66, 39, 23, 0.12);
-    }
-
-    .location-actions .btn-secondary:hover {
-      background: rgba(255,255,255,0.92);
-      border-color: rgba(66, 39, 23, 0.18);
-    }
-
-    .map-box {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      min-height: 100%;
-    }
-
-    .map-box iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 390px;
-      border: 0;
-      filter: saturate(0.92) contrast(0.96) brightness(0.98);
-    }
 
     .social-proof {
       padding-top: 8px;
@@ -1126,34 +785,6 @@
       margin-left: 10px;
     }
 
-    .footer-actions {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-      max-width: 420px;
-    }
-
-    .footer-actions-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .footer-actions-bottom {
-      display: grid;
-    }
-
-    .footer .footer-actions .btn-secondary {
-      background: rgba(255,255,255,0.90);
-      border: 1px solid rgba(110, 78, 67, 0.18);
-      color: var(--text);
-      box-shadow: 0 10px 24px rgba(56, 33, 20, 0.06);
-    }
-
-    .footer .footer-actions .btn-secondary:hover {
-      background: rgba(255,255,255,1);
-      border-color: rgba(66, 39, 23, 0.18);
-    }
 
     .footer-mini {
       margin-top: 28px;
@@ -1203,10 +834,6 @@
     }
 
     @media (max-width: 1180px) {
-      .intro-card {
-        grid-template-columns: 1fr;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -1217,19 +844,6 @@
     }
 
     @media (max-width: 980px) {
-      .info-grid,
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-
-      .hours-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .map-box iframe {
-        min-height: 350px;
-      }
-
       .hero {
         padding-top: 186px;
       }
@@ -1242,10 +856,6 @@
 
       .footer-shortcuts {
         margin-left: 0;
-      }
-
-      .footer-actions-top {
-        grid-template-columns: 1fr;
       }
 
       .footer .brand-title {
@@ -1315,49 +925,8 @@
         white-space: nowrap;
       }
 
-      .blob-1 {
-        width: 300px;
-        height: 300px;
-        opacity: 0.5;
-      }
-
-      .blob-2 {
-        width: 240px;
-        height: 240px;
-        opacity: 0.42;
-      }
-
-      .blob-3 {
-        width: 210px;
-        height: 210px;
-        opacity: 0.34;
-      }
-
-      .intro-card,
-      .footer-shell,
-      .card {
+      .footer-shell {
         padding: 22px;
-      }
-
-      .hours-card {
-        padding: 20px;
-      }
-
-      .map-box iframe {
-        min-height: 310px;
-      }
-
-      .script-title {
-        font-size: 42px;
-      }
-
-      .featured-media img {
-        min-height: 280px;
-        max-height: 340px;
-      }
-
-      .featured-copy h3 {
-        font-size: 38px;
       }
 
       .history-teaser-card {
@@ -1476,9 +1045,6 @@
         width: 100%;
       }
 
-      .footer-actions {
-        display: none;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1490,7 +1056,6 @@
       .btn,
       .hero-line,
       .hero-actions,
-      .contact-chip,
       .back-to-top {
         transition: none;
       }
@@ -1501,22 +1066,8 @@
         opacity: 1;
         transform: none;
       }
-
-      .blob {
-        animation: none;
-      }
     }
 
-    /* ── Lokasjon two-column grid (scoped) ── */
-    .loc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 767px) {
-      .loc-grid { grid-template-columns: 1fr; }
-    }
   </style>
 
   <script type="application/ld+json">
@@ -1525,13 +1076,15 @@
     "@type": "FoodEstablishment",
     "name": "Crêpe de la Crêpe",
     "url": "https://www.crepedelacrepe.no/",
+    "image": "https://www.crepedelacrepe.no/crepe-logo-transparent.png",
+    "hasMenu": "https://www.crepedelacrepe.no/meny.html",
     "telephone": "+4748408749",
     "email": "crepedelacrepes@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Vitaminveien 7",
+      "streetAddress": "Stranden",
       "addressLocality": "Oslo",
-      "postalCode": "0485",
+      "postalCode": "0250",
       "addressCountry": "NO"
     },
     "servesCuisine": ["French", "Crêpes", "Street Food"],
@@ -1539,51 +1092,19 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "12:00",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "11:00",
         "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "12:00",
-        "closes": "19:00"
       }
     ],
     "sameAs": [
       "https://www.instagram.com/crepe_delacrepe/",
-      "https://www.tiktok.com/@crepe_delacrepe",
-      "https://www.foodora.no/restaurant/agfr/crepe-de-la-crepe-storo-storsenter"
+      "https://www.tiktok.com/@crepe_delacrepe"
     ]
   }
   </script>
 
   <style>
-    #floating-bg-elements {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #floating-bg-elements span {
-      position: absolute;
-      font-size: clamp(1.2rem, 2vw, 2rem);
-      opacity: 0.13;
-      animation: floatDrift var(--dur) ease-in-out infinite;
-      animation-delay: var(--delay);
-      left: var(--x);
-      top: var(--y);
-      filter: blur(0.4px);
-    }
-
-    @keyframes floatDrift {
-      0%   { transform: translateY(0px) rotate(0deg); }
-      50%  { transform: translateY(-18px) rotate(6deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-
     /* ── Transparent navbar state (home page hero) ── */
     .page-home .site-nav.navbar-transparent {
       background:              transparent !important;
@@ -1631,10 +1152,8 @@
           <a class="btn btn-secondary" href="./meny.html">Se meny</a>
         </div>
 
-        <p class="hero-location" aria-label="Aker Brygge · Storo Storsenter">
+        <p class="hero-location" aria-label="Aker Brygge">
           <span class="hero-location-line">Aker Brygge</span>
-          <span class="hero-location-separator" aria-hidden="true">·</span>
-          <span class="hero-location-line">Storo Storsenter</span>
         </p>
       </div>
     </section>
@@ -1656,7 +1175,7 @@
       <div class="container">
         <div class="social-proof-shell">
           <h2>Hva folk sier</h2>
-          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge, Storo eller booket oss til arrangement.</p>
+          <p class="social-proof-subtitle">Anmeldelser fra gjester og kunder som har besøkt oss på Aker Brygge eller booket oss til arrangement.</p>
 
           <div class="testimonial-carousel" id="testimonialCarousel">
             <div class="testimonial-viewport">
@@ -1737,9 +1256,9 @@
 /* Grid */
 .cdlc-hours__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  max-width: 1180px;
+  max-width: 680px;
   margin: 0 auto;
   align-items: stretch;
 }
@@ -1808,12 +1327,8 @@
   color: #9a5346;
   border-color: #e0bcb4;
 }
-.cdlc-hours__badge--soon {
-  color: #9b7a4a;
-  border-color: #d4c5a9;
-}
 
-/* Storo status line */
+/* Status line */
 .cdlc-hours__status {
   display: flex;
   align-items: center;
@@ -1898,7 +1413,7 @@
   font-weight: 500;
 }
 
-/* Card actions (Storo: two outlined buttons side-by-side) */
+/* Card actions (two outlined buttons side-by-side) */
 .cdlc-hours__card-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1927,84 +1442,18 @@
   color: #3b2d25;
   border-color: #c2ae87;
 }
-.cdlc-hours__btn--center {
-  margin: 1.4rem auto 0;
-  padding: 0.85rem 1.6rem;
-  min-width: 200px;
-}
 
 /* Aker Brygge coming-soon content */
-.cdlc-hours__coming {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.7rem;
-  padding: 1.25rem 0.5rem 0.5rem;
-}
-.cdlc-hours__coming-icon {
-  width: 48px;
-  height: 48px;
-  color: #a8947a;
-  margin-bottom: 0.35rem;
-}
-.cdlc-hours__coming-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #3a2c24;
-  margin: 0.25rem 0 0;
-}
-.cdlc-hours__coming-text {
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.94rem;
-  line-height: 1.55;
-  color: #6f594b;
-  margin: 0;
-  max-width: 30ch;
-}
-.cdlc-hours__coming-address {
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.82rem;
-  color: #8a7565;
-  margin: 0.4rem 0 0;
-}
+
+
 </style>
 
   <div class="cdlc-hours__heading">
     <h2 class="cdlc-hours__title"><em>åpningstider</em></h2>
-    <p class="cdlc-hours__subtitle">To lokasjoner i Oslo</p>
+    <p class="cdlc-hours__subtitle">Stranden, 0250 Oslo</p>
   </div>
 
   <div class="cdlc-hours__grid">
-
-    <!-- STORO STORSENTER -->
-    <div class="cdlc-hours__card">
-      <div class="cdlc-hours__card-header">
-        <h3 class="cdlc-hours__card-name">Storo Storsenter</h3>
-        <span class="cdlc-hours__badge cdlc-hours__badge--open" id="cdlc-storo-badge">Åpent nå</span>
-      </div>
-      <div class="cdlc-hours__status" id="cdlc-storo-status">
-        <span class="cdlc-hours__status-dot"></span>
-        <span class="cdlc-hours__status-text">Åpent nå · Stenger 21:00</span>
-      </div>
-      <div class="cdlc-hours__divider"></div>
-      <table class="cdlc-hours__table" id="cdlc-storo-table">
-        <tr data-day="1" data-open="600" data-close="1260"><td class="cdlc-hours__day">Mandag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="2" data-open="600" data-close="1260"><td class="cdlc-hours__day">Tirsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="3" data-open="600" data-close="1260"><td class="cdlc-hours__day">Onsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="4" data-open="600" data-close="1260"><td class="cdlc-hours__day">Torsdag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="5" data-open="600" data-close="1260"><td class="cdlc-hours__day">Fredag</td><td class="cdlc-hours__time">12:00 – 21:00</td></tr>
-        <tr data-day="6" data-open="600" data-close="1200"><td class="cdlc-hours__day">Lørdag</td><td class="cdlc-hours__time">12:00 – 19:00</td></tr>
-        <tr data-day="0"><td class="cdlc-hours__day">Søndag</td><td class="cdlc-hours__time cdlc-hours__time--closed">Stengt</td></tr>
-      </table>
-      <div class="cdlc-hours__card-actions">
-        <a class="cdlc-hours__btn" href="https://www.google.com/maps?q=Storo+Storsenter+Vitaminveien+7+0485+Oslo" target="_blank" rel="noopener noreferrer">Åpne i kart</a>
-        <a class="cdlc-hours__btn" href="tel:+4748408749">Ring oss</a>
-      </div>
-    </div>
 
     <!-- AKER BRYGGE -->
     <div class="cdlc-hours__card">
@@ -2034,69 +1483,7 @@
 
   </div>
 
-<script>
-(function() {
-  var now = new Date();
-  var osloTime = now.toLocaleString('en-GB', { timeZone: 'Europe/Oslo', hour12: false });
-  var osloParts = osloTime.split(', ');
-  var osloDateParts = osloParts[0].split('/');
-  var osloTimeParts = osloParts[1].split(':');
-  var osloDate = new Date(osloDateParts[2], osloDateParts[1] - 1, osloDateParts[0], osloTimeParts[0], osloTimeParts[1], osloTimeParts[2]);
-  var today = osloDate.getDay();
-  var mins = osloDate.getHours() * 60 + osloDate.getMinutes();
 
-  // Highlight today's row and grab its open/close data
-  var rows = document.querySelectorAll('#cdlc-storo-table tr[data-day]');
-  var todayRow = null;
-  for (var i = 0; i < rows.length; i++) {
-    if (parseInt(rows[i].getAttribute('data-day'), 10) === today) {
-      rows[i].classList.add('cdlc-hours--today');
-      todayRow = rows[i];
-    }
-  }
-
-  var badge = document.getElementById('cdlc-storo-badge');
-  var status = document.getElementById('cdlc-storo-status');
-  var statusText = status.querySelector('.cdlc-hours__status-text');
-
-  var openMin = todayRow && todayRow.getAttribute('data-open')
-    ? parseInt(todayRow.getAttribute('data-open'), 10) : null;
-  var closeMin = todayRow && todayRow.getAttribute('data-close')
-    ? parseInt(todayRow.getAttribute('data-close'), 10) : null;
-  var isOpen = openMin !== null && mins >= openMin && mins < closeMin;
-
-  function fmt(m) {
-    var h = Math.floor(m / 60);
-    var mm = m % 60;
-    return (h < 10 ? '0' + h : h) + ':' + (mm < 10 ? '0' + mm : mm);
-  }
-
-  if (isOpen) {
-    badge.textContent = 'Åpent nå';
-    badge.className = 'cdlc-hours__badge cdlc-hours__badge--open';
-    statusText.textContent = 'Åpent nå · Stenger ' + fmt(closeMin);
-  } else {
-    badge.textContent = 'Stengt';
-    badge.className = 'cdlc-hours__badge cdlc-hours__badge--closed';
-    status.classList.add('cdlc-hours__status--closed');
-    var dayNames = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
-    // Opens later today?
-    if (openMin !== null && mins < openMin) {
-      statusText.textContent = 'Stengt · Åpner i dag ' + fmt(openMin);
-    } else {
-      for (var j = 1; j <= 7; j++) {
-        var d = (today + j) % 7;
-        var nextRow = document.querySelector('#cdlc-storo-table tr[data-day="' + d + '"][data-open]');
-        if (nextRow) {
-          var label = (j === 1) ? 'i morgen' : dayNames[d];
-          statusText.textContent = 'Stengt · Åpner ' + label + ' ' + fmt(parseInt(nextRow.getAttribute('data-open'), 10));
-          break;
-        }
-      }
-    }
-  }
-})();
-</script>
 <script>
 (function() {
   var now = new Date();
@@ -2208,7 +1595,7 @@
           <div class="footer-block">
             <h4>Kontakt</h4>
             <div class="footer-list">
-              <div>Storo Storsenter, Vitaminveien 7, 0485 Oslo</div>
+              <div>Stranden, 0250 Oslo</div>
               <a href="tel:+4748408749">+47 48 40 87 49</a>
               <a href="mailto:Crepedelacrepes@gmail.com">Crepedelacrepes@gmail.com</a>
             </div>
@@ -2436,98 +1823,6 @@
     })();
   </script>
 
-  <!-- ── GDPR Consent Banner ── -->
-  <div id="cookieConsent" style="
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background: #2C2016;
-    color: #FAF7F2;
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    padding: 16px 24px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
-  " role="dialog" aria-label="Informasjonskapsler">
-    <p style="margin: 0; flex: 1; min-width: 200px; line-height: 1.5;">
-      Vi bruker informasjonskapsler (Google Analytics) for å forstå hvordan nettsiden brukes.
-      Les mer i vår <a href="/personvern.html" style="color: #c98376; text-decoration: underline;">personvernerklæring</a>.
-    </p>
-    <div style="display: flex; gap: 10px; flex-shrink: 0;">
-      <button id="cookieAccept" type="button" style="
-        background: #c98376;
-        color: #FAF7F2;
-        border: none;
-        border-radius: 6px;
-        padding: 10px 20px;
-        font-family: 'Manrope', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-      ">Godta</button>
-      <button id="cookieDecline" type="button" style="
-        background: transparent;
-        color: #FAF7F2;
-        border: 2px solid #c98376;
-        border-radius: 6px;
-        padding: 10px 20px;
-        font-family: 'Manrope', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-      ">Avvis</button>
-    </div>
-  </div>
-
-  <script>
-    /* ── GDPR Consent & GA4 loader ── */
-    /* Replace G-XXXXXXXXXX with your actual GA4 measurement ID */
-    var GA4_ID = 'G-XXXXXXXXXX';
-
-    function loadGA4() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA4_ID);
-    }
-
-    (function () {
-      var banner = document.getElementById('cookieConsent');
-      var consent = localStorage.getItem('cookieConsent');
-
-      if (consent === 'accepted') {
-        loadGA4();
-        return;
-      }
-      if (consent === 'declined') {
-        return;
-      }
-
-      /* Show banner */
-      banner.style.display = 'flex';
-
-      document.getElementById('cookieAccept').addEventListener('click', function () {
-        localStorage.setItem('cookieConsent', 'accepted');
-        banner.style.display = 'none';
-        loadGA4();
-      });
-
-      document.getElementById('cookieDecline').addEventListener('click', function () {
-        localStorage.setItem('cookieConsent', 'declined');
-        banner.style.display = 'none';
-      });
-    })();
-  </script>
+  <script src="./cookies.js"></script>
 </body>
 </html>
