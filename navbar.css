@@ -274,9 +274,23 @@
     transform:  translateY(0);
   }
 
-  /* Hide in-navbar CTA on desktop — replaced by the floating CTA */
+  /* På mobil ligger knappen på en mørk navbar, der den kremhvite fyllingen
+     gir god kontrast. På desktop ligger navbaren enten gjennomsiktig over
+     lyse sider eller på en kremfarget stripe — der ville samme knapp blitt
+     usynlig (1.03:1). Snu den: dyp flamingo med kremtekst gir 4.56:1 og
+     består AA. Fargen er den samme som .btn-primary bruker ellers. */
   .site-nav__cta {
-    display: none;
+    background:   #9f645b;
+    color:        #fffaf7;
+    border-color: #9f645b;
+    box-shadow:   0 4px 18px rgba(159, 100, 91, 0.26);
+  }
+
+  .site-nav__cta:hover {
+    background:   #8a564e;
+    border-color: #8a564e;
+    opacity:      1;
+    box-shadow:   0 7px 26px rgba(159, 100, 91, 0.34);
   }
 
   /* ── Desktop nav link base ── */

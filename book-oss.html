@@ -2226,7 +2226,7 @@
               </p>
 
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Wagon">Book</button>
+                <button class="btn btn-primary js-open-booking" data-setup="Wagon" data-cta="setup_wagon">Book</button>
               </div>
             </div>
           </div>
@@ -2248,7 +2248,7 @@
               </p>
 
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Stand">Book</button>
+                <button class="btn btn-primary js-open-booking" data-setup="Stand" data-cta="setup_stand">Book</button>
               </div>
             </div>
 
@@ -2278,7 +2278,7 @@
               </p>
 
               <div class="setup-actions">
-                <button class="btn btn-primary js-open-booking" data-setup="Pop-Up">Book</button>
+                <button class="btn btn-primary js-open-booking" data-setup="Pop-Up" data-cta="setup_popup">Book</button>
               </div>
             </div>
           </div>
@@ -2326,7 +2326,7 @@
             <p>Send inn forespørselen, så tar vi kontakt for å bekrefte detaljer, tilgjengelighet og videre plan.</p>
           </div>
 
-          <button class="btn btn-primary js-open-booking">Be om booking nå</button>
+          <button class="btn btn-primary js-open-booking" data-cta="bookoss_closing">Be om booking nå</button>
         </div>
       </div>
     </section>
@@ -2548,7 +2548,7 @@
                           <div class="field-group">
                             <div class="phone-input-wrap">
                               <span class="phone-prefix" id="phonePrefix">+47</span>
-                              <label class="sr-only" for="phone">Telefonnummer</label>
+                              <label class="sr-only" for="phone">Telefonnummer (valgfritt)</label>
                               <input
                                 class="text-input"
                                 type="tel"
@@ -2999,6 +2999,53 @@
       let previousFocusedElement = null;
       let submitting = false;
 
+      /* ── Trakt-sporing ──────────────────────────────────────────────────
+         Navnene her følger stegenes rekkefølge i DOM. Endres rekkefølgen,
+         må denne listen endres i samme slengen. */
+      const STEP_NAMES = ["setup", "contact", "event_type", "details", "location", "message"];
+
+      let trackEntryPoint = "unknown";
+      let hasTouchedForm = false;
+      let submittedOk = false;
+      let seenSteps = new Set();
+
+      function track(name, params, done) {
+        if (typeof window.cdlcTrack === "function") {
+          window.cdlcTrack(name, params, done);
+        } else if (typeof done === "function") {
+          done();
+        }
+      }
+
+      function stepName(index) {
+        return STEP_NAMES[index] || "step_" + index;
+      }
+
+      /* Gjestetall og datoer må grupperes. Rå verdier gir GA4 for mange
+         unike kombinasjoner til at rapportene blir lesbare. */
+      function guestsBucket(value) {
+        const n = parseInt(String(value).replace(/\D/g, ""), 10);
+        if (!n) return "ukjent";
+        if (n <= 25) return "1-25";
+        if (n <= 50) return "26-50";
+        if (n <= 100) return "51-100";
+        if (n <= 300) return "101-300";
+        if (n <= 1000) return "301-1000";
+        return "1000+";
+      }
+
+      function leadTimeBucket(dateText) {
+        const match = String(dateText || "").match(/(\d{4})-(\d{2})-(\d{2})/);
+        if (!match) return "ukjent";
+        const target = new Date(+match[1], +match[2] - 1, +match[3]);
+        const days = Math.round((target - new Date()) / 86400000);
+        if (isNaN(days)) return "ukjent";
+        if (days <= 7) return "0-7d";
+        if (days <= 30) return "8-30d";
+        if (days <= 90) return "31-90d";
+        return "90d+";
+      }
+
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
@@ -3139,6 +3186,15 @@
           syncChoiceSelection(setupChoices, formState.setup);
         }
 
+        seenSteps = new Set();
+        hasTouchedForm = false;
+        submittedOk = false;
+        track("booking_open", {
+          entry_point: trackEntryPoint,
+          setup_prefilled: prefilledSetup ? "true" : "false",
+          setup: formState.setup || "none"
+        });
+
         currentStep = formState.setup ? 1 : 0;
         updateSteps();
         updateSummary();
@@ -3146,6 +3202,15 @@
       }
 
       function forceCloseOverlay(resetToStart = false) {
+        /* Frafall er alt som ikke endte i en sendt forespørsel. */
+        if (!submittedOk && overlay.classList.contains("open")) {
+          track("booking_abandon", {
+            last_step_index: currentStep,
+            last_step_name: stepName(currentStep),
+            had_input: hasTouchedForm ? "true" : "false"
+          });
+        }
+
         overlay.classList.remove("open");
         overlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("overlay-open");
@@ -3216,6 +3281,16 @@
           step.classList.toggle("active", index === currentStep);
         });
 
+        /* Ett visnings-treff per steg per åpning, ellers teller
+           gjentegninger og tilbake-navigering dobbelt. */
+        if (currentStep < totalInputSteps && !seenSteps.has(currentStep)) {
+          seenSteps.add(currentStep);
+          track("booking_step_view", {
+            step_index: currentStep,
+            step_name: stepName(currentStep)
+          });
+        }
+
         document.querySelectorAll(".js-back").forEach((button) => {
           button.style.visibility = currentStep === 0 ? "hidden" : "visible";
           button.style.pointerEvents = currentStep === 0 ? "none" : "auto";
@@ -3250,9 +3325,34 @@
         }
       }
 
+      /* Stabile engelske koder til GA4. De norske feiltekstene kan endres
+         uten at rapportene mister historikken. */
+      const ERROR_CODES = {
+        "Velg et oppsett for å gå videre.": "setup_missing",
+        "Skriv inn fullt navn.": "name_too_short",
+        "Skriv inn en gyldig e-post.": "email_invalid",
+        "Skriv inn et gyldig telefonnummer.": "phone_invalid",
+        "Velg type arrangement.": "event_type_missing",
+        "Velg dato for arrangementet.": "date_missing",
+        "Dato kan ikke være i fortiden.": "date_past",
+        "Sluttdato kan ikke være før startdato.": "date_range_invalid",
+        "Skriv inn antall gjester.": "guests_missing",
+        "Bruk kun tall.": "guests_not_numeric",
+        "Skriv inn hvor arrangementet skal være.": "location_missing"
+      };
+
       function setError(key, message) {
         const node = document.querySelector(`[data-error-for="${key}"]`);
         if (node) node.textContent = message || "";
+
+        /* Tom melding betyr at feilen fjernes — det er ikke en hendelse. */
+        if (message) {
+          track("booking_field_error", {
+            step_name: stepName(currentStep),
+            field: key,
+            error_code: ERROR_CODES[message] || "other"
+          });
+        }
       }
 
       function clearAllErrors() {
@@ -3602,7 +3702,9 @@
             const config = phoneCountryMap[formState.phoneCountry] || phoneCountryMap.NO;
             const digits = getPhoneDigitsOnly(formState.phoneLocal);
 
-            if (digits.length < config.minDigits || digits.length > config.maxDigits) {
+            /* Telefon er valgfritt. Er feltet tomt, hopper vi over sjekken;
+               er det fylt ut, må nummeret være gyldig. */
+            if (digits.length > 0 && (digits.length < config.minDigits || digits.length > config.maxDigits)) {
               setError("phone", "Skriv inn et gyldig telefonnummer.");
               return false;
             }
@@ -3675,10 +3777,6 @@
 
           case 5: {
             const messageValue = document.getElementById("message").value.trim();
-            if (messageValue && messageValue.length < 12) {
-              setError("submit", "Skriv litt mer om arrangementet, eller la feltet stå tomt.");
-              return false;
-            }
             if (messageValue.length > 1200) {
               setError("submit", "Meldingen er for lang. Hold den under 1200 tegn.");
               return false;
@@ -3704,6 +3802,11 @@
         }
 
         if (!validateStep(currentStep)) return;
+
+        track("booking_step_complete", {
+          step_index: currentStep,
+          step_name: stepName(currentStep)
+        });
 
         currentStep += 1;
         updateSummary();
@@ -3750,6 +3853,20 @@
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), BOOKING_SUBMIT_TIMEOUT_MS);
 
+        const leadFacts = {
+          setup: payload.setup || "ukjent",
+          event_type: payload.type || "ukjent",
+          guests_bucket: guestsBucket(payload.guests),
+          lead_time_bucket: leadTimeBucket(payload.date),
+          entry_point: trackEntryPoint
+        };
+
+        track("booking_submit_attempt", Object.assign({
+          has_message: payload.message ? "true" : "false",
+          has_company: payload.company ? "true" : "false",
+          has_phone: payload.phone ? "true" : "false"
+        }, leadFacts));
+
         submitting = true;
         submitBtn.classList.add("loading");
         submitBtn.textContent = "Sender...";
@@ -3785,13 +3902,28 @@
 
           sessionStorage.setItem("bookingSubmission", JSON.stringify(submissionSnapshot));
           setError("submit", "");
-          window.location.href = "/takk.html";
+          submittedOk = true;
+
+          /* Vent på at hendelsen faktisk er sendt før vi navigerer bort.
+             track() slipper oss videre uansett etter kort tid, så en
+             blokkert sporing kan aldri hindre kunden i å komme til
+             takk-siden. */
+          track("generate_lead", leadFacts, function () {
+            window.location.href = "/takk.html";
+          });
           return;
         } catch (error) {
           const fallbackMessage = "Kunne ikke sende forespørselen akkurat nå. Prøv igjen om litt.";
           const userMessage = error && typeof error.message === "string" && error.message.trim()
             ? error.message.trim()
             : fallbackMessage;
+
+          const aborted = error && error.name === "AbortError";
+          track("booking_submit_error", {
+            error_type: aborted ? "timeout" : "network_or_server",
+            step_name: stepName(currentStep)
+          });
+
           setError("submit", userMessage);
         } finally {
           clearTimeout(timeoutId);
@@ -3840,9 +3972,19 @@
       nextButtons.forEach((button) => button.addEventListener("click", nextStep));
       backButtons.forEach((button) => button.addEventListener("click", prevStep));
 
+      /* Skiller et reelt frafall fra en som bare åpnet og lukket igjen. */
+      if (bookingForm) {
+        bookingForm.addEventListener("input", () => { hasTouchedForm = true; }, { passive: true });
+        bookingForm.addEventListener("change", () => { hasTouchedForm = true; }, { passive: true });
+      }
+
       openBookingButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const setup = button.dataset.setup || "";
+          /* data-cta lar oss se hvilken knapp som faktisk driver booking.
+             Mangler den, faller vi tilbake på et nøytralt navn. */
+          trackEntryPoint = button.dataset.cta || "bookoss_page";
+          track("booking_cta_click", { cta_location: trackEntryPoint });
           openOverlay(setup);
         });
       });

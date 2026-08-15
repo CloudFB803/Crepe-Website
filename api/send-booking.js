@@ -404,11 +404,11 @@ export default {
       const gjester = clamp(pickFirst(data.guests, data.gjester), 6);
       const melding = clamp(pickFirst(data.message, data.melding), 1200);
 
-      if (!setup || !navn || !epost || !telefon || !type || !dato || !sted || !gjester) {
+      if (!setup || !navn || !epost || !type || !dato || !sted || !gjester) {
         logEvent("warn", "validation_failed", requestId, { reason: "missing_required_fields" });
         return jsonResponse({
           ok: false,
-          error: "Oppsett, navn, e-post, telefon, arrangementstype, dato, sted og antall gjester er påkrevd."
+          error: "Oppsett, navn, e-post, arrangementstype, dato, sted og antall gjester er påkrevd."
         }, 400, requestId);
       }
 
@@ -422,7 +422,8 @@ export default {
         return jsonResponse({ ok: false, error: "Ugyldig e-postadresse." }, 400, requestId);
       }
 
-      if (!isValidPhone(telefon)) {
+      /* Telefon er valgfritt. Er det oppgitt, må det være gyldig. */
+      if (telefon && !isValidPhone(telefon)) {
         logEvent("warn", "validation_failed", requestId, { reason: "invalid_phone" });
         return jsonResponse({ ok: false, error: "Ugyldig telefonnummer." }, 400, requestId);
       }
@@ -450,11 +451,6 @@ export default {
       if (!type) {
         logEvent("warn", "validation_failed", requestId, { reason: "invalid_event_type" });
         return jsonResponse({ ok: false, error: "Ugyldig arrangementstype." }, 400, requestId);
-      }
-
-      if (melding && melding.length < 12) {
-        logEvent("warn", "validation_failed", requestId, { reason: "message_too_short" });
-        return jsonResponse({ ok: false, error: "Meldingen er for kort." }, 400, requestId);
       }
 
       if (looksLikeSpamMessage(melding)) {
