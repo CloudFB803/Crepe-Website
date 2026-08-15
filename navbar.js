@@ -62,15 +62,16 @@
           '<img src="./crepe-logo-transparent.png" alt="Crêpe de la Crêpe" width="56" height="56">' +
         '</a>' +
 
-        /* Right links: LOKASJON · KONTAKT + MENY-CTA */
+        /* Right links: LOKASJON · KONTAKT + BOOK OSS-CTA.
+           BOOK OSS er selve knappen, ikke en tekstlenke — den er sidens
+           viktigste handling. MENY ligger fortsatt i venstre gruppe. */
         '<div class="site-nav__right">' +
           '<div class="site-nav__right-links">' +
             navLink(isHome ? '#lokasjon' : './index.html#lokasjon', 'lokasjon', 'LOKASJON') +
             navLink(contactDesktopHref,  'kontakt',  'KONTAKT')  +
-            navLink('./book-oss.html',   'book',     'BOOK OSS') +
           '</div>' +
-          '<a href="./meny.html" class="site-nav__cta' + (page === 'meny' ? ' is-active' : '') + '">' +
-            'MENY' +
+          '<a href="./book-oss.html" data-cta="nav" class="site-nav__cta' + (page === 'book' ? ' is-active' : '') + '">' +
+            'BOOK OSS' +
           '</a>' +
         '</div>' +
 

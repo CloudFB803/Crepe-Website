@@ -110,6 +110,17 @@
     if (typeof done === 'function') done();
   };
 
+  /* Sporer klikk på enhver lenke merket med data-cta, uansett side. Slik
+     ser vi hvilken inngang som faktisk driver bookinger. Bookingsiden har
+     sin egen sporing for knapper som åpner skjemaet direkte. */
+  document.addEventListener('click', function (event) {
+    var target = event.target && event.target.closest
+      ? event.target.closest('[data-cta]')
+      : null;
+    if (!target) return;
+    window.cdlcTrack('booking_cta_click', { cta_location: target.dataset.cta });
+  }, true);
+
   var consent = readConsent();
 
   if (consent === 'accepted') {
