@@ -648,7 +648,23 @@ export default {
           });
 
           if (!confirmResponse.ok) {
-            logEvent("warn", "confirmation_failed", requestId, { status: confirmResponse.status });
+            /* Resend forklarer selv hvorfor den avviste sendingen — typisk
+               uverifisert domene, som begrenser kontoen til å sende kun til
+               egen adresse. Uten denne teksten må årsaken gjettes. */
+            let resendMessage = "unknown";
+            try {
+              const confirmData = await confirmResponse.json();
+              resendMessage = typeof confirmData?.message === "string"
+                ? confirmData.message
+                : (typeof confirmData?.error === "string" ? confirmData.error : "unknown");
+            } catch (parseError) {
+              /* Svar uten JSON-kropp. Statuskoden alene får holde. */
+            }
+
+            logEvent("warn", "confirmation_failed", requestId, {
+              status: confirmResponse.status,
+              resendError: String(resendMessage).slice(0, 200)
+            });
           }
         } finally {
           clearTimeout(confirmTimeout);
