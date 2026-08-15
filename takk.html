@@ -6,7 +6,7 @@
   <title>Takk | Crêpe de la Crêpe</title>
   <meta
     name="description"
-    content="Forespørselen din er mottatt. Crêpe de la Crêpe følger opp bookingforespørsler innen 24–48 timer."
+    content="Forespørselen din er mottatt. Crêpe de la Crêpe går gjennom detaljene og tar kontakt."
   />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="googlebot" content="noindex, nofollow" />
@@ -593,13 +593,13 @@
             <em>å møte deg</em>
           </h1>
 
-          <p class="subtitle">Noe godt er på vei — vi følger opp innen kort tid.</p>
+          <p class="subtitle">Vi har mottatt forespørselen din, og går gjennom detaljene.</p>
 
           <div class="info-row" aria-label="Neste steg">
             <article class="info-item">
               <div class="icon-circle" aria-hidden="true">📅</div>
-              <span class="item-label">SVARTID</span>
-              <span class="item-value">24–48 timer</span>
+              <span class="item-label">NESTE STEG</span>
+              <span class="item-value">Vi tar kontakt</span>
             </article>
 
             <div class="divider" aria-hidden="true"></div>
@@ -638,6 +638,16 @@
     updateNavState();
     window.addEventListener("scroll", updateNavState, { passive: true });
     backToTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+
+  <script src="./cookies.js"></script>
+  <script>
+    /* Bekreftelse på at forespørselen faktisk kom fram. Fungerer som kontroll
+       mot generate_lead — spriker tallene, har hendelsen gått tapt i
+       omdirigeringen. */
+    if (typeof window.cdlcTrack === "function") {
+      window.cdlcTrack("booking_thankyou_view");
+    }
   </script>
 </body>
 </html>
