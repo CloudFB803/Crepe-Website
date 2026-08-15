@@ -574,6 +574,92 @@ export default {
         }, 500, requestId);
       }
 
+      /* ── Kvittering til kunden ────────────────────────────────────────────
+         Sendes først når forespørselen til oss er bekreftet levert. Hele
+         blokken er «fire and forget»: feiler kvitteringen, skal kunden
+         likevel få en vellykket innsending, for den e-posten som betyr noe
+         har allerede kommet fram. Derfor egen try/catch som svelger alt. */
+      try {
+        const confirmationHtml = `
+          <div style="font-family: Arial, Helvetica, sans-serif; color: #241711; line-height: 1.6; max-width: 560px;">
+            <h2 style="margin: 0 0 8px; font-size: 20px;">Takk for forespørselen, ${safeNavn}!</h2>
+            <p style="margin: 0 0 20px; color: #5c4a42;">
+              Vi har mottatt forespørselen din og går gjennom detaljene. Vi tar kontakt på denne
+              e-postadressen. Dette er kun en bekreftelse på at vi har fått den — den er ikke bindende for deg.
+            </p>
+
+            <h3 style="margin: 0 0 10px; font-size: 15px; color: #9f645b;">Dette sendte du inn</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+              <tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e;">Oppsett</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeSetup}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e;">Type arrangement</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e;">Dato</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeDato || "-"}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e;">Sted</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeSted || "-"}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e;">Antall gjester</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeGjester || "-"}</td>
+              </tr>
+              ${safeMelding ? `<tr>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee; color: #7a675e; vertical-align: top;">Melding</td>
+                <td style="padding: 7px 0; border-bottom: 1px solid #eee;">${safeMelding}</td>
+              </tr>` : ""}
+            </table>
+
+            <p style="margin: 22px 0 6px; color: #5c4a42;">
+              Har du noe å legge til, kan du svare direkte på denne e-posten.
+            </p>
+            <p style="margin: 0; color: #7a675e; font-size: 13px;">
+              Crêpe de la Crêpe · Stranden, 0250 Oslo<br>
+              +47 48 40 87 49
+            </p>
+          </div>
+        `;
+
+        const confirmController = new AbortController();
+        const confirmTimeout = setTimeout(() => confirmController.abort(), 5000);
+
+        try {
+          const confirmResponse = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${resendApiKey}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              from: bookingFromEmail,
+              to: [safeReplyTo],
+              /* Svarer kunden på kvitteringen, skal svaret gå til oss. */
+              reply_to: normalizeHeaderValue(bookingToEmail),
+              subject: "Vi har mottatt forespørselen din - Crêpe de la Crêpe",
+              html: confirmationHtml
+            }),
+            signal: confirmController.signal
+          });
+
+          if (!confirmResponse.ok) {
+            logEvent("warn", "confirmation_failed", requestId, { status: confirmResponse.status });
+          }
+        } finally {
+          clearTimeout(confirmTimeout);
+        }
+      } catch (confirmationError) {
+        /* Bevisst svelget. Forespørselen er allerede levert til oss. */
+        logEvent("warn", "confirmation_failed", requestId, {
+          errorName: confirmationError?.name || "Error"
+        });
+      }
+
       return jsonResponse({ ok: true }, 200, requestId);
     } catch (error) {
       logEvent("error", "unexpected_failure", requestId, {
