@@ -1,10 +1,9 @@
 /* ── GDPR Consent & GA4 — sitewide ──────────────────────────────────────────
-   Replace G-XXXXXXXXXX below with your actual Google Analytics 4 Measurement
-   ID (format: G-XXXXXXXXXX) and this script will handle consent + tracking on
-   every page automatically.
+   Analytics only loads after the visitor accepts the cookie banner. The choice
+   is stored in localStorage under "cookieConsent", so the banner shows once.
    ─────────────────────────────────────────────────────────────────────────── */
 (function () {
-  var GA4_ID = 'G-XXXXXXXXXX';
+  var GA4_ID = 'G-15J4MWRKKQ';
 
   function loadGA4() {
     if (window.__ga4Loaded) return;
