@@ -2759,7 +2759,7 @@
                     <div class="success-actions">
                       <button type="button" class="btn btn-secondary" id="openSuccessSummaryBtn">Vis bookingoppsummering</button>
                       <button type="button" class="btn btn-primary" id="doneBtn">Lukk</button>
-                      <a class="ghost-link" href="index.html">Tilbake til forsiden</a>
+                      <a class="ghost-link" href="/">Tilbake til forsiden</a>
                     </div>
                   </div>
                 </div>
@@ -2957,6 +2957,9 @@
       const nextMonthBtn = document.getElementById("nextMonthBtn");
       const closeCalendarBtn = document.getElementById("closeCalendarBtn");
       const applyCalendarBtn = document.getElementById("applyCalendarBtn");
+
+      /* Settes i openOverlay og sendes med i payloaden. Se tidsfella der. */
+      let formOpenedAt = 0;
 
       const openBookingButtons = document.querySelectorAll(".js-open-booking");
       const setupChoices = Array.from(document.querySelectorAll("#setupChoices .choice-card"));
@@ -3174,6 +3177,15 @@
       }
 
       function openOverlay(prefilledSetup = "") {
+        /* Tidsfella: serveren avviser stille alt som sendes under fire
+           sekunder etter at skjemaet ble åpnet. Seks steg tar lengre tid
+           enn det for et menneske, men ikke for en robot.
+
+           Tidspunktet settes bare første gang. Lukker kunden skjemaet og
+           åpner det igjen, skal ikke klokka starte på nytt — da kunne en
+           som klikker raskt gjennom steg hen allerede har fylt ut, havne
+           under grensen og bli avvist uten å merke det. */
+        if (!formOpenedAt) formOpenedAt = Date.now();
         previousFocusedElement = document.activeElement;
         overlay.classList.add("open");
         overlay.setAttribute("aria-hidden", "false");
@@ -3673,6 +3685,82 @@
         closeCalendar();
       }
 
+      /* ── Validering av navn og melding ──────────────────────────────────
+         Reglene under er en nøyaktig kopi av dem i api/send-booking.js.
+         Endrer du noe her, må serveren endres likt — poenget er at kunden
+         ser feilen på steget der feltet står, ikke etter «Send». */
+
+      const MESSAGE_MAX_LENGTH = 1200;
+      const MESSAGE_MAX_LINKS = 2;
+
+      /* Én treff per lenke: «https://www.x.no» matcher på protokollen og
+         sluker resten, så den telles som én og ikke to. */
+      function countLinks(value) {
+        const matches = String(value).match(/(?:https?:\/\/|www\.)\S*/gi);
+        return matches ? matches.length : 0;
+      }
+
+      /* Returnerer feilmeldingen for navnet, eller tom streng hvis det er
+         i orden. Navn er vide av natur: titler, initialer, «&» og alfabeter
+         langt utenfor det latinske skal alle gå gjennom. */
+      function nameError(value) {
+        const trimmed = String(value).trim();
+
+        /* Tomt felt er ikke en regelfeil, bare noe som mangler. */
+        if (!trimmed) {
+          return "Skriv inn fullt navn.";
+        }
+
+        if (trimmed.length < 2 || trimmed.length > 80) {
+          return "Navnet må være mellom 2 og 80 tegn.";
+        }
+
+        const letters = trimmed.match(/\p{L}/gu);
+        if (!letters || letters.length < 2) {
+          return "Navnet må inneholde minst to bokstaver.";
+        }
+
+        if (/http|www\./i.test(trimmed)) {
+          return "Navnet kan ikke inneholde en lenke.";
+        }
+
+        if (/(.)\1{4,}/u.test(trimmed)) {
+          return "Navnet kan ikke ha samme tegn fem ganger på rad.";
+        }
+
+        return "";
+      }
+
+      /* Returnerer feilmeldingen for meldingen, eller tom streng. Meldingen
+         er valgfri, så tomt felt er alltid i orden. */
+      function messageError(value) {
+        const text = String(value).trim();
+        if (!text) return "";
+
+        if (text.length > MESSAGE_MAX_LENGTH) {
+          return "Meldingen kan ha maks " + MESSAGE_MAX_LENGTH + " tegn.";
+        }
+
+        if (countLinks(text) > MESSAGE_MAX_LINKS) {
+          return "Meldingen kan ha maks to lenker.";
+        }
+
+        if (/([a-zæøåà-öø-ÿ])\1{5,}/i.test(text)) {
+          return "Meldingen gjentar seg selv. Skriv gjerne litt mer konkret om arrangementet.";
+        }
+
+        if (/(.{12,40}?)\1{2,}/i.test(text.replace(/\s+/g, " "))) {
+          return "Meldingen gjentar seg selv. Skriv gjerne litt mer konkret om arrangementet.";
+        }
+
+        const words = text.toLowerCase().split(/\s+/).filter(Boolean);
+        if (words.length >= 20 && new Set(words).size / words.length < 0.35) {
+          return "Meldingen gjentar seg selv. Skriv gjerne litt mer konkret om arrangementet.";
+        }
+
+        return "";
+      }
+
       function validateStep(stepIndex) {
         clearAllErrors();
 
@@ -3686,8 +3774,9 @@
 
           case 1: {
             const fullNameValue = document.getElementById("fullName").value.trim();
-            if (fullNameValue.length < 2) {
-              setError("name", "Skriv inn fullt navn.");
+            const nameProblem = nameError(fullNameValue);
+            if (nameProblem) {
+              setError("name", nameProblem);
               return false;
             }
 
@@ -3776,8 +3865,9 @@
 
           case 5: {
             const messageValue = document.getElementById("message").value.trim();
-            if (messageValue.length > 1200) {
-              setError("submit", "Meldingen er for lang. Hold den under 1200 tegn.");
+            const messageProblem = messageError(messageValue);
+            if (messageProblem) {
+              setError("submit", messageProblem);
               return false;
             }
             formState.message = messageValue;
@@ -3837,7 +3927,8 @@
           type: formState.eventType,
           location: formState.location,
           message: formState.message,
-          website: document.getElementById("website").value.trim()
+          website: document.getElementById("website").value.trim(),
+          formOpenedAt: formOpenedAt
         };
       }
 

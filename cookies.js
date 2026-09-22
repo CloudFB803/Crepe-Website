@@ -1,6 +1,6 @@
 /* ── GDPR-samtykke, Google Analytics og hendelsessporing ────────────────────
    Analytics lastes først når den besøkende trykker «Godta». Valget lagres i
-   localStorage under "cookieConsent", så banneret vises bare én gang.
+   localStorage under "cookieConsent", så modalen vises bare én gang.
 
    Andre skript sporer hendelser via window.cdlcTrack(navn, data, ferdig):
 
@@ -31,7 +31,7 @@
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch (err) {
-      /* Uten lagring vises banneret på nytt neste gang. Det er akseptabelt. */
+      /* Uten lagring vises modalen på nytt neste gang. Det er akseptabelt. */
     }
   }
 
@@ -111,12 +111,16 @@
   };
 
   /* Sporer klikk på enhver lenke merket med data-cta, uansett side. Slik
-     ser vi hvilken inngang som faktisk driver bookinger. Bookingsiden har
-     sin egen sporing for knapper som åpner skjemaet direkte. */
+     ser vi hvilken inngang som faktisk driver bookinger.
+
+     Unntaket er knappene som åpner bookingskjemaet direkte
+     (.js-open-booking). Bookingsiden sporer dem selv med nøyaktig samme
+     hendelse, så uten unntaket her ville hvert klikk telles to ganger. */
   document.addEventListener('click', function (event) {
-    var target = event.target && event.target.closest
-      ? event.target.closest('[data-cta]')
-      : null;
+    if (!event.target || !event.target.closest) return;
+    if (event.target.closest('.js-open-booking')) return;
+
+    var target = event.target.closest('[data-cta]');
     if (!target) return;
     window.cdlcTrack('booking_cta_click', { cta_location: target.dataset.cta });
   }, true);
@@ -132,41 +136,125 @@
     return;
   }
 
-  /* Ingen registrert samtykke — vis banneret. */
-  var banner = document.createElement('div');
-  banner.id = 'cookieConsent';
-  banner.setAttribute('role', 'dialog');
-  banner.setAttribute('aria-label', 'Informasjonskapsler');
-  banner.style.cssText = [
-    'position:fixed', 'bottom:0', 'left:0', 'right:0', 'z-index:9999',
-    'background:#2C2016', 'color:#FAF7F2',
-    "font-family:'Manrope',sans-serif", 'font-size:14px',
-    'padding:16px 24px', 'display:flex', 'align-items:center',
-    'justify-content:space-between', 'gap:16px', 'flex-wrap:wrap',
-    'box-shadow:0 -4px 24px rgba(0,0,0,0.25)'
-  ].join(';');
+  /* Ingen registrert samtykke — vis modalen.
 
-  banner.innerHTML =
-    '<p style="margin:0;flex:1;min-width:200px;line-height:1.5;">' +
-      'Vi bruker informasjonskapsler (Google Analytics) for å forstå hvordan nettsiden brukes. ' +
-      'Les mer i vår <a href="/personvern.html" style="color:#c98376;text-decoration:underline;">personvernerklæring</a>.' +
-    '</p>' +
-    '<div style="display:flex;gap:10px;flex-shrink:0;">' +
-      '<button id="cookieAccept" type="button" style="background:#c98376;color:#FAF7F2;border:none;border-radius:6px;padding:10px 20px;font-family:\'Manrope\',sans-serif;font-size:14px;font-weight:600;cursor:pointer;">Godta</button>' +
-      '<button id="cookieDecline" type="button" style="background:transparent;color:#FAF7F2;border:2px solid #c98376;border-radius:6px;padding:10px 20px;font-family:\'Manrope\',sans-serif;font-size:14px;font-weight:600;cursor:pointer;">Avvis</button>' +
+     Personvernsiden er unntaket: der skal folk få lese hva de sier ja til
+     før de må velge. Modalen møter dem på neste side i stedet. */
+  if (/personvern/i.test(window.location.pathname)) return;
+
+  var SURFACE = '#fbf7f1';
+  var INK = '#3b2e2a';
+  var ACCENT = '#c98376';
+
+  /* Valget må tas før siden kan brukes, så modalen er bevisst umulig å
+     lukke: ingen kryss, ingen Esc, og klikk utenfor gjør ingenting. */
+  var style = document.createElement('style');
+  style.id = 'cookieConsentStyle';
+  style.textContent = [
+    '#cookieConsent{position:fixed;inset:0;top:0;right:0;bottom:0;left:0;',
+      'z-index:2147483000;display:flex;align-items:center;justify-content:center;',
+      'background:rgba(0,0,0,0.45);',
+      "font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}",
+    '#cookieConsentBox{width:calc(100% - 32px);max-width:380px;box-sizing:border-box;',
+      'background:' + SURFACE + ';color:' + INK + ';border-radius:14px;padding:24px;',
+      'box-shadow:0 10px 36px rgba(0,0,0,0.18);}',
+    '#cookieConsentTitle{margin:0 0 10px;font-size:17px;font-weight:700;color:' + INK + ';}',
+    '#cookieConsentText{margin:0 0 20px;font-size:14px;line-height:1.55;color:' + INK + ';}',
+    '#cookieConsentText a{color:' + ACCENT + ';text-decoration:underline;}',
+    '#cookieConsentActions{display:flex;gap:10px;}',
+    /* flex:1 1 0 med identisk padding og ramme gir to like store knapper.
+       Datatilsynet krever at «Avvis» er like lett å trykke som «Godta». */
+    '#cookieConsent button{flex:1 1 0;min-width:0;min-height:44px;padding:11px 12px;',
+      'border-radius:10px;font-family:inherit;font-size:14px;font-weight:600;',
+      'line-height:1.2;cursor:pointer;box-sizing:border-box;}',
+    '#cookieAccept{background:' + ACCENT + ';color:' + SURFACE + ';border:1px solid ' + ACCENT + ';}',
+    '#cookieDecline{background:transparent;color:' + ACCENT + ';border:1px solid ' + ACCENT + ';}',
+    '#cookieConsent button:focus-visible{outline:2px solid ' + INK + ';outline-offset:2px;}'
+  ].join('');
+  document.head.appendChild(style);
+
+  var modal = document.createElement('div');
+  modal.id = 'cookieConsent';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'cookieConsentTitle');
+  modal.setAttribute('aria-describedby', 'cookieConsentText');
+
+  modal.innerHTML =
+    '<div id="cookieConsentBox">' +
+      '<h2 id="cookieConsentTitle">Informasjonskapsler</h2>' +
+      '<p id="cookieConsentText">' +
+        'Vi bruker Google Analytics for å forstå hvordan nettsiden brukes. ' +
+        'Du kan lese mer i <a href="/personvern.html">personvernerklæringen</a>.' +
+      '</p>' +
+      '<div id="cookieConsentActions">' +
+        '<button id="cookieAccept" type="button">Godta</button>' +
+        '<button id="cookieDecline" type="button">Avvis</button>' +
+      '</div>' +
     '</div>';
 
-  document.body.appendChild(banner);
+  document.body.appendChild(modal);
 
-  document.getElementById('cookieAccept').addEventListener('click', function () {
+  /* Siden bak skal ikke kunne scrolles mens valget står ubesvart. */
+  var rootEl = document.documentElement;
+  var prevRootOverflow = rootEl.style.overflow;
+  var prevBodyOverflow = document.body.style.overflow;
+  rootEl.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+
+  var acceptBtn = document.getElementById('cookieAccept');
+  var declineBtn = document.getElementById('cookieDecline');
+
+  /* Esc skal ikke lukke, og Tab skal ikke nå siden bak. Lytteren ligger på
+     document i capture-fasen, så den tar tastetrykket før andre skript. */
+  function onKeydown(event) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    var focusable = modal.querySelectorAll('a[href], button');
+    if (!focusable.length) return;
+
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+
+    if (!modal.contains(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  document.addEventListener('keydown', onKeydown, true);
+
+  function dismiss() {
+    document.removeEventListener('keydown', onKeydown, true);
+    rootEl.style.overflow = prevRootOverflow;
+    document.body.style.overflow = prevBodyOverflow;
+    if (modal.parentNode) modal.parentNode.removeChild(modal);
+    if (style.parentNode) style.parentNode.removeChild(style);
+  }
+
+  acceptBtn.addEventListener('click', function () {
     saveConsent('accepted');
-    banner.style.display = 'none';
+    dismiss();
     loadGA4();
   });
 
-  document.getElementById('cookieDecline').addEventListener('click', function () {
+  declineBtn.addEventListener('click', function () {
     saveConsent('declined');
-    banner.style.display = 'none';
+    dismiss();
     queued = [];
   });
+
+  acceptBtn.focus({ preventScroll: true });
 })();

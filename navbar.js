@@ -52,13 +52,13 @@
 
         /* Left links: HJEM · MENY · VÅR HISTORIE */
         '<nav class="site-nav__left" aria-label="Venstre navigasjon">' +
-          navLink('./index.html',    'hjem',     'HJEM')     +
+          navLink('/',               'hjem',     'HJEM')     +
           navLink('./meny.html',     'meny',     'MENY')     +
           navLink('./historie.html', 'historie', 'VÅR HISTORIE') +
         '</nav>' +
 
         /* Logo — absolutely centred in the viewport */
-        '<a href="./index.html" class="site-nav__logo" aria-label="Crêpe de la Crêpe – forsiden">' +
+        '<a href="/" class="site-nav__logo" aria-label="Crêpe de la Crêpe – forsiden">' +
           '<img src="./crepe-logo-transparent.png" alt="Crêpe de la Crêpe" width="56" height="56">' +
         '</a>' +
 
@@ -86,7 +86,7 @@
 
       /* Mobile dropdown */
       '<div class="site-nav__mobile" id="siteNavMobile" aria-hidden="true">' +
-        navLink('./index.html',          'hjem',     'HJEM')         +
+        navLink('/',                     'hjem',     'HJEM')         +
         navLink('./meny.html',           'meny',     'MENY')         +
         navLink('./historie.html',       'historie', 'VÅR HISTORIE') +
         navLink(contactDesktopHref,  'kontakt',  'KONTAKT')      +
