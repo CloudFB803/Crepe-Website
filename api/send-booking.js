@@ -82,23 +82,63 @@ function normalizeEventType(value = "") {
   return "";
 }
 
+const MESSAGE_MAX_LENGTH = 1200;
+const MESSAGE_MAX_LINKS = 2;
+
+/* Tidsfelle: et menneske bruker mer enn fire sekunder på seks steg. */
+const FORM_MIN_FILL_MS = 4000;
+const FORM_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+/* Klienten sender tidspunktet skjemaet ble åpnet. Alt som ikke er en
+   troverdig, fersk måling slipper gjennom — feltet skal fange roboter,
+   aldri en ekte kunde med feilstilt klokke eller en blokkert verdi. */
+function isSuspiciouslyFast(openedAt) {
+  const opened = Number(openedAt);
+
+  if (!Number.isFinite(opened) || opened <= 0) return false;
+
+  const elapsed = Date.now() - opened;
+
+  if (!Number.isFinite(elapsed)) return false;
+  if (elapsed < 0) return false;
+  if (elapsed > FORM_MAX_AGE_MS) return false;
+
+  return elapsed < FORM_MIN_FILL_MS;
+}
+
 function isValidEmail(email = "") {
   const normalized = String(email).trim().toLowerCase();
   return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(normalized) && normalized.length <= 150;
 }
 
+/* Teller lenker i en tekst. Én treff per lenke: «https://www.x.no» matcher
+   på protokollen og sluker resten, så den telles som én og ikke to. */
+function countLinks(value = "") {
+  const matches = String(value).match(/(?:https?:\/\/|www\.)\S*/gi);
+  return matches ? matches.length : 0;
+}
+
+/* Samme tegn gjentatt minst «runLength» ganger på rad. */
+function hasCharacterRun(value = "", runLength = 5) {
+  const pattern = new RegExp(`(.)\\1{${runLength - 1},}`, "u");
+  return pattern.test(String(value));
+}
+
+/* Navn er vide av natur: titler, initialer, «&», og alfabeter langt utenfor
+   det latinske. Derfor ingen liste over tillatte tegn — vi krever bare at
+   det finnes ekte bokstaver, og avviser det som åpenbart ikke er et navn.
+   Reglene her må være identiske med dem i book-oss.html (validateStep). */
 function isValidName(name = "") {
   const trimmed = String(name).trim();
 
   if (trimmed.length < 2 || trimmed.length > 80) return false;
-  if (/\d/.test(trimmed)) return false;
-  if (/([a-zA-ZæøåÆØÅ])\1{3,}/.test(trimmed)) return false;
 
-  const lettersOnly = trimmed.replace(/[^A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]/g, "");
-  const letterCount = lettersOnly.replace(/[\s'’\-]/g, "").length;
+  /* Minst to bokstaver i et hvilket som helst alfabet. Stopper «12» og «--». */
+  const letters = trimmed.match(/\p{L}/gu);
+  if (!letters || letters.length < 2) return false;
 
-  if (letterCount < 2) return false;
-  if (!/^[A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ'’\-\s]+$/.test(trimmed)) return false;
+  if (/http|www\./i.test(trimmed)) return false;
+  if (hasCharacterRun(trimmed, 5)) return false;
 
   return true;
 }
@@ -178,29 +218,27 @@ function isValidDateInput(value = "") {
   return true;
 }
 
+/* Meldingen er valgfri og fri tekst. Vi stopper bare det som er åpenbart
+   maskingenerert: for langt, spekket med lenker, eller ren gjentakelse.
+   Ord som «test» eller en enkelt lenke til lokalet er helt legitimt.
+   Reglene her må være identiske med dem i book-oss.html (validateStep). */
 function looksLikeSpamMessage(message = "") {
   if (!message) return false;
 
-  const text = message.toLowerCase().trim();
+  const text = String(message).trim();
   if (!text) return false;
 
-  if (text.length > 1200) return true;
-  if (/https?:\/\/|www\./i.test(text)) return true;
-  if (/([a-z])\1{5,}/i.test(text)) return true;
-  if (/\b(?:test|asdf|qwerty|awd|awdawd|jaf+ia?|heiheihei)\b/i.test(text)) return true;
+  if (text.length > MESSAGE_MAX_LENGTH) return true;
+  if (countLinks(text) > MESSAGE_MAX_LINKS) return true;
+  if (/([a-zæøåà-öø-ÿ])\1{5,}/i.test(text)) return true;
 
+  /* Samme tekstbit limt inn om og om igjen. */
   const repeatedChunkPattern = /(.{12,40}?)\1{2,}/i;
   if (repeatedChunkPattern.test(text.replace(/\s+/g, " "))) return true;
 
-  const words = text.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return false;
-
-  const longWord = words.some((word) => word.length > 35);
-  if (longWord) return true;
-
+  const words = text.toLowerCase().split(/\s+/).filter(Boolean);
   if (words.length >= 20) {
-    const uniqueWords = new Set(words).size;
-    const uniqueRatio = uniqueWords / words.length;
+    const uniqueRatio = new Set(words).size / words.length;
     if (uniqueRatio < 0.35) return true;
   }
 
@@ -384,6 +422,13 @@ export default {
         return jsonResponse({ ok: true }, 200, requestId);
       }
 
+      /* Samme stille avvisning som honeypot: roboten får «ok» og går
+         videre i stedet for å justere seg og prøve på nytt. */
+      if (isSuspiciouslyFast(pickFirst(data.formOpenedAt, data.openedAt))) {
+        logEvent("warn", "timing_trap", requestId, { ip: ip || "unknown" });
+        return jsonResponse({ ok: true }, 200, requestId);
+      }
+
       if (isRateLimited(ip)) {
         logEvent("warn", "rate_limit", requestId, { ip: ip || "unknown" });
         return jsonResponse({
@@ -402,7 +447,7 @@ export default {
       const dato = clamp(pickFirst(data.date, data.dato), 80);
       const sted = clamp(pickFirst(data.location, data.sted), 120);
       const gjester = clamp(pickFirst(data.guests, data.gjester), 6);
-      const melding = clamp(pickFirst(data.message, data.melding), 1200);
+      const melding = clamp(pickFirst(data.message, data.melding), MESSAGE_MAX_LENGTH);
 
       if (!setup || !navn || !epost || !type || !dato || !sted || !gjester) {
         logEvent("warn", "validation_failed", requestId, { reason: "missing_required_fields" });
